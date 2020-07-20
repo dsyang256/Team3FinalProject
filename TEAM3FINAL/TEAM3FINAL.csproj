@@ -49,6 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseForm\bassForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForm\bassForm.Designer.cs">
+      <DependentUpon>bassForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BaseForm\ProjectBaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForm\ProjectBaseForm.Designer.cs">
+      <DependentUpon>ProjectBaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +76,9 @@
     <Compile Include="Utils\ExcelExportImport.cs" />
     <Compile Include="Utils\FormUtil.cs" />
     <Compile Include="Utils\Util.cs" />
+    <EmbeddedResource Include="BaseForm\bassForm.resx">
+      <DependentUpon>bassForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -94,7 +109,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BASEFORM\" />
     <Folder Include="bin\Debug\" />
     <Folder Include="Images\" />
     <Folder Include="obj\Debug\TempPE\" />

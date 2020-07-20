@@ -19,5 +19,11 @@ namespace TEAM3FINAL
             InitializeComponent();
           //  _log = new LoggingUtility("gudiProject", Level.Debug, 15); //최근 15일만 보관
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            timer1.Start();
+            timer1.Tick += ((send, args) => lblDateTime.Text = DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초"));
+        }
     }
 }
