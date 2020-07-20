@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace TEAM3FINAL
 {
     public class Util
-    {
+    {/*
         // 로드 할때 콤보박스 체크여부를 저장된 값을 확인하여 변경
         // 아이디 ,패스워드 텍스트 박스에 저장된 값을 조건문으로 확인하여 보여줌
         private void LoginLoad(CheckBox checkBox, TextBox tXTID, TextBox txtPWD)
@@ -96,6 +96,6 @@ namespace TEAM3FINAL
             chb1.FlatStyle = FlatStyle.Flat;
             return dgv.Columns.Add(chb1);
         }
-        
+        */
     }
 }
