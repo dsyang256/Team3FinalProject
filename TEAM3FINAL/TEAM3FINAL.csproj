@@ -67,11 +67,11 @@
     <Compile Include="BaseForm\ProjectBaseForm.Designer.cs">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="FrmMAIN.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FrmMAIN.Designer.cs">
+      <DependentUpon>FrmMAIN.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmTest.cs">
       <SubType>Form</SubType>
@@ -106,8 +106,8 @@
     <EmbeddedResource Include="BaseForm\bassForm.resx">
       <DependentUpon>bassForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FrmMAIN.resx">
+      <DependentUpon>FrmMAIN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTest.resx">
       <DependentUpon>FrmTest.cs</DependentUpon>
