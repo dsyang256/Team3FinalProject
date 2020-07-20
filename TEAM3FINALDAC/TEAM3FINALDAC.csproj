@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cryptography, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>LIB\Cryptography.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
@@ -53,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LibraryConfig.xml" />
+    <Content Include="LIB\Cryptography.dll" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TEAM3FINALVO\TEAM3FINALVO.csproj">
