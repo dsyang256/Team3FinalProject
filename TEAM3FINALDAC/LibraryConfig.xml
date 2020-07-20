@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <settings>
+    <add key="MyDB"><![CDATA[Server=192.168.0.51;Database=Northwind;Uid=sa;Pwd=1234]]></add>
+    <add key="MyDB1"><![CDATA[Server=whyfi8888.ddns.net,11433;Database=TEAM3;Uid=team3;Pwd=team3]]></add>
+    <add key="MyDB2"><![CDATA[Server=???;Database=???;Uid=???;Pwd=???]]></add>
+  </settings>
+</configuration>
