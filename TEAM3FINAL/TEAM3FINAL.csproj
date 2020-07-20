@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseForm\bassForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForm\bassForm2.Designer.cs">
+      <DependentUpon>bassForm2.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseForm\bassForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,12 @@
     <Compile Include="LoggingUtility.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControl\MyDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControl\MyDataGridView.Designer.cs">
+      <DependentUpon>MyDataGridView.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\ucTabControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -88,6 +100,9 @@
     <Compile Include="Utils\ExcelExportImport.cs" />
     <Compile Include="Utils\FormUtil.cs" />
     <Compile Include="Utils\Util.cs" />
+    <EmbeddedResource Include="BaseForm\bassForm2.resx">
+      <DependentUpon>bassForm2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaseForm\bassForm.resx">
       <DependentUpon>bassForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -107,6 +122,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UserControl\MyDataGridView.resx">
+      <DependentUpon>MyDataGridView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\ucTabControl.resx">
       <DependentUpon>ucTabControl.cs</DependentUpon>
     </EmbeddedResource>
