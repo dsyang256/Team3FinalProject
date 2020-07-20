@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.제품관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.예시1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.예시2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -41,17 +44,44 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.tabForms = new TEAM3FINAL.ucTabControl();
+            this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.제품관리ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // 제품관리ToolStripMenuItem
+            // 
+            this.제품관리ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.예시1ToolStripMenuItem,
+            this.예시2ToolStripMenuItem});
+            this.제품관리ToolStripMenuItem.Name = "제품관리ToolStripMenuItem";
+            this.제품관리ToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.제품관리ToolStripMenuItem.Text = "제품관리";
+            // 
+            // 예시1ToolStripMenuItem
+            // 
+            this.예시1ToolStripMenuItem.Name = "예시1ToolStripMenuItem";
+            this.예시1ToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.예시1ToolStripMenuItem.Text = "예시1";
+            this.예시1ToolStripMenuItem.Click += new System.EventHandler(this.예시1ToolStripMenuItem_Click);
+            // 
+            // 예시2ToolStripMenuItem
+            // 
+            this.예시2ToolStripMenuItem.Name = "예시2ToolStripMenuItem";
+            this.예시2ToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
+            this.예시2ToolStripMenuItem.Text = "예시2";
+            this.예시2ToolStripMenuItem.Click += new System.EventHandler(this.예시2ToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -137,17 +167,34 @@
             this.lblDateTime.Size = new System.Drawing.Size(33, 17);
             this.lblDateTime.Text = "Time";
             // 
+            // tabForms
+            // 
+            this.tabForms.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tabForms.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tabForms.Location = new System.Drawing.Point(0, 63);
+            this.tabForms.Name = "tabForms";
+            this.tabForms.SelectedIndex = 0;
+            this.tabForms.Size = new System.Drawing.Size(800, 23);
+            this.tabForms.TabIndex = 9;
+            this.tabForms.Visible = false;
+            this.tabForms.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabForms_MouseDown);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tabForms);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.MdiChildActivate += new System.EventHandler(this.Form1_MdiChildActivate);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -170,6 +217,10 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblDateTime;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem 제품관리ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 예시1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 예시2ToolStripMenuItem;
+        private ucTabControl tabForms;
     }
 }
 
