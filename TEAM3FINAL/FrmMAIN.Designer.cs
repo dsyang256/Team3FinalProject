@@ -1,6 +1,6 @@
 ﻿namespace TEAM3FINAL
 {
-    partial class Form1
+    partial class FrmMAIN
     {
         /// <summary>
         /// 필수 디자이너 변수입니다.
@@ -29,11 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMAIN));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.제품관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.예시1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.예시2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -45,43 +42,17 @@
             this.lblDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabForms = new TEAM3FINAL.ucTabControl();
-            this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.제품관리ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // 제품관리ToolStripMenuItem
-            // 
-            this.제품관리ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.예시1ToolStripMenuItem,
-            this.예시2ToolStripMenuItem});
-            this.제품관리ToolStripMenuItem.Name = "제품관리ToolStripMenuItem";
-            this.제품관리ToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.제품관리ToolStripMenuItem.Text = "제품관리";
-            // 
-            // 예시1ToolStripMenuItem
-            // 
-            this.예시1ToolStripMenuItem.Name = "예시1ToolStripMenuItem";
-            this.예시1ToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
-            this.예시1ToolStripMenuItem.Text = "예시1";
-            this.예시1ToolStripMenuItem.Click += new System.EventHandler(this.예시1ToolStripMenuItem_Click);
-            // 
-            // 예시2ToolStripMenuItem
-            // 
-            this.예시2ToolStripMenuItem.Name = "예시2ToolStripMenuItem";
-            this.예시2ToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
-            this.예시2ToolStripMenuItem.Text = "예시2";
-            this.예시2ToolStripMenuItem.Click += new System.EventHandler(this.예시2ToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -193,8 +164,6 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MdiChildActivate += new System.EventHandler(this.Form1_MdiChildActivate);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -217,9 +186,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblDateTime;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ToolStripMenuItem 제품관리ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 예시1ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 예시2ToolStripMenuItem;
         private ucTabControl tabForms;
     }
 }
