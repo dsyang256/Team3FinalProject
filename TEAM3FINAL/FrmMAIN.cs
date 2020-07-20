@@ -12,9 +12,9 @@ using log4net.Core;
 
 namespace TEAM3FINAL
 {
-    public partial class Form1 : ProjectBaseForm
+    public partial class FrmMAIN : ProjectBaseForm
     {
-        public Form1()
+        public FrmMAIN()
         {
             InitializeComponent();
           //  _log = new LoggingUtility("gudiProject", Level.Debug, 15); //최근 15일만 보관
@@ -22,28 +22,32 @@ namespace TEAM3FINAL
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //status strip Timer
             timer1.Start();
             timer1.Tick += ((send, args) => lblDateTime.Text = DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초"));
+
+            //로그인창 호출
+
+
+            //로그인시 메뉴 불러오기.
+            SetMenus();
         }
 
-        private void 예시1ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SetMenus()
         {
-            FrmTest frm = new FrmTest();
-            frm.MdiParent = this;
-            frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
+            //서비스 호출
+
+            //
+
         }
 
-        private void 예시2ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmTest frm = new FrmTest();
-            frm.MdiParent = this;
-            frm.FormBorderStyle = FormBorderStyle.None;
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
-        }
 
+        #region MDI 탭컨트롤
+        /// <summary>
+        /// ChildForm 활성화시 발생하는 이벤트. 탭컨트롤을 생성한다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_MdiChildActivate(object sender, EventArgs e)
         {
             if (this.ActiveMdiChild == null)
@@ -66,11 +70,21 @@ namespace TEAM3FINAL
             }
         }
 
+        /// <summary>
+        /// ChildForm 종료시 발생하는 이벤트. 자원회수
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ActiveMdiChild_FormClosed(object sender, FormClosedEventArgs e)
         {
             ((sender as Form).Tag as TabPage).Dispose();
         }
 
+        /// <summary>
+        /// 탭컨트롤에서 마우스 클릭시 발생하는 이벤트. 탭컨르롤에 그려진 이미지 클릭시 ChildForm을 종료한다.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tabForms_MouseDown(object sender, MouseEventArgs e)
         {
             for (var i = 0; i < tabForms.TabPages.Count; i++)
@@ -87,5 +101,6 @@ namespace TEAM3FINAL
                 }
             }
         }
+        #endregion
     }
 }
