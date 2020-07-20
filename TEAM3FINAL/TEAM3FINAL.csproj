@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseForm\baseFormPopUP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForm\baseFormPopUP.Designer.cs">
+      <DependentUpon>baseFormPopUP.cs</DependentUpon>
+    </Compile>
     <Compile Include="BaseForm\bassForm2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     <Compile Include="Utils\ExcelExportImport.cs" />
     <Compile Include="Utils\FormUtil.cs" />
     <Compile Include="Utils\Util.cs" />
+    <EmbeddedResource Include="BaseForm\baseFormPopUP.resx">
+      <DependentUpon>baseFormPopUP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BaseForm\bassForm2.resx">
       <DependentUpon>bassForm2.cs</DependentUpon>
     </EmbeddedResource>
