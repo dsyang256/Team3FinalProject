@@ -57,6 +57,7 @@ namespace TEAM3FINAL
         //그리드뷰 바인드 함수
         public static void InitSettingGridView(DataGridView dgv)
         {
+            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dgv.AutoGenerateColumns = false;
             dgv.AllowUserToAddRows = false;
             dgv.MultiSelect = false;
@@ -87,10 +88,12 @@ namespace TEAM3FINAL
         }
 
         //체크박스 버튼 추가
-        public static int DataGridViewCheckBoxSet(string headerText, DataGridView dgv)
+        public static int DataGridViewCheckBoxSet(DataGridView dgv,string name)
         {
             DataGridViewCheckBoxColumn chb1 = new DataGridViewCheckBoxColumn();
-            chb1.HeaderText = headerText;
+            chb1.HeaderText = "";
+            chb1.Name = name;
+            chb1.Width = 50;
             chb1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             chb1.DefaultCellStyle.Padding = new Padding(0, 0, 0, 0);
             chb1.FlatStyle = FlatStyle.Flat;
