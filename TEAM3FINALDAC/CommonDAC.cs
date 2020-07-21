@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using System.Data; //참조
 using System.Data.SqlClient;
 
-namespace TEAM3FINAL
+namespace TEAM3FINALDAC
 {
     public class CommonDAC : ConnectionAccess  //추상클래스인 ConnectionAccess를 상속받아 connection하기위한
     {
-
+        /*
 
         public List<ComboItemVO> GetCodeInfoByCodeTypes(string codeTypes, string seperator)
         {
@@ -38,6 +38,6 @@ namespace TEAM3FINAL
                 return null;
             }
         }
-
+        */
     }
 }

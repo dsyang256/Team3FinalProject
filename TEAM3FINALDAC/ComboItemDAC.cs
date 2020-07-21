@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using System.Data; //참조
 using System.Data.SqlClient;
 
-namespace TEAM3FINAL
+namespace TEAM3FINALDAC
 {
     public class ComboItemDAC : ConnectionAccess
-    {
+    {/*
         public List<ComboItemVO> GetCmCode(string category)
         {
             List<ComboItemVO> list = default;
@@ -205,6 +205,6 @@ namespace TEAM3FINAL
         }
 
 
-
+        */
     }
 }
