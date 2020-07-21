@@ -126,7 +126,7 @@
         public System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
+        public System.Windows.Forms.Panel panel3;
+        public System.Windows.Forms.Panel panel4;
     }
 }
