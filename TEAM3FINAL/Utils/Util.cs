@@ -91,9 +91,9 @@ namespace TEAM3FINAL
         public static int DataGridViewCheckBoxSet(DataGridView dgv,string name)
         {
             DataGridViewCheckBoxColumn chb1 = new DataGridViewCheckBoxColumn();
-            chb1.HeaderText = "";
+            chb1.HeaderText = "        ";
             chb1.Name = name;
-            chb1.Width = 50;
+            chb1.Width = 60;
             chb1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             chb1.DefaultCellStyle.Padding = new Padding(0, 0, 0, 0);
             chb1.FlatStyle = FlatStyle.Flat;

@@ -37,8 +37,6 @@ namespace WindowsFormsApp18
 
             this.RowHeadersDefaultCellStyle.SelectionBackColor = SystemColors.ControlDark;
             this.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
-            this.Height = 50;
-            this.RowTemplate.Height = 150;
 
         }
 

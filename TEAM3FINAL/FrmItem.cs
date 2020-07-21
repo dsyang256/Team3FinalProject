@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using TEAM3FINAL.Services;
 
 namespace TEAM3FINAL
 {
@@ -19,36 +20,54 @@ namespace TEAM3FINAL
         private void FrmItem_Load(object sender, EventArgs e)
         {
             DataGridViewColumnSet();
+            ItemServicecs item = new ItemServicecs();
+            dgvitem.DataSource = item.AllITEM();
 
         }
+        /// <summary>
+        /// 데이터 그리드뷰 컬럼+체크박스 만들기
+        /// </summary>
         private void DataGridViewColumnSet()
         {
-            //데이터그리드뷰 컬럼 + 버튼 + 이벤트 만들기
             Util.InitSettingGridView(dgvitem);
-            Util.AddNewColumnToDataGridView(dgvitem, "no", "CLIENT_CODE", true, 30);
+            Util.AddNewColumnToDataGridView(dgvitem, "no", "idx", true, 30);
             Util.DataGridViewCheckBoxSet(dgvitem,"all");
-            Util.AddNewColumnToDataGridView(dgvitem, "회사명", "CLIENT_NAME", true, 200);
-            Util.AddNewColumnToDataGridView(dgvitem, "전화번호", "CLIENT_PHN_NBR", true, 200);
-            Util.AddNewColumnToDataGridView(dgvitem, "우편번호", "CLIENT_PSTL_CODE", true, 200);
-            Util.AddNewColumnToDataGridView(dgvitem, "주소", "CLIENT_ADR1", true, 200);
-            Util.AddNewColumnToDataGridView(dgvitem, "상세주소", "CLIENT_ADR2", true, 200);
-            Util.AddNewColumnToDataGridView(dgvitem, "홈페이지", "CLIENT_URL", true, 200);
-            Util.AddNewColumnToDataGridView(dgvitem, "비고", "", true, 550);
+            Util.AddNewColumnToDataGridView(dgvitem, "품목유형", "ITEM_TYP", true, 100);
+            Util.AddNewColumnToDataGridView(dgvitem, "품목", "ITEM_CODE", true, 100);
+            Util.AddNewColumnToDataGridView(dgvitem, "품명", "ITEM_NAME", true, 100);
+            Util.AddNewColumnToDataGridView(dgvitem, "규격", "ITEM_STND", true, 100);
+            Util.AddNewColumnToDataGridView(dgvitem, "단위", "ITEM_UNIT", true, 100);
+            Util.AddNewColumnToDataGridView(dgvitem, "단위수량", "ITEM_QTY_UNIT", true, 100);
+            Util.AddNewColumnToDataGridView(dgvitem, "환산단위", "ITEM_UNIT_CNVR", true, 100);
+            Util.AddNewColumnToDataGridView(dgvitem, "환산수량", "ITEM_QTY_CNVR", true, 100);
+            Util.AddNewColumnToDataGridView(dgvitem, "수입검사여부", "ITEM_INCOME_YN", true, 120);
+            Util.AddNewColumnToDataGridView(dgvitem, "공정검사여부", "ITEM_PROCS_YN", true, 120);
+            Util.AddNewColumnToDataGridView(dgvitem, "출하검사여부", "ITEM_XPORT_YN", true, 120);
+            Util.AddNewColumnToDataGridView(dgvitem, "단종유무", "ITEM_DSCN_YN", true, 100);
+            Util.AddNewColumnToDataGridView(dgvitem, "유무상구분", "ITEM_FREE_YN", true, 100);
+            Util.AddNewColumnToDataGridView(dgvitem, "납품업체", "ITEM_COM_DLVR", true, 100);
+            Util.AddNewColumnToDataGridView(dgvitem, "발주업체", "ITEM_COM_REORDER", true, 100);
             DataGridViewCheckBoxAllCheck();
 
         }
-
+        /// <summary>
+        /// 데이터 그리드뷰 올체크 체크박스 만들기
+        /// </summary>
         private void DataGridViewCheckBoxAllCheck()
         {
             headerChk = new CheckBox();
             Point headerCell = dgvitem.GetCellDisplayRectangle(1, -1, true).Location;
-            headerChk.Location = new Point(headerCell.X + 8, headerCell.Y + 15);
+            headerChk.Location = new Point(headerCell.X + 3, headerCell.Y + 15);
             headerChk.Size = new Size(18, 18);
             headerChk.BackColor = Color.FromArgb(52, 52, 52);
             headerChk.Click += HeaderChk_Clicked;
             dgvitem.Controls.Add(headerChk);
         }
-
+        /// <summary>
+        /// 올체크 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HeaderChk_Clicked(object sender, EventArgs e)
         {
             dgvitem.EndEdit();

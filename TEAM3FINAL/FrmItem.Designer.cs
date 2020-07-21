@@ -396,7 +396,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvitem.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvitem.RowHeadersWidth = 30;
-            this.dgvitem.RowTemplate.Height = 150;
+            this.dgvitem.RowTemplate.Height = 23;
             this.dgvitem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvitem.Size = new System.Drawing.Size(1242, 318);
             this.dgvitem.TabIndex = 0;
