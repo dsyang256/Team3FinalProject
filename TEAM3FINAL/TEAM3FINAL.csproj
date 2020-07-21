@@ -55,23 +55,29 @@
     <Compile Include="BaseForm\baseFormPopUP.Designer.cs">
       <DependentUpon>baseFormPopUP.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseForm\bassForm2.cs">
+    <Compile Include="BaseForm\baseForm2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BaseForm\bassForm2.Designer.cs">
-      <DependentUpon>bassForm2.cs</DependentUpon>
+    <Compile Include="BaseForm\baseForm2.Designer.cs">
+      <DependentUpon>baseForm2.cs</DependentUpon>
     </Compile>
-    <Compile Include="BaseForm\bassForm.cs">
+    <Compile Include="BaseForm\baseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BaseForm\bassForm.Designer.cs">
-      <DependentUpon>bassForm.cs</DependentUpon>
+    <Compile Include="BaseForm\baseForm.Designer.cs">
+      <DependentUpon>baseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BaseForm\ProjectBaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BaseForm\ProjectBaseForm.Designer.cs">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmItem.Designer.cs">
+      <DependentUpon>FrmItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Popup\FrmLogin.cs">
       <SubType>Form</SubType>
@@ -122,11 +128,17 @@
     <EmbeddedResource Include="BaseForm\baseFormPopUP.resx">
       <DependentUpon>baseFormPopUP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaseForm\bassForm2.resx">
-      <DependentUpon>bassForm2.cs</DependentUpon>
+    <EmbeddedResource Include="BaseForm\baseForm2.resx">
+      <DependentUpon>baseForm2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BaseForm\bassForm.resx">
-      <DependentUpon>bassForm.cs</DependentUpon>
+    <EmbeddedResource Include="BaseForm\baseForm.resx">
+      <DependentUpon>baseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BaseForm\ProjectBaseForm.resx">
+      <DependentUpon>ProjectBaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmItem.resx">
+      <DependentUpon>FrmItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

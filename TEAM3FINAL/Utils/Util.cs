@@ -8,39 +8,39 @@ using System.Windows.Forms;
 namespace TEAM3FINAL
 {
     public class Util
-    {/*
-        // 로드 할때 콤보박스 체크여부를 저장된 값을 확인하여 변경
-        // 아이디 ,패스워드 텍스트 박스에 저장된 값을 조건문으로 확인하여 보여줌
-        private void LoginLoad(CheckBox checkBox, TextBox tXTID, TextBox txtPWD)
-        {
-            checkBox.Checked = false;
-            if (Properties.Settings.Default.LoginSave == "Y")
-            {
-                checkBox.Checked = true;
-                tXTID.Text = Properties.Settings.Default.ID;
-                txtPWD.Text = Properties.Settings.Default.PWD;
+    {
+         // 할때 콤보박스 체크여부를 저장된 값을 확인하여 변경
+         //아이디 ,패스워드 텍스트 박스에 저장된 값을 조건문으로 확인하여 보여줌
+        //private void LoginLoad(CheckBox checkBox, TextBox tXTID, TextBox txtPWD)
+        //{
+        //    checkBox.Checked = false;
+        //    if (Properties.Settings.Default.LoginSave == "Y")
+        //    {
+        //        checkBox.Checked = true;
+        //        tXTID.Text = Properties.Settings.Default.ID;
+        //        txtPWD.Text = Properties.Settings.Default.PWD;
 
-            }
-        }
-        // 로그인 버튼을 눌렀을때 체크박스의 체크여부를 확인하여 
-        // 아이디,패스워드 텍스트 박스의 값을 조건문을 사용해 저장여부 체크
-        private void LoginSave(CheckBox checkBox, TextBox tXTID, TextBox txtPWD)
-        {
-            if (checkBox.Checked == false)
-            {
-                Properties.Settings.Default.ID = "";
-                Properties.Settings.Default.PWD = "";
-                Properties.Settings.Default.LoginSave = "N";
-                Properties.Settings.Default.Save();
-            }
-            else
-            {
-                Properties.Settings.Default.ID = tXTID.Text;
-                Properties.Settings.Default.PWD = txtPWD.Text;
-                Properties.Settings.Default.LoginSave = "Y";
-                Properties.Settings.Default.Save();
-            }
-        }
+        //    }
+        //}
+         //로그인 버튼을 눌렀을때 체크박스의 체크여부를 확인하여 
+         //아이디,패스워드 텍스트 박스의 값을 조건문을 사용해 저장여부 체크
+        //private void LoginSave(CheckBox checkBox, TextBox tXTID, TextBox txtPWD)
+        //{
+        //    if (checkBox.Checked == false)
+        //    {
+        //        Properties.Settings.Default.ID = "";
+        //        Properties.Settings.Default.PWD = "";
+        //        Properties.Settings.Default.LoginSave = "N";
+        //        Properties.Settings.Default.Save();
+        //    }
+        //    else
+        //    {
+        //        Properties.Settings.Default.ID = tXTID.Text;
+        //        Properties.Settings.Default.PWD = txtPWD.Text;
+        //        Properties.Settings.Default.LoginSave = "Y";
+        //        Properties.Settings.Default.Save();
+        //    }
+        //}
         //그리드뷰 컴럼 추가 함수
         public static void AddNewColumnToDataGridView(DataGridView dgv, string headerText, string dataPropertyName, bool visibility, int colWidth = 100, DataGridViewContentAlignment textAlign = DataGridViewContentAlignment.MiddleLeft, bool readOnly = true)
         {
@@ -96,6 +96,6 @@ namespace TEAM3FINAL
             chb1.FlatStyle = FlatStyle.Flat;
             return dgv.Columns.Add(chb1);
         }
-        */
+        
     }
 }

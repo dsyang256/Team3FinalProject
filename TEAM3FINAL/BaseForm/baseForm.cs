@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TEAM3FINAL
 {
-    public partial class bassForm : ProjectBaseForm
+    public partial class baseForm : ProjectBaseForm
     {
-        public bassForm()
+        public baseForm()
         {
             InitializeComponent();
         }
