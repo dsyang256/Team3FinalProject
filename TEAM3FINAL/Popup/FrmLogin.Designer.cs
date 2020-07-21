@@ -42,45 +42,38 @@
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(28, 18);
+            this.label1.Location = new System.Drawing.Point(27, 17);
             this.label1.Size = new System.Drawing.Size(69, 25);
             this.label1.Text = "로그인";
             // 
             // label2
             // 
             this.label2.Location = new System.Drawing.Point(2, 66);
-            this.label2.Size = new System.Drawing.Size(20, 15);
+            this.label2.Size = new System.Drawing.Size(24, 20);
             this.label2.Text = "ID";
             this.label2.Visible = false;
             // 
             // btnOK
             // 
-            this.btnOK.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnOK.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnOK.ForeColor = System.Drawing.SystemColors.Window;
             this.btnOK.Location = new System.Drawing.Point(100, 275);
             this.btnOK.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnOK.Size = new System.Drawing.Size(200, 52);
             this.btnOK.Text = "로그인";
-            this.btnOK.UseVisualStyleBackColor = false;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnCancel.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnCancel.ForeColor = System.Drawing.SystemColors.Window;
             this.btnCancel.Location = new System.Drawing.Point(254, 338);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnCancel.Size = new System.Drawing.Size(46, 29);
             this.btnCancel.Text = "종료";
-            this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // ptxtPswd
             // 
-            this.ptxtPswd.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ptxtPswd.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Italic);
             this.ptxtPswd.ForeColor = System.Drawing.Color.Gray;
             this.ptxtPswd.Location = new System.Drawing.Point(75, 194);
             this.ptxtPswd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -95,7 +88,7 @@
             // 
             // ptxtID
             // 
-            this.ptxtID.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ptxtID.Font = new System.Drawing.Font("맑은 고딕", 18F, System.Drawing.FontStyle.Italic);
             this.ptxtID.ForeColor = System.Drawing.Color.Gray;
             this.ptxtID.Location = new System.Drawing.Point(75, 131);
             this.ptxtID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -117,6 +110,7 @@
             this.btnSignup.TabIndex = 5;
             this.btnSignup.Text = "회원가입";
             this.btnSignup.UseVisualStyleBackColor = false;
+            this.btnSignup.Click += new System.EventHandler(this.btnSignup_Click);
             // 
             // FrmLogin
             // 

@@ -102,5 +102,28 @@ namespace TEAM3FINAL
                 ptxtPswd.PasswordChar = '\0';
             }
         }
+
+        /// <summary>
+        /// 회원가입 버튼 클릭 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSignup_Click(object sender, EventArgs e)
+        {
+            //회원가입 버튼클릭
+
+            FrmSignup frm = new FrmSignup();
+            frm.ShowDialog();
+            if (frm.DialogResult == DialogResult.OK)
+            {
+
+                //등록 확인 메시지
+                if (LoginInfo.UserInfo.LI_ID != null)
+                {
+                    MessageBox.Show("수정 되었습니다.", "품목 수정", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+
+        }
     }
 }
