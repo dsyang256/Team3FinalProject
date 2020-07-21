@@ -73,6 +73,12 @@
     <Compile Include="BaseForm\ProjectBaseForm.Designer.cs">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmFactoryManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFactoryManage.Designer.cs">
+      <DependentUpon>FrmFactoryManage.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmItem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaseForm\ProjectBaseForm.resx">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFactoryManage.resx">
+      <DependentUpon>FrmFactoryManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmItem.resx">
       <DependentUpon>FrmItem.cs</DependentUpon>

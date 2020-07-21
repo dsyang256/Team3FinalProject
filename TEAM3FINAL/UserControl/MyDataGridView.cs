@@ -21,7 +21,7 @@ namespace WindowsFormsApp18
             this.RowHeadersWidth = 30;
             this.EnableHeadersVisualStyles = false;
             this.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.ColumnHeadersHeight = 150;
+            this.ColumnHeadersHeight = 50;
             
             this.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(52, 52, 52);
             this.ColumnHeadersDefaultCellStyle.ForeColor = SystemColors.Info;
