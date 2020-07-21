@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace TEAM3FINAL
+namespace TEAM3FINALDAC
 {
     /// <summary>
     /// XML에서 configuration key를 읽어와서 connection을 만드는 클래스

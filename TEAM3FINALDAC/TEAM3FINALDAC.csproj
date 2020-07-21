@@ -53,6 +53,7 @@
     <Compile Include="ConnectionAccess.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="LoggingUtility.cs" />
+    <Compile Include="LoginDAC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
