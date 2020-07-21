@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using TEAM3FINAL.Services;
+using TEAM3FINALVO;
 
 namespace TEAM3FINAL
 {
@@ -15,13 +17,13 @@ namespace TEAM3FINAL
             InitializeComponent();
         }
 
+        //그리드뷰 컬럼 생성
         private void DataGridViewColumnSet()
         {
             //데이터그리드뷰 초기설정
             Util.InitSettingGridView(dgvFactoryList);
             ////데이터그리드뷰 체크박스, 컬럼 추가
             Util.DataGridViewCheckBoxSet(dgvFactoryList, "");
-            
             Util.AddNewColumnToDataGridView(dgvFactoryList, "시설군", "FAC_FCLTY", true, 80);
             Util.AddNewColumnToDataGridView(dgvFactoryList, "시설구분", "FAC_TYP", true, 80);
             Util.AddNewColumnToDataGridView(dgvFactoryList, "시설코드", "FAC_CODE", true, 80);
@@ -38,5 +40,52 @@ namespace TEAM3FINAL
             Util.AddNewColumnToDataGridView(dgvFactoryList, "최종수정자", "FAC_LAST_MDFR", true, 80);
             Util.AddNewColumnToDataGridView(dgvFactoryList, "최종수정시간", "FAC_LAST_MDFY", true, 80);
         }
+                
+        private void FrmFactoryManage_Load(object sender, EventArgs e)
+        {
+            DataGridViewColumnSet();
+            GetFactoryInfo();
+        }
+
+        //그리드뷰에 DB에서 가져온 List 바인딩
+        private void GetFactoryInfo()
+        {
+            FactoryService service = new FactoryService();
+            dgvFactoryList.DataSource = service.GetFactoryInfo();
+        }
+
+        #region ****메인 버튼 이벤트****
+        private void Search(object sender, EventArgs e)
+        {
+            if(((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+
+            }
+        }
+
+        private void Insert(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+
+            }
+        }
+
+        private void Update(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+
+            }
+        }
+
+        private void Delete(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+
+            }
+        }
+        #endregion
     }
 }

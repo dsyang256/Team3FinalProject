@@ -16,5 +16,11 @@ namespace TEAM3FINAL.Services
             FactoryDAC dac = new FactoryDAC();
             return dac.InsertFactory(fac);
         }
+
+        public List<FACTORY_VO> GetFactoryInfo()
+        {
+            FactoryDAC dac = new FactoryDAC();
+            return dac.GetFactoryInfo();
+        }
     }
 }
