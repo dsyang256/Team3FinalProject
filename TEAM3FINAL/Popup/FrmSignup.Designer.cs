@@ -148,6 +148,7 @@
             this.btnIDCheck.TabIndex = 41;
             this.btnIDCheck.Text = "중복확인";
             this.btnIDCheck.UseVisualStyleBackColor = false;
+            this.btnIDCheck.Click += new System.EventHandler(this.btnStdCheck_Click);
             // 
             // textBox1
             // 
@@ -217,6 +218,7 @@
             this.Controls.Add(this.label15);
             this.Controls.Add(this.회원ID);
             this.Name = "FrmSignup";
+            this.Load += new System.EventHandler(this.FrmSignup_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.btnOK, 0);
