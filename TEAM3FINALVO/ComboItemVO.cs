@@ -11,7 +11,7 @@ namespace TEAM3FINALVO
         public string COMMON_CODE { get; set; }
         public string COMMON_NAME { get; set; }
         public string COMMON_PARENT { get; set; }
-        public string COMMON_SEQ { get; set; }
+        public int COMMON_SEQ { get; set; }
 
         public ComboItemVO() { }
 

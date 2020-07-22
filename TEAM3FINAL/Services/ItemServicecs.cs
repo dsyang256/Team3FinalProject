@@ -17,5 +17,11 @@ namespace TEAM3FINAL.Services
             return dac.AllITEM();
             /////////
         }
+        public List<ITEM_VO> GetSearchItem(ITEM_VO vo)
+        {
+            ITEMDAC dac = new ITEMDAC();
+            return dac.GetSearchItem(vo);
+            /////////
+        }
     }
 }
