@@ -110,17 +110,6 @@ namespace TEAM3FINAL
         #region 멤버변수
         public string LI_ID { get; set; }
         public string LI_NAME { get; set; }
-        public string LI_PHN_NBR { get; set; }
-        public string LI_PSTL_CODE { get; set; }
-        public string LI_ADR1 { get; set; }
-        public string LI_ADR2 { get; set; }
-        public string LI_EML { get; set; }
-        public bool LI_TYP { get; set; }
-        public string LI_BIRTH { get; set; }
-        public string LI_SIGN_DATE { get; set; }
-        public string LI_PSWD { get; set; }
-        public byte[] LI_PICTURE { get; set; }
-        public string LoginType { get; set; } // "Coustomer" , "Manager"
         #endregion
 
         #region 생성자
@@ -135,16 +124,6 @@ namespace TEAM3FINAL
         {
             LI_ID = default;
             LI_NAME = default;
-            LI_PHN_NBR = default;
-            LI_PSTL_CODE = default;
-            LI_ADR1 = default;
-            LI_ADR2 = default;
-            LI_EML = default;
-            LI_TYP = default;
-            LI_BIRTH = default;
-            LI_SIGN_DATE = default;
-            LI_PSWD = default;
-            LI_PICTURE = default;
         }
         #endregion
     }
