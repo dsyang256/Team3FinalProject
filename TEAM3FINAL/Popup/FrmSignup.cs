@@ -31,6 +31,7 @@ namespace TEAM3FINAL
         #region 이벤트
         private void FrmSignup_Load(object sender, EventArgs e)
         {
+            
             //콤보박스 서비스 호출
             ComboItemService service = new ComboItemService();
             Commonlist = service.GetCmCode();
