@@ -220,20 +220,20 @@
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\close-grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close-red.png" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\TEAM3FINALDAC\TEAM3FINALDAC.csproj">
-      <Project>{e9fe00d3-d254-46b4-8e93-2b3a9852d358}</Project>
+      <Project>{E9FE00D3-D254-46B4-8E93-2B3A9852D358}</Project>
       <Name>TEAM3FINALDAC</Name>
     </ProjectReference>
     <ProjectReference Include="..\TEAM3FINALVO\TEAM3FINALVO.csproj">
       <Project>{6dd41fff-416c-4c82-8319-53a9f358586d}</Project>
       <Name>TEAM3FINALVO</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\close-grey.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\close-red.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
