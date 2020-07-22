@@ -23,11 +23,7 @@ namespace TEAM3FINAL
 
         private void FrmItem_Load(object sender, EventArgs e)
         {
-            ComboItemService service = new ComboItemService();
-            Commonlist = service.GetCmCode();
-            //콤보박스 바인딩
-            var codelist = (from item in Commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(ITEM_USE_YN, codelist, "COMMON_CODE", "COMMON_CODE_NAME", "");
+            cboset();
 
             //FrmMain frm = (FrmMain)this.MdiParent;
             //frm.eSave += Save;
@@ -38,6 +34,16 @@ namespace TEAM3FINAL
             dgvitem.DataSource = item.AllITEM();
 
         }
+
+        private void cboset()
+        {
+            ComboItemService service = new ComboItemService();
+            Commonlist = service.GetCmCode();
+            //콤보박스 바인딩
+            var codelist = (from item in Commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(ITEM_USE_YN, codelist, "COMMON_CODE", "COMMON_NAME", "");
+        }
+
         /// <summary>
         /// 데이터 그리드뷰 컬럼+체크박스 만들기
         /// </summary>
