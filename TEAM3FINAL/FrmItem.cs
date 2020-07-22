@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using TEAM3FINAL.Services;
 using TEAM3FINALVO;
+using System.Linq;
 
 namespace TEAM3FINAL
 {
@@ -14,6 +15,7 @@ namespace TEAM3FINAL
     {
         ItemServicecs item = new ItemServicecs();
         CheckBox headerChk;
+        List<ComboItemVO> Commonlist = null;
         public FrmItem()
         {
             InitializeComponent();
@@ -21,6 +23,12 @@ namespace TEAM3FINAL
 
         private void FrmItem_Load(object sender, EventArgs e)
         {
+            ComboItemService service = new ComboItemService();
+            Commonlist = service.GetCmCode();
+            //콤보박스 바인딩
+            var codelist = (from item in Commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(ITEM_USE_YN, codelist, "COMMON_CODE", "COMMON_CODE_NAME", "");
+
             //FrmMain frm = (FrmMain)this.MdiParent;
             //frm.eSave += Save;
             //frm.eReset += Reset;
