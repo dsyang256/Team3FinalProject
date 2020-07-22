@@ -45,20 +45,20 @@ namespace TEAM3FINALDAC
             int iCnt = default;
             try
             {
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                //using (SqlCommand cmd = new SqlCommand())
+                //{
+                //    cmd.Connection = new SqlConnection(this.ConnectionString);
 
-                    cmd.CommandText = $@"select COUNT(MANAGER_ID)
-                                                    from MANAGER
-                                                    where MANAGER_ID = @MANAGER_ID
-                                                    AND MANAGER_PSWD = @MANAGER_PSWD ";
-                    cmd.Parameters.AddWithValue("@MANAGER_ID", userID);
-                    cmd.Parameters.AddWithValue("@MANAGER_PSWD", password);
+                //    cmd.CommandText = $@"select COUNT(MANAGER_ID)
+                //                                    from MANAGER
+                //                                    where MANAGER_ID = @MANAGER_ID
+                //                                    AND MANAGER_PSWD = @MANAGER_PSWD ";
+                //    cmd.Parameters.AddWithValue("@MANAGER_ID", userID);
+                //    cmd.Parameters.AddWithValue("@MANAGER_PSWD", password);
 
-                    cmd.Connection.Open();
-                    iCnt = Convert.ToInt32(cmd.ExecuteScalar());
-                    cmd.Connection.Close();
+                //    cmd.Connection.Open();
+                //    iCnt = Convert.ToInt32(cmd.ExecuteScalar());
+                //    cmd.Connection.Close();
                 }
             }
             catch (Exception err)
@@ -75,18 +75,18 @@ namespace TEAM3FINALDAC
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
-                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    //cmd.Connection = new SqlConnection(this.ConnectionString);
 
-                    cmd.CommandText = $@"select COUNT(MANAGER_ID)
-                                                    from MANAGER
-                                                    where MANAGER_ID = @MANAGER_ID
-                                                    AND MANAGER_PSWD = @MANAGER_PSWD ";
-                    cmd.Parameters.AddWithValue("@MANAGER_ID", userID);
-                    cmd.Parameters.AddWithValue("@MANAGER_PSWD", password);
+                    //cmd.CommandText = $@"select COUNT(MANAGER_ID)
+                    //                                from MANAGER
+                    //                                where MANAGER_ID = @MANAGER_ID
+                    //                                AND MANAGER_PSWD = @MANAGER_PSWD ";
+                    //cmd.Parameters.AddWithValue("@MANAGER_ID", userID);
+                    //cmd.Parameters.AddWithValue("@MANAGER_PSWD", password);
 
-                    cmd.Connection.Open();
-                    iCnt = Convert.ToInt32(cmd.ExecuteScalar());
-                    cmd.Connection.Close();
+                    //cmd.Connection.Open();
+                    //iCnt = Convert.ToInt32(cmd.ExecuteScalar());
+                    //cmd.Connection.Close();
                 }
             }
             catch (Exception err)
