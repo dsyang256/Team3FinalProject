@@ -6,11 +6,13 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using TEAM3FINAL.Services;
+using TEAM3FINALVO;
 
 namespace TEAM3FINAL
 {
     public partial class FrmItem : TEAM3FINAL.baseForm2
     {
+        ItemServicecs item = new ItemServicecs();
         CheckBox headerChk;
         public FrmItem()
         {
@@ -19,8 +21,12 @@ namespace TEAM3FINAL
 
         private void FrmItem_Load(object sender, EventArgs e)
         {
+            //FrmMain frm = (FrmMain)this.MdiParent;
+            //frm.eSave += Save;
+            //frm.eReset += Reset;
+            //frm.eDelete += Delete;
+            //frm.eUpdate += Update;
             DataGridViewColumnSet();
-            ItemServicecs item = new ItemServicecs();
             dgvitem.DataSource = item.AllITEM();
 
         }
@@ -57,7 +63,7 @@ namespace TEAM3FINAL
         {
             headerChk = new CheckBox();
             Point headerCell = dgvitem.GetCellDisplayRectangle(1, -1, true).Location;
-            headerChk.Location = new Point(headerCell.X + 3, headerCell.Y + 15);
+            headerChk.Location = new Point(headerCell.X + 4, headerCell.Y + 15);
             headerChk.Size = new Size(18, 18);
             headerChk.BackColor = Color.FromArgb(52, 52, 52);
             headerChk.Click += HeaderChk_Clicked;
@@ -78,6 +84,47 @@ namespace TEAM3FINAL
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells["all"];
                 chk.Value = headerChk.Checked;
             }
+        }
+        /// <summary>
+        /// 조회 버튼 이벤드
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Search(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                ITEM_VO vo = new ITEM_VO();
+                vo.ITEM_NAME = ITEM_NAME.Text;
+                vo.ITEM_STND = ITEM_STND.Text;
+                vo.ITEM_COM_REORDER = ITEM_COM_REORDER.Text;
+                vo.ITEM_COM_DLVR = ITEM_COM_DLVR.Text;
+                vo.ITEM_WRHS_IN = ITEM_WRHS_IN.Text;
+                vo.ITEM_WRHS_OUT = ITEM_WRHS_OUT.Text;
+                vo.ITEM_MANAGER = ITEM_MANAGER.Text;
+                vo.ITEM_TYP = ITEM_TYP.Text;
+                vo.ITEM_USE_YN = ITEM_USE_YN.Text;
+
+                dgvitem.DataSource = null;
+                dgvitem.DataSource = item.GetSearchItem(vo);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ITEM_VO vo = new ITEM_VO();
+            vo.ITEM_NAME = ITEM_NAME.Text;
+            vo.ITEM_STND = ITEM_STND.Text;
+            vo.ITEM_COM_REORDER = ITEM_COM_REORDER.Text;
+            vo.ITEM_COM_DLVR = ITEM_COM_DLVR.Text;
+            vo.ITEM_WRHS_IN = ITEM_WRHS_IN.Text;
+            vo.ITEM_WRHS_OUT = ITEM_WRHS_OUT.Text;
+            vo.ITEM_MANAGER = ITEM_MANAGER.Text;
+            vo.ITEM_TYP = ITEM_TYP.Text;
+            vo.ITEM_USE_YN = ITEM_USE_YN.Text;
+
+            dgvitem.DataSource = null;
+            dgvitem.DataSource = item.GetSearchItem(vo);
         }
     }
 }

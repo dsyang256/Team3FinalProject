@@ -50,16 +50,17 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.ITEM_NAME = new System.Windows.Forms.TextBox();
+            this.ITEM_STND = new System.Windows.Forms.TextBox();
+            this.ITEM_COM_REORDER = new System.Windows.Forms.ComboBox();
+            this.ITEM_WRHS_OUT = new System.Windows.Forms.ComboBox();
+            this.ITEM_USE_YN = new System.Windows.Forms.ComboBox();
+            this.ITEM_TYP = new System.Windows.Forms.ComboBox();
+            this.ITEM_WRHS_IN = new System.Windows.Forms.ComboBox();
+            this.ITEM_MANAGER = new System.Windows.Forms.ComboBox();
+            this.ITEM_COM_DLVR = new System.Windows.Forms.ComboBox();
             this.dgvitem = new WindowsFormsApp18.MyDataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -72,15 +73,16 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.comboBox7);
-            this.panel2.Controls.Add(this.comboBox6);
-            this.panel2.Controls.Add(this.comboBox5);
-            this.panel2.Controls.Add(this.comboBox4);
-            this.panel2.Controls.Add(this.comboBox3);
-            this.panel2.Controls.Add(this.comboBox2);
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.ITEM_COM_DLVR);
+            this.panel2.Controls.Add(this.ITEM_MANAGER);
+            this.panel2.Controls.Add(this.ITEM_WRHS_IN);
+            this.panel2.Controls.Add(this.ITEM_TYP);
+            this.panel2.Controls.Add(this.ITEM_USE_YN);
+            this.panel2.Controls.Add(this.ITEM_WRHS_OUT);
+            this.panel2.Controls.Add(this.ITEM_COM_REORDER);
+            this.panel2.Controls.Add(this.ITEM_STND);
+            this.panel2.Controls.Add(this.ITEM_NAME);
             this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.label18);
             this.panel2.Controls.Add(this.label19);
@@ -291,75 +293,75 @@
             this.label19.TabIndex = 15;
             this.label19.Text = "업체";
             // 
-            // textBox1
+            // ITEM_NAME
             // 
-            this.textBox1.Location = new System.Drawing.Point(127, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(193, 23);
-            this.textBox1.TabIndex = 18;
+            this.ITEM_NAME.Location = new System.Drawing.Point(127, 29);
+            this.ITEM_NAME.Name = "ITEM_NAME";
+            this.ITEM_NAME.Size = new System.Drawing.Size(193, 23);
+            this.ITEM_NAME.TabIndex = 18;
             // 
-            // textBox2
+            // ITEM_STND
             // 
-            this.textBox2.Location = new System.Drawing.Point(496, 29);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(193, 23);
-            this.textBox2.TabIndex = 19;
+            this.ITEM_STND.Location = new System.Drawing.Point(496, 29);
+            this.ITEM_STND.Name = "ITEM_STND";
+            this.ITEM_STND.Size = new System.Drawing.Size(193, 23);
+            this.ITEM_STND.TabIndex = 19;
             // 
-            // comboBox1
+            // ITEM_COM_REORDER
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(870, 31);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(193, 23);
-            this.comboBox1.TabIndex = 20;
+            this.ITEM_COM_REORDER.FormattingEnabled = true;
+            this.ITEM_COM_REORDER.Location = new System.Drawing.Point(870, 31);
+            this.ITEM_COM_REORDER.Name = "ITEM_COM_REORDER";
+            this.ITEM_COM_REORDER.Size = new System.Drawing.Size(193, 23);
+            this.ITEM_COM_REORDER.TabIndex = 20;
             // 
-            // comboBox2
+            // ITEM_WRHS_OUT
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(870, 81);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(193, 23);
-            this.comboBox2.TabIndex = 21;
+            this.ITEM_WRHS_OUT.FormattingEnabled = true;
+            this.ITEM_WRHS_OUT.Location = new System.Drawing.Point(870, 81);
+            this.ITEM_WRHS_OUT.Name = "ITEM_WRHS_OUT";
+            this.ITEM_WRHS_OUT.Size = new System.Drawing.Size(193, 23);
+            this.ITEM_WRHS_OUT.TabIndex = 21;
             // 
-            // comboBox3
+            // ITEM_USE_YN
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(870, 133);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(193, 23);
-            this.comboBox3.TabIndex = 22;
+            this.ITEM_USE_YN.FormattingEnabled = true;
+            this.ITEM_USE_YN.Location = new System.Drawing.Point(870, 133);
+            this.ITEM_USE_YN.Name = "ITEM_USE_YN";
+            this.ITEM_USE_YN.Size = new System.Drawing.Size(193, 23);
+            this.ITEM_USE_YN.TabIndex = 22;
             // 
-            // comboBox4
+            // ITEM_TYP
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(496, 131);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(193, 23);
-            this.comboBox4.TabIndex = 23;
+            this.ITEM_TYP.FormattingEnabled = true;
+            this.ITEM_TYP.Location = new System.Drawing.Point(496, 131);
+            this.ITEM_TYP.Name = "ITEM_TYP";
+            this.ITEM_TYP.Size = new System.Drawing.Size(193, 23);
+            this.ITEM_TYP.TabIndex = 23;
             // 
-            // comboBox5
+            // ITEM_WRHS_IN
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(496, 81);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(193, 23);
-            this.comboBox5.TabIndex = 24;
+            this.ITEM_WRHS_IN.FormattingEnabled = true;
+            this.ITEM_WRHS_IN.Location = new System.Drawing.Point(496, 81);
+            this.ITEM_WRHS_IN.Name = "ITEM_WRHS_IN";
+            this.ITEM_WRHS_IN.Size = new System.Drawing.Size(193, 23);
+            this.ITEM_WRHS_IN.TabIndex = 24;
             // 
-            // comboBox6
+            // ITEM_MANAGER
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(127, 131);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(193, 23);
-            this.comboBox6.TabIndex = 25;
+            this.ITEM_MANAGER.FormattingEnabled = true;
+            this.ITEM_MANAGER.Location = new System.Drawing.Point(127, 131);
+            this.ITEM_MANAGER.Name = "ITEM_MANAGER";
+            this.ITEM_MANAGER.Size = new System.Drawing.Size(193, 23);
+            this.ITEM_MANAGER.TabIndex = 25;
             // 
-            // comboBox7
+            // ITEM_COM_DLVR
             // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(129, 81);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(193, 23);
-            this.comboBox7.TabIndex = 26;
+            this.ITEM_COM_DLVR.FormattingEnabled = true;
+            this.ITEM_COM_DLVR.Location = new System.Drawing.Point(129, 81);
+            this.ITEM_COM_DLVR.Name = "ITEM_COM_DLVR";
+            this.ITEM_COM_DLVR.Size = new System.Drawing.Size(193, 23);
+            this.ITEM_COM_DLVR.TabIndex = 26;
             // 
             // dgvitem
             // 
@@ -401,6 +403,16 @@
             this.dgvitem.Size = new System.Drawing.Size(1242, 318);
             this.dgvitem.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1130, 126);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 27;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FrmItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -422,15 +434,15 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox7;
-        private System.Windows.Forms.ComboBox comboBox6;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox ITEM_COM_DLVR;
+        private System.Windows.Forms.ComboBox ITEM_MANAGER;
+        private System.Windows.Forms.ComboBox ITEM_WRHS_IN;
+        private System.Windows.Forms.ComboBox ITEM_TYP;
+        private System.Windows.Forms.ComboBox ITEM_USE_YN;
+        private System.Windows.Forms.ComboBox ITEM_WRHS_OUT;
+        private System.Windows.Forms.ComboBox ITEM_COM_REORDER;
+        private System.Windows.Forms.TextBox ITEM_STND;
+        private System.Windows.Forms.TextBox ITEM_NAME;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
@@ -447,5 +459,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private WindowsFormsApp18.MyDataGridView dgvitem;
+        private System.Windows.Forms.Button button1;
     }
 }
