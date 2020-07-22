@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace TEAM3FINALVO
 {
-    class ITEM_VO
+     public class ITEM_VO
     {
+        public int ibx { get; set; }
         public string ITEM_CODE { get; set; }
         public string ITEM_NAME { get; set; }
         public string ITEM_STND { get; set; }
@@ -31,7 +32,7 @@ namespace TEAM3FINALVO
         public string ITEM_UNIT_CNVR { get; set; }
         public int ITEM_QTY_CNVR { get; set; }
         public string ITEM_LAST_MDFR { get; set; }
-        public DateTime ITEM_LAST_MDFY { get; set; }
+        public string ITEM_LAST_MDFY { get; set; }
         public string ITEM_USE_YN { get; set; }
         public string ITEM_DSCN_YN { get; set; }
         public string ITEM_GROUP { get; set; }
