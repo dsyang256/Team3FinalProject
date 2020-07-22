@@ -10,11 +10,35 @@ namespace TEAM3FINAL
 {
     public partial class FrmLogin : TEAM3FINAL.BaseForm.baseFormPopUP
     {
+        #region 멤버변수
+
+        #endregion
+
+        #region 생성자
         public FrmLogin()
         {
             InitializeComponent();
         }
+        #endregion
 
+
+        #region 메서드
+        ///// <summary>
+        ///// 로그인정보를 저장하는 메서드 -OJH
+        ///// </summary>
+        ///// <param name="loginCustomerVO">고객정보</param>
+        //private void SetLoginInfo(mem list)
+        //{
+        //    if (list == null)
+        //        return;
+        //    LoginInfo.UserInfo.LI_ID = list.MANAGER_ID;
+        //    LoginInfo.UserInfo.LI_NAME = list.MANAGER_NAME;
+        //    LoginInfo.UserInfo.LI_DEPT = list.CUSTOMER_PHN_NBR;
+        //}
+
+        #endregion
+
+        #region 이벤트
         private void FrmLogin_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -125,5 +149,8 @@ namespace TEAM3FINAL
             }
 
         }
+
+        #endregion
+
     }
 }
