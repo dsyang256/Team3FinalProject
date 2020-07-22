@@ -40,7 +40,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboDept = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -189,21 +189,21 @@
             this.textBox5.Size = new System.Drawing.Size(285, 32);
             this.textBox5.TabIndex = 42;
             // 
-            // comboBox1
+            // cboDept
             // 
-            this.comboBox1.Font = new System.Drawing.Font("맑은 고딕", 14F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(177, 343);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(162, 33);
-            this.comboBox1.TabIndex = 43;
+            this.cboDept.Font = new System.Drawing.Font("맑은 고딕", 14F);
+            this.cboDept.FormattingEnabled = true;
+            this.cboDept.Location = new System.Drawing.Point(177, 343);
+            this.cboDept.Name = "comboBox1";
+            this.cboDept.Size = new System.Drawing.Size(162, 33);
+            this.cboDept.TabIndex = 43;
             // 
             // FrmSignup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(540, 470);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cboDept);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
@@ -233,7 +233,7 @@
             this.Controls.SetChildIndex(this.textBox3, 0);
             this.Controls.SetChildIndex(this.textBox4, 0);
             this.Controls.SetChildIndex(this.textBox5, 0);
-            this.Controls.SetChildIndex(this.comboBox1, 0);
+            this.Controls.SetChildIndex(this.cboDept, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -255,6 +255,6 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboDept;
     }
 }
