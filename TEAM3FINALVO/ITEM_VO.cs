@@ -8,7 +8,7 @@ namespace TEAM3FINALVO
 {
      public class ITEM_VO
     {
-        public int ibx { get; set; }
+        public Int64 idx { get; set;  }
         public string ITEM_CODE { get; set; }
         public string ITEM_NAME { get; set; }
         public string ITEM_STND { get; set; }

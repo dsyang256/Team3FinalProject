@@ -20,7 +20,7 @@ namespace TEAM3FINALDAC
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     AESSalt salt = new AESSalt();
-                    cmd.Connection = new SqlConnection(salt.Decrypt(this.ConnectionString));
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
                     cmd.CommandText = @"select ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx,ITEM_TYP,ITEM_CODE,ITEM_NAME,ITEM_STND,ITEM_UNIT,ITEM_QTY_UNIT,ITEM_UNIT_CNVR,ITEM_QTY_CNVR,ITEM_INCOME_YN,ITEM_PROCS_YN,ITEM_XPORT_YN,ITEM_DSCN_YN,ITEM_FREE_YN,ITEM_COM_DLVR,ITEM_COM_REORDER
                                                        from ITEM";
                     cmd.Connection.Open();

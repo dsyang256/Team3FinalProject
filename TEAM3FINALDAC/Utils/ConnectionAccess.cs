@@ -1,4 +1,5 @@
-﻿using System;
+﻿using cryptography;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -34,7 +35,8 @@ namespace TEAM3FINALDAC
                         break;
                     }
                 }
-                return connStr;
+                 AESSalt salt = new AESSalt();
+                return  salt.Decrypt(connStr);
             }
         }
 
