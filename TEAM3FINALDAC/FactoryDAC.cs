@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using TEAM3FINALVO;
-using TEAM3FINAL;
 using cryptography;
 
 namespace TEAM3FINALDAC

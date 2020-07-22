@@ -5,37 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data; //참조
 using System.Data.SqlClient;
+using TEAM3FINALVO;
 
 namespace TEAM3FINALDAC
 {
     public class ComboItemDAC : ConnectionAccess
-    {/*
-        public List<ComboItemVO> GetCmCode(string category)
+    {
+        public List<ComboItemVO> GetCmCode()
         {
             List<ComboItemVO> list = default;
-            StringBuilder sb = new StringBuilder();
-            string sql = $@"select COMMON_CODE,  COMMON_CODE_NAME,COMMON_CODE_TYP, COMMON_CODE_PCODE, COMMON_CODE_DISPLAY
-                                         from dbo.COMMON
-                                         where 1=1 ";
-            string sqlwhere = $@" AND COMMON_CODE_TYP = @common ";
-            string sqlorderby = $@" order by COMMON_CODE_PCODE,COMMON_CODE_TYP,COMMON_CODE_DISPLAY";
-
-            sb.Append(sql);
-            if (!category.Equals("COMMON_CODE_TYP"))
-                sb.Append(sqlwhere);
-            sb.Append(sqlorderby);
 
             try
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = new SqlConnection(this.ConnectionString);
-                    cmd.CommandText = sb.ToString();
-                    //  cmd.Parameters.AddWithValue("@COMMON_CODE_TYP", category);
-                    cmd.Parameters.Add("@common", SqlDbType.NVarChar, 50);
-                    cmd.Parameters["@common"].Value = category;
-
-
+                    cmd.CommandText = $@"select COMMON_CODE, COMMON_NAME, COMMON_PARENT, COMMON_SEQ
+                            from dbo.COMMON
+                            where 1=1 ";
 
                     cmd.Connection.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -49,7 +36,7 @@ namespace TEAM3FINALDAC
             }
             return list;
         }
-
+        /*
         public int InsertOrUpdateCmCode(ComboItemVO combo)
         {
             int iCnt = default;

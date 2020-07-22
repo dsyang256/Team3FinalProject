@@ -34,13 +34,13 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.회원ID = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnIDCheck = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboDept = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -137,17 +137,17 @@
             this.회원ID.TabIndex = 34;
             this.회원ID.Text = "관리자ID";
             // 
-            // button1
+            // btnIDCheck
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.Font = new System.Drawing.Font("맑은 고딕", 14F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.SystemColors.Window;
-            this.button1.Location = new System.Drawing.Point(354, 80);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 37);
-            this.button1.TabIndex = 41;
-            this.button1.Text = "중복확인";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnIDCheck.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnIDCheck.Font = new System.Drawing.Font("맑은 고딕", 14F, System.Drawing.FontStyle.Bold);
+            this.btnIDCheck.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnIDCheck.Location = new System.Drawing.Point(354, 80);
+            this.btnIDCheck.Name = "btnIDCheck";
+            this.btnIDCheck.Size = new System.Drawing.Size(108, 37);
+            this.btnIDCheck.TabIndex = 41;
+            this.btnIDCheck.Text = "중복확인";
+            this.btnIDCheck.UseVisualStyleBackColor = false;
             // 
             // textBox1
             // 
@@ -189,27 +189,27 @@
             this.textBox5.Size = new System.Drawing.Size(285, 32);
             this.textBox5.TabIndex = 42;
             // 
-            // comboBox1
+            // cboDept
             // 
-            this.comboBox1.Font = new System.Drawing.Font("맑은 고딕", 14F);
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(177, 343);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(162, 33);
-            this.comboBox1.TabIndex = 43;
+            this.cboDept.Font = new System.Drawing.Font("맑은 고딕", 14F);
+            this.cboDept.FormattingEnabled = true;
+            this.cboDept.Location = new System.Drawing.Point(177, 343);
+            this.cboDept.Name = "cboDept";
+            this.cboDept.Size = new System.Drawing.Size(162, 33);
+            this.cboDept.TabIndex = 43;
             // 
             // FrmSignup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.BackColor = System.Drawing.SystemColors.Menu;
             this.ClientSize = new System.Drawing.Size(540, 470);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cboDept);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnIDCheck);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label13);
@@ -227,13 +227,13 @@
             this.Controls.SetChildIndex(this.label13, 0);
             this.Controls.SetChildIndex(this.label11, 0);
             this.Controls.SetChildIndex(this.label10, 0);
-            this.Controls.SetChildIndex(this.button1, 0);
+            this.Controls.SetChildIndex(this.btnIDCheck, 0);
             this.Controls.SetChildIndex(this.textBox1, 0);
             this.Controls.SetChildIndex(this.textBox2, 0);
             this.Controls.SetChildIndex(this.textBox3, 0);
             this.Controls.SetChildIndex(this.textBox4, 0);
             this.Controls.SetChildIndex(this.textBox5, 0);
-            this.Controls.SetChildIndex(this.comboBox1, 0);
+            this.Controls.SetChildIndex(this.cboDept, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -249,12 +249,12 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label 회원ID;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnIDCheck;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboDept;
     }
 }
