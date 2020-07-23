@@ -54,6 +54,16 @@ namespace TEAM3FINAL
             dgvFactoryList.DataSource = service.GetFactoryInfo();
         }
 
+        private void btnset()
+        {
+            // 버튼 이벤트 추가 메서드
+            FrmMAIN frm = (FrmMAIN)this.MdiParent;
+            frm.eSearch += Search;
+            frm.eInsert += Insert;
+            frm.eDelete += Delete;
+            frm.eUpdate += Update;
+        }
+
         #region ****메인 버튼 이벤트****
         private void Search(object sender, EventArgs e)
         {
