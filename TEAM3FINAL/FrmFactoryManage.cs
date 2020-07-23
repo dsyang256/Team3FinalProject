@@ -43,6 +43,7 @@ namespace TEAM3FINAL
                 
         private void FrmFactoryManage_Load(object sender, EventArgs e)
         {
+            btnset();
             DataGridViewColumnSet();
             GetFactoryInfo();
         }
@@ -67,10 +68,7 @@ namespace TEAM3FINAL
         #region ****메인 버튼 이벤트****
         private void Search(object sender, EventArgs e)
         {
-            if(((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
-            {
 
-            }
         }
 
         private void Insert(object sender, EventArgs e)
@@ -85,7 +83,8 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-
+                FrmFactoryPopUp frm = new FrmFactoryPopUp();
+                frm.ShowDialog();
             }
         }
 
