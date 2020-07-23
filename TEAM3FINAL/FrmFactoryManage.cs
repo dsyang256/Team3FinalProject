@@ -92,7 +92,28 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                
+                //수정 시 여러개의 체크박스를 선택하는것을 막음
+                dgvFactoryList.EndEdit();
+                string sb = string.Empty;
+                int cnt = 0;
+                //체크가 되었는지 확인
+                foreach (DataGridViewRow item in dgvFactoryList.Rows)
+                {
+                    if (Convert.ToBoolean(item.Cells[0].Value))
+                    {
+                        sb = item.Cells[3].Value.ToString();
+                        cnt++;
+                    }
+                }
+                if (cnt == 1 )
+                {
+                    MessageBox.Show(sb);
+                }
+                else
+                {
+                    MessageBox.Show("하나의 항목씩만 수정 가능");
+                    return;
+                }
             }
         }
 

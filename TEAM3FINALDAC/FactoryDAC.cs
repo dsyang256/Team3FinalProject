@@ -69,7 +69,7 @@ from[dbo].[FACTORY]";
         /// <param name="table"></param>
         /// <param name="pkCode"></param>
         /// <param name="appendCode"></param>
-        /// <returns></returns>
+        /// <returns> ture || false </returns>
         public bool DeleteFactory(string table, string pkCode, StringBuilder appendCode)
         {
             using (SqlCommand cmd = new SqlCommand())
