@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtDesc = new System.Windows.Forms.TextBox();
+            this.ITEM_REMARK = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
@@ -85,34 +85,34 @@
             this.label60 = new System.Windows.Forms.Label();
             this.label61 = new System.Windows.Forms.Label();
             this.label62 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
-            this.comboBox9 = new System.Windows.Forms.ComboBox();
-            this.comboBox10 = new System.Windows.Forms.ComboBox();
-            this.comboBox11 = new System.Windows.Forms.ComboBox();
-            this.comboBox12 = new System.Windows.Forms.ComboBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.comboBox13 = new System.Windows.Forms.ComboBox();
-            this.comboBox14 = new System.Windows.Forms.ComboBox();
-            this.comboBox15 = new System.Windows.Forms.ComboBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.comboBox16 = new System.Windows.Forms.ComboBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.comboBox17 = new System.Windows.Forms.ComboBox();
+            this.ITEM_UNIT = new System.Windows.Forms.ComboBox();
+            this.ITEM_INCOME_YN = new System.Windows.Forms.ComboBox();
+            this.ITEM_FREE_YN = new System.Windows.Forms.ComboBox();
+            this.ITEM_WRHS_IN = new System.Windows.Forms.ComboBox();
+            this.ITEM_MANAGE_LEVEL = new System.Windows.Forms.ComboBox();
+            this.ITEM_GROUP = new System.Windows.Forms.ComboBox();
+            this.ITEM_LAST_MDFY = new System.Windows.Forms.DateTimePicker();
+            this.ITEM_CODE = new System.Windows.Forms.TextBox();
+            this.ITEM_QTY_REORDER_MIN = new System.Windows.Forms.TextBox();
+            this.ITEM_QTY_CNVR = new System.Windows.Forms.TextBox();
+            this.ITEM_QTY_UNIT = new System.Windows.Forms.TextBox();
+            this.ITEM_PROCS_YN = new System.Windows.Forms.ComboBox();
+            this.ITEM_NAME = new System.Windows.Forms.TextBox();
+            this.ITEM_QTY_STND = new System.Windows.Forms.TextBox();
+            this.ITEM_COM_DLVR = new System.Windows.Forms.ComboBox();
+            this.ITEM_WRHS_OUT = new System.Windows.Forms.ComboBox();
+            this.ITEM_MANAGER = new System.Windows.Forms.ComboBox();
+            this.ITEM_USE_YN = new System.Windows.Forms.ComboBox();
+            this.ITEM_REORDER_TYP = new System.Windows.Forms.ComboBox();
+            this.ITEM_STND = new System.Windows.Forms.TextBox();
+            this.ITEM_XPORT_YN = new System.Windows.Forms.ComboBox();
+            this.ITEM_TYP = new System.Windows.Forms.ComboBox();
+            this.ITEM_COM_REORDER = new System.Windows.Forms.ComboBox();
+            this.ITEM_LEADTIME = new System.Windows.Forms.TextBox();
+            this.ITEM_QTY_SAFE = new System.Windows.Forms.TextBox();
+            this.ITEM_UNIT_CNVR = new System.Windows.Forms.ComboBox();
+            this.ITEM_LAST_MDFR = new System.Windows.Forms.TextBox();
+            this.ITEM_DSCN_YN = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -128,13 +128,13 @@
             this.label2.Location = new System.Drawing.Point(12, 542);
             this.label2.Visible = false;
             // 
-            // txtDesc
+            // ITEM_REMARK
             // 
-            this.txtDesc.Location = new System.Drawing.Point(139, 417);
-            this.txtDesc.Multiline = true;
-            this.txtDesc.Name = "txtDesc";
-            this.txtDesc.Size = new System.Drawing.Size(615, 64);
-            this.txtDesc.TabIndex = 56;
+            this.ITEM_REMARK.Location = new System.Drawing.Point(139, 417);
+            this.ITEM_REMARK.Multiline = true;
+            this.ITEM_REMARK.Name = "ITEM_REMARK";
+            this.ITEM_REMARK.Size = new System.Drawing.Size(615, 64);
+            this.ITEM_REMARK.TabIndex = 56;
             // 
             // label27
             // 
@@ -422,6 +422,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
+            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label24.Location = new System.Drawing.Point(303, 157);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(79, 15);
@@ -432,7 +433,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label26.ForeColor = System.Drawing.Color.Red;
+            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label26.Location = new System.Drawing.Point(279, 155);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(17, 17);
@@ -482,6 +483,7 @@
             // label39
             // 
             this.label39.AutoSize = true;
+            this.label39.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label39.Location = new System.Drawing.Point(303, 322);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(55, 15);
@@ -492,7 +494,7 @@
             // 
             this.label40.AutoSize = true;
             this.label40.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label40.ForeColor = System.Drawing.Color.Red;
+            this.label40.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label40.Location = new System.Drawing.Point(279, 320);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(17, 17);
@@ -502,6 +504,7 @@
             // label41
             // 
             this.label41.AutoSize = true;
+            this.label41.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label41.Location = new System.Drawing.Point(303, 91);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(31, 15);
@@ -512,7 +515,7 @@
             // 
             this.label42.AutoSize = true;
             this.label42.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label42.ForeColor = System.Drawing.Color.Red;
+            this.label42.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label42.Location = new System.Drawing.Point(279, 89);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(17, 17);
@@ -602,6 +605,7 @@
             // label52
             // 
             this.label52.AutoSize = true;
+            this.label52.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label52.Location = new System.Drawing.Point(548, 158);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(79, 15);
@@ -612,7 +616,7 @@
             // 
             this.label54.AutoSize = true;
             this.label54.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label54.ForeColor = System.Drawing.Color.Red;
+            this.label54.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label54.Location = new System.Drawing.Point(524, 156);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(17, 17);
@@ -631,6 +635,7 @@
             // label56
             // 
             this.label56.AutoSize = true;
+            this.label56.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label56.Location = new System.Drawing.Point(548, 125);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(55, 15);
@@ -652,7 +657,7 @@
             // 
             this.label58.AutoSize = true;
             this.label58.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label58.ForeColor = System.Drawing.Color.Red;
+            this.label58.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label58.Location = new System.Drawing.Point(524, 123);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(17, 17);
@@ -662,6 +667,7 @@
             // label59
             // 
             this.label59.AutoSize = true;
+            this.label59.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label59.Location = new System.Drawing.Point(548, 323);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(43, 15);
@@ -672,7 +678,7 @@
             // 
             this.label60.AutoSize = true;
             this.label60.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label60.ForeColor = System.Drawing.Color.Red;
+            this.label60.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label60.Location = new System.Drawing.Point(524, 321);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(17, 17);
@@ -699,218 +705,218 @@
             this.label62.TabIndex = 95;
             this.label62.Text = "*";
             // 
-            // comboBox1
+            // ITEM_UNIT
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(139, 122);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 97;
+            this.ITEM_UNIT.FormattingEnabled = true;
+            this.ITEM_UNIT.Location = new System.Drawing.Point(139, 122);
+            this.ITEM_UNIT.Name = "ITEM_UNIT";
+            this.ITEM_UNIT.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_UNIT.TabIndex = 97;
             // 
-            // comboBox2
+            // ITEM_INCOME_YN
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(139, 155);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 23);
-            this.comboBox2.TabIndex = 98;
+            this.ITEM_INCOME_YN.FormattingEnabled = true;
+            this.ITEM_INCOME_YN.Location = new System.Drawing.Point(139, 155);
+            this.ITEM_INCOME_YN.Name = "ITEM_INCOME_YN";
+            this.ITEM_INCOME_YN.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_INCOME_YN.TabIndex = 98;
             // 
-            // comboBox3
+            // ITEM_FREE_YN
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(139, 188);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 23);
-            this.comboBox3.TabIndex = 99;
+            this.ITEM_FREE_YN.FormattingEnabled = true;
+            this.ITEM_FREE_YN.Location = new System.Drawing.Point(139, 188);
+            this.ITEM_FREE_YN.Name = "ITEM_FREE_YN";
+            this.ITEM_FREE_YN.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_FREE_YN.TabIndex = 99;
             // 
-            // comboBox4
+            // ITEM_WRHS_IN
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(139, 221);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 23);
-            this.comboBox4.TabIndex = 100;
+            this.ITEM_WRHS_IN.FormattingEnabled = true;
+            this.ITEM_WRHS_IN.Location = new System.Drawing.Point(139, 221);
+            this.ITEM_WRHS_IN.Name = "ITEM_WRHS_IN";
+            this.ITEM_WRHS_IN.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_WRHS_IN.TabIndex = 100;
             // 
-            // comboBox5
+            // ITEM_MANAGE_LEVEL
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(139, 287);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 23);
-            this.comboBox5.TabIndex = 101;
+            this.ITEM_MANAGE_LEVEL.FormattingEnabled = true;
+            this.ITEM_MANAGE_LEVEL.Location = new System.Drawing.Point(139, 287);
+            this.ITEM_MANAGE_LEVEL.Name = "ITEM_MANAGE_LEVEL";
+            this.ITEM_MANAGE_LEVEL.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_MANAGE_LEVEL.TabIndex = 101;
             // 
-            // comboBox6
+            // ITEM_GROUP
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(139, 386);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(121, 23);
-            this.comboBox6.TabIndex = 102;
+            this.ITEM_GROUP.FormattingEnabled = true;
+            this.ITEM_GROUP.Location = new System.Drawing.Point(139, 386);
+            this.ITEM_GROUP.Name = "ITEM_GROUP";
+            this.ITEM_GROUP.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_GROUP.TabIndex = 102;
             // 
-            // dateTimePicker1
+            // ITEM_LAST_MDFY
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(139, 353);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(121, 23);
-            this.dateTimePicker1.TabIndex = 103;
+            this.ITEM_LAST_MDFY.Location = new System.Drawing.Point(139, 353);
+            this.ITEM_LAST_MDFY.Name = "ITEM_LAST_MDFY";
+            this.ITEM_LAST_MDFY.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_LAST_MDFY.TabIndex = 103;
             // 
-            // textBox1
+            // ITEM_CODE
             // 
-            this.textBox1.Location = new System.Drawing.Point(139, 89);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 23);
-            this.textBox1.TabIndex = 104;
+            this.ITEM_CODE.Location = new System.Drawing.Point(139, 89);
+            this.ITEM_CODE.Name = "ITEM_CODE";
+            this.ITEM_CODE.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_CODE.TabIndex = 104;
             // 
-            // textBox2
+            // ITEM_QTY_REORDER_MIN
             // 
-            this.textBox2.Location = new System.Drawing.Point(139, 254);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 23);
-            this.textBox2.TabIndex = 105;
+            this.ITEM_QTY_REORDER_MIN.Location = new System.Drawing.Point(139, 254);
+            this.ITEM_QTY_REORDER_MIN.Name = "ITEM_QTY_REORDER_MIN";
+            this.ITEM_QTY_REORDER_MIN.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_QTY_REORDER_MIN.TabIndex = 105;
             // 
-            // textBox3
+            // ITEM_QTY_CNVR
             // 
-            this.textBox3.Location = new System.Drawing.Point(139, 320);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(121, 23);
-            this.textBox3.TabIndex = 106;
+            this.ITEM_QTY_CNVR.Location = new System.Drawing.Point(139, 320);
+            this.ITEM_QTY_CNVR.Name = "ITEM_QTY_CNVR";
+            this.ITEM_QTY_CNVR.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_QTY_CNVR.TabIndex = 106;
             // 
-            // textBox4
+            // ITEM_QTY_UNIT
             // 
-            this.textBox4.Location = new System.Drawing.Point(383, 122);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(121, 23);
-            this.textBox4.TabIndex = 107;
+            this.ITEM_QTY_UNIT.Location = new System.Drawing.Point(383, 122);
+            this.ITEM_QTY_UNIT.Name = "ITEM_QTY_UNIT";
+            this.ITEM_QTY_UNIT.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_QTY_UNIT.TabIndex = 107;
             // 
-            // comboBox7
+            // ITEM_PROCS_YN
             // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(383, 154);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(121, 23);
-            this.comboBox7.TabIndex = 108;
+            this.ITEM_PROCS_YN.FormattingEnabled = true;
+            this.ITEM_PROCS_YN.Location = new System.Drawing.Point(383, 154);
+            this.ITEM_PROCS_YN.Name = "ITEM_PROCS_YN";
+            this.ITEM_PROCS_YN.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_PROCS_YN.TabIndex = 108;
             // 
-            // textBox5
+            // ITEM_NAME
             // 
-            this.textBox5.Location = new System.Drawing.Point(383, 88);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(121, 23);
-            this.textBox5.TabIndex = 109;
+            this.ITEM_NAME.Location = new System.Drawing.Point(383, 88);
+            this.ITEM_NAME.Name = "ITEM_NAME";
+            this.ITEM_NAME.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_NAME.TabIndex = 109;
             // 
-            // textBox6
+            // ITEM_QTY_STND
             // 
-            this.textBox6.Location = new System.Drawing.Point(383, 253);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(121, 23);
-            this.textBox6.TabIndex = 110;
+            this.ITEM_QTY_STND.Location = new System.Drawing.Point(383, 253);
+            this.ITEM_QTY_STND.Name = "ITEM_QTY_STND";
+            this.ITEM_QTY_STND.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_QTY_STND.TabIndex = 110;
             // 
-            // comboBox8
+            // ITEM_COM_DLVR
             // 
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Location = new System.Drawing.Point(383, 188);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(121, 23);
-            this.comboBox8.TabIndex = 111;
+            this.ITEM_COM_DLVR.FormattingEnabled = true;
+            this.ITEM_COM_DLVR.Location = new System.Drawing.Point(383, 188);
+            this.ITEM_COM_DLVR.Name = "ITEM_COM_DLVR";
+            this.ITEM_COM_DLVR.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_COM_DLVR.TabIndex = 111;
             // 
-            // comboBox9
+            // ITEM_WRHS_OUT
             // 
-            this.comboBox9.FormattingEnabled = true;
-            this.comboBox9.Location = new System.Drawing.Point(383, 220);
-            this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(121, 23);
-            this.comboBox9.TabIndex = 112;
+            this.ITEM_WRHS_OUT.FormattingEnabled = true;
+            this.ITEM_WRHS_OUT.Location = new System.Drawing.Point(383, 220);
+            this.ITEM_WRHS_OUT.Name = "ITEM_WRHS_OUT";
+            this.ITEM_WRHS_OUT.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_WRHS_OUT.TabIndex = 112;
             // 
-            // comboBox10
+            // ITEM_MANAGER
             // 
-            this.comboBox10.FormattingEnabled = true;
-            this.comboBox10.Location = new System.Drawing.Point(383, 287);
-            this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(121, 23);
-            this.comboBox10.TabIndex = 113;
+            this.ITEM_MANAGER.FormattingEnabled = true;
+            this.ITEM_MANAGER.Location = new System.Drawing.Point(383, 287);
+            this.ITEM_MANAGER.Name = "ITEM_MANAGER";
+            this.ITEM_MANAGER.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_MANAGER.TabIndex = 113;
             // 
-            // comboBox11
+            // ITEM_USE_YN
             // 
-            this.comboBox11.FormattingEnabled = true;
-            this.comboBox11.Location = new System.Drawing.Point(383, 320);
-            this.comboBox11.Name = "comboBox11";
-            this.comboBox11.Size = new System.Drawing.Size(121, 23);
-            this.comboBox11.TabIndex = 114;
+            this.ITEM_USE_YN.FormattingEnabled = true;
+            this.ITEM_USE_YN.Location = new System.Drawing.Point(383, 320);
+            this.ITEM_USE_YN.Name = "ITEM_USE_YN";
+            this.ITEM_USE_YN.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_USE_YN.TabIndex = 114;
             // 
-            // comboBox12
+            // ITEM_REORDER_TYP
             // 
-            this.comboBox12.FormattingEnabled = true;
-            this.comboBox12.Location = new System.Drawing.Point(383, 352);
-            this.comboBox12.Name = "comboBox12";
-            this.comboBox12.Size = new System.Drawing.Size(121, 23);
-            this.comboBox12.TabIndex = 115;
+            this.ITEM_REORDER_TYP.FormattingEnabled = true;
+            this.ITEM_REORDER_TYP.Location = new System.Drawing.Point(383, 352);
+            this.ITEM_REORDER_TYP.Name = "ITEM_REORDER_TYP";
+            this.ITEM_REORDER_TYP.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_REORDER_TYP.TabIndex = 115;
             // 
-            // textBox7
+            // ITEM_STND
             // 
-            this.textBox7.Location = new System.Drawing.Point(633, 89);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(121, 23);
-            this.textBox7.TabIndex = 116;
+            this.ITEM_STND.Location = new System.Drawing.Point(633, 89);
+            this.ITEM_STND.Name = "ITEM_STND";
+            this.ITEM_STND.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_STND.TabIndex = 116;
             // 
-            // comboBox13
+            // ITEM_XPORT_YN
             // 
-            this.comboBox13.FormattingEnabled = true;
-            this.comboBox13.Location = new System.Drawing.Point(633, 155);
-            this.comboBox13.Name = "comboBox13";
-            this.comboBox13.Size = new System.Drawing.Size(121, 23);
-            this.comboBox13.TabIndex = 117;
+            this.ITEM_XPORT_YN.FormattingEnabled = true;
+            this.ITEM_XPORT_YN.Location = new System.Drawing.Point(633, 155);
+            this.ITEM_XPORT_YN.Name = "ITEM_XPORT_YN";
+            this.ITEM_XPORT_YN.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_XPORT_YN.TabIndex = 117;
             // 
-            // comboBox14
+            // ITEM_TYP
             // 
-            this.comboBox14.FormattingEnabled = true;
-            this.comboBox14.Location = new System.Drawing.Point(633, 121);
-            this.comboBox14.Name = "comboBox14";
-            this.comboBox14.Size = new System.Drawing.Size(121, 23);
-            this.comboBox14.TabIndex = 118;
+            this.ITEM_TYP.FormattingEnabled = true;
+            this.ITEM_TYP.Location = new System.Drawing.Point(633, 121);
+            this.ITEM_TYP.Name = "ITEM_TYP";
+            this.ITEM_TYP.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_TYP.TabIndex = 118;
             // 
-            // comboBox15
+            // ITEM_COM_REORDER
             // 
-            this.comboBox15.FormattingEnabled = true;
-            this.comboBox15.Location = new System.Drawing.Point(633, 188);
-            this.comboBox15.Name = "comboBox15";
-            this.comboBox15.Size = new System.Drawing.Size(121, 23);
-            this.comboBox15.TabIndex = 119;
+            this.ITEM_COM_REORDER.FormattingEnabled = true;
+            this.ITEM_COM_REORDER.Location = new System.Drawing.Point(633, 188);
+            this.ITEM_COM_REORDER.Name = "ITEM_COM_REORDER";
+            this.ITEM_COM_REORDER.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_COM_REORDER.TabIndex = 119;
             // 
-            // textBox8
+            // ITEM_LEADTIME
             // 
-            this.textBox8.Location = new System.Drawing.Point(633, 220);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(121, 23);
-            this.textBox8.TabIndex = 120;
+            this.ITEM_LEADTIME.Location = new System.Drawing.Point(633, 220);
+            this.ITEM_LEADTIME.Name = "ITEM_LEADTIME";
+            this.ITEM_LEADTIME.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_LEADTIME.TabIndex = 120;
             // 
-            // textBox9
+            // ITEM_QTY_SAFE
             // 
-            this.textBox9.Location = new System.Drawing.Point(633, 254);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(121, 23);
-            this.textBox9.TabIndex = 121;
+            this.ITEM_QTY_SAFE.Location = new System.Drawing.Point(633, 254);
+            this.ITEM_QTY_SAFE.Name = "ITEM_QTY_SAFE";
+            this.ITEM_QTY_SAFE.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_QTY_SAFE.TabIndex = 121;
             // 
-            // comboBox16
+            // ITEM_UNIT_CNVR
             // 
-            this.comboBox16.FormattingEnabled = true;
-            this.comboBox16.Location = new System.Drawing.Point(633, 287);
-            this.comboBox16.Name = "comboBox16";
-            this.comboBox16.Size = new System.Drawing.Size(121, 23);
-            this.comboBox16.TabIndex = 122;
+            this.ITEM_UNIT_CNVR.FormattingEnabled = true;
+            this.ITEM_UNIT_CNVR.Location = new System.Drawing.Point(633, 287);
+            this.ITEM_UNIT_CNVR.Name = "ITEM_UNIT_CNVR";
+            this.ITEM_UNIT_CNVR.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_UNIT_CNVR.TabIndex = 122;
             // 
-            // textBox10
+            // ITEM_LAST_MDFR
             // 
-            this.textBox10.Location = new System.Drawing.Point(633, 319);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(121, 23);
-            this.textBox10.TabIndex = 123;
+            this.ITEM_LAST_MDFR.Location = new System.Drawing.Point(633, 319);
+            this.ITEM_LAST_MDFR.Name = "ITEM_LAST_MDFR";
+            this.ITEM_LAST_MDFR.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_LAST_MDFR.TabIndex = 123;
             // 
-            // comboBox17
+            // ITEM_DSCN_YN
             // 
-            this.comboBox17.FormattingEnabled = true;
-            this.comboBox17.Location = new System.Drawing.Point(633, 352);
-            this.comboBox17.Name = "comboBox17";
-            this.comboBox17.Size = new System.Drawing.Size(121, 23);
-            this.comboBox17.TabIndex = 124;
+            this.ITEM_DSCN_YN.FormattingEnabled = true;
+            this.ITEM_DSCN_YN.Location = new System.Drawing.Point(633, 352);
+            this.ITEM_DSCN_YN.Name = "ITEM_DSCN_YN";
+            this.ITEM_DSCN_YN.Size = new System.Drawing.Size(121, 23);
+            this.ITEM_DSCN_YN.TabIndex = 124;
             // 
             // label23
             // 
@@ -938,34 +944,34 @@
             this.ClientSize = new System.Drawing.Size(800, 562);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label25);
-            this.Controls.Add(this.comboBox17);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.comboBox16);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.comboBox15);
-            this.Controls.Add(this.comboBox14);
-            this.Controls.Add(this.comboBox13);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.comboBox12);
-            this.Controls.Add(this.comboBox11);
-            this.Controls.Add(this.comboBox10);
-            this.Controls.Add(this.comboBox9);
-            this.Controls.Add(this.comboBox8);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.comboBox7);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.comboBox6);
-            this.Controls.Add(this.comboBox5);
-            this.Controls.Add(this.comboBox4);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.ITEM_DSCN_YN);
+            this.Controls.Add(this.ITEM_LAST_MDFR);
+            this.Controls.Add(this.ITEM_UNIT_CNVR);
+            this.Controls.Add(this.ITEM_QTY_SAFE);
+            this.Controls.Add(this.ITEM_LEADTIME);
+            this.Controls.Add(this.ITEM_COM_REORDER);
+            this.Controls.Add(this.ITEM_TYP);
+            this.Controls.Add(this.ITEM_XPORT_YN);
+            this.Controls.Add(this.ITEM_STND);
+            this.Controls.Add(this.ITEM_REORDER_TYP);
+            this.Controls.Add(this.ITEM_USE_YN);
+            this.Controls.Add(this.ITEM_MANAGER);
+            this.Controls.Add(this.ITEM_WRHS_OUT);
+            this.Controls.Add(this.ITEM_COM_DLVR);
+            this.Controls.Add(this.ITEM_QTY_STND);
+            this.Controls.Add(this.ITEM_NAME);
+            this.Controls.Add(this.ITEM_PROCS_YN);
+            this.Controls.Add(this.ITEM_QTY_UNIT);
+            this.Controls.Add(this.ITEM_QTY_CNVR);
+            this.Controls.Add(this.ITEM_QTY_REORDER_MIN);
+            this.Controls.Add(this.ITEM_CODE);
+            this.Controls.Add(this.ITEM_LAST_MDFY);
+            this.Controls.Add(this.ITEM_GROUP);
+            this.Controls.Add(this.ITEM_MANAGE_LEVEL);
+            this.Controls.Add(this.ITEM_WRHS_IN);
+            this.Controls.Add(this.ITEM_FREE_YN);
+            this.Controls.Add(this.ITEM_INCOME_YN);
+            this.Controls.Add(this.ITEM_UNIT);
             this.Controls.Add(this.label43);
             this.Controls.Add(this.label44);
             this.Controls.Add(this.label45);
@@ -1002,7 +1008,7 @@
             this.Controls.Add(this.label40);
             this.Controls.Add(this.label41);
             this.Controls.Add(this.label42);
-            this.Controls.Add(this.txtDesc);
+            this.Controls.Add(this.ITEM_REMARK);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label28);
@@ -1045,7 +1051,7 @@
             this.Controls.SetChildIndex(this.label28, 0);
             this.Controls.SetChildIndex(this.label14, 0);
             this.Controls.SetChildIndex(this.label27, 0);
-            this.Controls.SetChildIndex(this.txtDesc, 0);
+            this.Controls.SetChildIndex(this.ITEM_REMARK, 0);
             this.Controls.SetChildIndex(this.label42, 0);
             this.Controls.SetChildIndex(this.label41, 0);
             this.Controls.SetChildIndex(this.label40, 0);
@@ -1082,38 +1088,38 @@
             this.Controls.SetChildIndex(this.label45, 0);
             this.Controls.SetChildIndex(this.label44, 0);
             this.Controls.SetChildIndex(this.label43, 0);
-            this.Controls.SetChildIndex(this.comboBox1, 0);
-            this.Controls.SetChildIndex(this.comboBox2, 0);
-            this.Controls.SetChildIndex(this.comboBox3, 0);
+            this.Controls.SetChildIndex(this.ITEM_UNIT, 0);
+            this.Controls.SetChildIndex(this.ITEM_INCOME_YN, 0);
+            this.Controls.SetChildIndex(this.ITEM_FREE_YN, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.btnOK, 0);
             this.Controls.SetChildIndex(this.btnCancel, 0);
-            this.Controls.SetChildIndex(this.comboBox4, 0);
-            this.Controls.SetChildIndex(this.comboBox5, 0);
-            this.Controls.SetChildIndex(this.comboBox6, 0);
-            this.Controls.SetChildIndex(this.dateTimePicker1, 0);
-            this.Controls.SetChildIndex(this.textBox1, 0);
-            this.Controls.SetChildIndex(this.textBox2, 0);
-            this.Controls.SetChildIndex(this.textBox3, 0);
-            this.Controls.SetChildIndex(this.textBox4, 0);
-            this.Controls.SetChildIndex(this.comboBox7, 0);
-            this.Controls.SetChildIndex(this.textBox5, 0);
-            this.Controls.SetChildIndex(this.textBox6, 0);
-            this.Controls.SetChildIndex(this.comboBox8, 0);
-            this.Controls.SetChildIndex(this.comboBox9, 0);
-            this.Controls.SetChildIndex(this.comboBox10, 0);
-            this.Controls.SetChildIndex(this.comboBox11, 0);
-            this.Controls.SetChildIndex(this.comboBox12, 0);
-            this.Controls.SetChildIndex(this.textBox7, 0);
-            this.Controls.SetChildIndex(this.comboBox13, 0);
-            this.Controls.SetChildIndex(this.comboBox14, 0);
-            this.Controls.SetChildIndex(this.comboBox15, 0);
-            this.Controls.SetChildIndex(this.textBox8, 0);
-            this.Controls.SetChildIndex(this.textBox9, 0);
-            this.Controls.SetChildIndex(this.comboBox16, 0);
-            this.Controls.SetChildIndex(this.textBox10, 0);
-            this.Controls.SetChildIndex(this.comboBox17, 0);
+            this.Controls.SetChildIndex(this.ITEM_WRHS_IN, 0);
+            this.Controls.SetChildIndex(this.ITEM_MANAGE_LEVEL, 0);
+            this.Controls.SetChildIndex(this.ITEM_GROUP, 0);
+            this.Controls.SetChildIndex(this.ITEM_LAST_MDFY, 0);
+            this.Controls.SetChildIndex(this.ITEM_CODE, 0);
+            this.Controls.SetChildIndex(this.ITEM_QTY_REORDER_MIN, 0);
+            this.Controls.SetChildIndex(this.ITEM_QTY_CNVR, 0);
+            this.Controls.SetChildIndex(this.ITEM_QTY_UNIT, 0);
+            this.Controls.SetChildIndex(this.ITEM_PROCS_YN, 0);
+            this.Controls.SetChildIndex(this.ITEM_NAME, 0);
+            this.Controls.SetChildIndex(this.ITEM_QTY_STND, 0);
+            this.Controls.SetChildIndex(this.ITEM_COM_DLVR, 0);
+            this.Controls.SetChildIndex(this.ITEM_WRHS_OUT, 0);
+            this.Controls.SetChildIndex(this.ITEM_MANAGER, 0);
+            this.Controls.SetChildIndex(this.ITEM_USE_YN, 0);
+            this.Controls.SetChildIndex(this.ITEM_REORDER_TYP, 0);
+            this.Controls.SetChildIndex(this.ITEM_STND, 0);
+            this.Controls.SetChildIndex(this.ITEM_XPORT_YN, 0);
+            this.Controls.SetChildIndex(this.ITEM_TYP, 0);
+            this.Controls.SetChildIndex(this.ITEM_COM_REORDER, 0);
+            this.Controls.SetChildIndex(this.ITEM_LEADTIME, 0);
+            this.Controls.SetChildIndex(this.ITEM_QTY_SAFE, 0);
+            this.Controls.SetChildIndex(this.ITEM_UNIT_CNVR, 0);
+            this.Controls.SetChildIndex(this.ITEM_LAST_MDFR, 0);
+            this.Controls.SetChildIndex(this.ITEM_DSCN_YN, 0);
             this.Controls.SetChildIndex(this.label25, 0);
             this.Controls.SetChildIndex(this.label23, 0);
             this.panel1.ResumeLayout(false);
@@ -1124,7 +1130,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox txtDesc;
+        private System.Windows.Forms.TextBox ITEM_REMARK;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label28;
@@ -1181,34 +1187,34 @@
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.Label label62;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox6;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.ComboBox comboBox7;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.ComboBox comboBox8;
-        private System.Windows.Forms.ComboBox comboBox9;
-        private System.Windows.Forms.ComboBox comboBox10;
-        private System.Windows.Forms.ComboBox comboBox11;
-        private System.Windows.Forms.ComboBox comboBox12;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.ComboBox comboBox13;
-        private System.Windows.Forms.ComboBox comboBox14;
-        private System.Windows.Forms.ComboBox comboBox15;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.ComboBox comboBox16;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.ComboBox comboBox17;
+        private System.Windows.Forms.ComboBox ITEM_UNIT;
+        private System.Windows.Forms.ComboBox ITEM_INCOME_YN;
+        private System.Windows.Forms.ComboBox ITEM_FREE_YN;
+        private System.Windows.Forms.ComboBox ITEM_WRHS_IN;
+        private System.Windows.Forms.ComboBox ITEM_MANAGE_LEVEL;
+        private System.Windows.Forms.ComboBox ITEM_GROUP;
+        private System.Windows.Forms.DateTimePicker ITEM_LAST_MDFY;
+        private System.Windows.Forms.TextBox ITEM_CODE;
+        private System.Windows.Forms.TextBox ITEM_QTY_REORDER_MIN;
+        private System.Windows.Forms.TextBox ITEM_QTY_CNVR;
+        private System.Windows.Forms.TextBox ITEM_QTY_UNIT;
+        private System.Windows.Forms.ComboBox ITEM_PROCS_YN;
+        private System.Windows.Forms.TextBox ITEM_NAME;
+        private System.Windows.Forms.TextBox ITEM_QTY_STND;
+        private System.Windows.Forms.ComboBox ITEM_COM_DLVR;
+        private System.Windows.Forms.ComboBox ITEM_WRHS_OUT;
+        private System.Windows.Forms.ComboBox ITEM_MANAGER;
+        private System.Windows.Forms.ComboBox ITEM_USE_YN;
+        private System.Windows.Forms.ComboBox ITEM_REORDER_TYP;
+        private System.Windows.Forms.TextBox ITEM_STND;
+        private System.Windows.Forms.ComboBox ITEM_XPORT_YN;
+        private System.Windows.Forms.ComboBox ITEM_TYP;
+        private System.Windows.Forms.ComboBox ITEM_COM_REORDER;
+        private System.Windows.Forms.TextBox ITEM_LEADTIME;
+        private System.Windows.Forms.TextBox ITEM_QTY_SAFE;
+        private System.Windows.Forms.ComboBox ITEM_UNIT_CNVR;
+        private System.Windows.Forms.TextBox ITEM_LAST_MDFR;
+        private System.Windows.Forms.ComboBox ITEM_DSCN_YN;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label25;
     }

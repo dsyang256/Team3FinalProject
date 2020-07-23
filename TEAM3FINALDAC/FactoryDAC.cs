@@ -15,12 +15,9 @@ namespace TEAM3FINALDAC
         //데이터 insert
         public bool InsertFactory(FACTORY_VO fac)
         {
-            AESSalt salt = new AESSalt();
-            string strConn = salt.Decrypt(this.ConnectionString);
-
             using (SqlCommand cmd = new SqlCommand())
             {
-                cmd.Connection = new SqlConnection(strConn);
+                cmd.Connection = new SqlConnection(this.ConnectionString);
                 cmd.CommandText = @"insert into FACTORY(FAC_CODE, FAC_FCLTY, FAC_FCLTY_PARENT, FAC_NAME, FAC_TYP, FAC_FREE_YN, FAC_TYP_SORT, FAC_DEMAND_YN, 
 FAC_PROCS_YN, FAC_MTRL_YN, FAC_LAST_MDFR, FAC_USE_YN, FAC_DESC, COM_CODE)
 values(@FAC_CODE, @FAC_FCLTY, @FAC_FCLTY_PARENT, @FAC_NAME, @FAC_TYP, @FAC_FREE_YN, @FAC_TYP_SORT, @FAC_DEMAND_YN, @FAC_PROCS_YN, @FAC_MTRL_YN, @FAC_LAST_MDFR, 
@@ -52,12 +49,10 @@ values(@FAC_CODE, @FAC_FCLTY, @FAC_FCLTY_PARENT, @FAC_NAME, @FAC_TYP, @FAC_FREE_
         public List<FACTORY_VO> GetFactoryInfo()
         {
             List<FACTORY_VO> list = default;
-            AESSalt salt = new AESSalt();
-            string strConn = salt.Decrypt(this.ConnectionString);
 
             using (SqlCommand cmd = new SqlCommand())
             {
-                cmd.Connection = new SqlConnection(strConn);
+                cmd.Connection = new SqlConnection(this.ConnectionString);
                 cmd.CommandText = @"select [FAC_CODE], [FAC_FCLTY], [FAC_FCLTY_PARENT], [FAC_NAME], [FAC_TYP], [FAC_FREE_YN], [FAC_TYP_SORT], [FAC_DEMAND_YN], [FAC_PROCS_YN], [FAC_MTRL_YN], [FAC_LAST_MDFR], [FAC_LAST_MDFY], [FAC_USE_YN], [FAC_DESC], [COM_CODE]
 from[dbo].[FACTORY]";
                 cmd.Connection.Open();

@@ -14,6 +14,14 @@ namespace TEAM3FINAL
 {
     public partial class FrmMAIN : ProjectBaseForm
     {
+        public event EventHandler eSearch;
+        public event EventHandler eInsert;
+        public event EventHandler eUpdate;
+        public event EventHandler eDelete;
+        public event EventHandler ePrint;
+
+
+
         public FrmMAIN()
         {
             InitializeComponent();
@@ -40,7 +48,6 @@ namespace TEAM3FINAL
             //
 
         }
-
 
         #region MDI 탭컨트롤
         /// <summary>
@@ -101,6 +108,60 @@ namespace TEAM3FINAL
                 }
             }
         }
+
         #endregion
+
+        #region 공통버튼 이벤트
+        private void tsbSearch_Click(object sender, EventArgs e)
+        {
+            if (eSearch != null)
+            {
+                eSearch(this, new EventArgs());
+            }
+        }
+
+        private void tsbInsert_Click(object sender, EventArgs e)
+        {
+            if (eInsert != null)
+            {
+                eInsert(this, new EventArgs());
+            }
+        }
+
+        private void tsbDelete_Click(object sender, EventArgs e)
+        {
+            if (eDelete != null)
+            {
+                eDelete(this, new EventArgs());
+            }
+        }
+
+        private void tsbUpdate_Click(object sender, EventArgs e)
+        {
+            if (eUpdate != null)
+            {
+                eUpdate(this, new EventArgs());
+            }
+        }
+
+        private void tsbPrint_Click(object sender, EventArgs e)
+        {
+            if (ePrint != null)
+            {
+                ePrint(this, new EventArgs());
+            }
+        }
+
+        #endregion
+
+        private void 로그인ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormUtil.OpenOrCreateForm<FrmLogin>(this);
+        }
+
+        private void 공장관리ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUtil.OpenOrCreateForm<FrmFactoryManage>(this);
+        }
     }
 }

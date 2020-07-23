@@ -43,6 +43,7 @@ namespace TEAM3FINAL
                 
         private void FrmFactoryManage_Load(object sender, EventArgs e)
         {
+            btnset();
             DataGridViewColumnSet();
             GetFactoryInfo();
         }
@@ -54,13 +55,20 @@ namespace TEAM3FINAL
             dgvFactoryList.DataSource = service.GetFactoryInfo();
         }
 
+        private void btnset()
+        {
+            // 버튼 이벤트 추가 메서드
+            FrmMAIN frm = (FrmMAIN)this.MdiParent;
+            frm.eSearch += Search;
+            frm.eInsert += Insert;
+            frm.eDelete += Delete;
+            frm.eUpdate += Update;
+        }
+
         #region ****메인 버튼 이벤트****
         private void Search(object sender, EventArgs e)
         {
-            if(((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
-            {
 
-            }
         }
 
         private void Insert(object sender, EventArgs e)
@@ -75,7 +83,8 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-
+                FrmFactoryPopUp frm = new FrmFactoryPopUp();
+                frm.ShowDialog();
             }
         }
 
