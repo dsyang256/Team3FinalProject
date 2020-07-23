@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using TEAM3FINALVO;
+using cryptography;
 
 namespace TEAM3FINALDAC
 {
@@ -45,21 +46,23 @@ namespace TEAM3FINALDAC
             int iCnt = default;
             try
             {
-                //using (SqlCommand cmd = new SqlCommand())
-                //{
-                //    cmd.Connection = new SqlConnection(this.ConnectionString);
+                AESSalt aes = new AESSalt();
+                
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
 
-                //    cmd.CommandText = $@"select COUNT(MANAGER_ID)
-                //                                    from MANAGER
-                //                                    where MANAGER_ID = @MANAGER_ID
-                //                                    AND MANAGER_PSWD = @MANAGER_PSWD ";
-                //    cmd.Parameters.AddWithValue("@MANAGER_ID", userID);
-                //    cmd.Parameters.AddWithValue("@MANAGER_PSWD", password);
+                    cmd.CommandText = $@"select COUNT(MANAGER_ID)
+                                                    from MANAGER
+                                                    where MANAGER_ID = @MANAGER_ID
+                                                    AND MANAGER_PSWD = @MANAGER_PSWD ";
+                    cmd.Parameters.AddWithValue("@MANAGER_ID", userID);
+                    cmd.Parameters.AddWithValue("@MANAGER_PSWD", aes.Encrypt(password));
 
-                //    cmd.Connection.Open();
-                //    iCnt = Convert.ToInt32(cmd.ExecuteScalar());
-                //    cmd.Connection.Close();
-                // }
+                    cmd.Connection.Open();
+                    iCnt = Convert.ToInt32(cmd.ExecuteScalar());
+                    cmd.Connection.Close();
+                }
             }
             catch (Exception err)
             {
@@ -73,6 +76,7 @@ namespace TEAM3FINALDAC
             try
             {
                 string sql = "SaveUser";
+                AESSalt aes = new AESSalt();
                 using (SqlConnection conn = new SqlConnection(this.ConnectionString))
                 {
                     conn.Open();
@@ -81,7 +85,7 @@ namespace TEAM3FINALDAC
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
                         //cmd.Parameters.AddWithValue("@P_MANAGER_ID", mv.MANAGER_ID);
                         cmd.Parameters.AddWithValue("@P_MANAGER_NAME", mv.MANAGER_NAME);
-                        cmd.Parameters.AddWithValue("@P_MANAGER_PSWD", mv.MANAGER_PSWD);
+                        cmd.Parameters.AddWithValue("@P_MANAGER_PSWD", aes.Encrypt( mv.MANAGER_PSWD));
                         cmd.Parameters.AddWithValue("@P_MANAGER_EML", mv.MANAGER_EML);
                         cmd.Parameters.AddWithValue("@P_MANAGER_DEP", mv.MANAGER_DEP);
 
@@ -125,7 +129,6 @@ namespace TEAM3FINALDAC
             {
                 return new Message(err);
             }
-         
         }
     }
 }
