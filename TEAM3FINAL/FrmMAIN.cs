@@ -158,5 +158,10 @@ namespace TEAM3FINAL
         {
             FormUtil.OpenOrCreateForm<FrmLogin>(this);
         }
+
+        private void 공장관리ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUtil.OpenOrCreateForm<FrmFactoryManage>(this);
+        }
     }
 }

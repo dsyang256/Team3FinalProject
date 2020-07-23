@@ -85,7 +85,7 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-
+                FrmFactoryPopUp frm = new FrmFactoryPopUp();
             }
         }
 
