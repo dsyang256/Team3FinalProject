@@ -61,5 +61,29 @@ from[dbo].[FACTORY]";
                 return list;
             }
         }
+
+        /// <summary>
+        /// 하나의 테이블에 여러 항목을 삭제할 경우 사용하는 메서드
+        /// appendcode의 경우 사용자 입력값을 건드릴 수도 있으므로 보안상 파라미터를 사용하여 처리
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="pkCode"></param>
+        /// <param name="appendCode"></param>
+        /// <returns></returns>
+        public bool DeleteFactory(string table, string pkCode, StringBuilder appendCode)
+        {
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = new SqlConnection(this.ConnectionString);
+                cmd.CommandText = @"delete from @table 
+                                     where @pkCode IN(SELECT * FROM[dbo].[SplitString](@appendCode, '@'))";
+                cmd.Parameters.AddWithValue("@table", table);
+                cmd.Parameters.AddWithValue("@pkCode", pkCode);
+                cmd.Parameters.AddWithValue("@appendCode", appendCode.ToString());
+                cmd.Connection.Open();
+                int iResult = cmd.ExecuteNonQuery();
+                return (iResult > 0) ? true : false;
+            }
+        }
     }
 }

@@ -68,14 +68,23 @@ namespace TEAM3FINAL
         #region ****메인 버튼 이벤트****
         private void Search(object sender, EventArgs e)
         {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
 
+            }
         }
 
         private void Insert(object sender, EventArgs e)
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-
+                FrmFactoryPopUp frm = new FrmFactoryPopUp();
+                frm.ShowDialog();
+                if(frm.DialogResult == DialogResult.OK)
+                {
+                    DataGridViewColumnSet();
+                    GetFactoryInfo();
+                }
             }
         }
 
@@ -83,8 +92,7 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                FrmFactoryPopUp frm = new FrmFactoryPopUp();
-                frm.ShowDialog();
+                
             }
         }
 
@@ -92,8 +100,36 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-
+                dgvFactoryList.EndEdit();
+                StringBuilder sb = new StringBuilder();
+                int cnt = 0;
+                //품목 선택후 List를 전달
+                foreach (DataGridViewRow item in dgvFactoryList.Rows)
+                {
+                    if (Convert.ToBoolean(item.Cells[0].Value))
+                    {
+                        sb.Append(item.Cells[3].Value.ToString() + "@");
+                        cnt++;
+                    }
+                }
+                if (sb.Length < 1)
+                {
+                    MessageBox.Show("삭제할 항목을 선택하여 주십시오.");
+                    return;
+                }                
+                sb.Remove(sb.Length - 1, 1);
+                if (MessageBox.Show($"총 {cnt}개의 항목을 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    FactoryService service = new FactoryService();
+                    if (service.DeleteFactory("FACTORY", "FAC_CODE", sb))
+                    {
+                        MessageBox.Show("삭제 완료");
+                        DataGridViewColumnSet();
+                        GetFactoryInfo();
+                    }
+                }          
             }
+            
         }
         #endregion
     }

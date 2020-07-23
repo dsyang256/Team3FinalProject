@@ -23,7 +23,7 @@ namespace TEAM3FINAL
             if(cboCategory.Text == "" || txtCode.Text == "" || cboType.Text == "" || cboParent.Text == "" ||
                 txtName.Text == "" || cboUseYN.Text == "")
             {
-                MessageBox.Show("필수값 입력 필요");
+                MessageBox.Show("필수정보 입력 필요");
                 return;
             }
 
@@ -52,7 +52,11 @@ namespace TEAM3FINAL
             FactoryService service = new FactoryService();
             bool result = service.InsertFactory(vo);
             if (result)
+            {
                 MessageBox.Show("성공");
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
             else
             {
                 MessageBox.Show("실패");
