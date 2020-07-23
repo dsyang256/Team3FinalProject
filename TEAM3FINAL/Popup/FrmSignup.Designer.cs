@@ -168,6 +168,7 @@
             this.txtPwd.Font = new System.Drawing.Font("맑은 고딕", 14F);
             this.txtPwd.Location = new System.Drawing.Point(191, 72);
             this.txtPwd.Name = "txtPwd";
+            this.txtPwd.PasswordChar = '*';
             this.txtPwd.Size = new System.Drawing.Size(162, 32);
             this.txtPwd.TabIndex = 42;
             this.txtPwd.Tag = "비밀번호";
@@ -177,6 +178,7 @@
             this.txtPwdCheck.Font = new System.Drawing.Font("맑은 고딕", 14F);
             this.txtPwdCheck.Location = new System.Drawing.Point(191, 120);
             this.txtPwdCheck.Name = "txtPwdCheck";
+            this.txtPwdCheck.PasswordChar = '*';
             this.txtPwdCheck.Size = new System.Drawing.Size(162, 32);
             this.txtPwdCheck.TabIndex = 42;
             this.txtPwdCheck.Tag = "비밀번호확인";
