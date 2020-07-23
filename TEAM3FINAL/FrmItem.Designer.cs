@@ -325,7 +325,6 @@
             // 
             // ITEM_USE_YN
             // 
-            this.ITEM_USE_YN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ITEM_USE_YN.FormattingEnabled = true;
             this.ITEM_USE_YN.Location = new System.Drawing.Point(870, 133);
             this.ITEM_USE_YN.Name = "ITEM_USE_YN";

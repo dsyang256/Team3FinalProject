@@ -301,7 +301,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label25.ForeColor = System.Drawing.Color.Red;
+            this.label25.ForeColor = System.Drawing.Color.RosyBrown;
             this.label25.Location = new System.Drawing.Point(437, 334);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(17, 17);

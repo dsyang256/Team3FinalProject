@@ -73,6 +73,12 @@
     <Compile Include="BaseForm\ProjectBaseForm.Designer.cs">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmItemPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmItemPopUp.Designer.cs">
+      <DependentUpon>FrmItemPopUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmFactoryManage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,8 @@
     <Compile Include="UserControl\ucTabControl.Designer.cs">
       <DependentUpon>ucTabControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UtilsJH - 복사본\UtilsJH.cs" />
+    <Compile Include="UtilsJH - 복사본\ValidCheck.cs" />
     <Compile Include="UtilsJH\UtilsJH.cs" />
     <Compile Include="UtilsJH\ValidCheck.cs" />
     <Compile Include="Utils\CommonUtil.cs" />
@@ -166,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmItem.resx">
       <DependentUpon>FrmItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmItemPopUp.resx">
+      <DependentUpon>FrmItemPopUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup\FrmSignup.resx">
       <DependentUpon>FrmSignup.cs</DependentUpon>
