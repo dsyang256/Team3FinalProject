@@ -103,6 +103,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label11.Location = new System.Drawing.Point(111, 121);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
@@ -114,7 +115,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label3.Location = new System.Drawing.Point(80, 119);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
@@ -126,7 +127,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label4.Location = new System.Drawing.Point(80, 184);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
@@ -137,6 +138,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label5.Location = new System.Drawing.Point(111, 187);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
@@ -147,7 +149,7 @@
             // txtCode
             // 
             this.txtCode.Location = new System.Drawing.Point(219, 183);
-            this.txtCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(247, 27);
             this.txtCode.TabIndex = 24;
@@ -156,7 +158,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label6.Location = new System.Drawing.Point(80, 249);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
@@ -167,6 +169,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label7.Location = new System.Drawing.Point(111, 252);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
@@ -199,7 +202,7 @@
             // txtSort
             // 
             this.txtSort.Location = new System.Drawing.Point(219, 312);
-            this.txtSort.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSort.Margin = new System.Windows.Forms.Padding(4);
             this.txtSort.Name = "txtSort";
             this.txtSort.Size = new System.Drawing.Size(247, 27);
             this.txtSort.TabIndex = 24;
@@ -252,7 +255,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label15.ForeColor = System.Drawing.Color.Red;
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label15.Location = new System.Drawing.Point(562, 119);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
@@ -263,6 +266,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
+            this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label16.Location = new System.Drawing.Point(593, 121);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
@@ -274,7 +278,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label17.ForeColor = System.Drawing.Color.Red;
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label17.Location = new System.Drawing.Point(562, 184);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
@@ -285,6 +289,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label18.Location = new System.Drawing.Point(593, 187);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
@@ -295,7 +300,7 @@
             // txtName
             // 
             this.txtName.Location = new System.Drawing.Point(701, 183);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(247, 27);
             this.txtName.TabIndex = 24;
@@ -334,7 +339,7 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label25.ForeColor = System.Drawing.Color.Red;
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label25.Location = new System.Drawing.Point(562, 445);
             this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
@@ -345,6 +350,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
+            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label26.Location = new System.Drawing.Point(593, 448);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
@@ -377,7 +383,7 @@
             // txtDesc
             // 
             this.txtDesc.Location = new System.Drawing.Point(219, 512);
-            this.txtDesc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDesc.Margin = new System.Windows.Forms.Padding(4);
             this.txtDesc.Multiline = true;
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.Size = new System.Drawing.Size(729, 155);
@@ -391,7 +397,7 @@
             "공장",
             "창고"});
             this.cboCategory.Location = new System.Drawing.Point(219, 116);
-            this.cboCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboCategory.Margin = new System.Windows.Forms.Padding(4);
             this.cboCategory.Name = "cboCategory";
             this.cboCategory.Size = new System.Drawing.Size(247, 28);
             this.cboCategory.TabIndex = 26;
@@ -406,7 +412,7 @@
             "영업팀창고",
             "외주창고"});
             this.cboType.Location = new System.Drawing.Point(219, 247);
-            this.cboType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboType.Margin = new System.Windows.Forms.Padding(4);
             this.cboType.Name = "cboType";
             this.cboType.Size = new System.Drawing.Size(247, 28);
             this.cboType.TabIndex = 26;
@@ -418,7 +424,7 @@
             "사용",
             "미사용"});
             this.cboDemandYN.Location = new System.Drawing.Point(219, 379);
-            this.cboDemandYN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboDemandYN.Margin = new System.Windows.Forms.Padding(4);
             this.cboDemandYN.Name = "cboDemandYN";
             this.cboDemandYN.Size = new System.Drawing.Size(247, 28);
             this.cboDemandYN.TabIndex = 26;
@@ -427,7 +433,7 @@
             // 
             this.cboMtrlYN.FormattingEnabled = true;
             this.cboMtrlYN.Location = new System.Drawing.Point(219, 444);
-            this.cboMtrlYN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboMtrlYN.Margin = new System.Windows.Forms.Padding(4);
             this.cboMtrlYN.Name = "cboMtrlYN";
             this.cboMtrlYN.Size = new System.Drawing.Size(247, 28);
             this.cboMtrlYN.TabIndex = 26;
@@ -439,7 +445,7 @@
             "사용",
             "미사용"});
             this.cboUseYN.Location = new System.Drawing.Point(701, 444);
-            this.cboUseYN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboUseYN.Margin = new System.Windows.Forms.Padding(4);
             this.cboUseYN.Name = "cboUseYN";
             this.cboUseYN.Size = new System.Drawing.Size(247, 28);
             this.cboUseYN.TabIndex = 26;
@@ -475,7 +481,7 @@
             "사용",
             "미사용"});
             this.cboProcYN.Location = new System.Drawing.Point(701, 379);
-            this.cboProcYN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboProcYN.Margin = new System.Windows.Forms.Padding(4);
             this.cboProcYN.Name = "cboProcYN";
             this.cboProcYN.Size = new System.Drawing.Size(247, 28);
             this.cboProcYN.TabIndex = 26;
@@ -487,7 +493,7 @@
             "구디",
             "가디"});
             this.cboCom.Location = new System.Drawing.Point(701, 312);
-            this.cboCom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboCom.Margin = new System.Windows.Forms.Padding(4);
             this.cboCom.Name = "cboCom";
             this.cboCom.Size = new System.Drawing.Size(247, 28);
             this.cboCom.TabIndex = 26;
@@ -496,7 +502,7 @@
             // 
             this.cboFreeYN.FormattingEnabled = true;
             this.cboFreeYN.Location = new System.Drawing.Point(701, 248);
-            this.cboFreeYN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboFreeYN.Margin = new System.Windows.Forms.Padding(4);
             this.cboFreeYN.Name = "cboFreeYN";
             this.cboFreeYN.Size = new System.Drawing.Size(247, 28);
             this.cboFreeYN.TabIndex = 26;
@@ -508,7 +514,7 @@
             "TU",
             "ZU"});
             this.cboParent.Location = new System.Drawing.Point(701, 117);
-            this.cboParent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboParent.Margin = new System.Windows.Forms.Padding(4);
             this.cboParent.Name = "cboParent";
             this.cboParent.Size = new System.Drawing.Size(247, 28);
             this.cboParent.TabIndex = 26;
