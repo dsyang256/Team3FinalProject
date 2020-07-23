@@ -163,5 +163,10 @@ namespace TEAM3FINAL
         {
             FormUtil.OpenOrCreateForm<FrmFactoryManage>(this);
         }
+
+        private void 회원가입ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUtil.OpenOrCreateForm<FrmSignup>(this);
+        }
     }
 }
