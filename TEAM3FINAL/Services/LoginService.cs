@@ -21,10 +21,10 @@ namespace TEAM3FINAL
             return dac.CheckLoginInfo(userID, password);
         }
 
-        internal bool InsertManager(MANAGER_VO mv)
+        internal Message InsertOrUpdateManager(MANAGER_VO mv)
         {
             LoginDAC dac = new LoginDAC();
-            return dac.InsertManager(mv);
+            return dac.InsertOrUpdateManager(mv);
         }
     }
 }

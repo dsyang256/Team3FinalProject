@@ -59,7 +59,7 @@ namespace TEAM3FINALDAC
                 //    cmd.Connection.Open();
                 //    iCnt = Convert.ToInt32(cmd.ExecuteScalar());
                 //    cmd.Connection.Close();
-               // }
+                // }
             }
             catch (Exception err)
             {
@@ -68,32 +68,61 @@ namespace TEAM3FINALDAC
             return iCnt > 0 ? true : false;
         }
 
-        public bool InsertManager(MANAGER_VO mv)
+        public Message InsertOrUpdateManager(MANAGER_VO mv)
         {
-            int iCnt = default;
             try
             {
-                using (SqlCommand cmd = new SqlCommand())
+                string sql = "SaveUser";
+                using (SqlConnection conn = new SqlConnection(this.ConnectionString))
                 {
-                    //cmd.Connection = new SqlConnection(this.ConnectionString);
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@P_MANAGER_ID", mv.MANAGER_ID);
+                        cmd.Parameters.AddWithValue("@P_MANAGER_NAME", mv.MANAGER_NAME);
+                        cmd.Parameters.AddWithValue("@P_MANAGER_PSWD", mv.MANAGER_PSWD);
+                        cmd.Parameters.AddWithValue("@P_MANAGER_EML", mv.MANAGER_EML);
+                        cmd.Parameters.AddWithValue("@P_MANAGER_DEP", mv.MANAGER_DEP);
 
-                    //cmd.CommandText = $@"select COUNT(MANAGER_ID)
-                    //                                from MANAGER
-                    //                                where MANAGER_ID = @MANAGER_ID
-                    //                                AND MANAGER_PSWD = @MANAGER_PSWD ";
-                    //cmd.Parameters.AddWithValue("@MANAGER_ID", userID);
-                    //cmd.Parameters.AddWithValue("@MANAGER_PSWD", password);
+                        cmd.Parameters.Add(new SqlParameter("@P_ReturnCode", System.Data.SqlDbType.NVarChar, 5));
+                        cmd.Parameters["@P_ReturnCode"].Direction = System.Data.ParameterDirection.Output;
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
 
-                    //cmd.Connection.Open();
-                    //iCnt = Convert.ToInt32(cmd.ExecuteScalar());
-                    //cmd.Connection.Close();
+                        string result =cmd.Parameters["@P_ReturnCode"].Value.ToString();
+
+                        Message message = new Message();
+                        if (result == "M01")
+                        {
+                            message.IsSuccess = true;
+                            message.ResultMessage = "성공적으로 등록되었습니다.";
+                        }
+                        else if (result == "M02")
+                        {
+                            message.IsSuccess = true;
+                            message.ResultMessage = "성공적으로 수정되었습니다.";
+                        }
+                        else if (result == "M03")
+                        {
+                            message.IsSuccess = false;
+                            message.ResultMessage = "이미 등록된 ID 입니다.";
+                        }
+                        else if (result == "M04")
+                        {
+                            message.IsSuccess = false;
+                            message.ResultMessage = "이미 등록된 EMAIL 입니다.";
+                        }
+
+                        return message;
+                    }
                 }
             }
             catch (Exception err)
             {
-                string msg = err.Message;
+                return new Message(err);
             }
-            return iCnt > 0 ? true : false;
+         
         }
     }
 }

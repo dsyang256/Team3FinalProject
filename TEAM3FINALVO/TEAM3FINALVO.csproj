@@ -53,6 +53,7 @@
     <Compile Include="ITEM_VO.cs" />
     <Compile Include="MANAGER_VO.cs" />
     <Compile Include="MATERIAL_COST_VO.cs" />
+    <Compile Include="Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="REORDERDETATILS_VO.cs" />
     <Compile Include="REORDER_VO.cs" />

@@ -9,6 +9,7 @@ using TEAM3FINALVO;
 using System.Linq;
 using TEAM3FINALDAC;
 using System.Diagnostics;
+using Message = TEAM3FINALVO.Message;
 
 namespace TEAM3FINAL
 {
@@ -126,17 +127,30 @@ namespace TEAM3FINAL
                 
                 //서비스호출
                 LoginService service = new LoginService();
-                service.InsertManager(mv);
-
-                MessageBox.Show("회원가입이 완료되었습니다.", "회원가입 확인", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                Message msg = service.InsertOrUpdateManager(mv);
+                if (msg.IsSuccess)
+                {
+                    MessageBox.Show(msg.ResultMessage);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show(msg.ResultMessage);
+                    return;
+                }
             }
             else
             {
                 MessageBox.Show("유효한 값이 아닙니다. 입력항목들을 확인해주세요.", "입력값 확인", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
         }
 
+        /// <summary>
+        /// ID입력값 변화시 ID중복확인을 초기화하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtID_TextChanged(object sender, EventArgs e)
         {
             bIDCheck = false;
