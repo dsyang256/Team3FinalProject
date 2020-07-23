@@ -79,7 +79,7 @@
             // 
             this.panel3.Controls.Add(this.dgvFactoryList);
             this.panel3.Location = new System.Drawing.Point(19, 188);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Size = new System.Drawing.Size(1354, 495);
             this.panel3.Controls.SetChildIndex(this.panel4, 0);
             this.panel3.Controls.SetChildIndex(this.dgvFactoryList, 0);
@@ -92,7 +92,7 @@
             // txtFactoryCode
             // 
             this.txtFactoryCode.Location = new System.Drawing.Point(188, 25);
-            this.txtFactoryCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFactoryCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtFactoryCode.Name = "txtFactoryCode";
             this.txtFactoryCode.Size = new System.Drawing.Size(247, 27);
             this.txtFactoryCode.TabIndex = 21;
@@ -145,7 +145,7 @@
             // 
             this.cboCategory.FormattingEnabled = true;
             this.cboCategory.Location = new System.Drawing.Point(751, 27);
-            this.cboCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboCategory.Margin = new System.Windows.Forms.Padding(4);
             this.cboCategory.Name = "cboCategory";
             this.cboCategory.Size = new System.Drawing.Size(247, 28);
             this.cboCategory.TabIndex = 25;
@@ -175,7 +175,6 @@
             this.dgvFactoryList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvFactoryList.EnableHeadersVisualStyles = false;
             this.dgvFactoryList.Location = new System.Drawing.Point(0, 0);
-            this.dgvFactoryList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvFactoryList.Name = "dgvFactoryList";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -186,7 +185,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvFactoryList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvFactoryList.RowHeadersWidth = 30;
-            this.dgvFactoryList.RowTemplate.Height = 150;
+            this.dgvFactoryList.RowTemplate.Height = 23;
             this.dgvFactoryList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFactoryList.Size = new System.Drawing.Size(1354, 495);
             this.dgvFactoryList.TabIndex = 8;
@@ -196,8 +195,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1389, 753);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmFactoryManage";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmFactoryManage_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
