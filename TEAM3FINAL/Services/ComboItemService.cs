@@ -16,6 +16,12 @@ namespace TEAM3FINAL
             return dac.GetCmCode();
         }
 
+        public List<ComboItemVO> GetITEMCmCode()
+        {
+            ComboItemDAC dac = new ComboItemDAC();
+            return dac.GetITEMCmCode();
+        }
+
 
     }
 }
