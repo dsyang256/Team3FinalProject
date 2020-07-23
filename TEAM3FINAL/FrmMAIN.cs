@@ -111,6 +111,7 @@ namespace TEAM3FINAL
 
         #endregion
 
+        #region 공통버튼 이벤트
         private void tsbSearch_Click(object sender, EventArgs e)
         {
             if (eSearch != null)
@@ -121,7 +122,7 @@ namespace TEAM3FINAL
 
         private void tsbInsert_Click(object sender, EventArgs e)
         {
-            if(eInsert != null)
+            if (eInsert != null)
             {
                 eInsert(this, new EventArgs());
             }
@@ -129,7 +130,7 @@ namespace TEAM3FINAL
 
         private void tsbDelete_Click(object sender, EventArgs e)
         {
-            if(eDelete != null)
+            if (eDelete != null)
             {
                 eDelete(this, new EventArgs());
             }
@@ -137,7 +138,7 @@ namespace TEAM3FINAL
 
         private void tsbUpdate_Click(object sender, EventArgs e)
         {
-            if(eUpdate != null)
+            if (eUpdate != null)
             {
                 eUpdate(this, new EventArgs());
             }
@@ -145,10 +146,17 @@ namespace TEAM3FINAL
 
         private void tsbPrint_Click(object sender, EventArgs e)
         {
-            if(ePrint != null)
+            if (ePrint != null)
             {
                 ePrint(this, new EventArgs());
             }
+        }
+
+        #endregion
+
+        private void 로그인ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormUtil.OpenOrCreateForm<FrmLogin>(this);
         }
     }
 }
