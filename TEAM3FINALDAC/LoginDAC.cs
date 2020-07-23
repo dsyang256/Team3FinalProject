@@ -79,12 +79,15 @@ namespace TEAM3FINALDAC
                     using (SqlCommand cmd = new SqlCommand(sql, conn))
                     {
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@P_MANAGER_ID", mv.MANAGER_ID);
+                        //cmd.Parameters.AddWithValue("@P_MANAGER_ID", mv.MANAGER_ID);
                         cmd.Parameters.AddWithValue("@P_MANAGER_NAME", mv.MANAGER_NAME);
                         cmd.Parameters.AddWithValue("@P_MANAGER_PSWD", mv.MANAGER_PSWD);
                         cmd.Parameters.AddWithValue("@P_MANAGER_EML", mv.MANAGER_EML);
                         cmd.Parameters.AddWithValue("@P_MANAGER_DEP", mv.MANAGER_DEP);
 
+                        cmd.Parameters.Add(new SqlParameter("@P_MANAGER_ID", System.Data.SqlDbType.NVarChar, 20));
+                        cmd.Parameters["@P_MANAGER_ID"].Value = mv.MANAGER_ID;
+                        cmd.Parameters["@P_MANAGER_ID"].Direction = System.Data.ParameterDirection.Input;
                         cmd.Parameters.Add(new SqlParameter("@P_ReturnCode", System.Data.SqlDbType.NVarChar, 5));
                         cmd.Parameters["@P_ReturnCode"].Direction = System.Data.ParameterDirection.Output;
                         cmd.ExecuteNonQuery();
