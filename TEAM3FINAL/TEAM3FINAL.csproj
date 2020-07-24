@@ -146,8 +146,6 @@
     <Compile Include="UserControl\ucTabControl.Designer.cs">
       <DependentUpon>ucTabControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UtilsJH - 복사본\UtilsJH.cs" />
-    <Compile Include="UtilsJH - 복사본\ValidCheck.cs" />
     <Compile Include="UtilsJH\UtilsJH.cs" />
     <Compile Include="UtilsJH\ValidCheck.cs" />
     <Compile Include="Utils\CommonUtil.cs" />

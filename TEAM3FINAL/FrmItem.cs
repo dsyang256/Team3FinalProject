@@ -68,41 +68,41 @@ namespace TEAM3FINAL
             var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
 
-            //발주업체
-            var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
+            ////발주업체
+            //var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
+            //CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
 
-            //입고창고
-            var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
+            ////입고창고
+            //var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
+            //CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
 
-            //출고창고
-            var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
+            ////출고창고
+            //var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
+            //CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
 
-            //관리등급
-            var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
+            ////관리등급
+            //var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
+            //CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
 
-            //담당자
-            var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
+            ////담당자
+            //var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
+            //CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
 
-            //환산단위
-            var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
+            ////환산단위
+            //var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
+            //CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
 
-            //사용유무
-            var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
+            ////사용유무
+            //var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
+            //CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
 
-            //단종유무
-            var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
+            ////단종유무
+            //var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
+            //CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
 
-            //대그룹
-            var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
+            ////대그룹
+            //var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
+            //CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
 
 
         }
