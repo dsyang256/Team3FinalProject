@@ -12,14 +12,57 @@ namespace TEAM3FINAL
 {
     public partial class FrmItemPopUp : TEAM3FINAL.BaseForm.baseFormPopUP
     {
+        int update;
         public FrmItemPopUp()
         {
             InitializeComponent();
+            ComboBinding();
+            update = 1;
+        }
+        public FrmItemPopUp(string code)
+        {
+            InitializeComponent();
+            ComboBinding();
+            update = 0;
+            GetItem(code);
+        }
+        private void GetItem(string code)
+        {
+            ItemServicecs item = new ItemServicecs();
+            ITEM_VO vo = item.GetItem(code);
+            ITEM_CODE.Text = vo.ITEM_CODE;
+            ITEM_CODE.Enabled = false;
+            ITEM_NAME.Text =vo.ITEM_NAME;
+            ITEM_STND.Text =vo.ITEM_STND;
+            ITEM_UNIT.Text =vo.ITEM_UNIT;
+            ITEM_QTY_UNIT.Text =vo.ITEM_QTY_UNIT.ToString();
+            ITEM_TYP.Text =vo.ITEM_TYP;
+            ITEM_INCOME_YN.Text =vo.ITEM_INCOME_YN;
+            ITEM_PROCS_YN.Text = vo.ITEM_PROCS_YN;
+            ITEM_XPORT_YN.Text = vo.ITEM_XPORT_YN;
+            ITEM_FREE_YN.Text = vo.ITEM_FREE_YN;
+            ITEM_COM_DLVR.Text = vo.ITEM_COM_DLVR;
+            ITEM_COM_REORDER.Text = vo.ITEM_COM_REORDER;
+            ITEM_WRHS_IN.Text = vo.ITEM_WRHS_IN;
+            ITEM_WRHS_OUT.Text =vo.ITEM_WRHS_OUT;
+            ITEM_LEADTIME.Text =vo.ITEM_LEADTIME.ToString();
+            ITEM_QTY_REORDER_MIN.Text = vo.ITEM_QTY_REORDER_MIN.ToString();
+            ITEM_QTY_STND.Text =vo.ITEM_QTY_STND.ToString();
+            ITEM_QTY_SAFE.Text =vo.ITEM_QTY_SAFE.ToString();
+            ITEM_MANAGE_LEVEL.Text = vo.ITEM_MANAGE_LEVEL;
+            ITEM_MANAGER.Text =vo.ITEM_MANAGER;
+            ITEM_UNIT_CNVR.Text =vo.ITEM_UNIT_CNVR;
+            ITEM_QTY_CNVR.Text =vo.ITEM_QTY_CNVR.ToString();
+            ITEM_USE_YN.Text =vo.ITEM_USE_YN;
+            ITEM_DSCN_YN.Text =vo.ITEM_DSCN_YN;
+            ITEM_REORDER_TYP.Text = vo.ITEM_REORDER_TYP;
+            ITEM_REMARK.Text = vo.ITEM_REMARK;
+
         }
 
         private void FrmItemPopUp_Load(object sender, EventArgs e)
         {
-            ComboBinding();
+            
         }
         private void ComboBinding()
         {
@@ -143,7 +186,7 @@ namespace TEAM3FINAL
             vo.ITEM_REORDER_TYP = ITEM_REORDER_TYP.Text;
             vo.ITEM_REMARK = ITEM_REMARK.Text;
             ItemServicecs item = new ItemServicecs();
-            string result = item.SaveItem(vo, 1);
+            string result = item.SaveItem(vo, update);
             if (result == "C200")
             {
                 MessageBox.Show("성공적으로 입력되었습니다.");

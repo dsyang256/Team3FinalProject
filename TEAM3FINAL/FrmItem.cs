@@ -31,7 +31,7 @@ namespace TEAM3FINAL
             frm.ePrint += Print;
             ComboBinding();
             DataGridViewColumnSet();
-            
+            DataGridViewBinding();
 
         }
 
@@ -50,6 +50,31 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
+                dgvitem.EndEdit();
+                int cnt = 0;
+                string code = "";
+                //체크가 되었는지 확인
+                foreach (DataGridViewRow item in dgvitem.Rows)
+                {
+                    if (Convert.ToBoolean(item.Cells[0].Value))
+                    {
+                        code = item.Cells[3].Value.ToString();
+                        cnt++;
+                    }
+                }
+                if(cnt != 1)
+                {
+                    MessageBox.Show("하나의 항목씩만 수정 가능 합니다.");
+                    return;
+                }
+                else if(cnt == 1)
+                {
+                    FrmItemPopUp frm = new FrmItemPopUp(code);
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        Search(null, null);
+                    }
+                }
             }
         }
         private void Delete(object sender, EventArgs e)
@@ -77,10 +102,10 @@ namespace TEAM3FINAL
                 if (MessageBox.Show($"총 {cnt}개의 항목을 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     ItemServicecs service = new ItemServicecs();
-                    if (service.DeleteItem("ITEM", "ITEM_CODE", sb))
+                    if (service.DeleteItem(sb))
                     {
                         MessageBox.Show("삭제 완료");
-                        DataGridViewColumnSet();
+                        DataGridViewBinding();
                     }
                 }
             }
@@ -163,7 +188,7 @@ namespace TEAM3FINAL
         {
             Util.InitSettingGridView(dgvitem);
             Util.AddNewColumnToDataGridView(dgvitem, "no", "idx", true, 30);
-            Util.DataGridViewCheckBoxSet(dgvitem,"all");
+            Util.DataGridViewCheckBoxSet(dgvitem, "all");
             Util.AddNewColumnToDataGridView(dgvitem, "품목유형", "ITEM_TYP", true, 100);
             Util.AddNewColumnToDataGridView(dgvitem, "품목", "ITEM_CODE", true, 100);
             Util.AddNewColumnToDataGridView(dgvitem, "품명", "ITEM_NAME", true, 100);
@@ -180,9 +205,15 @@ namespace TEAM3FINAL
             Util.AddNewColumnToDataGridView(dgvitem, "납품업체", "ITEM_COM_DLVR", true, 100);
             Util.AddNewColumnToDataGridView(dgvitem, "발주업체", "ITEM_COM_REORDER", true, 100);
             DataGridViewCheckBoxAllCheck();
-            dgvitem.DataSource = item.AllITEM();
+           
 
         }
+
+        private void DataGridViewBinding()
+        {
+            dgvitem.DataSource = item.AllITEM();
+        }
+
         /// <summary>
         /// 데이터 그리드뷰 올체크 체크박스 만들기
         /// </summary>

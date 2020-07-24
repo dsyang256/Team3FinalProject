@@ -38,15 +38,38 @@ namespace TEAM3FINALDAC
             
         }
 
-        public bool DeleteItem(string table, string pkCode, StringBuilder appendCode)
+        public ITEM_VO GetItem(string code)
+        {
+            List<ITEM_VO> list = default;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = @"select ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx,ITEM_CODE, ITEM_NAME, ITEM_STND, ITEM_UNIT, ITEM_QTY_UNIT, ITEM_TYP, ITEM_INCOME_YN, ITEM_PROCS_YN, ITEM_XPORT_YN, ITEM_FREE_YN, ITEM_COM_DLVR, ITEM_COM_REORDER, ITEM_WRHS_IN, ITEM_WRHS_OUT, ITEM_LEADTIME, ITEM_QTY_REORDER_MIN, ITEM_QTY_STND, ITEM_QTY_SAFE, ITEM_MANAGE_LEVEL, ITEM_MANAGER, ITEM_UNIT_CNVR, ITEM_QTY_CNVR, ITEM_LAST_MDFR, CONVERT(CHAR(10), ITEM_LAST_MDFY, 23)ITEM_LAST_MDFY, ITEM_USE_YN, ITEM_DSCN_YN, ITEM_REORDER_TYP, ITEM_REMARK
+                                          from ITEM
+                                         Where ITEM_CODE = @ITEM_CODE";
+                    cmd.Parameters.AddWithValue("@ITEM_CODE", code);
+                    cmd.Connection.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    list = Helper.DataReaderMapToList<ITEM_VO>(reader);
+                    cmd.Connection.Close();
+                    return list[0];
+                }
+            }
+            catch(Exception err)
+            {
+                return list[0];
+            }
+        }
+
+        public bool DeleteItem(StringBuilder appendCode)
         {
             using (SqlCommand cmd = new SqlCommand())
             {
                 cmd.Connection = new SqlConnection(this.ConnectionString);
-                cmd.CommandText = @"delete from @table 
-                                     where @pkCode IN(SELECT * FROM[dbo].[SplitString](@appendCode, '@'))";
-                cmd.Parameters.AddWithValue("@table", table);
-                cmd.Parameters.AddWithValue("@pkCode", pkCode);
+                cmd.CommandText = @"delete from ITEM 
+                                     where ITEM_CODE IN(SELECT * FROM[dbo].[SplitString](@appendCode, '@'))";
                 cmd.Parameters.AddWithValue("@appendCode", appendCode.ToString());
                 cmd.Connection.Open();
                 int iResult = cmd.ExecuteNonQuery();
