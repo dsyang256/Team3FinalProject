@@ -143,18 +143,23 @@ namespace TEAM3FINAL
             vo.ITEM_REORDER_TYP = ITEM_REORDER_TYP.Text;
             vo.ITEM_REMARK = ITEM_REMARK.Text;
             ItemServicecs item = new ItemServicecs();
-            string result = item.SaveItem(vo, 0);
+            string result = item.SaveItem(vo, 1);
             if (result == "C200")
             {
                 MessageBox.Show("성공적으로 입력되었습니다.");
-                btnOK.DialogResult = DialogResult.OK;
-                //this.Close();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             else if(result == "C201")
             {
                 MessageBox.Show("품목이 중복되었습니다. 다시 입력해주세요");
             }
 
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

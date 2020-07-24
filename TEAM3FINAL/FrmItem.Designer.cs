@@ -60,7 +60,6 @@
             this.ITEM_MANAGER = new System.Windows.Forms.ComboBox();
             this.ITEM_COM_DLVR = new System.Windows.Forms.ComboBox();
             this.dgvitem = new WindowsFormsApp18.MyDataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -73,7 +72,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.ITEM_COM_DLVR);
             this.panel2.Controls.Add(this.ITEM_MANAGER);
             this.panel2.Controls.Add(this.ITEM_WRHS_IN);
@@ -403,16 +401,6 @@
             this.dgvitem.Size = new System.Drawing.Size(1242, 318);
             this.dgvitem.TabIndex = 0;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(1130, 126);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // FrmItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -460,6 +448,5 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private WindowsFormsApp18.MyDataGridView dgvitem;
-        private System.Windows.Forms.Button button1;
     }
 }

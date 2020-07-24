@@ -22,7 +22,7 @@ namespace TEAM3FINALDAC
                 {
                     AESSalt salt = new AESSalt();
                     cmd.Connection = new SqlConnection(this.ConnectionString);
-                    cmd.CommandText = @"select ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx,ITEM_CODE, ITEM_NAME, ITEM_STND, ITEM_UNIT, ITEM_QTY_UNIT, ITEM_TYP, ITEM_INCOME_YN, ITEM_PROCS_YN, ITEM_XPORT_YN, ITEM_FREE_YN, ITEM_COM_DLVR, ITEM_COM_REORDER, ITEM_WRHS_IN, ITEM_WRHS_OUT, ITEM_LEADTIME, ITEM_QTY_REORDER_MIN, ITEM_QTY_STND, ITEM_QTY_SAFE, ITEM_MANAGE_LEVEL, ITEM_MANAGER, ITEM_UNIT_CNVR, ITEM_QTY_CNVR, ITEM_LAST_MDFR, CONVERT(CHAR(10), ITEM_LAST_MDFY, 23)ITEM_LAST_MDFY, ITEM_USE_YN, ITEM_DSCN_YN, ITEM_GROUP, ITEM_REORDER_TYP, ITEM_REMARK
+                    cmd.CommandText = @"select ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx,ITEM_CODE, ITEM_NAME, ITEM_STND, ITEM_UNIT, ITEM_QTY_UNIT, ITEM_TYP, ITEM_INCOME_YN, ITEM_PROCS_YN, ITEM_XPORT_YN, ITEM_FREE_YN, ITEM_COM_DLVR, ITEM_COM_REORDER, ITEM_WRHS_IN, ITEM_WRHS_OUT, ITEM_LEADTIME, ITEM_QTY_REORDER_MIN, ITEM_QTY_STND, ITEM_QTY_SAFE, ITEM_MANAGE_LEVEL, ITEM_MANAGER, ITEM_UNIT_CNVR, ITEM_QTY_CNVR, ITEM_LAST_MDFR, CONVERT(CHAR(10), ITEM_LAST_MDFY, 23)ITEM_LAST_MDFY, ITEM_USE_YN, ITEM_DSCN_YN, ITEM_REORDER_TYP, ITEM_REMARK
                                                        from ITEM";
                     cmd.Connection.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -37,6 +37,23 @@ namespace TEAM3FINALDAC
             }
             
         }
+
+        public bool DeleteItem(string table, string pkCode, StringBuilder appendCode)
+        {
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = new SqlConnection(this.ConnectionString);
+                cmd.CommandText = @"delete from @table 
+                                     where @pkCode IN(SELECT * FROM[dbo].[SplitString](@appendCode, '@'))";
+                cmd.Parameters.AddWithValue("@table", table);
+                cmd.Parameters.AddWithValue("@pkCode", pkCode);
+                cmd.Parameters.AddWithValue("@appendCode", appendCode.ToString());
+                cmd.Connection.Open();
+                int iResult = cmd.ExecuteNonQuery();
+                return (iResult > 0) ? true : false;
+            }
+        }
+
         public string SaveItem(ITEM_VO vo,int code)
         {
             string result;
@@ -44,40 +61,44 @@ namespace TEAM3FINALDAC
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
-                     AESSalt salt = new AESSalt();
-                     cmd.Connection = new SqlConnection(this.ConnectionString);
-                     cmd.CommandText = "SaveItem";
-                     cmd.CommandType = CommandType.StoredProcedure;
-                     cmd.Parameters.AddWithValue("@P_ITEM_CODE",vo.ITEM_CODE);
-                     cmd.Parameters.AddWithValue("@P_ITEM_NAME",vo.ITEM_NAME);
-                     cmd.Parameters.AddWithValue("@P_ITEM_STND",vo.ITEM_STND);
-                     cmd.Parameters.AddWithValue("@P_ITEM_UNIT",vo.ITEM_UNIT);
-                     cmd.Parameters.AddWithValue("@P_ITEM_QTY_UNIT",vo.ITEM_QTY_UNIT);
-                     cmd.Parameters.AddWithValue("@P_ITEM_TYP",vo.ITEM_TYP);
-                     cmd.Parameters.AddWithValue("@P_ITEM_INCOME_YN",vo.ITEM_INCOME_YN);
-                     cmd.Parameters.AddWithValue("@P_ITEM_PROCS_YN",vo.ITEM_PROCS_YN);
-                     cmd.Parameters.AddWithValue("@P_ITEM_XPORT_YN",vo.ITEM_XPORT_YN);
-                     cmd.Parameters.AddWithValue("@P_ITEM_FREE_YN",vo.ITEM_FREE_YN);
-                     cmd.Parameters.AddWithValue("@P_ITEM_COM_DLVR",vo.ITEM_COM_DLVR);
-                     cmd.Parameters.AddWithValue("@P_ITEM_COM_REORDER",vo.ITEM_COM_REORDER);
-                     cmd.Parameters.AddWithValue("@P_ITEM_WRHS_IN",vo.ITEM_WRHS_IN);
-                     cmd.Parameters.AddWithValue("@P_ITEM_WRHS_OUT",vo.ITEM_WRHS_OUT);
-                     cmd.Parameters.AddWithValue("@P_ITEM_LEADTIME",vo.ITEM_LEADTIME);
-                     cmd.Parameters.AddWithValue("@P_ITEM_QTY_REORDER_MIN",vo.ITEM_COM_REORDER);
-                     cmd.Parameters.AddWithValue("@P_ITEM_QTY_STND",vo.ITEM_QTY_STND);
-                     cmd.Parameters.AddWithValue("@P_ITEM_QTY_SAFE",vo.ITEM_QTY_SAFE);
-                     cmd.Parameters.AddWithValue("@P_ITEM_MANAGE_LEVEL",vo.ITEM_MANAGE_LEVEL);
-                     cmd.Parameters.AddWithValue("@P_ITEM_MANAGER",vo.ITEM_MANAGER);
-                     cmd.Parameters.AddWithValue("@P_ITEM_UNIT_CNVR",vo.ITEM_UNIT_CNVR);
-                     cmd.Parameters.AddWithValue("@P_ITEM_QTY_CNVR",vo.ITEM_QTY_CNVR);
-                     cmd.Parameters.AddWithValue("@P_ITEM_LAST_MDFR",vo.ITEM_LAST_MDFR);
-                     cmd.Parameters.AddWithValue("@P_ITEM_USE_YN",vo.ITEM_USE_YN);
-                     cmd.Parameters.AddWithValue("@P_ITEM_DSCN_YN",vo.ITEM_DSCN_YN);
-                     cmd.Parameters.AddWithValue("@P_ITEM_REORDER_TYP",vo.ITEM_REORDER_TYP);
-                     cmd.Parameters.AddWithValue("@P_ITEM_REMARK",vo.ITEM_REMARK);
-                     cmd.Parameters.AddWithValue("@P_INSERT_YN",code);
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = "SaveItem";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@P_ITEM_CODE", vo.ITEM_CODE); //1
+                    cmd.Parameters.AddWithValue("@P_ITEM_NAME", vo.ITEM_NAME); //2
+                    cmd.Parameters.AddWithValue("@P_ITEM_STND", vo.ITEM_STND); //3
+                    cmd.Parameters.AddWithValue("@P_ITEM_UNIT", vo.ITEM_UNIT); // 4
+                    cmd.Parameters.AddWithValue("@P_ITEM_QTY_UNIT", vo.ITEM_QTY_UNIT); //5
 
-                    cmd.Parameters.Add(new SqlParameter("@P_ReturnCode", SqlDbType.NVarChar, 5));
+                    cmd.Parameters.AddWithValue("@P_ITEM_TYP", vo.ITEM_TYP); //6
+                    cmd.Parameters.AddWithValue("@P_ITEM_INCOME_YN", vo.ITEM_INCOME_YN); //7
+                    cmd.Parameters.AddWithValue("@P_ITEM_PROCS_YN", vo.ITEM_PROCS_YN); //8
+                    cmd.Parameters.AddWithValue("@P_ITEM_XPORT_YN", vo.ITEM_XPORT_YN); // 9
+                    cmd.Parameters.AddWithValue("@P_ITEM_FREE_YN", vo.ITEM_FREE_YN); //10
+
+                    cmd.Parameters.AddWithValue("@P_ITEM_COM_DLVR", vo.ITEM_COM_DLVR); //11
+                    cmd.Parameters.AddWithValue("@P_ITEM_COM_REORDER", vo.ITEM_COM_REORDER); //12
+                    cmd.Parameters.AddWithValue("@P_ITEM_WRHS_IN", vo.ITEM_WRHS_IN); //13
+                    cmd.Parameters.AddWithValue("@P_ITEM_WRHS_OUT", vo.ITEM_WRHS_OUT); //14
+                    cmd.Parameters.AddWithValue("@P_ITEM_LEADTIME", vo.ITEM_LEADTIME); //15
+
+                    cmd.Parameters.AddWithValue("@P_ITEM_QTY_REORDER_MIN", vo.ITEM_COM_REORDER); //16
+                    cmd.Parameters.AddWithValue("@P_ITEM_QTY_STND", vo.ITEM_QTY_STND); //17
+                    cmd.Parameters.AddWithValue("@P_ITEM_QTY_SAFE", vo.ITEM_QTY_SAFE); //18
+                    cmd.Parameters.AddWithValue("@P_ITEM_MANAGE_LEVEL", vo.ITEM_MANAGE_LEVEL); //19
+                    cmd.Parameters.AddWithValue("@P_ITEM_MANAGER", vo.ITEM_MANAGER); //20
+
+                    cmd.Parameters.AddWithValue("@P_ITEM_UNIT_CNVR", vo.ITEM_UNIT_CNVR); //21
+                    cmd.Parameters.AddWithValue("@P_ITEM_QTY_CNVR", vo.ITEM_QTY_CNVR); //22
+                    cmd.Parameters.AddWithValue("@P_ITEM_LAST_MDFR", vo.ITEM_LAST_MDFR);//23
+                    cmd.Parameters.AddWithValue("@P_ITEM_LAST_MDFY", vo.ITEM_LAST_MDFY);//24
+                    cmd.Parameters.AddWithValue("@P_ITEM_USE_YN", vo.ITEM_USE_YN);//25
+
+                    cmd.Parameters.AddWithValue("@P_ITEM_DSCN_YN", vo.ITEM_DSCN_YN);//26
+                    cmd.Parameters.AddWithValue("@P_ITEM_REORDER_TYP", vo.ITEM_REORDER_TYP);//27
+                    cmd.Parameters.AddWithValue("@P_ITEM_REMARK", vo.ITEM_REMARK);//28
+                    cmd.Parameters.AddWithValue("@P_INSERT_YN", code);//29
+                    cmd.Parameters.Add(new SqlParameter("@P_ReturnCode", SqlDbType.NVarChar,5));//30
                     cmd.Parameters["@P_ReturnCode"].Direction = ParameterDirection.Output;
 
                     cmd.Connection.Open();

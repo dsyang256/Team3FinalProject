@@ -134,6 +134,7 @@
             // btnCancel
             // 
             this.btnCancel.TabIndex = 29;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // ITEM_REMARK
             // 

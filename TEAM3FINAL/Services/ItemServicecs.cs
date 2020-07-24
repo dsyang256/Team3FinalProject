@@ -26,6 +26,11 @@ namespace TEAM3FINAL
             ITEMDAC dac = new ITEMDAC();
             return dac.SaveItem(vo,code);
         }
+        public bool DeleteItem(string table, string pkCode, StringBuilder appendCode)
+        {
+            ITEMDAC dac = new ITEMDAC();
+            return dac.DeleteItem(table, pkCode, appendCode);
+        }
 
     }
 }
