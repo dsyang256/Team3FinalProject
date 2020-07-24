@@ -47,8 +47,6 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -90,7 +88,6 @@
             this.ITEM_FREE_YN = new System.Windows.Forms.ComboBox();
             this.ITEM_WRHS_IN = new System.Windows.Forms.ComboBox();
             this.ITEM_MANAGE_LEVEL = new System.Windows.Forms.ComboBox();
-            this.ITEM_GROUP = new System.Windows.Forms.ComboBox();
             this.ITEM_LAST_MDFY = new System.Windows.Forms.DateTimePicker();
             this.ITEM_CODE = new System.Windows.Forms.TextBox();
             this.ITEM_QTY_REORDER_MIN = new System.Windows.Forms.TextBox();
@@ -130,7 +127,7 @@
             // 
             // ITEM_REMARK
             // 
-            this.ITEM_REMARK.Location = new System.Drawing.Point(139, 417);
+            this.ITEM_REMARK.Location = new System.Drawing.Point(139, 385);
             this.ITEM_REMARK.Multiline = true;
             this.ITEM_REMARK.Name = "ITEM_REMARK";
             this.ITEM_REMARK.Size = new System.Drawing.Size(615, 64);
@@ -318,26 +315,6 @@
             this.label32.Size = new System.Drawing.Size(43, 15);
             this.label32.TabIndex = 30;
             this.label32.Text = "수정일";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label33.Location = new System.Drawing.Point(32, 386);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(17, 17);
-            this.label33.TabIndex = 46;
-            this.label33.Text = "*";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(56, 388);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(43, 15);
-            this.label34.TabIndex = 37;
-            this.label34.Text = "대그룹";
             // 
             // label15
             // 
@@ -745,14 +722,6 @@
             this.ITEM_MANAGE_LEVEL.Size = new System.Drawing.Size(121, 23);
             this.ITEM_MANAGE_LEVEL.TabIndex = 101;
             // 
-            // ITEM_GROUP
-            // 
-            this.ITEM_GROUP.FormattingEnabled = true;
-            this.ITEM_GROUP.Location = new System.Drawing.Point(139, 386);
-            this.ITEM_GROUP.Name = "ITEM_GROUP";
-            this.ITEM_GROUP.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_GROUP.TabIndex = 102;
-            // 
             // ITEM_LAST_MDFY
             // 
             this.ITEM_LAST_MDFY.Location = new System.Drawing.Point(139, 353);
@@ -773,6 +742,7 @@
             this.ITEM_QTY_REORDER_MIN.Name = "ITEM_QTY_REORDER_MIN";
             this.ITEM_QTY_REORDER_MIN.Size = new System.Drawing.Size(121, 23);
             this.ITEM_QTY_REORDER_MIN.TabIndex = 105;
+            this.ITEM_QTY_REORDER_MIN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_KeyPress);
             // 
             // ITEM_QTY_CNVR
             // 
@@ -780,6 +750,7 @@
             this.ITEM_QTY_CNVR.Name = "ITEM_QTY_CNVR";
             this.ITEM_QTY_CNVR.Size = new System.Drawing.Size(121, 23);
             this.ITEM_QTY_CNVR.TabIndex = 106;
+            this.ITEM_QTY_CNVR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_KeyPress);
             // 
             // ITEM_QTY_UNIT
             // 
@@ -787,6 +758,7 @@
             this.ITEM_QTY_UNIT.Name = "ITEM_QTY_UNIT";
             this.ITEM_QTY_UNIT.Size = new System.Drawing.Size(121, 23);
             this.ITEM_QTY_UNIT.TabIndex = 107;
+            this.ITEM_QTY_UNIT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_KeyPress);
             // 
             // ITEM_PROCS_YN
             // 
@@ -809,6 +781,7 @@
             this.ITEM_QTY_STND.Name = "ITEM_QTY_STND";
             this.ITEM_QTY_STND.Size = new System.Drawing.Size(121, 23);
             this.ITEM_QTY_STND.TabIndex = 110;
+            this.ITEM_QTY_STND.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_KeyPress);
             // 
             // ITEM_COM_DLVR
             // 
@@ -887,6 +860,7 @@
             this.ITEM_LEADTIME.Name = "ITEM_LEADTIME";
             this.ITEM_LEADTIME.Size = new System.Drawing.Size(121, 23);
             this.ITEM_LEADTIME.TabIndex = 120;
+            this.ITEM_LEADTIME.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_KeyPress);
             // 
             // ITEM_QTY_SAFE
             // 
@@ -894,6 +868,7 @@
             this.ITEM_QTY_SAFE.Name = "ITEM_QTY_SAFE";
             this.ITEM_QTY_SAFE.Size = new System.Drawing.Size(121, 23);
             this.ITEM_QTY_SAFE.TabIndex = 121;
+            this.ITEM_QTY_SAFE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_KeyPress);
             // 
             // ITEM_UNIT_CNVR
             // 
@@ -921,7 +896,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(56, 417);
+            this.label23.Location = new System.Drawing.Point(56, 385);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(31, 15);
             this.label23.TabIndex = 125;
@@ -932,7 +907,7 @@
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label25.Location = new System.Drawing.Point(32, 415);
+            this.label25.Location = new System.Drawing.Point(32, 383);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(17, 17);
             this.label25.TabIndex = 126;
@@ -966,7 +941,6 @@
             this.Controls.Add(this.ITEM_QTY_REORDER_MIN);
             this.Controls.Add(this.ITEM_CODE);
             this.Controls.Add(this.ITEM_LAST_MDFY);
-            this.Controls.Add(this.ITEM_GROUP);
             this.Controls.Add(this.ITEM_MANAGE_LEVEL);
             this.Controls.Add(this.ITEM_WRHS_IN);
             this.Controls.Add(this.ITEM_FREE_YN);
@@ -1017,9 +991,7 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label34);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label33);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label32);
             this.Controls.Add(this.label5);
@@ -1040,9 +1012,7 @@
             this.Controls.SetChildIndex(this.label5, 0);
             this.Controls.SetChildIndex(this.label32, 0);
             this.Controls.SetChildIndex(this.label6, 0);
-            this.Controls.SetChildIndex(this.label33, 0);
             this.Controls.SetChildIndex(this.label7, 0);
-            this.Controls.SetChildIndex(this.label34, 0);
             this.Controls.SetChildIndex(this.label8, 0);
             this.Controls.SetChildIndex(this.label9, 0);
             this.Controls.SetChildIndex(this.label10, 0);
@@ -1097,7 +1067,6 @@
             this.Controls.SetChildIndex(this.btnCancel, 0);
             this.Controls.SetChildIndex(this.ITEM_WRHS_IN, 0);
             this.Controls.SetChildIndex(this.ITEM_MANAGE_LEVEL, 0);
-            this.Controls.SetChildIndex(this.ITEM_GROUP, 0);
             this.Controls.SetChildIndex(this.ITEM_LAST_MDFY, 0);
             this.Controls.SetChildIndex(this.ITEM_CODE, 0);
             this.Controls.SetChildIndex(this.ITEM_QTY_REORDER_MIN, 0);
@@ -1149,8 +1118,6 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
@@ -1192,7 +1159,6 @@
         private System.Windows.Forms.ComboBox ITEM_FREE_YN;
         private System.Windows.Forms.ComboBox ITEM_WRHS_IN;
         private System.Windows.Forms.ComboBox ITEM_MANAGE_LEVEL;
-        private System.Windows.Forms.ComboBox ITEM_GROUP;
         private System.Windows.Forms.DateTimePicker ITEM_LAST_MDFY;
         private System.Windows.Forms.TextBox ITEM_CODE;
         private System.Windows.Forms.TextBox ITEM_QTY_REORDER_MIN;

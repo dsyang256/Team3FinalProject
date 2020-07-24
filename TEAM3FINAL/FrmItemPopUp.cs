@@ -90,9 +90,6 @@ namespace TEAM3FINAL
             var listDSCN_YN = (from item in Commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(ITEM_DSCN_YN, listDSCN_YN, "COMMON_CODE", "COMMON_NAME", "");
 
-            //대그룹
-            var listGROUP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(ITEM_GROUP, listGROUP, "COMMON_CODE", "COMMON_NAME", "");
 
         }
         private void text_KeyPress(object sender, KeyPressEventArgs e)

@@ -45,8 +45,8 @@ namespace TEAM3FINALDAC
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = new SqlConnection(this.ConnectionString);
-                    cmd.CommandText = $@"SELECT COM_CODE 'COMMON_CODE',COM_MANAGER 'COMMON_NAME', ('담당자')'COMMON_PARENT', null 'COMMON_SEQ'
-                                         FROM COMPANY
+                    cmd.CommandText = $@"SELECT MANAGER_ID 'COMMON_CODE',MANAGER_NAME 'COMMON_NAME', ('담당자')'COMMON_PARENT', null 'COMMON_SEQ'
+                                         FROM MANAGER
 
                                          Union
 
