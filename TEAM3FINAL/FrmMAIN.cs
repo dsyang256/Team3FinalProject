@@ -168,5 +168,10 @@ namespace TEAM3FINAL
         {
             FormUtil.OpenOrCreateForm<FrmSignup>(this);
         }
+
+        private void 품목관리ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormUtil.OpenOrCreateForm<FrmItem>(this);
+        }
     }
 }

@@ -417,6 +417,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.ClientSize = new System.Drawing.Size(1272, 574);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmItem";
             this.Load += new System.EventHandler(this.FrmItem_Load);
             this.panel1.ResumeLayout(false);

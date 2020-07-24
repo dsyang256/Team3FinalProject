@@ -22,19 +22,71 @@ namespace TEAM3FINAL
 
         private void FrmItem_Load(object sender, EventArgs e)
         {
-            cboset();
-
-            //FrmMain frm = (FrmMain)this.MdiParent;
-            //frm.eSave += Save;
-            //frm.eReset += Reset;
-            //frm.eDelete += Delete;
-            //frm.eUpdate += Update;
+            ComboBinding();
+            
+            FrmMAIN frm = (FrmMAIN)this.MdiParent;
+            frm.eSearch += Search;
+            frm.eInsert += Insert;
+            frm.eUpdate += Update;
+            frm.eDelete += Delete;
+            frm.ePrint += Print;
             DataGridViewColumnSet();
             dgvitem.DataSource = item.AllITEM();
 
         }
 
-        private void cboset()
+        private void Insert(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                FrmItemPopUp frm = new FrmItemPopUp();
+                if(frm.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
+        }
+        private void Update(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+            }
+        }
+        private void Delete(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+            }
+        }
+        private void Print(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+            }
+         }
+        private void Search(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                ITEM_VO vo = new ITEM_VO();
+                vo.ITEM_NAME = ITEM_NAME.Text;
+                vo.ITEM_STND = ITEM_STND.Text;
+                vo.ITEM_COM_REORDER = ITEM_COM_REORDER.Text;
+                vo.ITEM_COM_DLVR = ITEM_COM_DLVR.Text;
+                vo.ITEM_WRHS_IN = ITEM_WRHS_IN.Text;
+                vo.ITEM_WRHS_OUT = ITEM_WRHS_OUT.Text;
+                vo.ITEM_MANAGER = ITEM_MANAGER.Text;
+                vo.ITEM_TYP = ITEM_TYP.Text;
+                vo.ITEM_USE_YN = ITEM_USE_YN.Text;
+
+                dgvitem.DataSource = null;
+                dgvitem.DataSource = item.GetSearchItem(vo);
+            }
+        }
+        /// <summary>
+        /// 콤보 박스 바인딩
+        /// </summary>
+        private void ComboBinding()
         {
             ComboItemService service = new ComboItemService();
             List<ComboItemVO> Commonlist = service.GetITEMCmCode();
@@ -72,7 +124,6 @@ namespace TEAM3FINAL
 
 
         }
-
         /// <summary>
         /// 데이터 그리드뷰 컬럼+체크박스 만들기
         /// </summary>
@@ -133,26 +184,6 @@ namespace TEAM3FINAL
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Search(object sender, EventArgs e)
-        {
-            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
-            {
-                ITEM_VO vo = new ITEM_VO();
-                vo.ITEM_NAME = ITEM_NAME.Text;
-                vo.ITEM_STND = ITEM_STND.Text;
-                vo.ITEM_COM_REORDER = ITEM_COM_REORDER.Text;
-                vo.ITEM_COM_DLVR = ITEM_COM_DLVR.Text;
-                vo.ITEM_WRHS_IN = ITEM_WRHS_IN.Text;
-                vo.ITEM_WRHS_OUT = ITEM_WRHS_OUT.Text;
-                vo.ITEM_MANAGER = ITEM_MANAGER.Text;
-                vo.ITEM_TYP = ITEM_TYP.Text;
-                vo.ITEM_USE_YN = ITEM_USE_YN.Text;
-
-                dgvitem.DataSource = null;
-                dgvitem.DataSource = item.GetSearchItem(vo);
-            }
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             ITEM_VO vo = new ITEM_VO();

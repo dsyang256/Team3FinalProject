@@ -112,6 +112,7 @@
             this.ITEM_DSCN_YN = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -125,13 +126,22 @@
             this.label2.Location = new System.Drawing.Point(12, 542);
             this.label2.Visible = false;
             // 
+            // btnOK
+            // 
+            this.btnOK.TabIndex = 28;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.TabIndex = 29;
+            // 
             // ITEM_REMARK
             // 
             this.ITEM_REMARK.Location = new System.Drawing.Point(139, 385);
             this.ITEM_REMARK.Multiline = true;
             this.ITEM_REMARK.Name = "ITEM_REMARK";
-            this.ITEM_REMARK.Size = new System.Drawing.Size(615, 64);
-            this.ITEM_REMARK.TabIndex = 56;
+            this.ITEM_REMARK.Size = new System.Drawing.Size(615, 95);
+            this.ITEM_REMARK.TabIndex = 27;
             // 
             // label27
             // 
@@ -688,7 +698,7 @@
             this.ITEM_UNIT.Location = new System.Drawing.Point(139, 122);
             this.ITEM_UNIT.Name = "ITEM_UNIT";
             this.ITEM_UNIT.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_UNIT.TabIndex = 97;
+            this.ITEM_UNIT.TabIndex = 3;
             // 
             // ITEM_INCOME_YN
             // 
@@ -696,7 +706,7 @@
             this.ITEM_INCOME_YN.Location = new System.Drawing.Point(139, 155);
             this.ITEM_INCOME_YN.Name = "ITEM_INCOME_YN";
             this.ITEM_INCOME_YN.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_INCOME_YN.TabIndex = 98;
+            this.ITEM_INCOME_YN.TabIndex = 6;
             // 
             // ITEM_FREE_YN
             // 
@@ -704,7 +714,7 @@
             this.ITEM_FREE_YN.Location = new System.Drawing.Point(139, 188);
             this.ITEM_FREE_YN.Name = "ITEM_FREE_YN";
             this.ITEM_FREE_YN.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_FREE_YN.TabIndex = 99;
+            this.ITEM_FREE_YN.TabIndex = 9;
             // 
             // ITEM_WRHS_IN
             // 
@@ -712,7 +722,7 @@
             this.ITEM_WRHS_IN.Location = new System.Drawing.Point(139, 221);
             this.ITEM_WRHS_IN.Name = "ITEM_WRHS_IN";
             this.ITEM_WRHS_IN.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_WRHS_IN.TabIndex = 100;
+            this.ITEM_WRHS_IN.TabIndex = 12;
             // 
             // ITEM_MANAGE_LEVEL
             // 
@@ -720,44 +730,47 @@
             this.ITEM_MANAGE_LEVEL.Location = new System.Drawing.Point(139, 287);
             this.ITEM_MANAGE_LEVEL.Name = "ITEM_MANAGE_LEVEL";
             this.ITEM_MANAGE_LEVEL.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_MANAGE_LEVEL.TabIndex = 101;
+            this.ITEM_MANAGE_LEVEL.TabIndex = 18;
             // 
             // ITEM_LAST_MDFY
             // 
             this.ITEM_LAST_MDFY.Location = new System.Drawing.Point(139, 353);
             this.ITEM_LAST_MDFY.Name = "ITEM_LAST_MDFY";
             this.ITEM_LAST_MDFY.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_LAST_MDFY.TabIndex = 103;
+            this.ITEM_LAST_MDFY.TabIndex = 24;
             // 
             // ITEM_CODE
             // 
             this.ITEM_CODE.Location = new System.Drawing.Point(139, 89);
             this.ITEM_CODE.Name = "ITEM_CODE";
             this.ITEM_CODE.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_CODE.TabIndex = 104;
+            this.ITEM_CODE.TabIndex = 0;
             // 
             // ITEM_QTY_REORDER_MIN
             // 
             this.ITEM_QTY_REORDER_MIN.Location = new System.Drawing.Point(139, 254);
+            this.ITEM_QTY_REORDER_MIN.MaxLength = 10;
             this.ITEM_QTY_REORDER_MIN.Name = "ITEM_QTY_REORDER_MIN";
             this.ITEM_QTY_REORDER_MIN.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_QTY_REORDER_MIN.TabIndex = 105;
+            this.ITEM_QTY_REORDER_MIN.TabIndex = 15;
             this.ITEM_QTY_REORDER_MIN.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_KeyPress);
             // 
             // ITEM_QTY_CNVR
             // 
             this.ITEM_QTY_CNVR.Location = new System.Drawing.Point(139, 320);
+            this.ITEM_QTY_CNVR.MaxLength = 10;
             this.ITEM_QTY_CNVR.Name = "ITEM_QTY_CNVR";
             this.ITEM_QTY_CNVR.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_QTY_CNVR.TabIndex = 106;
+            this.ITEM_QTY_CNVR.TabIndex = 21;
             this.ITEM_QTY_CNVR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_KeyPress);
             // 
             // ITEM_QTY_UNIT
             // 
             this.ITEM_QTY_UNIT.Location = new System.Drawing.Point(383, 122);
+            this.ITEM_QTY_UNIT.MaxLength = 10;
             this.ITEM_QTY_UNIT.Name = "ITEM_QTY_UNIT";
             this.ITEM_QTY_UNIT.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_QTY_UNIT.TabIndex = 107;
+            this.ITEM_QTY_UNIT.TabIndex = 4;
             this.ITEM_QTY_UNIT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_KeyPress);
             // 
             // ITEM_PROCS_YN
@@ -766,21 +779,22 @@
             this.ITEM_PROCS_YN.Location = new System.Drawing.Point(383, 154);
             this.ITEM_PROCS_YN.Name = "ITEM_PROCS_YN";
             this.ITEM_PROCS_YN.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_PROCS_YN.TabIndex = 108;
+            this.ITEM_PROCS_YN.TabIndex = 7;
             // 
             // ITEM_NAME
             // 
             this.ITEM_NAME.Location = new System.Drawing.Point(383, 88);
             this.ITEM_NAME.Name = "ITEM_NAME";
             this.ITEM_NAME.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_NAME.TabIndex = 109;
+            this.ITEM_NAME.TabIndex = 1;
             // 
             // ITEM_QTY_STND
             // 
             this.ITEM_QTY_STND.Location = new System.Drawing.Point(383, 253);
+            this.ITEM_QTY_STND.MaxLength = 10;
             this.ITEM_QTY_STND.Name = "ITEM_QTY_STND";
             this.ITEM_QTY_STND.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_QTY_STND.TabIndex = 110;
+            this.ITEM_QTY_STND.TabIndex = 16;
             this.ITEM_QTY_STND.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_KeyPress);
             // 
             // ITEM_COM_DLVR
@@ -789,7 +803,7 @@
             this.ITEM_COM_DLVR.Location = new System.Drawing.Point(383, 188);
             this.ITEM_COM_DLVR.Name = "ITEM_COM_DLVR";
             this.ITEM_COM_DLVR.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_COM_DLVR.TabIndex = 111;
+            this.ITEM_COM_DLVR.TabIndex = 10;
             // 
             // ITEM_WRHS_OUT
             // 
@@ -797,7 +811,7 @@
             this.ITEM_WRHS_OUT.Location = new System.Drawing.Point(383, 220);
             this.ITEM_WRHS_OUT.Name = "ITEM_WRHS_OUT";
             this.ITEM_WRHS_OUT.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_WRHS_OUT.TabIndex = 112;
+            this.ITEM_WRHS_OUT.TabIndex = 13;
             // 
             // ITEM_MANAGER
             // 
@@ -805,7 +819,7 @@
             this.ITEM_MANAGER.Location = new System.Drawing.Point(383, 287);
             this.ITEM_MANAGER.Name = "ITEM_MANAGER";
             this.ITEM_MANAGER.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_MANAGER.TabIndex = 113;
+            this.ITEM_MANAGER.TabIndex = 19;
             // 
             // ITEM_USE_YN
             // 
@@ -813,7 +827,7 @@
             this.ITEM_USE_YN.Location = new System.Drawing.Point(383, 320);
             this.ITEM_USE_YN.Name = "ITEM_USE_YN";
             this.ITEM_USE_YN.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_USE_YN.TabIndex = 114;
+            this.ITEM_USE_YN.TabIndex = 22;
             // 
             // ITEM_REORDER_TYP
             // 
@@ -821,14 +835,15 @@
             this.ITEM_REORDER_TYP.Location = new System.Drawing.Point(383, 352);
             this.ITEM_REORDER_TYP.Name = "ITEM_REORDER_TYP";
             this.ITEM_REORDER_TYP.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_REORDER_TYP.TabIndex = 115;
+            this.ITEM_REORDER_TYP.TabIndex = 25;
             // 
             // ITEM_STND
             // 
             this.ITEM_STND.Location = new System.Drawing.Point(633, 89);
+            this.ITEM_STND.MaxLength = 20;
             this.ITEM_STND.Name = "ITEM_STND";
             this.ITEM_STND.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_STND.TabIndex = 116;
+            this.ITEM_STND.TabIndex = 2;
             // 
             // ITEM_XPORT_YN
             // 
@@ -836,7 +851,7 @@
             this.ITEM_XPORT_YN.Location = new System.Drawing.Point(633, 155);
             this.ITEM_XPORT_YN.Name = "ITEM_XPORT_YN";
             this.ITEM_XPORT_YN.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_XPORT_YN.TabIndex = 117;
+            this.ITEM_XPORT_YN.TabIndex = 8;
             // 
             // ITEM_TYP
             // 
@@ -844,7 +859,7 @@
             this.ITEM_TYP.Location = new System.Drawing.Point(633, 121);
             this.ITEM_TYP.Name = "ITEM_TYP";
             this.ITEM_TYP.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_TYP.TabIndex = 118;
+            this.ITEM_TYP.TabIndex = 5;
             // 
             // ITEM_COM_REORDER
             // 
@@ -852,22 +867,24 @@
             this.ITEM_COM_REORDER.Location = new System.Drawing.Point(633, 188);
             this.ITEM_COM_REORDER.Name = "ITEM_COM_REORDER";
             this.ITEM_COM_REORDER.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_COM_REORDER.TabIndex = 119;
+            this.ITEM_COM_REORDER.TabIndex = 11;
             // 
             // ITEM_LEADTIME
             // 
             this.ITEM_LEADTIME.Location = new System.Drawing.Point(633, 220);
+            this.ITEM_LEADTIME.MaxLength = 10;
             this.ITEM_LEADTIME.Name = "ITEM_LEADTIME";
             this.ITEM_LEADTIME.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_LEADTIME.TabIndex = 120;
+            this.ITEM_LEADTIME.TabIndex = 14;
             this.ITEM_LEADTIME.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_KeyPress);
             // 
             // ITEM_QTY_SAFE
             // 
             this.ITEM_QTY_SAFE.Location = new System.Drawing.Point(633, 254);
+            this.ITEM_QTY_SAFE.MaxLength = 10;
             this.ITEM_QTY_SAFE.Name = "ITEM_QTY_SAFE";
             this.ITEM_QTY_SAFE.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_QTY_SAFE.TabIndex = 121;
+            this.ITEM_QTY_SAFE.TabIndex = 17;
             this.ITEM_QTY_SAFE.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_KeyPress);
             // 
             // ITEM_UNIT_CNVR
@@ -876,14 +893,14 @@
             this.ITEM_UNIT_CNVR.Location = new System.Drawing.Point(633, 287);
             this.ITEM_UNIT_CNVR.Name = "ITEM_UNIT_CNVR";
             this.ITEM_UNIT_CNVR.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_UNIT_CNVR.TabIndex = 122;
+            this.ITEM_UNIT_CNVR.TabIndex = 20;
             // 
             // ITEM_LAST_MDFR
             // 
             this.ITEM_LAST_MDFR.Location = new System.Drawing.Point(633, 319);
             this.ITEM_LAST_MDFR.Name = "ITEM_LAST_MDFR";
             this.ITEM_LAST_MDFR.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_LAST_MDFR.TabIndex = 123;
+            this.ITEM_LAST_MDFR.TabIndex = 23;
             // 
             // ITEM_DSCN_YN
             // 
@@ -891,7 +908,7 @@
             this.ITEM_DSCN_YN.Location = new System.Drawing.Point(633, 352);
             this.ITEM_DSCN_YN.Name = "ITEM_DSCN_YN";
             this.ITEM_DSCN_YN.Size = new System.Drawing.Size(121, 23);
-            this.ITEM_DSCN_YN.TabIndex = 124;
+            this.ITEM_DSCN_YN.TabIndex = 26;
             // 
             // label23
             // 
@@ -912,6 +929,14 @@
             this.label25.Size = new System.Drawing.Size(17, 17);
             this.label25.TabIndex = 126;
             this.label25.Text = "*";
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Location = new System.Drawing.Point(5, 73);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(790, 428);
+            this.panel2.TabIndex = 127;
             // 
             // FrmItemPopUp
             // 
@@ -1001,8 +1026,10 @@
             this.Controls.Add(this.label29);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.panel2);
             this.Name = "FrmItemPopUp";
             this.Load += new System.EventHandler(this.FrmItemPopUp_Load);
+            this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.label11, 0);
             this.Controls.SetChildIndex(this.label29, 0);
@@ -1183,5 +1210,6 @@
         private System.Windows.Forms.ComboBox ITEM_DSCN_YN;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Panel panel2;
     }
 }

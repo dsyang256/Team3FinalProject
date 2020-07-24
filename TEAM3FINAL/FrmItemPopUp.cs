@@ -100,5 +100,61 @@ namespace TEAM3FINAL
                 e.Handled = true;
             }
         }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            if(ITEM_CODE.Text.Length < 4)
+            {
+                MessageBox.Show("품목은 4자리 이상 입력해주세여야 됨니다.");
+                return;
+            }
+            if(ITEM_NAME.Text.Length <1 || ITEM_UNIT.Text.Length<1|| ITEM_TYP.Text.Length<1|| ITEM_INCOME_YN.Text.Length<1|| ITEM_PROCS_YN.Text.Length<1|| ITEM_XPORT_YN.Text.Length<1|| ITEM_USE_YN.Text.Length<1)
+            {
+                MessageBox.Show("필수 입력사항을 입력해주세요.");
+                return;
+            }
+            ITEM_VO vo = new ITEM_VO();
+            vo.ITEM_CODE = ITEM_CODE.Text;
+            vo.ITEM_NAME = ITEM_NAME.Text;
+            vo.ITEM_STND = ITEM_STND.Text;
+            vo.ITEM_UNIT = ITEM_UNIT.Text;
+            vo.ITEM_QTY_UNIT = (ITEM_QTY_UNIT.Text.Length < 1) ? 0 : int.Parse(ITEM_QTY_UNIT.Text);
+            vo.ITEM_TYP = ITEM_TYP.Text;
+            vo.ITEM_INCOME_YN = ITEM_INCOME_YN.Text;
+            vo.ITEM_PROCS_YN = ITEM_PROCS_YN.Text;
+            vo.ITEM_XPORT_YN = ITEM_XPORT_YN.Text;
+            vo.ITEM_FREE_YN = ITEM_FREE_YN.Text;
+            vo.ITEM_COM_DLVR = ITEM_COM_DLVR.Text;
+            vo.ITEM_COM_REORDER = ITEM_COM_REORDER.Text;
+            vo.ITEM_WRHS_IN = ITEM_WRHS_IN.Text;
+            vo.ITEM_WRHS_OUT = ITEM_WRHS_OUT.Text;
+            vo.ITEM_LEADTIME = (ITEM_LEADTIME.Text.Length < 1) ? 0 : int.Parse(ITEM_LEADTIME.Text);
+            vo.ITEM_QTY_REORDER_MIN = (ITEM_QTY_REORDER_MIN.Text.Length < 1) ? 0 : int.Parse(ITEM_QTY_REORDER_MIN.Text);
+            vo.ITEM_QTY_STND = (ITEM_QTY_STND.Text.Length < 1) ? 0 : int.Parse(ITEM_QTY_STND.Text);
+            vo.ITEM_QTY_SAFE = (ITEM_QTY_SAFE.Text.Length < 1) ? 0 : int.Parse(ITEM_QTY_SAFE.Text);
+            vo.ITEM_MANAGE_LEVEL = ITEM_MANAGE_LEVEL.Text;
+            vo.ITEM_MANAGER = ITEM_MANAGER.Text;
+            vo.ITEM_UNIT_CNVR = ITEM_UNIT_CNVR.Text;
+            vo.ITEM_QTY_CNVR = (ITEM_QTY_CNVR.Text.Length < 1) ? 0 : int.Parse(ITEM_QTY_CNVR.Text);
+            vo.ITEM_LAST_MDFR = ITEM_LAST_MDFR.Text;
+            vo.ITEM_LAST_MDFY = ITEM_LAST_MDFY.Value.ToShortDateString();
+            vo.ITEM_USE_YN = ITEM_USE_YN.Text;
+            vo.ITEM_DSCN_YN = ITEM_DSCN_YN.Text;
+            vo.ITEM_REORDER_TYP = ITEM_REORDER_TYP.Text;
+            vo.ITEM_REMARK = ITEM_REMARK.Text;
+            ItemServicecs item = new ItemServicecs();
+            string result = item.SaveItem(vo, 0);
+            if (result == "C200")
+            {
+                MessageBox.Show("성공적으로 입력되었습니다.");
+                btnOK.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else if(result == "C201")
+            {
+                MessageBox.Show("품목이 중복되었습니다. 다시 입력해주세요");
+            }
+
+        }
     }
 }
