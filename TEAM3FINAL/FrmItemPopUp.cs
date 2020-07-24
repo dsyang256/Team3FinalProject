@@ -19,9 +19,9 @@ namespace TEAM3FINAL
 
         private void FrmItemPopUp_Load(object sender, EventArgs e)
         {
-
+            ComboBinding();
         }
-        private void cboset()
+        private void ComboBinding()
         {
             ComboItemService service = new ComboItemService();
             List<ComboItemVO> Commonlist = service.GetITEMCmCode();

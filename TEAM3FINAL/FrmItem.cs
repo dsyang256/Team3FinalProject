@@ -40,69 +40,35 @@ namespace TEAM3FINAL
             List<ComboItemVO> Commonlist = service.GetITEMCmCode();
 
 
-            //단위
+            //발주업체
             var listCOM_REORDER = (from item in Commonlist where item.COMMON_PARENT == "업체명" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(ITEM_COM_REORDER, listCOM_REORDER, "COMMON_CODE", "COMMON_NAME", "");
 
-            //품목유형
+            //납품유형
             var listCOM_DLVR = (from item in Commonlist where item.COMMON_PARENT == "업체명" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(ITEM_COM_DLVR, listCOM_DLVR, "COMMON_CODE", "COMMON_NAME", "");
 
-            //수입검사여부
+            //입고창고
             var listWRHS_IN = (from item in Commonlist where item.COMMON_PARENT == "창고" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(ITEM_WRHS_IN, listWRHS_IN, "COMMON_CODE", "COMMON_NAME", "");
 
-            //공정검사여부
+            //출고창고
             var listWRHS_OUT = (from item in Commonlist where item.COMMON_PARENT == "창고" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(ITEM_WRHS_OUT, listWRHS_OUT, "COMMON_CODE", "COMMON_NAME", "");
 
-            //출하검사여부
+            //담당자
             var listMANAGER = (from item in Commonlist where item.COMMON_PARENT == "담당자" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(ITEM_MANAGER, listMANAGER, "COMMON_CODE", "COMMON_NAME", "");
 
-            //유무상구분
+            //사용여부
             var listYN = (from item in Commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(ITEM_USE_YN, listYN, "COMMON_CODE", "COMMON_NAME", "");
 
-            //납품업체
+            //품목유형
             var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
 
-            ////발주업체
-            //var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
-            //CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
 
-            ////입고창고
-            //var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
-            //CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
-
-            ////출고창고
-            //var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
-            //CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
-
-            ////관리등급
-            //var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
-            //CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
-
-            ////담당자
-            //var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
-            //CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
-
-            ////환산단위
-            //var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
-            //CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
-
-            ////사용유무
-            //var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
-            //CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
-
-            ////단종유무
-            //var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
-            //CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
-
-            ////대그룹
-            //var listTYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
-            //CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
 
 
         }
