@@ -52,6 +52,7 @@ namespace TEAM3FINAL
         private void GetFactoryInfo()
         {
             FactoryService service = new FactoryService();
+            dgvFactoryList.DataSource = null;
             dgvFactoryList.DataSource = service.GetFactoryInfo();
         }
 
@@ -82,7 +83,6 @@ namespace TEAM3FINAL
                 frm.ShowDialog();
                 if(frm.DialogResult == DialogResult.OK)
                 {
-                    DataGridViewColumnSet();
                     GetFactoryInfo();
                 }
             }
@@ -148,7 +148,6 @@ namespace TEAM3FINAL
                     if (service.DeleteFactory("FACTORY", "FAC_CODE", sb) == "C200")
                     {
                         MessageBox.Show("삭제 완료");
-                        DataGridViewColumnSet();
                         GetFactoryInfo();
                     }
                 }          
