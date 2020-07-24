@@ -22,7 +22,6 @@ namespace TEAM3FINAL
 
         private void FrmItem_Load(object sender, EventArgs e)
         {
-            ComboBinding();
             
             FrmMAIN frm = (FrmMAIN)this.MdiParent;
             frm.eSearch += Search;
@@ -30,8 +29,9 @@ namespace TEAM3FINAL
             frm.eUpdate += Update;
             frm.eDelete += Delete;
             frm.ePrint += Print;
+            ComboBinding();
             DataGridViewColumnSet();
-            dgvitem.DataSource = item.AllITEM();
+            
 
         }
 
@@ -42,7 +42,7 @@ namespace TEAM3FINAL
                 FrmItemPopUp frm = new FrmItemPopUp();
                 if(frm.ShowDialog() == DialogResult.OK)
                 {
-
+                    Search(null, null);
                 }
             }
         }
@@ -56,6 +56,33 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
+                dgvitem.EndEdit();
+                StringBuilder sb = new StringBuilder();
+                int cnt = 0;
+                //품목 선택후 List를 전달
+                foreach (DataGridViewRow item in dgvitem.Rows)
+                {
+                    if (Convert.ToBoolean(item.Cells[1].Value))
+                    {
+                        sb.Append(item.Cells[3].Value.ToString() + "@");
+                        cnt++;
+                    }
+                }
+                if (sb.Length < 1)
+                {
+                    MessageBox.Show("삭제할 항목을 선택하여 주십시오.");
+                    return;
+                }
+                sb.Remove(sb.Length - 1, 1);
+                if (MessageBox.Show($"총 {cnt}개의 항목을 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    ItemServicecs service = new ItemServicecs();
+                    if (service.DeleteItem("ITEM", "ITEM_CODE", sb))
+                    {
+                        MessageBox.Show("삭제 완료");
+                        DataGridViewColumnSet();
+                    }
+                }
             }
         }
         private void Print(object sender, EventArgs e)
@@ -64,6 +91,11 @@ namespace TEAM3FINAL
             {
             }
          }
+        /// <summary>
+        /// 조회 버튼 이벤드
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Search(object sender, EventArgs e)
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
@@ -148,6 +180,7 @@ namespace TEAM3FINAL
             Util.AddNewColumnToDataGridView(dgvitem, "납품업체", "ITEM_COM_DLVR", true, 100);
             Util.AddNewColumnToDataGridView(dgvitem, "발주업체", "ITEM_COM_REORDER", true, 100);
             DataGridViewCheckBoxAllCheck();
+            dgvitem.DataSource = item.AllITEM();
 
         }
         /// <summary>
@@ -179,26 +212,7 @@ namespace TEAM3FINAL
                 chk.Value = headerChk.Checked;
             }
         }
-        /// <summary>
-        /// 조회 버튼 이벤드
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ITEM_VO vo = new ITEM_VO();
-            vo.ITEM_NAME = ITEM_NAME.Text;
-            vo.ITEM_STND = ITEM_STND.Text;
-            vo.ITEM_COM_REORDER = ITEM_COM_REORDER.Text;
-            vo.ITEM_COM_DLVR = ITEM_COM_DLVR.Text;
-            vo.ITEM_WRHS_IN = ITEM_WRHS_IN.Text;
-            vo.ITEM_WRHS_OUT = ITEM_WRHS_OUT.Text;
-            vo.ITEM_MANAGER = ITEM_MANAGER.Text;
-            vo.ITEM_TYP = ITEM_TYP.Text;
-            vo.ITEM_USE_YN = ITEM_USE_YN.Text;
-
-            dgvitem.DataSource = null;
-            dgvitem.DataSource = item.GetSearchItem(vo);
-        }
+        
+        
     }
 }

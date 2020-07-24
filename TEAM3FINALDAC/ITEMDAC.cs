@@ -37,6 +37,23 @@ namespace TEAM3FINALDAC
             }
             
         }
+
+        public bool DeleteItem(string table, string pkCode, StringBuilder appendCode)
+        {
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = new SqlConnection(this.ConnectionString);
+                cmd.CommandText = @"delete from @table 
+                                     where @pkCode IN(SELECT * FROM[dbo].[SplitString](@appendCode, '@'))";
+                cmd.Parameters.AddWithValue("@table", table);
+                cmd.Parameters.AddWithValue("@pkCode", pkCode);
+                cmd.Parameters.AddWithValue("@appendCode", appendCode.ToString());
+                cmd.Connection.Open();
+                int iResult = cmd.ExecuteNonQuery();
+                return (iResult > 0) ? true : false;
+            }
+        }
+
         public string SaveItem(ITEM_VO vo,int code)
         {
             string result;
