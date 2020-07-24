@@ -29,7 +29,7 @@ namespace TEAM3FINAL
         public string FAC_LAST_MDFY { get; set; } //수정날짜 DB getdate 사용
         public string FAC_USE_YN { get; set; } //사용유무*
         public string FAC_DESC { get; set; } //시설설명
-        public string COM_CODE { get; set; }
+        public string COM_CODE { get; set; } //업체코드
         #endregion
         public FrmFactoryPopUp()
         {
@@ -38,7 +38,8 @@ namespace TEAM3FINAL
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if(cboCategory.Text == "" || txtCode.Text == "" || cboType.Text == "" || cboParent.Text == "" ||
+            #region 공장등록
+            if (cboCategory.Text == "" || txtCode.Text == "" || cboType.Text == "" || cboParent.Text == "" ||
                 txtName.Text == "" || cboUseYN.Text == "")
             {
                 MessageBox.Show("필수정보 입력 필요");
@@ -80,10 +81,12 @@ namespace TEAM3FINAL
                 MessageBox.Show("실패");
                 return;
             }
+            #endregion
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            Update = false;
             this.Close();
         }
 
@@ -92,7 +95,14 @@ namespace TEAM3FINAL
             if(Update)
             {
                 txtCode.Enabled = false;
-
+                cboCategory.Text = FAC_FCLTY;
+                txtCode.Text = FAC_CODE;
+                cboType.Text = FAC_TYP;
+                txtSort.Text = FAC_TYP_SORT.ToString();
+                cboDemandYN.Text = FAC_DEMAND_YN;
+                cboMtrlYN.Text = FAC_MTRL_YN;
+                txtDesc.Text = FAC_DESC;
+                cboParent.Text = FAC_FCLTY_PARENT;
             }
         }
     }
