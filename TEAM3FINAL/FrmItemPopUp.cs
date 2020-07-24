@@ -148,7 +148,7 @@ namespace TEAM3FINAL
             {
                 MessageBox.Show("성공적으로 입력되었습니다.");
                 btnOK.DialogResult = DialogResult.OK;
-                this.Close();
+                //this.Close();
             }
             else if(result == "C201")
             {
