@@ -173,5 +173,13 @@ namespace TEAM3FINAL
         {
             FormUtil.OpenOrCreateForm<FrmItem>(this);
         }
+
+        private void tabForms_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(tabForms.SelectedTab != null && tabForms.SelectedTab.Tag != null)
+            {
+                (tabForms.SelectedTab.Tag as Form).Select();
+            }
+        }
     }
 }
