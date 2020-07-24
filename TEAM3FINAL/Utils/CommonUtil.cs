@@ -12,7 +12,8 @@ namespace TEAM3FINAL
     {
         #region comboBox 바인딩 관련
         public static void ComboBinding(ComboBox combo, List<ComboItemVO> list)
-        {            
+        {
+            combo.DropDownStyle = ComboBoxStyle.DropDownList;
             combo.ValueMember = "COMMON_CODE";
             combo.DisplayMember = "COMMON_CODE_NAME";
             combo.DataSource = list;
@@ -24,6 +25,7 @@ namespace TEAM3FINAL
                 list = new List<ComboItemVO>();
 
             list.Insert(0, new ComboItemVO(blankText));
+            combo.DropDownStyle = ComboBoxStyle.DropDownList;
             combo.ValueMember = "COMMON_CODE";
             combo.DisplayMember = "COMMON_CODE_NAME";
             combo.DataSource = list;
@@ -33,7 +35,8 @@ namespace TEAM3FINAL
         {
             if (list == null)
                 list = new List<T>();
-            
+
+            combo.DropDownStyle = ComboBoxStyle.DropDownList;
             combo.DataSource = list;
             combo.DisplayMember = CodeNm;
             combo.ValueMember = Code;
@@ -47,7 +50,7 @@ namespace TEAM3FINAL
             T blankItem = new T();
             blankItem.GetType().GetProperty(CodeNm).SetValue(blankItem, blankText);
             list.Insert(0, blankItem);
-
+            combo.DropDownStyle = ComboBoxStyle.DropDownList;
             combo.DataSource = list;
             combo.DisplayMember = CodeNm;
             combo.ValueMember = Code;

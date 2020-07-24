@@ -78,7 +78,10 @@ namespace TEAM3FINAL
                 ptxtPswd.Clear();
                 return;
             }
-
+            else
+            {
+                this.Close();
+            }
             ////로그인 정보 저장 (userConfig)
             //SaveUserConfig(userID, password, ckbLoginSave);
             ////로그인 정보 저장  (전역변수)
@@ -86,8 +89,6 @@ namespace TEAM3FINAL
             //    SetLoginInfo(service.GetCustomerInfo(userID));
             //else
             //    SetLoginInfo(service.GetManagerInfo(userID));
-            this.DialogResult = DialogResult.OK;
-            this.Close();
         }
 
         /// <summary>
@@ -138,16 +139,6 @@ namespace TEAM3FINAL
 
             FrmSignup frm = new FrmSignup();
             frm.ShowDialog();
-            if (frm.DialogResult == DialogResult.OK)
-            {
-
-                //등록 확인 메시지
-                if (LoginInfo.UserInfo.LI_ID != null)
-                {
-                    MessageBox.Show("수정 되었습니다.", "품목 수정", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-
         }
 
         #endregion

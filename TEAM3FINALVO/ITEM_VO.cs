@@ -35,7 +35,6 @@ namespace TEAM3FINALVO
         public string ITEM_LAST_MDFY { get; set; }
         public string ITEM_USE_YN { get; set; }
         public string ITEM_DSCN_YN { get; set; }
-        public string ITEM_GROUP { get; set; }
         public string ITEM_REORDER_TYP { get; set; }
         public string ITEM_REMARK { get; set; }
     }

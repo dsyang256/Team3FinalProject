@@ -36,6 +36,46 @@ namespace TEAM3FINALDAC
             }
             return list;
         }
+        public List<ComboItemVO> GetITEMCmCode()
+        {
+            List<ComboItemVO> list = default;
+
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = $@"SELECT MANAGER_ID 'COMMON_CODE',MANAGER_NAME 'COMMON_NAME', ('담당자')'COMMON_PARENT', null 'COMMON_SEQ'
+                                         FROM MANAGER
+
+                                         Union
+
+                                         SELECT COM_CODE 'COMMON_CODE',COM_NAME 'COMMON_NAME', ('업체명')'COMMON_PARENT', null 'COMMON_SEQ'
+                                         FROM COMPANY
+
+                                         Union
+
+                                         SELECT COMMON_CODE, COMMON_NAME, COMMON_PARENT, COMMON_SEQ
+                                         FROM COMMON
+
+                                         Union
+
+                                         SELECT FAC_CODE 'COMMON_CODE',FAC_NAME 'COMMON_NAME', ('창고')'COMMON_PARENT', null 'COMMON_SEQ'
+                                          FROM FACTORY
+                                         WHERE FAC_TYP = '창고'";
+
+                    cmd.Connection.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    list = Helper.DataReaderMapToList<ComboItemVO>(reader);
+                    cmd.Connection.Close();
+                }
+            }
+            catch (Exception err)
+            {
+                string msg = err.Message;
+            }
+            return list;
+        }
         /*
         public int InsertOrUpdateCmCode(ComboItemVO combo)
         {

@@ -46,10 +46,12 @@
             this.test용입니다ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.로그인ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.로그인ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.회원가입ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.자원관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.공장관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.품목관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.회원가입ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.품목관리ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bOM관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -202,6 +204,13 @@
             this.로그인ToolStripMenuItem1.Text = "로그인";
             this.로그인ToolStripMenuItem1.Click += new System.EventHandler(this.로그인ToolStripMenuItem1_Click);
             // 
+            // 회원가입ToolStripMenuItem
+            // 
+            this.회원가입ToolStripMenuItem.Name = "회원가입ToolStripMenuItem";
+            this.회원가입ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.회원가입ToolStripMenuItem.Text = "회원가입";
+            this.회원가입ToolStripMenuItem.Click += new System.EventHandler(this.회원가입ToolStripMenuItem_Click);
+            // 
             // 자원관리ToolStripMenuItem
             // 
             this.자원관리ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -213,22 +222,31 @@
             // 공장관리ToolStripMenuItem
             // 
             this.공장관리ToolStripMenuItem.Name = "공장관리ToolStripMenuItem";
-            this.공장관리ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.공장관리ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.공장관리ToolStripMenuItem.Text = "공장관리";
             this.공장관리ToolStripMenuItem.Click += new System.EventHandler(this.공장관리ToolStripMenuItem_Click);
             // 
             // 품목관리ToolStripMenuItem
             // 
+            this.품목관리ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.품목관리ToolStripMenuItem1,
+            this.bOM관리ToolStripMenuItem});
             this.품목관리ToolStripMenuItem.Name = "품목관리ToolStripMenuItem";
             this.품목관리ToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.품목관리ToolStripMenuItem.Text = "품목관리";
             // 
-            // 회원가입ToolStripMenuItem
+            // 품목관리ToolStripMenuItem1
             // 
-            this.회원가입ToolStripMenuItem.Name = "회원가입ToolStripMenuItem";
-            this.회원가입ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.회원가입ToolStripMenuItem.Text = "회원가입";
-            this.회원가입ToolStripMenuItem.Click += new System.EventHandler(this.회원가입ToolStripMenuItem_Click);
+            this.품목관리ToolStripMenuItem1.Name = "품목관리ToolStripMenuItem1";
+            this.품목관리ToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.품목관리ToolStripMenuItem1.Text = "품목관리";
+            this.품목관리ToolStripMenuItem1.Click += new System.EventHandler(this.품목관리ToolStripMenuItem1_Click);
+            // 
+            // bOM관리ToolStripMenuItem
+            // 
+            this.bOM관리ToolStripMenuItem.Name = "bOM관리ToolStripMenuItem";
+            this.bOM관리ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bOM관리ToolStripMenuItem.Text = "BOM관리";
             // 
             // FrmMAIN
             // 
@@ -280,6 +298,8 @@
         private System.Windows.Forms.ToolStripMenuItem 품목관리ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 공장관리ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 회원가입ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 품목관리ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem bOM관리ToolStripMenuItem;
     }
 }
 

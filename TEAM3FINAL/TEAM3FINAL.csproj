@@ -73,6 +73,12 @@
     <Compile Include="BaseForm\ProjectBaseForm.Designer.cs">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmItemPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmItemPopUp.Designer.cs">
+      <DependentUpon>FrmItemPopUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmFactoryManage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmItem.resx">
       <DependentUpon>FrmItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmItemPopUp.resx">
+      <DependentUpon>FrmItemPopUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup\FrmSignup.resx">
       <DependentUpon>FrmSignup.cs</DependentUpon>

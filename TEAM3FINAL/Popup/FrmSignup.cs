@@ -76,8 +76,9 @@ namespace TEAM3FINAL
             else
             {
                 MessageBox.Show("이미 존재하는 ID입니다.");
+                txtID.Clear();
             }
-            txtID.Clear();
+
         }
 
         /// <summary>
@@ -87,6 +88,12 @@ namespace TEAM3FINAL
         /// <param name="e"></param>
         private void btnOK_Click(object sender, EventArgs e)
         {
+            //ID중복검사여부 확인
+            if (!bIDCheck)
+            {
+                MessageBox.Show("ID의 유효성 검사는 필수입니다.", "ID 중복검사", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
             //값 입력 확인
             bool isemptyTextExist = false;
             StringBuilder sb = new StringBuilder();
@@ -118,13 +125,18 @@ namespace TEAM3FINAL
             {
                 MANAGER_VO mv = new MANAGER_VO
                 {
+
                     MANAGER_ID = txtID.Text.Trim()
-                    , MANAGER_NAME = txtName.Text.Trim()
-                    , MANAGER_PSWD = txtPwd.Text.Trim()
-                    , MANAGER_EML = txtEML.Text.Trim()
-                    , MANAGER_DEP = cboDept.Text
+                    ,
+                    MANAGER_NAME = txtName.Text.Trim()
+                    ,
+                    MANAGER_PSWD = txtPwd.Text.Trim()
+                    ,
+                    MANAGER_EML = txtEML.Text.Trim()
+                    ,
+                    MANAGER_DEP = cboDept.Text
                 };
-                
+
                 //서비스호출
                 LoginService service = new LoginService();
                 Message msg = service.InsertOrUpdateManager(mv);
