@@ -576,6 +576,7 @@
             this.Controls.Add(this.label3);
             this.Margin = new System.Windows.Forms.Padding(5, 9, 5, 9);
             this.Name = "FrmFactoryPopUp";
+            this.Load += new System.EventHandler(this.FrmFactoryPopUp_Load);
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.label11, 0);
             this.Controls.SetChildIndex(this.label15, 0);

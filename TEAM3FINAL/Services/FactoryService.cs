@@ -11,7 +11,7 @@ namespace TEAM3FINAL.Services
 {
     class FactoryService
     {
-        public bool InsertFactory(FACTORY_VO fac)
+        public string InsertFactory(FACTORY_VO fac)
         {
             FactoryDAC dac = new FactoryDAC();
             return dac.InsertFactory(fac);
@@ -23,7 +23,7 @@ namespace TEAM3FINAL.Services
             return dac.GetFactoryInfo();
         }
 
-        public bool DeleteFactory(string table, string pkCode, StringBuilder appendCode)
+        public string DeleteFactory(string table, string pkCode, StringBuilder appendCode)
         {
             FactoryDAC dac = new FactoryDAC();
             return dac.DeleteFactory(table, pkCode, appendCode);

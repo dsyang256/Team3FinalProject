@@ -105,9 +105,12 @@ namespace TEAM3FINAL
                         cnt++;
                     }
                 }
-                if (cnt == 1 )
+                if (cnt == 1 ) //하나일 경우 PopUp창 띄움
                 {
-                    MessageBox.Show(sb);
+                    FrmFactoryPopUp frm = new FrmFactoryPopUp();
+                    frm.Update = true;
+                    //frm.FAC_CODE = 
+                    frm.ShowDialog();
                 }
                 else
                 {
@@ -142,7 +145,7 @@ namespace TEAM3FINAL
                 if (MessageBox.Show($"총 {cnt}개의 항목을 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     FactoryService service = new FactoryService();
-                    if (service.DeleteFactory("FACTORY", "FAC_CODE", sb))
+                    if (service.DeleteFactory("FACTORY", "FAC_CODE", sb) == "C200")
                     {
                         MessageBox.Show("삭제 완료");
                         DataGridViewColumnSet();

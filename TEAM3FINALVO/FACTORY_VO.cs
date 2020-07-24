@@ -19,7 +19,7 @@ namespace TEAM3FINALVO
         public string FAC_PROCS_YN { get; set; } //공정차감
         public string FAC_MTRL_YN { get; set; } //자재차감
         public string FAC_LAST_MDFR { get; set; } //수정자
-        //public string FAC_LAST_MDFY { get; set; } //수정날짜 DB getdate 사용
+        public string FAC_LAST_MDFY { get; set; } //수정날짜 DB getdate 사용
         public string FAC_USE_YN { get; set; } //사용유무*
         public string FAC_DESC { get; set; } //시설설명
         public string COM_CODE { get; set; } //업체코드
