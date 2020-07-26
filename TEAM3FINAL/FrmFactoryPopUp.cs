@@ -65,6 +65,7 @@ namespace TEAM3FINAL
             vo.FAC_PROCS_YN = cboProcYN.Text;
             vo.FAC_MTRL_YN = cboMtrlYN.Text;
             vo.FAC_LAST_MDFR = "황현우"; //로그인 작업 후 입력 수정필요
+            vo.FAC_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             vo.FAC_USE_YN = cboUseYN.Text;
             vo.FAC_DESC = txtDesc.Text;
             vo.COM_CODE = cboCom.Text;

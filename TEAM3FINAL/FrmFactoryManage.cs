@@ -71,7 +71,9 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-
+                FactoryService service = new FactoryService();
+                dgvFactoryList.DataSource = null;
+                dgvFactoryList.DataSource = service.GetSearchFactoryInfo(txtFactoryCode.Text, cboCategory.Text);
             }
         }
 
@@ -114,16 +116,16 @@ namespace TEAM3FINAL
                     frm.FAC_FCLTY_PARENT = dgvFactoryList.CurrentRow.Cells[5].Value.ToString();
                     frm.FAC_NAME = dgvFactoryList.CurrentRow.Cells[4].Value.ToString();
                     frm.FAC_TYP = dgvFactoryList.CurrentRow.Cells[2].Value.ToString();
-                    frm.FAC_FREE_YN = dgvFactoryList.CurrentRow.Cells[7].Value.ToString();
-                    if (int.TryParse(dgvFactoryList.CurrentRow.Cells[8].Value.ToString(), out int empty))
-                        frm.FAC_TYP_SORT = empty;
-                    else
+                    frm.FAC_FREE_YN = dgvFactoryList.CurrentRow.Cells[7].Value.ToString();;
+                    if (dgvFactoryList.CurrentRow.Cells[8].Value == null)
                         frm.FAC_TYP_SORT = null;
+                    else
+                        frm.FAC_TYP_SORT = Convert.ToInt32(dgvFactoryList.CurrentRow.Cells[8].Value);
                     frm.FAC_DEMAND_YN = dgvFactoryList.CurrentRow.Cells[9].Value.ToString();
                     frm.FAC_PROCS_YN = dgvFactoryList.CurrentRow.Cells[10].Value.ToString();
                     frm.FAC_MTRL_YN = dgvFactoryList.CurrentRow.Cells[11].Value.ToString();
-                    frm.FAC_LAST_MDFR = dgvFactoryList.CurrentRow.Cells[14].Value.ToString();
-                    frm.FAC_LAST_MDFY = dgvFactoryList.CurrentRow.Cells[15].Value.ToString();
+                    frm.FAC_LAST_MDFR = "황현우"; //수정필요
+                    //frm.FAC_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                     frm.FAC_USE_YN = dgvFactoryList.CurrentRow.Cells[13].Value.ToString();
                     frm.FAC_DESC = dgvFactoryList.CurrentRow.Cells[6].Value.ToString();
                     frm.COM_CODE = dgvFactoryList.CurrentRow.Cells[12].Value.ToString();
