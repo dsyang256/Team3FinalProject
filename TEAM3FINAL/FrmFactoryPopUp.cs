@@ -31,6 +31,7 @@ namespace TEAM3FINAL
         public string FAC_DESC { get; set; } //시설설명
         public string COM_CODE { get; set; } //업체코드
         #endregion
+
         public FrmFactoryPopUp()
         {
             InitializeComponent();
@@ -38,7 +39,7 @@ namespace TEAM3FINAL
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            #region 공장등록
+            #region 공장등록 & 수정
             if (cboCategory.Text == "" || txtCode.Text == "" || cboType.Text == "" || cboParent.Text == "" ||
                 txtName.Text == "" || cboUseYN.Text == "")
             {
@@ -68,20 +69,40 @@ namespace TEAM3FINAL
             vo.FAC_DESC = txtDesc.Text;
             vo.COM_CODE = cboCom.Text;
 
-            FactoryService service = new FactoryService();
-            string result = service.InsertFactory(vo);
-            if (result == "C200")
+            if (!Update) //공장등록
             {
-                MessageBox.Show("성공");
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                FactoryService service = new FactoryService();
+                string result = service.InsertFactory(vo);
+                if (result == "C200")
+                {
+                    MessageBox.Show("성공");
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("실패");
+                    return;
+                }
             }
-            else
+            else //공장 수정
             {
-                MessageBox.Show("실패");
-                return;
+                FactoryService service = new FactoryService();
+                string result = service.UpdateFactoryInfo(vo);
+                if(result == "C200")
+                {
+                    MessageBox.Show("성공");
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("실패");
+                    return;
+                }
             }
             #endregion
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -103,6 +124,11 @@ namespace TEAM3FINAL
                 cboMtrlYN.Text = FAC_MTRL_YN;
                 txtDesc.Text = FAC_DESC;
                 cboParent.Text = FAC_FCLTY_PARENT;
+                txtName.Text = FAC_NAME;
+                cboFreeYN.Text = FAC_FREE_YN;
+                cboCom.Text = COM_CODE;
+                cboProcYN.Text = FAC_PROCS_YN;
+                cboUseYN.Text = FAC_USE_YN;
             }
         }
     }

@@ -115,7 +115,10 @@ namespace TEAM3FINAL
                     frm.FAC_NAME = dgvFactoryList.CurrentRow.Cells[4].Value.ToString();
                     frm.FAC_TYP = dgvFactoryList.CurrentRow.Cells[2].Value.ToString();
                     frm.FAC_FREE_YN = dgvFactoryList.CurrentRow.Cells[7].Value.ToString();
-                    frm.FAC_TYP_SORT = Convert.ToInt32(dgvFactoryList.CurrentRow.Cells[8].Value);
+                    if (int.TryParse(dgvFactoryList.CurrentRow.Cells[8].Value.ToString(), out int empty))
+                        frm.FAC_TYP_SORT = empty;
+                    else
+                        frm.FAC_TYP_SORT = null;
                     frm.FAC_DEMAND_YN = dgvFactoryList.CurrentRow.Cells[9].Value.ToString();
                     frm.FAC_PROCS_YN = dgvFactoryList.CurrentRow.Cells[10].Value.ToString();
                     frm.FAC_MTRL_YN = dgvFactoryList.CurrentRow.Cells[11].Value.ToString();
@@ -125,6 +128,10 @@ namespace TEAM3FINAL
                     frm.FAC_DESC = dgvFactoryList.CurrentRow.Cells[6].Value.ToString();
                     frm.COM_CODE = dgvFactoryList.CurrentRow.Cells[12].Value.ToString();
                     frm.ShowDialog();
+                    if (frm.DialogResult == DialogResult.OK)
+                    {
+                        GetFactoryInfo();
+                    }
                 }
                 else
                 {
