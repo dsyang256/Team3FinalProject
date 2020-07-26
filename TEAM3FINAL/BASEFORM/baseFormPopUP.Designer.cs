@@ -1,4 +1,4 @@
-﻿namespace TEAM3FINAL.BaseForm
+﻿namespace TEAM3FINAL
 {
     partial class baseFormPopUP
     {

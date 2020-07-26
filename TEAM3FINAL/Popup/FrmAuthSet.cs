@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace TEAM3FINAL
 {
-    public partial class FrmCOMMON : TEAM3FINAL.baseFormPopUP
+    public partial class FrmAuthSet : TEAM3FINAL.baseFormPopUP
     {
-        public FrmCOMMON()
+        public FrmAuthSet()
         {
             InitializeComponent();
         }

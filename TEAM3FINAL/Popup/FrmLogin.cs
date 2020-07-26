@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace TEAM3FINAL
 {
-    public partial class FrmLogin : TEAM3FINAL.BaseForm.baseFormPopUP
+    public partial class FrmLogin : TEAM3FINAL.baseFormPopUP
     {
         #region 멤버변수
 

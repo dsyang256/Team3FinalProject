@@ -11,7 +11,7 @@ using TEAM3FINAL.Services;
 namespace TEAM3FINAL
 {
     //유효성검사 필요
-    public partial class FrmFactoryPopUp : TEAM3FINAL.BaseForm.baseFormPopUP
+    public partial class FrmFactoryPopUp : TEAM3FINAL.baseFormPopUP
     {
         #region Property
         public bool Update { get; set; }

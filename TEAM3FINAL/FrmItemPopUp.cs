@@ -10,7 +10,7 @@ using TEAM3FINALVO;
 
 namespace TEAM3FINAL
 {
-    public partial class FrmItemPopUp : TEAM3FINAL.BaseForm.baseFormPopUP
+    public partial class FrmItemPopUp : TEAM3FINAL.baseFormPopUP
     {
         int update;
         public FrmItemPopUp()

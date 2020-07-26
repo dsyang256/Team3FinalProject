@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace TEAM3FINAL.BaseForm
+namespace TEAM3FINAL
 {
     public partial class baseFormPopUP : TEAM3FINAL.ProjectBaseForm
     {

@@ -73,6 +73,12 @@
     <Compile Include="BaseForm\ProjectBaseForm.Designer.cs">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAuthGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAuthGroup.Designer.cs">
+      <DependentUpon>FrmAuthGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCOMMON.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,18 @@
     </Compile>
     <Compile Include="FrmItem.Designer.cs">
       <DependentUpon>FrmItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\FrmAuthSet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\FrmAuthSet.Designer.cs">
+      <DependentUpon>FrmAuthSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\FrmGroupMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\FrmGroupMenu.Designer.cs">
+      <DependentUpon>FrmGroupMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Popup\FrmSignup.cs">
       <SubType>Form</SubType>
@@ -170,6 +188,9 @@
     <EmbeddedResource Include="BaseForm\ProjectBaseForm.resx">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmAuthGroup.resx">
+      <DependentUpon>FrmAuthGroup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCOMMON.resx">
       <DependentUpon>FrmCOMMON.cs</DependentUpon>
     </EmbeddedResource>
@@ -184,6 +205,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmItemPopUp.resx">
       <DependentUpon>FrmItemPopUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\FrmAuthSet.resx">
+      <DependentUpon>FrmAuthSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\FrmGroupMenu.resx">
+      <DependentUpon>FrmGroupMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup\FrmSignup.resx">
       <DependentUpon>FrmSignup.cs</DependentUpon>
