@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using TEAM3FINALVO;
 using TEAM3FINAL.Services;
+using System.Linq;
 
 namespace TEAM3FINAL
 {
@@ -55,7 +56,7 @@ namespace TEAM3FINAL
             vo.FAC_NAME = txtName.Text;
             vo.FAC_TYP = cboType.Text;
             vo.FAC_FREE_YN = cboFreeYN.Text;
-            
+
             //순서 텍스트에 null, 숫자 외 입력시 null 값 입력
             if (int.TryParse(txtSort.Text, out int plzNull))
                 vo.FAC_TYP_SORT = plzNull;
@@ -90,7 +91,7 @@ namespace TEAM3FINAL
             {
                 FactoryService service = new FactoryService();
                 string result = service.UpdateFactoryInfo(vo);
-                if(result == "C200")
+                if (result == "C200")
                 {
                     MessageBox.Show("성공");
                     this.DialogResult = DialogResult.OK;
@@ -114,7 +115,8 @@ namespace TEAM3FINAL
 
         private void FrmFactoryPopUp_Load(object sender, EventArgs e)
         {
-            if(Update)
+            ComboBinding();
+            if (Update)
             {
                 txtCode.Enabled = false;
                 cboCategory.Text = FAC_FCLTY;
@@ -131,6 +133,25 @@ namespace TEAM3FINAL
                 cboProcYN.Text = FAC_PROCS_YN;
                 cboUseYN.Text = FAC_USE_YN;
             }
+        }
+
+        private void ComboBinding()
+        {
+            ComboItemService service = new ComboItemService();
+            List<ComboItemVO> commonlist = service.GetITEMCmCode();
+
+            var listCOMPANY_TYP = (from item in commonlist where item.COMMON_PARENT == "COMPANY_TYP" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(cboCategory, listCOMPANY_TYP, "COMMON_CODE", "COMMON_NAME", "");
+
+            var listFACILITY_TYPE = (from item in commonlist where item.COMMON_PARENT == "FACILITY_TYPE" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(cboType, listFACILITY_TYPE, "COMMON_CODE", "COMMON_NAME", "");
+
+            var listYN = (from item in commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(cboDemandYN, listYN, "COMMON_CODE", "COMMON_NAME", "");
+            CommonUtil.ComboBinding<ComboItemVO>(cboMtrlYN, listYN, "COMMON_CODE", "COMMON_NAME");
+            CommonUtil.ComboBinding<ComboItemVO>(cboFreeYN, listYN, "COMMON_CODE", "COMMON_NAME");
+            CommonUtil.ComboBinding<ComboItemVO>(cboProcYN, listYN, "COMMON_CODE", "COMMON_NAME");
+            CommonUtil.ComboBinding<ComboItemVO>(cboUseYN, listYN, "COMMON_CODE", "COMMON_NAME");
         }
     }
 }

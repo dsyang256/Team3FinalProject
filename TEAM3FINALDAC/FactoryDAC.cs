@@ -123,19 +123,17 @@ FAC_USE_YN = @FAC_USE_YN, FAC_DESC = @FAC_DESC, COM_CODE = @COM_CODE where FAC_C
 
         public List<FACTORY_VO> GetSearchFactoryInfo(string facCode, string type)
         {
-            List<FACTORY_VO> list = default;
+            List<FACTORY_VO> list = null;
 
             using (SqlCommand cmd = new SqlCommand())
             {
                 cmd.Connection = new SqlConnection(this.ConnectionString);
-                cmd.CommandText = @"select [FAC_CODE], [FAC_FCLTY], [FAC_FCLTY_PARENT], [FAC_NAME], [FAC_TYP], [FAC_FREE_YN], [FAC_TYP_SORT], 
-[FAC_DEMAND_YN], [FAC_PROCS_YN], [FAC_MTRL_YN], [FAC_LAST_MDFR], convert(varchar(20), FAC_LAST_MDFY, 120) FAC_LAST_MDFY, [FAC_USE_YN], [FAC_DESC], [COM_CODE]
-from [dbo].[FACTORY]
-where [FAC_CODE] like '%" + facCode + "%' or [FAC_TYP] = @FAC_TYP";
-                //cmd.Parameters.AddWithValue("@FAC_CODE", facCode);
-                cmd.Parameters.AddWithValue("@FAC_TYP", type);
+                cmd.CommandText = "SP_GetSearchFactoryInfo";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@P_FAC_CODE", facCode);
+                cmd.Parameters.AddWithValue("@P_FAC_FCLTY", type);
                 cmd.Connection.Open();
-                SqlDataReader reader = cmd.ExecuteReader();                
+                SqlDataReader reader = cmd.ExecuteReader();
                 list = Helper.DataReaderMapToList<FACTORY_VO>(reader);
                 cmd.Connection.Close();
                 return list;
