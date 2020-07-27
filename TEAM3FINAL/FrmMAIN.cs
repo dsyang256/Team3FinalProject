@@ -181,5 +181,10 @@ namespace TEAM3FINAL
                 (tabForms.SelectedTab.Tag as Form).Select();
             }
         }
+
+        private void 공통코드관리ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUtil.OpenOrCreateForm<FrmCOMMON>(this);
+        }
     }
 }

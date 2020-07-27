@@ -52,6 +52,7 @@
             this.품목관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.품목관리ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bOM관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.공통코드관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -176,7 +177,8 @@
             this.test용입니다ToolStripMenuItem,
             this.로그인ToolStripMenuItem,
             this.자원관리ToolStripMenuItem,
-            this.품목관리ToolStripMenuItem});
+            this.품목관리ToolStripMenuItem,
+            this.공통코드관리ToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Size = new System.Drawing.Size(800, 24);
@@ -249,6 +251,13 @@
             this.bOM관리ToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.bOM관리ToolStripMenuItem.Text = "BOM관리";
             // 
+            // 공통코드관리ToolStripMenuItem
+            // 
+            this.공통코드관리ToolStripMenuItem.Name = "공통코드관리ToolStripMenuItem";
+            this.공통코드관리ToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
+            this.공통코드관리ToolStripMenuItem.Text = "공통코드관리";
+            this.공통코드관리ToolStripMenuItem.Click += new System.EventHandler(this.공통코드관리ToolStripMenuItem_Click);
+            // 
             // FrmMAIN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -303,6 +312,7 @@
         private System.Windows.Forms.ToolStripMenuItem 회원가입ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 품목관리ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem bOM관리ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 공통코드관리ToolStripMenuItem;
     }
 }
 
