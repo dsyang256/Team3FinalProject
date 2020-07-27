@@ -7,10 +7,11 @@ using System.Text;
 using System.Windows.Forms;
 using TEAM3FINAL.Services;
 using TEAM3FINALVO;
+using System.Linq;
 
 namespace TEAM3FINAL
 {
-    public partial class FrmFactoryManage : TEAM3FINAL.baseForm
+    public partial class FrmFactoryManage : TEAM3FINAL.baseForm, CommonBtn
     {
         public FrmFactoryManage()
         {
@@ -22,7 +23,7 @@ namespace TEAM3FINAL
         {
             //데이터그리드뷰 초기설정
             Util.InitSettingGridView(dgvFactoryList);
-            ////데이터그리드뷰 체크박스, 컬럼 추가
+            //데이터그리드뷰 체크박스, 컬럼 추가
             Util.DataGridViewCheckBoxSet(dgvFactoryList, "");
             Util.AddNewColumnToDataGridView(dgvFactoryList, "시설군", "FAC_FCLTY", true, 80);
             Util.AddNewColumnToDataGridView(dgvFactoryList, "시설구분", "FAC_TYP", true, 80);
@@ -43,6 +44,7 @@ namespace TEAM3FINAL
                 
         private void FrmFactoryManage_Load(object sender, EventArgs e)
         {
+            ComboBinding();
             btnset();
             DataGridViewColumnSet();
             GetFactoryInfo();
@@ -66,8 +68,31 @@ namespace TEAM3FINAL
             frm.eUpdate += Update;
         }
 
+        private void ComboBinding()
+        {
+            ComboItemService service = new ComboItemService();
+            List<ComboItemVO> commonlist = service.GetITEMCmCode();
+                        
+            var listCOMPANY_TYP = (from item in commonlist where item.COMMON_PARENT == "COMPANY_TYP" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(cboCategory, listCOMPANY_TYP, "COMMON_CODE", "COMMON_NAME", "");
+        }
+
         #region ****메인 버튼 이벤트****
-        private void Search(object sender, EventArgs e)
+
+        public void Insert(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                FrmFactoryPopUp frm = new FrmFactoryPopUp();
+                frm.ShowDialog();
+                if (frm.DialogResult == DialogResult.OK)
+                {
+                    GetFactoryInfo();
+                }
+            }
+        }
+
+        public void Search(object sender, EventArgs e)
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
@@ -77,20 +102,12 @@ namespace TEAM3FINAL
             }
         }
 
-        private void Insert(object sender, EventArgs e)
+        public void Reset(object sender, EventArgs e)
         {
-            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
-            {
-                FrmFactoryPopUp frm = new FrmFactoryPopUp();
-                frm.ShowDialog();
-                if(frm.DialogResult == DialogResult.OK)
-                {
-                    GetFactoryInfo();
-                }
-            }
+            throw new NotImplementedException();
         }
 
-        private void Update(object sender, EventArgs e)
+        public void Update(object sender, EventArgs e)
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
@@ -107,7 +124,7 @@ namespace TEAM3FINAL
                         cnt++;
                     }
                 }
-                if (cnt == 1 ) //하나일 경우 PopUp창 띄움
+                if (cnt == 1) //하나일 경우 PopUp창 띄움
                 {
                     FrmFactoryPopUp frm = new FrmFactoryPopUp();
                     frm.Update = true;
@@ -116,7 +133,7 @@ namespace TEAM3FINAL
                     frm.FAC_FCLTY_PARENT = dgvFactoryList.CurrentRow.Cells[5].Value.ToString();
                     frm.FAC_NAME = dgvFactoryList.CurrentRow.Cells[4].Value.ToString();
                     frm.FAC_TYP = dgvFactoryList.CurrentRow.Cells[2].Value.ToString();
-                    frm.FAC_FREE_YN = dgvFactoryList.CurrentRow.Cells[7].Value.ToString();;
+                    frm.FAC_FREE_YN = dgvFactoryList.CurrentRow.Cells[7].Value.ToString(); ;
                     if (dgvFactoryList.CurrentRow.Cells[8].Value == null)
                         frm.FAC_TYP_SORT = null;
                     else
@@ -143,7 +160,7 @@ namespace TEAM3FINAL
             }
         }
 
-        private void Delete(object sender, EventArgs e)
+        public void Delete(object sender, EventArgs e)
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
@@ -163,7 +180,7 @@ namespace TEAM3FINAL
                 {
                     MessageBox.Show("삭제할 항목을 선택하여 주십시오.");
                     return;
-                }                
+                }
                 sb.Remove(sb.Length - 1, 1);
                 if (MessageBox.Show($"총 {cnt}개의 항목을 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
@@ -173,10 +190,15 @@ namespace TEAM3FINAL
                         MessageBox.Show("삭제 완료");
                         GetFactoryInfo();
                     }
-                }          
+                }
             }
-            
         }
+
+        public void Print(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }
