@@ -22,7 +22,15 @@ namespace TEAM3FINAL
 
         private void FrmItem_Load(object sender, EventArgs e)
         {
-            
+            BtnSet();
+            ComboBinding();
+            DataGridViewColumnSet();
+            DataGridViewBinding();
+
+        }
+
+        private void BtnSet()
+        {
             FrmMAIN frm = (FrmMAIN)this.MdiParent;
             frm.eSearch += Search;
             frm.eInsert += Insert;
@@ -30,12 +38,8 @@ namespace TEAM3FINAL
             frm.eDelete += Delete;
             frm.ePrint += Print;
             frm.eReset += Reset;
-            ComboBinding();
-            DataGridViewColumnSet();
-            DataGridViewBinding();
-
         }
-        
+
         /// <summary>
         /// 콤보 박스 바인딩
         /// </summary>

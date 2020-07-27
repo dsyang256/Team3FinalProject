@@ -199,7 +199,7 @@ namespace TEAM3FINAL
 
         private void bOM관리ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FormUtil.OpenOrCreateForm<FrmBOM>(this);
         }
     }
 }

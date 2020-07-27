@@ -104,10 +104,10 @@
     <Compile Include="FrmFactoryManage.Designer.cs">
       <DependentUpon>FrmFactoryManage.cs</DependentUpon>
     </Compile>
-    <Compile Include="YDS\FrmFactoryPopUp.cs">
+    <Compile Include="FrmFactoryPopUp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="YDS\FrmFactoryPopUp.Designer.cs">
+    <Compile Include="FrmFactoryPopUp.Designer.cs">
       <DependentUpon>FrmFactoryPopUp.cs</DependentUpon>
     </Compile>
     <Compile Include="YDS\FrmItem.cs">
@@ -207,7 +207,7 @@
     <EmbeddedResource Include="FrmFactoryManage.resx">
       <DependentUpon>FrmFactoryManage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="YDS\FrmFactoryPopUp.resx">
+    <EmbeddedResource Include="FrmFactoryPopUp.resx">
       <DependentUpon>FrmFactoryPopUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="YDS\FrmItem.resx">
