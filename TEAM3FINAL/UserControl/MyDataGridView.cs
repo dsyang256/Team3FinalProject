@@ -22,16 +22,20 @@ namespace WindowsFormsApp18
             this.EnableHeadersVisualStyles = false;
             this.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.ColumnHeadersHeight = 50;
-            
-            this.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(52, 52, 52);
-            this.ColumnHeadersDefaultCellStyle.ForeColor = SystemColors.Info;
-            this.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(52, 52, 52);
+
+            //this.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(52, 52, 52);
+            this.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(245, 245, 246);
+            //this.ColumnHeadersDefaultCellStyle.ForeColor = SystemColors.Info;
+            this.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            this.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(245, 245, 246);
             this.ColumnHeadersDefaultCellStyle.SelectionForeColor = SystemColors.HighlightText;
 
             this.DefaultCellStyle.BackColor = Color.White;
-            this.DefaultCellStyle.ForeColor = Color.FromArgb(52, 52, 52);
-            this.DefaultCellStyle.SelectionBackColor = SystemColors.ControlDark;
-            this.DefaultCellStyle.SelectionForeColor = SystemColors.HighlightText;
+            //this.DefaultCellStyle.ForeColor = Color.FromArgb(245, 245, 246);
+            this.DefaultCellStyle.ForeColor = Color.Black;
+            this.DefaultCellStyle.SelectionBackColor = SystemColors.Menu;
+            //this.DefaultCellStyle.SelectionForeColor = SystemColors.HighlightText
+            this.DefaultCellStyle.SelectionForeColor = Color.Black;
 
             this.BackgroundColor = Color.White;
 

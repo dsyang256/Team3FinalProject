@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="BOM_VO.cs" />
     <Compile Include="BOR_VO.cs" />
+    <Compile Include="COMMON_VO.cs" />
     <Compile Include="ComboItemVO.cs" />
     <Compile Include="COMPANY_VO.cs" />
     <Compile Include="DEMAND_PLANNING_VO.cs" />

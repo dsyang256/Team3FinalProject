@@ -10,6 +10,11 @@ namespace TEAM3FINAL
 {
     public class ComboItemService
     {
+        public List<COMMON_VO> GetAllCmCode()
+        {
+            ComboItemDAC dac = new ComboItemDAC();
+            return dac.GetAllCmCode();
+        }
         public List<ComboItemVO> GetCmCode()
         {
             ComboItemDAC dac = new ComboItemDAC();
@@ -32,6 +37,23 @@ namespace TEAM3FINAL
             return dac.CodeInsert(code);
         }
 
+        internal bool CheckCodeName(string code)
+        {
+            ComboItemDAC dac = new ComboItemDAC();
+            return dac.CheckCodeName(code);
+        }
 
+
+        internal bool CodeNameInsert(string code,string name,int SEQ)
+        {
+            ComboItemDAC dac = new ComboItemDAC();
+            return dac.CodeNameInsert(code, name, SEQ);
+        }
+
+        internal bool CodeDelete(string text)
+        {
+            ComboItemDAC dac = new ComboItemDAC();
+            return dac.CodeDelete(text);
+        }
     }
 }

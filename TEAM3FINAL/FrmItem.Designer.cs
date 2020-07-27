@@ -68,7 +68,7 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1248, 200);
+            this.panel1.Size = new System.Drawing.Size(1132, 200);
             // 
             // panel2
             // 
@@ -99,7 +99,7 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Size = new System.Drawing.Size(1242, 180);
+            this.panel2.Size = new System.Drawing.Size(1126, 180);
             // 
             // label1
             // 
@@ -109,7 +109,7 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.dgvitem);
-            this.panel3.Size = new System.Drawing.Size(1242, 318);
+            this.panel3.Size = new System.Drawing.Size(1126, 318);
             // 
             // label2
             // 
@@ -367,10 +367,10 @@
             this.dgvitem.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvitem.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvitem.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
@@ -378,9 +378,9 @@
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvitem.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvitem.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -398,14 +398,13 @@
             this.dgvitem.RowHeadersWidth = 30;
             this.dgvitem.RowTemplate.Height = 23;
             this.dgvitem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvitem.Size = new System.Drawing.Size(1242, 318);
+            this.dgvitem.Size = new System.Drawing.Size(1126, 318);
             this.dgvitem.TabIndex = 0;
             // 
             // FrmItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.ClientSize = new System.Drawing.Size(1272, 574);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.ClientSize = new System.Drawing.Size(1156, 574);
             this.Name = "FrmItem";
             this.Load += new System.EventHandler(this.FrmItem_Load);
             this.panel1.ResumeLayout(false);
