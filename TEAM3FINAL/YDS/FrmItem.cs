@@ -188,7 +188,16 @@ namespace TEAM3FINAL
         /// <param name="e"></param>
         public void Reset(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            ITEM_NAME.Text = "";
+            ITEM_STND.Text = "";
+            ITEM_COM_REORDER.SelectedIndex = -1;
+            ITEM_COM_DLVR.SelectedIndex = -1;
+            ITEM_WRHS_IN.SelectedIndex = -1;
+            ITEM_WRHS_OUT.SelectedIndex = -1;
+            ITEM_MANAGER.SelectedIndex = -1;
+            ITEM_TYP.SelectedIndex = -1;
+            ITEM_USE_YN.SelectedIndex = -1;
+            DataGridViewBinding();
         }
         /// <summary>
         /// 업데이트 버튼 이벤드

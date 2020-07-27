@@ -38,6 +38,7 @@
             this.tsbUpdate = new System.Windows.Forms.ToolStripButton();
             this.tsbPrint = new System.Windows.Forms.ToolStripButton();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.tsbReset = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -53,7 +54,6 @@
             this.품목관리ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bOM관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.공통코드관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbReset = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -140,6 +140,16 @@
             this.toolStripLabel1.Name = "toolStripLabel1";
             this.toolStripLabel1.Size = new System.Drawing.Size(115, 36);
             this.toolStripLabel1.Text = "현재 활성된 폼 이름";
+            // 
+            // tsbReset
+            // 
+            this.tsbReset.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbReset.Image = ((System.Drawing.Image)(resources.GetObject("tsbReset.Image")));
+            this.tsbReset.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbReset.Name = "tsbReset";
+            this.tsbReset.Size = new System.Drawing.Size(36, 36);
+            this.tsbReset.Text = "toolStripButton1";
+            this.tsbReset.Click += new System.EventHandler(this.tsbReset_Click);
             // 
             // statusStrip1
             // 
@@ -252,6 +262,7 @@
             this.bOM관리ToolStripMenuItem.Name = "bOM관리ToolStripMenuItem";
             this.bOM관리ToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.bOM관리ToolStripMenuItem.Text = "BOM관리";
+            this.bOM관리ToolStripMenuItem.Click += new System.EventHandler(this.bOM관리ToolStripMenuItem_Click);
             // 
             // 공통코드관리ToolStripMenuItem
             // 
@@ -259,16 +270,6 @@
             this.공통코드관리ToolStripMenuItem.Size = new System.Drawing.Size(91, 20);
             this.공통코드관리ToolStripMenuItem.Text = "공통코드관리";
             this.공통코드관리ToolStripMenuItem.Click += new System.EventHandler(this.공통코드관리ToolStripMenuItem_Click);
-            // 
-            // tsbReset
-            // 
-            this.tsbReset.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbReset.Image = ((System.Drawing.Image)(resources.GetObject("tsbReset.Image")));
-            this.tsbReset.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbReset.Name = "tsbReset";
-            this.tsbReset.Size = new System.Drawing.Size(36, 36);
-            this.tsbReset.Text = "toolStripButton1";
-            this.tsbReset.Click += new System.EventHandler(this.tsbReset_Click);
             // 
             // FrmMAIN
             // 

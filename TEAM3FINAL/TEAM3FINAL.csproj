@@ -73,6 +73,12 @@
     <Compile Include="BaseForm\ProjectBaseForm.Designer.cs">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="YDS\FrmBOM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YDS\FrmBOM.Designer.cs">
+      <DependentUpon>FrmBOM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\CommonBtn.cs" />
     <Compile Include="FrmAuthGroup.cs">
       <SubType>Form</SubType>
@@ -80,16 +86,16 @@
     <Compile Include="FrmAuthGroup.Designer.cs">
       <DependentUpon>FrmAuthGroup.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmCOMMON.cs">
+    <Compile Include="YDS\FrmCOMMON.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCOMMON.Designer.cs">
+    <Compile Include="YDS\FrmCOMMON.Designer.cs">
       <DependentUpon>FrmCOMMON.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmItemPopUp.cs">
+    <Compile Include="YDS\FrmItemPopUp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmItemPopUp.Designer.cs">
+    <Compile Include="YDS\FrmItemPopUp.Designer.cs">
       <DependentUpon>FrmItemPopUp.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmFactoryManage.cs">
@@ -98,16 +104,16 @@
     <Compile Include="FrmFactoryManage.Designer.cs">
       <DependentUpon>FrmFactoryManage.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmFactoryPopUp.cs">
+    <Compile Include="YDS\FrmFactoryPopUp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmFactoryPopUp.Designer.cs">
+    <Compile Include="YDS\FrmFactoryPopUp.Designer.cs">
       <DependentUpon>FrmFactoryPopUp.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmItem.cs">
+    <Compile Include="YDS\FrmItem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmItem.Designer.cs">
+    <Compile Include="YDS\FrmItem.Designer.cs">
       <DependentUpon>FrmItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Popup\FrmAuthSet.cs">
@@ -189,22 +195,25 @@
     <EmbeddedResource Include="BaseForm\ProjectBaseForm.resx">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="YDS\FrmBOM.resx">
+      <DependentUpon>FrmBOM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAuthGroup.resx">
       <DependentUpon>FrmAuthGroup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmCOMMON.resx">
+    <EmbeddedResource Include="YDS\FrmCOMMON.resx">
       <DependentUpon>FrmCOMMON.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFactoryManage.resx">
       <DependentUpon>FrmFactoryManage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmFactoryPopUp.resx">
+    <EmbeddedResource Include="YDS\FrmFactoryPopUp.resx">
       <DependentUpon>FrmFactoryPopUp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmItem.resx">
+    <EmbeddedResource Include="YDS\FrmItem.resx">
       <DependentUpon>FrmItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmItemPopUp.resx">
+    <EmbeddedResource Include="YDS\FrmItemPopUp.resx">
       <DependentUpon>FrmItemPopUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup\FrmAuthSet.resx">
