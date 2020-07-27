@@ -28,5 +28,17 @@ namespace TEAM3FINAL.Services
             FactoryDAC dac = new FactoryDAC();
             return dac.DeleteFactory(table, pkCode, appendCode);
         }
+
+        public string UpdateFactoryInfo(FACTORY_VO fac)
+        {
+            FactoryDAC dac = new FactoryDAC();
+            return dac.UpdateFactoryInfo(fac);
+        }
+
+        public List<FACTORY_VO> GetSearchFactoryInfo(string facCode, string type)
+        {
+            FactoryDAC dac = new FactoryDAC();
+            return dac.GetSearchFactoryInfo(facCode, type);
+        }
     }
 }

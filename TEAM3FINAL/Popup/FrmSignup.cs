@@ -13,7 +13,7 @@ using Message = TEAM3FINALVO.Message;
 
 namespace TEAM3FINAL
 {
-    public partial class FrmSignup : TEAM3FINAL.BaseForm.baseFormPopUP
+    public partial class FrmSignup : TEAM3FINAL.baseFormPopUP
     {
         #region 멤버변수
         List<ComboItemVO> Commonlist = null;

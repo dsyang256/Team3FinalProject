@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthDAC.cs" />
     <Compile Include="ComboItemDAC.cs" />
     <Compile Include="CommonDAC.cs" />
     <Compile Include="FactoryDAC.cs" />

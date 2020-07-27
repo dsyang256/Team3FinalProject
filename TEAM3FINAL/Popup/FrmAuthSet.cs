@@ -8,15 +8,11 @@ using System.Windows.Forms;
 
 namespace TEAM3FINAL
 {
-    public partial class baseFormPopUP : TEAM3FINAL.ProjectBaseForm
+    public partial class FrmAuthSet : TEAM3FINAL.baseFormPopUP
     {
-        public baseFormPopUP()
+        public FrmAuthSet()
         {
             InitializeComponent();
-
-            //메인 패널 위치 및 크기 지정
-            panel1.Location = new Point(5, 5);
-            panel1.Size = new Size(this.Width-10, 56);
         }
     }
 }

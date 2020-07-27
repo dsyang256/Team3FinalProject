@@ -10,7 +10,7 @@ using TEAM3FINALVO;
 
 namespace TEAM3FINAL
 {
-    public partial class FrmCOMMON : TEAM3FINAL.BaseForm.baseFormPopUP
+    public partial class FrmCOMMON : TEAM3FINAL.baseFormPopUP
     {
         ComboItemService service = new ComboItemService();
         public FrmCOMMON()
