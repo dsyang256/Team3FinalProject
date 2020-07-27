@@ -22,7 +22,15 @@ namespace TEAM3FINAL
 
         private void FrmItem_Load(object sender, EventArgs e)
         {
-            
+            BtnSet();
+            ComboBinding();
+            DataGridViewColumnSet();
+            DataGridViewBinding();
+
+        }
+
+        private void BtnSet()
+        {
             FrmMAIN frm = (FrmMAIN)this.MdiParent;
             frm.eSearch += Search;
             frm.eInsert += Insert;
@@ -30,12 +38,8 @@ namespace TEAM3FINAL
             frm.eDelete += Delete;
             frm.ePrint += Print;
             frm.eReset += Reset;
-            ComboBinding();
-            DataGridViewColumnSet();
-            DataGridViewBinding();
-
         }
-        
+
         /// <summary>
         /// 콤보 박스 바인딩
         /// </summary>
@@ -188,7 +192,16 @@ namespace TEAM3FINAL
         /// <param name="e"></param>
         public void Reset(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            ITEM_NAME.Text = "";
+            ITEM_STND.Text = "";
+            ITEM_COM_REORDER.SelectedIndex = -1;
+            ITEM_COM_DLVR.SelectedIndex = -1;
+            ITEM_WRHS_IN.SelectedIndex = -1;
+            ITEM_WRHS_OUT.SelectedIndex = -1;
+            ITEM_MANAGER.SelectedIndex = -1;
+            ITEM_TYP.SelectedIndex = -1;
+            ITEM_USE_YN.SelectedIndex = -1;
+            DataGridViewBinding();
         }
         /// <summary>
         /// 업데이트 버튼 이벤드
