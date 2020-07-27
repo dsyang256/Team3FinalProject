@@ -76,6 +76,58 @@ namespace TEAM3FINALDAC
             }
             return list;
         }
+        public bool CheckCode(string code)
+        {
+            bool Result = false;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = $@"select COUNT(COMMON_CODE)
+                                           from dbo.COMMON
+                                          where COMMON_CODE = @COMMON_CODE";
+                    cmd.Parameters.AddWithValue("@COMMON_CODE", code);
+                    cmd.Connection.Open();
+                    int iResult = Convert.ToInt32(cmd.ExecuteScalar());
+                    cmd.Connection.Close();
+                    return (iResult > 0) ? true : false;
+                }
+            }
+            catch (Exception err)
+            {
+                string msg = err.Message;
+                return Result;
+            }
+;
+        }
+        public bool CodeInsert(string code)
+        {
+            bool Result = false;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = $@"INSERT INTO COMMON (COMMON_CODE, COMMON_NAME, COMMON_SEQ)
+                                              VALUES(@COMMON_CODE, @COMMON_NAME,1) ";
+                    cmd.Parameters.AddWithValue("@COMMON_CODE", code);
+                    cmd.Parameters.AddWithValue("@COMMON_NAME", code);
+                    cmd.Connection.Open();
+                    int iResult = cmd.ExecuteNonQuery();
+                    cmd.Connection.Close();
+                    return (iResult > 0) ? true : false;
+                }
+            }
+            catch (Exception err)
+            {
+                string msg = err.Message;
+                return Result;
+            }
+;
+        }
+
+       
         /*
         public int InsertOrUpdateCmCode(ComboItemVO combo)
         {

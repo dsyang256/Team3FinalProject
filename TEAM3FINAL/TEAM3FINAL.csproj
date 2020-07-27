@@ -73,6 +73,7 @@
     <Compile Include="BaseForm\ProjectBaseForm.Designer.cs">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\CommonBtn.cs" />
     <Compile Include="FrmAuthGroup.cs">
       <SubType>Form</SubType>
     </Compile>

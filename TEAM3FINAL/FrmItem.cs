@@ -11,7 +11,7 @@ using System.Linq;
 
 namespace TEAM3FINAL
 {
-    public partial class FrmItem : TEAM3FINAL.baseForm2
+    public partial class FrmItem : TEAM3FINAL.baseForm2  //,CommonBtn
     {
         ItemServicecs item = new ItemServicecs();
         CheckBox headerChk;
@@ -208,7 +208,9 @@ namespace TEAM3FINAL
            
 
         }
-
+        /// <summary>
+        /// 데이터 그리드 바인딩
+        /// </summary>
         private void DataGridViewBinding()
         {
             dgvitem.DataSource = item.AllITEM();
@@ -243,7 +245,7 @@ namespace TEAM3FINAL
                 chk.Value = headerChk.Checked;
             }
         }
-        
+
         
     }
 }

@@ -21,6 +21,16 @@ namespace TEAM3FINAL
             ComboItemDAC dac = new ComboItemDAC();
             return dac.GetITEMCmCode();
         }
+        public bool CheckCode(string code)
+        {
+            ComboItemDAC dac = new ComboItemDAC();
+            return dac.CheckCode(code);
+        }
+        public bool CodeInsert(string code)
+        {
+            ComboItemDAC dac = new ComboItemDAC();
+            return dac.CodeInsert(code);
+        }
 
 
     }

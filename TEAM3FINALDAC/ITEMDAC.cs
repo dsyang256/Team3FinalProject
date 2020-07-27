@@ -10,7 +10,7 @@ using TEAM3FINALVO;
 
 namespace TEAM3FINALDAC
 {
-    public class ITEMDAC : ConnectionAccess
+    public class ITEMDAC : ConnectionAccess 
     {
         public List<ITEM_VO> AllITEM()
 
