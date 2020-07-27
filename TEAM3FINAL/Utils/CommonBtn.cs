@@ -8,12 +8,13 @@ namespace TEAM3FINAL
 {
     interface CommonBtn
     {
-       void Insert();
-       void Search();
+       void Insert(object sender, EventArgs e);
+       void Search(object sender, EventArgs e);
+       void Reset(object sender, EventArgs e);
 
-       void Update();
-       void Delete();
-       void Print();
+       void Update(object sender, EventArgs e);
+       void Delete(object sender, EventArgs e);
+       void Print(object sender, EventArgs e);
        
     }
 }

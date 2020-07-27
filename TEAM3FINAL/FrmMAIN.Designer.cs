@@ -53,6 +53,7 @@
             this.품목관리ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bOM관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.공통코드관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbReset = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -76,7 +77,8 @@
             this.tsbDelete,
             this.tsbUpdate,
             this.tsbPrint,
-            this.toolStripLabel1});
+            this.toolStripLabel1,
+            this.tsbReset});
             this.toolStrip1.Location = new System.Drawing.Point(0, 48);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 39);
@@ -258,6 +260,16 @@
             this.공통코드관리ToolStripMenuItem.Text = "공통코드관리";
             this.공통코드관리ToolStripMenuItem.Click += new System.EventHandler(this.공통코드관리ToolStripMenuItem_Click);
             // 
+            // tsbReset
+            // 
+            this.tsbReset.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbReset.Image = ((System.Drawing.Image)(resources.GetObject("tsbReset.Image")));
+            this.tsbReset.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbReset.Name = "tsbReset";
+            this.tsbReset.Size = new System.Drawing.Size(36, 36);
+            this.tsbReset.Text = "toolStripButton1";
+            this.tsbReset.Click += new System.EventHandler(this.tsbReset_Click);
+            // 
             // FrmMAIN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -313,6 +325,7 @@
         private System.Windows.Forms.ToolStripMenuItem 품목관리ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem bOM관리ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 공통코드관리ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton tsbReset;
     }
 }
 

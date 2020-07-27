@@ -19,6 +19,7 @@ namespace TEAM3FINAL
         public event EventHandler eUpdate;
         public event EventHandler eDelete;
         public event EventHandler ePrint;
+        public event EventHandler eReset;
 
 
 
@@ -144,11 +145,19 @@ namespace TEAM3FINAL
             }
         }
 
+
         private void tsbPrint_Click(object sender, EventArgs e)
         {
             if (ePrint != null)
             {
                 ePrint(this, new EventArgs());
+            }
+        }
+        private void tsbReset_Click(object sender, EventArgs e)
+        {
+            if (eReset != null)
+            {
+                eReset(this, new EventArgs());
             }
         }
 
@@ -187,5 +196,7 @@ namespace TEAM3FINAL
             FrmCOMMON frm = new FrmCOMMON();
             frm.Show();
         }
+
+        
     }
 }

@@ -44,6 +44,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgvCOMMON = new WindowsFormsApp18.MyDataGridView();
             this.button6 = new System.Windows.Forms.Button();
             this.SEQ = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
@@ -56,13 +57,12 @@
             this.cboGroup2 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.dgvCOMMON = new WindowsFormsApp18.MyDataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SEQ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCOMMON)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SEQ)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -91,6 +91,7 @@
             this.btnCancel.Location = new System.Drawing.Point(320, 508);
             this.btnCancel.Size = new System.Drawing.Size(132, 29);
             this.btnCancel.Text = "종료";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // panel2
             // 
@@ -238,6 +239,45 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "코드추가관리";
             // 
+            // dgvCOMMON
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvCOMMON.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvCOMMON.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCOMMON.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvCOMMON.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCOMMON.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvCOMMON.EnableHeadersVisualStyles = false;
+            this.dgvCOMMON.Location = new System.Drawing.Point(6, 116);
+            this.dgvCOMMON.Name = "dgvCOMMON";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCOMMON.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvCOMMON.RowHeadersWidth = 30;
+            this.dgvCOMMON.RowTemplate.Height = 23;
+            this.dgvCOMMON.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCOMMON.Size = new System.Drawing.Size(528, 185);
+            this.dgvCOMMON.TabIndex = 4;
+            // 
             // button6
             // 
             this.button6.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -366,45 +406,6 @@
             this.label5.TabIndex = 50;
             this.label5.Text = "*";
             // 
-            // myDataGridView1
-            // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.dgvCOMMON.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvCOMMON.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCOMMON.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvCOMMON.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Menu;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCOMMON.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvCOMMON.EnableHeadersVisualStyles = false;
-            this.dgvCOMMON.Location = new System.Drawing.Point(6, 116);
-            this.dgvCOMMON.Name = "myDataGridView1";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCOMMON.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvCOMMON.RowHeadersWidth = 30;
-            this.dgvCOMMON.RowTemplate.Height = 23;
-            this.dgvCOMMON.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCOMMON.Size = new System.Drawing.Size(528, 185);
-            this.dgvCOMMON.TabIndex = 4;
-            // 
             // FrmCOMMON
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -424,8 +425,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SEQ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCOMMON)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SEQ)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
