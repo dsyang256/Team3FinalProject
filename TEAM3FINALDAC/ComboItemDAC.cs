@@ -171,7 +171,12 @@ namespace TEAM3FINALDAC
 
                                          SELECT FAC_CODE 'COMMON_CODE',FAC_NAME 'COMMON_NAME', ('창고')'COMMON_PARENT', null 'COMMON_SEQ'
                                           FROM FACTORY
-                                         WHERE FAC_TYP = '창고'";
+                                         WHERE FAC_TYP = '창고'
+
+                                         Union
+
+                                         SELECT ITEM_CODE 'COMMON_CODE',ITEM_NAME 'COMMON_NAME', ('품목')'COMMON_PARENT', null 'COMMON_SEQ'
+                                         FROM ITEM ";
 
                     cmd.Connection.Open();
                     SqlDataReader reader = cmd.ExecuteReader();

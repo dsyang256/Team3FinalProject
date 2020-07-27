@@ -217,7 +217,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(31, 15);
             this.label11.TabIndex = 4;
-            this.label11.Text = "품목";
+            this.label11.Text = "품명";
             // 
             // label12
             // 
@@ -296,14 +296,14 @@
             this.ITEM_NAME.Location = new System.Drawing.Point(127, 29);
             this.ITEM_NAME.Name = "ITEM_NAME";
             this.ITEM_NAME.Size = new System.Drawing.Size(193, 23);
-            this.ITEM_NAME.TabIndex = 18;
+            this.ITEM_NAME.TabIndex = 0;
             // 
             // ITEM_STND
             // 
             this.ITEM_STND.Location = new System.Drawing.Point(496, 29);
             this.ITEM_STND.Name = "ITEM_STND";
             this.ITEM_STND.Size = new System.Drawing.Size(193, 23);
-            this.ITEM_STND.TabIndex = 19;
+            this.ITEM_STND.TabIndex = 1;
             // 
             // ITEM_COM_REORDER
             // 
@@ -311,7 +311,7 @@
             this.ITEM_COM_REORDER.Location = new System.Drawing.Point(870, 31);
             this.ITEM_COM_REORDER.Name = "ITEM_COM_REORDER";
             this.ITEM_COM_REORDER.Size = new System.Drawing.Size(193, 23);
-            this.ITEM_COM_REORDER.TabIndex = 20;
+            this.ITEM_COM_REORDER.TabIndex = 2;
             // 
             // ITEM_WRHS_OUT
             // 
@@ -319,7 +319,7 @@
             this.ITEM_WRHS_OUT.Location = new System.Drawing.Point(870, 81);
             this.ITEM_WRHS_OUT.Name = "ITEM_WRHS_OUT";
             this.ITEM_WRHS_OUT.Size = new System.Drawing.Size(193, 23);
-            this.ITEM_WRHS_OUT.TabIndex = 21;
+            this.ITEM_WRHS_OUT.TabIndex = 5;
             // 
             // ITEM_USE_YN
             // 
@@ -327,7 +327,7 @@
             this.ITEM_USE_YN.Location = new System.Drawing.Point(870, 133);
             this.ITEM_USE_YN.Name = "ITEM_USE_YN";
             this.ITEM_USE_YN.Size = new System.Drawing.Size(193, 23);
-            this.ITEM_USE_YN.TabIndex = 22;
+            this.ITEM_USE_YN.TabIndex = 8;
             // 
             // ITEM_TYP
             // 
@@ -335,7 +335,7 @@
             this.ITEM_TYP.Location = new System.Drawing.Point(496, 131);
             this.ITEM_TYP.Name = "ITEM_TYP";
             this.ITEM_TYP.Size = new System.Drawing.Size(193, 23);
-            this.ITEM_TYP.TabIndex = 23;
+            this.ITEM_TYP.TabIndex = 7;
             // 
             // ITEM_WRHS_IN
             // 
@@ -343,7 +343,7 @@
             this.ITEM_WRHS_IN.Location = new System.Drawing.Point(496, 81);
             this.ITEM_WRHS_IN.Name = "ITEM_WRHS_IN";
             this.ITEM_WRHS_IN.Size = new System.Drawing.Size(193, 23);
-            this.ITEM_WRHS_IN.TabIndex = 24;
+            this.ITEM_WRHS_IN.TabIndex = 4;
             // 
             // ITEM_MANAGER
             // 
@@ -351,7 +351,7 @@
             this.ITEM_MANAGER.Location = new System.Drawing.Point(127, 131);
             this.ITEM_MANAGER.Name = "ITEM_MANAGER";
             this.ITEM_MANAGER.Size = new System.Drawing.Size(193, 23);
-            this.ITEM_MANAGER.TabIndex = 25;
+            this.ITEM_MANAGER.TabIndex = 6;
             // 
             // ITEM_COM_DLVR
             // 
@@ -359,7 +359,7 @@
             this.ITEM_COM_DLVR.Location = new System.Drawing.Point(129, 81);
             this.ITEM_COM_DLVR.Name = "ITEM_COM_DLVR";
             this.ITEM_COM_DLVR.Size = new System.Drawing.Size(193, 23);
-            this.ITEM_COM_DLVR.TabIndex = 26;
+            this.ITEM_COM_DLVR.TabIndex = 3;
             // 
             // dgvitem
             // 
