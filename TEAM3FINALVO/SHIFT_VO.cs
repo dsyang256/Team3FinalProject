@@ -9,22 +9,13 @@ namespace TEAM3FINALVO
     class SHIFT_VO
     {
         public string SHIFT_CODE { get; set; }
+        public string SHIFT_TYP { get; set; }
+
         public int SHIFT_STARTTIME { get; set; }
         public int SHIFT_ENDTIME { get; set; }
         public DateTime SHIFT_APPLY_STARTTIME { get; set; }
         public DateTime SHIFT_APPLY_ENDTIME { get; set; }
         public int SHIFT_PERSON_DIR { get; set; }
-        public int SHIFT_PERSON_INDIR { get; set; }
-        public int SHIFT_STND_DIR { get; set; }
-        public int SHIFT_STND_INDIR { get; set; }
-        public int SHIFT_EXTRA_DIR { get; set; }
-        public int SHIFT_EXTRA_INDIR { get; set; }
-        public int SHIFT_PERSON_DIR_EXTRA { get; set; }
-        public int SHIFT_PERSON_INDIR_EXTRA { get; set; }
-        public int SHIFT_ACCIDENTTIME_DIR { get; set; }
-        public int SHIFT_ACCIDENTTIME_INDIR { get; set; }
-        public int SHIFT_ACCIDENTTIME_DIR_EXTRA { get; set; }
-        public int SHIFT_ACCIDENTTIME_INDIR_EXTRA { get; set; }
         public string SHIFT_USE_YN { get; set; }
         public string SHIFT_LAST_MDFR { get; set; }
         public DateTime SHIFT_LAST_MDFY { get; set; }
