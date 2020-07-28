@@ -13,12 +13,14 @@ namespace TEAM3FINAL
 {
     public partial class FrmFactoryManage : TEAM3FINAL.baseForm, CommonBtn
     {
+        CheckBox headerChk;
+
         public FrmFactoryManage()
         {
             InitializeComponent();
         }
 
-        //그리드뷰 컬럼 생성
+        #region 체크박스 포함한 그리드뷰 컬럼 생성
         private void DataGridViewColumnSet()
         {
             //데이터그리드뷰 초기설정
@@ -40,8 +42,32 @@ namespace TEAM3FINAL
             Util.AddNewColumnToDataGridView(dgvFactoryList, "사용유무", "FAC_USE_YN", true, 80);
             Util.AddNewColumnToDataGridView(dgvFactoryList, "최종수정자", "FAC_LAST_MDFR", true, 80);
             Util.AddNewColumnToDataGridView(dgvFactoryList, "최종수정시간", "FAC_LAST_MDFY", true, 80);
+            DataGridViewCheckBoxAllCheck();
         }
-                
+        private void DataGridViewCheckBoxAllCheck()
+        {
+            headerChk = new CheckBox();
+            Point headerCell = dgvFactoryList.GetCellDisplayRectangle(0, -1, true).Location;
+            headerChk.Location = new Point(headerCell.X + 4, headerCell.Y + 15);
+            headerChk.Size = new Size(18, 18);
+            headerChk.BackColor = Color.FromArgb(245, 245, 246);
+            headerChk.Click += HeaderChk_Clicked;
+            dgvFactoryList.Controls.Add(headerChk);
+        }
+        private void HeaderChk_Clicked(object sender, EventArgs e)
+        {
+            dgvFactoryList.EndEdit();
+
+            //데이터그리드뷰의 전체 행의 체크를 체크 or 언체크
+            foreach (DataGridViewRow row in dgvFactoryList.Rows)
+            {
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
+                chk.Value = headerChk.Checked;
+            }
+        }
+
+        #endregion
+
         private void FrmFactoryManage_Load(object sender, EventArgs e)
         {
             ComboBinding();
