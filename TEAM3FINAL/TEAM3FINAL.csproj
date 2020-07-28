@@ -73,12 +73,25 @@
     <Compile Include="BaseForm\ProjectBaseForm.Designer.cs">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Popup\ShiftPop.cs">
+    <Compile Include="FrmShift.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Popup\ShiftPop.Designer.cs">
-      <DependentUpon>ShiftPop.cs</DependentUpon>
+    <Compile Include="FrmShift.Designer.cs">
+      <DependentUpon>FrmShift.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmShiftManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmShiftManage.Designer.cs">
+      <DependentUpon>FrmShiftManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\FrmShiftPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\FrmShiftPop.Designer.cs">
+      <DependentUpon>FrmShiftPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\ShiftService.cs" />
     <Compile Include="YDS\FrmBOMPopUp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,8 +220,14 @@
     <EmbeddedResource Include="BaseForm\ProjectBaseForm.resx">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Popup\ShiftPop.resx">
-      <DependentUpon>ShiftPop.cs</DependentUpon>
+    <EmbeddedResource Include="FrmShift.resx">
+      <DependentUpon>FrmShift.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmShiftManage.resx">
+      <DependentUpon>FrmShiftManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\FrmShiftPop.resx">
+      <DependentUpon>FrmShiftPop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="YDS\FrmBOMPopUp.resx">
       <DependentUpon>FrmBOMPopUp.cs</DependentUpon>
