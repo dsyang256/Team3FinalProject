@@ -84,6 +84,7 @@
             this.ptxtPswd.Text = "PASSWORD";
             this.ptxtPswd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.ptxtPswd.TextChanged += new System.EventHandler(this.ptxtPswd_TextChanged);
+            this.ptxtPswd.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ptxtPswd_KeyDown);
             this.ptxtPswd.Leave += new System.EventHandler(this.ptxtPswd_Leave);
             // 
             // ptxtID
@@ -98,6 +99,7 @@
             this.ptxtID.TabIndex = 3;
             this.ptxtID.Text = "ID";
             this.ptxtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ptxtID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ptxtID_KeyDown);
             // 
             // btnSignup
             // 
@@ -122,7 +124,7 @@
             this.Controls.Add(this.ptxtID);
             this.Margin = new System.Windows.Forms.Padding(3, 6, 3, 6);
             this.Name = "FrmLogin";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmLogin_KeyDown);
+            this.Load += new System.EventHandler(this.FrmLogin_Load);
             this.Controls.SetChildIndex(this.ptxtID, 0);
             this.Controls.SetChildIndex(this.ptxtPswd, 0);
             this.Controls.SetChildIndex(this.btnSignup, 0);

@@ -39,8 +39,8 @@ namespace TEAM3FINAL
             int originX = originImage.Width;
             int originY = originImage.Height;
 
-            int resizeX=default;
-            int resizeY=default;
+            int resizeX = default;
+            int resizeY = default;
 
             if (originX > originY)
             {
@@ -110,7 +110,9 @@ namespace TEAM3FINAL
         #region 멤버변수
         public string LI_ID { get; set; }
         public string LI_NAME { get; set; }
-        public string LI_DEPT { get; set; }
+        public string LI_EML { get; set; }
+        public string LI_SignDate { get; set; }
+        public string LI_DEP { get; set; }
         #endregion
 
         #region 생성자
@@ -125,7 +127,10 @@ namespace TEAM3FINAL
         {
             LI_ID = default;
             LI_NAME = default;
-            LI_DEPT = default;
+            LI_EML = default;
+            LI_SignDate = default;
+            LI_DEP = default;
+
         }
         #endregion
     }

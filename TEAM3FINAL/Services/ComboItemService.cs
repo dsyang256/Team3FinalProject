@@ -10,15 +10,23 @@ namespace TEAM3FINAL
 {
     public class ComboItemService
     {
-        public List<COMMON_VO> GetAllCmCode()
-        {
-            ComboItemDAC dac = new ComboItemDAC();
-            return dac.GetAllCmCode();
-        }
         public List<ComboItemVO> GetCmCode()
         {
             ComboItemDAC dac = new ComboItemDAC();
             return dac.GetCmCode();
+        }
+
+        public List<ComboItemVO> GetFacilitiesCode()
+        {
+            ComboItemDAC dac = new ComboItemDAC();
+            return dac.GetFacilitiesCode();
+        }
+
+
+        public List<COMMON_VO> GetAllCmCode()
+        {
+            ComboItemDAC dac = new ComboItemDAC();
+            return dac.GetAllCmCode();
         }
 
         public List<ComboItemVO> GetITEMCmCode()

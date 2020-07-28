@@ -39,13 +39,6 @@ namespace TEAM3FINAL
         #endregion
 
         #region 이벤트
-        private void FrmLogin_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                btnOK.PerformClick();
-            }
-        }
 
         /// <summary>
         /// 로그인 정보를 확인하고 로그인기능을 수행하는 이벤트 -OJH
@@ -78,10 +71,14 @@ namespace TEAM3FINAL
                 ptxtPswd.Clear();
                 return;
             }
-            else
+            else //로그인정보 일치
             {
+                //관리자 정보 가져오기
+                SaveLoginUserInfo(userID, service);
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+
             ////로그인 정보 저장 (userConfig)
             //SaveUserConfig(userID, password, ckbLoginSave);
             ////로그인 정보 저장  (전역변수)
@@ -89,6 +86,17 @@ namespace TEAM3FINAL
             //    SetLoginInfo(service.GetCustomerInfo(userID));
             //else
             //    SetLoginInfo(service.GetManagerInfo(userID));
+        }
+
+
+        void SaveLoginUserInfo(string userID, LoginService service)
+        {
+            var userinfo = service.GetLoginUserInfo(userID);
+            LoginInfo.UserInfo.LI_ID = userinfo.MANAGER_ID;
+            LoginInfo.UserInfo.LI_NAME = userinfo.MANAGER_NAME;
+            LoginInfo.UserInfo.LI_EML = userinfo.MANAGER_EML;
+            LoginInfo.UserInfo.LI_SignDate = userinfo.MANAGER_PSWD;
+            LoginInfo.UserInfo.LI_DEP = userinfo.MANAGER_DEP;
         }
 
         /// <summary>
@@ -143,5 +151,31 @@ namespace TEAM3FINAL
 
         #endregion
 
+        private void ptxtID_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab || e.KeyCode == Keys.Enter)
+            {
+                ptxtPswd.Focus();
+            }
+        }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+            ptxtID.Focus();
+#if DEBUG
+            ptxtID.PlaceHolderText = "";
+            ptxtPswd.PlaceHolderText = "";
+            ptxtID.Text = "master999";
+            ptxtPswd.Text = "Asdf1234@";
+#endif
+        }
+
+        private void ptxtPswd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnOK.PerformClick();
+            }
+        }
     }
 }
