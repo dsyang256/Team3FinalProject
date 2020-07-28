@@ -74,16 +74,16 @@
     <Compile Include="BaseForm\ProjectBaseForm.Designer.cs">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmShift.cs">
+    <Compile Include="OJH\FrmShift.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmShift.Designer.cs">
+    <Compile Include="OJH\FrmShift.Designer.cs">
       <DependentUpon>FrmShift.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmShiftManage.cs">
+    <Compile Include="OJH\FrmShiftManage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmShiftManage.Designer.cs">
+    <Compile Include="OJH\FrmShiftManage.Designer.cs">
       <DependentUpon>FrmShiftManage.cs</DependentUpon>
     </Compile>
     <Compile Include="Popup\FrmShiftPop.cs">
@@ -173,12 +173,6 @@
     <Compile Include="FrmMAIN.Designer.cs">
       <DependentUpon>FrmMAIN.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmTest.Designer.cs">
-      <DependentUpon>FrmTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="LoggingUtility.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -222,10 +216,10 @@
     <EmbeddedResource Include="BaseForm\ProjectBaseForm.resx">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmShift.resx">
+    <EmbeddedResource Include="OJH\FrmShift.resx">
       <DependentUpon>FrmShift.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmShiftManage.resx">
+    <EmbeddedResource Include="OJH\FrmShiftManage.resx">
       <DependentUpon>FrmShiftManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup\FrmShiftPop.resx">
@@ -269,9 +263,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMAIN.resx">
       <DependentUpon>FrmMAIN.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmTest.resx">
-      <DependentUpon>FrmTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
