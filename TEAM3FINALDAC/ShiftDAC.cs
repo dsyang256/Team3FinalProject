@@ -14,6 +14,7 @@ namespace TEAM3FINALDAC
     {
         public List<SHIFT_VO> SaveShiftInfo()
         {
+            return new List<SHIFT_VO>();
             //List<SHIFT_VO> list = default;
             //try
             //{
