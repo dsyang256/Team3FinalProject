@@ -39,13 +39,6 @@ namespace TEAM3FINAL
         #endregion
 
         #region 이벤트
-        private void FrmLogin_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                btnOK.PerformClick();
-            }
-        }
 
         /// <summary>
         /// 로그인 정보를 확인하고 로그인기능을 수행하는 이벤트 -OJH
@@ -80,6 +73,8 @@ namespace TEAM3FINAL
             }
             else
             {
+                this.DialogResult = DialogResult.OK;
+                LoginInfo.UserInfo.LI_ID = ptxtID.Text.Trim();
                 this.Close();
             }
             ////로그인 정보 저장 (userConfig)
@@ -143,5 +138,31 @@ namespace TEAM3FINAL
 
         #endregion
 
+        private void ptxtID_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab || e.KeyCode == Keys.Enter)
+            {
+                ptxtPswd.Focus();
+            }
+        }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+            ptxtID.Focus();
+#if DEBUG
+            ptxtID.PlaceHolderText = "";
+            ptxtPswd.PlaceHolderText = "";
+            ptxtID.Text = "master999";
+            ptxtPswd.Text = "Asdf1234@";
+#endif
+        }
+
+        private void ptxtPswd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnOK.PerformClick();
+            }
+        }
     }
 }

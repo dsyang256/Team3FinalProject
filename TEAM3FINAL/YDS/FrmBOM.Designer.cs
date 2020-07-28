@@ -34,7 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ITEM_COM_REORDER = new System.Windows.Forms.ComboBox();
             this.ITEM_STND = new System.Windows.Forms.TextBox();
-            this.ITEM_NAME = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -45,6 +44,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dgvBOM = new WindowsFormsApp18.MyDataGridView();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -57,12 +57,12 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.dateTimePicker1);
             this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.ITEM_COM_REORDER);
             this.panel2.Controls.Add(this.ITEM_STND);
-            this.panel2.Controls.Add(this.ITEM_NAME);
             this.panel2.Controls.Add(this.label19);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label11);
@@ -91,13 +91,6 @@
             this.ITEM_STND.Name = "ITEM_STND";
             this.ITEM_STND.Size = new System.Drawing.Size(193, 23);
             this.ITEM_STND.TabIndex = 28;
-            // 
-            // ITEM_NAME
-            // 
-            this.ITEM_NAME.Location = new System.Drawing.Point(160, 26);
-            this.ITEM_NAME.Name = "ITEM_NAME";
-            this.ITEM_NAME.Size = new System.Drawing.Size(193, 23);
-            this.ITEM_NAME.TabIndex = 27;
             // 
             // label19
             // 
@@ -227,6 +220,13 @@
             this.dgvBOM.Size = new System.Drawing.Size(1174, 392);
             this.dgvBOM.TabIndex = 0;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(160, 26);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(193, 23);
+            this.dateTimePicker1.TabIndex = 33;
+            // 
             // FrmBOM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -250,7 +250,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox ITEM_COM_REORDER;
         private System.Windows.Forms.TextBox ITEM_STND;
-        private System.Windows.Forms.TextBox ITEM_NAME;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label11;
@@ -258,5 +257,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label2;
         private WindowsFormsApp18.MyDataGridView dgvBOM;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

@@ -40,6 +40,7 @@ namespace TEAM3FINAL
 
             //로그인시 메뉴 불러오기.
             SetMenus();
+            stslLoginID.Text = "";
         }
 
         private void SetMenus()
@@ -165,7 +166,13 @@ namespace TEAM3FINAL
 
         private void 로그인ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FormUtil.OpenOrCreateForm<FrmLogin>(this);
+            //FormUtil.OpenOrCreateForm<FrmLogin>(this);
+            FrmLogin frm = new FrmLogin();
+            frm.ShowDialog();
+            if(frm.DialogResult==DialogResult.OK)
+            {
+                stslLoginID.Text = $"{LoginInfo.UserInfo.LI_ID}님         ";
+            }
         }
 
         private void 공장관리ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -200,6 +207,17 @@ namespace TEAM3FINAL
         private void bOM관리ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormUtil.OpenOrCreateForm<FrmBOM>(this);
+        }
+
+        private void 로그아웃ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //자식폼 모두 닫기 -OJH
+            foreach (Form form in this.MdiChildren)
+            {
+                form.Close();
+            }
+            //로그인 정보 초기화 -OJH
+            LoginInfo.UserInfo.InitMember();
         }
     }
 }

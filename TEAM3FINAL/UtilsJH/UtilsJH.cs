@@ -109,8 +109,6 @@ namespace TEAM3FINAL
 
         #region 멤버변수
         public string LI_ID { get; set; }
-        public string LI_NAME { get; set; }
-        public string LI_DEPT { get; set; }
         #endregion
 
         #region 생성자
@@ -124,8 +122,6 @@ namespace TEAM3FINAL
         public void InitMember()
         {
             LI_ID = default;
-            LI_NAME = default;
-            LI_DEPT = default;
         }
         #endregion
     }
