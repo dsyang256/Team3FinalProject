@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthService.cs" />
     <Compile Include="BaseForm\baseFormPopUP.cs">
       <SubType>Form</SubType>
     </Compile>

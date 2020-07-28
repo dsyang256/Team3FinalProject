@@ -9,11 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using log4net.Core;
+using TEAM3FINALVO;
 
 namespace TEAM3FINAL
 {
+
     public partial class FrmMAIN : ProjectBaseForm
     {
+        private List<MANAGER_VO> menuList;
+        private List<int> checkMenuList = new List<int>();
+
         public event EventHandler eSearch;
         public event EventHandler eInsert;
         public event EventHandler eUpdate;
@@ -41,6 +46,58 @@ namespace TEAM3FINAL
             //로그인시 메뉴 불러오기.
             SetMenus();
             stslLoginID.Text = "";
+
+            GetMenus();
+        }
+
+        private void GetMenus()
+        {
+            AuthService service = new AuthService();
+            menuList =  service.GetMenus();
+        }
+
+        private void ShowMenu()
+        {
+            menuStrip1.Items.Clear();
+            checkMenuList.Clear();
+
+            //var grantMenus = (from item in menuList
+            //                  where item.Grant_id == LoginVO.Company_grand
+            //                  select item);
+
+            ShowMenuDropDown(menuList);
+        }
+
+        private void ShowMenuDropDown(IEnumerable<MANAGER_VO> grantMenus, ToolStripMenuItem tsmiPrent = null)
+        {
+            //foreach (var grantMenu in grantMenus)
+            //{
+            //    int menuCode = grantMenu.MANAGER_ID;
+
+            //    if (grantMenu.Menu_usable == "Y" && !checkMenuList.Contains(menuCode))
+            //    {
+            //        ToolStripMenuItem tsmi = new ToolStripMenuItem();
+            //        tsmi.Text = grantMenu.Menu_name;
+
+            //        checkMenuList.Add(menuCode);
+
+            //        if (tsmiPrent != null)
+            //            tsmiPrent.DropDownItems.Add(tsmi);
+            //        else
+            //            menuStrip1.Items.Add(tsmi);
+
+            //        var menuChildren = (from item in menuList
+            //                            where item.Parent_menu_code == menuCode
+            //                            select item);
+
+            //        if (menuChildren.Count() > 0)
+            //            ShowMenuDropDown(menuChildren, tsmi);
+            //        else
+            //            tsmi.Click += (sender, e) => this.MdiChildrenShow(grantMenu.Name_space, (from item in methodList
+            //                                                                                     where item.Menu_code == menuCode
+            //                                                                                     select item));
+            //    }
+            //}
         }
 
         private void SetMenus()
@@ -219,5 +276,8 @@ namespace TEAM3FINAL
             //로그인 정보 초기화 -OJH
             LoginInfo.UserInfo.InitMember();
         }
+
+        
+        
     }
 }
