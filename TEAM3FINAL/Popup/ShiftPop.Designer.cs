@@ -70,7 +70,7 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(569, 56);
+            this.panel1.Size = new System.Drawing.Size(580, 56);
             // 
             // label1
             // 
@@ -83,11 +83,11 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(209, 508);
+            this.btnOK.Location = new System.Drawing.Point(215, 456);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(326, 508);
+            this.btnCancel.Location = new System.Drawing.Point(332, 456);
             // 
             // panel2
             // 
@@ -132,7 +132,7 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(5, 68);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(569, 433);
+            this.panel2.Size = new System.Drawing.Size(580, 369);
             this.panel2.TabIndex = 128;
             // 
             // txtENDTIME
@@ -259,6 +259,7 @@
             // 
             // txtShiftUseYN
             // 
+            this.txtShiftUseYN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.txtShiftUseYN.FormattingEnabled = true;
             this.txtShiftUseYN.Items.AddRange(new object[] {
             "사용",
@@ -270,6 +271,7 @@
             // 
             // cboShift
             // 
+            this.cboShift.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboShift.FormattingEnabled = true;
             this.cboShift.Items.AddRange(new object[] {
             "주간",
@@ -468,9 +470,6 @@
             // cboFcltsCode
             // 
             this.cboFcltsCode.FormattingEnabled = true;
-            this.cboFcltsCode.Items.AddRange(new object[] {
-            "사용",
-            "미사용"});
             this.cboFcltsCode.Location = new System.Drawing.Point(154, 19);
             this.cboFcltsCode.Name = "cboFcltsCode";
             this.cboFcltsCode.Size = new System.Drawing.Size(121, 23);
@@ -479,7 +478,7 @@
             // ShiftPop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.ClientSize = new System.Drawing.Size(579, 562);
+            this.ClientSize = new System.Drawing.Size(590, 498);
             this.Controls.Add(this.panel2);
             this.Name = "ShiftPop";
             this.Controls.SetChildIndex(this.panel1, 0);

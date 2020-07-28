@@ -36,6 +36,37 @@ namespace TEAM3FINALDAC
             }
             return list;
         }
+
+        public List<ComboItemVO> GetFacilitiesCode()
+        {
+            List<ComboItemVO> list = default;
+
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = $@"select f.FCLTS_CODE COMMON_CODE, f.FCLTS_NAME COMMON_NAME
+                                        from dbo.FACILITIES f
+                                        where 1=1 ";
+
+                    cmd.Connection.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    list = Helper.DataReaderMapToList<ComboItemVO>(reader);
+                    cmd.Connection.Close();
+                }
+            }
+            catch (Exception err)
+            {
+                string msg = err.Message;
+            }
+            return list;
+        }
+
+
+
+
+
         public List<COMMON_VO> GetAllCmCode()
         {
             List<COMMON_VO> list = default;
