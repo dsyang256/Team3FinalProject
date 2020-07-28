@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TEAM3FINALVO
 {
-    class SHIFT_VO
+  public  class SHIFT_VO
     {
         public string SHIFT_CODE { get; set; }
         public string SHIFT_TYP { get; set; }

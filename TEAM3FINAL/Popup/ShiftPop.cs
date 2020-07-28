@@ -31,5 +31,21 @@ namespace TEAM3FINAL
 
         #endregion
 
+        /// <summary>
+        /// Shift 저장버튼 클릭시 발생하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            if(txtShiftCode.Text.Length < 1) //등록인경우
+            {
+
+            }
+            else //수정인경우
+            {
+
+            }
+        }
     }
 }

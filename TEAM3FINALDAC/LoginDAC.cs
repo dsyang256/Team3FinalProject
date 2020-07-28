@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using TEAM3FINALVO;
 using cryptography;
+using System.Diagnostics;
 
 namespace TEAM3FINALDAC
 {
@@ -71,6 +72,34 @@ namespace TEAM3FINALDAC
             return iCnt > 0 ? true : false;
         }
 
+        public MANAGER_VO GetLoginUserInfo(string userID)
+        {
+            List<MANAGER_VO> list = null;
+            try
+            {
+
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+
+                    cmd.CommandText = $@"select MANAGER_ID, MANAGER_NAME, MANAGER_EML, convert(varchar(20), MANAGER_SIGN_DATE, 120) MANAGER_PSWD,  MANAGER_DEP
+                                                from dbo.MANAGER
+                                                where MANAGER_ID = @MANAGER_ID";
+                                                    
+                    cmd.Parameters.AddWithValue("@MANAGER_ID", userID);
+
+                    cmd.Connection.Open();
+                    list = Helper.DataReaderMapToList<MANAGER_VO>(cmd.ExecuteReader());
+                    cmd.Connection.Close();
+                }
+            }
+            catch (Exception err)
+            {
+                return new MANAGER_VO();
+            }
+            return list[0];
+        }
+   
         public Message InsertOrUpdateManager(MANAGER_VO mv)
         {
             try

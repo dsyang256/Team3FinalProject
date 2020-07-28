@@ -71,12 +71,14 @@ namespace TEAM3FINAL
                 ptxtPswd.Clear();
                 return;
             }
-            else
+            else //로그인정보 일치
             {
+                //관리자 정보 가져오기
+                SaveLoginUserInfo(userID, service);
                 this.DialogResult = DialogResult.OK;
-                LoginInfo.UserInfo.LI_ID = ptxtID.Text.Trim();
                 this.Close();
             }
+
             ////로그인 정보 저장 (userConfig)
             //SaveUserConfig(userID, password, ckbLoginSave);
             ////로그인 정보 저장  (전역변수)
@@ -84,6 +86,17 @@ namespace TEAM3FINAL
             //    SetLoginInfo(service.GetCustomerInfo(userID));
             //else
             //    SetLoginInfo(service.GetManagerInfo(userID));
+        }
+
+
+        void SaveLoginUserInfo(string userID, LoginService service)
+        {
+            var userinfo = service.GetLoginUserInfo(userID);
+            LoginInfo.UserInfo.LI_ID = userinfo.MANAGER_ID;
+            LoginInfo.UserInfo.LI_NAME = userinfo.MANAGER_NAME;
+            LoginInfo.UserInfo.LI_EML = userinfo.MANAGER_EML;
+            LoginInfo.UserInfo.LI_SignDate = userinfo.MANAGER_PSWD;
+            LoginInfo.UserInfo.LI_DEP = userinfo.MANAGER_DEP;
         }
 
         /// <summary>
