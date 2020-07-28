@@ -117,12 +117,12 @@ namespace TEAM3FINAL
             Util.AddNewColumnToDataGridView(dgvBOM, "품목유형", "ITEM_TYP", true, 100);
             Util.AddNewColumnToDataGridView(dgvBOM, "단위", "ITEM_UNIT", true, 100);
             Util.AddNewColumnToDataGridView(dgvBOM, "소요량", "BOM_QTY", true, 80);
-            Util.AddNewColumnToDataGridView(dgvBOM, "BOM레벨", "ITEM_UNIT_CNVR", true, 100);
-            Util.AddNewColumnToDataGridView(dgvBOM, "시작일", "ITEM_QTY_CNVR", true, 80);
-            Util.AddNewColumnToDataGridView(dgvBOM, "종료일", "ITEM_INCOME_YN", true, 120);
-            Util.AddNewColumnToDataGridView(dgvBOM, "사용여부", "ITEM_PROCS_YN", true, 120);
-            Util.AddNewColumnToDataGridView(dgvBOM, "소요계획", "ITEM_XPORT_YN", true, 120);
-            Util.AddNewColumnToDataGridView(dgvBOM, "자동차감", "ITEM_DSCN_YN", true, 100);
+            Util.AddNewColumnToDataGridView(dgvBOM, "BOM레벨", "Lvl", true, 100);
+            Util.AddNewColumnToDataGridView(dgvBOM, "시작일", "BOM_STARTDATE", true, 80);
+            Util.AddNewColumnToDataGridView(dgvBOM, "종료일", "BOM_ENDDATE", true, 120);
+            Util.AddNewColumnToDataGridView(dgvBOM, "사용여부", "BOM_USE_YN", true, 120);
+            Util.AddNewColumnToDataGridView(dgvBOM, "소요계획", "BOM_PLAN_YN", true, 120);
+            Util.AddNewColumnToDataGridView(dgvBOM, "자동차감", "BOM_AUTOREDUCE_YN", true, 100);
             Util.AddNewColumnToDataGridView(dgvBOM, "설비", "FCLTS_CODE", true, 100);
             Util.AddNewColumnToDataGridView(dgvBOM, "설비명", "FCLTS_NAME", true, 140);
             Util.AddNewColumnToDataGridView(dgvBOM, "규격", "ITEM_STND", true, 140);

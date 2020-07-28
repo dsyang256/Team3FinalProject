@@ -135,6 +135,11 @@ namespace TEAM3FINAL
 
 
         }
+        /// <summary>
+        /// 텍스트 박스 숫자만 입력 가능 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void text_KeyPress(object sender, KeyPressEventArgs e)
         {
             // 숫자만 입력하도록 하는 이벤트

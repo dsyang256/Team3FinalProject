@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthDAC.cs" />
+    <Compile Include="BOMDAC.cs" />
     <Compile Include="ComboItemDAC.cs" />
     <Compile Include="CommonDAC.cs" />
     <Compile Include="FactoryDAC.cs" />

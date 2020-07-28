@@ -147,7 +147,7 @@ namespace TEAM3FINAL
                 MessageBox.Show("중복체크 먼저 해주세요");
                 return;
             }
-            if (service.CodeNameInsert(cboGroup2.Text, txtcode2.Text, Convert.ToInt32(SEQ.Value)))
+            if (service.CodeNameInsert(cboGroup2.SelectedValue.ToString(), txtcode2.Text, Convert.ToInt32(SEQ.Value)))
             {
                 MessageBox.Show("정상적으로 등록 되었습니다.");
                 Reset();

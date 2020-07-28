@@ -105,7 +105,7 @@ namespace TEAM3FINALDAC
                     cmd.Parameters.AddWithValue("@P_ITEM_WRHS_OUT", vo.ITEM_WRHS_OUT); //14
                     cmd.Parameters.AddWithValue("@P_ITEM_LEADTIME", vo.ITEM_LEADTIME); //15
 
-                    cmd.Parameters.AddWithValue("@P_ITEM_QTY_REORDER_MIN", vo.ITEM_COM_REORDER); //16
+                    cmd.Parameters.AddWithValue("@P_ITEM_QTY_REORDER_MIN", vo.ITEM_QTY_REORDER_MIN); //16
                     cmd.Parameters.AddWithValue("@P_ITEM_QTY_STND", vo.ITEM_QTY_STND); //17
                     cmd.Parameters.AddWithValue("@P_ITEM_QTY_SAFE", vo.ITEM_QTY_SAFE); //18
                     cmd.Parameters.AddWithValue("@P_ITEM_MANAGE_LEVEL", vo.ITEM_MANAGE_LEVEL); //19

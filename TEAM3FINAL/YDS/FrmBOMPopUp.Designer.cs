@@ -79,10 +79,12 @@
             // btnOK
             // 
             this.btnOK.Location = new System.Drawing.Point(294, 520);
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(406, 520);
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // panel2
             // 
@@ -213,15 +215,16 @@
             this.BOM_QTY.Name = "BOM_QTY";
             this.BOM_QTY.Size = new System.Drawing.Size(193, 23);
             this.BOM_QTY.TabIndex = 53;
+            this.BOM_QTY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_KeyPress);
             // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.Location = new System.Drawing.Point(80, 275);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(55, 15);
+            this.label27.Size = new System.Drawing.Size(31, 15);
             this.label27.TabIndex = 38;
-            this.label27.Text = "시설설명";
+            this.label27.Text = "비고";
             // 
             // label23
             // 
