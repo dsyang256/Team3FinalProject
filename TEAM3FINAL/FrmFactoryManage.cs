@@ -25,8 +25,9 @@ namespace TEAM3FINAL
         {
             //데이터그리드뷰 초기설정
             Util.InitSettingGridView(dgvFactoryList);
-            //데이터그리드뷰 체크박스, 컬럼 추가
+            //데이터그리드뷰 체크박스 컬럼 추가
             Util.DataGridViewCheckBoxSet(dgvFactoryList, "");
+            //일반컬럼 추가
             Util.AddNewColumnToDataGridView(dgvFactoryList, "시설군", "FAC_FCLTY", true, 80);
             Util.AddNewColumnToDataGridView(dgvFactoryList, "시설구분", "FAC_TYP", true, 80);
             Util.AddNewColumnToDataGridView(dgvFactoryList, "시설코드", "FAC_CODE", true, 80);
