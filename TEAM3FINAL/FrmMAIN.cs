@@ -277,7 +277,9 @@ namespace TEAM3FINAL
             LoginInfo.UserInfo.InitMember();
         }
 
-        
-        
+        private void 설비관리ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUtil.OpenOrCreateForm<FrmFacilityGroup>(this);
+        }
     }
 }

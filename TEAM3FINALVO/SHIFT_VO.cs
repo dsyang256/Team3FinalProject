@@ -8,7 +8,7 @@ namespace TEAM3FINALVO
 {
   public  class SHIFT_VO
     {
-        public string SHIFT_CODE { get; set; }
+        public int SHIFT_CODE { get; set; }
         public string SHIFT_TYP { get; set; }
 
         public int SHIFT_STARTTIME { get; set; }
@@ -26,7 +26,7 @@ namespace TEAM3FINALVO
     public class SHIFTList_VO
     {
         public string idx { get; set; }
-        public string SHIFT_CODE { get; set; }
+        public int SHIFT_CODE { get; set; }
         public string SHIFT_TYP { get; set; }
 
         public int SHIFT_STARTTIME { get; set; }
