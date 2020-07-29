@@ -279,7 +279,7 @@ namespace TEAM3FINAL
 
         private void 설비관리ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormUtil.OpenOrCreateForm<FrmFactoryManage>(this);
+            FormUtil.OpenOrCreateForm<FrmFacilityGroup>(this);
         }
     }
 }
