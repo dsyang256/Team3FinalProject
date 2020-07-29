@@ -73,6 +73,7 @@
     <Compile Include="BaseForm\ProjectBaseForm.Designer.cs">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Services\BOMService.cs" />
     <Compile Include="YDS\FrmBOMPopUp.cs">
       <SubType>Form</SubType>
     </Compile>
