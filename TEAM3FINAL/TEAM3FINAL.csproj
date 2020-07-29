@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthService.cs" />
     <Compile Include="BaseForm\baseFormPopUP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,7 +74,14 @@
     <Compile Include="BaseForm\ProjectBaseForm.Designer.cs">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Popup\FrmShiftPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\FrmShiftPop.Designer.cs">
+      <DependentUpon>FrmShiftPop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\BOMService.cs" />
+    <Compile Include="Services\ShiftService.cs" />
     <Compile Include="YDS\FrmBOMPopUp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,12 +161,6 @@
     <Compile Include="FrmMAIN.Designer.cs">
       <DependentUpon>FrmMAIN.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmTest.Designer.cs">
-      <DependentUpon>FrmTest.cs</DependentUpon>
-    </Compile>
     <Compile Include="LoggingUtility.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -202,8 +204,8 @@
     <EmbeddedResource Include="BaseForm\ProjectBaseForm.resx">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Popup\ShiftPop.resx">
-      <DependentUpon>ShiftPop.cs</DependentUpon>
+    <EmbeddedResource Include="Popup\FrmShiftPop.resx">
+      <DependentUpon>FrmShiftPop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="YDS\FrmBOMPopUp.resx">
       <DependentUpon>FrmBOMPopUp.cs</DependentUpon>
@@ -243,9 +245,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMAIN.resx">
       <DependentUpon>FrmMAIN.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmTest.resx">
-      <DependentUpon>FrmTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

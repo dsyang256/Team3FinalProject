@@ -38,20 +38,20 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.BackColor = System.Drawing.Color.RoyalBlue;
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(3, 4);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(794, 56);
+            this.panel1.Size = new System.Drawing.Size(800, 56);
             this.panel1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label1.Location = new System.Drawing.Point(30, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(235, 25);
@@ -70,8 +70,8 @@
             // 
             // btnOK
             // 
-            this.btnOK.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnOK.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnOK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnOK.ForeColor = System.Drawing.SystemColors.WindowText;
             this.btnOK.Location = new System.Drawing.Point(292, 508);
             this.btnOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOK.Name = "btnOK";
@@ -82,8 +82,8 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnCancel.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnCancel.ForeColor = System.Drawing.SystemColors.WindowText;
             this.btnCancel.Location = new System.Drawing.Point(404, 508);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancel.Name = "btnCancel";
