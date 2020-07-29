@@ -15,6 +15,7 @@ namespace TEAM3FINAL
         #region 멤버변수
         List<MANAGER_VO> managerlist = null;
         List<MANAGER_VO> menulist = null;
+        List<MANAGER_VO> rightlist = null;
         List<ComboItemVO> commonlist = null;
         #endregion
         public FrmAuthSet()
@@ -53,8 +54,8 @@ namespace TEAM3FINAL
 
             //권한 설정
             Util.InitSettingGridView(dgvRight);
-            Util.AddNewColumnToDataGridView(dgvRight, "메뉴ID", "FAC_FCLTY", false, 100);
-            Util.AddNewColumnToDataGridView(dgvRight, "메뉴명", "FAC_FCLTY", true, 100);
+            Util.AddNewColumnToDataGridView(dgvRight, "메뉴ID", "MENU_ID", false, 100);
+            Util.AddNewColumnToDataGridView(dgvRight, "메뉴명", "MENU_NAME", true, 100);
             Util.DataGridViewCheckBoxSet(dgvRight, "등록","등록",100);
             Util.DataGridViewCheckBoxSet(dgvRight, "읽기", "읽기",100);
             Util.DataGridViewCheckBoxSet(dgvRight, "수정", "수정",100);
@@ -63,10 +64,11 @@ namespace TEAM3FINAL
 
             //그룹 설정
             Util.InitSettingGridView(dgvGroup);
-            Util.DataGridViewCheckBoxSet(dgvGroup, "  ");
-            Util.AddNewColumnToDataGridView(dgvGroup, "그룹코드", "FAC_FCLTY", false, 100);
-            Util.AddNewColumnToDataGridView(dgvGroup, "그룹명", "FAC_TYP", true, 150);
-            Util.AddNewColumnToDataGridView(dgvGroup, "상세설명", "FAC_TYP", true, 300);
+            Util.DataGridViewCheckBoxSet(dgvGroup,"    ");
+            Util.AddNewColumnToDataGridView(dgvGroup, "그룹코드", "RIGHT_ID", false, 100);
+            Util.AddNewColumnToDataGridView(dgvGroup, "그룹", "RIGHT_GROUP", true, 100);
+            Util.AddNewColumnToDataGridView(dgvGroup, "그룹명", "RIGHT_NAME", true, 150);
+            Util.AddNewColumnToDataGridView(dgvGroup, "상세설명", "RIGHT_DESC", true, 300);
         }
 
         #endregion
@@ -100,12 +102,25 @@ namespace TEAM3FINAL
         /// <summary>
         /// 전체메뉴를 가져오는 메서드
         /// </summary>
-        private void LoadMenuList()
+        private void LoadMenuList(string userID)
         {
+            
             AuthService service = new AuthService();
-            menulist = service.GetMenuList();
+            menulist = service.GetMenuList(userID);
             dgvRight.DataSource = null;
             dgvRight.DataSource = menulist;
+        }
+
+        /// <summary>
+        /// 전체그룹을 가져오는 메서드
+        /// </summary>
+        private void LoadRightList(string userID)
+        {
+
+            AuthService service = new AuthService();
+            rightlist = service.GetRightList(userID);
+            dgvRight.DataSource = null;
+            dgvRight.DataSource = rightlist;
         }
 
         /// <summary>
@@ -125,7 +140,12 @@ namespace TEAM3FINAL
         /// <param name="e"></param>
         private void dgvUsers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            LoadMenuList();
+            if (dgvUsers.SelectedRows.Count>0 && e.RowIndex > 0)
+            {
+                LoadMenuList(dgvUsers[e.ColumnIndex,e.RowIndex].Value.ToString());
+                LoadRightList(dgvUsers[e.ColumnIndex, e.RowIndex].Value.ToString());
+            }
+            
         }
     }
 }
