@@ -13,7 +13,9 @@ namespace TEAM3FINAL
     public partial class FrmAuthSet : TEAM3FINAL.baseFormPopUP
     {
         #region 멤버변수
-        List<ComboItemVO> Commonlist = null;
+        List<MANAGER_VO> managerlist = null;
+        List<MANAGER_VO> menulist = null;
+        List<ComboItemVO> commonlist = null;
         #endregion
         public FrmAuthSet()
         {
@@ -28,31 +30,36 @@ namespace TEAM3FINAL
         {
             //콤보박스 서비스 호출
             ComboItemService service = new ComboItemService();
-            Commonlist = service.GetCmCode();
+            commonlist = service.GetCmCode();
             //콤보박스 바인딩 - 부서명
-            var codelist = (from item in Commonlist where item.COMMON_PARENT == "DEP" select item).ToList();
+            var codelist = (from item in commonlist where item.COMMON_PARENT == "DEP" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(cboDept, codelist, "COMMON_CODE", "COMMON_NAME");
 
         }
 
-        //그리드뷰 컬럼 생성
+
+        /// <summary>
+        /// 그리드뷰 컬럼 생성 메서드
+        /// </summary>
         private void DataGridViewColumnSet()
         {
             //데이터그리드뷰 초기설정
 
             //관리자 검색
             Util.InitSettingGridView(dgvUsers);
-            Util.AddNewColumnToDataGridView(dgvUsers, "관리자 ID", "FAC_FCLTY", true, 100);
-            Util.AddNewColumnToDataGridView(dgvUsers, "이름", "FAC_TYP", true, 100);
+            Util.AddNewColumnToDataGridView(dgvUsers, "관리자 ID", "MANAGER_ID", true, 100);
+            Util.AddNewColumnToDataGridView(dgvUsers, "이름", "MANAGER_NAME", true, 100);
+            Util.AddNewColumnToDataGridView(dgvUsers, "부서", "MANAGER_DEP", true, 100);
+
             //권한 설정
             Util.InitSettingGridView(dgvRight);
             Util.AddNewColumnToDataGridView(dgvRight, "메뉴ID", "FAC_FCLTY", false, 100);
             Util.AddNewColumnToDataGridView(dgvRight, "메뉴명", "FAC_FCLTY", true, 100);
-            Util.DataGridViewCheckBoxSet(dgvRight, "등록");
-            Util.DataGridViewCheckBoxSet(dgvRight, "읽기");
-            Util.DataGridViewCheckBoxSet(dgvRight, "수정");
-            Util.DataGridViewCheckBoxSet(dgvRight, "삭제");
-            Util.DataGridViewCheckBoxSet(dgvRight, "인쇄");
+            Util.DataGridViewCheckBoxSet(dgvRight, "등록","등록",100);
+            Util.DataGridViewCheckBoxSet(dgvRight, "읽기", "읽기",100);
+            Util.DataGridViewCheckBoxSet(dgvRight, "수정", "수정",100);
+            Util.DataGridViewCheckBoxSet(dgvRight, "삭제", "삭제",100);
+            Util.DataGridViewCheckBoxSet(dgvRight, "인쇄", "인쇄", 100);
 
             //그룹 설정
             Util.InitSettingGridView(dgvGroup);
@@ -68,6 +75,57 @@ namespace TEAM3FINAL
         {
             //콤보박스 바인딩
             BindingComboBox();
+            //그리드뷰 설정
+            DataGridViewColumnSet();
+
+            //관리자목록 가져오기
+            LoadManagers();
+
+            dgvUsers.ClearSelection();
+            dgvRight.ClearSelection(); 
+            dgvGroup.ClearSelection();
+        }
+
+        /// <summary>
+        /// 관리자목록을 가져오는 메서드
+        /// </summary>
+        private void LoadManagers()
+        {
+            AuthService service = new AuthService();
+            managerlist = service.GetManagers();
+            dgvUsers.DataSource = null;
+            dgvUsers.DataSource = managerlist;
+        }
+
+        /// <summary>
+        /// 전체메뉴를 가져오는 메서드
+        /// </summary>
+        private void LoadMenuList()
+        {
+            AuthService service = new AuthService();
+            menulist = service.GetMenuList();
+            dgvRight.DataSource = null;
+            dgvRight.DataSource = menulist;
+        }
+
+        /// <summary>
+        /// 탭페이지 인덱스 변경시 발생하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 셀 더블클릭시 발생하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvUsers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            LoadMenuList();
         }
     }
 }

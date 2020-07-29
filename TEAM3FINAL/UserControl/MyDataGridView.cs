@@ -35,7 +35,7 @@ namespace WindowsFormsApp18
             this.DefaultCellStyle.ForeColor = Color.Black;
             this.DefaultCellStyle.SelectionBackColor = SystemColors.Menu;
             //this.DefaultCellStyle.SelectionForeColor = SystemColors.HighlightText
-            this.DefaultCellStyle.SelectionForeColor = Color.Black;
+            this.DefaultCellStyle.SelectionForeColor = SystemColors.MenuHighlight;
 
             this.BackgroundColor = Color.White;
 
