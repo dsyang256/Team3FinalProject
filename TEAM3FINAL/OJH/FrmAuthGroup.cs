@@ -24,9 +24,6 @@ namespace TEAM3FINAL
             Util.AddNewColumnToDataGridView(dgvGroup, "이름", "FAC_TYP", true, 100);
             Util.AddNewColumnToDataGridView(dgvGroup, "부서", "FAC_CODE", true, 100);
             Util.AddNewColumnToDataGridView(dgvGroup, "그룹", "FAC_CODE", true, 100);
-            //버튼 컬럼
-            Util.DataGridViewBtnSet("그룹설정", dgvGroup, 0, 0);
-            Util.DataGridViewBtnSet("권한설정", dgvGroup, 0, 0);
         }
 
         private void FrmAuthGroup_Load(object sender, EventArgs e)
