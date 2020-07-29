@@ -1,6 +1,6 @@
 ﻿namespace TEAM3FINAL
 {
-    partial class ShiftPop
+    partial class FrmShiftPop
     {
         /// <summary>
         /// 필수 디자이너 변수입니다.
@@ -43,7 +43,7 @@
             this.txtShiftCode = new System.Windows.Forms.TextBox();
             this.dtpApplyEndTime = new System.Windows.Forms.DateTimePicker();
             this.dtpApplyStartTime = new System.Windows.Forms.DateTimePicker();
-            this.txtShiftUseYN = new System.Windows.Forms.ComboBox();
+            this.cboShiftUseYN = new System.Windows.Forms.ComboBox();
             this.cboShift = new System.Windows.Forms.ComboBox();
             this.txtRemark = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
@@ -112,7 +112,7 @@
             this.panel2.Controls.Add(this.dtpApplyEndTime);
             this.panel2.Controls.Add(this.dtpApplyStartTime);
             this.panel2.Controls.Add(this.cboFcltsCode);
-            this.panel2.Controls.Add(this.txtShiftUseYN);
+            this.panel2.Controls.Add(this.cboShiftUseYN);
             this.panel2.Controls.Add(this.cboShift);
             this.panel2.Controls.Add(this.txtRemark);
             this.panel2.Controls.Add(this.label32);
@@ -143,6 +143,7 @@
             this.txtENDTIME.Name = "txtENDTIME";
             this.txtENDTIME.Size = new System.Drawing.Size(121, 23);
             this.txtENDTIME.TabIndex = 161;
+            this.txtENDTIME.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPersonDirect_KeyPress);
             // 
             // txtMDFDate
             // 
@@ -158,6 +159,7 @@
             this.txtPersonDirect.Name = "txtPersonDirect";
             this.txtPersonDirect.Size = new System.Drawing.Size(121, 23);
             this.txtPersonDirect.TabIndex = 161;
+            this.txtPersonDirect.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPersonDirect_KeyPress);
             // 
             // txtSTARTTIME
             // 
@@ -165,6 +167,7 @@
             this.txtSTARTTIME.Name = "txtSTARTTIME";
             this.txtSTARTTIME.Size = new System.Drawing.Size(121, 23);
             this.txtSTARTTIME.TabIndex = 161;
+            this.txtSTARTTIME.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPersonDirect_KeyPress);
             // 
             // label10
             // 
@@ -251,6 +254,7 @@
             this.dtpApplyEndTime.Name = "dtpApplyEndTime";
             this.dtpApplyEndTime.Size = new System.Drawing.Size(121, 23);
             this.dtpApplyEndTime.TabIndex = 135;
+            this.dtpApplyEndTime.ValueChanged += new System.EventHandler(this.dtpApplyEndTime_ValueChanged);
             // 
             // dtpApplyStartTime
             // 
@@ -258,18 +262,19 @@
             this.dtpApplyStartTime.Name = "dtpApplyStartTime";
             this.dtpApplyStartTime.Size = new System.Drawing.Size(121, 23);
             this.dtpApplyStartTime.TabIndex = 135;
+            this.dtpApplyStartTime.ValueChanged += new System.EventHandler(this.dtpApplyStartTime_ValueChanged);
             // 
-            // txtShiftUseYN
+            // cboShiftUseYN
             // 
-            this.txtShiftUseYN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.txtShiftUseYN.FormattingEnabled = true;
-            this.txtShiftUseYN.Items.AddRange(new object[] {
+            this.cboShiftUseYN.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboShiftUseYN.FormattingEnabled = true;
+            this.cboShiftUseYN.Items.AddRange(new object[] {
             "사용",
             "미사용"});
-            this.txtShiftUseYN.Location = new System.Drawing.Point(419, 54);
-            this.txtShiftUseYN.Name = "txtShiftUseYN";
-            this.txtShiftUseYN.Size = new System.Drawing.Size(121, 23);
-            this.txtShiftUseYN.TabIndex = 130;
+            this.cboShiftUseYN.Location = new System.Drawing.Point(419, 54);
+            this.cboShiftUseYN.Name = "cboShiftUseYN";
+            this.cboShiftUseYN.Size = new System.Drawing.Size(121, 23);
+            this.cboShiftUseYN.TabIndex = 130;
             // 
             // cboShift
             // 
@@ -483,6 +488,7 @@
             this.ClientSize = new System.Drawing.Size(590, 498);
             this.Controls.Add(this.panel2);
             this.Name = "ShiftPop";
+            this.Load += new System.EventHandler(this.ShiftPop_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.btnOK, 0);
@@ -503,7 +509,7 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox txtFcltsName;
-        private System.Windows.Forms.ComboBox txtShiftUseYN;
+        private System.Windows.Forms.ComboBox cboShiftUseYN;
         private System.Windows.Forms.ComboBox cboShift;
         private System.Windows.Forms.TextBox txtRemark;
         private System.Windows.Forms.Label label32;
