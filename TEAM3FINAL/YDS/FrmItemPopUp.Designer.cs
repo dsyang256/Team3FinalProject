@@ -936,7 +936,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Location = new System.Drawing.Point(5, 73);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(790, 428);
+            this.panel2.Size = new System.Drawing.Size(790, 477);
             this.panel2.TabIndex = 127;
             // 
             // FrmItemPopUp
@@ -1091,8 +1091,6 @@
             this.Controls.SetChildIndex(this.ITEM_FREE_YN, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
-            this.Controls.SetChildIndex(this.btnOK, 0);
-            this.Controls.SetChildIndex(this.btnCancel, 0);
             this.Controls.SetChildIndex(this.ITEM_WRHS_IN, 0);
             this.Controls.SetChildIndex(this.ITEM_MANAGE_LEVEL, 0);
             this.Controls.SetChildIndex(this.ITEM_LAST_MDFY, 0);
@@ -1119,6 +1117,8 @@
             this.Controls.SetChildIndex(this.ITEM_DSCN_YN, 0);
             this.Controls.SetChildIndex(this.label25, 0);
             this.Controls.SetChildIndex(this.label23, 0);
+            this.Controls.SetChildIndex(this.btnOK, 0);
+            this.Controls.SetChildIndex(this.btnCancel, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

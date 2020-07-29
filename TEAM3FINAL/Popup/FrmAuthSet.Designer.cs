@@ -50,8 +50,8 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dgvRight = new WindowsFormsApp18.MyDataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dgvRight = new WindowsFormsApp18.MyDataGridView();
             this.dgvGroup = new WindowsFormsApp18.MyDataGridView();
             this.dgvUsers = new WindowsFormsApp18.MyDataGridView();
             this.panel1.SuspendLayout();
@@ -63,15 +63,15 @@
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRight)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1290, 56);
+            this.panel1.Size = new System.Drawing.Size(1300, 56);
             // 
             // label1
             // 
@@ -81,18 +81,21 @@
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.Location = new System.Drawing.Point(547, 567);
+            this.label2.Location = new System.Drawing.Point(14, 567);
+            this.label2.Visible = false;
             // 
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(746, 558);
+            this.btnOK.Location = new System.Drawing.Point(544, 558);
             this.btnOK.Text = "저장";
+            this.btnOK.Visible = false;
             // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(858, 558);
+            this.btnCancel.Location = new System.Drawing.Point(608, 558);
+            this.btnCancel.Visible = false;
             // 
             // splitContainer1
             // 
@@ -109,23 +112,24 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(1290, 483);
+            this.splitContainer1.Size = new System.Drawing.Size(1290, 528);
             this.splitContainer1.SplitterDistance = 361;
             this.splitContainer1.TabIndex = 3;
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.cboDept);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.txtName);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Location = new System.Drawing.Point(0, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(361, 483);
+            this.groupBox1.Size = new System.Drawing.Size(361, 522);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "관리자 검색";
@@ -146,9 +150,9 @@
             // 
             this.panel2.Controls.Add(this.dgvUsers);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(3, 128);
+            this.panel2.Location = new System.Drawing.Point(3, 136);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(355, 352);
+            this.panel2.Size = new System.Drawing.Size(355, 383);
             this.panel2.TabIndex = 50;
             // 
             // label13
@@ -199,8 +203,9 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(925, 483);
+            this.tabControl1.Size = new System.Drawing.Size(925, 528);
             this.tabControl1.TabIndex = 0;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -208,10 +213,21 @@
             this.tabPage1.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(917, 455);
+            this.tabPage1.Size = new System.Drawing.Size(917, 500);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "관리자 권한 설정";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dgvGroup);
+            this.tabPage2.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Size = new System.Drawing.Size(917, 500);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "관리자 그룹 설정";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // dgvRight
             // 
@@ -219,10 +235,10 @@
             this.dgvRight.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvRight.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
             dataGridViewCellStyle6.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvRight.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
@@ -230,9 +246,9 @@
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvRight.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvRight.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -250,19 +266,8 @@
             this.dgvRight.RowHeadersWidth = 30;
             this.dgvRight.RowTemplate.Height = 23;
             this.dgvRight.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRight.Size = new System.Drawing.Size(917, 455);
-            this.dgvRight.TabIndex = 1;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.dgvGroup);
-            this.tabPage2.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(917, 455);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "관리자 그룹 설정";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.dgvRight.Size = new System.Drawing.Size(917, 500);
+            this.dgvRight.TabIndex = 0;
             // 
             // dgvGroup
             // 
@@ -270,10 +275,10 @@
             this.dgvGroup.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvGroup.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
             dataGridViewCellStyle10.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvGroup.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
@@ -281,9 +286,9 @@
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle11.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(52)))), ((int)(((byte)(52)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvGroup.DefaultCellStyle = dataGridViewCellStyle11;
             this.dgvGroup.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -301,8 +306,8 @@
             this.dgvGroup.RowHeadersWidth = 30;
             this.dgvGroup.RowTemplate.Height = 23;
             this.dgvGroup.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvGroup.Size = new System.Drawing.Size(917, 455);
-            this.dgvGroup.TabIndex = 2;
+            this.dgvGroup.Size = new System.Drawing.Size(917, 500);
+            this.dgvGroup.TabIndex = 0;
             // 
             // dgvUsers
             // 
@@ -322,7 +327,7 @@
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("맑은 고딕", 11F);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvUsers.DefaultCellStyle = dataGridViewCellStyle3;
@@ -341,8 +346,9 @@
             this.dgvUsers.RowHeadersWidth = 30;
             this.dgvUsers.RowTemplate.Height = 23;
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsers.Size = new System.Drawing.Size(355, 352);
+            this.dgvUsers.Size = new System.Drawing.Size(355, 383);
             this.dgvUsers.TabIndex = 0;
+            this.dgvUsers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellDoubleClick);
             // 
             // FrmAuthSet
             // 
@@ -351,10 +357,10 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "FrmAuthSet";
             this.Load += new System.EventHandler(this.FrmAuthSet_Load);
-            this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.btnOK, 0);
             this.Controls.SetChildIndex(this.btnCancel, 0);
+            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.splitContainer1, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -367,8 +373,8 @@
             this.panel2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRight)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.ResumeLayout(false);

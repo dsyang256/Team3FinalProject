@@ -99,7 +99,19 @@ namespace TEAM3FINAL
             chb1.FlatStyle = FlatStyle.Flat;
             return dgv.Columns.Add(chb1);
         }
-        
+
+        public static int DataGridViewCheckBoxSet(DataGridView dgv, string name, string HeaderText= "        ",int Width = 100)
+        {
+            DataGridViewCheckBoxColumn chb1 = new DataGridViewCheckBoxColumn();
+            chb1.HeaderText = HeaderText;
+            chb1.Name = name;
+            chb1.Width = Width;
+            chb1.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            chb1.DefaultCellStyle.Padding = new Padding(0, 0, 0, 0);
+            chb1.FlatStyle = FlatStyle.Flat;
+            return dgv.Columns.Add(chb1);
+        }
+
 
     }
 }

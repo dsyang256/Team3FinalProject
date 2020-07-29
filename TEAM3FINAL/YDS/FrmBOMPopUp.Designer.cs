@@ -78,12 +78,14 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(294, 520);
+            this.btnOK.Location = new System.Drawing.Point(294, 502);
+            this.btnOK.TabIndex = 11;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(406, 520);
+            this.btnCancel.Location = new System.Drawing.Point(406, 502);
+            this.btnCancel.TabIndex = 12;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // panel2
@@ -124,7 +126,7 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(5, 67);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(790, 428);
+            this.panel2.Size = new System.Drawing.Size(790, 483);
             this.panel2.TabIndex = 128;
             // 
             // BOM_LAST_MDFY
@@ -132,21 +134,21 @@
             this.BOM_LAST_MDFY.Location = new System.Drawing.Point(539, 176);
             this.BOM_LAST_MDFY.Name = "BOM_LAST_MDFY";
             this.BOM_LAST_MDFY.Size = new System.Drawing.Size(193, 23);
-            this.BOM_LAST_MDFY.TabIndex = 68;
+            this.BOM_LAST_MDFY.TabIndex = 7;
             // 
             // BOM_STARTDATE
             // 
             this.BOM_STARTDATE.Location = new System.Drawing.Point(539, 79);
             this.BOM_STARTDATE.Name = "BOM_STARTDATE";
             this.BOM_STARTDATE.Size = new System.Drawing.Size(193, 23);
-            this.BOM_STARTDATE.TabIndex = 67;
+            this.BOM_STARTDATE.TabIndex = 3;
             // 
             // BOM_ENDDATE
             // 
             this.BOM_ENDDATE.Location = new System.Drawing.Point(164, 128);
             this.BOM_ENDDATE.Name = "BOM_ENDDATE";
             this.BOM_ENDDATE.Size = new System.Drawing.Size(193, 23);
-            this.BOM_ENDDATE.TabIndex = 66;
+            this.BOM_ENDDATE.TabIndex = 4;
             // 
             // ITEM_CODE
             // 
@@ -154,7 +156,7 @@
             this.ITEM_CODE.Location = new System.Drawing.Point(539, 30);
             this.ITEM_CODE.Name = "ITEM_CODE";
             this.ITEM_CODE.Size = new System.Drawing.Size(193, 23);
-            this.ITEM_CODE.TabIndex = 65;
+            this.ITEM_CODE.TabIndex = 1;
             // 
             // BOM_USE_YN
             // 
@@ -162,7 +164,7 @@
             this.BOM_USE_YN.Location = new System.Drawing.Point(539, 128);
             this.BOM_USE_YN.Name = "BOM_USE_YN";
             this.BOM_USE_YN.Size = new System.Drawing.Size(193, 23);
-            this.BOM_USE_YN.TabIndex = 57;
+            this.BOM_USE_YN.TabIndex = 5;
             // 
             // BOM_PLAN_YN
             // 
@@ -173,7 +175,7 @@
             this.BOM_PLAN_YN.Location = new System.Drawing.Point(539, 226);
             this.BOM_PLAN_YN.Name = "BOM_PLAN_YN";
             this.BOM_PLAN_YN.Size = new System.Drawing.Size(193, 23);
-            this.BOM_PLAN_YN.TabIndex = 59;
+            this.BOM_PLAN_YN.TabIndex = 9;
             // 
             // BOM_AUTOREDUCE_YN
             // 
@@ -184,7 +186,7 @@
             this.BOM_AUTOREDUCE_YN.Location = new System.Drawing.Point(164, 226);
             this.BOM_AUTOREDUCE_YN.Name = "BOM_AUTOREDUCE_YN";
             this.BOM_AUTOREDUCE_YN.Size = new System.Drawing.Size(193, 23);
-            this.BOM_AUTOREDUCE_YN.TabIndex = 62;
+            this.BOM_AUTOREDUCE_YN.TabIndex = 8;
             // 
             // BOM_PARENT_CODE
             // 
@@ -192,7 +194,7 @@
             this.BOM_PARENT_CODE.Location = new System.Drawing.Point(164, 29);
             this.BOM_PARENT_CODE.Name = "BOM_PARENT_CODE";
             this.BOM_PARENT_CODE.Size = new System.Drawing.Size(193, 23);
-            this.BOM_PARENT_CODE.TabIndex = 63;
+            this.BOM_PARENT_CODE.TabIndex = 0;
             // 
             // BOM_REMARK
             // 
@@ -200,21 +202,21 @@
             this.BOM_REMARK.Multiline = true;
             this.BOM_REMARK.Name = "BOM_REMARK";
             this.BOM_REMARK.Size = new System.Drawing.Size(568, 117);
-            this.BOM_REMARK.TabIndex = 56;
+            this.BOM_REMARK.TabIndex = 10;
             // 
             // BOM_LAST_MDFR
             // 
             this.BOM_LAST_MDFR.Location = new System.Drawing.Point(164, 176);
             this.BOM_LAST_MDFR.Name = "BOM_LAST_MDFR";
             this.BOM_LAST_MDFR.Size = new System.Drawing.Size(193, 23);
-            this.BOM_LAST_MDFR.TabIndex = 55;
+            this.BOM_LAST_MDFR.TabIndex = 6;
             // 
             // BOM_QTY
             // 
             this.BOM_QTY.Location = new System.Drawing.Point(164, 79);
             this.BOM_QTY.Name = "BOM_QTY";
             this.BOM_QTY.Size = new System.Drawing.Size(193, 23);
-            this.BOM_QTY.TabIndex = 53;
+            this.BOM_QTY.TabIndex = 2;
             this.BOM_QTY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.text_KeyPress);
             // 
             // label27
@@ -454,9 +456,9 @@
             this.Load += new System.EventHandler(this.FrmBOMPopUp_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.btnOK, 0);
             this.Controls.SetChildIndex(this.btnCancel, 0);
-            this.Controls.SetChildIndex(this.panel2, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
