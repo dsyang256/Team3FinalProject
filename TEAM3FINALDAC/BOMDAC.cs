@@ -49,8 +49,21 @@ namespace TEAM3FINALDAC
             {
                 return result = "C201";
             }
-
-
+        }
+        public DataTable SearchBOM(string day ,string name,string yn )
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter("SP_GetSearchBOM", conn))
+            {
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.AddWithValue("@P_BOM_DATE", day);
+                da.SelectCommand.Parameters.AddWithValue("@P_ITEM_NAME", name);
+                da.SelectCommand.Parameters.AddWithValue("@P_BOM_USE_YN", yn);
+                da.Fill(dt);
+            }
+            return dt;
         }
     }
 }

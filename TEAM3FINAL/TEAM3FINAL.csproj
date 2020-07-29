@@ -55,6 +55,12 @@
     <Compile Include="FrmFacilityGroup.Designer.cs">
       <DependentUpon>FrmFacilityGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmFacilityGroupPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFacilityGroupPopUp.Designer.cs">
+      <DependentUpon>FrmFacilityGroupPopUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="OJH\FrmShift.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,7 @@
       <DependentUpon>FrmShiftPop.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\BOMService.cs" />
+    <Compile Include="Services\FacilityService.cs" />
     <Compile Include="Services\ShiftService.cs" />
     <Compile Include="YDS\FrmBOMPopUp.cs">
       <SubType>Form</SubType>
@@ -225,6 +232,9 @@
     <EmbeddedResource Include="FrmFacilityGroup.resx">
       <DependentUpon>FrmFacilityGroup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmFacilityGroupPopUp.resx">
+      <DependentUpon>FrmFacilityGroupPopUp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OJH\FrmShift.resx">
       <DependentUpon>FrmShift.cs</DependentUpon>
     </EmbeddedResource>
@@ -329,6 +339,12 @@
       <Project>{6dd41fff-416c-4c82-8319-53a9f358586d}</Project>
       <Name>TEAM3FINALVO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\plus_math_30px.png" />
+    <Content Include="Resources\reset_24px.png" />
+    <Content Include="Resources\Save_16x16.png" />
+    <Content Include="Resources\subtract_30px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
