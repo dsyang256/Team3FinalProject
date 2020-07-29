@@ -32,7 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.ITEM_COM_REORDER = new System.Windows.Forms.ComboBox();
             this.ITEM_STND = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -40,11 +39,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dgvBOM = new WindowsFormsApp18.MyDataGridView();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.ITEM_COM_REORDER = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -58,9 +55,6 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.dateTimePicker1);
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.ITEM_COM_REORDER);
             this.panel2.Controls.Add(this.ITEM_STND);
             this.panel2.Controls.Add(this.label19);
@@ -77,17 +71,9 @@
             this.panel3.Location = new System.Drawing.Point(15, 158);
             this.panel3.Size = new System.Drawing.Size(1174, 392);
             // 
-            // ITEM_COM_REORDER
-            // 
-            this.ITEM_COM_REORDER.FormattingEnabled = true;
-            this.ITEM_COM_REORDER.Location = new System.Drawing.Point(903, 28);
-            this.ITEM_COM_REORDER.Name = "ITEM_COM_REORDER";
-            this.ITEM_COM_REORDER.Size = new System.Drawing.Size(193, 23);
-            this.ITEM_COM_REORDER.TabIndex = 29;
-            // 
             // ITEM_STND
             // 
-            this.ITEM_STND.Location = new System.Drawing.Point(529, 26);
+            this.ITEM_STND.Location = new System.Drawing.Point(513, 41);
             this.ITEM_STND.Name = "ITEM_STND";
             this.ITEM_STND.Size = new System.Drawing.Size(193, 23);
             this.ITEM_STND.TabIndex = 28;
@@ -95,16 +81,16 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(827, 33);
+            this.label19.Location = new System.Drawing.Point(811, 48);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(55, 15);
             this.label19.TabIndex = 26;
-            this.label19.Text = "전개방식";
+            this.label19.Text = "사용유무";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(459, 28);
+            this.label14.Location = new System.Drawing.Point(443, 43);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(31, 15);
             this.label14.TabIndex = 21;
@@ -113,7 +99,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(102, 31);
+            this.label11.Location = new System.Drawing.Point(86, 46);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(55, 15);
             this.label11.TabIndex = 22;
@@ -124,7 +110,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label10.Location = new System.Drawing.Point(803, 29);
+            this.label10.Location = new System.Drawing.Point(787, 44);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(17, 17);
             this.label10.TabIndex = 25;
@@ -135,7 +121,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label7.Location = new System.Drawing.Point(436, 27);
+            this.label7.Location = new System.Drawing.Point(420, 42);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(17, 17);
             this.label7.TabIndex = 24;
@@ -146,39 +132,11 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label2.Location = new System.Drawing.Point(77, 27);
+            this.label2.Location = new System.Drawing.Point(61, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(17, 17);
             this.label2.TabIndex = 23;
             this.label2.Text = "*";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(102, 77);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 15);
-            this.label3.TabIndex = 30;
-            this.label3.Text = "사용유무";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label4.Location = new System.Drawing.Point(77, 73);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 17);
-            this.label4.TabIndex = 31;
-            this.label4.Text = "*";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(160, 72);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(193, 23);
-            this.comboBox1.TabIndex = 32;
             // 
             // dgvBOM
             // 
@@ -222,10 +180,18 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(160, 26);
+            this.dateTimePicker1.Location = new System.Drawing.Point(144, 41);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(193, 23);
             this.dateTimePicker1.TabIndex = 33;
+            // 
+            // ITEM_COM_REORDER
+            // 
+            this.ITEM_COM_REORDER.FormattingEnabled = true;
+            this.ITEM_COM_REORDER.Location = new System.Drawing.Point(887, 43);
+            this.ITEM_COM_REORDER.Name = "ITEM_COM_REORDER";
+            this.ITEM_COM_REORDER.Size = new System.Drawing.Size(193, 23);
+            this.ITEM_COM_REORDER.TabIndex = 29;
             // 
             // FrmBOM
             // 
@@ -244,11 +210,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox ITEM_COM_REORDER;
         private System.Windows.Forms.TextBox ITEM_STND;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label14;
@@ -258,5 +219,6 @@
         private System.Windows.Forms.Label label2;
         private WindowsFormsApp18.MyDataGridView dgvBOM;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox ITEM_COM_REORDER;
     }
 }
