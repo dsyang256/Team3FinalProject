@@ -85,14 +85,16 @@ namespace TEAM3FINAL
             dgvFactoryList.DataSource = service.GetFactoryInfo();
         }
 
+        // 버튼 이벤트 추가 메서드
         private void btnset()
         {
-            // 버튼 이벤트 추가 메서드
             FrmMAIN frm = (FrmMAIN)this.MdiParent;
             frm.eSearch += Search;
             frm.eInsert += Insert;
             frm.eDelete += Delete;
             frm.eUpdate += Update;
+            frm.eReset += Reset; //입력필요
+            frm.ePrint += Print; //입력필요
         }
 
         private void ComboBinding()
@@ -131,7 +133,9 @@ namespace TEAM3FINAL
 
         public void Reset(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            txtFactoryCode.Text = "";
+            cboCategory.Text = "";
+            GetFactoryInfo();
         }
 
         public void Update(object sender, EventArgs e)

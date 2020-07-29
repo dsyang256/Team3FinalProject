@@ -40,8 +40,8 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tsbReset = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.lblDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.stslLoginID = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabForms = new TEAM3FINAL.ucTabControl();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
@@ -49,13 +49,14 @@
             this.로그인ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.로그인ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.회원가입ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.로그아웃ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.자원관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.공장관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.품목관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.품목관리ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.bOM관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.공통코드관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.로그아웃ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.설비관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -165,12 +166,6 @@
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // lblDateTime
-            // 
-            this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(33, 17);
-            this.lblDateTime.Text = "Time";
-            // 
             // stslLoginID
             // 
             this.stslLoginID.Name = "stslLoginID";
@@ -178,6 +173,12 @@
             this.stslLoginID.Spring = true;
             this.stslLoginID.Text = "toolStripStatusLabel1";
             this.stslLoginID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblDateTime
+            // 
+            this.lblDateTime.Name = "lblDateTime";
+            this.lblDateTime.Size = new System.Drawing.Size(33, 17);
+            this.lblDateTime.Text = "Time";
             // 
             // tabForms
             // 
@@ -238,10 +239,18 @@
             this.회원가입ToolStripMenuItem.Text = "회원가입";
             this.회원가입ToolStripMenuItem.Click += new System.EventHandler(this.회원가입ToolStripMenuItem_Click);
             // 
+            // 로그아웃ToolStripMenuItem
+            // 
+            this.로그아웃ToolStripMenuItem.Name = "로그아웃ToolStripMenuItem";
+            this.로그아웃ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.로그아웃ToolStripMenuItem.Text = "로그아웃";
+            this.로그아웃ToolStripMenuItem.Click += new System.EventHandler(this.로그아웃ToolStripMenuItem_Click);
+            // 
             // 자원관리ToolStripMenuItem
             // 
             this.자원관리ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.공장관리ToolStripMenuItem});
+            this.공장관리ToolStripMenuItem,
+            this.설비관리ToolStripMenuItem});
             this.자원관리ToolStripMenuItem.Name = "자원관리ToolStripMenuItem";
             this.자원관리ToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.자원관리ToolStripMenuItem.Text = "자원관리";
@@ -249,7 +258,7 @@
             // 공장관리ToolStripMenuItem
             // 
             this.공장관리ToolStripMenuItem.Name = "공장관리ToolStripMenuItem";
-            this.공장관리ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.공장관리ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.공장관리ToolStripMenuItem.Text = "공장관리";
             this.공장관리ToolStripMenuItem.Click += new System.EventHandler(this.공장관리ToolStripMenuItem_Click);
             // 
@@ -283,12 +292,12 @@
             this.공통코드관리ToolStripMenuItem.Text = "공통코드관리";
             this.공통코드관리ToolStripMenuItem.Click += new System.EventHandler(this.공통코드관리ToolStripMenuItem_Click);
             // 
-            // 로그아웃ToolStripMenuItem
+            // 설비관리ToolStripMenuItem
             // 
-            this.로그아웃ToolStripMenuItem.Name = "로그아웃ToolStripMenuItem";
-            this.로그아웃ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.로그아웃ToolStripMenuItem.Text = "로그아웃";
-            this.로그아웃ToolStripMenuItem.Click += new System.EventHandler(this.로그아웃ToolStripMenuItem_Click);
+            this.설비관리ToolStripMenuItem.Name = "설비관리ToolStripMenuItem";
+            this.설비관리ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.설비관리ToolStripMenuItem.Text = "설비관리";
+            this.설비관리ToolStripMenuItem.Click += new System.EventHandler(this.설비관리ToolStripMenuItem_Click);
             // 
             // FrmMAIN
             // 
@@ -348,6 +357,7 @@
         private System.Windows.Forms.ToolStripButton tsbReset;
         private System.Windows.Forms.ToolStripStatusLabel stslLoginID;
         private System.Windows.Forms.ToolStripMenuItem 로그아웃ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 설비관리ToolStripMenuItem;
     }
 }
 
