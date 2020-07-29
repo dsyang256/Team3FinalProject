@@ -227,7 +227,7 @@ namespace TEAM3FINAL
 
         public void Print(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         #endregion

@@ -33,8 +33,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.dgvFacilityGroupList = new WindowsFormsApp18.MyDataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacilityGroupList)).BeginInit();
             this.SuspendLayout();
@@ -49,16 +49,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(770, 494);
             this.panel3.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(23, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 20);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "설비관리";
             // 
             // dgvFacilityGroupList
             // 
@@ -100,12 +90,24 @@
             this.dgvFacilityGroupList.Size = new System.Drawing.Size(770, 494);
             this.dgvFacilityGroupList.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Location = new System.Drawing.Point(23, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 20);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "설비관리";
+            // 
             // FrmFacilityGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(800, 562);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmFacilityGroup";
             this.Load += new System.EventHandler(this.FrmFacilityGroup_Load);
             this.panel3.ResumeLayout(false);
