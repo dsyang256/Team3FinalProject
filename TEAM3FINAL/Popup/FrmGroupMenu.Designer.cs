@@ -196,40 +196,49 @@
             // btnRightAdd
             // 
             this.btnRightAdd.BackColor = System.Drawing.Color.Transparent;
+            this.btnRightAdd.FlatAppearance.BorderSize = 0;
+            this.btnRightAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRightAdd.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnRightAdd.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnRightAdd.Location = new System.Drawing.Point(238, 64);
+            this.btnRightAdd.Image = global::TEAM3FINAL.Properties.Resources.plus_math_30px;
+            this.btnRightAdd.Location = new System.Drawing.Point(251, 77);
             this.btnRightAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRightAdd.Name = "btnRightAdd";
-            this.btnRightAdd.Size = new System.Drawing.Size(31, 33);
+            this.btnRightAdd.Size = new System.Drawing.Size(20, 20);
             this.btnRightAdd.TabIndex = 54;
-            this.btnRightAdd.Text = "+";
             this.btnRightAdd.UseVisualStyleBackColor = false;
+            this.btnRightAdd.Click += new System.EventHandler(this.btnRightAdd_Click);
             // 
             // btnRightRemove
             // 
             this.btnRightRemove.BackColor = System.Drawing.Color.Transparent;
+            this.btnRightRemove.FlatAppearance.BorderSize = 0;
+            this.btnRightRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRightRemove.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnRightRemove.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnRightRemove.Location = new System.Drawing.Point(266, 64);
+            this.btnRightRemove.Image = global::TEAM3FINAL.Properties.Resources.subtract_30px;
+            this.btnRightRemove.Location = new System.Drawing.Point(277, 77);
             this.btnRightRemove.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRightRemove.Name = "btnRightRemove";
-            this.btnRightRemove.Size = new System.Drawing.Size(31, 33);
+            this.btnRightRemove.Size = new System.Drawing.Size(20, 20);
             this.btnRightRemove.TabIndex = 54;
-            this.btnRightRemove.Text = "-";
             this.btnRightRemove.UseVisualStyleBackColor = false;
             // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
-            this.btnSave.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnSave.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnSave.Location = new System.Drawing.Point(764, 64);
+            this.btnSave.Image = global::TEAM3FINAL.Properties.Resources.Save_16x16;
+            this.btnSave.Location = new System.Drawing.Point(732, 67);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(31, 33);
+            this.btnSave.Size = new System.Drawing.Size(63, 33);
             this.btnSave.TabIndex = 54;
-            this.btnSave.Text = "+";
+            this.btnSave.Text = "저장";
+            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSave.UseVisualStyleBackColor = false;
             // 
             // FrmGroupMenu

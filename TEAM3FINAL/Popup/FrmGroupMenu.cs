@@ -31,5 +31,10 @@ namespace TEAM3FINAL
             Util.AddNewColumnToDataGridView(dgvMenus, "메뉴명", "FAC_FCLTY", true, 80);
             Util.AddNewColumnToDataGridView(dgvMenus, "메뉴설명", "FAC_TYP", true, 80);
         }
+
+        private void btnRightAdd_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

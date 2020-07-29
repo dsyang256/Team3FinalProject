@@ -61,6 +61,12 @@
     <Compile Include="FrmFacilityGroupPopUp.Designer.cs">
       <DependentUpon>FrmFacilityGroupPopUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmGroupPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGroupPop.Designer.cs">
+      <DependentUpon>FrmGroupPop.cs</DependentUpon>
+    </Compile>
     <Compile Include="OJH\FrmShift.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFacilityGroupPopUp.resx">
       <DependentUpon>FrmFacilityGroupPopUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGroupPop.resx">
+      <DependentUpon>FrmGroupPop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OJH\FrmShift.resx">
       <DependentUpon>FrmShift.cs</DependentUpon>

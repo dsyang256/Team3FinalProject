@@ -43,6 +43,7 @@
             this.txtShiftCode = new System.Windows.Forms.TextBox();
             this.dtpApplyEndTime = new System.Windows.Forms.DateTimePicker();
             this.dtpApplyStartTime = new System.Windows.Forms.DateTimePicker();
+            this.cboFcltsCode = new System.Windows.Forms.ComboBox();
             this.cboShiftUseYN = new System.Windows.Forms.ComboBox();
             this.cboShift = new System.Windows.Forms.ComboBox();
             this.txtRemark = new System.Windows.Forms.TextBox();
@@ -63,14 +64,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.cboFcltsCode = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(580, 56);
+            this.panel1.Size = new System.Drawing.Size(590, 56);
             // 
             // label1
             // 
@@ -83,13 +83,13 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(215, 456);
+            this.btnOK.Location = new System.Drawing.Point(215, 443);
             this.btnOK.Text = "저장";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(332, 456);
+            this.btnCancel.Location = new System.Drawing.Point(332, 443);
             // 
             // panel2
             // 
@@ -134,7 +134,7 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(5, 68);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(580, 369);
+            this.panel2.Size = new System.Drawing.Size(580, 414);
             this.panel2.TabIndex = 128;
             // 
             // txtENDTIME
@@ -263,6 +263,14 @@
             this.dtpApplyStartTime.Size = new System.Drawing.Size(121, 23);
             this.dtpApplyStartTime.TabIndex = 135;
             this.dtpApplyStartTime.ValueChanged += new System.EventHandler(this.dtpApplyStartTime_ValueChanged);
+            // 
+            // cboFcltsCode
+            // 
+            this.cboFcltsCode.FormattingEnabled = true;
+            this.cboFcltsCode.Location = new System.Drawing.Point(154, 19);
+            this.cboFcltsCode.Name = "cboFcltsCode";
+            this.cboFcltsCode.Size = new System.Drawing.Size(121, 23);
+            this.cboFcltsCode.TabIndex = 130;
             // 
             // cboShiftUseYN
             // 
@@ -474,26 +482,18 @@
             this.label3.TabIndex = 153;
             this.label3.Text = "*";
             // 
-            // cboFcltsCode
-            // 
-            this.cboFcltsCode.FormattingEnabled = true;
-            this.cboFcltsCode.Location = new System.Drawing.Point(154, 19);
-            this.cboFcltsCode.Name = "cboFcltsCode";
-            this.cboFcltsCode.Size = new System.Drawing.Size(121, 23);
-            this.cboFcltsCode.TabIndex = 130;
-            // 
-            // ShiftPop
+            // FrmShiftPop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.ClientSize = new System.Drawing.Size(590, 498);
+            this.ClientSize = new System.Drawing.Size(590, 486);
             this.Controls.Add(this.panel2);
-            this.Name = "ShiftPop";
+            this.Name = "FrmShiftPop";
             this.Load += new System.EventHandler(this.ShiftPop_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.btnOK, 0);
             this.Controls.SetChildIndex(this.btnCancel, 0);
-            this.Controls.SetChildIndex(this.panel2, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
