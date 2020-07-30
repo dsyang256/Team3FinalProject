@@ -10,7 +10,7 @@ namespace TEAM3FINAL
     /// <summary>
     /// 폼 관련 공통 유틸
     /// </summary>
-   public static class FormUtil
+    public static class FormUtil
     {
         private static Form activeForm = null;
         public static void OpenForm(Form childForm)
@@ -61,6 +61,32 @@ namespace TEAM3FINAL
             frm.Show();
         }
 
-    }
 
+        public static Form MdiChildrenShow(this FrmMAIN mdiParent, string formName)
+        {
+            Type type = Type.GetType("WinCoffeePrince2nd." + formName);
+
+            if (type != null)
+            {
+                foreach (Form frm in Application.OpenForms)
+                {
+                    if (frm.GetType() == type && frm.IsMdiChild)
+                    {
+                        frm.Activate();
+                        return frm;
+                    }
+                }
+
+                Form f = (Form)Activator.CreateInstance(type);
+                f.MdiParent = mdiParent;
+                f.WindowState = FormWindowState.Maximized;
+
+                f.Show();
+
+                return f;
+            }
+            return null;
+        }
+
+    }
 }

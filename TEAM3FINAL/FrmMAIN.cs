@@ -17,7 +17,7 @@ namespace TEAM3FINAL
     public partial class FrmMAIN : ProjectBaseForm
     {
         private List<MANAGER_VO> menuList;
-        private List<int> checkMenuList = new List<int>();
+        private List<int> checkMenuList=new List<int>();
 
         public event EventHandler eSearch;
         public event EventHandler eInsert;
@@ -70,34 +70,34 @@ namespace TEAM3FINAL
 
         private void ShowMenuDropDown(IEnumerable<MANAGER_VO> grantMenus, ToolStripMenuItem tsmiPrent = null)
         {
-            //foreach (var grantMenu in grantMenus)
-            //{
-            //    int menuCode = grantMenu.MANAGER_ID;
+            foreach (var grantMenu in grantMenus)
+            {
+                //int menuCode = grantMenu.Menu_code;
+                //if (grantMenu.Name_space)
+                //{
+                //    if (grantMenu.Menu_usable == "Y" && !checkMenuList.Contains(menuCode))
+                //    {
+                //        ToolStripMenuItem tsmi = new ToolStripMenuItem();
+                //        tsmi.Text = grantMenu.Menu_name;
 
-            //    if (grantMenu.Menu_usable == "Y" && !checkMenuList.Contains(menuCode))
-            //    {
-            //        ToolStripMenuItem tsmi = new ToolStripMenuItem();
-            //        tsmi.Text = grantMenu.Menu_name;
+                //        checkMenuList.Add(menuCode);
 
-            //        checkMenuList.Add(menuCode);
+                //        if (tsmiPrent != null)
+                //            tsmiPrent.DropDownItems.Add(tsmi);
+                //        else
+                //            menuStrip1.Items.Add(tsmi);
 
-            //        if (tsmiPrent != null)
-            //            tsmiPrent.DropDownItems.Add(tsmi);
-            //        else
-            //            menuStrip1.Items.Add(tsmi);
+                //        var menuChildren = (from item in menuList
+                //                            where item.Parent_menu_code == menuCode
+                //                            select item);
 
-            //        var menuChildren = (from item in menuList
-            //                            where item.Parent_menu_code == menuCode
-            //                            select item);
-
-            //        if (menuChildren.Count() > 0)
-            //            ShowMenuDropDown(menuChildren, tsmi);
-            //        else
-            //            tsmi.Click += (sender, e) => this.MdiChildrenShow(grantMenu.Name_space, (from item in methodList
-            //                                                                                     where item.Menu_code == menuCode
-            //                                                                                     select item));
-            //    }
-            //}
+                //        if (menuChildren.Count() > 0)
+                //            ShowMenuDropDown(menuChildren, tsmi);
+                //        else
+                //            tsmi.Click += (sender, e) => this.MdiChildrenShow(grantMenu.Name_space);
+                //    }
+                //}
+            }
         }
 
         private void SetMenus()
