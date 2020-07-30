@@ -16,7 +16,7 @@ namespace TEAM3FINAL
        {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmGroupMenu());
+            Application.Run(new FrmMAIN());
         }
     }
 }

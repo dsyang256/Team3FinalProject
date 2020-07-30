@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,17 @@ namespace TEAM3FINAL
         {
             BOMDAC dac = new BOMDAC();
             return dac.SaveBOM(vo);
+        }
+        public DataTable SearchBOM(string day, string name, string yn)
+        {
+            BOMDAC dac = new BOMDAC();
+            return dac.SearchBOM(day, name, yn);
+        }
+
+        public DataTable SelectBOM()
+        {
+            BOMDAC dac = new BOMDAC();
+            return dac.SelectBOM();
         }
     }
 }
