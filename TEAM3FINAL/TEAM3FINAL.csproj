@@ -137,6 +137,13 @@
     <Compile Include="Services\BOMService.cs" />
     <Compile Include="Services\FacilityService.cs" />
     <Compile Include="Services\ShiftService.cs" />
+    <Compile Include="YDS\FrmReorder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YDS\.Designer.cs">
+      <DependentUpon>FrmReorder.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="YDS\FrmBOMPopUp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +242,12 @@
     <Compile Include="Utils\ExcelExportImport.cs" />
     <Compile Include="Utils\FormUtil.cs" />
     <Compile Include="Utils\Util.cs" />
+    <Compile Include="YDS\FrmReorderPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YDS\FrmReorderPopUp.Designer.cs">
+      <DependentUpon>FrmReorderPopUp.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BaseForm\baseFormPopUP.resx">
       <DependentUpon>baseFormPopUP.cs</DependentUpon>
     </EmbeddedResource>
@@ -332,9 +345,6 @@
     <EmbeddedResource Include="UserControl\ucTabControl.resx">
       <DependentUpon>ucTabControl.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="obj\Debug\TEAM3FINAL.csprojAssemblyReference.cache" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -350,9 +360,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bin\Debug\" />
     <Folder Include="Images\" />
-    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\close-grey.png" />

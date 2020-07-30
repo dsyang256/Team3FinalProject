@@ -13,7 +13,7 @@ namespace TEAM3FINAL
         /// </summary>
         [STAThread]
         static void Main()
-       {
+        {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmMAIN());
