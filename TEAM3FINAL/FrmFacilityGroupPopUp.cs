@@ -112,5 +112,11 @@ namespace TEAM3FINAL
             var listUse_YN = (from item in commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(cboFACGUseYN, listUse_YN, "COMMON_CODE", "COMMON_NAME", "");
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Update = false;
+            this.Close();
+        }
     }
 }

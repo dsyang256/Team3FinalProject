@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmFacilityChoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFacilityChoice.Designer.cs">
+      <DependentUpon>FrmFacilityChoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmFacilityGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,12 @@
     </Compile>
     <Compile Include="FrmFacilityGroupPopUp.Designer.cs">
       <DependentUpon>FrmFacilityGroupPopUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFacilityPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFacilityPopUp.Designer.cs">
+      <DependentUpon>FrmFacilityPopUp.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmGroupPop.cs">
       <SubType>Form</SubType>
@@ -235,11 +247,17 @@
     <EmbeddedResource Include="BaseForm\ProjectBaseForm.resx">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmFacilityChoice.resx">
+      <DependentUpon>FrmFacilityChoice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmFacilityGroup.resx">
       <DependentUpon>FrmFacilityGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmFacilityGroupPopUp.resx">
       <DependentUpon>FrmFacilityGroupPopUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFacilityPopUp.resx">
+      <DependentUpon>FrmFacilityPopUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGroupPop.resx">
       <DependentUpon>FrmGroupPop.cs</DependentUpon>
