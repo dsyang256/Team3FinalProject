@@ -55,6 +55,12 @@
     <Compile Include="HHW\FrmBORManage.Designer.cs">
       <DependentUpon>FrmBORManage.cs</DependentUpon>
     </Compile>
+    <Compile Include="HHW\FrmCompanyEndByMonth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HHW\FrmCompanyEndByMonth.Designer.cs">
+      <DependentUpon>FrmCompanyEndByMonth.cs</DependentUpon>
+    </Compile>
     <Compile Include="HHW\FrmComponyManage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,48 @@
     </Compile>
     <Compile Include="HHW\FrmFactoryPopUp.Designer.cs">
       <DependentUpon>FrmFactoryPopUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HHW\FrmOrderStockState.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HHW\FrmOrderStockState.Designer.cs">
+      <DependentUpon>FrmOrderStockState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HHW\FrmPROCMoveAndAccum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HHW\FrmPROCMoveAndAccum.Designer.cs">
+      <DependentUpon>FrmPROCMoveAndAccum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HHW\FrmProductOUT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HHW\FrmProductOUT.Designer.cs">
+      <DependentUpon>FrmProductOUT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HHW\FrmProductOUTState.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HHW\FrmProductOUTState.Designer.cs">
+      <DependentUpon>FrmProductOUTState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HHW\FrmSalesEnd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HHW\FrmSalesEnd.Designer.cs">
+      <DependentUpon>FrmSalesEnd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HHW\FrmSalesEndState.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HHW\FrmSalesEndState.Designer.cs">
+      <DependentUpon>FrmSalesEndState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HHW\FrmWorkRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HHW\FrmWorkRecord.Designer.cs">
+      <DependentUpon>FrmWorkRecord.cs</DependentUpon>
     </Compile>
     <Compile Include="OJH\FrmDemandPlan.cs">
       <SubType>Form</SubType>
@@ -367,6 +415,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HHW\FrmFactoryPopUp.resx">
       <DependentUpon>FrmFactoryPopUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HHW\FrmOrderStockState.resx">
+      <DependentUpon>FrmOrderStockState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HHW\FrmPROCMoveAndAccum.resx">
+      <DependentUpon>FrmPROCMoveAndAccum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HHW\FrmWorkRecord.resx">
+      <DependentUpon>FrmWorkRecord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OJH\FrmMaterialCost.resx">
       <DependentUpon>FrmMaterialCost.cs</DependentUpon>
