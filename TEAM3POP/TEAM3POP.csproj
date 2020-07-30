@@ -66,6 +66,9 @@
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmPOPMAIN.resx">
+      <DependentUpon>FrmPOPMAIN.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPOPMDI.resx">
       <DependentUpon>FrmPOPMDI.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,6 +96,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TEAM3FINALDAC\TEAM3FINALDAC.csproj">
+      <Project>{e9fe00d3-d254-46b4-8e93-2b3a9852d358}</Project>
+      <Name>TEAM3FINALDAC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TEAM3FINALVO\TEAM3FINALVO.csproj">
+      <Project>{6dd41fff-416c-4c82-8319-53a9f358586d}</Project>
+      <Name>TEAM3FINALVO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TEAM3FINAL\TEAM3FINAL.csproj">
+      <Project>{00c1c951-2a3d-4c08-b1a5-a22499824bf3}</Project>
+      <Name>TEAM3FINAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -31,7 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.고슴도치ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.메인화면ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.설비관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -43,8 +43,9 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1153, 100);
+            this.panel1.Size = new System.Drawing.Size(1153, 125);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -52,7 +53,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("맑은 고딕", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(144, 26);
+            this.label1.Location = new System.Drawing.Point(144, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(327, 47);
             this.label1.TabIndex = 2;
@@ -62,19 +63,20 @@
             // 
             this.menuStrip1.Font = new System.Drawing.Font("맑은 고딕", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.고슴도치ToolStripMenuItem,
+            this.메인화면ToolStripMenuItem,
             this.설비관리ToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 100);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 125);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1153, 53);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // 고슴도치ToolStripMenuItem
+            // 메인화면ToolStripMenuItem
             // 
-            this.고슴도치ToolStripMenuItem.Name = "고슴도치ToolStripMenuItem";
-            this.고슴도치ToolStripMenuItem.Size = new System.Drawing.Size(160, 49);
-            this.고슴도치ToolStripMenuItem.Text = "메인화면";
+            this.메인화면ToolStripMenuItem.Name = "메인화면ToolStripMenuItem";
+            this.메인화면ToolStripMenuItem.Size = new System.Drawing.Size(160, 49);
+            this.메인화면ToolStripMenuItem.Text = "메인화면";
+            this.메인화면ToolStripMenuItem.Click += new System.EventHandler(this.메인화면ToolStripMenuItem_Click);
             // 
             // 설비관리ToolStripMenuItem
             // 
@@ -82,16 +84,17 @@
             this.설비관리ToolStripMenuItem.Size = new System.Drawing.Size(160, 49);
             this.설비관리ToolStripMenuItem.Text = "설비관리";
             // 
-            // Form1
+            // FrmPOPMDI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1153, 559);
+            this.ClientSize = new System.Drawing.Size(1153, 699);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panel1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.Name = "FrmPOPMDI";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
@@ -108,7 +111,7 @@
         private System.Windows.Forms.Panel panel1;
         protected System.Windows.Forms.Label label1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem 고슴도치ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 메인화면ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 설비관리ToolStripMenuItem;
     }
 }

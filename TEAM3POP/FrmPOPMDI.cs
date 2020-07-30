@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TEAM3FINAL;
 
 namespace TEAM3POP
 {
@@ -15,6 +16,13 @@ namespace TEAM3POP
         public FrmPOPMDI()
         {
             InitializeComponent();
+            FormUtil.OpenOrCreateForm<FrmPOPMAIN>(this);
+        }
+
+
+        private void 메인화면ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUtil.OpenOrCreateForm<FrmPOPMAIN>(this);
         }
     }
 }
