@@ -32,9 +32,46 @@ namespace TEAM3FINAL
             Util.AddNewColumnToDataGridView(dgvMenus, "메뉴설명", "FAC_TYP", true, 80);
         }
 
+
+        /// <summary>
+        /// 권한 추가 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRightAdd_Click(object sender, EventArgs e)
         {
+            FrmAuthGroup frm = new FrmAuthGroup();
+            frm.ShowDialog();
+        }
 
+        /// <summary>
+        /// 권한 삭제 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnRightRemove_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 관리자별 권한 등록 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 폼 로드 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmGroupMenu_Load(object sender, EventArgs e)
+        {
+            DataGridViewColumnSet();
         }
     }
 }

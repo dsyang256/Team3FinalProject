@@ -62,10 +62,12 @@
             // btnOK
             // 
             this.btnOK.Location = new System.Drawing.Point(208, 327);
+            this.btnOK.Text = "저장";
             // 
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(319, 327);
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // panel2
             // 
