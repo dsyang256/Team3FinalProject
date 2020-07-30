@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TEAM3FINALVO
 {
-    class FACILITY_VO
+    public class FACILITY_VO
     {
         public string FCLTS_CODE { get; set; } //설비코드
         public string FCLTS_NAME { get; set; } //설비명
