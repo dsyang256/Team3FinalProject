@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmDemandPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDemandPlan.Designer.cs">
+      <DependentUpon>FrmDemandPlan.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmFacilityGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,72 @@
     </Compile>
     <Compile Include="FrmGroupPop.Designer.cs">
       <DependentUpon>FrmGroupPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMaterialCost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMaterialCost.Designer.cs">
+      <DependentUpon>FrmMaterialCost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMaterialCostPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMaterialCostPop.Designer.cs">
+      <DependentUpon>FrmMaterialCostPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMaterialRequirePlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMaterialRequirePlan.Designer.cs">
+      <DependentUpon>FrmMaterialRequirePlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProductionPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProductionPlan.Designer.cs">
+      <DependentUpon>FrmProductionPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSalesCost.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSalesCost.Designer.cs">
+      <DependentUpon>FrmSalesCost.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSalesCostPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSalesCostPop.Designer.cs">
+      <DependentUpon>FrmSalesCostPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSalesMaster.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSalesMaster.Designer.cs">
+      <DependentUpon>FrmSalesMaster.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSalesMasterPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSalesMasterPop.Designer.cs">
+      <DependentUpon>FrmSalesMasterPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSalesMasterUpLoad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSalesMasterUpLoad.Designer.cs">
+      <DependentUpon>FrmSalesMasterUpLoad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSalesWork.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSalesWork.Designer.cs">
+      <DependentUpon>FrmSalesWork.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSalesWorkList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSalesWorkList.Designer.cs">
+      <DependentUpon>FrmSalesWorkList.cs</DependentUpon>
     </Compile>
     <Compile Include="OJH\FrmShift.cs">
       <SubType>Form</SubType>
@@ -243,6 +315,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmGroupPop.resx">
       <DependentUpon>FrmGroupPop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSalesWork.resx">
+      <DependentUpon>FrmSalesWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSalesWorkList.resx">
+      <DependentUpon>FrmSalesWorkList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OJH\FrmShift.resx">
       <DependentUpon>FrmShift.cs</DependentUpon>
