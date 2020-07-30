@@ -134,7 +134,8 @@ namespace TEAM3FINAL
         /// </summary>
         private void DataGridViewBinding()
         {
-            dgvBOM.DataSource = null;
+            BOMService bom = new BOMService();
+            dgvBOM.DataSource = bom.SelectBOM();
         }
         /// <summary>
         /// 데이터 그리드뷰 올체크 체크박스 만들기

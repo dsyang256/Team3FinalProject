@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TEAM3FINALVO", "TEAM3FINALV
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cryptography", "Cryptography\Cryptography.csproj", "{549114BF-43A9-4C02-A2FB-5ECCCD9BBE2F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TEAM3POP", "TEAM3POP\TEAM3POP.csproj", "{B48CCBA8-9317-4497-9C2D-86DE17D493E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{549114BF-43A9-4C02-A2FB-5ECCCD9BBE2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{549114BF-43A9-4C02-A2FB-5ECCCD9BBE2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{549114BF-43A9-4C02-A2FB-5ECCCD9BBE2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B48CCBA8-9317-4497-9C2D-86DE17D493E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B48CCBA8-9317-4497-9C2D-86DE17D493E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B48CCBA8-9317-4497-9C2D-86DE17D493E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B48CCBA8-9317-4497-9C2D-86DE17D493E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

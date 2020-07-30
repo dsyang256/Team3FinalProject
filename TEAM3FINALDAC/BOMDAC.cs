@@ -50,6 +50,45 @@ namespace TEAM3FINALDAC
                 return result = "C201";
             }
         }
+
+        public DataTable SelectBOM()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            string sql = @"WITH A AS
+                        (SELECT T1.BOM_CODE
+                        , T1.ITEM_CODE
+                        , T1.BOM_PARENT_CODE
+                        , T1.BOM_QTY
+                        , 0 AS Lvl
+                        , convert(varchar(255), T1.ITEM_CODE) sortOrder
+                           FROM BOM T1 INNER JOIN ITEM i ON T1.ITEM_CODE = i.ITEM_CODE
+                      
+                           WHERE T1.BOM_PARENT_CODE = '-'
+                      
+                         UNION ALL
+                      
+                          SELECT T.BOM_CODE, T.ITEM_CODE, T.BOM_PARENT_CODE, T.BOM_QTY, A.Lvl + 1 as Lvl, convert(varchar(255), convert(nvarchar, A.sortOrder) + '>' + convert(varchar(255), T.ITEM_CODE)) sortOrder
+                          FROM A INNER JOIN BOM T ON T.BOM_PARENT_CODE = A.ITEM_CODE
+                      )
+                      
+                      SELECT ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx,A.BOM_CODE,A.ITEM_CODE
+                      ,CASE WHEN A.Lvl = 0 THEN '▶' ELSE SUBSTRING('      ',1,A.LVL * 3) +'L' END + B.ITEM_NAME AS ITEM_NAME, B.ITEM_TYP,B.ITEM_UNIT, A.BOM_QTY,A.Lvl,CONVERT(CHAR(10), C.BOM_STARTDATE, 23) BOM_STARTDATE,CONVERT(CHAR(10), C.BOM_ENDDATE, 23) BOM_ENDDATE,C.BOM_USE_YN,C.BOM_PLAN_YN,C.BOM_AUTOREDUCE_YN,D.FCLTS_CODE,FCLTS_NAME,B.ITEM_STND
+                         FROM A
+                         INNER JOIN ITEM B ON A.ITEM_CODE = B.ITEM_CODE
+                        INNER JOIN BOM C ON C.ITEM_CODE = B.ITEM_CODE
+                        LEFT JOIN BOR D ON D.ITEM_CODE = B.ITEM_CODE
+                        LEFT JOIN FACILITY E ON E.FCLTS_CODE = D.FCLTS_CODE
+                        order by A.SortOrder";
+            conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
+            {
+                
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
         public DataTable SearchBOM(string day ,string name,string yn )
         {
             DataTable dt = new DataTable();

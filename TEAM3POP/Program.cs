@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TEAM3FINAL
+namespace TEAM3POP
 {
     static class Program
     {
@@ -13,10 +13,10 @@ namespace TEAM3FINAL
         /// </summary>
         [STAThread]
         static void Main()
-       {
+        {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMAIN());
+            Application.Run(new FrmPOPMDI());
         }
     }
 }

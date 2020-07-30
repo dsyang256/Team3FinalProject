@@ -35,12 +35,13 @@ namespace WindowsFormsApp18
             this.DefaultCellStyle.ForeColor = Color.Black;
             this.DefaultCellStyle.SelectionBackColor = SystemColors.Menu;
             //this.DefaultCellStyle.SelectionForeColor = SystemColors.HighlightText
-            this.DefaultCellStyle.SelectionForeColor = SystemColors.MenuHighlight;
+            //this.DefaultCellStyle.SelectionForeColor = SystemColors.MenuHighlight;
+            this.DefaultCellStyle.SelectionForeColor = Color.Black;;
 
             this.BackgroundColor = Color.White;
 
             this.RowHeadersDefaultCellStyle.SelectionBackColor = SystemColors.ControlDark;
-            this.AlternatingRowsDefaultCellStyle.BackColor = Color.WhiteSmoke;
+            this.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
 
         }
 
