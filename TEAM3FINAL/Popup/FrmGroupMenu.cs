@@ -20,7 +20,7 @@ namespace TEAM3FINAL
         {
             //데이터그리드뷰 초기설정
             Util.InitSettingGridView(dgvGroups);
-            ////데이터그리드뷰 체크박스, 컬럼 추가
+            ////데이터그리드뷰 컬럼 추가
             Util.AddNewColumnToDataGridView(dgvGroups, "그룹명", "FAC_FCLTY", true, 80);
             Util.AddNewColumnToDataGridView(dgvGroups, "그룹설명", "FAC_TYP", true, 80);
 
@@ -61,7 +61,7 @@ namespace TEAM3FINAL
         /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
-
+            //유효성 검사 - 체크항목 최소 1개이상
         }
 
         /// <summary>
