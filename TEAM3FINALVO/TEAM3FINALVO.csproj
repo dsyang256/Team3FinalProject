@@ -47,7 +47,7 @@
     <Compile Include="ComboItemVO.cs" />
     <Compile Include="COMPANY_VO.cs" />
     <Compile Include="DEMAND_PLANNING_VO.cs" />
-    <Compile Include="FACILITY.cs" />
+    <Compile Include="FACILITY_VO.cs" />
     <Compile Include="FACILITY_GROUP.cs" />
     <Compile Include="FACTORY_VO.cs" />
     <Compile Include="INSTACK_VO.cs" />

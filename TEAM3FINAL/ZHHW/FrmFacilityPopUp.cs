@@ -6,18 +6,13 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace TEAM3POP
+namespace TEAM3FINAL
 {
-    public partial class FrmPOPMAIN : ProjectBaseForm
+    public partial class FrmFacilityPopUp : TEAM3FINAL.baseFormPopUP
     {
-        public FrmPOPMAIN()
+        public FrmFacilityPopUp()
         {
             InitializeComponent();
-        }
-
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

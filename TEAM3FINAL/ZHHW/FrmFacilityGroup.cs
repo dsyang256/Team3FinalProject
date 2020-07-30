@@ -12,6 +12,12 @@ namespace TEAM3FINAL
     public partial class FrmFacilityGroup : TEAM3FINAL.ProjectBaseForm, CommonBtn
     {
         CheckBox headerChk;
+        CheckBox headerChk2;
+        
+        /// <summary>
+        /// true : 설비군 입력/수정/삭제 , false : 설비 입력/수정/삭제
+        /// </summary>
+        public bool FacilityAndGroup { get; set; }
 
         public FrmFacilityGroup()
         {
@@ -21,6 +27,7 @@ namespace TEAM3FINAL
         #region 체크박스 포함한 그리드뷰 컬럼 생성
         private void DataGridViewColumnSet()
         {
+            //설비군
             //데이터그리드뷰 초기설정
             Util.InitSettingGridView(dgvFacilityGroupList);
             //데이터그리드뷰 체크박스 컬럼 추가
@@ -34,7 +41,25 @@ namespace TEAM3FINAL
             Util.AddNewColumnToDataGridView(dgvFacilityGroupList, "시설설명", "FACG_DESC", true, 80);
 
             DataGridViewCheckBoxAllCheck();
+
+
+            //설비
+            //데이터그리드뷰 초기설정
+            Util.InitSettingGridView(dgvFacilityList);
+            //데이터그리드뷰 체크박스 컬럼 추가
+            Util.DataGridViewCheckBoxSet(dgvFacilityList, "");
+            //일반컬럼 추가
+            Util.AddNewColumnToDataGridView(dgvFacilityList, "설비군 코드", "FACG_CODE", true, 80);
+            Util.AddNewColumnToDataGridView(dgvFacilityList, "설비군명", "FACG_NAME", true, 80);
+            Util.AddNewColumnToDataGridView(dgvFacilityList, "사용유무", "FACG_USE_YN", true, 80);
+            Util.AddNewColumnToDataGridView(dgvFacilityList, "수정자", "FACG_LAST_MDFR", true, 80);
+            Util.AddNewColumnToDataGridView(dgvFacilityList, "최종수정날짜", "FACG_LAST_MDFY", true, 80);
+            Util.AddNewColumnToDataGridView(dgvFacilityList, "시설설명", "FACG_DESC", true, 80);
+
+            DataGridViewCheckBoxAllCheck2();
         }
+
+        //설비군
         private void DataGridViewCheckBoxAllCheck()
         {
             headerChk = new CheckBox();
@@ -45,6 +70,19 @@ namespace TEAM3FINAL
             headerChk.Click += HeaderChk_Clicked;
             dgvFacilityGroupList.Controls.Add(headerChk);
         }
+
+        //설비
+        private void DataGridViewCheckBoxAllCheck2()
+        {
+            headerChk2 = new CheckBox();
+            Point headerCell = dgvFacilityList.GetCellDisplayRectangle(0, -1, true).Location;
+            headerChk2.Location = new Point(headerCell.X + 4, headerCell.Y + 15);
+            headerChk2.Size = new Size(18, 18);
+            headerChk2.BackColor = Color.FromArgb(245, 245, 246);
+            headerChk2.Click += HeaderChk_Clicked;
+            dgvFacilityList.Controls.Add(headerChk2);
+        }
+
         private void HeaderChk_Clicked(object sender, EventArgs e)
         {
             dgvFacilityGroupList.EndEdit();
@@ -100,13 +138,21 @@ namespace TEAM3FINAL
         {
             if(((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                FrmFacilityGroupPopUp frm = new FrmFacilityGroupPopUp();
-                frm.FACG_LAST_MDFR = "황현우"; //로그인 성명으로 변경하기
-                frm.FACG_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                frm.ShowDialog();
-                if(frm.DialogResult == DialogResult.OK)
+                FrmFacilityChoice form = new FrmFacilityChoice();
+                if (form.FacilityAndGroup = FacilityAndGroup) //true면 설비군팝업창 입력
                 {
-                    GetFacilityGroupList();
+                    FrmFacilityGroupPopUp frm = new FrmFacilityGroupPopUp();
+                    frm.FACG_LAST_MDFR = "황현우"; //로그인 성명으로 변경하기
+                    frm.FACG_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    frm.ShowDialog();
+                    if (frm.DialogResult == DialogResult.OK)
+                    {
+                        GetFacilityGroupList();
+                    }
+                }
+                else
+                {
+
                 }
             }
         }
