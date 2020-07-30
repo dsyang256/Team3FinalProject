@@ -81,9 +81,9 @@ namespace TEAM3FINALDAC
                         LEFT JOIN FACILITY E ON E.FCLTS_CODE = D.FCLTS_CODE
                         order by A.SortOrder";
             conn.Open();
-            using (SqlDataAdapter da = new SqlDataAdapter("SP_GetSearchBOM", conn))
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
             {
-                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                
                 da.Fill(dt);
             }
             return dt;
