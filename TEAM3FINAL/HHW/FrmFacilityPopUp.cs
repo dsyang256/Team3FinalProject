@@ -36,11 +36,11 @@ namespace TEAM3FINAL
         {
             #region 설비군 등록&수정
 
-            if ()
-            {
-                MessageBox.Show("필수정보 입력 필요");
-                return;
-            }
+            //if ()
+            //{
+            //    MessageBox.Show("필수정보 입력 필요");
+            //    return;
+            //}
 
             #endregion
         }
