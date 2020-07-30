@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TEAM3FINALVO
 {
-    class FACILITY
+    class FACILITY_VO
     {
         public string FCLTS_CODE { get; set; }
         public string FCLTS_NAME { get; set; }
