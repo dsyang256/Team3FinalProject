@@ -49,41 +49,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HHW\FrmFacilityChoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HHW\FrmFacilityChoice.Designer.cs">
+      <DependentUpon>FrmFacilityChoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HHW\FrmFacilityGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HHW\FrmFacilityGroup.Designer.cs">
+      <DependentUpon>FrmFacilityGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HHW\FrmFacilityGroupPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HHW\FrmFacilityGroupPopUp.Designer.cs">
+      <DependentUpon>FrmFacilityGroupPopUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HHW\FrmFacilityPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HHW\FrmFacilityPopUp.Designer.cs">
+      <DependentUpon>FrmFacilityPopUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HHW\FrmFactoryManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HHW\FrmFactoryManage.Designer.cs">
+      <DependentUpon>FrmFactoryManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HHW\FrmFactoryPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HHW\FrmFactoryPopUp.Designer.cs">
+      <DependentUpon>FrmFactoryPopUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="OJH\FrmDemandPlan.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OJH\FrmDemandPlan.Designer.cs">
       <DependentUpon>FrmDemandPlan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ZHHW\FrmFacilityChoice.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ZHHW\FrmFacilityChoice.Designer.cs">
-      <DependentUpon>FrmFacilityChoice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ZHHW\FrmFacilityGroup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ZHHW\FrmFacilityGroup.Designer.cs">
-      <DependentUpon>FrmFacilityGroup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ZHHW\FrmFacilityGroupPopUp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ZHHW\FrmFacilityGroupPopUp.Designer.cs">
-      <DependentUpon>FrmFacilityGroupPopUp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ZHHW\FrmFacilityPopUp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ZHHW\FrmFacilityPopUp.Designer.cs">
-      <DependentUpon>FrmFacilityPopUp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmGroupPop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmGroupPop.Designer.cs">
-      <DependentUpon>FrmGroupPop.cs</DependentUpon>
     </Compile>
     <Compile Include="OJH\FrmShift.cs">
       <SubType>Form</SubType>
@@ -161,18 +167,6 @@
     </Compile>
     <Compile Include="YDS\FrmItemPopUp.Designer.cs">
       <DependentUpon>FrmItemPopUp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ZHHW\FrmFactoryManage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ZHHW\FrmFactoryManage.Designer.cs">
-      <DependentUpon>FrmFactoryManage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ZHHW\FrmFactoryPopUp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ZHHW\FrmFactoryPopUp.Designer.cs">
-      <DependentUpon>FrmFactoryPopUp.cs</DependentUpon>
     </Compile>
     <Compile Include="YDS\FrmItem.cs">
       <SubType>Form</SubType>
@@ -253,21 +247,29 @@
     <EmbeddedResource Include="BaseForm\ProjectBaseForm.resx">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ZHHW\FrmFacilityChoice.resx" />
-    <EmbeddedResource Include="ZHHW\FrmFacilityGroup.resx">
+    <EmbeddedResource Include="HHW\FrmFacilityChoice.resx">
+      <DependentUpon>FrmFacilityChoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HHW\FrmFacilityGroup.resx">
       <DependentUpon>FrmFacilityGroup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ZHHW\FrmFacilityGroupPopUp.resx">
+    <EmbeddedResource Include="HHW\FrmFacilityGroupPopUp.resx">
       <DependentUpon>FrmFacilityGroupPopUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HHW\FrmFacilityPopUp.resx">
+      <DependentUpon>FrmFacilityPopUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HHW\FrmFactoryManage.resx">
+      <DependentUpon>FrmFactoryManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HHW\FrmFactoryPopUp.resx">
+      <DependentUpon>FrmFactoryPopUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popup\FrmGroupPop.resx">
       <DependentUpon>FrmGroupPop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OJH\FrmSalesWork.resx">
       <DependentUpon>FrmSalesWork.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmGroupPop.resx">
-      <DependentUpon>FrmGroupPop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OJH\FrmShift.resx">
       <DependentUpon>FrmShift.cs</DependentUpon>
@@ -289,12 +291,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="YDS\FrmCOMMON.resx">
       <DependentUpon>FrmCOMMON.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ZHHW\FrmFactoryManage.resx">
-      <DependentUpon>FrmFactoryManage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ZHHW\FrmFactoryPopUp.resx">
-      <DependentUpon>FrmFactoryPopUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="YDS\FrmItem.resx">
       <DependentUpon>FrmItem.cs</DependentUpon>
