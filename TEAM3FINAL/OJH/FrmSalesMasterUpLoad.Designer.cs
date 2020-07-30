@@ -28,7 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.panel1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.Visible = false;
+            // 
+            // panel2
+            // 
+            this.panel2.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.Visible = false;
+            // 
+            // panel3
+            // 
+            this.panel3.Location = new System.Drawing.Point(15, 13);
+            this.panel3.Size = new System.Drawing.Size(770, 537);
+            // 
+            // FrmSalesMasterUpLoad
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.ClientSize = new System.Drawing.Size(800, 562);
+            this.Name = "FrmSalesMasterUpLoad";
+            this.panel1.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

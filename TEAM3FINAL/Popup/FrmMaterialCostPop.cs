@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace TEAM3FINAL
 {
-    public partial class FrmSalesCostPop : TEAM3FINAL.baseFormPopUP
+    public partial class FrmMaterialCostPop : TEAM3FINAL.baseFormPopUP
     {
-        public FrmSalesCostPop()
+        public FrmMaterialCostPop()
         {
             InitializeComponent();
         }
