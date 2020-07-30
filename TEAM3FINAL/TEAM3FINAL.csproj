@@ -320,8 +320,8 @@
     <EmbeddedResource Include="ZHHW\FrmFacilityGroupPopUp.resx">
       <DependentUpon>FrmFacilityGroupPopUp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ZHHW\FrmFacilityPopUp.resx">
-      <DependentUpon>FrmFacilityPopUp.cs</DependentUpon>
+    <EmbeddedResource Include="Popup\FrmGroupPop.resx">
+      <DependentUpon>FrmGroupPop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OJH\FrmSalesWork.resx">
       <DependentUpon>FrmSalesWork.cs</DependentUpon>
