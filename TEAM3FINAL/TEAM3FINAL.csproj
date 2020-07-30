@@ -55,78 +55,6 @@
     <Compile Include="OJH\FrmDemandPlan.Designer.cs">
       <DependentUpon>FrmDemandPlan.cs</DependentUpon>
     </Compile>
-    <Compile Include="OJH\FrmMaterialCost.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OJH\FrmMaterialCost.Designer.cs">
-      <DependentUpon>FrmMaterialCost.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OJH\FrmMaterialCostPop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OJH\FrmMaterialCostPop.Designer.cs">
-      <DependentUpon>FrmMaterialCostPop.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OJH\FrmMaterialRequirePlan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OJH\FrmMaterialRequirePlan.Designer.cs">
-      <DependentUpon>FrmMaterialRequirePlan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OJH\FrmProductionPlan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OJH\FrmProductionPlan.Designer.cs">
-      <DependentUpon>FrmProductionPlan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OJH\FrmSalesCost.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OJH\FrmSalesCost.Designer.cs">
-      <DependentUpon>FrmSalesCost.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OJH\FrmSalesMaster.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OJH\FrmSalesMaster.Designer.cs">
-      <DependentUpon>FrmSalesMaster.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OJH\FrmSalesMasterUpLoad.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OJH\FrmSalesMasterUpLoad.Designer.cs">
-      <DependentUpon>FrmSalesMasterUpLoad.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OJH\FrmSalesWork.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OJH\FrmSalesWork.Designer.cs">
-      <DependentUpon>FrmSalesWork.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OJH\FrmSalesWorkList.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OJH\FrmSalesWorkList.Designer.cs">
-      <DependentUpon>FrmSalesWorkList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Popup\FrmGroupPop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Popup\FrmGroupPop.Designer.cs">
-      <DependentUpon>FrmGroupPop.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Popup\FrmSalesCostPop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Popup\FrmSalesCostPop.Designer.cs">
-      <DependentUpon>FrmSalesCostPop.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Popup\FrmSalesMasterPop.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Popup\FrmSalesMasterPop.Designer.cs">
-      <DependentUpon>FrmSalesMasterPop.cs</DependentUpon>
-    </Compile>
     <Compile Include="ZHHW\FrmFacilityChoice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +78,12 @@
     </Compile>
     <Compile Include="ZHHW\FrmFacilityPopUp.Designer.cs">
       <DependentUpon>FrmFacilityPopUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGroupPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGroupPop.Designer.cs">
+      <DependentUpon>FrmGroupPop.cs</DependentUpon>
     </Compile>
     <Compile Include="OJH\FrmShift.cs">
       <SubType>Form</SubType>
@@ -319,12 +253,6 @@
     <EmbeddedResource Include="BaseForm\ProjectBaseForm.resx">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OJH\FrmMaterialCost.resx">
-      <DependentUpon>FrmMaterialCost.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OJH\FrmSalesWorkList.resx">
-      <DependentUpon>FrmSalesWorkList.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ZHHW\FrmFacilityChoice.resx" />
     <EmbeddedResource Include="ZHHW\FrmFacilityGroup.resx">
       <DependentUpon>FrmFacilityGroup.cs</DependentUpon>
@@ -337,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OJH\FrmSalesWork.resx">
       <DependentUpon>FrmSalesWork.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGroupPop.resx">
+      <DependentUpon>FrmGroupPop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OJH\FrmShift.resx">
       <DependentUpon>FrmShift.cs</DependentUpon>
