@@ -313,6 +313,9 @@
     <EmbeddedResource Include="FrmFacilityGroupPopUp.resx">
       <DependentUpon>FrmFacilityGroupPopUp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OJH\FrmMaterialCost.resx">
+      <DependentUpon>FrmMaterialCost.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Popup\FrmGroupPop.resx">
       <DependentUpon>FrmGroupPop.cs</DependentUpon>
     </EmbeddedResource>
