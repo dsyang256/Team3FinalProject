@@ -15,7 +15,10 @@ namespace TEAM3FINAL
             InitializeComponent();
         }
 
-        //그리드뷰 컬럼 생성
+        #region 이벤트
+        /// <summary>
+        /// 그리드뷰 컬럼 생성 이벤트
+        /// </summary>
         private void DataGridViewColumnSet()
         {
             //데이터그리드뷰 초기설정
@@ -26,9 +29,16 @@ namespace TEAM3FINAL
             Util.AddNewColumnToDataGridView(dgvGroup, "그룹", "FAC_CODE", true, 100);
         }
 
+        /// <summary>
+        /// 폼 로드 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmAuthGroup_Load(object sender, EventArgs e)
         {
             DataGridViewColumnSet();
         }
+
+        #endregion
     }
 }
