@@ -45,17 +45,17 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1153, 125);
+            this.panel1.Size = new System.Drawing.Size(1924, 104);
             this.panel1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("맑은 고딕", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(144, 32);
+            this.label1.Location = new System.Drawing.Point(83, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(327, 47);
+            this.label1.Size = new System.Drawing.Size(345, 50);
             this.label1.TabIndex = 2;
             this.label1.Text = "생산실적관리[POP]";
             // 
@@ -65,9 +65,9 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.메인화면ToolStripMenuItem,
             this.설비관리ToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 125);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 104);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1153, 53);
+            this.menuStrip1.Size = new System.Drawing.Size(1924, 53);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -88,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1153, 699);
+            this.ClientSize = new System.Drawing.Size(1924, 1061);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panel1);
             this.IsMdiContainer = true;
