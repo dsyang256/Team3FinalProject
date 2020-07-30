@@ -322,6 +322,9 @@
     <EmbeddedResource Include="OJH\FrmMaterialCost.resx">
       <DependentUpon>FrmMaterialCost.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OJH\FrmSalesCost.resx">
+      <DependentUpon>FrmSalesCost.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OJH\FrmSalesWorkList.resx">
       <DependentUpon>FrmSalesWorkList.cs</DependentUpon>
     </EmbeddedResource>
