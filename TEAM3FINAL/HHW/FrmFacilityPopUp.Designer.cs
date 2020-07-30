@@ -30,7 +30,7 @@
         {
             this.label9 = new System.Windows.Forms.Label();
             this.cboFACGUseYN = new System.Windows.Forms.ComboBox();
-            this.txtDesc = new System.Windows.Forms.TextBox();
+            this.txtNote = new System.Windows.Forms.TextBox();
             this.txtModifier = new System.Windows.Forms.TextBox();
             this.txtFACGCODE = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -45,28 +45,25 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtFACCODE = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtFACNAME = new System.Windows.Forms.TextBox();
+            this.cboFACEXHST = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.cboFACGOOD = new System.Windows.Forms.ComboBox();
+            this.txtModifyDate = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cboFACBAD = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.cboEXTRLYN = new System.Windows.Forms.ComboBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtREMARK = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,6 +84,7 @@
             // btnOK
             // 
             this.btnOK.Location = new System.Drawing.Point(311, 574);
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
@@ -116,13 +114,13 @@
             this.cboFACGUseYN.Size = new System.Drawing.Size(138, 23);
             this.cboFACGUseYN.TabIndex = 53;
             // 
-            // txtDesc
+            // txtNote
             // 
-            this.txtDesc.Location = new System.Drawing.Point(126, 259);
-            this.txtDesc.Multiline = true;
-            this.txtDesc.Name = "txtDesc";
-            this.txtDesc.Size = new System.Drawing.Size(653, 139);
-            this.txtDesc.TabIndex = 51;
+            this.txtNote.Location = new System.Drawing.Point(126, 259);
+            this.txtNote.Multiline = true;
+            this.txtNote.Name = "txtNote";
+            this.txtNote.Size = new System.Drawing.Size(653, 139);
+            this.txtNote.TabIndex = 51;
             // 
             // txtModifier
             // 
@@ -261,12 +259,12 @@
             this.label16.TabIndex = 41;
             this.label16.Text = "소진창고";
             // 
-            // textBox1
+            // txtFACCODE
             // 
-            this.textBox1.Location = new System.Drawing.Point(383, 81);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(138, 23);
-            this.textBox1.TabIndex = 52;
+            this.txtFACCODE.Location = new System.Drawing.Point(383, 81);
+            this.txtFACCODE.Name = "txtFACCODE";
+            this.txtFACCODE.Size = new System.Drawing.Size(138, 23);
+            this.txtFACCODE.TabIndex = 52;
             // 
             // label17
             // 
@@ -289,26 +287,26 @@
             this.label18.TabIndex = 40;
             this.label18.Text = "설비명";
             // 
-            // textBox2
+            // txtFACNAME
             // 
-            this.textBox2.Location = new System.Drawing.Point(641, 81);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(138, 23);
-            this.textBox2.TabIndex = 52;
+            this.txtFACNAME.Location = new System.Drawing.Point(641, 81);
+            this.txtFACNAME.Name = "txtFACNAME";
+            this.txtFACNAME.Size = new System.Drawing.Size(138, 23);
+            this.txtFACNAME.TabIndex = 52;
             // 
-            // comboBox1
+            // cboFACEXHST
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cboFACEXHST.FormattingEnabled = true;
+            this.cboFACEXHST.Items.AddRange(new object[] {
             "공장",
             "자재팀창고",
             "생산팀창고",
             "영업팀창고",
             "외주창고"});
-            this.comboBox1.Location = new System.Drawing.Point(126, 125);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(138, 23);
-            this.comboBox1.TabIndex = 53;
+            this.cboFACEXHST.Location = new System.Drawing.Point(126, 125);
+            this.cboFACEXHST.Name = "cboFACEXHST";
+            this.cboFACEXHST.Size = new System.Drawing.Size(138, 23);
+            this.cboFACEXHST.TabIndex = 53;
             // 
             // label8
             // 
@@ -342,53 +340,26 @@
             this.label20.TabIndex = 41;
             this.label20.Text = "양품창고";
             // 
-            // comboBox2
+            // cboFACGOOD
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.cboFACGOOD.FormattingEnabled = true;
+            this.cboFACGOOD.Items.AddRange(new object[] {
             "공장",
             "자재팀창고",
             "생산팀창고",
             "영업팀창고",
             "외주창고"});
-            this.comboBox2.Location = new System.Drawing.Point(383, 125);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(138, 23);
-            this.comboBox2.TabIndex = 53;
+            this.cboFACGOOD.Location = new System.Drawing.Point(383, 125);
+            this.cboFACGOOD.Name = "cboFACGOOD";
+            this.cboFACGOOD.Size = new System.Drawing.Size(138, 23);
+            this.cboFACGOOD.TabIndex = 53;
             // 
-            // label21
+            // txtModifyDate
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label21.Location = new System.Drawing.Point(288, 172);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(15, 18);
-            this.label21.TabIndex = 44;
-            this.label21.Text = "*";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(312, 172);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(55, 15);
-            this.label22.TabIndex = 37;
-            this.label22.Text = "MES설비";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(383, 167);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(138, 23);
-            this.textBox3.TabIndex = 49;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(383, 211);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(138, 23);
-            this.textBox4.TabIndex = 49;
+            this.txtModifyDate.Location = new System.Drawing.Point(383, 211);
+            this.txtModifyDate.Name = "txtModifyDate";
+            this.txtModifyDate.Size = new System.Drawing.Size(138, 23);
+            this.txtModifyDate.TabIndex = 49;
             // 
             // label23
             // 
@@ -410,26 +381,26 @@
             this.label24.TabIndex = 37;
             this.label24.Text = "불량창고";
             // 
-            // comboBox3
+            // cboFACBAD
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.cboFACBAD.FormattingEnabled = true;
+            this.cboFACBAD.Items.AddRange(new object[] {
             "공장",
             "자재팀창고",
             "생산팀창고",
             "영업팀창고",
             "외주창고"});
-            this.comboBox3.Location = new System.Drawing.Point(641, 122);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(138, 23);
-            this.comboBox3.TabIndex = 53;
+            this.cboFACBAD.Location = new System.Drawing.Point(641, 122);
+            this.cboFACBAD.Name = "cboFACBAD";
+            this.cboFACBAD.Size = new System.Drawing.Size(138, 23);
+            this.cboFACBAD.TabIndex = 53;
             // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label25.Location = new System.Drawing.Point(546, 171);
+            this.label25.Location = new System.Drawing.Point(288, 172);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(15, 18);
             this.label25.TabIndex = 44;
@@ -438,25 +409,25 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(570, 171);
+            this.label26.Location = new System.Drawing.Point(312, 172);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(55, 15);
             this.label26.TabIndex = 37;
             this.label26.Text = "외주여부";
             // 
-            // comboBox4
+            // cboEXTRLYN
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
+            this.cboEXTRLYN.FormattingEnabled = true;
+            this.cboEXTRLYN.Items.AddRange(new object[] {
             "공장",
             "자재팀창고",
             "생산팀창고",
             "영업팀창고",
             "외주창고"});
-            this.comboBox4.Location = new System.Drawing.Point(641, 166);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(138, 23);
-            this.comboBox4.TabIndex = 53;
+            this.cboEXTRLYN.Location = new System.Drawing.Point(383, 167);
+            this.cboEXTRLYN.Name = "cboEXTRLYN";
+            this.cboEXTRLYN.Size = new System.Drawing.Size(138, 23);
+            this.cboEXTRLYN.TabIndex = 53;
             // 
             // label27
             // 
@@ -478,31 +449,30 @@
             this.label28.TabIndex = 38;
             this.label28.Text = "비고";
             // 
-            // textBox5
+            // txtREMARK
             // 
-            this.textBox5.Location = new System.Drawing.Point(126, 404);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(653, 139);
-            this.textBox5.TabIndex = 51;
+            this.txtREMARK.Location = new System.Drawing.Point(126, 404);
+            this.txtREMARK.Multiline = true;
+            this.txtREMARK.Name = "txtREMARK";
+            this.txtREMARK.Size = new System.Drawing.Size(653, 139);
+            this.txtREMARK.TabIndex = 51;
             // 
             // FrmFacilityPopUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.ClientSize = new System.Drawing.Size(805, 635);
+            this.ClientSize = new System.Drawing.Size(805, 630);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.comboBox4);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cboEXTRLYN);
+            this.Controls.Add(this.cboFACBAD);
+            this.Controls.Add(this.cboFACGOOD);
+            this.Controls.Add(this.cboFACEXHST);
             this.Controls.Add(this.cboFACGUseYN);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.txtDesc);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtREMARK);
+            this.Controls.Add(this.txtNote);
+            this.Controls.Add(this.txtModifyDate);
             this.Controls.Add(this.txtModifier);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtFACNAME);
+            this.Controls.Add(this.txtFACCODE);
             this.Controls.Add(this.txtFACGCODE);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.label27);
@@ -514,8 +484,6 @@
             this.Controls.Add(this.label25);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.label23);
-            this.Controls.Add(this.label22);
-            this.Controls.Add(this.label21);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label18);
@@ -547,8 +515,6 @@
             this.Controls.SetChildIndex(this.label18, 0);
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.label10, 0);
-            this.Controls.SetChildIndex(this.label21, 0);
-            this.Controls.SetChildIndex(this.label22, 0);
             this.Controls.SetChildIndex(this.label23, 0);
             this.Controls.SetChildIndex(this.label24, 0);
             this.Controls.SetChildIndex(this.label25, 0);
@@ -560,18 +526,17 @@
             this.Controls.SetChildIndex(this.label27, 0);
             this.Controls.SetChildIndex(this.label28, 0);
             this.Controls.SetChildIndex(this.txtFACGCODE, 0);
-            this.Controls.SetChildIndex(this.textBox1, 0);
-            this.Controls.SetChildIndex(this.textBox2, 0);
+            this.Controls.SetChildIndex(this.txtFACCODE, 0);
+            this.Controls.SetChildIndex(this.txtFACNAME, 0);
             this.Controls.SetChildIndex(this.txtModifier, 0);
-            this.Controls.SetChildIndex(this.textBox3, 0);
-            this.Controls.SetChildIndex(this.textBox4, 0);
-            this.Controls.SetChildIndex(this.txtDesc, 0);
-            this.Controls.SetChildIndex(this.textBox5, 0);
+            this.Controls.SetChildIndex(this.txtModifyDate, 0);
+            this.Controls.SetChildIndex(this.txtNote, 0);
+            this.Controls.SetChildIndex(this.txtREMARK, 0);
             this.Controls.SetChildIndex(this.cboFACGUseYN, 0);
-            this.Controls.SetChildIndex(this.comboBox1, 0);
-            this.Controls.SetChildIndex(this.comboBox2, 0);
-            this.Controls.SetChildIndex(this.comboBox3, 0);
-            this.Controls.SetChildIndex(this.comboBox4, 0);
+            this.Controls.SetChildIndex(this.cboFACEXHST, 0);
+            this.Controls.SetChildIndex(this.cboFACGOOD, 0);
+            this.Controls.SetChildIndex(this.cboFACBAD, 0);
+            this.Controls.SetChildIndex(this.cboEXTRLYN, 0);
             this.Controls.SetChildIndex(this.label9, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -584,7 +549,7 @@
 
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cboFACGUseYN;
-        private System.Windows.Forms.TextBox txtDesc;
+        private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.TextBox txtModifier;
         private System.Windows.Forms.TextBox txtFACGCODE;
         private System.Windows.Forms.Label label14;
@@ -599,27 +564,24 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtFACCODE;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtFACNAME;
+        private System.Windows.Forms.ComboBox cboFACEXHST;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.ComboBox cboFACGOOD;
+        private System.Windows.Forms.TextBox txtModifyDate;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cboFACBAD;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox cboEXTRLYN;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtREMARK;
     }
 }

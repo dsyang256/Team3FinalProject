@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace TEAM3FINALVO
+namespace TEAM3FINAL
 {
-    class FACILITY_VO
+    public partial class FrmFacilityPopUp : TEAM3FINAL.baseFormPopUP
     {
+        #region Property
+        public bool Update { get; set; }
         public string FCLTS_CODE { get; set; } //설비코드
         public string FCLTS_NAME { get; set; } //설비명
         public string FCLTS_WRHS_EXHST { get; set; } //소진창고
@@ -20,5 +24,25 @@ namespace TEAM3FINALVO
         public string FCLTS_NOTE { get; set; } //특이사항
         public string FCLTS_REMARK { get; set; } //비고
         public string FACG_CODE { get; set; } //설비군코드
+
+        #endregion
+
+        public FrmFacilityPopUp()
+        {
+            InitializeComponent();
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            #region 설비군 등록&수정
+
+            if ()
+            {
+                MessageBox.Show("필수정보 입력 필요");
+                return;
+            }
+
+            #endregion
+        }
     }
 }
