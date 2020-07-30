@@ -162,6 +162,7 @@ namespace TEAM3FINAL
             if(((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
                 FrmFacilityChoice form = new FrmFacilityChoice();
+                form.ShowDialog();
                 if (form.FacilityAndGroup == FacilityAndGroup) //true : 설비군팝업창 입력
                 {
                     FrmFacilityGroupPopUp frm = new FrmFacilityGroupPopUp();

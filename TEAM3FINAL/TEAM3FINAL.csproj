@@ -49,6 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HHW\FrmBORManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HHW\FrmBORManage.Designer.cs">
+      <DependentUpon>FrmBORManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HHW\FrmComponyManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HHW\FrmComponyManage.Designer.cs">
+      <DependentUpon>FrmComponyManage.cs</DependentUpon>
+    </Compile>
     <Compile Include="HHW\FrmFacilityChoice.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -331,6 +343,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaseForm\ProjectBaseForm.resx">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HHW\FrmBORManage.resx">
+      <DependentUpon>FrmBORManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HHW\FrmComponyManage.resx">
+      <DependentUpon>FrmComponyManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HHW\FrmFacilityChoice.resx">
       <DependentUpon>FrmFacilityChoice.cs</DependentUpon>
