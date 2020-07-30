@@ -14,5 +14,14 @@ namespace TEAM3FINAL
         {
             InitializeComponent();
         }
+
+        private void txtSTARTTIME_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //숫자만 입력받음
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

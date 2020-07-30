@@ -1,6 +1,6 @@
 ﻿namespace TEAM3FINAL
 {
-    partial class FrmSalesCostPop
+    partial class FrmMaterialCostPop
     {
         /// <summary>
         /// 필수 디자이너 변수입니다.
@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.cboItem = new System.Windows.Forms.ComboBox();
             this.txtENDTIME = new System.Windows.Forms.TextBox();
             this.txtMDFDate = new System.Windows.Forms.TextBox();
             this.txtSTARTTIME = new System.Windows.Forms.TextBox();
@@ -58,6 +56,8 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.cboItem = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -69,11 +69,10 @@
             // label1
             // 
             this.label1.Size = new System.Drawing.Size(88, 25);
-            this.label1.Text = "영업단가";
+            this.label1.Text = "자재단가";
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(31, 481);
             this.label2.Visible = false;
             // 
             // btnOK
@@ -122,24 +121,7 @@
             this.panel2.Location = new System.Drawing.Point(5, 64);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(580, 374);
-            this.panel2.TabIndex = 130;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(419, 97);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(121, 23);
-            this.textBox1.TabIndex = 163;
-            this.textBox1.Text = "2099-12-31";
-            // 
-            // cboItem
-            // 
-            this.cboItem.FormattingEnabled = true;
-            this.cboItem.Location = new System.Drawing.Point(419, 22);
-            this.cboItem.Name = "cboItem";
-            this.cboItem.Size = new System.Drawing.Size(121, 23);
-            this.cboItem.TabIndex = 162;
+            this.panel2.TabIndex = 129;
             // 
             // txtENDTIME
             // 
@@ -382,7 +364,7 @@
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(79, 15);
             this.label22.TabIndex = 141;
-            this.label22.Text = "영업단가코드";
+            this.label22.Text = "자재단가코드";
             this.label22.Visible = false;
             // 
             // label11
@@ -406,12 +388,29 @@
             this.label3.TabIndex = 153;
             this.label3.Text = "*";
             // 
-            // FrmSalesCostPop
+            // cboItem
+            // 
+            this.cboItem.FormattingEnabled = true;
+            this.cboItem.Location = new System.Drawing.Point(419, 22);
+            this.cboItem.Name = "cboItem";
+            this.cboItem.Size = new System.Drawing.Size(121, 23);
+            this.cboItem.TabIndex = 162;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(419, 97);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(121, 23);
+            this.textBox1.TabIndex = 163;
+            this.textBox1.Text = "2099-12-31";
+            // 
+            // FrmMaterialCostPop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.ClientSize = new System.Drawing.Size(590, 446);
             this.Controls.Add(this.panel2);
-            this.Name = "FrmSalesCostPop";
+            this.Name = "FrmMaterialCostPop";
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
@@ -429,8 +428,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox cboItem;
         private System.Windows.Forms.TextBox txtENDTIME;
         private System.Windows.Forms.TextBox txtMDFDate;
         private System.Windows.Forms.TextBox txtSTARTTIME;
@@ -458,5 +455,7 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox cboItem;
     }
 }
