@@ -58,9 +58,14 @@
             this.panel2.Controls.Add(this.label6);
             this.panel2.Size = new System.Drawing.Size(1050, 88);
             // 
+            // label1
+            // 
+            this.label1.Visible = false;
+            // 
             // panel3
             // 
-            this.panel3.Size = new System.Drawing.Size(1050, 321);
+            this.panel3.Location = new System.Drawing.Point(15, 130);
+            this.panel3.Size = new System.Drawing.Size(1050, 423);
             // 
             // dateTimePicker1
             // 
@@ -78,7 +83,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 20);
             this.label2.TabIndex = 43;
-            this.label2.Text = "적용 일자";
+            this.label2.Text = "기준 일자";
             // 
             // label6
             // 
