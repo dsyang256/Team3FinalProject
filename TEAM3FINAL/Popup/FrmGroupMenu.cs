@@ -62,6 +62,7 @@ namespace TEAM3FINAL
         private void btnSave_Click(object sender, EventArgs e)
         {
             //유효성 검사 - 체크항목 최소 1개이상
+            this.Close();
         }
 
         /// <summary>

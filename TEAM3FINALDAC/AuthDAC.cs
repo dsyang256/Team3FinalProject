@@ -41,6 +41,36 @@ namespace TEAM3FINALDAC
             return list;
         }
 
+        public List<ManagerRight_VO> GetRights(string userID)
+        {
+            List<ManagerRight_VO> list = default;
+
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = $@"select  mm.MENU_ID , ManagerR_CRUD,  MENU_PROGRAM
+                                        from dbo.MANAGER_MENU mm inner join dbo.MENU m on m.MENU_ID = mm.MENU_ID
+                                        where 1=1
+                                        AND  MENU_USE <>1
+                                        AND MANAGER_MENU_USE<>1
+                                        AND mm.MANAGER_ID = @MANAGER_ID";
+                    cmd.Connection.Open();
+
+                    cmd.Parameters.AddWithValue("@MANAGER_ID", userID);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    list = Helper.DataReaderMapToList<ManagerRight_VO>(reader);
+                    cmd.Connection.Close();
+                }
+            }
+            catch (Exception err)
+            {
+                string msg = err.Message;
+            }
+            return list;
+        }
+
         public List<MANAGER_VO> GetRightList(string userID)
         {
             List<MANAGER_VO> list = default;

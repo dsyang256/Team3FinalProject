@@ -40,5 +40,17 @@ namespace TEAM3FINAL
         }
 
         #endregion
+
+        private void btnGroup_Click(object sender, EventArgs e)
+        {
+            FrmGroupMenu frm = new FrmGroupMenu();
+            frm.ShowDialog();
+        }
+
+        private void btnRight_Click(object sender, EventArgs e)
+        {
+            FrmAuthSet frm = new FrmAuthSet();
+            frm.ShowDialog();
+        }
     }
 }

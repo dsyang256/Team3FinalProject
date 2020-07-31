@@ -36,9 +36,8 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(5, 6);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.panel1.Size = new System.Drawing.Size(390, 56);
+            this.panel1.Size = new System.Drawing.Size(400, 56);
             // 
             // label1
             // 
@@ -103,9 +102,9 @@
             // 
             // btnSignup
             // 
-            this.btnSignup.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnSignup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnSignup.Font = new System.Drawing.Font("맑은 고딕", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnSignup.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnSignup.ForeColor = System.Drawing.SystemColors.WindowText;
             this.btnSignup.Location = new System.Drawing.Point(176, 338);
             this.btnSignup.Name = "btnSignup";
             this.btnSignup.Size = new System.Drawing.Size(72, 29);

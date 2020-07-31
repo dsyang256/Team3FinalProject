@@ -17,22 +17,28 @@ namespace TEAM3FINAL
             return dac.GetMenus(userID);
         }
 
-        internal List<MANAGER_VO> GetManagers()
+        public List<MANAGER_VO> GetManagers()
         {
             AuthDAC dac = new AuthDAC();
             return dac.GetManagers();
         }
 
-        internal List<MANAGER_VO> GetMenuList(string userID)
+        public List<MANAGER_VO> GetMenuList(string userID)
         {
             AuthDAC dac = new AuthDAC();
             return dac.GetMenuList(userID);
         }
 
-        internal List<MANAGER_VO> GetRightList(string userID)
+        public List<MANAGER_VO> GetRightList(string userID)
         {
             AuthDAC dac = new AuthDAC();
             return dac.GetRightList(userID);
+        }
+
+        public List<ManagerRight_VO> GetRights(string userID)
+        {
+            AuthDAC dac = new AuthDAC();
+            return dac.GetRights(userID);
         }
     }
 }

@@ -48,7 +48,7 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(544, 56);
+            this.panel1.Size = new System.Drawing.Size(554, 56);
             // 
             // label1
             // 
@@ -73,6 +73,7 @@
             this.btnCancel.Font = new System.Drawing.Font("맑은 고딕", 14F);
             this.btnCancel.Location = new System.Drawing.Point(279, 400);
             this.btnCancel.Size = new System.Drawing.Size(92, 35);
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // label10
             // 

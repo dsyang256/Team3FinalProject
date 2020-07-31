@@ -17,6 +17,7 @@ namespace TEAM3FINAL
     public partial class FrmMAIN : ProjectBaseForm
     {
         private List<Menu_VO> menuList;
+        private List<ManagerRight_VO> rightList;
         private List<int> checkMenuList = new List<int>();
 
         public event EventHandler eSearch;
@@ -55,6 +56,7 @@ namespace TEAM3FINAL
                 stslLoginID.Text = $"{LoginInfo.UserInfo.LI_ID}님         ";
                 //로그인시 메뉴 불러오기.
                 GetMenus();
+                GetRights();
                 ShowMenu();
             }
         }
@@ -64,12 +66,20 @@ namespace TEAM3FINAL
             AuthService service = new AuthService();
             menuList = service.GetMenus(LoginInfo.UserInfo.LI_ID);
         }
+        private void GetRights()
+        {
+            if(rightList!=null)
+            rightList.Clear();
+            AuthService service = new AuthService();
+            rightList = service.GetRights(LoginInfo.UserInfo.LI_ID);
+        }
 
         private void ShowMenu()
         {
             //초기화
             menuStrip1.Items.Clear();
             checkMenuList.Clear();
+
             //메뉴생성
             ShowMenuDropDown(menuList);
         }
@@ -144,15 +154,45 @@ namespace TEAM3FINAL
 
                 if (!tabForms.Visible) tabForms.Visible = true;
 
-                //공통버튼 메뉴 권한 적용
-                if (this.ActiveMdiChild.Name == "?")
+                //공통버튼 권한 적용
+                SetBtnRight();
+            }
+        }
+
+        private void SetBtnRight()
+        {
+            //공통버튼 메뉴 권한 적용
+            if (rightList.Count > 0)
+            {
+                foreach (var menu in rightList)
                 {
-                    tsbSearch.Enabled = true;
-                    tsbInsert.Enabled = true;
-                    tsbDelete.Enabled = true;
-                    tsbUpdate.Enabled = true;
+
+                    if (this.ActiveMdiChild.Name == menu.MENU_PROGRAM)
+                    {
+                        tsbInsert.Enabled = false;//C
+                        tsbSearch.Enabled = false;//R
+                        tsbUpdate.Enabled = false;//U
+                        tsbDelete.Enabled = false;//D
+                        tsbPrint.Enabled = false;//P
+                        tsbReset.Enabled = false;//R
+
+                        if (menu.ManagerR_CRUD.Contains("C"))
+                            tsbInsert.Enabled = true;
+                        if (menu.ManagerR_CRUD.Contains("R"))
+                            tsbSearch.Enabled = true;
+                        if (menu.ManagerR_CRUD.Contains("U"))
+                            tsbUpdate.Enabled = true;
+                        if (menu.ManagerR_CRUD.Contains("D"))
+                            tsbDelete.Enabled = true;
+                        if (menu.ManagerR_CRUD.Contains("P"))
+                            tsbPrint.Enabled = true;
+                        if (menu.ManagerR_CRUD.Contains("R"))
+                            tsbReset.Enabled = true;
+                    }
                 }
             }
+
+
         }
 
         /// <summary>
@@ -276,8 +316,5 @@ namespace TEAM3FINAL
             LoadLogin();
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-        }
     }
 }
