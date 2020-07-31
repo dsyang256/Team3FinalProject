@@ -160,7 +160,7 @@ namespace TEAM3FINAL
                     FrmBOMPopUp frm = new FrmBOMPopUp(code);
                     if (frm.ShowDialog() == DialogResult.OK)
                     {
-                        Search(null, null);
+                        Reset(null, null);
                     }
                 }
             }
