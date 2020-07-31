@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace TEAM3FINAL
 {
-    public partial class FrmShift : TEAM3FINAL.baseForm2
+    public partial class FrmShift : TEAM3FINAL.baseForm2 , CommonBtn
     {
         public FrmShift()
         {
@@ -44,6 +44,18 @@ namespace TEAM3FINAL
             DataGridViewColumnSet();
 
             LoadShiftInfo();
+            BtnSet();
+        }
+
+        private void BtnSet()
+        {
+            FrmMAIN frm = (FrmMAIN)this.MdiParent;
+            frm.eSearch += Search;
+            frm.eInsert += Insert;
+            frm.eUpdate += Update;
+            frm.eDelete += Delete;
+            frm.ePrint += Print;
+            frm.eReset += Reset;
         }
 
         private void LoadShiftInfo()
@@ -71,6 +83,37 @@ namespace TEAM3FINAL
                 e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font,
                 brush, e.RowBounds.Location.X + 35, e.RowBounds.Location.Y + 4, drawFormat);
             }
+        }
+
+        public void Insert(object sender, EventArgs e)
+        {
+            FrmShiftPop frm = new FrmShiftPop();
+            frm.ShowDialog();
+        }
+
+        public void Search(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Reset(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Print(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

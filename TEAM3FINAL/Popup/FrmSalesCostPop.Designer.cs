@@ -79,10 +79,12 @@
             // btnOK
             // 
             this.btnOK.Location = new System.Drawing.Point(215, 403);
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(332, 403);
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // panel2
             // 

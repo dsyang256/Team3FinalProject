@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cboItem = new System.Windows.Forms.ComboBox();
             this.txtENDTIME = new System.Windows.Forms.TextBox();
             this.txtMDFDate = new System.Windows.Forms.TextBox();
             this.txtSTARTTIME = new System.Windows.Forms.TextBox();
@@ -56,8 +58,6 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.cboItem = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -78,10 +78,12 @@
             // btnOK
             // 
             this.btnOK.Location = new System.Drawing.Point(215, 403);
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(332, 403);
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // panel2
             // 
@@ -122,6 +124,23 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(580, 374);
             this.panel2.TabIndex = 129;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(419, 97);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(121, 23);
+            this.textBox1.TabIndex = 163;
+            this.textBox1.Text = "2099-12-31";
+            // 
+            // cboItem
+            // 
+            this.cboItem.FormattingEnabled = true;
+            this.cboItem.Location = new System.Drawing.Point(419, 22);
+            this.cboItem.Name = "cboItem";
+            this.cboItem.Size = new System.Drawing.Size(121, 23);
+            this.cboItem.TabIndex = 162;
             // 
             // txtENDTIME
             // 
@@ -387,23 +406,6 @@
             this.label3.Size = new System.Drawing.Size(17, 17);
             this.label3.TabIndex = 153;
             this.label3.Text = "*";
-            // 
-            // cboItem
-            // 
-            this.cboItem.FormattingEnabled = true;
-            this.cboItem.Location = new System.Drawing.Point(419, 22);
-            this.cboItem.Name = "cboItem";
-            this.cboItem.Size = new System.Drawing.Size(121, 23);
-            this.cboItem.TabIndex = 162;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(419, 97);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(121, 23);
-            this.textBox1.TabIndex = 163;
-            this.textBox1.Text = "2099-12-31";
             // 
             // FrmMaterialCostPop
             // 
