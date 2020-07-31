@@ -33,9 +33,10 @@ namespace TEAM3FINAL
             return dac.DeleteBOM(code);
         }
 
-        internal BOM_VO GetItem(int code)
+        internal BOM_VO GetBOM(int code)
         {
-            throw new NotImplementedException();
+            BOMDAC dac = new BOMDAC();
+            return dac.GetBOM(code);
         }
     }
 }

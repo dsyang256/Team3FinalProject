@@ -51,6 +51,31 @@ namespace TEAM3FINALDAC
             }
         }
 
+        public BOM_VO GetBOM(int code)
+        {
+            List<BOM_VO> list = default;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = @"select BOM_CODE,BOM_PARENT_CODE,BOM_QTY,CONVERT(CHAR(10), BOM_STARTDATE, 23) BOM_STARTDATE,CONVERT(CHAR(10), BOM_ENDDATE, 23) BOM_ENDDATE,BOM_USE_YN,BOM_LAST_MDFR,CONVERT(CHAR(10), BOM_LAST_MDFY, 23) BOM_LAST_MDFY,BOM_AUTOREDUCE_YN,BOM_PLAN_YN,BOM_REMARK,ITEM_CODE
+                                          from BOM
+                                         Where BOM_CODE = @BOM_CODE";
+                    cmd.Parameters.AddWithValue("@BOM_CODE", code);
+                    cmd.Connection.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    list = Helper.DataReaderMapToList<BOM_VO>(reader);
+                    cmd.Connection.Close();
+                    return list[0];
+                }
+            }
+            catch (Exception err)
+            {
+                return list[0];
+            }
+        }
+
         public DataTable SelectBOM()
         {
             DataTable dt = new DataTable();

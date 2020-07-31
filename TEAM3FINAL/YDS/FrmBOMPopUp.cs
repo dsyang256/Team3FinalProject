@@ -28,8 +28,18 @@ namespace TEAM3FINAL
         private void GetBOM(int code)
         {
             BOMService item = new BOMService();
-            BOM_VO vo = item.GetItem(code);
-            
+            BOM_VO vo = item.GetBOM(code);
+            BOM_PARENT_CODE.SelectedValue = vo.BOM_PARENT_CODE;
+            ITEM_CODE.SelectedValue = vo.ITEM_CODE;
+            BOM_QTY.Text = vo.BOM_QTY.ToString();
+            BOM_STARTDATE.Text = vo.BOM_STARTDATE;
+            BOM_ENDDATE.Text = vo.BOM_ENDDATE;
+            BOM_USE_YN.Text = vo.BOM_USE_YN;
+            BOM_LAST_MDFR.Text = vo.BOM_LAST_MDFR;
+            BOM_LAST_MDFY.Text = vo.BOM_LAST_MDFY;
+            BOM_AUTOREDUCE_YN.Text = vo.BOM_AUTOREDUCE_YN;
+            BOM_PLAN_YN.Text = vo.BOM_PLAN_YN;
+            BOM_REMARK.Text = vo.BOM_REMARK; 
 
         }
         private void FrmBOMPopUp_Load(object sender, EventArgs e)

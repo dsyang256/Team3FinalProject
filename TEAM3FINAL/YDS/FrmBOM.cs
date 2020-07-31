@@ -112,7 +112,8 @@ namespace TEAM3FINAL
                 {
                     if (Convert.ToBoolean(item.Cells[1].Value))
                     {
-                        code = Convert.ToInt32(item.Cells[2]);
+                        //MessageBox.Show(item.Cells[2].ToString());
+                        code = Convert.ToInt32(item.Cells[2].Value);
                         cnt++;
                     }
                 }
