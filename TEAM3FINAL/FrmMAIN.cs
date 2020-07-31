@@ -102,9 +102,14 @@ namespace TEAM3FINAL
                     else
                     {
                         if (grantMenu.MENU_NAME == "공통코드관리")
+                        {
                             tsmi.Click += (sender, e) => ShowDialog(grantMenu.MENU_PROGRAM);
+                        }
                         else
+                        {
                             tsmi.Click += (sender, e) => this.MdiChildrenShow(grantMenu.MENU_PROGRAM);
+
+                        }
                     }
                 }
 
@@ -138,6 +143,15 @@ namespace TEAM3FINAL
                 }
 
                 if (!tabForms.Visible) tabForms.Visible = true;
+
+                //공통버튼 메뉴 권한 적용
+                if (this.ActiveMdiChild.Name == "?")
+                {
+                    tsbSearch.Enabled = true;
+                    tsbInsert.Enabled = true;
+                    tsbDelete.Enabled = true;
+                    tsbUpdate.Enabled = true;
+                }
             }
         }
 
@@ -249,9 +263,12 @@ namespace TEAM3FINAL
         private void tsbLogout_Click(object sender, EventArgs e)
         {
             //자식폼 모두 닫기 -OJH
-            foreach (Form form in this.MdiChildren)
+            if (Application.OpenForms.Count > 0) // 만약 폼이 1개 이상 열려있으면
             {
-                form.Close();
+                foreach (Form form in this.MdiChildren)
+                {
+                    form.Close();
+                }
             }
             //로그인 정보 초기화 -OJH
             LoginInfo.UserInfo.InitMember();
@@ -259,6 +276,8 @@ namespace TEAM3FINAL
             LoadLogin();
         }
 
-
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+        }
     }
 }
