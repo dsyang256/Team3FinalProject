@@ -13,7 +13,7 @@ namespace TEAM3FINAL
 {
     public partial class FrmItem : TEAM3FINAL.baseForm2  ,CommonBtn
     {
-        ItemServicecs item = new ItemServicecs();
+        ItemService item = new ItemService();
         CheckBox headerChk;
         public FrmItem()
         {
@@ -273,7 +273,7 @@ namespace TEAM3FINAL
                 sb.Remove(sb.Length - 1, 1);
                 if (MessageBox.Show($"총 {cnt}개의 항목을 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    ItemServicecs service = new ItemServicecs();
+                    ItemService service = new ItemService();
                     if (service.DeleteItem(sb))
                     {
                         MessageBox.Show("삭제 완료");

@@ -28,7 +28,7 @@ namespace TEAM3FINAL
         }
         private void GetItem(string code)
         {
-            ItemServicecs item = new ItemServicecs();
+            ItemService item = new ItemService();
             ITEM_VO vo = item.GetItem(code);
             ITEM_CODE.Text = vo.ITEM_CODE;
             ITEM_CODE.Enabled = false;
@@ -190,7 +190,7 @@ namespace TEAM3FINAL
             vo.ITEM_DSCN_YN = ITEM_DSCN_YN.Text;
             vo.ITEM_REORDER_TYP = ITEM_REORDER_TYP.Text;
             vo.ITEM_REMARK = ITEM_REMARK.Text;
-            ItemServicecs item = new ItemServicecs();
+            ItemService item = new ItemService();
             string result = item.SaveItem(vo, update);
             if (result == "C200")
             {
