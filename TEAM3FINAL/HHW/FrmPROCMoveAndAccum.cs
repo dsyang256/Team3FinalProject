@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace TEAM3FINAL.HHW
+namespace TEAM3FINAL
 {
     public partial class FrmPROCMoveAndAccum : TEAM3FINAL.baseForm
     {

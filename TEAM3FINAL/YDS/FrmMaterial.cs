@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TEAM3FINAL
+namespace TEAM3FINAL.YDS
 {
-    public partial class FrmProductOUT : TEAM3FINAL.baseForm
+    public partial class FrmMaterial : baseForm2
     {
-        public FrmProductOUT()
+        public FrmMaterial()
         {
             InitializeComponent();
         }

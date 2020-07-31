@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TEAM3FINAL.YDS
+namespace TEAM3FINAL
 {
     public partial class Form1 : baseForm2
     {

@@ -1,4 +1,4 @@
-﻿namespace TEAM3FINAL.YDS
+﻿namespace TEAM3FINAL
 {
     partial class FrmReorderPopUp
     {
@@ -28,10 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.panel1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // FrmReorderPopUp
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "FrmReorderPopUp";
+            this.Name = "FrmReorderPopUp";
+            this.Text = "발주등록";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

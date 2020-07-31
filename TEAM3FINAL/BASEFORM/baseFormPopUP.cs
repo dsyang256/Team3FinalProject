@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace TEAM3FINAL
 {
-    public partial class baseFormPopUP : TEAM3FINAL.ProjectBaseForm
+    public partial class baseFormPopUP : ProjectBaseForm
     {
         public baseFormPopUP()
         {

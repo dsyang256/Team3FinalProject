@@ -1,4 +1,4 @@
-﻿namespace TEAM3FINAL.HHW
+﻿namespace TEAM3FINAL
 {
     partial class FrmBORManage
     {
@@ -38,6 +38,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1080, 548);
             this.Name = "FrmBORManage";
+            this.Text = "BOR관리";
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);

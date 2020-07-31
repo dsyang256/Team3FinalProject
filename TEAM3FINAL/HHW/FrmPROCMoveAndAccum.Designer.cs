@@ -1,4 +1,4 @@
-﻿namespace TEAM3FINAL.HHW
+﻿namespace TEAM3FINAL
 {
     partial class FrmPROCMoveAndAccum
     {
@@ -34,14 +34,17 @@
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(11, 13);
-            this.panel2.Size = new System.Drawing.Size(1040, 176);
+            this.panel2.Location = new System.Drawing.Point(9, 10);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel2.Size = new System.Drawing.Size(809, 132);
             // 
             // FrmPROCMoveAndAccum
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.ClientSize = new System.Drawing.Size(1080, 565);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.ClientSize = new System.Drawing.Size(840, 424);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "FrmPROCMoveAndAccum";
+            this.Text = "공정이동";
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);

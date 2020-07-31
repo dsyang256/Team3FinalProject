@@ -10,7 +10,7 @@ using TEAM3FINALVO;
 
 namespace TEAM3FINAL
 {
-    public partial class FrmBOM : TEAM3FINAL.baseForm2, CommonBtn
+    public partial class FrmBOM : baseForm2, CommonBtn
     {
         CheckBox headerChk;
         public FrmBOM()
