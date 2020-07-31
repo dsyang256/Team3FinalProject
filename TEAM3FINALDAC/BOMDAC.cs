@@ -56,15 +56,9 @@ namespace TEAM3FINALDAC
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(this.ConnectionString);
             string sql = @"WITH A AS
-                        (SELECT T1.BOM_CODE
-                        , T1.ITEM_CODE
-                        , T1.BOM_PARENT_CODE
-                        , T1.BOM_QTY
-                        , 0 AS Lvl
-                        , convert(varchar(255), T1.ITEM_CODE) sortOrder
+                        (SELECT T1.BOM_CODE, T1.ITEM_CODE, T1.BOM_PARENT_CODE, T1.BOM_QTY, 0 AS Lvl, convert(varchar(255), T1.ITEM_CODE) sortOrder
                            FROM BOM T1 INNER JOIN ITEM i ON T1.ITEM_CODE = i.ITEM_CODE
-                      
-                           WHERE T1.BOM_PARENT_CODE = '-'
+                          WHERE T1.BOM_PARENT_CODE = '-' 
                       
                          UNION ALL
                       
@@ -103,6 +97,30 @@ namespace TEAM3FINALDAC
                 da.Fill(dt);
             }
             return dt;
+        }
+
+        public bool DeleteBOM(StringBuilder code)
+        {
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = new SqlConnection(this.ConnectionString);
+                cmd.CommandText = @"WITH A AS
+                                 (SELECT T1.BOM_CODE, T1.ITEM_CODE
+                                    FROM BOM T1
+                               	   WHERE T1.BOM_CODE IN(select Item from dbo.SplitString(@CODE, '@'))
+                               
+                                   UNION ALL 
+                               
+                                   SELECT T.BOM_CODE, T.ITEM_CODE
+                                     FROM A INNER JOIN BOM T ON T.BOM_PARENT_CODE = A.ITEM_CODE
+                               )
+                               UPDATE BOM SET BOM_USE_YN = '미사용'
+                               WHERE BOM_CODE IN(SELECT DISTINCT BOM_CODE  FROM A)";
+                cmd.Parameters.AddWithValue("@CODE", code.ToString());
+                cmd.Connection.Open();
+                int iResult = cmd.ExecuteNonQuery();
+                return (iResult > 0) ? true : false;
+            }
         }
     }
 }

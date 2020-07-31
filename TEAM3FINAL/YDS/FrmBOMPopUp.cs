@@ -16,10 +16,25 @@ namespace TEAM3FINAL
         public FrmBOMPopUp()
         {
             InitializeComponent();
+            ComboBinding();
+        }
+        public FrmBOMPopUp(int code)
+        {
+            InitializeComponent();
+            ComboBinding();
+            this.code = code;
+            GetBOM(code);
+        }
+        private void GetBOM(int code)
+        {
+            BOMService item = new BOMService();
+            BOM_VO vo = item.GetItem(code);
+            
+
         }
         private void FrmBOMPopUp_Load(object sender, EventArgs e)
         {
-            ComboBinding();
+          
         }
         /// <summary>
         /// 콤보 박스 바인딩
@@ -78,7 +93,6 @@ namespace TEAM3FINAL
             }
             BOM_VO vo = new BOM_VO();
             vo.BOM_CODE = code;
-            //vo.ITEM_LEADTIME = (ITEM_LEADTIME.Text.Length < 1) ? 0 : int.Parse(ITEM_LEADTIME.Text);
             vo.BOM_PARENT_CODE = (BOM_PARENT_CODE.Text =="-") ? "-" : BOM_PARENT_CODE.SelectedValue.ToString();
             vo.ITEM_CODE = ITEM_CODE.SelectedValue.ToString();
             vo.BOM_QTY = (BOM_QTY.Text.Length<1)? 0 : int.Parse(BOM_QTY.Text);

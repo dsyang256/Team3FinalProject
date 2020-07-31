@@ -188,10 +188,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1080, 565);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmFactoryManage";
             this.Text = "공장관리";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmFactoryManage_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

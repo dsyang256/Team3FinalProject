@@ -22,12 +22,39 @@ namespace TEAM3FINAL
             BtnSet();
             DataGridViewColumnSet();
             DataGridViewBinding();
+            ComboBinding();
         }
         public void Delete(object sender, EventArgs e)
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                
+                dgvBOM.EndEdit();
+                StringBuilder sb = new StringBuilder();
+                int cnt = 0;
+                //품목 선택후 List를 전달
+                foreach (DataGridViewRow item in dgvBOM.Rows)
+                {
+                    if (Convert.ToBoolean(item.Cells[1].Value))
+                    {
+                        sb.Append(item.Cells[2].Value.ToString() + "@");
+                        cnt++;
+                    }
+                }
+                if (sb.Length < 1)
+                {
+                    MessageBox.Show("미사용 항목을 선택하여 주십시오.");
+                    return;
+                }
+                sb.Remove(sb.Length - 1, 1);
+                if (MessageBox.Show($"총 {cnt}개의 항목을 미사용 하겠습니까?? 하위항목도 미사용됨니다. ", "미사용", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    BOMService service = new BOMService();
+                    if (service.DeleteBOM(sb))
+                    {
+                        MessageBox.Show("미사용 완료");
+                        DataGridViewBinding();
+                    }
+                }
             }
         }
 
@@ -38,7 +65,7 @@ namespace TEAM3FINAL
                 FrmBOMPopUp frm = new FrmBOMPopUp();
                 if(frm.ShowDialog() == DialogResult.OK)
                 {
-
+                    DataGridViewBinding();
                 }
             }
         }
@@ -55,7 +82,7 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-
+                DataGridViewBinding();
             }
         }
 
@@ -63,7 +90,13 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-
+                if(ITEM_NAEM.Text.Length <1)
+                {
+                    MessageBox.Show("검색하실 품목명을 입력해주세요");
+                    return;
+                }
+                BOMService bom = new BOMService();
+                dgvBOM.DataSource = bom.SearchBOM(day.Value.ToShortDateString(), ITEM_NAEM.Text, BOM_USE_YN.Text);
             }
         }
 
@@ -71,7 +104,36 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-
+                dgvBOM.EndEdit();
+                int cnt = 0;
+                int code = 0;
+                //체크가 되었는지 확인
+                foreach (DataGridViewRow item in dgvBOM.Rows)
+                {
+                    if (Convert.ToBoolean(item.Cells[1].Value))
+                    {
+                        code = Convert.ToInt32(item.Cells[2]);
+                        cnt++;
+                    }
+                }
+                if (cnt < 1)
+                {
+                    MessageBox.Show("수정할 항목을 선택해주세요.");
+                    return;
+                }
+                if (cnt != 1)
+                {
+                    MessageBox.Show("하나의 항목씩만 수정 가능 합니다.");
+                    return;
+                }
+                else if (cnt == 1)
+                {
+                    FrmBOMPopUp frm = new FrmBOMPopUp(code);
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        Search(null, null);
+                    }
+                }
             }
         }
         /// <summary>
@@ -98,8 +160,8 @@ namespace TEAM3FINAL
 
 
             //발주업체
-            var listCOM_REORDER = (from item in Commonlist where item.COMMON_PARENT == "업체명" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(ITEM_COM_REORDER, listCOM_REORDER, "COMMON_CODE", "COMMON_NAME", "");
+            var listCOM_USE_YN = (from item in Commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(BOM_USE_YN, listCOM_USE_YN, "COMMON_CODE", "COMMON_NAME", "");
 
 
 
@@ -112,18 +174,19 @@ namespace TEAM3FINAL
             Util.InitSettingGridView(dgvBOM);
             Util.AddNewColumnToDataGridView(dgvBOM, "no", "idx", true, 30);
             Util.DataGridViewCheckBoxSet(dgvBOM, "all");
+            Util.AddNewColumnToDataGridView(dgvBOM, "BOM_CODE", "BOM_CODE", false, 30);
             Util.AddNewColumnToDataGridView(dgvBOM, "품목", "ITEM_CODE", true, 200);
             Util.AddNewColumnToDataGridView(dgvBOM, "품명", "ITEM_NAME", true, 200);
             Util.AddNewColumnToDataGridView(dgvBOM, "품목유형", "ITEM_TYP", true, 100);
             Util.AddNewColumnToDataGridView(dgvBOM, "단위", "ITEM_UNIT", true, 100);
             Util.AddNewColumnToDataGridView(dgvBOM, "소요량", "BOM_QTY", true, 80);
             Util.AddNewColumnToDataGridView(dgvBOM, "BOM레벨", "Lvl", true, 100);
-            Util.AddNewColumnToDataGridView(dgvBOM, "시작일", "BOM_STARTDATE", true, 80);
+            Util.AddNewColumnToDataGridView(dgvBOM, "시작일", "BOM_STARTDATE", true, 120);
             Util.AddNewColumnToDataGridView(dgvBOM, "종료일", "BOM_ENDDATE", true, 120);
             Util.AddNewColumnToDataGridView(dgvBOM, "사용여부", "BOM_USE_YN", true, 120);
             Util.AddNewColumnToDataGridView(dgvBOM, "소요계획", "BOM_PLAN_YN", true, 120);
             Util.AddNewColumnToDataGridView(dgvBOM, "자동차감", "BOM_AUTOREDUCE_YN", true, 100);
-            Util.AddNewColumnToDataGridView(dgvBOM, "설비", "FCLTS_CODE", true, 100);
+            Util.AddNewColumnToDataGridView(dgvBOM, "설비", "FCLTS_CODE", true, 140);
             Util.AddNewColumnToDataGridView(dgvBOM, "설비명", "FCLTS_NAME", true, 140);
             Util.AddNewColumnToDataGridView(dgvBOM, "규격", "ITEM_STND", true, 140);
             DataGridViewCheckBoxAllCheck();
@@ -134,6 +197,7 @@ namespace TEAM3FINAL
         /// </summary>
         private void DataGridViewBinding()
         {
+            dgvBOM.DataSource = null;
             BOMService bom = new BOMService();
             dgvBOM.DataSource = bom.SelectBOM();
         }

@@ -9,7 +9,7 @@ using TEAM3FINALVO;
 
 namespace TEAM3FINAL
 {
-    public class ItemServicecs
+    public class ItemService
     {
         public List<ITEM_VO> AllITEM()
         {

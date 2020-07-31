@@ -27,5 +27,15 @@ namespace TEAM3FINAL
             BOMDAC dac = new BOMDAC();
             return dac.SelectBOM();
         }
+        public bool DeleteBOM(StringBuilder code)
+        {
+            BOMDAC dac = new BOMDAC();
+            return dac.DeleteBOM(code);
+        }
+
+        internal BOM_VO GetItem(int code)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
