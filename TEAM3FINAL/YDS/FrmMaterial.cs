@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TEAM3FINAL
+namespace TEAM3FINAL.YDS
 {
-    public partial class FrmReorderPopUp : baseFormPopUP
+    public partial class FrmMaterial : baseForm2
     {
-        public FrmReorderPopUp()
+        public FrmMaterial()
         {
             InitializeComponent();
         }

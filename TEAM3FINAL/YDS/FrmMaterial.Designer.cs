@@ -1,6 +1,6 @@
-﻿namespace TEAM3FINAL
+﻿namespace TEAM3FINAL.YDS
 {
-    partial class Form1
+    partial class FrmMaterial
     {
         /// <summary>
         /// Required designer variable.
@@ -28,24 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // panel3
-            // 
-            this.panel3.Size = new System.Drawing.Size(770, 206);
-            // 
-            // Form1
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Form1";
-            this.Text = "정규발주";
-            this.panel1.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            this.Text = "FrmMaterial";
         }
 
         #endregion

@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="YDS\FrmReleaseRequest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YDS\FrmReleaseRequest.Designer.cs">
+      <DependentUpon>FrmReleaseRequest.cs</DependentUpon>
+    </Compile>
     <Compile Include="HHW\FrmBORManage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -269,6 +275,42 @@
     <Compile Include="Services\BOMService.cs" />
     <Compile Include="Services\FacilityService.cs" />
     <Compile Include="Services\ShiftService.cs" />
+    <Compile Include="YDS\FrmMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YDS\FrmMaterial.Designer.cs">
+      <DependentUpon>FrmMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YDS\FrmReceiving.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YDS\FrmReceiving.Designer.cs">
+      <DependentUpon>FrmReceiving.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YDS\FrmReceivingSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YDS\FrmReceivingSearch.Designer.cs">
+      <DependentUpon>FrmReceivingSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YDS\FrmRelease.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YDS\FrmRelease.Designer.cs">
+      <DependentUpon>FrmRelease.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YDS\FrmReleaseSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YDS\FrmReleaseSearch.Designer.cs">
+      <DependentUpon>FrmReleaseSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YDS\FrmReorderSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YDS\FrmReorderSearch.Designer.cs">
+      <DependentUpon>FrmReorderSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="YDS\FrmReorder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -509,6 +551,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\ucTabControl.resx">
       <DependentUpon>ucTabControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YDS\FrmReceiving.resx">
+      <DependentUpon>FrmReceiving.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YDS\FrmReceivingSearch.resx">
+      <DependentUpon>FrmReceivingSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YDS\FrmRelease.resx">
+      <DependentUpon>FrmRelease.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YDS\FrmReleaseRequest.resx">
+      <DependentUpon>FrmReleaseRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YDS\FrmReleaseSearch.resx">
+      <DependentUpon>FrmReleaseSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YDS\FrmReorder.resx">
+      <DependentUpon>FrmReorder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YDS\FrmReorderPopUp.resx">
+      <DependentUpon>FrmReorderPopUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YDS\FrmReorderSearch.resx">
+      <DependentUpon>FrmReorderSearch.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
