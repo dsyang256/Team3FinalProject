@@ -9,24 +9,28 @@ using TEAM3FINALVO;
 
 namespace TEAM3FINALDAC
 {
-   public class AuthDAC : ConnectionAccess
+    public class AuthDAC : ConnectionAccess
     {
-        public List<MANAGER_VO> GetMenus()
+        public List<Menu_VO> GetMenus(string userID)
         {
-            List<MANAGER_VO> list = default;
+            List<Menu_VO> list = default;
 
             try
             {
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = new SqlConnection(this.ConnectionString);
-                    cmd.CommandText = $@"select[MENU_ID] [MANAGER_ID],[MENU_NAME] [MANAGER_NAME],[MENU_PARENT] [MANAGER_EML],[MENU_PROGRAM] [MANAGER_PSWD],null [MANAGER_DEP]
-                                                        from dbo.MENU
-                                                        where 1=1 ";
-
+                    cmd.CommandText = $@"select m.MENU_ID, mn.MENU_NAME, mn.MENU_PARENT, mn.MENU_SEQ, mn.MENU_LEVEL, mn.MENU_PROGRAM, mn.MENU_DESC,mn.MENU_USE,mn.[MENU_FIRST_MDFR],mn.MENU_FIRST_MDFY,mn.[MENU_LAST_MDFR],mn.MENU_LAST_MDFY
+                                        from dbo.MENU_RIGHT m inner join dbo.MANAGER_RIGHT r on m.RIGHT_ID=r.RIGHT_ID
+								                                           inner join	dbo.MENU mn on m.MENU_ID = mn.MENU_ID
+                                        where 1=1 AND mn.MENU_USE <>1
+                                        AND r.MANAGER_ID = @MANAGER_ID
+										order by mn.MENU_PARENT, m.MENU_ID";
                     cmd.Connection.Open();
+
+                    cmd.Parameters.AddWithValue("@MANAGER_ID", userID);
                     SqlDataReader reader = cmd.ExecuteReader();
-                    list = Helper.DataReaderMapToList<MANAGER_VO>(reader);
+                    list = Helper.DataReaderMapToList<Menu_VO>(reader);
                     cmd.Connection.Close();
                 }
             }

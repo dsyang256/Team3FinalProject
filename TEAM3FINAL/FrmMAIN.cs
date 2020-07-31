@@ -16,7 +16,7 @@ namespace TEAM3FINAL
 
     public partial class FrmMAIN : ProjectBaseForm
     {
-        private List<MANAGER_VO> menuList;
+        private List<Menu_VO> menuList;
         private List<int> checkMenuList=new List<int>();
 
         public event EventHandler eSearch;
@@ -41,19 +41,26 @@ namespace TEAM3FINAL
             timer1.Tick += ((send, args) => lblDateTime.Text = DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초"));
 
             //로그인창 호출
+            FrmLogin frm = new FrmLogin();
+            frm.ShowDialog();
+            if (frm.DialogResult == DialogResult.OK)
+            {
+                stslLoginID.Text = $"{LoginInfo.UserInfo.LI_ID}님         ";
+                //로그인시 메뉴 불러오기.
+                GetMenus();
+                ShowMenu();
+            }
 
+            
+            
 
-            //로그인시 메뉴 불러오기.
-            SetMenus();
             stslLoginID.Text = "";
-
-            GetMenus();
         }
 
         private void GetMenus()
         {
             AuthService service = new AuthService();
-            menuList =  service.GetMenus();
+            menuList =  service.GetMenus(LoginInfo.UserInfo.LI_ID);
         }
 
         private void ShowMenu()
@@ -68,45 +75,39 @@ namespace TEAM3FINAL
             ShowMenuDropDown(menuList);
         }
 
-        private void ShowMenuDropDown(IEnumerable<MANAGER_VO> grantMenus, ToolStripMenuItem tsmiPrent = null)
+        private void ShowMenuDropDown(IEnumerable<Menu_VO> grantMenus, ToolStripMenuItem tsmiPrent = null)
         {
             foreach (var grantMenu in grantMenus)
             {
-                //int menuCode = grantMenu.Menu_code;
-                //if (grantMenu.Name_space)
-                //{
-                //    if (grantMenu.Menu_usable == "Y" && !checkMenuList.Contains(menuCode))
-                //    {
-                //        ToolStripMenuItem tsmi = new ToolStripMenuItem();
-                //        tsmi.Text = grantMenu.Menu_name;
+                int menuCode = grantMenu.MENU_ID;
+                
+                
+                    if (!checkMenuList.Contains(menuCode))
+                    {
+                        ToolStripMenuItem tsmi = new ToolStripMenuItem();
+                        tsmi.Text = grantMenu.MENU_NAME;
 
-                //        checkMenuList.Add(menuCode);
+                        checkMenuList.Add(menuCode);
 
-                //        if (tsmiPrent != null)
-                //            tsmiPrent.DropDownItems.Add(tsmi);
-                //        else
-                //            menuStrip1.Items.Add(tsmi);
+                        if (tsmiPrent != null)
+                            tsmiPrent.DropDownItems.Add(tsmi);
+                        else
+                            menuStrip1.Items.Add(tsmi);
 
-                //        var menuChildren = (from item in menuList
-                //                            where item.Parent_menu_code == menuCode
-                //                            select item);
+                        var menuChildren = (from item in menuList
+                                            where item.MENU_PARENT == menuCode
+                                            select item);
 
-                //        if (menuChildren.Count() > 0)
-                //            ShowMenuDropDown(menuChildren, tsmi);
-                //        else
-                //            tsmi.Click += (sender, e) => this.MdiChildrenShow(grantMenu.Name_space);
-                //    }
-                //}
+                        if (menuChildren.Count() > 0)
+                            ShowMenuDropDown(menuChildren, tsmi);
+                        else
+                            tsmi.Click += (sender, e) => this.MdiChildrenShow(grantMenu.MENU_PROGRAM);
+                    }
+                
             }
         }
 
-        private void SetMenus()
-        {
-            //서비스 호출
 
-            //
-
-        }
 
         #region MDI 탭컨트롤
         /// <summary>
@@ -221,31 +222,7 @@ namespace TEAM3FINAL
 
         #endregion
 
-        private void 로그인ToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            //FormUtil.OpenOrCreateForm<FrmLogin>(this);
-            FrmLogin frm = new FrmLogin();
-            frm.ShowDialog();
-            if(frm.DialogResult==DialogResult.OK)
-            {
-                stslLoginID.Text = $"{LoginInfo.UserInfo.LI_ID}님         ";
-            }
-        }
 
-        private void 공장관리ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormUtil.OpenOrCreateForm<FrmFactoryManage>(this);
-        }
-
-        private void 회원가입ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormUtil.OpenOrCreateForm<FrmSignup>(this);
-        }
-
-        private void 품목관리ToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            FormUtil.OpenOrCreateForm<FrmItem>(this);
-        }
 
         private void tabForms_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -255,31 +232,17 @@ namespace TEAM3FINAL
             }
         }
 
-        private void 공통코드관리ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FrmCOMMON frm = new FrmCOMMON();
-            frm.Show();
-        }
 
-        private void bOM관리ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormUtil.OpenOrCreateForm<FrmBOM>(this);
-        }
+        //private void 로그아웃(object sender, EventArgs e)
+        //{
+        //    //자식폼 모두 닫기 -OJH
+        //    foreach (Form form in this.MdiChildren)
+        //    {
+        //        form.Close();
+        //    }
+        //    //로그인 정보 초기화 -OJH
+        //    LoginInfo.UserInfo.InitMember();
+        //}
 
-        private void 로그아웃ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //자식폼 모두 닫기 -OJH
-            foreach (Form form in this.MdiChildren)
-            {
-                form.Close();
-            }
-            //로그인 정보 초기화 -OJH
-            LoginInfo.UserInfo.InitMember();
-        }
-
-        private void 설비관리ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormUtil.OpenOrCreateForm<FrmFacilityGroup>(this);
-        }
     }
 }

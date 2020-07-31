@@ -1,4 +1,4 @@
-﻿namespace TEAM3FINAL.HHW
+﻿namespace TEAM3FINAL
 {
     partial class FrmSalesEndState
     {
@@ -28,7 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // FrmSalesEndState
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.ClientSize = new System.Drawing.Size(1080, 565);
+            this.Name = "FrmSalesEndState";
+            this.Text = "매출마감현황";
+            this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

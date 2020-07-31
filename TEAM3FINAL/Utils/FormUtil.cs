@@ -61,10 +61,10 @@ namespace TEAM3FINAL
             frm.Show();
         }
 
-
+        //동적메뉴생성
         public static Form MdiChildrenShow(this FrmMAIN mdiParent, string formName)
         {
-            Type type = Type.GetType("WinCoffeePrince2nd." + formName);
+            Type type = Type.GetType("TEAM3FINAL." + formName);
 
             if (type != null)
             {
@@ -72,15 +72,20 @@ namespace TEAM3FINAL
                 {
                     if (frm.GetType() == type && frm.IsMdiChild)
                     {
+                        frm.Dock = DockStyle.Fill;
+                        frm.Left = 0;
+                        frm.Top = 0;
                         frm.Activate();
+                        frm.BringToFront();
                         return frm;
                     }
                 }
 
                 Form f = (Form)Activator.CreateInstance(type);
                 f.MdiParent = mdiParent;
-                f.WindowState = FormWindowState.Maximized;
-
+                f.Dock = DockStyle.Fill;
+                f.Left = 0;
+                f.Top = 0;
                 f.Show();
 
                 return f;

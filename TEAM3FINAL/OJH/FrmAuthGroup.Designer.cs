@@ -144,6 +144,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.ClientSize = new System.Drawing.Size(907, 562);
             this.Name = "FrmAuthGroup";
+            this.Text = "사용자별권한관리";
             this.Load += new System.EventHandler(this.FrmAuthGroup_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

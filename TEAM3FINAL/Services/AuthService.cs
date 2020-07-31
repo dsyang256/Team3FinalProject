@@ -11,10 +11,10 @@ namespace TEAM3FINAL
   public  class AuthService
     {
        
-        public List<MANAGER_VO> GetMenus()
+        public List<Menu_VO> GetMenus(string userID)
         {
             AuthDAC dac = new AuthDAC();
-            return dac.GetMenus();
+            return dac.GetMenus(userID);
         }
 
         internal List<MANAGER_VO> GetManagers()

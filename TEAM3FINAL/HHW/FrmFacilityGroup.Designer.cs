@@ -182,6 +182,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmFacilityGroup";
+            this.Text = "설비관리";
             this.Load += new System.EventHandler(this.FrmFacilityGroup_Load);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacilityGroupList)).EndInit();
