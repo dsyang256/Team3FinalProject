@@ -113,6 +113,7 @@ namespace TEAM3FINAL
 
         #endregion
 
+        //설비군 로드
         private void FrmFacilityGroup_Load(object sender, EventArgs e)
         {
             ComboBinding();
@@ -133,7 +134,7 @@ namespace TEAM3FINAL
         {
             FacilityService service = new FacilityService();
             dgvFacilityList.DataSource = null;
-
+            dgvFacilityList.DataSource = service.GetFacilityInfo();
         }
 
         // 버튼 이벤트 추가 메서드
@@ -166,7 +167,7 @@ namespace TEAM3FINAL
                 if (form.FacilityAndGroup == FacilityAndGroup) //true : 설비군팝업창 입력
                 {
                     FrmFacilityGroupPopUp frm = new FrmFacilityGroupPopUp();
-                    frm.FACG_LAST_MDFR = "황현우"; //로그인 성명으로 변경하기
+                    frm.FACG_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
                     frm.FACG_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                     frm.ShowDialog();
                     if (frm.DialogResult == DialogResult.OK)
@@ -177,7 +178,7 @@ namespace TEAM3FINAL
                 else //false : 설비팝업창 입력
                 {
                     FrmFacilityPopUp frm = new FrmFacilityPopUp();
-                    frm.FCLTS_LAST_MDFR = "황현우"; //로그인 성명으로 변경하기
+                    frm.FCLTS_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
                     frm.FCLTS_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                     frm.ShowDialog();
                     if (frm.DialogResult == DialogResult.OK)

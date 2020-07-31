@@ -56,7 +56,16 @@ namespace TEAM3FINAL
             vo.FCLTS_WRHS_BAD = cboFACBAD.Text;
             vo.FCLTS_USE_YN = cboFACGUseYN.Text;
             vo.FCLTS_EXTRL_YN = cboEXTRLYN.Text;
-            //사용자넣기
+            vo.FCLTS_LAST_MDFR = FCLTS_LAST_MDFR;
+            vo.FCLTS_LAST_MDFY = FCLTS_LAST_MDFY;
+            vo.FCLTS_NOTE = txtNote.Text;
+            vo.FCLTS_REMARK = txtREMARK.Text;
+
+            if(!Update) //설비 등록
+            {
+                FacilityService service = new FacilityService();
+                //string result = service
+            }
 
             #endregion
         }
