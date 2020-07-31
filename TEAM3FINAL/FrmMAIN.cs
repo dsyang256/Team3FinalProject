@@ -17,7 +17,7 @@ namespace TEAM3FINAL
     public partial class FrmMAIN : ProjectBaseForm
     {
         private List<Menu_VO> menuList;
-        private List<int> checkMenuList=new List<int>();
+        private List<int> checkMenuList = new List<int>();
 
         public event EventHandler eSearch;
         public event EventHandler eInsert;
@@ -31,7 +31,7 @@ namespace TEAM3FINAL
         public FrmMAIN()
         {
             InitializeComponent();
-          //  _log = new LoggingUtility("gudiProject", Level.Debug, 15); //최근 15일만 보관
+            //  _log = new LoggingUtility("gudiProject", Level.Debug, 15); //최근 15일만 보관
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -39,6 +39,13 @@ namespace TEAM3FINAL
             //status strip Timer
             timer1.Start();
             timer1.Tick += ((send, args) => lblDateTime.Text = DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초"));
+            LoadLogin();
+
+            stslLoginID.Text = "";
+        }
+
+        private void LoadLogin()
+        {
 
             //로그인창 호출
             FrmLogin frm = new FrmLogin();
@@ -50,17 +57,12 @@ namespace TEAM3FINAL
                 GetMenus();
                 ShowMenu();
             }
-
-            
-            
-
-            stslLoginID.Text = "";
         }
 
         private void GetMenus()
         {
             AuthService service = new AuthService();
-            menuList =  service.GetMenus(LoginInfo.UserInfo.LI_ID);
+            menuList = service.GetMenus(LoginInfo.UserInfo.LI_ID);
         }
 
         private void ShowMenu()
@@ -80,30 +82,35 @@ namespace TEAM3FINAL
             foreach (var grantMenu in grantMenus)
             {
                 int menuCode = grantMenu.MENU_ID;
-                
-                
-                    if (!checkMenuList.Contains(menuCode))
+
+
+                if (!checkMenuList.Contains(menuCode))
+                {
+                    ToolStripMenuItem tsmi = new ToolStripMenuItem();
+                    tsmi.Text = grantMenu.MENU_NAME;
+
+                    checkMenuList.Add(menuCode);
+
+                    if (tsmiPrent != null)
+                        tsmiPrent.DropDownItems.Add(tsmi);
+                    else
+                        menuStrip1.Items.Add(tsmi);
+
+                    var menuChildren = (from item in menuList
+                                        where item.MENU_PARENT == menuCode
+                                        select item);
+
+                    if (menuChildren.Count() > 0)
+                        ShowMenuDropDown(menuChildren, tsmi);
+                    else
                     {
-                        ToolStripMenuItem tsmi = new ToolStripMenuItem();
-                        tsmi.Text = grantMenu.MENU_NAME;
-
-                        checkMenuList.Add(menuCode);
-
-                        if (tsmiPrent != null)
-                            tsmiPrent.DropDownItems.Add(tsmi);
-                        else
-                            menuStrip1.Items.Add(tsmi);
-
-                        var menuChildren = (from item in menuList
-                                            where item.MENU_PARENT == menuCode
-                                            select item);
-
-                        if (menuChildren.Count() > 0)
-                            ShowMenuDropDown(menuChildren, tsmi);
+                        if (grantMenu.MENU_NAME == "공통코드관리")
+                            tsmi.Click += (sender, e) => ShowDialog(grantMenu.MENU_PROGRAM);
                         else
                             tsmi.Click += (sender, e) => this.MdiChildrenShow(grantMenu.MENU_PROGRAM);
                     }
-                
+                }
+
             }
         }
 
@@ -157,13 +164,13 @@ namespace TEAM3FINAL
             for (var i = 0; i < tabForms.TabPages.Count; i++)
             {
                 var tabRect = tabForms.GetTabRect(i);
-                
+
                 var closeImage = Properties.Resources.close_grey;
                 var imageRect = new Rectangle((tabRect.Right - closeImage.Width),
                     tabRect.Top + (tabRect.Height - closeImage.Height) / 2, closeImage.Width, closeImage.Height);
                 if (imageRect.Contains(e.Location))
                 {
-                    this.ActiveMdiChild.Close();                    
+                    this.ActiveMdiChild.Close();
                     break;
                 }
             }
@@ -222,27 +229,39 @@ namespace TEAM3FINAL
 
         #endregion
 
-
+        private void ShowDialog(string formName)
+        {
+            Type type = Type.GetType("TEAM3FINAL." + formName);
+            Form f = (Form)Activator.CreateInstance(type);
+            f.ShowDialog();
+        }
 
         private void tabForms_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(tabForms.SelectedTab != null && tabForms.SelectedTab.Tag != null)
+            if (tabForms.SelectedTab != null && tabForms.SelectedTab.Tag != null)
             {
                 (tabForms.SelectedTab.Tag as Form).Select();
             }
         }
 
+        /// <summary>
+        /// 로그아웃시 발생하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tsbLogout_Click(object sender, EventArgs e)
+        {
+            //자식폼 모두 닫기 -OJH
+            foreach (Form form in this.MdiChildren)
+            {
+                form.Close();
+            }
+            //로그인 정보 초기화 -OJH
+            LoginInfo.UserInfo.InitMember();
+            //로그인호출
+            LoadLogin();
+        }
 
-        //private void 로그아웃(object sender, EventArgs e)
-        //{
-        //    //자식폼 모두 닫기 -OJH
-        //    foreach (Form form in this.MdiChildren)
-        //    {
-        //        form.Close();
-        //    }
-        //    //로그인 정보 초기화 -OJH
-        //    LoginInfo.UserInfo.InitMember();
-        //}
 
     }
 }

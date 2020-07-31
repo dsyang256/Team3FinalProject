@@ -32,18 +32,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMAIN));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsbSearch = new System.Windows.Forms.ToolStripButton();
-            this.tsbInsert = new System.Windows.Forms.ToolStripButton();
-            this.tsbDelete = new System.Windows.Forms.ToolStripButton();
-            this.tsbUpdate = new System.Windows.Forms.ToolStripButton();
-            this.tsbPrint = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.tsbReset = new System.Windows.Forms.ToolStripButton();
+            this.tsbLogout = new System.Windows.Forms.ToolStripLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.stslLoginID = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabForms = new TEAM3FINAL.ucTabControl();
+            this.tsbSearch = new System.Windows.Forms.ToolStripButton();
+            this.tsbInsert = new System.Windows.Forms.ToolStripButton();
+            this.tsbDelete = new System.Windows.Forms.ToolStripButton();
+            this.tsbUpdate = new System.Windows.Forms.ToolStripButton();
+            this.tsbPrint = new System.Windows.Forms.ToolStripButton();
+            this.tsbReset = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -66,13 +66,62 @@
             this.tsbDelete,
             this.tsbUpdate,
             this.tsbPrint,
-            this.toolStripLabel1,
+            this.tsbLogout,
             this.tsbReset});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(800, 39);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tsbLogout
+            // 
+            this.tsbLogout.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbLogout.Image = global::TEAM3FINAL.Properties.Resources.exit_30px;
+            this.tsbLogout.Name = "tsbLogout";
+            this.tsbLogout.Size = new System.Drawing.Size(87, 36);
+            this.tsbLogout.Text = "로그아웃";
+            this.tsbLogout.Click += new System.EventHandler(this.tsbLogout_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stslLoginID,
+            this.lblDateTime});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 540);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.TabIndex = 6;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // stslLoginID
+            // 
+            this.stslLoginID.Name = "stslLoginID";
+            this.stslLoginID.Size = new System.Drawing.Size(752, 17);
+            this.stslLoginID.Spring = true;
+            this.stslLoginID.Text = "toolStripStatusLabel1";
+            this.stslLoginID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblDateTime
+            // 
+            this.lblDateTime.Name = "lblDateTime";
+            this.lblDateTime.Size = new System.Drawing.Size(33, 17);
+            this.lblDateTime.Text = "Time";
+            // 
+            // tabForms
+            // 
+            this.tabForms.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tabForms.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tabForms.Location = new System.Drawing.Point(0, 63);
+            this.tabForms.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabForms.Name = "tabForms";
+            this.tabForms.SelectedIndex = 0;
+            this.tabForms.Size = new System.Drawing.Size(800, 28);
+            this.tabForms.TabIndex = 9;
+            this.tabForms.Visible = false;
+            this.tabForms.SelectedIndexChanged += new System.EventHandler(this.tabForms_SelectedIndexChanged);
+            this.tabForms.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabForms_MouseDown);
             // 
             // tsbSearch
             // 
@@ -123,13 +172,6 @@
             this.tsbPrint.Size = new System.Drawing.Size(36, 36);
             this.tsbPrint.Click += new System.EventHandler(this.tsbPrint_Click);
             // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(115, 36);
-            this.toolStripLabel1.Text = "현재 활성된 폼 이름";
-            // 
             // tsbReset
             // 
             this.tsbReset.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -139,46 +181,6 @@
             this.tsbReset.Size = new System.Drawing.Size(36, 36);
             this.tsbReset.Text = "toolStripButton1";
             this.tsbReset.Click += new System.EventHandler(this.tsbReset_Click);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stslLoginID,
-            this.lblDateTime});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 540);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
-            this.statusStrip1.TabIndex = 6;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // stslLoginID
-            // 
-            this.stslLoginID.Name = "stslLoginID";
-            this.stslLoginID.Size = new System.Drawing.Size(752, 17);
-            this.stslLoginID.Spring = true;
-            this.stslLoginID.Text = "toolStripStatusLabel1";
-            this.stslLoginID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblDateTime
-            // 
-            this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(33, 17);
-            this.lblDateTime.Text = "Time";
-            // 
-            // tabForms
-            // 
-            this.tabForms.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabForms.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabForms.Location = new System.Drawing.Point(0, 63);
-            this.tabForms.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabForms.Name = "tabForms";
-            this.tabForms.SelectedIndex = 0;
-            this.tabForms.Size = new System.Drawing.Size(800, 28);
-            this.tabForms.TabIndex = 9;
-            this.tabForms.Visible = false;
-            this.tabForms.SelectedIndexChanged += new System.EventHandler(this.tabForms_SelectedIndexChanged);
-            this.tabForms.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabForms_MouseDown);
             // 
             // FrmMAIN
             // 
@@ -215,7 +217,7 @@
         private System.Windows.Forms.ToolStripButton tsbDelete;
         private System.Windows.Forms.ToolStripButton tsbUpdate;
         private System.Windows.Forms.ToolStripButton tsbPrint;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripLabel tsbLogout;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblDateTime;
         private System.Windows.Forms.Timer timer1;
