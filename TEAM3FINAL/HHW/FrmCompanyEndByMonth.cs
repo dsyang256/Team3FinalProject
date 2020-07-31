@@ -6,9 +6,10 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace TEAM3FINAL.HHW
+namespace TEAM3FINAL
+
 {
-    public partial class FrmCompanyEndByMonth : TEAM3FINAL.baseForm
+    public partial class FrmCompanyEndByMonth : TEAM3FINAL.baseForm2
     {
         public FrmCompanyEndByMonth()
         {

@@ -1,4 +1,4 @@
-﻿namespace TEAM3FINAL.HHW
+﻿namespace TEAM3FINAL
 {
     partial class FrmComponyManage
     {
@@ -37,7 +37,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1080, 565);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmComponyManage";
+            this.Text = "거래처관리";
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);

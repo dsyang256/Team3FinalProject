@@ -395,6 +395,9 @@
     <EmbeddedResource Include="HHW\FrmBORManage.resx">
       <DependentUpon>FrmBORManage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HHW\FrmCompanyEndByMonth.resx">
+      <DependentUpon>FrmCompanyEndByMonth.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HHW\FrmComponyManage.resx">
       <DependentUpon>FrmComponyManage.cs</DependentUpon>
     </EmbeddedResource>
@@ -421,6 +424,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HHW\FrmPROCMoveAndAccum.resx">
       <DependentUpon>FrmPROCMoveAndAccum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HHW\FrmProductOUT.resx">
+      <DependentUpon>FrmProductOUT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HHW\FrmProductOUTState.resx">
+      <DependentUpon>FrmProductOUTState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HHW\FrmSalesEnd.resx">
+      <DependentUpon>FrmSalesEnd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HHW\FrmSalesEndState.resx">
+      <DependentUpon>FrmSalesEndState.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HHW\FrmWorkRecord.resx">
       <DependentUpon>FrmWorkRecord.cs</DependentUpon>

@@ -1,4 +1,4 @@
-﻿namespace TEAM3FINAL.HHW
+﻿namespace TEAM3FINAL
 {
     partial class FrmWorkRecord
     {
@@ -34,23 +34,28 @@
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(11, 15);
-            this.panel2.Size = new System.Drawing.Size(1028, 174);
+            this.panel2.Location = new System.Drawing.Point(9, 11);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel2.Size = new System.Drawing.Size(800, 131);
             // 
             // panel3
             // 
-            this.panel3.Size = new System.Drawing.Size(1053, 306);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Size = new System.Drawing.Size(819, 230);
             // 
             // panel4
             // 
-            this.panel4.Location = new System.Drawing.Point(0, 561);
+            this.panel4.Location = new System.Drawing.Point(0, 421);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             // 
             // FrmWorkRecord
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1080, 565);
+            this.ClientSize = new System.Drawing.Size(840, 424);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "FrmWorkRecord";
+            this.Text = "작업실적";
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
