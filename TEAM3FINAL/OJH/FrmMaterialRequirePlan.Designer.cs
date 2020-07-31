@@ -28,7 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.panel1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // FrmMaterialRequirePlan
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.ClientSize = new System.Drawing.Size(800, 562);
+            this.Name = "FrmMaterialRequirePlan";
+            this.Text = "자재소요계획";
+            this.panel1.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

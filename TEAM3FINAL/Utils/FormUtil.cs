@@ -64,8 +64,9 @@ namespace TEAM3FINAL
         //동적메뉴생성
         public static Form MdiChildrenShow(this FrmMAIN mdiParent, string formName)
         {
-            Type type = Type.GetType("TEAM3FINAL." + formName);
 
+            Type type = Type.GetType("TEAM3FINAL." + formName);
+            
             if (type != null)
             {
                 foreach (Form frm in Application.OpenForms)
@@ -81,7 +82,7 @@ namespace TEAM3FINAL
                     }
                 }
 
-                Form f = (Form)Activator.CreateInstance(type);
+                 Form f = (Form)Activator.CreateInstance(type);
                 f.MdiParent = mdiParent;
                 f.Dock = DockStyle.Fill;
                 f.Left = 0;

@@ -37,7 +37,7 @@
             this.tsbDelete = new System.Windows.Forms.ToolStripButton();
             this.tsbUpdate = new System.Windows.Forms.ToolStripButton();
             this.tsbPrint = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.tsbLogout = new System.Windows.Forms.ToolStripLabel();
             this.tsbReset = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.stslLoginID = new System.Windows.Forms.ToolStripStatusLabel();
@@ -66,7 +66,7 @@
             this.tsbDelete,
             this.tsbUpdate,
             this.tsbPrint,
-            this.toolStripLabel1,
+            this.tsbLogout,
             this.tsbReset});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
@@ -123,12 +123,14 @@
             this.tsbPrint.Size = new System.Drawing.Size(36, 36);
             this.tsbPrint.Click += new System.EventHandler(this.tsbPrint_Click);
             // 
-            // toolStripLabel1
+            // tsbLogout
             // 
-            this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(115, 36);
-            this.toolStripLabel1.Text = "현재 활성된 폼 이름";
+            this.tsbLogout.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbLogout.Image = global::TEAM3FINAL.Properties.Resources.exit_30px;
+            this.tsbLogout.Name = "tsbLogout";
+            this.tsbLogout.Size = new System.Drawing.Size(87, 36);
+            this.tsbLogout.Text = "로그아웃";
+            this.tsbLogout.Click += new System.EventHandler(this.tsbLogout_Click);
             // 
             // tsbReset
             // 
@@ -215,7 +217,7 @@
         private System.Windows.Forms.ToolStripButton tsbDelete;
         private System.Windows.Forms.ToolStripButton tsbUpdate;
         private System.Windows.Forms.ToolStripButton tsbPrint;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripLabel tsbLogout;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblDateTime;
         private System.Windows.Forms.Timer timer1;
