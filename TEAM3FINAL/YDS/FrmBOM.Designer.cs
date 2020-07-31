@@ -76,7 +76,7 @@
             this.ITEM_NAEM.Location = new System.Drawing.Point(513, 41);
             this.ITEM_NAEM.Name = "ITEM_NAEM";
             this.ITEM_NAEM.Size = new System.Drawing.Size(193, 23);
-            this.ITEM_NAEM.TabIndex = 28;
+            this.ITEM_NAEM.TabIndex = 1;
             // 
             // label19
             // 
@@ -109,33 +109,33 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label10.Location = new System.Drawing.Point(787, 44);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(17, 17);
+            this.label10.Size = new System.Drawing.Size(15, 18);
             this.label10.TabIndex = 25;
             this.label10.Text = "*";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label7.Location = new System.Drawing.Point(420, 42);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(17, 17);
+            this.label7.Size = new System.Drawing.Size(15, 18);
             this.label7.TabIndex = 24;
             this.label7.Text = "*";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label2.Location = new System.Drawing.Point(61, 42);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 17);
+            this.label2.Size = new System.Drawing.Size(15, 18);
             this.label2.TabIndex = 23;
             this.label2.Text = "*";
             // 
@@ -144,7 +144,7 @@
             this.day.Location = new System.Drawing.Point(144, 41);
             this.day.Name = "day";
             this.day.Size = new System.Drawing.Size(193, 23);
-            this.day.TabIndex = 33;
+            this.day.TabIndex = 0;
             // 
             // BOM_USE_YN
             // 
@@ -152,7 +152,7 @@
             this.BOM_USE_YN.Location = new System.Drawing.Point(887, 43);
             this.BOM_USE_YN.Name = "BOM_USE_YN";
             this.BOM_USE_YN.Size = new System.Drawing.Size(193, 23);
-            this.BOM_USE_YN.TabIndex = 29;
+            this.BOM_USE_YN.TabIndex = 2;
             // 
             // dgvBOM
             // 

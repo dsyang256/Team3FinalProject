@@ -85,6 +85,7 @@
             // 
             this.btnOK.Location = new System.Drawing.Point(115, 508);
             this.btnOK.Size = new System.Drawing.Size(130, 29);
+            this.btnOK.TabIndex = 11;
             this.btnOK.Text = "초기화";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
@@ -92,6 +93,7 @@
             // 
             this.btnCancel.Location = new System.Drawing.Point(320, 508);
             this.btnCancel.Size = new System.Drawing.Size(132, 29);
+            this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "종료";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -125,7 +127,7 @@
             this.cboGroup1.Location = new System.Drawing.Point(99, 16);
             this.cboGroup1.Name = "cboGroup1";
             this.cboGroup1.Size = new System.Drawing.Size(190, 23);
-            this.cboGroup1.TabIndex = 54;
+            this.cboGroup1.TabIndex = 3;
             // 
             // button3
             // 
@@ -135,7 +137,7 @@
             this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(79, 29);
-            this.button3.TabIndex = 55;
+            this.button3.TabIndex = 4;
             this.button3.Text = "삭제";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -153,11 +155,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label7.Location = new System.Drawing.Point(25, 93);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(17, 17);
+            this.label7.Size = new System.Drawing.Size(15, 18);
             this.label7.TabIndex = 58;
             this.label7.Text = "*";
             // 
@@ -179,11 +181,11 @@
             // 
             this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button2.ForeColor = System.Drawing.SystemColors.Window;
-            this.button2.Location = new System.Drawing.Point(453, 21);
+            this.button2.Location = new System.Drawing.Point(465, 21);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(79, 29);
-            this.button2.TabIndex = 53;
+            this.button2.TabIndex = 2;
             this.button2.Text = "등록";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -196,7 +198,7 @@
             this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 29);
-            this.button1.TabIndex = 52;
+            this.button1.TabIndex = 1;
             this.button1.Text = "중복체크";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -206,7 +208,7 @@
             this.txtcode1.Location = new System.Drawing.Point(99, 27);
             this.txtcode1.Name = "txtcode1";
             this.txtcode1.Size = new System.Drawing.Size(190, 23);
-            this.txtcode1.TabIndex = 51;
+            this.txtcode1.TabIndex = 0;
             // 
             // label11
             // 
@@ -221,11 +223,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label3.Location = new System.Drawing.Point(14, 28);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 17);
+            this.label3.Size = new System.Drawing.Size(15, 18);
             this.label3.TabIndex = 50;
             this.label3.Text = "*";
             // 
@@ -298,7 +300,7 @@
             this.button6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(79, 29);
-            this.button6.TabIndex = 59;
+            this.button6.TabIndex = 9;
             this.button6.Text = "삭제";
             this.button6.UseVisualStyleBackColor = false;
             // 
@@ -307,7 +309,7 @@
             this.SEQ.Location = new System.Drawing.Point(99, 87);
             this.SEQ.Name = "SEQ";
             this.SEQ.Size = new System.Drawing.Size(43, 23);
-            this.SEQ.TabIndex = 65;
+            this.SEQ.TabIndex = 10;
             this.SEQ.Value = new decimal(new int[] {
             1,
             0,
@@ -327,11 +329,11 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label12.Location = new System.Drawing.Point(15, 87);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(17, 17);
+            this.label12.Size = new System.Drawing.Size(15, 18);
             this.label12.TabIndex = 64;
             this.label12.Text = "*";
             // 
@@ -343,7 +345,7 @@
             this.button4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(79, 29);
-            this.button4.TabIndex = 61;
+            this.button4.TabIndex = 6;
             this.button4.Text = "등록";
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -356,7 +358,7 @@
             this.button5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(79, 29);
-            this.button5.TabIndex = 60;
+            this.button5.TabIndex = 8;
             this.button5.Text = "중복체크";
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
@@ -374,11 +376,11 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label9.Location = new System.Drawing.Point(14, 59);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(17, 17);
+            this.label9.Size = new System.Drawing.Size(15, 18);
             this.label9.TabIndex = 59;
             this.label9.Text = "*";
             // 
@@ -387,7 +389,7 @@
             this.txtcode2.Location = new System.Drawing.Point(99, 58);
             this.txtcode2.Name = "txtcode2";
             this.txtcode2.Size = new System.Drawing.Size(190, 23);
-            this.txtcode2.TabIndex = 57;
+            this.txtcode2.TabIndex = 7;
             // 
             // cboGroup2
             // 
@@ -395,7 +397,7 @@
             this.cboGroup2.Location = new System.Drawing.Point(99, 27);
             this.cboGroup2.Name = "cboGroup2";
             this.cboGroup2.Size = new System.Drawing.Size(190, 23);
-            this.cboGroup2.TabIndex = 57;
+            this.cboGroup2.TabIndex = 5;
             // 
             // label4
             // 
@@ -410,11 +412,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label5.Location = new System.Drawing.Point(14, 28);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 17);
+            this.label5.Size = new System.Drawing.Size(15, 18);
             this.label5.TabIndex = 50;
             this.label5.Text = "*";
             // 

@@ -12,20 +12,24 @@ namespace TEAM3FINAL
 {
     public partial class FrmItemPopUp : TEAM3FINAL.baseFormPopUP
     {
-        int update;
+        int code;
         public FrmItemPopUp()
         {
             InitializeComponent();
             ComboBinding();
-            update = 1;
+            code = 1;
         }
         public FrmItemPopUp(string code)
         {
             InitializeComponent();
             ComboBinding();
-            update = 0;
+            this.code = 0;
             GetItem(code);
         }
+        /// <summary>
+        /// 업데이트 팝업시 해당 코드 정보가져오는 메서드
+        /// </summary>
+        /// <param name="code"></param>
         private void GetItem(string code)
         {
             ItemService item = new ItemService();
@@ -148,7 +152,11 @@ namespace TEAM3FINAL
                 e.Handled = true;
             }
         }
-
+        /// <summary>
+        /// 입력 버튼 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOK_Click(object sender, EventArgs e)
         {
             if(ITEM_CODE.Text.Length < 4)
@@ -191,7 +199,7 @@ namespace TEAM3FINAL
             vo.ITEM_REORDER_TYP = ITEM_REORDER_TYP.Text;
             vo.ITEM_REMARK = ITEM_REMARK.Text;
             ItemService item = new ItemService();
-            string result = item.SaveItem(vo, update);
+            string result = item.SaveItem(vo, code);
             if (result == "C200")
             {
                 MessageBox.Show("성공적으로 입력되었습니다.");
@@ -204,7 +212,11 @@ namespace TEAM3FINAL
             }
 
         }
-
+        /// <summary>
+        /// 닫기 버튼 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();

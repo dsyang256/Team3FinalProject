@@ -12,12 +12,22 @@ namespace TEAM3FINAL
 {
     public partial class FrmBOMPopUp : TEAM3FINAL.baseFormPopUP
     {
+        /// <summary>
+        /// code 는 입력생성자도 접근시 0 업데이트생성자로 접근시 해당 코드
+        /// </summary>
         int code = 0;
+        /// <summary>
+        /// 입력버튼 클릭시 생성자
+        /// </summary>
         public FrmBOMPopUp()
         {
             InitializeComponent();
             ComboBinding();
         }
+        /// <summary>
+        /// 업데이트 버튼 클릭시 생성자
+        /// </summary>
+        /// <param name="code"></param>
         public FrmBOMPopUp(int code)
         {
             InitializeComponent();
@@ -25,6 +35,10 @@ namespace TEAM3FINAL
             this.code = code;
             GetBOM(code);
         }
+        /// <summary>
+        /// 업데이트 팝업 시 해당 코드이 정보를 뿌려주는 함수
+        /// </summary>
+        /// <param name="code"></param>
         private void GetBOM(int code)
         {
             BOMService item = new BOMService();
@@ -87,12 +101,20 @@ namespace TEAM3FINAL
                 e.Handled = true;
             }
         }
-
+        /// <summary>
+        /// 클로즈 버튼 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
+        /// <summary>
+        /// 입력 버튼 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOK_Click(object sender, EventArgs e)
         {
            

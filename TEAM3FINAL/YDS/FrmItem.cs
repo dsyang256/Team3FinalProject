@@ -13,7 +13,7 @@ namespace TEAM3FINAL
 {
     public partial class FrmItem : TEAM3FINAL.baseForm2  ,CommonBtn
     {
-        ItemService item = new ItemService();
+        
         CheckBox headerChk;
         public FrmItem()
         {
@@ -29,6 +29,9 @@ namespace TEAM3FINAL
 
         }
 
+        /// <summary>
+        /// 버튼 이벤트 델리게이트 추가
+        /// </summary>
         private void BtnSet()
         {
             FrmMAIN frm = (FrmMAIN)this.MdiParent;
@@ -113,6 +116,7 @@ namespace TEAM3FINAL
         /// </summary>
         private void DataGridViewBinding()
         {
+            ItemService item = new ItemService();
             dgvitem.DataSource = item.AllITEM();
         }
 
@@ -182,6 +186,7 @@ namespace TEAM3FINAL
                 vo.ITEM_USE_YN = ITEM_USE_YN.Text;
 
                 dgvitem.DataSource = null;
+                ItemService item = new ItemService();
                 dgvitem.DataSource = item.GetSearchItem(vo);
             }
         }

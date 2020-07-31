@@ -12,6 +12,9 @@ namespace TEAM3FINAL
 {
     public partial class FrmBOM : baseForm2, CommonBtn
     {
+        /// <summary>
+        /// 그리드뷰 체크 박스 
+        /// </summary>
         CheckBox headerChk;
         public FrmBOM()
         {
@@ -24,6 +27,11 @@ namespace TEAM3FINAL
             DataGridViewBinding();
             ComboBinding();
         }
+        /// <summary>
+        /// 삭제 버튼 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Delete(object sender, EventArgs e)
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
@@ -57,7 +65,11 @@ namespace TEAM3FINAL
                 }
             }
         }
-
+        /// <summary>
+        /// 등록 버튼 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Insert(object sender, EventArgs e)
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
@@ -69,7 +81,11 @@ namespace TEAM3FINAL
                 }
             }
         }
-
+        /// <summary>
+        /// 프린트 버튼 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Print(object sender, EventArgs e)
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
@@ -77,7 +93,11 @@ namespace TEAM3FINAL
 
             }
         }
-
+        /// <summary>
+        /// 리셋 버튼 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Reset(object sender, EventArgs e)
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
@@ -85,7 +105,11 @@ namespace TEAM3FINAL
                 DataGridViewBinding();
             }
         }
-
+        /// <summary>
+        /// 조회 버튼 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Search(object sender, EventArgs e)
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
@@ -99,7 +123,11 @@ namespace TEAM3FINAL
                 dgvBOM.DataSource = bom.SearchBOM(day.Value.ToShortDateString(), ITEM_NAEM.Text, BOM_USE_YN.Text);
             }
         }
-
+        /// <summary>
+        /// 업데이트 버튼 이벤트 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Update(object sender, EventArgs e)
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
