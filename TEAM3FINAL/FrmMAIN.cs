@@ -67,13 +67,10 @@ namespace TEAM3FINAL
 
         private void ShowMenu()
         {
+            //초기화
             menuStrip1.Items.Clear();
             checkMenuList.Clear();
-
-            //var grantMenus = (from item in menuList
-            //                  where item.Grant_id == LoginVO.Company_grand
-            //                  select item);
-
+            //메뉴생성
             ShowMenuDropDown(menuList);
         }
 

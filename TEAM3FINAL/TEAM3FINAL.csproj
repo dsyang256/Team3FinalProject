@@ -482,11 +482,23 @@
     <EmbeddedResource Include="HHW\FrmWorkRecord.resx">
       <DependentUpon>FrmWorkRecord.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OJH\FrmDemandPlan.resx">
+      <DependentUpon>FrmDemandPlan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OJH\FrmMaterialCost.resx">
       <DependentUpon>FrmMaterialCost.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OJH\FrmMaterialRequirePlan.resx">
+      <DependentUpon>FrmMaterialRequirePlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OJH\FrmProductionPlan.resx">
+      <DependentUpon>FrmProductionPlan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OJH\FrmSalesCost.resx">
       <DependentUpon>FrmSalesCost.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OJH\FrmSalesMaster.resx">
+      <DependentUpon>FrmSalesMaster.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OJH\FrmSalesMasterUpLoad.resx">
       <DependentUpon>FrmSalesMasterUpLoad.cs</DependentUpon>

@@ -171,6 +171,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.ClientSize = new System.Drawing.Size(1080, 565);
             this.Name = "FrmSalesCost";
+            this.Text = "영업단가";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
