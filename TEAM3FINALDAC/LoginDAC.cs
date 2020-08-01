@@ -104,7 +104,7 @@ namespace TEAM3FINALDAC
         {
             try
             {
-                string sql = "SaveUser";
+                string sql = "SP_SaveUser";
                 AESSalt aes = new AESSalt();
                 using (SqlConnection conn = new SqlConnection(this.ConnectionString))
                 {

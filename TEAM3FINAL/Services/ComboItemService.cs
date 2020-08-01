@@ -22,6 +22,33 @@ namespace TEAM3FINAL
             return dac.GetFacilitiesCode();
         }
 
+        public List<ComboItemVO> GetItemCode()
+        {
+            ComboItemDAC dac = new ComboItemDAC();
+            return dac.GetItemCode();
+        }
+
+        public List<ComboItemVO> GetCompanyCode()
+        {
+            ComboItemDAC dac = new ComboItemDAC();
+            return dac.GetCompanyCode();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public List<COMMON_VO> GetAllCmCode()
         {

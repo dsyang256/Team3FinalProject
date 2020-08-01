@@ -53,6 +53,7 @@
     <Compile Include="INSTACK_VO.cs" />
     <Compile Include="ITEM_VO.cs" />
     <Compile Include="MANAGER_VO.cs" />
+    <Compile Include="MaterialCost_VO.cs" />
     <Compile Include="MATERIAL_COST_VO.cs" />
     <Compile Include="Menu_VO.cs" />
     <Compile Include="Message.cs" />

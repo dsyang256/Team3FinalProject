@@ -168,13 +168,18 @@ namespace TEAM3FINAL
             bIDCheck = false;
         }
 
-
-
-        #endregion
-
+        /// <summary>
+        /// 폼 종료 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        #endregion
+
+
     }
 }

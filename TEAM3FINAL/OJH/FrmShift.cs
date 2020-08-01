@@ -16,7 +16,9 @@ namespace TEAM3FINAL
         }
 
 
-        //그리드뷰 컬럼 생성
+        /// <summary>
+        /// 그리드뷰 컬럼 설정
+        /// </summary>
         private void DataGridViewColumnSet()
         {
             //데이터그리드뷰 초기설정
@@ -37,17 +39,7 @@ namespace TEAM3FINAL
             Util.AddNewColumnToDataGridView(dgvShift, "수정시간", "SHIFT_LAST_MDFY", true, 150);
             Util.AddNewColumnToDataGridView(dgvShift, "비고", "SHIFT_REMARK", true, 300);
         }
-
-        private void FrmShift_Load(object sender, EventArgs e)
-        {
-            //그리드 초기화
-            DataGridViewColumnSet();
-
-            LoadShiftInfo();
-            BtnSet();
-        }
-
-        private void BtnSet()
+       private void BtnSet()
         {
             FrmMAIN frm = (FrmMAIN)this.MdiParent;
             frm.eSearch += Search;
@@ -57,6 +49,17 @@ namespace TEAM3FINAL
             frm.ePrint += Print;
             frm.eReset += Reset;
         }
+        private void FrmShift_Load(object sender, EventArgs e)
+        {
+            //그리드 초기화
+            DataGridViewColumnSet();
+            //공통버튼적용
+            BtnSet();
+            LoadShiftInfo();
+
+        }
+
+ 
 
         private void LoadShiftInfo()
         {
