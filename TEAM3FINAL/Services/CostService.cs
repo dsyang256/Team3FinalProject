@@ -16,5 +16,11 @@ namespace TEAM3FINAL
            CostDAC dac = new CostDAC();
             return dac.InsertOrUpdateMaterialCost(vo);
         }
+
+        public List<MaterialCost_VO> GetCostList()
+        {
+            CostDAC dac = new CostDAC();
+            return dac.GetCostList();
+        }
     }
 }

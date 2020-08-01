@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using TEAM3FINALVO;
 
 namespace TEAM3FINAL
 {
@@ -16,7 +17,7 @@ namespace TEAM3FINAL
         #endregion
 
         #region 생성자
-                public FrmMaterialCost()
+        public FrmMaterialCost()
         {
             InitializeComponent();
         }
@@ -45,12 +46,22 @@ namespace TEAM3FINAL
             Util.AddNewColumnToDataGridView(dgvCost, "비고", "", true, 100);
             Util.AddNewColumnToDataGridView(dgvCost, "사용유무", "", true, 100);
         }
+        private void LoadCostList()
+        {
+            //서비스 호출
+            CostService service = new CostService();
+            var list = service.GetCostList();
+            dgvCost.DataSource = list;
+        }
 
         private void BindingComboBox()
         {
+            //서비스호출
+            ComboItemService service = new ComboItemService();
+            var ComList = service.GetCompanyCode();
 
+            CommonUtil.ComboBinding<ComboItemVO>(cboCompany, ComList, "COMMON_CODE", "COMMON_NAME");
         }
-
 
         #region 공통버튼 적용
         /// <summary>
@@ -74,8 +85,11 @@ namespace TEAM3FINAL
 
         public void Insert(object sender, EventArgs e)
         {
-            FrmMaterialCostPop frm = new FrmMaterialCostPop(InsertOrUpdate.insert);
-            frm.ShowDialog();
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                FrmMaterialCostPop frm = new FrmMaterialCostPop(InsertOrUpdate.insert);
+                frm.ShowDialog();
+            }
         }
 
         public void Print(object sender, EventArgs e)
@@ -95,8 +109,11 @@ namespace TEAM3FINAL
 
         public void Update(object sender, EventArgs e)
         {
-            FrmMaterialCostPop frm = new FrmMaterialCostPop(InsertOrUpdate.update);
-            frm.ShowDialog();
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                FrmMaterialCostPop frm = new FrmMaterialCostPop(InsertOrUpdate.update);
+                frm.ShowDialog();
+            }
         }
         #endregion
 
@@ -105,13 +122,31 @@ namespace TEAM3FINAL
         #region 이벤트
         private void FrmMaterialCost_Load(object sender, EventArgs e)
         {
-            //초기설정
             //그리드 초기화
             DataGridViewColumnSet();
             //공통버튼적용
             BtnSet();
             //콤보박스 바인딩
             BindingComboBox();
+            //데이터 조회
+            LoadCostList();
+        }
+
+
+        /// <summary>
+        /// 행 넘버 만드는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dgvCost_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            //var grid = sender as DataGridView;
+            //var rowIdx = (e.RowIndex + 1).ToString();
+            //var centerFormat = new StringFormat() 
+            //{ // right alignment might actually make more sense for numbers
+            //    Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
+            //var headerBounds = new Rectangle(e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth, e.RowBounds.Height);
+            //e.Graphics.DrawString(rowIdx, this.Font, SystemBrushes.ControlText, headerBounds, centerFormat);
         }
         #endregion
 

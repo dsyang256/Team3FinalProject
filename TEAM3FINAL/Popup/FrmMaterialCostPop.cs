@@ -37,7 +37,7 @@ namespace TEAM3FINAL
         {
             //서비스호출
             ComboItemService service = new ComboItemService();
-            var ComList =service.GetCompanyCode();
+            var ComList = service.GetCompanyCode();
             var ItemList = service.GetItemCode();
 
             CommonUtil.ComboBinding<ComboItemVO>(cboCompany, ComList, "COMMON_CODE", "COMMON_NAME");
@@ -77,23 +77,35 @@ namespace TEAM3FINAL
         /// <param name="e"></param>
         private void btnOK_Click(object sender, EventArgs e)
         {
-            #region 자재단가등록
+
             //유효성 검사
-            if (!(txtSTARTTIME.Text.Trim().Length > 0))
+            if (!(txtNowPrice.Text.Trim().Length > 0))
             {
                 MessageBox.Show("현재단가는 입력 필수값입니다.", "필수 입력", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (!(txtENDTIME.Text.Trim().Length > 0))
+            if (!(txtExPrice.Text.Trim().Length > 0))
             {
                 MessageBox.Show("이전단가는 입력 필수값입니다.", "필수 입력", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            //전달할 VO
             MaterialCost_VO vo = new MaterialCost_VO();
+            vo.COM_Code = cboCompany.SelectedValue.ToString();
+            vo.ITEM_Code = cboItem.SelectedValue.ToString();
+            vo.MC_UNITPRICE_CUR = int.Parse(txtNowPrice.Text);
+            vo.MC_UNITPRICE_EX = int.Parse(txtExPrice.Text);
+            vo.MC_STARTDATE = dtpStartDate.Value.ToShortDateString();
+            vo.MC_ENDDATE = Convert.ToDateTime(txtEndDate.Text).ToShortDateString();
+            vo.MC_USE_YN = cboUseYN.Text;
+            vo.MC_Code = 0; //등록
+            if (InsertOrUpdate == 2)
+                vo.MC_Code = int.Parse(txtCode.Text); //수정
+            vo.MC_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
+            vo.MC_LAST_MDFY = txtMDFDate.Text;
+            vo.MC_REMARK = txtRemark.Text.Trim();
 
-
-
-            
             //서비스호출
             CostService service = new CostService();
             var msg = service.InsertOrUpdateMaterialCost(vo);
@@ -107,37 +119,24 @@ namespace TEAM3FINAL
                 MessageBox.Show(msg.ResultMessage);
                 return;
             }
-
-            ////등록완료
-            //MessageBox.Show($"{list.COM_Code}업체의 {list.ITEM_Code}의 단가가 성공적으로 등록되었습니다 \n 현재 날짜를 기준으로 화면이 재구성됩니다.", "확인", MessageBoxButtons.OK);
-
-            //이전단가 업데이트
-            #endregion
-
-            #region 자재단가수정
-            //유효성 검사
-            #endregion
         }
-
-
-
 
 
         private void FrmMaterialCostPop_Load(object sender, EventArgs e)
         {
+            cboUseYN.SelectedIndex = 0;
             txtMDFDate.Text = DateTime.Now.ToShortDateString();
             if (InsertOrUpdate == 1) //등록
             {
-                txtENDTIME.ReadOnly = false;
-                txtENDTIME.Text = "2099 - 12 - 31";
+                txtExPrice.ReadOnly = false;
             }
             else
             {
-                txtENDTIME.ReadOnly = true; //수정
-                
-                //수정할 데이터 조회
-                //서비스 호출
+                txtExPrice.ReadOnly = true; //수정
 
+                //수정할 데이터 조회
+
+                //서비스 호출
 
             }
             //콤보박스 바인딩

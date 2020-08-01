@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtEndDate = new System.Windows.Forms.TextBox();
             this.cboItem = new System.Windows.Forms.ComboBox();
-            this.txtENDTIME = new System.Windows.Forms.TextBox();
+            this.txtExPrice = new System.Windows.Forms.TextBox();
             this.txtMDFDate = new System.Windows.Forms.TextBox();
-            this.txtSTARTTIME = new System.Windows.Forms.TextBox();
+            this.txtNowPrice = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -91,11 +91,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.txtEndDate);
             this.panel2.Controls.Add(this.cboItem);
-            this.panel2.Controls.Add(this.txtENDTIME);
+            this.panel2.Controls.Add(this.txtExPrice);
             this.panel2.Controls.Add(this.txtMDFDate);
-            this.panel2.Controls.Add(this.txtSTARTTIME);
+            this.panel2.Controls.Add(this.txtNowPrice);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label9);
@@ -126,14 +126,14 @@
             this.panel2.Size = new System.Drawing.Size(580, 374);
             this.panel2.TabIndex = 129;
             // 
-            // textBox1
+            // txtEndDate
             // 
-            this.textBox1.Location = new System.Drawing.Point(419, 97);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(121, 23);
-            this.textBox1.TabIndex = 163;
-            this.textBox1.Text = "2099-12-31";
+            this.txtEndDate.Location = new System.Drawing.Point(419, 97);
+            this.txtEndDate.Name = "txtEndDate";
+            this.txtEndDate.ReadOnly = true;
+            this.txtEndDate.Size = new System.Drawing.Size(121, 23);
+            this.txtEndDate.TabIndex = 163;
+            this.txtEndDate.Text = "2099-12-31";
             // 
             // cboItem
             // 
@@ -144,13 +144,13 @@
             this.cboItem.Size = new System.Drawing.Size(121, 23);
             this.cboItem.TabIndex = 162;
             // 
-            // txtENDTIME
+            // txtExPrice
             // 
-            this.txtENDTIME.Location = new System.Drawing.Point(419, 60);
-            this.txtENDTIME.Name = "txtENDTIME";
-            this.txtENDTIME.Size = new System.Drawing.Size(121, 23);
-            this.txtENDTIME.TabIndex = 161;
-            this.txtENDTIME.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSTARTTIME_KeyPress);
+            this.txtExPrice.Location = new System.Drawing.Point(419, 60);
+            this.txtExPrice.Name = "txtExPrice";
+            this.txtExPrice.Size = new System.Drawing.Size(121, 23);
+            this.txtExPrice.TabIndex = 161;
+            this.txtExPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSTARTTIME_KeyPress);
             // 
             // txtMDFDate
             // 
@@ -160,13 +160,13 @@
             this.txtMDFDate.Size = new System.Drawing.Size(121, 23);
             this.txtMDFDate.TabIndex = 161;
             // 
-            // txtSTARTTIME
+            // txtNowPrice
             // 
-            this.txtSTARTTIME.Location = new System.Drawing.Point(154, 63);
-            this.txtSTARTTIME.Name = "txtSTARTTIME";
-            this.txtSTARTTIME.Size = new System.Drawing.Size(121, 23);
-            this.txtSTARTTIME.TabIndex = 161;
-            this.txtSTARTTIME.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSTARTTIME_KeyPress);
+            this.txtNowPrice.Location = new System.Drawing.Point(154, 63);
+            this.txtNowPrice.Name = "txtNowPrice";
+            this.txtNowPrice.Size = new System.Drawing.Size(121, 23);
+            this.txtNowPrice.TabIndex = 161;
+            this.txtNowPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSTARTTIME_KeyPress);
             // 
             // label10
             // 
@@ -445,9 +445,9 @@
         #endregion
 
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txtENDTIME;
+        private System.Windows.Forms.TextBox txtExPrice;
         private System.Windows.Forms.TextBox txtMDFDate;
-        private System.Windows.Forms.TextBox txtSTARTTIME;
+        private System.Windows.Forms.TextBox txtNowPrice;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label9;
@@ -472,7 +472,7 @@
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtEndDate;
         private System.Windows.Forms.ComboBox cboItem;
     }
 }
