@@ -80,8 +80,10 @@
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDate.Location = new System.Drawing.Point(157, 18);
             this.dtpDate.Name = "dtpDate";
+            this.dtpDate.ShowCheckBox = true;
             this.dtpDate.Size = new System.Drawing.Size(121, 23);
             this.dtpDate.TabIndex = 45;
+            this.dtpDate.Value = new System.DateTime(2020, 8, 1, 22, 32, 35, 0);
             // 
             // label2
             // 
@@ -201,6 +203,7 @@
             this.dgvCost.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCost.Size = new System.Drawing.Size(1050, 451);
             this.dgvCost.TabIndex = 0;
+            this.dgvCost.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCost_CellClick);
             this.dgvCost.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvCost_RowPostPaint);
             // 
             // FrmMaterialCost

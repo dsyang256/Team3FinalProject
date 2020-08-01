@@ -19,6 +19,7 @@ namespace TEAM3FINAL
 
         #region 멤버변수
         public int InsertOrUpdate { get; set; }
+        public string MCCode { get; set; }
         #endregion
 
         #region 생성자
@@ -26,6 +27,12 @@ namespace TEAM3FINAL
         {
             InitializeComponent();
             InsertOrUpdate = Convert.ToInt32(iu);
+        }
+        public FrmMaterialCostPop(InsertOrUpdate iu, string id)
+        {
+            InitializeComponent();
+            InsertOrUpdate = Convert.ToInt32(iu);
+            MCCode = id;
         }
         #endregion
 
@@ -124,23 +131,33 @@ namespace TEAM3FINAL
 
         private void FrmMaterialCostPop_Load(object sender, EventArgs e)
         {
+            //콤보박스 바인딩
+            BindingComboBox();
+
             cboUseYN.SelectedIndex = 0;
             txtMDFDate.Text = DateTime.Now.ToShortDateString();
             if (InsertOrUpdate == 1) //등록
             {
                 txtExPrice.ReadOnly = false;
             }
-            else
+            else //수정
             {
-                txtExPrice.ReadOnly = true; //수정
-
-                //수정할 데이터 조회
+                txtExPrice.ReadOnly = true;
 
                 //서비스 호출
-
+                CostService service = new CostService();
+                var vo = service.GetCostInfo(MCCode);
+                cboCompany.SelectedIndex = cboCompany.FindStringExact(vo.COM_NAME);
+                cboItem.SelectedIndex = cboItem.FindStringExact(vo.ITEM_NAME);
+                cboUseYN.SelectedIndex = cboUseYN.FindStringExact(vo.MC_USE_YN);
+                txtNowPrice.Text = vo.MC_UNITPRICE_CUR.ToString();
+                txtExPrice.Text = vo.MC_UNITPRICE_EX.ToString();
+                dtpStartDate.Value = Convert.ToDateTime(vo.MC_STARTDATE);
+                txtEndDate.Text = vo.MC_ENDDATE;
+                txtRemark.Text = vo.MC_REMARK;
+                txtCode.Text = vo.MC_Code.ToString();
             }
-            //콤보박스 바인딩
-            BindingComboBox();
+
         }
 
         #endregion

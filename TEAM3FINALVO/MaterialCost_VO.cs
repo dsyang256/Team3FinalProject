@@ -20,8 +20,26 @@ namespace TEAM3FINALVO
         public string COM_Code { get; set; }
         public string ITEM_Code { get; set; }
 
-    }
 
+
+
+    }
+    public class MaterialCostList_VO
+    {
+        public int MC_Code { get; set; }
+        public string COM_Code { get; set; }
+        public string COM_NAME { get; set; }
+        public string ITEM_Code { get; set; }
+        public string ITEM_NAME { get; set; }
+        public string ITEM_STND { get; set; }
+        public string ITEM_UNIT { get; set; }
+        public int MC_UNITPRICE_CUR { get; set; }
+        public int MC_UNITPRICE_EX { get; set; }
+        public string MC_STARTDATE { get; set; }
+        public string MC_ENDDATE { get; set; }
+        public string MC_REMARK { get; set; }
+        public string MC_USE_YN { get; set; }
+    }
     public class SalesCost_VO
     {
 
