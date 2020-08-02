@@ -83,7 +83,7 @@ namespace TEAM3FINAL
         {
             //서비스 호출
             CostService service = new CostService();
-            AllList = service.GetCostList();
+            AllList = service.GetMaterialCostList();
             dgvCost.DataSource = null;
             dgvCost.DataSource = AllList;
         }
@@ -121,7 +121,7 @@ namespace TEAM3FINAL
                 {
                     //서비스 호출
                     CostService service = new CostService();
-                    if (service.DeleteCostList(lists, "@"))
+                    if (service.DeleteMaterialCostList(lists, "@"))
                     {
                         MessageBox.Show("삭제되었습니다.", "삭제 성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -154,6 +154,9 @@ namespace TEAM3FINAL
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
                 LoadCostList();
+                txtItemName.Clear();
+                cboCompany.SelectedIndex = 0;
+
             }
         }
 
@@ -174,7 +177,7 @@ namespace TEAM3FINAL
             //업체명 조회
             if (cboCompany.Text.Length > 0)
             {
-                list = (from item in AllList select item).Where(p => p.COM_NAME.Contains(cboCompany.Text)).ToList();
+                list = (from item in list select item).Where(p => p.COM_NAME.Contains(cboCompany.Text)).ToList();
             }
             dgvCost.DataSource = null;
             dgvCost.DataSource = list;
@@ -195,6 +198,7 @@ namespace TEAM3FINAL
                 }
                 FrmMaterialCostPop frm = new FrmMaterialCostPop(InsertOrUpdate.update, uid);
                 frm.ShowDialog();
+                Reset(null, null);
             }
         }
         #endregion
@@ -236,14 +240,12 @@ namespace TEAM3FINAL
         }
         private void dgvCost_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvCost.SelectedRows.Count > 0)
-            {
-                string str = dgvCost.Rows[e.RowIndex].Cells[3].Value.ToString();
-            }
-
+            //if (dgvCost.SelectedRows.Count > 0)
+            //{
+            //    string str = dgvCost.Rows[e.RowIndex].Cells[3].Value.ToString();
+            //}
         }
         #endregion
-
 
     }
 }

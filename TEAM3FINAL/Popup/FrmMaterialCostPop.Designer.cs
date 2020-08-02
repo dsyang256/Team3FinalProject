@@ -77,11 +77,14 @@
             // 
             // btnOK
             // 
+            this.btnOK.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnOK.Location = new System.Drawing.Point(215, 403);
+            this.btnOK.Text = "저장";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
+            this.btnCancel.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnCancel.Location = new System.Drawing.Point(332, 403);
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -132,7 +135,7 @@
             this.txtEndDate.Name = "txtEndDate";
             this.txtEndDate.ReadOnly = true;
             this.txtEndDate.Size = new System.Drawing.Size(121, 23);
-            this.txtEndDate.TabIndex = 163;
+            this.txtEndDate.TabIndex = 5;
             this.txtEndDate.Text = "2099-12-31";
             // 
             // cboItem
@@ -142,14 +145,14 @@
             this.cboItem.Location = new System.Drawing.Point(419, 22);
             this.cboItem.Name = "cboItem";
             this.cboItem.Size = new System.Drawing.Size(121, 23);
-            this.cboItem.TabIndex = 162;
+            this.cboItem.TabIndex = 1;
             // 
             // txtExPrice
             // 
             this.txtExPrice.Location = new System.Drawing.Point(419, 60);
             this.txtExPrice.Name = "txtExPrice";
             this.txtExPrice.Size = new System.Drawing.Size(121, 23);
-            this.txtExPrice.TabIndex = 161;
+            this.txtExPrice.TabIndex = 3;
             this.txtExPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSTARTTIME_KeyPress);
             // 
             // txtMDFDate
@@ -158,14 +161,14 @@
             this.txtMDFDate.Name = "txtMDFDate";
             this.txtMDFDate.ReadOnly = true;
             this.txtMDFDate.Size = new System.Drawing.Size(121, 23);
-            this.txtMDFDate.TabIndex = 161;
+            this.txtMDFDate.TabIndex = 7;
             // 
             // txtNowPrice
             // 
             this.txtNowPrice.Location = new System.Drawing.Point(154, 63);
             this.txtNowPrice.Name = "txtNowPrice";
             this.txtNowPrice.Size = new System.Drawing.Size(121, 23);
-            this.txtNowPrice.TabIndex = 161;
+            this.txtNowPrice.TabIndex = 2;
             this.txtNowPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSTARTTIME_KeyPress);
             // 
             // label10
@@ -247,7 +250,7 @@
             this.dtpStartDate.Location = new System.Drawing.Point(154, 100);
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(121, 23);
-            this.dtpStartDate.TabIndex = 135;
+            this.dtpStartDate.TabIndex = 4;
             // 
             // cboCompany
             // 
@@ -256,7 +259,7 @@
             this.cboCompany.Location = new System.Drawing.Point(154, 22);
             this.cboCompany.Name = "cboCompany";
             this.cboCompany.Size = new System.Drawing.Size(121, 23);
-            this.cboCompany.TabIndex = 130;
+            this.cboCompany.TabIndex = 0;
             // 
             // cboUseYN
             // 
@@ -268,7 +271,7 @@
             this.cboUseYN.Location = new System.Drawing.Point(154, 137);
             this.cboUseYN.Name = "cboUseYN";
             this.cboUseYN.Size = new System.Drawing.Size(121, 23);
-            this.cboUseYN.TabIndex = 130;
+            this.cboUseYN.TabIndex = 6;
             // 
             // txtRemark
             // 
@@ -276,7 +279,7 @@
             this.txtRemark.Multiline = true;
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Size = new System.Drawing.Size(386, 109);
-            this.txtRemark.TabIndex = 136;
+            this.txtRemark.TabIndex = 8;
             // 
             // label32
             // 

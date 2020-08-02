@@ -146,7 +146,7 @@ namespace TEAM3FINAL
 
                 //서비스 호출
                 CostService service = new CostService();
-                var vo = service.GetCostInfo(MCCode);
+                var vo = service.GetMaterialCostInfo(MCCode);
                 cboCompany.SelectedIndex = cboCompany.FindStringExact(vo.COM_NAME);
                 cboItem.SelectedIndex = cboItem.FindStringExact(vo.ITEM_NAME);
                 cboUseYN.SelectedIndex = cboUseYN.FindStringExact(vo.MC_USE_YN);
