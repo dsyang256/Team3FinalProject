@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using TEAM3FINALVO;
 using TEAM3FINAL.Services;
 using System.Linq;
+using Message = TEAM3FINALVO.Message;
 
 namespace TEAM3FINAL
 {
@@ -50,24 +51,24 @@ namespace TEAM3FINAL
             if(!Update) //설비군 등록
             {
                 FacilityService service = new FacilityService();
-                string result = service.InsertFacilityGroup(vo);
-                if(result == "C200")
+                Message msg = service.InsertFacilityGroup(vo, Update);
+                if(msg.IsSuccess)
                 {
-                    MessageBox.Show("성공");
+                    MessageBox.Show(msg.ResultMessage);
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("실패");
+                    MessageBox.Show(msg.ResultMessage);
                     return;
                 }
             }
             else //설비군 수정
             {
                 FacilityService service = new FacilityService();
-                string result = service.UpdateFacilityGroup(vo);
-                if (result == "C200")
+                Message msg = service.UpdateFacilityGroup(vo, Update);
+                if (msg.IsSuccess)
                 {
                     MessageBox.Show("성공");
                     this.DialogResult = DialogResult.OK;
@@ -75,7 +76,7 @@ namespace TEAM3FINAL
                 }
                 else
                 {
-                    MessageBox.Show("실패");
+                    MessageBox.Show(msg.ResultMessage);
                     return;
                 }
             }

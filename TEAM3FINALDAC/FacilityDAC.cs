@@ -31,45 +31,102 @@ from FACILITY_GROP";
             }
         }
 
-        public string InsertFacilityGroup(FACILITY_GROUP fac)
+        public Message InsertFacilityGroup(FACILITY_GROUP fac, bool update)
         {
-            using (SqlCommand cmd = new SqlCommand())
+            try
             {
-                cmd.Connection = new SqlConnection(this.ConnectionString);
-                cmd.CommandText = @"insert into FACILITY_GROP(FACG_CODE, FACG_NAME, FACG_USE_YN, FACG_LAST_MDFR, FACG_DESC)
-values(@FACG_CODE, @FACG_NAME, @FACG_USE_YN, @FACG_LAST_MDFR, @FACG_DESC)";
-                cmd.Parameters.AddWithValue("@FACG_CODE", fac.FACG_CODE);
-                cmd.Parameters.AddWithValue("@FACG_NAME", fac.FACG_NAME);
-                cmd.Parameters.AddWithValue("@FACG_USE_YN", fac.FACG_USE_YN);
-                cmd.Parameters.AddWithValue("@FACG_LAST_MDFR", fac.FACG_LAST_MDFR);
-                cmd.Parameters.AddWithValue("@FACG_DESC", fac.FACG_DESC);
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = "SP_SaveFacilityGroup";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@P_UPDATE", update);
+                    cmd.Parameters.AddWithValue("@FACG_CODE", fac.FACG_CODE);
+                    cmd.Parameters.AddWithValue("@FACG_NAME", fac.FACG_NAME);
+                    cmd.Parameters.AddWithValue("@FACG_USE_YN", fac.FACG_USE_YN);
+                    cmd.Parameters.AddWithValue("@FACG_LAST_MDFR", fac.FACG_LAST_MDFR);
+                    cmd.Parameters.AddWithValue("@FACG_LAST_MDFR", fac.FACG_LAST_MDFR);
+                    cmd.Parameters.AddWithValue("@FACG_DESC", fac.FACG_DESC);
+                    cmd.Parameters["@P_ReturnCode"].Direction = System.Data.ParameterDirection.Output;
 
-                cmd.Connection.Open();
-                int result = cmd.ExecuteNonQuery();
-                cmd.Connection.Close();
-                return (result > 0) ? "C200" : "C203";
+                    cmd.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                    cmd.Connection.Close();
+
+                    string result = cmd.Parameters["@P_ReturnCode"].Value.ToString();
+                    Message message = new Message();
+                    if (result == "S01")
+                    {
+                        message.IsSuccess = true;
+                        message.ResultMessage = "성공적으로 등록되었습니다.";
+                    }
+                    else if (result == "S02")
+                    {
+                        message.IsSuccess = true;
+                        message.ResultMessage = "성공적으로 수정되었습니다.";
+                    }
+                    else if (result == "S00")
+                    {
+                        message.IsSuccess = false;
+                        message.ResultMessage = "실패하였습니다.";
+                    }
+
+                    return message;
+                }
+            }
+            catch(Exception err)
+            {
+                return new Message(err);
             }
         }
 
-        public string UpdateFacilityGroup(FACILITY_GROUP fac)
+        public Message UpdateFacilityGroup(FACILITY_GROUP fac, bool update)
         {
-            using (SqlCommand cmd = new SqlCommand())
+            try
             {
-                cmd.Connection = new SqlConnection(this.ConnectionString);
-                cmd.CommandText = @"update FACILITY_GROP set FACG_CODE = @FACG_CODE, FACG_NAME = @FACG_NAME, FACG_USE_YN = @FACG_USE_YN,
-FACG_LAST_MDFR = @FACG_LAST_MDFR, FACG_LAST_MDFY = @FACG_LAST_MDFY, FACG_DESC = @FACG_DESC WHERE FACG_CODE = @FACG_CODE";
-                cmd.Parameters.AddWithValue("@FACG_CODE", fac.FACG_CODE);
-                cmd.Parameters.AddWithValue("@FACG_NAME", fac.FACG_NAME);
-                cmd.Parameters.AddWithValue("@FACG_USE_YN", fac.FACG_USE_YN);
-                cmd.Parameters.AddWithValue("@FACG_LAST_MDFR", fac.FACG_LAST_MDFR);
-                cmd.Parameters.AddWithValue("@FACG_LAST_MDFY", fac.FACG_LAST_MDFY);
-                cmd.Parameters.AddWithValue("@FACG_DESC", fac.FACG_DESC);
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = "SP_SaveFacilityGroup";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@P_UPDATE", update);
+                    cmd.Parameters.AddWithValue("@FACG_CODE", fac.FACG_CODE);
+                    cmd.Parameters.AddWithValue("@FACG_NAME", fac.FACG_NAME);
+                    cmd.Parameters.AddWithValue("@FACG_USE_YN", fac.FACG_USE_YN);
+                    cmd.Parameters.AddWithValue("@FACG_LAST_MDFR", fac.FACG_LAST_MDFR);
+                    cmd.Parameters.AddWithValue("@FACG_LAST_MDFY", fac.FACG_LAST_MDFY);
+                    cmd.Parameters.AddWithValue("@FACG_DESC", fac.FACG_DESC);
+                    cmd.Parameters["@P_ReturnCode"].Direction = System.Data.ParameterDirection.Output;
 
-                cmd.Connection.Open();
-                int result = cmd.ExecuteNonQuery();
-                cmd.Connection.Close();
-                return (result > 0) ? "C200" : "C203";
-            }                
+                    cmd.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                    cmd.Connection.Close();
+
+                    string result = cmd.Parameters["@P_ReturnCode"].Value.ToString();
+                    Message message = new Message();
+                    if (result == "S01")
+                    {
+                        message.IsSuccess = true;
+                        message.ResultMessage = "성공적으로 등록되었습니다.";
+                    }
+                    else if (result == "S02")
+                    {
+                        message.IsSuccess = true;
+                        message.ResultMessage = "성공적으로 수정되었습니다.";
+                    }
+                    else if (result == "S00")
+                    {
+                        message.IsSuccess = false;
+                        message.ResultMessage = "실패하였습니다.";
+                    }
+
+                    return message;
+                }
+            }
+            catch(Exception err)
+            {
+                return new Message(err);
+            }
         }
 
         #endregion

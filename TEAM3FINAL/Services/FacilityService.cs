@@ -19,16 +19,16 @@ namespace TEAM3FINAL.Services
             return dac.GetFacilityGroupInfo();
         }
 
-        public string InsertFacilityGroup(FACILITY_GROUP fac)
+        public Message InsertFacilityGroup(FACILITY_GROUP fac, bool update)
         {
             FacilityDAC dac = new FacilityDAC();
-            return dac.InsertFacilityGroup(fac);
+            return dac.InsertFacilityGroup(fac, update);
         }
 
-        public string UpdateFacilityGroup(FACILITY_GROUP fac)
+        public Message UpdateFacilityGroup(FACILITY_GROUP fac, bool update)
         {
             FacilityDAC dac = new FacilityDAC();
-            return dac.UpdateFacilityGroup(fac);
+            return dac.UpdateFacilityGroup(fac, update);
         }
 
         #endregion
