@@ -322,10 +322,16 @@ namespace TEAM3FINAL
                     if (MessageBox.Show($"총 {cnt}개의 항목을 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         FactoryService service = new FactoryService();
-                        if (service.DeleteFactory("FACILITY_GROP", "FACG_CODE", sb) == "C200")
+                        Message msg = service.DeleteFactory("FACILITY_GROP", "FACG_CODE", sb);
+                        if (msg.IsSuccess)
                         {
-                            MessageBox.Show("삭제 완료");
+                            MessageBox.Show(msg.ResultMessage);
                             GetFacilityList();
+                        }
+                        else
+                        {
+                            MessageBox.Show(msg.ResultMessage);
+                            return;
                         }
                     }
                 }                

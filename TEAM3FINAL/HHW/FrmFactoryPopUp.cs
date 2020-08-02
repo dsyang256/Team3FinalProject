@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using TEAM3FINALVO;
 using TEAM3FINAL.Services;
 using System.Linq;
+using Message = TEAM3FINALVO.Message;
 
 namespace TEAM3FINAL
 {
@@ -65,44 +66,27 @@ namespace TEAM3FINAL
             vo.FAC_DEMAND_YN = cboDemandYN.Text;
             vo.FAC_PROCS_YN = cboProcYN.Text;
             vo.FAC_MTRL_YN = cboMtrlYN.Text;
-            vo.FAC_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
-            vo.FAC_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            vo.FAC_LAST_MDFR = txtModifier.Text;
+            vo.FAC_LAST_MDFY = txtModifyDate.Text;
             vo.FAC_USE_YN = cboUseYN.Text;
             vo.FAC_DESC = txtDesc.Text;
             vo.COM_CODE = cboCom.Text;
 
-            if (!Update) //공장등록
+
+            FactoryService service = new FactoryService();
+            Message msg = service.SaveFactory(vo, Update);
+            if (msg.IsSuccess)
             {
-                FactoryService service = new FactoryService();
-                string result = service.InsertFactory(vo);
-                if (result == "C200")
-                {
-                    MessageBox.Show("성공");
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("실패");
-                    return;
-                }
+                MessageBox.Show(msg.ResultMessage);
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
-            else //공장 수정
+            else
             {
-                FactoryService service = new FactoryService();
-                string result = service.UpdateFactoryInfo(vo);
-                if (result == "C200")
-                {
-                    MessageBox.Show("성공");
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("실패");
-                    return;
-                }
+                MessageBox.Show(msg.ResultMessage);
+                return;
             }
+
             #endregion
 
         }
@@ -116,6 +100,10 @@ namespace TEAM3FINAL
         private void FrmFactoryPopUp_Load(object sender, EventArgs e)
         {
             ComboBinding();
+            txtModifier.Enabled = false;
+            txtModifyDate.Enabled = false;
+            txtModifier.Text = FAC_LAST_MDFR;
+            txtModifyDate.Text = FAC_LAST_MDFY;
             if (Update)
             {
                 txtCode.Enabled = false;
