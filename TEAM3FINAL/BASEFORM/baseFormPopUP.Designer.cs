@@ -70,8 +70,9 @@
             // 
             // btnOK
             // 
-            this.btnOK.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnOK.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnOK.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnOK.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnOK.ForeColor = System.Drawing.SystemColors.Window;
             this.btnOK.Location = new System.Drawing.Point(292, 508);
             this.btnOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnOK.Name = "btnOK";
@@ -82,8 +83,9 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnCancel.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnCancel.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.btnCancel.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnCancel.ForeColor = System.Drawing.SystemColors.Window;
             this.btnCancel.Location = new System.Drawing.Point(404, 508);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCancel.Name = "btnCancel";

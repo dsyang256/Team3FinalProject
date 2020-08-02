@@ -31,10 +31,22 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // panel1
+            // 
+            this.panel1.Size = new System.Drawing.Size(1056, 200);
+            // 
+            // panel2
+            // 
+            this.panel2.Size = new System.Drawing.Size(1050, 180);
+            // 
+            // panel3
+            // 
+            this.panel3.Size = new System.Drawing.Size(1050, 321);
+            // 
             // FrmSalesMaster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.ClientSize = new System.Drawing.Size(800, 562);
+            this.ClientSize = new System.Drawing.Size(1080, 565);
             this.Name = "FrmSalesMaster";
             this.Text = "영업마스터";
             this.panel1.ResumeLayout(false);

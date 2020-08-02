@@ -49,6 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Popup\FrmSMUpLoadPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\FrmSMUpLoadPop.Designer.cs">
+      <DependentUpon>FrmSMUpLoadPop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\MenuPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\MenuPanel.Designer.cs">
+      <DependentUpon>MenuPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\BORService.cs" />
     <Compile Include="Services\CostService.cs" />
     <Compile Include="YDS\FrmReleaseRequest.cs">
@@ -436,6 +448,9 @@
     <EmbeddedResource Include="BaseForm\ProjectBaseForm.resx">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Popup\FrmSMUpLoadPop.resx">
+      <DependentUpon>FrmSMUpLoadPop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HHW\FrmBORManage.resx">
       <DependentUpon>FrmBORManage.cs</DependentUpon>
     </EmbeddedResource>
@@ -483,6 +498,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HHW\FrmWorkRecord.resx">
       <DependentUpon>FrmWorkRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\MenuPanel.resx">
+      <DependentUpon>MenuPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OJH\FrmDemandPlan.resx">
       <DependentUpon>FrmDemandPlan.cs</DependentUpon>
@@ -639,6 +657,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\tag_window_50px.png" />
     <None Include="Resources\exit_30px.png" />
     <Content Include="Resources\plus_math_30px.png" />
     <Content Include="Resources\reset_24px.png" />
