@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TEAM3FINALVO
 {
-    class BOR_VO
+    public class BOR_VO
     {
         public string BOR_CODE { get; set; } //BOR 코드
         public string BOR_PROCS_CODE { get; set; } //공정코드

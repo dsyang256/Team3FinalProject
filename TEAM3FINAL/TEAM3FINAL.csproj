@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\BORService.cs" />
     <Compile Include="Services\CostService.cs" />
     <Compile Include="YDS\FrmReleaseRequest.cs">
       <SubType>Form</SubType>
