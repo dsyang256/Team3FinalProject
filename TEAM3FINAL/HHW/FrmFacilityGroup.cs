@@ -379,8 +379,15 @@ namespace TEAM3FINAL
             
         }
 
+
         #endregion
 
-
+        private void dgvFacilityGroupList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvFacilityList.DataSource = null;
+            string code = dgvFacilityGroupList.SelectedRows[0].Cells[1].Value.ToString();
+            FacilityService service = new FacilityService();
+            dgvFacilityList.DataSource = service.SearchFacilityInfo(code);
+        }
     }
 }

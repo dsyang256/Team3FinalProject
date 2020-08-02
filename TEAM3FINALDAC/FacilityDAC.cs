@@ -195,6 +195,25 @@ from FACILITY";
             }
         }
 
+        public List<FACILITY_VO> SearchFacilityInfo(string code)
+        {
+            List<FACILITY_VO> list = null;
+
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = new SqlConnection(this.ConnectionString);
+                cmd.CommandText = @"select FCLTS_CODE, FCLTS_NAME, FCLTS_WRHS_EXHST, FCLTS_WRHS_GOOD, FCLTS_WRHS_BAD, FCLTS_USE_YN, FCLTS_EXTRL_YN, FCLTS_LAST_MDFR, convert(nvarchar, FCLTS_LAST_MDFY, 120) FCLTS_LAST_MDFY, FCLTS_NOTE, FCLTS_REMARK, FACG_CODE
+from FACILITY
+where FACG_CODE = @FACG_CODE";
+                cmd.Parameters.AddWithValue("@FACG_CODE", code);
+                cmd.Connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                list = Helper.DataReaderMapToList<FACILITY_VO>(reader);
+                cmd.Connection.Close();
+                return list;
+            }
+        }
+
         public Message InsertFacility(FACILITY_VO fac, bool update)
         {
             try

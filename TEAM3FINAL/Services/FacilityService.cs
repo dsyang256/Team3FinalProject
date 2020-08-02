@@ -58,6 +58,12 @@ namespace TEAM3FINAL.Services
             return dac.DeleteFacilityGroup(code);
         }
 
+        internal object SearchFacilityInfo(string code)
+        {
+            FacilityDAC dac = new FacilityDAC();
+            return dac.SearchFacilityInfo(code);
+        }
+
         #endregion
     }
 }
