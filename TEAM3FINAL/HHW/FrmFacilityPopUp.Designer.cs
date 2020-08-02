@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label9 = new System.Windows.Forms.Label();
-            this.cboFACGUseYN = new System.Windows.Forms.ComboBox();
+            this.cboFACUseYN = new System.Windows.Forms.ComboBox();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.txtModifier = new System.Windows.Forms.TextBox();
             this.txtFACGCODE = new System.Windows.Forms.TextBox();
@@ -107,25 +107,22 @@
             this.label9.TabIndex = 54;
             this.label9.Text = "사용유무";
             // 
-            // cboFACGUseYN
+            // cboFACUseYN
             // 
-            this.cboFACGUseYN.FormattingEnabled = true;
-            this.cboFACGUseYN.Items.AddRange(new object[] {
-            "공장",
-            "자재팀창고",
-            "생산팀창고",
-            "영업팀창고",
-            "외주창고"});
-            this.cboFACGUseYN.Location = new System.Drawing.Point(162, 225);
-            this.cboFACGUseYN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cboFACGUseYN.Name = "cboFACGUseYN";
-            this.cboFACGUseYN.Size = new System.Drawing.Size(176, 28);
-            this.cboFACGUseYN.TabIndex = 53;
+            this.cboFACUseYN.FormattingEnabled = true;
+            this.cboFACUseYN.Items.AddRange(new object[] {
+            "사용",
+            "미사용"});
+            this.cboFACUseYN.Location = new System.Drawing.Point(162, 225);
+            this.cboFACUseYN.Margin = new System.Windows.Forms.Padding(4);
+            this.cboFACUseYN.Name = "cboFACUseYN";
+            this.cboFACUseYN.Size = new System.Drawing.Size(176, 28);
+            this.cboFACUseYN.TabIndex = 53;
             // 
             // txtNote
             // 
             this.txtNote.Location = new System.Drawing.Point(162, 345);
-            this.txtNote.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNote.Margin = new System.Windows.Forms.Padding(4);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
             this.txtNote.Size = new System.Drawing.Size(838, 184);
@@ -134,7 +131,7 @@
             // txtModifier
             // 
             this.txtModifier.Location = new System.Drawing.Point(162, 281);
-            this.txtModifier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtModifier.Margin = new System.Windows.Forms.Padding(4);
             this.txtModifier.Name = "txtModifier";
             this.txtModifier.Size = new System.Drawing.Size(176, 27);
             this.txtModifier.TabIndex = 49;
@@ -142,7 +139,7 @@
             // txtFACGCODE
             // 
             this.txtFACGCODE.Location = new System.Drawing.Point(162, 108);
-            this.txtFACGCODE.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFACGCODE.Margin = new System.Windows.Forms.Padding(4);
             this.txtFACGCODE.Name = "txtFACGCODE";
             this.txtFACGCODE.Size = new System.Drawing.Size(176, 27);
             this.txtFACGCODE.TabIndex = 52;
@@ -285,7 +282,7 @@
             // txtFACCODE
             // 
             this.txtFACCODE.Location = new System.Drawing.Point(492, 108);
-            this.txtFACCODE.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFACCODE.Margin = new System.Windows.Forms.Padding(4);
             this.txtFACCODE.Name = "txtFACCODE";
             this.txtFACCODE.Size = new System.Drawing.Size(176, 27);
             this.txtFACCODE.TabIndex = 52;
@@ -316,7 +313,7 @@
             // txtFACNAME
             // 
             this.txtFACNAME.Location = new System.Drawing.Point(824, 108);
-            this.txtFACNAME.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFACNAME.Margin = new System.Windows.Forms.Padding(4);
             this.txtFACNAME.Name = "txtFACNAME";
             this.txtFACNAME.Size = new System.Drawing.Size(176, 27);
             this.txtFACNAME.TabIndex = 52;
@@ -331,7 +328,7 @@
             "영업팀창고",
             "외주창고"});
             this.cboFACEXHST.Location = new System.Drawing.Point(162, 167);
-            this.cboFACEXHST.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboFACEXHST.Margin = new System.Windows.Forms.Padding(4);
             this.cboFACEXHST.Name = "cboFACEXHST";
             this.cboFACEXHST.Size = new System.Drawing.Size(176, 28);
             this.cboFACEXHST.TabIndex = 53;
@@ -381,7 +378,7 @@
             "영업팀창고",
             "외주창고"});
             this.cboFACGOOD.Location = new System.Drawing.Point(492, 167);
-            this.cboFACGOOD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboFACGOOD.Margin = new System.Windows.Forms.Padding(4);
             this.cboFACGOOD.Name = "cboFACGOOD";
             this.cboFACGOOD.Size = new System.Drawing.Size(176, 28);
             this.cboFACGOOD.TabIndex = 53;
@@ -389,7 +386,7 @@
             // txtModifyDate
             // 
             this.txtModifyDate.Location = new System.Drawing.Point(492, 281);
-            this.txtModifyDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtModifyDate.Margin = new System.Windows.Forms.Padding(4);
             this.txtModifyDate.Name = "txtModifyDate";
             this.txtModifyDate.Size = new System.Drawing.Size(176, 27);
             this.txtModifyDate.TabIndex = 49;
@@ -426,7 +423,7 @@
             "영업팀창고",
             "외주창고"});
             this.cboFACBAD.Location = new System.Drawing.Point(824, 163);
-            this.cboFACBAD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboFACBAD.Margin = new System.Windows.Forms.Padding(4);
             this.cboFACBAD.Name = "cboFACBAD";
             this.cboFACBAD.Size = new System.Drawing.Size(176, 28);
             this.cboFACBAD.TabIndex = 53;
@@ -457,13 +454,10 @@
             // 
             this.cboEXTRLYN.FormattingEnabled = true;
             this.cboEXTRLYN.Items.AddRange(new object[] {
-            "공장",
-            "자재팀창고",
-            "생산팀창고",
-            "영업팀창고",
-            "외주창고"});
+            "사용",
+            "미사용"});
             this.cboEXTRLYN.Location = new System.Drawing.Point(492, 223);
-            this.cboEXTRLYN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboEXTRLYN.Margin = new System.Windows.Forms.Padding(4);
             this.cboEXTRLYN.Name = "cboEXTRLYN";
             this.cboEXTRLYN.Size = new System.Drawing.Size(176, 28);
             this.cboEXTRLYN.TabIndex = 53;
@@ -493,7 +487,7 @@
             // txtREMARK
             // 
             this.txtREMARK.Location = new System.Drawing.Point(162, 539);
-            this.txtREMARK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtREMARK.Margin = new System.Windows.Forms.Padding(4);
             this.txtREMARK.Multiline = true;
             this.txtREMARK.Name = "txtREMARK";
             this.txtREMARK.Size = new System.Drawing.Size(838, 184);
@@ -508,7 +502,7 @@
             this.Controls.Add(this.cboFACBAD);
             this.Controls.Add(this.cboFACGOOD);
             this.Controls.Add(this.cboFACEXHST);
-            this.Controls.Add(this.cboFACGUseYN);
+            this.Controls.Add(this.cboFACUseYN);
             this.Controls.Add(this.txtREMARK);
             this.Controls.Add(this.txtNote);
             this.Controls.Add(this.txtModifyDate);
@@ -541,6 +535,7 @@
             this.Controls.Add(this.label4);
             this.Margin = new System.Windows.Forms.Padding(5, 9, 5, 9);
             this.Name = "FrmFacilityPopUp";
+            this.Load += new System.EventHandler(this.FrmFacilityPopUp_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.btnOK, 0);
@@ -575,7 +570,7 @@
             this.Controls.SetChildIndex(this.txtModifyDate, 0);
             this.Controls.SetChildIndex(this.txtNote, 0);
             this.Controls.SetChildIndex(this.txtREMARK, 0);
-            this.Controls.SetChildIndex(this.cboFACGUseYN, 0);
+            this.Controls.SetChildIndex(this.cboFACUseYN, 0);
             this.Controls.SetChildIndex(this.cboFACEXHST, 0);
             this.Controls.SetChildIndex(this.cboFACGOOD, 0);
             this.Controls.SetChildIndex(this.cboFACBAD, 0);
@@ -591,7 +586,7 @@
         #endregion
 
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox cboFACGUseYN;
+        private System.Windows.Forms.ComboBox cboFACUseYN;
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.TextBox txtModifier;
         private System.Windows.Forms.TextBox txtFACGCODE;

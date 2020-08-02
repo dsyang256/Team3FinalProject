@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using TEAM3FINAL.Services;
+using Message = TEAM3FINALVO.Message;
 
 namespace TEAM3FINAL
 {
@@ -17,7 +18,6 @@ namespace TEAM3FINAL
         /// <summary>
         /// true : 설비군 입력/수정/삭제 , false : 설비 입력/수정/삭제
         /// </summary>
-        public bool FacilityAndGroup { get; set; }
 
         public FrmFacilityGroup()
         {
@@ -83,7 +83,7 @@ namespace TEAM3FINAL
             headerChk2.Location = new Point(headerCell.X + 4, headerCell.Y + 15);
             headerChk2.Size = new Size(18, 18);
             headerChk2.BackColor = Color.FromArgb(245, 245, 246);
-            headerChk2.Click += HeaderChk_Clicked;
+            headerChk2.Click += HeaderChk_Clicked2;
             dgvFacilityList.Controls.Add(headerChk2);
         }
 
@@ -145,7 +145,7 @@ namespace TEAM3FINAL
             frm.eInsert += Insert;
             frm.eDelete += Delete;
             frm.eUpdate += Update;
-            frm.eReset += Reset; //입력필요
+            frm.eReset += Reset;
             frm.ePrint += Print; //입력필요
         }
 
@@ -164,7 +164,7 @@ namespace TEAM3FINAL
             {
                 FrmFacilityChoice form = new FrmFacilityChoice();
                 form.ShowDialog();
-                if (form.FacilityAndGroup == FacilityAndGroup) //true : 설비군팝업창 입력
+                if (form.FacilityAndGroup) //true : 설비군 팝업창 입력
                 {
                     FrmFacilityGroupPopUp frm = new FrmFacilityGroupPopUp();
                     frm.FACG_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
@@ -175,7 +175,7 @@ namespace TEAM3FINAL
                         GetFacilityGroupList();
                     }
                 }
-                else //false : 설비팝업창 입력
+                else //false : 설비 팝업창 입력
                 {
                     FrmFacilityPopUp frm = new FrmFacilityPopUp();
                     frm.FCLTS_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
@@ -196,44 +196,93 @@ namespace TEAM3FINAL
 
         public void Reset(object sender, EventArgs e)
         {
-            
+            GetFacilityGroupList();
+            GetFacilityList();
         }
 
         public void Update(object sender, EventArgs e)
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
+
                 dgvFacilityGroupList.EndEdit();
-                string sb = string.Empty;
-                int cnt = 0;
-                foreach (DataGridViewRow item in dgvFacilityGroupList.Rows)
+                dgvFacilityList.EndEdit();
+
+                FrmFacilityChoice form = new FrmFacilityChoice();
+                form.ShowDialog();
+                if (form.FacilityAndGroup) //설비군 수정
                 {
-                    if (Convert.ToBoolean(item.Cells[0].Value))
+                    string sb = string.Empty;
+                    int cnt = 0;
+                    foreach (DataGridViewRow item in dgvFacilityGroupList.Rows)
                     {
-                        sb = item.Cells[1].Value.ToString();
-                        cnt++;
+                        if (Convert.ToBoolean(item.Cells[0].Value))
+                        {
+                            sb = item.Cells[1].Value.ToString(); //PK = 설비군코드
+                            cnt++;
+                        }
+                    }
+                    if (cnt == 1) //하나일 경우 PopUp창 띄움
+                    {
+                        FrmFacilityGroupPopUp frm = new FrmFacilityGroupPopUp();
+                        frm.Update = true;
+                        frm.FACG_CODE = dgvFacilityGroupList.CurrentRow.Cells[1].Value.ToString();
+                        frm.FACG_NAME = dgvFacilityGroupList.CurrentRow.Cells[2].Value.ToString();
+                        frm.FACG_USE_YN = dgvFacilityGroupList.CurrentRow.Cells[3].Value.ToString();
+                        frm.FACG_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
+                        frm.FACG_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                        frm.FACG_DESC = dgvFacilityGroupList.CurrentRow.Cells[6].Value.ToString();
+                        frm.ShowDialog();
+                        if (frm.DialogResult == DialogResult.OK)
+                        {
+                            GetFacilityGroupList();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("하나의 항복씩만 수정 가능");
+                        return;
                     }
                 }
-                if (cnt == 1) //하나일 경우 PopUp창 띄움
+                else //설비 수정
                 {
-                    FrmFacilityGroupPopUp frm = new FrmFacilityGroupPopUp();
-                    frm.Update = true;
-                    frm.FACG_CODE = dgvFacilityGroupList.CurrentRow.Cells[1].Value.ToString();
-                    frm.FACG_NAME = dgvFacilityGroupList.CurrentRow.Cells[2].Value.ToString();
-                    frm.FACG_USE_YN = dgvFacilityGroupList.CurrentRow.Cells[3].Value.ToString();
-                    frm.FACG_LAST_MDFR = "황현우"; //로그인창 수정
-                    frm.FACG_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                    frm.FACG_DESC = dgvFacilityGroupList.CurrentRow.Cells[6].Value.ToString();
-                    frm.ShowDialog();
-                    if(frm.DialogResult == DialogResult.OK)
+                    string sb = string.Empty;
+                    int cnt = 0;
+                    foreach (DataGridViewRow item in dgvFacilityList.Rows)
                     {
-                        GetFacilityGroupList();
+                        if (Convert.ToBoolean(item.Cells[0].Value))
+                        {
+                            sb = item.Cells[2].Value.ToString(); //PK = 설비코드
+                            cnt++;
+                        }
                     }
-                }
-                else
-                {
-                    MessageBox.Show("하나의 항복씩만 수정 가능");
-                    return;
+                    if(cnt == 1)
+                    {
+                        FrmFacilityPopUp frm = new FrmFacilityPopUp();
+                        frm.Update = true;
+                        frm.FACG_CODE = dgvFacilityList.CurrentRow.Cells[1].Value.ToString();
+                        frm.FCLTS_CODE = dgvFacilityList.CurrentRow.Cells[2].Value.ToString();
+                        frm.FCLTS_NAME = dgvFacilityList.CurrentRow.Cells[3].Value.ToString();
+                        frm.FCLTS_WRHS_EXHST = dgvFacilityList.CurrentRow.Cells[4].Value.ToString();
+                        frm.FCLTS_WRHS_GOOD = dgvFacilityList.CurrentRow.Cells[5].Value.ToString();
+                        frm.FCLTS_WRHS_BAD = dgvFacilityList.CurrentRow.Cells[6].Value.ToString();
+                        frm.FCLTS_USE_YN = dgvFacilityList.CurrentRow.Cells[7].Value.ToString();
+                        frm.FCLTS_EXTRL_YN = dgvFacilityList.CurrentRow.Cells[8].Value.ToString();
+                        frm.FCLTS_LAST_MDFR = dgvFacilityList.CurrentRow.Cells[9].Value.ToString();
+                        frm.FCLTS_LAST_MDFY = dgvFacilityList.CurrentRow.Cells[10].Value.ToString();
+                        frm.FCLTS_NOTE = dgvFacilityList.CurrentRow.Cells[11].Value.ToString();
+                        frm.FCLTS_REMARK = dgvFacilityList.CurrentRow.Cells[12].Value.ToString();
+                        frm.ShowDialog();
+                        if(frm.DialogResult == DialogResult.OK)
+                        {
+                            GetFacilityList();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("하나의 항복씩만 수정 가능");
+                        return;
+                    }
                 }
             }            
         }
@@ -243,32 +292,43 @@ namespace TEAM3FINAL
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
                 dgvFacilityGroupList.EndEdit();
-                StringBuilder sb = new StringBuilder();
-                int cnt = 0;
-                //품목 선택후 List를 전달
-                foreach (DataGridViewRow item in dgvFacilityGroupList.Rows)
+                dgvFacilityList.EndEdit();
+
+                FrmFacilityChoice form = new FrmFacilityChoice();
+                form.ShowDialog();
+                if (form.FacilityAndGroup)
                 {
-                    if (Convert.ToBoolean(item.Cells[0].Value))
+
+                }
+                else //설비 삭제
+                {
+                    StringBuilder sb = new StringBuilder();
+                    int cnt = 0;
+                    //품목 선택후 List를 전달
+                    foreach (DataGridViewRow item in dgvFacilityList.Rows)
                     {
-                        sb.Append(item.Cells[1].Value.ToString() + "@");
-                        cnt++;
+                        if (Convert.ToBoolean(item.Cells[0].Value))
+                        {
+                            sb.Append(item.Cells[2].Value.ToString() + "@");
+                            cnt++;
+                        }
                     }
-                }
-                if (sb.Length < 1)
-                {
-                    MessageBox.Show("삭제할 항목을 선택하여 주십시오.");
-                    return;
-                }
-                sb.Remove(sb.Length - 1, 1);
-                if (MessageBox.Show($"총 {cnt}개의 항목을 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    FactoryService service = new FactoryService();
-                    if (service.DeleteFactory("FACILITY_GROP", "FACG_CODE", sb) == "C200")
+                    if (sb.Length < 1)
                     {
-                        MessageBox.Show("삭제 완료");
-                        GetFacilityGroupList();
+                        MessageBox.Show("삭제할 항목을 선택하여 주십시오.");
+                        return;
                     }
-                }
+                    sb.Remove(sb.Length - 1, 1);
+                    if (MessageBox.Show($"총 {cnt}개의 항목을 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        FactoryService service = new FactoryService();
+                        if (service.DeleteFactory("FACILITY_GROP", "FACG_CODE", sb) == "C200")
+                        {
+                            MessageBox.Show("삭제 완료");
+                            GetFacilityList();
+                        }
+                    }
+                }                
             }
         }
 

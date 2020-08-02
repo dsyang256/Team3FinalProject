@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using TEAM3FINALVO;
 using TEAM3FINAL.Services;
 using System.Linq;
+using Message = TEAM3FINALVO.Message;
 
 namespace TEAM3FINAL
 {
@@ -41,7 +42,7 @@ namespace TEAM3FINAL
             #region 설비군 등록&수정
 
             if (txtFACGCODE.Text == "" || txtFACCODE.Text == "" || txtFACNAME.Text == "" ||
-                cboFACEXHST.Text == "" || cboFACGOOD.Text == "" || cboFACGUseYN.Text == "")
+                cboFACEXHST.Text == "" || cboFACGOOD.Text == "" || cboFACUseYN.Text == "")
             {
                 MessageBox.Show("필수정보 입력 필요");
                 return;
@@ -54,17 +55,45 @@ namespace TEAM3FINAL
             vo.FCLTS_WRHS_EXHST = cboFACEXHST.Text;
             vo.FCLTS_WRHS_GOOD = cboFACGOOD.Text;
             vo.FCLTS_WRHS_BAD = cboFACBAD.Text;
-            vo.FCLTS_USE_YN = cboFACGUseYN.Text;
+            vo.FCLTS_USE_YN = cboFACUseYN.Text;
             vo.FCLTS_EXTRL_YN = cboEXTRLYN.Text;
             vo.FCLTS_LAST_MDFR = FCLTS_LAST_MDFR;
             vo.FCLTS_LAST_MDFY = FCLTS_LAST_MDFY;
             vo.FCLTS_NOTE = txtNote.Text;
             vo.FCLTS_REMARK = txtREMARK.Text;
 
-            if(!Update) //설비 등록
+            if (!Update) //설비 등록
             {
                 FacilityService service = new FacilityService();
-                //string result = service
+                Message msg = service.InsertFacility(vo, Update);
+                if (msg.IsSuccess)
+                {
+                    MessageBox.Show(msg.ResultMessage);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show(msg.ResultMessage);
+                    return;
+                }
+
+            }
+            else //설비 수정
+            {
+                FacilityService service = new FacilityService();
+                Message msg = service.UpdateFacility(vo, Update);
+                if (msg.IsSuccess)
+                {
+                    MessageBox.Show(msg.ResultMessage);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show(msg.ResultMessage);
+                    return;
+                }
             }
 
             #endregion
@@ -74,6 +103,41 @@ namespace TEAM3FINAL
         {
             Update = false;
             this.Close();
+        }
+
+        private void FrmFacilityPopUp_Load(object sender, EventArgs e)
+        {
+            txtModifier.Enabled = false;
+            txtModifyDate.Enabled = false;
+            ComboBinding();
+            if (Update)
+            {
+                txtFACCODE.Enabled = false;
+                txtFACGCODE.Text = FACG_CODE;
+                txtFACCODE.Text = FCLTS_CODE;
+                txtFACNAME.Text = FCLTS_NAME;
+                cboFACEXHST.Text = FCLTS_WRHS_EXHST;
+                cboFACGOOD.Text = FCLTS_WRHS_GOOD;
+                cboFACBAD.Text = FCLTS_WRHS_BAD;
+                cboFACUseYN.Text = FCLTS_USE_YN;
+                cboEXTRLYN.Text = FCLTS_EXTRL_YN;
+                txtModifier.Text = FCLTS_LAST_MDFR;
+                txtModifyDate.Text = FCLTS_LAST_MDFY;
+                txtNote.Text = FCLTS_NOTE;
+                txtREMARK.Text = FCLTS_REMARK;
+            }
+        }
+
+        private void ComboBinding()
+        {
+            ComboItemService service = new ComboItemService();
+            List<ComboItemVO> commonlist = service.GetITEMCmCode();
+
+            var listUse_YN = (from item in commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(cboFACUseYN, listUse_YN, "COMMON_CODE", "COMMON_NAME", "");
+
+            var listEXTRL_YN = (from item in commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(cboEXTRLYN, listEXTRL_YN, "COMMON_CODE", "COMMON_NAME", "");
         }
     }
 }

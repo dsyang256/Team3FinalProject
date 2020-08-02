@@ -34,16 +34,22 @@ namespace TEAM3FINAL.Services
         #endregion
 
         #region 설비
-        public string InsertFacility(FACILITY_VO fac)
+        public Message InsertFacility(FACILITY_VO fac, bool update)
         {
             FacilityDAC dac = new FacilityDAC();
-            return dac.InsertFacility(fac);
+            return dac.InsertFacility(fac, update);
         }
 
         internal object GetFacilityInfo()
         {
             FacilityDAC dac = new FacilityDAC();
             return dac.GetFacilityInfo();
+        }
+
+        internal Message UpdateFacility(FACILITY_VO fac, bool update)
+        {
+            FacilityDAC dac = new FacilityDAC();
+            return dac.UpdateFacility(fac, update);
         }
 
         #endregion
