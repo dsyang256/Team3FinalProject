@@ -141,6 +141,38 @@ from FACILITY_GROP";
             }
         }
 
+        public Message DeleteFacilityGroup(string code)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = "delete from FACILITY_GROP where FACG_CODE = @FACG_CODE; delete from FACILITY where FACG_CODE = @FACG_CODE";
+                    cmd.Parameters.AddWithValue("@FACG_CODE", code);
+                    cmd.Connection.Open();
+                    int iResult = cmd.ExecuteNonQuery();
+                    Message message = new Message();
+                    if (iResult > 0)
+                    {
+                        message.IsSuccess = true;
+                        message.ResultMessage = "성공적으로 삭제했습니다.";
+                    }
+                    else
+                    {
+                        message.IsSuccess = false;
+                        message.ResultMessage = "삭제에 실패하였습니다.";
+                    }
+                    return message;
+                }
+            }
+            catch(Exception err)
+            {
+                return new Message(err);
+            }
+
+        }
+
         #endregion
 
 
@@ -192,7 +224,7 @@ from FACILITY";
                     cmd.ExecuteNonQuery();
                     cmd.Connection.Close();
 
-                    string result = cmd.Parameters["P_ReturnCode"].Value.ToString();
+                    string result = cmd.Parameters["@P_ReturnCode"].Value.ToString();
                     Message message = new Message();
                     if (result == "S01")
                     {

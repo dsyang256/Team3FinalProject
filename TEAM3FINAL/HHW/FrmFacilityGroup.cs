@@ -155,7 +155,6 @@ namespace TEAM3FINAL
 
         }
 
-
         #region ****메인 버튼 이벤트****
 
         public void Insert(object sender, EventArgs e)
@@ -298,7 +297,44 @@ namespace TEAM3FINAL
                 form.ShowDialog();
                 if (form.FacilityAndGroup)
                 {
-
+                    StringBuilder sb = new StringBuilder();
+                    int cnt = 0;
+                    //품목 선택후 List를 전달
+                    foreach (DataGridViewRow item in dgvFacilityGroupList.Rows)
+                    {
+                        if (Convert.ToBoolean(item.Cells[0].Value))
+                        {
+                            sb.Append(item.Cells[1].Value.ToString() + "@");
+                            cnt++;
+                        }
+                    }
+                    if (sb.Length < 1)
+                    {
+                        MessageBox.Show("삭제할 항목을 선택하여 주십시오.");
+                        return;
+                    }
+                    if(cnt == 2)
+                    {
+                        MessageBox.Show("설비군 데이터는 하나의 항목씩만 삭제 가능합니다.");
+                        return;
+                    }
+                    sb.Remove(sb.Length - 1, 1);
+                    if (MessageBox.Show($"관련된 설비 데이터도 모두 삭제 됩니다. \n 총 {cnt}개의 항목을 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        FacilityService service = new FacilityService();
+                        Message msg = service.DeleteFacilityGroup(dgvFacilityGroupList.CurrentRow.Cells[1].Value.ToString());
+                        if(msg.IsSuccess)
+                        {
+                            MessageBox.Show(msg.ResultMessage);
+                            GetFacilityGroupList();
+                            GetFacilityList();
+                        }
+                        else
+                        {
+                            MessageBox.Show(msg.ResultMessage);
+                            return;
+                        }
+                    }
                 }
                 else //설비 삭제
                 {
@@ -322,7 +358,7 @@ namespace TEAM3FINAL
                     if (MessageBox.Show($"총 {cnt}개의 항목을 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         FactoryService service = new FactoryService();
-                        Message msg = service.DeleteFactory("FACILITY_GROP", "FACG_CODE", sb);
+                        Message msg = service.DeleteFactory("FACILITY", "FCLTS_CODE", sb);
                         if (msg.IsSuccess)
                         {
                             MessageBox.Show(msg.ResultMessage);
