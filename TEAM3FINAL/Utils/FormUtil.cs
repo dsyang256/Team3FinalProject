@@ -8,8 +8,8 @@ using System.Windows.Forms;
 namespace TEAM3FINAL
 {
     /// <summary>
-    /// 폼 관련 공통 유틸
-    /// </summary>
+    /// 폼 관련 유틸
+    /// </summary> - OJH
     public static class FormUtil
     {
         private static Form activeForm = null;
@@ -28,8 +28,11 @@ namespace TEAM3FINAL
             childForm.Show();
         }
 
-
-        //자식폼의 생성 (제네릭 활용, 고정메뉴인 경우(동적메뉴x))
+        /// <summary>
+        /// 메뉴 생성 메서드 ((제네릭 활용, 고정메뉴인 경우(동적메뉴x))
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="mainfrom"></param>
         public static void OpenOrCreateForm<T>(Form mainfrom) where T : Form, new() //T의 제약조건 : Form을 상속, 기본생성자를 가져야함
         {
             foreach (Form form in Application.OpenForms)
@@ -60,13 +63,17 @@ namespace TEAM3FINAL
             frm.Top = 0;
             frm.Show();
         }
-
-        //동적메뉴생성
+        /// <summary>
+        /// 동적 메뉴  생성 메서드
+        /// </summary>
+        /// <param name="mdiParent"></param>
+        /// <param name="formName"></param>
+        /// <returns></returns>
         public static Form MdiChildrenShow(this FrmMAIN mdiParent, string formName)
         {
 
             Type type = Type.GetType("TEAM3FINAL." + formName);
-            
+
             if (type != null)
             {
                 foreach (Form frm in Application.OpenForms)
@@ -82,7 +89,7 @@ namespace TEAM3FINAL
                     }
                 }
 
-                 Form f = (Form)Activator.CreateInstance(type);
+                Form f = (Form)Activator.CreateInstance(type);
                 f.MdiParent = mdiParent;
                 f.Dock = DockStyle.Fill;
                 f.Left = 0;

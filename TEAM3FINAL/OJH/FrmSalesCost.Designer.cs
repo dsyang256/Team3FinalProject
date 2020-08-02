@@ -216,7 +216,6 @@
             this.dgvCost.Size = new System.Drawing.Size(1050, 451);
             this.dgvCost.TabIndex = 0;
             this.dgvCost.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCost_CellClick);
-            this.dgvCost.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvCost_RowPostPaint);
             // 
             // FrmSalesCost
             // 

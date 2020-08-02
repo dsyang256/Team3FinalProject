@@ -89,24 +89,24 @@ namespace TEAM3FINAL
         /// </summary>
         private void DataGridViewColumnSet()
         {
-            Util.InitSettingGridView(dgvitem);
-            Util.AddNewColumnToDataGridView(dgvitem, "no", "idx", true, 30);
-            Util.DataGridViewCheckBoxSet(dgvitem, "all");
-            Util.AddNewColumnToDataGridView(dgvitem, "품목유형", "ITEM_TYP", true, 100);
-            Util.AddNewColumnToDataGridView(dgvitem, "품목", "ITEM_CODE", true, 200);
-            Util.AddNewColumnToDataGridView(dgvitem, "품명", "ITEM_NAME", true, 200);
-            Util.AddNewColumnToDataGridView(dgvitem, "규격", "ITEM_STND", true, 100);
-            Util.AddNewColumnToDataGridView(dgvitem, "단위", "ITEM_UNIT", true, 100);
-            Util.AddNewColumnToDataGridView(dgvitem, "단위수량", "ITEM_QTY_UNIT", true, 80);
-            Util.AddNewColumnToDataGridView(dgvitem, "환산단위", "ITEM_UNIT_CNVR", true, 80);
-            Util.AddNewColumnToDataGridView(dgvitem, "환산수량", "ITEM_QTY_CNVR", true, 80);
-            Util.AddNewColumnToDataGridView(dgvitem, "수입검사여부", "ITEM_INCOME_YN", true, 120);
-            Util.AddNewColumnToDataGridView(dgvitem, "공정검사여부", "ITEM_PROCS_YN", true, 120);
-            Util.AddNewColumnToDataGridView(dgvitem, "출하검사여부", "ITEM_XPORT_YN", true, 120);
-            Util.AddNewColumnToDataGridView(dgvitem, "단종유무", "ITEM_DSCN_YN", true, 100);
-            Util.AddNewColumnToDataGridView(dgvitem, "유무상구분", "ITEM_FREE_YN", true, 100);
-            Util.AddNewColumnToDataGridView(dgvitem, "납품업체", "ITEM_COM_DLVR", true, 140);
-            Util.AddNewColumnToDataGridView(dgvitem, "발주업체", "ITEM_COM_REORDER", true, 140);
+            DataGridViewUtil.InitSettingGridView(dgvitem);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvitem, "no", "idx", true, 30);
+            DataGridViewUtil.DataGridViewCheckBoxSet(dgvitem, "all");
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvitem, "품목유형", "ITEM_TYP", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvitem, "품목", "ITEM_CODE", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvitem, "품명", "ITEM_NAME", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvitem, "규격", "ITEM_STND", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvitem, "단위", "ITEM_UNIT", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvitem, "단위수량", "ITEM_QTY_UNIT", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvitem, "환산단위", "ITEM_UNIT_CNVR", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvitem, "환산수량", "ITEM_QTY_CNVR", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvitem, "수입검사여부", "ITEM_INCOME_YN", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvitem, "공정검사여부", "ITEM_PROCS_YN", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvitem, "출하검사여부", "ITEM_XPORT_YN", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvitem, "단종유무", "ITEM_DSCN_YN", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvitem, "유무상구분", "ITEM_FREE_YN", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvitem, "납품업체", "ITEM_COM_DLVR", true, 140);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvitem, "발주업체", "ITEM_COM_REORDER", true, 140);
             DataGridViewCheckBoxAllCheck();
            
 

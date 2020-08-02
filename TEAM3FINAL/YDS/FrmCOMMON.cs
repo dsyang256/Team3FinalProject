@@ -27,12 +27,12 @@ namespace TEAM3FINAL
 
         private void DataGridViewColumnSet()
         {
-            Util.InitSettingGridView(dgvCOMMON);
-            Util.AddNewColumnToDataGridView(dgvCOMMON, "No", "idx", true, 30);
-            Util.AddNewColumnToDataGridView(dgvCOMMON, "코드", "COMMON_CODE", true, 170);
-            Util.AddNewColumnToDataGridView(dgvCOMMON, "이름", "COMMON_NAME", true, 170);
-            Util.AddNewColumnToDataGridView(dgvCOMMON, "부모", "COMMON_PARENT", true, 80);
-            Util.AddNewColumnToDataGridView(dgvCOMMON, "SEQ", "COMMON_SEQ", true, 29);
+            DataGridViewUtil.InitSettingGridView(dgvCOMMON);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCOMMON, "No", "idx", true, 30);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCOMMON, "코드", "COMMON_CODE", true, 170);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCOMMON, "이름", "COMMON_NAME", true, 170);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCOMMON, "부모", "COMMON_PARENT", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCOMMON, "SEQ", "COMMON_SEQ", true, 29);
 
         }
         private void DataGridViewBinding()

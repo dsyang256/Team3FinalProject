@@ -52,7 +52,7 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1056, 110);
+            this.panel1.Size = new System.Drawing.Size(1056, 82);
             // 
             // panel2
             // 
@@ -67,37 +67,37 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Size = new System.Drawing.Size(1050, 88);
+            this.panel2.Size = new System.Drawing.Size(1050, 62);
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.dgvShift);
-            this.panel3.Location = new System.Drawing.Point(15, 130);
-            this.panel3.Size = new System.Drawing.Size(1050, 423);
+            this.panel3.Location = new System.Drawing.Point(15, 102);
+            this.panel3.Size = new System.Drawing.Size(1050, 451);
             // 
             // cboShift
             // 
             this.cboShift.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboShift.FormattingEnabled = true;
-            this.cboShift.Location = new System.Drawing.Point(559, 33);
+            this.cboShift.Location = new System.Drawing.Point(489, 18);
             this.cboShift.Name = "cboShift";
-            this.cboShift.Size = new System.Drawing.Size(100, 23);
+            this.cboShift.Size = new System.Drawing.Size(121, 23);
             this.cboShift.TabIndex = 38;
             // 
             // cboFclts
             // 
             this.cboFclts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboFclts.FormattingEnabled = true;
-            this.cboFclts.Location = new System.Drawing.Point(842, 33);
+            this.cboFclts.Location = new System.Drawing.Point(843, 18);
             this.cboFclts.Name = "cboFclts";
-            this.cboFclts.Size = new System.Drawing.Size(142, 23);
+            this.cboFclts.Size = new System.Drawing.Size(121, 23);
             this.cboFclts.TabIndex = 37;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label5.Location = new System.Drawing.Point(788, 34);
+            this.label5.Location = new System.Drawing.Point(793, 19);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 20);
             this.label5.TabIndex = 33;
@@ -108,7 +108,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label4.Location = new System.Drawing.Point(769, 37);
+            this.label4.Location = new System.Drawing.Point(774, 22);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 18);
             this.label4.TabIndex = 35;
@@ -118,7 +118,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label11.Location = new System.Drawing.Point(496, 34);
+            this.label11.Location = new System.Drawing.Point(436, 19);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(47, 20);
             this.label11.TabIndex = 34;
@@ -129,7 +129,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label3.Location = new System.Drawing.Point(477, 36);
+            this.label3.Location = new System.Drawing.Point(417, 22);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(15, 18);
             this.label3.TabIndex = 36;
@@ -139,7 +139,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label2.Location = new System.Drawing.Point(83, 34);
+            this.label2.Location = new System.Drawing.Point(77, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 20);
             this.label2.TabIndex = 39;
@@ -150,7 +150,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label6.Location = new System.Drawing.Point(64, 35);
+            this.label6.Location = new System.Drawing.Point(58, 22);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(15, 18);
             this.label6.TabIndex = 40;
@@ -159,7 +159,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(163, 33);
+            this.dateTimePicker1.Location = new System.Drawing.Point(157, 18);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(91, 23);
             this.dateTimePicker1.TabIndex = 41;
@@ -167,7 +167,7 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(271, 33);
+            this.dateTimePicker2.Location = new System.Drawing.Point(265, 18);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(91, 23);
             this.dateTimePicker2.TabIndex = 41;
@@ -176,7 +176,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label7.Location = new System.Drawing.Point(253, 34);
+            this.label7.Location = new System.Drawing.Point(247, 19);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(20, 20);
             this.label7.TabIndex = 39;
@@ -219,7 +219,7 @@
             this.dgvShift.RowHeadersWidth = 30;
             this.dgvShift.RowTemplate.Height = 23;
             this.dgvShift.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvShift.Size = new System.Drawing.Size(1050, 423);
+            this.dgvShift.Size = new System.Drawing.Size(1050, 451);
             this.dgvShift.TabIndex = 0;
             // 
             // FrmShiftManage

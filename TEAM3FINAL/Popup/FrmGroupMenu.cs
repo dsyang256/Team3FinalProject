@@ -19,17 +19,17 @@ namespace TEAM3FINAL
         private void DataGridViewColumnSet()
         {
             //데이터그리드뷰 초기설정
-            Util.InitSettingGridView(dgvGroups);
+            DataGridViewUtil.InitSettingGridView(dgvGroups);
             ////데이터그리드뷰 컬럼 추가
-            Util.AddNewColumnToDataGridView(dgvGroups, "그룹명", "FAC_FCLTY", true, 80);
-            Util.AddNewColumnToDataGridView(dgvGroups, "그룹설명", "FAC_TYP", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvGroups, "그룹명", "FAC_FCLTY", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvGroups, "그룹설명", "FAC_TYP", true, 80);
 
             //데이터그리드뷰 초기설정
-            Util.InitSettingGridView(dgvMenus);
+            DataGridViewUtil.InitSettingGridView(dgvMenus);
             ////데이터그리드뷰 체크박스, 컬럼 추가
-            Util.DataGridViewCheckBoxSet(dgvMenus, "허용여부");
-            Util.AddNewColumnToDataGridView(dgvMenus, "메뉴명", "FAC_FCLTY", true, 80);
-            Util.AddNewColumnToDataGridView(dgvMenus, "메뉴설명", "FAC_TYP", true, 80);
+            DataGridViewUtil.DataGridViewCheckBoxSet(dgvMenus, "허용여부");
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMenus, "메뉴명", "FAC_FCLTY", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMenus, "메뉴설명", "FAC_TYP", true, 80);
         }
 
 

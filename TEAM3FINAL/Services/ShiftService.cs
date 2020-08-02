@@ -12,16 +12,25 @@ namespace TEAM3FINAL
 {
     public class ShiftService
     {
-        public Message SaveShiftInfo(SHIFT_VO vo)
+        public Message InsertOrUpdateShift(SHIFT_VO vo)
         {
             ShiftDAC dac = new ShiftDAC();
-            return dac.SaveShiftInfo(vo);
+            return dac.InsertOrUpdateShift(vo);
         }
-
-        public List<SHIFTList_VO> GetAllShiftList()
+        public List<SHIFTList_VO> GetShiftList()
         {
             ShiftDAC dac = new ShiftDAC();
-            return dac.GetAllShiftList();
+            return dac.GetShiftList();
+        }
+        public bool DeleteShiftList(string list, string gubun)
+        {
+            ShiftDAC dac = new ShiftDAC();
+            return dac.DeleteShiftList(list, gubun);
+        }
+        public SHIFTList_VO GetShiftInfo(string shiftCode)
+        {
+            ShiftDAC dac = new ShiftDAC();
+            return dac.GetShiftInfo(shiftCode);
         }
     }
 }

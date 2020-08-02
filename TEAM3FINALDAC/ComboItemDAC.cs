@@ -50,9 +50,9 @@ namespace TEAM3FINALDAC
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = new SqlConnection(this.ConnectionString);
-                    cmd.CommandText = $@"select f.FCLTS_CODE COMMON_CODE, f.FCLTS_NAME COMMON_NAME
-                                        from dbo.FACILITIES f
-                                        where 1=1 ";
+                    cmd.CommandText = $@"select [FCLTS_CODE] COMMON_CODE, [FCLTS_NAME] COMMON_NAME, null COMMON_PARENT, null COMMON_SEQ
+                                                        from [dbo].[FACILITY]
+                                                        where 1=1 ";
 
                     cmd.Connection.Open();
                     SqlDataReader reader = cmd.ExecuteReader();

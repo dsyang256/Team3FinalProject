@@ -21,6 +21,29 @@ namespace TEAM3FINAL
     /// </summary>
     public class UtilsJH
     {
+    }
+
+    /// <summary>
+    /// 이미지 헬퍼 클래스
+    /// </summary>
+    public static class ImageHelper
+    {
+        //Convert Image to byte[] array:
+        public static byte[] ToByteArray(this Image imageIn)
+        {
+            var ms = new MemoryStream();
+            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+            return ms.ToArray();
+        }
+
+        //Convert byte[] array to Image:
+        public static Image ToImage(this byte[] byteArrayIn)
+        {
+            var ms = new MemoryStream(byteArrayIn);
+            var returnImage = Image.FromStream(ms);
+            return returnImage;
+        }
+
         /// <summary>
         /// 사진 크기를 변환하는 메서드
         /// </summary>
@@ -69,27 +92,14 @@ namespace TEAM3FINAL
             }
             return dest;
         }
+
     }
 
-    public static class HelperExtensions
-    {
-        //Convert Image to byte[] array:
-        public static byte[] ToByteArray(this Image imageIn)
-        {
-            var ms = new MemoryStream();
-            imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-            return ms.ToArray();
-        }
 
-        //Convert byte[] array to Image:
-        public static Image ToImage(this byte[] byteArrayIn)
-        {
-            var ms = new MemoryStream(byteArrayIn);
-            var returnImage = Image.FromStream(ms);
-            return returnImage;
-        }
-    }
 
+    /// <summary>
+    /// 로그인 정보 저장 클래스
+    /// </summary>
     public class LoginInfo
     {
         #region 싱글톤

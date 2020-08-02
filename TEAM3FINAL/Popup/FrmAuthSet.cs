@@ -47,28 +47,28 @@ namespace TEAM3FINAL
             //데이터그리드뷰 초기설정
 
             //관리자 검색
-            Util.InitSettingGridView(dgvUsers);
-            Util.AddNewColumnToDataGridView(dgvUsers, "관리자 ID", "MANAGER_ID", true, 100);
-            Util.AddNewColumnToDataGridView(dgvUsers, "이름", "MANAGER_NAME", true, 100);
-            Util.AddNewColumnToDataGridView(dgvUsers, "부서", "MANAGER_DEP", true, 100);
+            DataGridViewUtil.InitSettingGridView(dgvUsers);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvUsers, "관리자 ID", "MANAGER_ID", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvUsers, "이름", "MANAGER_NAME", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvUsers, "부서", "MANAGER_DEP", true, 100);
 
             //권한 설정
-            Util.InitSettingGridView(dgvRight);
-            Util.AddNewColumnToDataGridView(dgvRight, "메뉴ID", "MENU_ID", false, 100);
-            Util.AddNewColumnToDataGridView(dgvRight, "메뉴명", "MENU_NAME", true, 100);
-            Util.DataGridViewCheckBoxSet(dgvRight, "등록","등록",100);
-            Util.DataGridViewCheckBoxSet(dgvRight, "읽기", "읽기",100);
-            Util.DataGridViewCheckBoxSet(dgvRight, "수정", "수정",100);
-            Util.DataGridViewCheckBoxSet(dgvRight, "삭제", "삭제",100);
-            Util.DataGridViewCheckBoxSet(dgvRight, "인쇄", "인쇄", 100);
+            DataGridViewUtil.InitSettingGridView(dgvRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvRight, "메뉴ID", "MENU_ID", false, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvRight, "메뉴명", "MENU_NAME", true, 100);
+            DataGridViewUtil.DataGridViewCheckBoxSet(dgvRight, "등록","등록",100);
+            DataGridViewUtil.DataGridViewCheckBoxSet(dgvRight, "읽기", "읽기",100);
+            DataGridViewUtil.DataGridViewCheckBoxSet(dgvRight, "수정", "수정",100);
+            DataGridViewUtil.DataGridViewCheckBoxSet(dgvRight, "삭제", "삭제",100);
+            DataGridViewUtil.DataGridViewCheckBoxSet(dgvRight, "인쇄", "인쇄", 100);
 
             //그룹 설정
-            Util.InitSettingGridView(dgvGroup);
-            Util.DataGridViewCheckBoxSet(dgvGroup,"    ");
-            Util.AddNewColumnToDataGridView(dgvGroup, "그룹코드", "RIGHT_ID", false, 100);
-            Util.AddNewColumnToDataGridView(dgvGroup, "그룹", "RIGHT_GROUP", true, 100);
-            Util.AddNewColumnToDataGridView(dgvGroup, "그룹명", "RIGHT_NAME", true, 150);
-            Util.AddNewColumnToDataGridView(dgvGroup, "상세설명", "RIGHT_DESC", true, 300);
+            DataGridViewUtil.InitSettingGridView(dgvGroup);
+            DataGridViewUtil.DataGridViewCheckBoxSet(dgvGroup,"    ");
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvGroup, "그룹코드", "RIGHT_ID", false, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvGroup, "그룹", "RIGHT_GROUP", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvGroup, "그룹명", "RIGHT_NAME", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvGroup, "상세설명", "RIGHT_DESC", true, 300);
         }
 
         #endregion

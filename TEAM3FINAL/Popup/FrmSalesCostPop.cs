@@ -40,14 +40,46 @@ namespace TEAM3FINAL
             ComboItemService service = new ComboItemService();
             var ComList = service.GetCompanyCode();
             var ItemList = service.GetItemCode();
-
+            //콤보박스 바인딩 
             CommonUtil.ComboBinding<ComboItemVO>(cboCompany, ComList, "COMMON_CODE", "COMMON_NAME");
             CommonUtil.ComboBinding<ComboItemVO>(cboItem, ItemList, "COMMON_CODE", "COMMON_NAME");
         }
-
         #endregion
 
         #region 이벤트
+        private void FrmSalesCostPop_Load(object sender, EventArgs e)
+        {
+            //초기값
+            cboUseYN.SelectedIndex = 0;
+            txtMDFDate.Text = DateTime.Now.ToShortDateString();
+
+            //콤보박스 바인딩
+            BindingComboBox();
+
+            if (InsertOrUpdate == 1) //등록
+            {
+                txtExPrice.ReadOnly = false;
+            }
+            else //수정
+            {
+                txtExPrice.ReadOnly = true;
+
+                //서비스 호출
+                CostService service = new CostService();
+                var vo = service.GetSalesCostInfo(MCCode);
+                cboCompany.SelectedIndex = cboCompany.FindStringExact(vo.COM_NAME);
+                cboItem.SelectedIndex = cboItem.FindStringExact(vo.ITEM_NAME);
+                cboUseYN.SelectedIndex = cboUseYN.FindStringExact(vo.SC_USE_YN);
+                txtNowPrice.Text = vo.SC_UNITPRICE_CUR.ToString();
+                txtExPrice.Text = vo.SC_UNITPRICE_EX.ToString();
+                dtpStartDate.Value = Convert.ToDateTime(vo.SC_STARTDATE);
+                txtEndDate.Text = vo.SC_ENDDATE;
+                txtRemark.Text = vo.SC_REMARK;
+                txtCode.Text = vo.SC_CODE.ToString();
+            }
+
+        }
+
         /// <summary>
         ///  시작시간 KeyPress 이벤트
         /// </summary>
@@ -62,15 +94,6 @@ namespace TEAM3FINAL
             }
         }
 
-        /// <summary>
-        /// 폼 종료 이벤트
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
         /// <summary>
         /// 저장이벤트
         /// </summary>
@@ -122,39 +145,15 @@ namespace TEAM3FINAL
             }
 
         }
-
-        private void FrmSalesCostPop_Load(object sender, EventArgs e)
+        /// <summary>
+        /// 폼 종료 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCancel_Click(object sender, EventArgs e)
         {
-            //콤보박스 바인딩
-            BindingComboBox();
-
-            cboUseYN.SelectedIndex = 0;
-            txtMDFDate.Text = DateTime.Now.ToShortDateString();
-            if (InsertOrUpdate == 1) //등록
-            {
-                txtExPrice.ReadOnly = false;
-            }
-            else //수정
-            {
-                txtExPrice.ReadOnly = true;
-
-                //서비스 호출
-                CostService service = new CostService();
-                var vo = service.GetSalesCostInfo(MCCode);
-                cboCompany.SelectedIndex = cboCompany.FindStringExact(vo.COM_NAME);
-                cboItem.SelectedIndex = cboItem.FindStringExact(vo.ITEM_NAME);
-                cboUseYN.SelectedIndex = cboUseYN.FindStringExact(vo.SC_USE_YN);
-                txtNowPrice.Text = vo.SC_UNITPRICE_CUR.ToString();
-                txtExPrice.Text = vo.SC_UNITPRICE_EX.ToString();
-                dtpStartDate.Value = Convert.ToDateTime(vo.SC_STARTDATE);
-                txtEndDate.Text = vo.SC_ENDDATE;
-                txtRemark.Text = vo.SC_REMARK;
-                txtCode.Text = vo.SC_CODE.ToString();
-            }
-
+            this.Close();
         }
-
-
         #endregion
 
 

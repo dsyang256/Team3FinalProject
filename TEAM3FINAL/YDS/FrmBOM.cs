@@ -200,24 +200,24 @@ namespace TEAM3FINAL
         /// </summary>
         private void DataGridViewColumnSet()
         {
-            Util.InitSettingGridView(dgvBOM);
-            Util.AddNewColumnToDataGridView(dgvBOM, "no", "idx", true, 30);
-            Util.DataGridViewCheckBoxSet(dgvBOM, "all");
-            Util.AddNewColumnToDataGridView(dgvBOM, "BOM_CODE", "BOM_CODE", false, 30);
-            Util.AddNewColumnToDataGridView(dgvBOM, "품목", "ITEM_CODE", true, 200);
-            Util.AddNewColumnToDataGridView(dgvBOM, "품명", "ITEM_NAME", true, 200);
-            Util.AddNewColumnToDataGridView(dgvBOM, "품목유형", "ITEM_TYP", true, 100);
-            Util.AddNewColumnToDataGridView(dgvBOM, "단위", "ITEM_UNIT", true, 100);
-            Util.AddNewColumnToDataGridView(dgvBOM, "소요량", "BOM_QTY", true, 80);
-            Util.AddNewColumnToDataGridView(dgvBOM, "BOM레벨", "Lvl", true, 100);
-            Util.AddNewColumnToDataGridView(dgvBOM, "시작일", "BOM_STARTDATE", true, 120);
-            Util.AddNewColumnToDataGridView(dgvBOM, "종료일", "BOM_ENDDATE", true, 120);
-            Util.AddNewColumnToDataGridView(dgvBOM, "사용여부", "BOM_USE_YN", true, 120);
-            Util.AddNewColumnToDataGridView(dgvBOM, "소요계획", "BOM_PLAN_YN", true, 120);
-            Util.AddNewColumnToDataGridView(dgvBOM, "자동차감", "BOM_AUTOREDUCE_YN", true, 100);
-            Util.AddNewColumnToDataGridView(dgvBOM, "설비", "FCLTS_CODE", true, 140);
-            Util.AddNewColumnToDataGridView(dgvBOM, "설비명", "FCLTS_NAME", true, 140);
-            Util.AddNewColumnToDataGridView(dgvBOM, "규격", "ITEM_STND", true, 140);
+            DataGridViewUtil.InitSettingGridView(dgvBOM);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "no", "idx", true, 30);
+            DataGridViewUtil.DataGridViewCheckBoxSet(dgvBOM, "all");
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "BOM_CODE", "BOM_CODE", false, 30);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "품목", "ITEM_CODE", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "품명", "ITEM_NAME", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "품목유형", "ITEM_TYP", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "단위", "ITEM_UNIT", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "소요량", "BOM_QTY", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "BOM레벨", "Lvl", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "시작일", "BOM_STARTDATE", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "종료일", "BOM_ENDDATE", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "사용여부", "BOM_USE_YN", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "소요계획", "BOM_PLAN_YN", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "자동차감", "BOM_AUTOREDUCE_YN", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "설비", "FCLTS_CODE", true, 140);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "설비명", "FCLTS_NAME", true, 140);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "규격", "ITEM_STND", true, 140);
             DataGridViewCheckBoxAllCheck();
 
         }

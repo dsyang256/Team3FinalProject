@@ -31,21 +31,24 @@ namespace TEAM3FINAL
         private void DataGridViewColumnSet()
         {
             //데이터그리드뷰 초기설정
-            Util.InitSettingGridView(dgvCost);
-            Util.DataGridViewCheckBoxSet(dgvCost, "");
-            Util.AddNewColumnToDataGridView(dgvCost, "자재코드", "MC_Code", false, 200);
-            Util.AddNewColumnToDataGridView(dgvCost, "업체", "COM_Code", true, 200);
-            Util.AddNewColumnToDataGridView(dgvCost, "업체명", "COM_NAME", true, 200);
-            Util.AddNewColumnToDataGridView(dgvCost, "품목", "ITEM_Code", true, 200);
-            Util.AddNewColumnToDataGridView(dgvCost, "품명", "ITEM_NAME", true, 200);
-            Util.AddNewColumnToDataGridView(dgvCost, "규격", "ITEM_STND", true, 150);
-            Util.AddNewColumnToDataGridView(dgvCost, "단위", "ITEM_UNIT", true, 100);
-            Util.AddNewColumnToDataGridView(dgvCost, "현재단가", "MC_UNITPRICE_CUR", true, 100);
-            Util.AddNewColumnToDataGridView(dgvCost, "이전단가", "MC_UNITPRICE_EX", true, 100);
-            Util.AddNewColumnToDataGridView(dgvCost, "시작일", "MC_STARTDATE", true, 120);
-            Util.AddNewColumnToDataGridView(dgvCost, "종료일", "MC_ENDDATE", true, 120);
-            Util.AddNewColumnToDataGridView(dgvCost, "비고", "MC_REMARK", true, 100);
-            Util.AddNewColumnToDataGridView(dgvCost, "사용유무", "MC_USE_YN", true, 100);
+            DataGridViewUtil.InitSettingGridView(dgvCost);
+            DataGridViewUtil.DataGridViewCheckBoxSet(dgvCost, "");
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "자재코드", "MC_Code", false, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "업체", "COM_Code", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "업체명", "COM_NAME", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "품목", "ITEM_Code", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "품명", "ITEM_NAME", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "규격", "ITEM_STND", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "단위", "ITEM_UNIT", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "현재단가", "MC_UNITPRICE_CUR", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "이전단가", "MC_UNITPRICE_EX", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "시작일", "MC_STARTDATE", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "종료일", "MC_ENDDATE", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "비고", "MC_REMARK", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "사용유무", "MC_USE_YN", true, 100);
+
+            //행번호 추가
+            DataGridViewUtil.DataGridViewRowNumSet(dgvCost);
         }
 
         /// <summary>
@@ -216,28 +219,8 @@ namespace TEAM3FINAL
             BindingComboBox();
             //데이터 조회
             LoadCostList();
-
-
         }
 
-
-        /// <summary>
-        /// 행 넘버 만드는 이벤트
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void dgvCost_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-            var grid = sender as DataGridView;
-            var rowIdx = (e.RowIndex + 1).ToString();
-            var centerFormat = new StringFormat()
-            { // right alignment might actually make more sense for numbers
-                Alignment = StringAlignment.Center,
-                LineAlignment = StringAlignment.Center
-            };
-            var headerBounds = new Rectangle(e.RowBounds.Left, e.RowBounds.Top, grid.RowHeadersWidth, e.RowBounds.Height);
-            e.Graphics.DrawString(rowIdx, this.Font, SystemBrushes.ControlText, headerBounds, centerFormat);
-        }
         private void dgvCost_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             //if (dgvCost.SelectedRows.Count > 0)

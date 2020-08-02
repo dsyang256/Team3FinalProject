@@ -416,7 +416,7 @@
     <Compile Include="Utils\CommonUtil.cs" />
     <Compile Include="Utils\ExcelExportImport.cs" />
     <Compile Include="Utils\FormUtil.cs" />
-    <Compile Include="Utils\Util.cs" />
+    <Compile Include="Utils\DataGridViewUtil.cs" />
     <Compile Include="YDS\FrmReorderPopUp.cs">
       <SubType>Form</SubType>
     </Compile>
