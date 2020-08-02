@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label9 = new System.Windows.Forms.Label();
-            this.cboFACGUseYN = new System.Windows.Forms.ComboBox();
+            this.cboFACUseYN = new System.Windows.Forms.ComboBox();
             this.txtNote = new System.Windows.Forms.TextBox();
             this.txtModifier = new System.Windows.Forms.TextBox();
             this.txtFACGCODE = new System.Windows.Forms.TextBox();
@@ -69,79 +69,88 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(805, 56);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            this.panel1.Size = new System.Drawing.Size(1035, 75);
             // 
             // label1
             // 
-            this.label1.Size = new System.Drawing.Size(50, 25);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Size = new System.Drawing.Size(63, 32);
             this.label1.Text = "설비";
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(714, 60);
+            this.label2.Location = new System.Drawing.Point(918, 80);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Visible = false;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(311, 574);
+            this.btnOK.Location = new System.Drawing.Point(400, 765);
+            this.btnOK.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(423, 574);
+            this.btnCancel.Location = new System.Drawing.Point(544, 765);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label9.Location = new System.Drawing.Point(42, 172);
+            this.label9.Location = new System.Drawing.Point(54, 229);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(55, 15);
+            this.label9.Size = new System.Drawing.Size(69, 20);
             this.label9.TabIndex = 54;
             this.label9.Text = "사용유무";
             // 
-            // cboFACGUseYN
+            // cboFACUseYN
             // 
-            this.cboFACGUseYN.FormattingEnabled = true;
-            this.cboFACGUseYN.Items.AddRange(new object[] {
-            "공장",
-            "자재팀창고",
-            "생산팀창고",
-            "영업팀창고",
-            "외주창고"});
-            this.cboFACGUseYN.Location = new System.Drawing.Point(126, 169);
-            this.cboFACGUseYN.Name = "cboFACGUseYN";
-            this.cboFACGUseYN.Size = new System.Drawing.Size(138, 23);
-            this.cboFACGUseYN.TabIndex = 53;
+            this.cboFACUseYN.FormattingEnabled = true;
+            this.cboFACUseYN.Items.AddRange(new object[] {
+            "사용",
+            "미사용"});
+            this.cboFACUseYN.Location = new System.Drawing.Point(162, 225);
+            this.cboFACUseYN.Margin = new System.Windows.Forms.Padding(4);
+            this.cboFACUseYN.Name = "cboFACUseYN";
+            this.cboFACUseYN.Size = new System.Drawing.Size(176, 28);
+            this.cboFACUseYN.TabIndex = 53;
             // 
             // txtNote
             // 
-            this.txtNote.Location = new System.Drawing.Point(126, 259);
+            this.txtNote.Location = new System.Drawing.Point(162, 345);
+            this.txtNote.Margin = new System.Windows.Forms.Padding(4);
             this.txtNote.Multiline = true;
             this.txtNote.Name = "txtNote";
-            this.txtNote.Size = new System.Drawing.Size(653, 139);
+            this.txtNote.Size = new System.Drawing.Size(838, 184);
             this.txtNote.TabIndex = 51;
             // 
             // txtModifier
             // 
-            this.txtModifier.Location = new System.Drawing.Point(126, 211);
+            this.txtModifier.Location = new System.Drawing.Point(162, 281);
+            this.txtModifier.Margin = new System.Windows.Forms.Padding(4);
             this.txtModifier.Name = "txtModifier";
-            this.txtModifier.Size = new System.Drawing.Size(138, 23);
+            this.txtModifier.Size = new System.Drawing.Size(176, 27);
             this.txtModifier.TabIndex = 49;
             // 
             // txtFACGCODE
             // 
-            this.txtFACGCODE.Location = new System.Drawing.Point(126, 81);
+            this.txtFACGCODE.Location = new System.Drawing.Point(162, 108);
+            this.txtFACGCODE.Margin = new System.Windows.Forms.Padding(4);
             this.txtFACGCODE.Name = "txtFACGCODE";
-            this.txtFACGCODE.Size = new System.Drawing.Size(138, 23);
+            this.txtFACGCODE.Size = new System.Drawing.Size(176, 27);
             this.txtFACGCODE.TabIndex = 52;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(42, 259);
+            this.label14.Location = new System.Drawing.Point(54, 345);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(55, 15);
+            this.label14.Size = new System.Drawing.Size(69, 20);
             this.label14.TabIndex = 38;
             this.label14.Text = "특이사항";
             // 
@@ -150,18 +159,20 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label13.Location = new System.Drawing.Point(18, 259);
+            this.label13.Location = new System.Drawing.Point(23, 345);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(15, 18);
+            this.label13.Size = new System.Drawing.Size(18, 24);
             this.label13.TabIndex = 42;
             this.label13.Text = "*";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(312, 214);
+            this.label12.Location = new System.Drawing.Point(401, 285);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(55, 15);
+            this.label12.Size = new System.Drawing.Size(69, 20);
             this.label12.TabIndex = 39;
             this.label12.Text = "수정시간";
             // 
@@ -170,18 +181,20 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label11.Location = new System.Drawing.Point(288, 212);
+            this.label11.Location = new System.Drawing.Point(370, 283);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(15, 18);
+            this.label11.Size = new System.Drawing.Size(18, 24);
             this.label11.TabIndex = 45;
             this.label11.Text = "*";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(42, 216);
+            this.label10.Location = new System.Drawing.Point(54, 288);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(43, 15);
+            this.label10.Size = new System.Drawing.Size(54, 20);
             this.label10.TabIndex = 37;
             this.label10.Text = "수정자";
             // 
@@ -190,9 +203,10 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label3.Location = new System.Drawing.Point(18, 216);
+            this.label3.Location = new System.Drawing.Point(23, 288);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(15, 18);
+            this.label3.Size = new System.Drawing.Size(18, 24);
             this.label3.TabIndex = 44;
             this.label3.Text = "*";
             // 
@@ -200,9 +214,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label7.Location = new System.Drawing.Point(312, 84);
+            this.label7.Location = new System.Drawing.Point(401, 112);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(55, 15);
+            this.label7.Size = new System.Drawing.Size(69, 20);
             this.label7.TabIndex = 40;
             this.label7.Text = "설비코드";
             // 
@@ -211,9 +226,10 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label6.Location = new System.Drawing.Point(288, 82);
+            this.label6.Location = new System.Drawing.Point(370, 109);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(15, 18);
+            this.label6.Size = new System.Drawing.Size(18, 24);
             this.label6.TabIndex = 46;
             this.label6.Text = "*";
             // 
@@ -221,9 +237,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label5.Location = new System.Drawing.Point(42, 84);
+            this.label5.Location = new System.Drawing.Point(54, 112);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 15);
+            this.label5.Size = new System.Drawing.Size(84, 20);
             this.label5.TabIndex = 41;
             this.label5.Text = "설비군코드";
             // 
@@ -232,9 +249,10 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label4.Location = new System.Drawing.Point(18, 82);
+            this.label4.Location = new System.Drawing.Point(23, 109);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(15, 18);
+            this.label4.Size = new System.Drawing.Size(18, 24);
             this.label4.TabIndex = 47;
             this.label4.Text = "*";
             // 
@@ -243,9 +261,10 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label15.Location = new System.Drawing.Point(18, 126);
+            this.label15.Location = new System.Drawing.Point(23, 168);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(15, 18);
+            this.label15.Size = new System.Drawing.Size(18, 24);
             this.label15.TabIndex = 47;
             this.label15.Text = "*";
             // 
@@ -253,17 +272,19 @@
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label16.Location = new System.Drawing.Point(42, 128);
+            this.label16.Location = new System.Drawing.Point(54, 171);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(55, 15);
+            this.label16.Size = new System.Drawing.Size(69, 20);
             this.label16.TabIndex = 41;
             this.label16.Text = "소진창고";
             // 
             // txtFACCODE
             // 
-            this.txtFACCODE.Location = new System.Drawing.Point(383, 81);
+            this.txtFACCODE.Location = new System.Drawing.Point(492, 108);
+            this.txtFACCODE.Margin = new System.Windows.Forms.Padding(4);
             this.txtFACCODE.Name = "txtFACCODE";
-            this.txtFACCODE.Size = new System.Drawing.Size(138, 23);
+            this.txtFACCODE.Size = new System.Drawing.Size(176, 27);
             this.txtFACCODE.TabIndex = 52;
             // 
             // label17
@@ -271,9 +292,10 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label17.Location = new System.Drawing.Point(546, 82);
+            this.label17.Location = new System.Drawing.Point(702, 109);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(15, 18);
+            this.label17.Size = new System.Drawing.Size(18, 24);
             this.label17.TabIndex = 46;
             this.label17.Text = "*";
             // 
@@ -281,17 +303,19 @@
             // 
             this.label18.AutoSize = true;
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label18.Location = new System.Drawing.Point(570, 84);
+            this.label18.Location = new System.Drawing.Point(733, 112);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(43, 15);
+            this.label18.Size = new System.Drawing.Size(54, 20);
             this.label18.TabIndex = 40;
             this.label18.Text = "설비명";
             // 
             // txtFACNAME
             // 
-            this.txtFACNAME.Location = new System.Drawing.Point(641, 81);
+            this.txtFACNAME.Location = new System.Drawing.Point(824, 108);
+            this.txtFACNAME.Margin = new System.Windows.Forms.Padding(4);
             this.txtFACNAME.Name = "txtFACNAME";
-            this.txtFACNAME.Size = new System.Drawing.Size(138, 23);
+            this.txtFACNAME.Size = new System.Drawing.Size(176, 27);
             this.txtFACNAME.TabIndex = 52;
             // 
             // cboFACEXHST
@@ -303,9 +327,10 @@
             "생산팀창고",
             "영업팀창고",
             "외주창고"});
-            this.cboFACEXHST.Location = new System.Drawing.Point(126, 125);
+            this.cboFACEXHST.Location = new System.Drawing.Point(162, 167);
+            this.cboFACEXHST.Margin = new System.Windows.Forms.Padding(4);
             this.cboFACEXHST.Name = "cboFACEXHST";
-            this.cboFACEXHST.Size = new System.Drawing.Size(138, 23);
+            this.cboFACEXHST.Size = new System.Drawing.Size(176, 28);
             this.cboFACEXHST.TabIndex = 53;
             // 
             // label8
@@ -313,9 +338,10 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label8.Location = new System.Drawing.Point(18, 172);
+            this.label8.Location = new System.Drawing.Point(23, 229);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(15, 18);
+            this.label8.Size = new System.Drawing.Size(18, 24);
             this.label8.TabIndex = 47;
             this.label8.Text = "*";
             // 
@@ -324,9 +350,10 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label19.Location = new System.Drawing.Point(288, 126);
+            this.label19.Location = new System.Drawing.Point(370, 168);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(15, 18);
+            this.label19.Size = new System.Drawing.Size(18, 24);
             this.label19.TabIndex = 47;
             this.label19.Text = "*";
             // 
@@ -334,9 +361,10 @@
             // 
             this.label20.AutoSize = true;
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label20.Location = new System.Drawing.Point(312, 128);
+            this.label20.Location = new System.Drawing.Point(401, 171);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(55, 15);
+            this.label20.Size = new System.Drawing.Size(69, 20);
             this.label20.TabIndex = 41;
             this.label20.Text = "양품창고";
             // 
@@ -349,16 +377,18 @@
             "생산팀창고",
             "영업팀창고",
             "외주창고"});
-            this.cboFACGOOD.Location = new System.Drawing.Point(383, 125);
+            this.cboFACGOOD.Location = new System.Drawing.Point(492, 167);
+            this.cboFACGOOD.Margin = new System.Windows.Forms.Padding(4);
             this.cboFACGOOD.Name = "cboFACGOOD";
-            this.cboFACGOOD.Size = new System.Drawing.Size(138, 23);
+            this.cboFACGOOD.Size = new System.Drawing.Size(176, 28);
             this.cboFACGOOD.TabIndex = 53;
             // 
             // txtModifyDate
             // 
-            this.txtModifyDate.Location = new System.Drawing.Point(383, 211);
+            this.txtModifyDate.Location = new System.Drawing.Point(492, 281);
+            this.txtModifyDate.Margin = new System.Windows.Forms.Padding(4);
             this.txtModifyDate.Name = "txtModifyDate";
-            this.txtModifyDate.Size = new System.Drawing.Size(138, 23);
+            this.txtModifyDate.Size = new System.Drawing.Size(176, 27);
             this.txtModifyDate.TabIndex = 49;
             // 
             // label23
@@ -366,18 +396,20 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label23.Location = new System.Drawing.Point(546, 125);
+            this.label23.Location = new System.Drawing.Point(702, 167);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(15, 18);
+            this.label23.Size = new System.Drawing.Size(18, 24);
             this.label23.TabIndex = 44;
             this.label23.Text = "*";
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(570, 125);
+            this.label24.Location = new System.Drawing.Point(733, 167);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(55, 15);
+            this.label24.Size = new System.Drawing.Size(69, 20);
             this.label24.TabIndex = 37;
             this.label24.Text = "불량창고";
             // 
@@ -390,9 +422,10 @@
             "생산팀창고",
             "영업팀창고",
             "외주창고"});
-            this.cboFACBAD.Location = new System.Drawing.Point(641, 122);
+            this.cboFACBAD.Location = new System.Drawing.Point(824, 163);
+            this.cboFACBAD.Margin = new System.Windows.Forms.Padding(4);
             this.cboFACBAD.Name = "cboFACBAD";
-            this.cboFACBAD.Size = new System.Drawing.Size(138, 23);
+            this.cboFACBAD.Size = new System.Drawing.Size(176, 28);
             this.cboFACBAD.TabIndex = 53;
             // 
             // label25
@@ -400,18 +433,20 @@
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label25.Location = new System.Drawing.Point(288, 172);
+            this.label25.Location = new System.Drawing.Point(370, 229);
+            this.label25.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(15, 18);
+            this.label25.Size = new System.Drawing.Size(18, 24);
             this.label25.TabIndex = 44;
             this.label25.Text = "*";
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(312, 172);
+            this.label26.Location = new System.Drawing.Point(401, 229);
+            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(55, 15);
+            this.label26.Size = new System.Drawing.Size(69, 20);
             this.label26.TabIndex = 37;
             this.label26.Text = "외주여부";
             // 
@@ -419,14 +454,12 @@
             // 
             this.cboEXTRLYN.FormattingEnabled = true;
             this.cboEXTRLYN.Items.AddRange(new object[] {
-            "공장",
-            "자재팀창고",
-            "생산팀창고",
-            "영업팀창고",
-            "외주창고"});
-            this.cboEXTRLYN.Location = new System.Drawing.Point(383, 167);
+            "사용",
+            "미사용"});
+            this.cboEXTRLYN.Location = new System.Drawing.Point(492, 223);
+            this.cboEXTRLYN.Margin = new System.Windows.Forms.Padding(4);
             this.cboEXTRLYN.Name = "cboEXTRLYN";
-            this.cboEXTRLYN.Size = new System.Drawing.Size(138, 23);
+            this.cboEXTRLYN.Size = new System.Drawing.Size(176, 28);
             this.cboEXTRLYN.TabIndex = 53;
             // 
             // label27
@@ -434,39 +467,42 @@
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label27.Location = new System.Drawing.Point(18, 407);
+            this.label27.Location = new System.Drawing.Point(23, 543);
+            this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(15, 18);
+            this.label27.Size = new System.Drawing.Size(18, 24);
             this.label27.TabIndex = 42;
             this.label27.Text = "*";
             // 
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(42, 407);
+            this.label28.Location = new System.Drawing.Point(54, 543);
+            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(31, 15);
+            this.label28.Size = new System.Drawing.Size(39, 20);
             this.label28.TabIndex = 38;
             this.label28.Text = "비고";
             // 
             // txtREMARK
             // 
-            this.txtREMARK.Location = new System.Drawing.Point(126, 404);
+            this.txtREMARK.Location = new System.Drawing.Point(162, 539);
+            this.txtREMARK.Margin = new System.Windows.Forms.Padding(4);
             this.txtREMARK.Multiline = true;
             this.txtREMARK.Name = "txtREMARK";
-            this.txtREMARK.Size = new System.Drawing.Size(653, 139);
+            this.txtREMARK.Size = new System.Drawing.Size(838, 184);
             this.txtREMARK.TabIndex = 51;
             // 
             // FrmFacilityPopUp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.ClientSize = new System.Drawing.Size(805, 630);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.ClientSize = new System.Drawing.Size(1035, 840);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.cboEXTRLYN);
             this.Controls.Add(this.cboFACBAD);
             this.Controls.Add(this.cboFACGOOD);
             this.Controls.Add(this.cboFACEXHST);
-            this.Controls.Add(this.cboFACGUseYN);
+            this.Controls.Add(this.cboFACUseYN);
             this.Controls.Add(this.txtREMARK);
             this.Controls.Add(this.txtNote);
             this.Controls.Add(this.txtModifyDate);
@@ -497,7 +533,9 @@
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
+            this.Margin = new System.Windows.Forms.Padding(5, 9, 5, 9);
             this.Name = "FrmFacilityPopUp";
+            this.Load += new System.EventHandler(this.FrmFacilityPopUp_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.btnOK, 0);
@@ -532,7 +570,7 @@
             this.Controls.SetChildIndex(this.txtModifyDate, 0);
             this.Controls.SetChildIndex(this.txtNote, 0);
             this.Controls.SetChildIndex(this.txtREMARK, 0);
-            this.Controls.SetChildIndex(this.cboFACGUseYN, 0);
+            this.Controls.SetChildIndex(this.cboFACUseYN, 0);
             this.Controls.SetChildIndex(this.cboFACEXHST, 0);
             this.Controls.SetChildIndex(this.cboFACGOOD, 0);
             this.Controls.SetChildIndex(this.cboFACBAD, 0);
@@ -548,7 +586,7 @@
         #endregion
 
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox cboFACGUseYN;
+        private System.Windows.Forms.ComboBox cboFACUseYN;
         private System.Windows.Forms.TextBox txtNote;
         private System.Windows.Forms.TextBox txtModifier;
         private System.Windows.Forms.TextBox txtFACGCODE;

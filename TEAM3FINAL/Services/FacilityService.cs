@@ -19,31 +19,49 @@ namespace TEAM3FINAL.Services
             return dac.GetFacilityGroupInfo();
         }
 
-        public string InsertFacilityGroup(FACILITY_GROUP fac)
+        public Message InsertFacilityGroup(FACILITY_GROUP fac, bool update)
         {
             FacilityDAC dac = new FacilityDAC();
-            return dac.InsertFacilityGroup(fac);
+            return dac.InsertFacilityGroup(fac, update);
         }
 
-        public string UpdateFacilityGroup(FACILITY_GROUP fac)
+        public Message UpdateFacilityGroup(FACILITY_GROUP fac, bool update)
         {
             FacilityDAC dac = new FacilityDAC();
-            return dac.UpdateFacilityGroup(fac);
+            return dac.UpdateFacilityGroup(fac, update);
         }
 
         #endregion
 
         #region 설비
-        public string InsertFacility(FACILITY_VO fac)
+        public Message InsertFacility(FACILITY_VO fac, bool update)
         {
             FacilityDAC dac = new FacilityDAC();
-            return dac.InsertFacility(fac);
+            return dac.InsertFacility(fac, update);
         }
 
         internal object GetFacilityInfo()
         {
             FacilityDAC dac = new FacilityDAC();
             return dac.GetFacilityInfo();
+        }
+
+        internal Message UpdateFacility(FACILITY_VO fac, bool update)
+        {
+            FacilityDAC dac = new FacilityDAC();
+            return dac.UpdateFacility(fac, update);
+        }
+
+        internal Message DeleteFacilityGroup(string code)
+        {
+            FacilityDAC dac = new FacilityDAC();
+            return dac.DeleteFacilityGroup(code);
+        }
+
+        internal object SearchFacilityInfo(string code)
+        {
+            FacilityDAC dac = new FacilityDAC();
+            return dac.SearchFacilityInfo(code);
         }
 
         #endregion

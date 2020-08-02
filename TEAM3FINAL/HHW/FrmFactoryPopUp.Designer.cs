@@ -67,14 +67,19 @@
             this.cboFreeYN = new System.Windows.Forms.ComboBox();
             this.cboParent = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.txtModifier = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.txtModifyDate = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(6, 7);
             this.panel1.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
-            this.panel1.Size = new System.Drawing.Size(1310, 75);
+            this.panel1.Size = new System.Drawing.Size(1029, 75);
             // 
             // label1
             // 
@@ -90,13 +95,13 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(381, 685);
+            this.btnOK.Location = new System.Drawing.Point(381, 744);
             this.btnOK.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(525, 685);
+            this.btnCancel.Location = new System.Drawing.Point(525, 744);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -361,7 +366,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(111, 512);
+            this.label27.Location = new System.Drawing.Point(111, 571);
             this.label27.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(69, 20);
@@ -373,7 +378,7 @@
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label28.Location = new System.Drawing.Point(80, 509);
+            this.label28.Location = new System.Drawing.Point(80, 568);
             this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(18, 24);
@@ -382,7 +387,7 @@
             // 
             // txtDesc
             // 
-            this.txtDesc.Location = new System.Drawing.Point(219, 512);
+            this.txtDesc.Location = new System.Drawing.Point(219, 571);
             this.txtDesc.Margin = new System.Windows.Forms.Padding(4);
             this.txtDesc.Multiline = true;
             this.txtDesc.Name = "txtDesc";
@@ -531,10 +536,70 @@
             this.label23.TabIndex = 23;
             this.label23.Text = "*";
             // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label29.Location = new System.Drawing.Point(80, 507);
+            this.label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(18, 24);
+            this.label29.TabIndex = 23;
+            this.label29.Text = "*";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(111, 510);
+            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(54, 20);
+            this.label30.TabIndex = 22;
+            this.label30.Text = "수정자";
+            // 
+            // txtModifier
+            // 
+            this.txtModifier.Location = new System.Drawing.Point(219, 507);
+            this.txtModifier.Margin = new System.Windows.Forms.Padding(4);
+            this.txtModifier.Name = "txtModifier";
+            this.txtModifier.Size = new System.Drawing.Size(247, 27);
+            this.txtModifier.TabIndex = 24;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label31.Location = new System.Drawing.Point(562, 507);
+            this.label31.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(18, 24);
+            this.label31.TabIndex = 23;
+            this.label31.Text = "*";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(593, 510);
+            this.label32.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(69, 20);
+            this.label32.TabIndex = 22;
+            this.label32.Text = "수정시간";
+            // 
+            // txtModifyDate
+            // 
+            this.txtModifyDate.Location = new System.Drawing.Point(701, 507);
+            this.txtModifyDate.Margin = new System.Windows.Forms.Padding(4);
+            this.txtModifyDate.Name = "txtModifyDate";
+            this.txtModifyDate.Size = new System.Drawing.Size(247, 27);
+            this.txtModifyDate.TabIndex = 24;
+            // 
             // FrmFactoryPopUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.ClientSize = new System.Drawing.Size(1029, 749);
+            this.ClientSize = new System.Drawing.Size(1029, 826);
             this.Controls.Add(this.cboParent);
             this.Controls.Add(this.cboFreeYN);
             this.Controls.Add(this.cboCom);
@@ -547,6 +612,8 @@
             this.Controls.Add(this.txtDesc);
             this.Controls.Add(this.txtSort);
             this.Controls.Add(this.txtName);
+            this.Controls.Add(this.txtModifyDate);
+            this.Controls.Add(this.txtModifier);
             this.Controls.Add(this.txtCode);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.label14);
@@ -554,7 +621,11 @@
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label28);
+            this.Controls.Add(this.label32);
             this.Controls.Add(this.label13);
+            this.Controls.Add(this.label31);
+            this.Controls.Add(this.label30);
+            this.Controls.Add(this.label29);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -596,7 +667,11 @@
             this.Controls.SetChildIndex(this.label9, 0);
             this.Controls.SetChildIndex(this.label10, 0);
             this.Controls.SetChildIndex(this.label12, 0);
+            this.Controls.SetChildIndex(this.label29, 0);
+            this.Controls.SetChildIndex(this.label30, 0);
+            this.Controls.SetChildIndex(this.label31, 0);
             this.Controls.SetChildIndex(this.label13, 0);
+            this.Controls.SetChildIndex(this.label32, 0);
             this.Controls.SetChildIndex(this.label28, 0);
             this.Controls.SetChildIndex(this.label19, 0);
             this.Controls.SetChildIndex(this.label21, 0);
@@ -604,6 +679,8 @@
             this.Controls.SetChildIndex(this.label14, 0);
             this.Controls.SetChildIndex(this.label27, 0);
             this.Controls.SetChildIndex(this.txtCode, 0);
+            this.Controls.SetChildIndex(this.txtModifier, 0);
+            this.Controls.SetChildIndex(this.txtModifyDate, 0);
             this.Controls.SetChildIndex(this.txtName, 0);
             this.Controls.SetChildIndex(this.txtSort, 0);
             this.Controls.SetChildIndex(this.txtDesc, 0);
@@ -667,5 +744,11 @@
         private System.Windows.Forms.ComboBox cboFreeYN;
         private System.Windows.Forms.ComboBox cboParent;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox txtModifier;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox txtModifyDate;
     }
 }

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using TEAM3FINAL.Services;
 using TEAM3FINALVO;
 using System.Linq;
+using Message = TEAM3FINALVO.Message;
 
 namespace TEAM3FINAL
 {
@@ -97,6 +98,7 @@ namespace TEAM3FINAL
             frm.ePrint += Print; //입력필요
         }
 
+        //콤보박스 바인딩
         private void ComboBinding()
         {
             ComboItemService service = new ComboItemService();
@@ -113,6 +115,8 @@ namespace TEAM3FINAL
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
                 FrmFactoryPopUp frm = new FrmFactoryPopUp();
+                frm.FAC_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
+                frm.FAC_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 frm.ShowDialog();
                 if (frm.DialogResult == DialogResult.OK)
                 {
@@ -172,8 +176,8 @@ namespace TEAM3FINAL
                     frm.FAC_DEMAND_YN = dgvFactoryList.CurrentRow.Cells[9].Value.ToString();
                     frm.FAC_PROCS_YN = dgvFactoryList.CurrentRow.Cells[10].Value.ToString();
                     frm.FAC_MTRL_YN = dgvFactoryList.CurrentRow.Cells[11].Value.ToString();
-                    frm.FAC_LAST_MDFR = "황현우"; //수정필요
-                    //frm.FAC_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    frm.FAC_LAST_MDFR = LoginInfo.UserInfo.LI_ID; //수정필요
+                    frm.FAC_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                     frm.FAC_USE_YN = dgvFactoryList.CurrentRow.Cells[13].Value.ToString();
                     frm.FAC_DESC = dgvFactoryList.CurrentRow.Cells[6].Value.ToString();
                     frm.COM_CODE = dgvFactoryList.CurrentRow.Cells[12].Value.ToString();
@@ -216,10 +220,17 @@ namespace TEAM3FINAL
                 if (MessageBox.Show($"총 {cnt}개의 항목을 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     FactoryService service = new FactoryService();
-                    if (service.DeleteFactory("FACTORY", "FAC_CODE", sb) == "C200")
+
+                    Message msg = service.DeleteFactory("FACTORY", "FAC_CODE", sb);
+                    if (msg.IsSuccess)
                     {
-                        MessageBox.Show("삭제 완료");
+                        MessageBox.Show(msg.ResultMessage);
                         GetFactoryInfo();
+                    }
+                    else
+                    {
+                        MessageBox.Show(msg.ResultMessage);
+                        return;
                     }
                 }
             }
