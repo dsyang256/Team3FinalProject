@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml;
 using TEAM3FINALVO;
 
 namespace TEAM3FINAL
@@ -132,24 +133,21 @@ namespace TEAM3FINAL
 
         public void Search(object sender, EventArgs e)
         {
-            //List<SHIFTList_VO> list = null;
-            ////Shift조회
-            //if (AllList.Count > 0 && cboShift.SelectedIndex > 0)
-            //{
-            //    list = (from item in AllList select item).Where
-            //        (p => p.SHIFT_TYP == cboShift.SelectedText).ToList();
-            //}
-            //else
-            //{
-            //    list = AllList;
-            //}
-            ////업체명 조회
-            //if (cboFclts.Text.Length > 0)
-            //{
-            //    list = (from item in list select item).Where(p => p.FCLTS_NAME == cboFclts.Text).ToList();
-            //}
-            //dgvShift.DataSource = null;
-            //dgvShift.DataSource = list;
+            List<SALESWorkList_VO> list = null;
+            //납기일조회
+            if (AllList.Count > 0)
+            {
+                list = (from item in AllList select item).Where
+                    (p => (Convert.ToDateTime(p.SALES_DUEDATE) < dtpTo.Value) && Convert.ToDateTime(p.SALES_DUEDATE) > dtpFrom.Value).ToList();
+            }
+
+
+            //업체명 조회
+            if (txtItem.Text.Trim().Length > 0)
+            {
+            }
+            dgvSales.DataSource = null;
+            dgvSales.DataSource = list;
 
         }
 
@@ -158,8 +156,10 @@ namespace TEAM3FINAL
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
                 LoadSalesWorkList();
-                //cboFclts.SelectedIndex = 0;
-                //cboShift.SelectedIndex = 0;
+                cboState.SelectedIndex = 0;
+                cboCom.SelectedIndex = 0;
+                cboCom2.SelectedIndex = 0;
+                cboOrderGubun.SelectedIndex = 0;
             }
 
         }
@@ -230,5 +230,22 @@ namespace TEAM3FINAL
 
         #endregion
 
+        private void dtpFrom_ValueChanged(object sender, EventArgs e)
+        {
+            if(dtpFrom.Value > dtpTo.Value)
+            {
+                MessageBox.Show("시작일은 종료일보다 늦을 수 없습니다.");
+                dtpTo.Value = dtpFrom.Value;
+            }
+        }
+
+        private void dtpTo_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpTo.Value < dtpFrom.Value)
+            {
+                MessageBox.Show("종료일은 시작일보다 빠를 수 없습니다.");
+                dtpFrom.Value = dtpTo.Value;
+            }
+        }
     }
 }
