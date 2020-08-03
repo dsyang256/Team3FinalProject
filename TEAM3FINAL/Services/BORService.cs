@@ -13,7 +13,13 @@ namespace TEAM3FINAL
         public List<BOR_VO> GetBORList()
         {
             BORDAC dac = new BORDAC();
-            return null;
+            return dac.GetBORList();
+        }
+
+        public List<BOR_VO> SearchBOR(string itemCode, string proc, string facility)
+        {
+            BORDAC dac = new BORDAC();
+            return dac.SearchBOR(itemCode, proc, facility);
         }
     }
 }

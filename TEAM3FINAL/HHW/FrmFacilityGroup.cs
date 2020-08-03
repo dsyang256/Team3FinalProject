@@ -39,6 +39,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityGroupList, "수정자", "FACG_LAST_MDFR", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityGroupList, "최종수정날짜", "FACG_LAST_MDFY", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityGroupList, "시설설명", "FACG_DESC", true, 80);
+            DataGridViewUtil.DataGridViewRowNumSet(dgvFacilityGroupList);
             DataGridViewCheckBoxAllCheck();
 
 
@@ -60,6 +61,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "최종수정일", "FCLTS_LAST_MDFY", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "특이사항", "FCLTS_NOTE", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "비고", "FCLTS_REMARK", true, 80);
+            DataGridViewUtil.DataGridViewRowNumSet(dgvFacilityList);
             DataGridViewCheckBoxAllCheck2();
         }
 
