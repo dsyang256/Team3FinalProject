@@ -83,14 +83,12 @@
             // 
             // btnOK
             // 
-            this.btnOK.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnOK.Location = new System.Drawing.Point(215, 443);
             this.btnOK.Text = "저장";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnCancel.Location = new System.Drawing.Point(332, 443);
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -238,7 +236,7 @@
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label25.Location = new System.Drawing.Point(33, 249);
+            this.label25.Location = new System.Drawing.Point(33, 251);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(12, 15);
             this.label25.TabIndex = 156;
@@ -463,7 +461,7 @@
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label31.Location = new System.Drawing.Point(33, 205);
+            this.label31.Location = new System.Drawing.Point(33, 207);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(12, 15);
             this.label31.TabIndex = 149;

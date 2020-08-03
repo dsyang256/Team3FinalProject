@@ -448,6 +448,9 @@
     <EmbeddedResource Include="BaseForm\ProjectBaseForm.resx">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Popup\FrmSalesMasterPop.resx">
+      <DependentUpon>FrmSalesMasterPop.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Popup\FrmSMUpLoadPop.resx">
       <DependentUpon>FrmSMUpLoadPop.cs</DependentUpon>
     </EmbeddedResource>
