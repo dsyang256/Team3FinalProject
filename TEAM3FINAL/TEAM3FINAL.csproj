@@ -56,6 +56,7 @@
       <DependentUpon>FrmSMUpLoadPop.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\CommonService.cs" />
+    <Compile Include="Services\ReorderService.cs" />
     <Compile Include="UserControl\MenuPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>

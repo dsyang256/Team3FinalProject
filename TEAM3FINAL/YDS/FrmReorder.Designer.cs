@@ -117,6 +117,11 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Size = new System.Drawing.Size(1254, 180);
             // 
+            // label1
+            // 
+            this.label1.Size = new System.Drawing.Size(55, 15);
+            this.label1.Text = "정규발주";
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.dgvReorder);
@@ -336,7 +341,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label14.Location = new System.Drawing.Point(449, 122);
+            this.label14.Location = new System.Drawing.Point(449, 120);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(110, 20);
             this.label14.TabIndex = 124;
