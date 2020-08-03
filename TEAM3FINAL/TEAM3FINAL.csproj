@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmBORPupUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBORPupUp.Designer.cs">
+      <DependentUpon>FrmBORPupUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Popup\FrmSMUpLoadPop.cs">
       <SubType>Form</SubType>
     </Compile>

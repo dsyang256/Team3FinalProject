@@ -44,7 +44,8 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "사용유무", "FAC_USE_YN", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "최종수정자", "FAC_LAST_MDFR", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "최종수정시간", "FAC_LAST_MDFY", true, 80);
-            DataGridViewCheckBoxAllCheck();
+            DataGridViewUtil.DataGridViewRowNumSet(dgvFactoryList);
+            DataGridViewCheckBoxAllCheck();            
         }
         private void DataGridViewCheckBoxAllCheck()
         {
