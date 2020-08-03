@@ -40,20 +40,24 @@ namespace TEAM3FINAL
             //status strip Timer
             timer1.Start();
             timer1.Tick += ((send, args) => lblDateTime.Text = DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초"));
+            stslLoginID.Text = "";
             LoadLogin();
 
-            stslLoginID.Text = "";
+
         }
 
         private void LoadLogin()
         {
+            this.Hide();
 
             //로그인창 호출
             FrmLogin frm = new FrmLogin();
             frm.ShowDialog();
             if (frm.DialogResult == DialogResult.OK)
             {
-                stslLoginID.Text = $"{LoginInfo.UserInfo.LI_ID}님         ";
+
+                this.Show();
+                stslLoginID.Text = $"{LoginInfo.UserInfo.LI_NAME}({LoginInfo.UserInfo.LI_ID})님         ";
                 //로그인시 메뉴 불러오기.
                 GetMenus();
                 GetRights();

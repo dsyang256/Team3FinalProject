@@ -178,5 +178,14 @@ namespace TEAM3FINAL
                 btnOK.PerformClick();
             }
         }
+
+        private void ptxtID_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (ptxtID.Text.Length > 20)
+            {
+                if(e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+            }
+        }
     }
 }
