@@ -5,6 +5,8 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using TEAM3FINAL.Services;
+using Message = TEAM3FINALVO.Message;
 
 namespace TEAM3FINAL
 {
@@ -71,8 +73,6 @@ namespace TEAM3FINAL
             btnset();
             DataGridViewColumnSet();
             GetBORList();
-            if(dgvBORList.RowCount>0)
-            MessageBox.Show(dgvBORList.Rows[1].Cells[1].Value.ToString());
         }
 
         private void btnset()
@@ -96,7 +96,16 @@ namespace TEAM3FINAL
         #region ****메인 버튼 이벤트****
         public void Insert(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                FrmBORPopUp frm = new FrmBORPopUp();
+                frm.BOR_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
+                frm.ShowDialog();
+                if (frm.DialogResult == DialogResult.OK)
+                {
+                    GetBORList();
+                }
+            }
         }
 
         public void Search(object sender, EventArgs e)
@@ -124,7 +133,43 @@ namespace TEAM3FINAL
 
         public void Delete(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                dgvBORList.EndEdit();
+                StringBuilder sb = new StringBuilder();
+                int cnt = 0;
+                //품목 선택후 List를 전달
+                foreach (DataGridViewRow item in dgvBORList.Rows)
+                {
+                    if (Convert.ToBoolean(item.Cells[0].Value))
+                    {
+                        sb.Append(item.Cells[1].Value.ToString() + "@");
+                        cnt++;
+                    }
+                }
+                if (sb.Length < 1)
+                {
+                    MessageBox.Show("삭제할 항목을 선택하여 주십시오.");
+                    return;
+                }
+                sb.Remove(sb.Length - 1, 1);
+                if (MessageBox.Show($"총 {cnt}개의 항목을 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    FactoryService service = new FactoryService();
+
+                    Message msg = service.DeleteFactory("BOR", "BOR_CODE", sb);
+                    if (msg.IsSuccess)
+                    {
+                        MessageBox.Show(msg.ResultMessage);
+                        GetBORList();
+                    }
+                    else
+                    {
+                        MessageBox.Show(msg.ResultMessage);
+                        return;
+                    }
+                }
+            }
         }
 
         public void Print(object sender, EventArgs e)

@@ -53,6 +53,7 @@
     <Compile Include="BORDAC.cs" />
     <Compile Include="ComboItemDAC.cs" />
     <Compile Include="CommonDAC.cs" />
+    <Compile Include="CompanyDAC.cs" />
     <Compile Include="CostDAC.cs" />
     <Compile Include="FacilityDAC.cs" />
     <Compile Include="FactoryDAC.cs" />

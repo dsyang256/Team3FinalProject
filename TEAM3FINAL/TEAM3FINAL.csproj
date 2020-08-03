@@ -49,11 +49,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmBORPupUp.cs">
+    <Compile Include="FrmCompanyPopUp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmBORPupUp.Designer.cs">
-      <DependentUpon>FrmBORPupUp.cs</DependentUpon>
+    <Compile Include="FrmCompanyPopUp.Designer.cs">
+      <DependentUpon>FrmCompanyPopUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CompanyService.cs" />
+    <Compile Include="HHW\FrmCompanyManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HHW\FrmCompanyManage.Designer.cs">
+      <DependentUpon>FrmCompanyManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HHW\FrmBORPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HHW\FrmBORPopUp.Designer.cs">
+      <DependentUpon>FrmBORPopUp.cs</DependentUpon>
     </Compile>
     <Compile Include="Popup\FrmSMUpLoadPop.cs">
       <SubType>Form</SubType>
@@ -95,12 +108,6 @@
     </Compile>
     <Compile Include="HHW\FrmCompanyEndByMonth.Designer.cs">
       <DependentUpon>FrmCompanyEndByMonth.cs</DependentUpon>
-    </Compile>
-    <Compile Include="HHW\FrmComponyManage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HHW\FrmComponyManage.Designer.cs">
-      <DependentUpon>FrmComponyManage.cs</DependentUpon>
     </Compile>
     <Compile Include="HHW\FrmFacilityChoice.cs">
       <SubType>Form</SubType>
@@ -456,6 +463,15 @@
     <EmbeddedResource Include="BaseForm\ProjectBaseForm.resx">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCompanyPopUp.resx">
+      <DependentUpon>FrmCompanyPopUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HHW\FrmCompanyManage.resx">
+      <DependentUpon>FrmCompanyManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HHW\FrmBORPopUp.resx">
+      <DependentUpon>FrmBORPopUp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Popup\FrmSalesMasterPop.resx">
       <DependentUpon>FrmSalesMasterPop.cs</DependentUpon>
     </EmbeddedResource>
@@ -467,9 +483,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HHW\FrmCompanyEndByMonth.resx">
       <DependentUpon>FrmCompanyEndByMonth.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HHW\FrmComponyManage.resx">
-      <DependentUpon>FrmComponyManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HHW\FrmFacilityChoice.resx">
       <DependentUpon>FrmFacilityChoice.cs</DependentUpon>

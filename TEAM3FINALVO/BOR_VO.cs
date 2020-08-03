@@ -25,10 +25,10 @@ namespace TEAM3FINALVO
         public string COMMON_CODE { get; set; }
         public string FCLTS_CODE { get; set; }
         public string FCLTS_NAME { get; set; }
-        public int BOR_PROCS_TIME { get; set; }
-        public int BOR_PRIORT { get; set; }
-        public int BOR_PROCS_LEADTIME { get; set; }
-        public decimal BOR_YIELD { get; set; }
+        public int? BOR_PROCS_TIME { get; set; }
+        public int? BOR_PRIORT { get; set; }
+        public int? BOR_PROCS_LEADTIME { get; set; }
+        public decimal? BOR_YIELD { get; set; }
         public string BOR_USE_YN { get; set; }
         public string BOR_REMARK { get; set; }
         public string BOR_LAST_MDFR { get; set; }

@@ -21,5 +21,11 @@ namespace TEAM3FINAL
             BORDAC dac = new BORDAC();
             return dac.SearchBOR(itemCode, proc, facility);
         }
+
+        public Message SaveBOR(BOR_VO vo)
+        {
+            BORDAC dac = new BORDAC();
+            return dac.SaveBOR(vo);
+        }
     }
 }

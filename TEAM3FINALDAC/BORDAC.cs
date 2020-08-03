@@ -48,5 +48,67 @@ namespace TEAM3FINALDAC
                 return list;
             }
         }
+
+        public Message SaveBOR(BOR_VO vo)
+        {
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = "SP_SaveBOR";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@P_BOR_CODE", vo.BOR_CODE);
+                    cmd.Parameters.AddWithValue("@P_BOR_PROCS_CODE", vo.BOR_PROCS_CODE);
+                    cmd.Parameters.AddWithValue("@P_BOR_PROCS_TIME", vo.BOR_PROCS_TIME);
+                    cmd.Parameters.Add(new SqlParameter("@P_BOR_PROCS_LEADTIME", System.Data.SqlDbType.Int));
+                    cmd.Parameters["@P_BOR_PROCS_LEADTIME"].Value = (object)vo.BOR_PROCS_LEADTIME ?? DBNull.Value;                    
+                    cmd.Parameters.AddWithValue("@P_BOR_PRIORT", vo.BOR_PRIORT);
+                    cmd.Parameters.AddWithValue("@P_BOR_YIELD", vo.BOR_YIELD);
+                    cmd.Parameters.AddWithValue("@P_BOR_USE_YN", vo.BOR_USE_YN);
+                    cmd.Parameters.AddWithValue("@P_BOR_REMARK", vo.BOR_REMARK);
+                    cmd.Parameters.AddWithValue("@P_ITEM_CODE", vo.ITEM_CODE);
+                    cmd.Parameters.AddWithValue("@P_FCLTS_CODE", vo.FCLTS_CODE);
+                    cmd.Parameters.AddWithValue("@P_BOR_LAST_MDFR", vo.BOR_LAST_MDFR);
+                    cmd.Parameters.AddWithValue("@P_BOR_LAST_MDFY", vo.BOR_LAST_MDFY);
+                    cmd.Parameters.Add(new SqlParameter("@P_ReturnCode", System.Data.SqlDbType.NVarChar, 5));
+                    cmd.Parameters["@P_ReturnCode"].Direction = System.Data.ParameterDirection.Output;
+
+                    cmd.Connection.Open();
+                    cmd.ExecuteNonQuery();
+                    cmd.Connection.Close();
+
+                    string result = cmd.Parameters["@P_ReturnCode"].Value.ToString();
+                    Message message = new Message();
+                    if (result == "S01")
+                    {
+                        message.IsSuccess = true;
+                        message.ResultMessage = "성공적으로 등록되었습니다.";
+                    }
+                    else if (result == "S02")
+                    {
+                        message.IsSuccess = true;
+                        message.ResultMessage = "성공적으로 수정되었습니다.";
+                    }
+                    else if (result == "S03")
+                    {
+                        message.IsSuccess = false;
+                        message.ResultMessage = "코드 중복";
+                    }
+                    else if (result == "S00")
+                    {
+                        message.IsSuccess = false;
+                        message.ResultMessage = "실패하였습니다.";
+                    }
+
+                    return message;
+                }
+            }
+            catch(Exception err)
+            {
+                return new Message(err);
+            }
+        }
+
     }
 }

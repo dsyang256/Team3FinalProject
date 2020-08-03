@@ -53,7 +53,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(1029, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -68,9 +69,9 @@
             this.tsbPrint,
             this.tsbLogout,
             this.tsbReset});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 30);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 39);
+            this.toolStrip1.Size = new System.Drawing.Size(1029, 39);
             this.toolStrip1.TabIndex = 5;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -128,7 +129,7 @@
             this.tsbLogout.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.tsbLogout.Image = global::TEAM3FINAL.Properties.Resources.exit_30px;
             this.tsbLogout.Name = "tsbLogout";
-            this.tsbLogout.Size = new System.Drawing.Size(87, 36);
+            this.tsbLogout.Size = new System.Drawing.Size(101, 36);
             this.tsbLogout.Text = "로그아웃";
             this.tsbLogout.Click += new System.EventHandler(this.tsbLogout_Click);
             // 
@@ -148,16 +149,17 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stslLoginID,
             this.lblDateTime});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 540);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 723);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(800, 22);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 18, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1029, 26);
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // stslLoginID
             // 
             this.stslLoginID.Name = "stslLoginID";
-            this.stslLoginID.Size = new System.Drawing.Size(752, 17);
+            this.stslLoginID.Size = new System.Drawing.Size(968, 20);
             this.stslLoginID.Spring = true;
             this.stslLoginID.Text = "toolStripStatusLabel1";
             this.stslLoginID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -165,18 +167,18 @@
             // lblDateTime
             // 
             this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(33, 17);
+            this.lblDateTime.Size = new System.Drawing.Size(42, 20);
             this.lblDateTime.Text = "Time";
             // 
             // tabForms
             // 
             this.tabForms.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabForms.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.tabForms.Location = new System.Drawing.Point(0, 63);
-            this.tabForms.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabForms.Location = new System.Drawing.Point(0, 69);
+            this.tabForms.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabForms.Name = "tabForms";
             this.tabForms.SelectedIndex = 0;
-            this.tabForms.Size = new System.Drawing.Size(800, 28);
+            this.tabForms.Size = new System.Drawing.Size(1029, 37);
             this.tabForms.TabIndex = 9;
             this.tabForms.Visible = false;
             this.tabForms.SelectedIndexChanged += new System.EventHandler(this.tabForms_SelectedIndexChanged);
@@ -184,15 +186,15 @@
             // 
             // FrmMAIN
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 562);
+            this.ClientSize = new System.Drawing.Size(1029, 749);
             this.Controls.Add(this.tabForms);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.Margin = new System.Windows.Forms.Padding(4, 7, 4, 7);
             this.Name = "FrmMAIN";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

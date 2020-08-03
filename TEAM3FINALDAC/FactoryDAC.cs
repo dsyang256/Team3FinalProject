@@ -29,7 +29,6 @@ namespace TEAM3FINALDAC
                     cmd.Parameters.AddWithValue("@P_FAC_NAME", fac.FAC_NAME);
                     cmd.Parameters.AddWithValue("@P_FAC_TYP", fac.FAC_TYP);
                     cmd.Parameters.AddWithValue("@P_FAC_FREE_YN", fac.FAC_FREE_YN);
-                    //cmd.Parameters.AddWithValue("@FAC_TYP_SORT", fac.FAC_TYP_SORT);
                     cmd.Parameters.Add(new SqlParameter("@P_FAC_TYP_SORT", System.Data.SqlDbType.Int));
                     cmd.Parameters["@P_FAC_TYP_SORT"].Value = (object)fac.FAC_TYP_SORT ?? DBNull.Value;
                     cmd.Parameters.AddWithValue("@P_FAC_DEMAND_YN", fac.FAC_DEMAND_YN);

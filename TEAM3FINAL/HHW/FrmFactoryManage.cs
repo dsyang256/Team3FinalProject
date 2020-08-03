@@ -177,7 +177,7 @@ namespace TEAM3FINAL
                     frm.FAC_DEMAND_YN = dgvFactoryList.CurrentRow.Cells[9].Value.ToString();
                     frm.FAC_PROCS_YN = dgvFactoryList.CurrentRow.Cells[10].Value.ToString();
                     frm.FAC_MTRL_YN = dgvFactoryList.CurrentRow.Cells[11].Value.ToString();
-                    frm.FAC_LAST_MDFR = LoginInfo.UserInfo.LI_ID; //수정필요
+                    frm.FAC_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
                     frm.FAC_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                     frm.FAC_USE_YN = dgvFactoryList.CurrentRow.Cells[13].Value.ToString();
                     frm.FAC_DESC = dgvFactoryList.CurrentRow.Cells[6].Value.ToString();

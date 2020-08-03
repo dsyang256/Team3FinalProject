@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TEAM3FINALVO
 {
-    class COMPANY_VO
+    public class COMPANY_VO
     {
         public string COM_CODE { get; set; }
         public string COM_NAME { get; set; }
@@ -23,7 +23,10 @@ namespace TEAM3FINALVO
         public string COM_START_YN { get; set; }
         public string COM_USE_YN { get; set; }
         public string COM_LAST_MDFR { get; set; }
-        public DateTime COM_LAST_MDFY { get; set; }
+        public string COM_LAST_MDFY { get; set; }
+        public string COM_STR_DATE { get; set; }        
+        public string COM_END_DATE { get; set; }
         public string COM_INFO { get; set; }
+        public string COM_TRAD_YN { get; set; }
     }
 }
