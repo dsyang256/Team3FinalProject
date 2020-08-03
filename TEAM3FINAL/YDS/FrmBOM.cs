@@ -184,7 +184,7 @@ namespace TEAM3FINAL
         /// </summary>
         private void ComboBinding()
         {
-            ComboItemService service = new ComboItemService();
+            CommonService service = new CommonService();
             List<ComboItemVO> Commonlist = service.GetITEMCmCode();
 
 

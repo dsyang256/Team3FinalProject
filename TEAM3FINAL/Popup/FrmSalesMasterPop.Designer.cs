@@ -29,8 +29,18 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.cboCOM2 = new System.Windows.Forms.ComboBox();
+            this.txtOrderQTY = new System.Windows.Forms.TextBox();
+            this.cboItem = new System.Windows.Forms.ComboBox();
+            this.cboMarket = new System.Windows.Forms.ComboBox();
+            this.txtWO = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
             this.txtOutQTY = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -39,6 +49,7 @@
             this.txtPO = new System.Windows.Forms.TextBox();
             this.txtNoQTY = new System.Windows.Forms.TextBox();
             this.dtpDueDate = new System.Windows.Forms.DateTimePicker();
+            this.cboOrderTyp = new System.Windows.Forms.ComboBox();
             this.cboCOM = new System.Windows.Forms.ComboBox();
             this.txtRemark = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
@@ -48,28 +59,14 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.cboOrderTyp = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.txtWO = new System.Windows.Forms.TextBox();
-            this.cboMarket = new System.Windows.Forms.ComboBox();
-            this.cboItem = new System.Windows.Forms.ComboBox();
-            this.txtOrderQTY = new System.Windows.Forms.TextBox();
-            this.txtItem = new System.Windows.Forms.TextBox();
-            this.cboCOM2 = new System.Windows.Forms.ComboBox();
-            this.txtID = new System.Windows.Forms.TextBox();
-            this.label27 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -91,6 +88,7 @@
             // btnOK
             // 
             this.btnOK.Location = new System.Drawing.Point(215, 443);
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
@@ -105,7 +103,6 @@
             this.panel2.Controls.Add(this.txtID);
             this.panel2.Controls.Add(this.label27);
             this.panel2.Controls.Add(this.cboCOM2);
-            this.panel2.Controls.Add(this.txtItem);
             this.panel2.Controls.Add(this.txtOrderQTY);
             this.panel2.Controls.Add(this.cboItem);
             this.panel2.Controls.Add(this.cboMarket);
@@ -133,11 +130,9 @@
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.label21);
             this.panel2.Controls.Add(this.label16);
-            this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label20);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label31);
             this.panel2.Controls.Add(this.label22);
             this.panel2.Controls.Add(this.label4);
@@ -150,6 +145,87 @@
             this.panel2.Size = new System.Drawing.Size(580, 414);
             this.panel2.TabIndex = 129;
             // 
+            // txtID
+            // 
+            this.txtID.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtID.Location = new System.Drawing.Point(27, 353);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(121, 23);
+            this.txtID.TabIndex = 169;
+            this.txtID.Visible = false;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label27.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label27.Location = new System.Drawing.Point(51, 335);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(49, 15);
+            this.label27.TabIndex = 170;
+            this.label27.Text = "salesID";
+            this.label27.Visible = false;
+            // 
+            // cboCOM2
+            // 
+            this.cboCOM2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCOM2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cboCOM2.FormattingEnabled = true;
+            this.cboCOM2.Location = new System.Drawing.Point(419, 52);
+            this.cboCOM2.Name = "cboCOM2";
+            this.cboCOM2.Size = new System.Drawing.Size(121, 23);
+            this.cboCOM2.TabIndex = 168;
+            // 
+            // txtOrderQTY
+            // 
+            this.txtOrderQTY.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtOrderQTY.Location = new System.Drawing.Point(419, 128);
+            this.txtOrderQTY.Name = "txtOrderQTY";
+            this.txtOrderQTY.Size = new System.Drawing.Size(121, 23);
+            this.txtOrderQTY.TabIndex = 166;
+            this.txtOrderQTY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOrderQTY_KeyPress);
+            // 
+            // cboItem
+            // 
+            this.cboItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboItem.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cboItem.FormattingEnabled = true;
+            this.cboItem.Location = new System.Drawing.Point(154, 130);
+            this.cboItem.Name = "cboItem";
+            this.cboItem.Size = new System.Drawing.Size(121, 23);
+            this.cboItem.TabIndex = 165;
+            // 
+            // cboMarket
+            // 
+            this.cboMarket.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMarket.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cboMarket.FormattingEnabled = true;
+            this.cboMarket.Items.AddRange(new object[] {
+            "내수"});
+            this.cboMarket.Location = new System.Drawing.Point(154, 204);
+            this.cboMarket.Name = "cboMarket";
+            this.cboMarket.Size = new System.Drawing.Size(121, 23);
+            this.cboMarket.TabIndex = 164;
+            // 
+            // txtWO
+            // 
+            this.txtWO.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtWO.Location = new System.Drawing.Point(154, 18);
+            this.txtWO.Name = "txtWO";
+            this.txtWO.Size = new System.Drawing.Size(121, 23);
+            this.txtWO.TabIndex = 163;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label26.Location = new System.Drawing.Point(299, 167);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(12, 15);
+            this.label26.TabIndex = 162;
+            this.label26.Text = "*";
+            // 
             // txtOutQTY
             // 
             this.txtOutQTY.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -157,6 +233,7 @@
             this.txtOutQTY.Name = "txtOutQTY";
             this.txtOutQTY.Size = new System.Drawing.Size(121, 23);
             this.txtOutQTY.TabIndex = 161;
+            this.txtOutQTY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOrderQTY_KeyPress);
             // 
             // label10
             // 
@@ -168,6 +245,28 @@
             this.label10.Size = new System.Drawing.Size(12, 15);
             this.label10.TabIndex = 160;
             this.label10.Text = "*";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label24.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label24.Location = new System.Drawing.Point(323, 207);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(55, 15);
+            this.label24.TabIndex = 158;
+            this.label24.Text = "발주구분";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label7.Location = new System.Drawing.Point(299, 207);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(12, 15);
+            this.label7.TabIndex = 159;
+            this.label7.Text = "*";
             // 
             // label6
             // 
@@ -240,14 +339,27 @@
             this.txtNoQTY.Name = "txtNoQTY";
             this.txtNoQTY.Size = new System.Drawing.Size(121, 23);
             this.txtNoQTY.TabIndex = 127;
+            this.txtNoQTY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOrderQTY_KeyPress);
             // 
             // dtpDueDate
             // 
             this.dtpDueDate.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.dtpDueDate.Location = new System.Drawing.Point(154, 130);
+            this.dtpDueDate.Location = new System.Drawing.Point(154, 94);
             this.dtpDueDate.Name = "dtpDueDate";
             this.dtpDueDate.Size = new System.Drawing.Size(121, 23);
             this.dtpDueDate.TabIndex = 135;
+            // 
+            // cboOrderTyp
+            // 
+            this.cboOrderTyp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboOrderTyp.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.cboOrderTyp.FormattingEnabled = true;
+            this.cboOrderTyp.Items.AddRange(new object[] {
+            "P/O"});
+            this.cboOrderTyp.Location = new System.Drawing.Point(419, 202);
+            this.cboOrderTyp.Name = "cboOrderTyp";
+            this.cboOrderTyp.Size = new System.Drawing.Size(121, 23);
+            this.cboOrderTyp.TabIndex = 130;
             // 
             // cboCOM
             // 
@@ -284,7 +396,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label19.Location = new System.Drawing.Point(57, 135);
+            this.label19.Location = new System.Drawing.Point(57, 99);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(43, 15);
             this.label19.TabIndex = 140;
@@ -306,7 +418,7 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label18.Location = new System.Drawing.Point(33, 133);
+            this.label18.Location = new System.Drawing.Point(33, 97);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(12, 15);
             this.label18.TabIndex = 148;
@@ -317,7 +429,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label15.Location = new System.Drawing.Point(323, 96);
+            this.label15.Location = new System.Drawing.Point(58, 136);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(31, 15);
             this.label15.TabIndex = 140;
@@ -345,23 +457,12 @@
             this.label16.TabIndex = 148;
             this.label16.Text = "*";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label13.Location = new System.Drawing.Point(57, 98);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(59, 15);
-            this.label13.TabIndex = 140;
-            this.label13.Text = "고객 품목";
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label14.Location = new System.Drawing.Point(299, 93);
+            this.label14.Location = new System.Drawing.Point(34, 133);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(12, 15);
             this.label14.TabIndex = 148;
@@ -388,17 +489,6 @@
             this.label5.Size = new System.Drawing.Size(43, 15);
             this.label5.TabIndex = 140;
             this.label5.Text = "고객사";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label12.Location = new System.Drawing.Point(33, 97);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(12, 15);
-            this.label12.TabIndex = 148;
-            this.label12.Text = "*";
             // 
             // label31
             // 
@@ -437,7 +527,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label11.Location = new System.Drawing.Point(57, 22);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(56, 15);
@@ -448,135 +538,12 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label3.Location = new System.Drawing.Point(33, 21);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(12, 15);
             this.label3.TabIndex = 153;
             this.label3.Text = "*";
-            // 
-            // cboOrderTyp
-            // 
-            this.cboOrderTyp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboOrderTyp.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.cboOrderTyp.FormattingEnabled = true;
-            this.cboOrderTyp.Items.AddRange(new object[] {
-            "P/O"});
-            this.cboOrderTyp.Location = new System.Drawing.Point(419, 202);
-            this.cboOrderTyp.Name = "cboOrderTyp";
-            this.cboOrderTyp.Size = new System.Drawing.Size(121, 23);
-            this.cboOrderTyp.TabIndex = 130;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label7.Location = new System.Drawing.Point(299, 207);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(12, 15);
-            this.label7.TabIndex = 159;
-            this.label7.Text = "*";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label24.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label24.Location = new System.Drawing.Point(323, 207);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(55, 15);
-            this.label24.TabIndex = 158;
-            this.label24.Text = "발주구분";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label26.Location = new System.Drawing.Point(299, 167);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(12, 15);
-            this.label26.TabIndex = 162;
-            this.label26.Text = "*";
-            // 
-            // txtWO
-            // 
-            this.txtWO.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtWO.Location = new System.Drawing.Point(154, 18);
-            this.txtWO.Name = "txtWO";
-            this.txtWO.Size = new System.Drawing.Size(121, 23);
-            this.txtWO.TabIndex = 163;
-            // 
-            // cboMarket
-            // 
-            this.cboMarket.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboMarket.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.cboMarket.FormattingEnabled = true;
-            this.cboMarket.Items.AddRange(new object[] {
-            "내수"});
-            this.cboMarket.Location = new System.Drawing.Point(154, 204);
-            this.cboMarket.Name = "cboMarket";
-            this.cboMarket.Size = new System.Drawing.Size(121, 23);
-            this.cboMarket.TabIndex = 164;
-            // 
-            // cboItem
-            // 
-            this.cboItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboItem.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.cboItem.FormattingEnabled = true;
-            this.cboItem.Location = new System.Drawing.Point(419, 90);
-            this.cboItem.Name = "cboItem";
-            this.cboItem.Size = new System.Drawing.Size(121, 23);
-            this.cboItem.TabIndex = 165;
-            // 
-            // txtOrderQTY
-            // 
-            this.txtOrderQTY.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtOrderQTY.Location = new System.Drawing.Point(419, 128);
-            this.txtOrderQTY.Name = "txtOrderQTY";
-            this.txtOrderQTY.Size = new System.Drawing.Size(121, 23);
-            this.txtOrderQTY.TabIndex = 166;
-            // 
-            // txtItem
-            // 
-            this.txtItem.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtItem.Location = new System.Drawing.Point(154, 94);
-            this.txtItem.Name = "txtItem";
-            this.txtItem.ReadOnly = true;
-            this.txtItem.Size = new System.Drawing.Size(121, 23);
-            this.txtItem.TabIndex = 167;
-            // 
-            // cboCOM2
-            // 
-            this.cboCOM2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCOM2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.cboCOM2.FormattingEnabled = true;
-            this.cboCOM2.Location = new System.Drawing.Point(419, 52);
-            this.cboCOM2.Name = "cboCOM2";
-            this.cboCOM2.Size = new System.Drawing.Size(121, 23);
-            this.cboCOM2.TabIndex = 168;
-            // 
-            // txtID
-            // 
-            this.txtID.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtID.Location = new System.Drawing.Point(27, 353);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(121, 23);
-            this.txtID.TabIndex = 169;
-            this.txtID.Visible = false;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label27.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label27.Location = new System.Drawing.Point(51, 335);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(49, 15);
-            this.label27.TabIndex = 170;
-            this.label27.Text = "salesID";
-            this.label27.Visible = false;
             // 
             // FrmSalesMasterPop
             // 
@@ -584,6 +551,7 @@
             this.ClientSize = new System.Drawing.Size(590, 486);
             this.Controls.Add(this.panel2);
             this.Name = "FrmSalesMasterPop";
+            this.Load += new System.EventHandler(this.FrmSalesMasterPop_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
@@ -620,11 +588,9 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label4;
@@ -634,7 +600,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cboOrderTyp;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox txtItem;
         private System.Windows.Forms.TextBox txtOrderQTY;
         private System.Windows.Forms.ComboBox cboItem;
         private System.Windows.Forms.ComboBox cboMarket;

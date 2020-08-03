@@ -102,7 +102,7 @@ namespace TEAM3FINAL
         //콤보박스 바인딩
         private void ComboBinding()
         {
-            ComboItemService service = new ComboItemService();
+            CommonService service = new CommonService();
             List<ComboItemVO> commonlist = service.GetITEMCmCode();
                         
             var listCOMPANY_TYP = (from item in commonlist where item.COMMON_PARENT == "COMPANY_TYP" select item).ToList();

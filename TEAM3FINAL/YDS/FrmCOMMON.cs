@@ -12,7 +12,7 @@ namespace TEAM3FINAL
 {
     public partial class FrmCOMMON : TEAM3FINAL.baseFormPopUP
     {
-        ComboItemService service = new ComboItemService();
+        CommonService service = new CommonService();
         public FrmCOMMON()
         {
             InitializeComponent();
@@ -41,7 +41,7 @@ namespace TEAM3FINAL
         }
         private void ComboBinding()
         {
-            ComboItemService service = new ComboItemService();
+            CommonService service = new CommonService();
             List<ComboItemVO> Commonlist = service.GetITEMCmCode();
 
 

@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using TEAM3FINALVO;
 
 namespace TEAM3FINAL
 {
-    public partial class FrmSalesMaster : TEAM3FINAL.baseForm2,CommonBtn
+    public partial class FrmSalesMaster : TEAM3FINAL.baseForm2, CommonBtn
     {
         #region 멤버변수
-
+        List<SALESWorkList_VO> AllList = default;
         #endregion
 
         #region 생성자
@@ -21,7 +22,7 @@ namespace TEAM3FINAL
             InitializeComponent();
         }
         #endregion
-        
+
         #region 메서드
         /// <summary>
         /// 그리드뷰 컬럼 설정
@@ -31,43 +32,75 @@ namespace TEAM3FINAL
             //데이터그리드뷰 초기설정
             DataGridViewUtil.InitSettingGridView(dgvSales);
             DataGridViewUtil.DataGridViewCheckBoxSet(dgvSales, "  ");
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "shiftCode", "SHIFT_CODE", false, 50);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "설비명", "FCLTS_NAME", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "설비코드", "FCLTS_CODE", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "SHIFT", "SHIFT_TYP", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "시작시간", "SHIFT_STARTTIME", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "완료시간", "SHIFT_ENDTIME", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "적용시간일자", "SHIFT_APPLY_STARTTIME", true, 150);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "적용완료일자", "SHIFT_APPLY_ENDTIME", true, 150);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "투입인원", "SHIFT_PERSON_DIR", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "사용유무", "SHIFT_USE_YN", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "비고", "SHIFT_REMARK", true, 300);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "code", "SALES_ID", false, 50);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "고객 WO", "SALES_Work_Order_ID", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "고객주문번호", "SO_PurchaseOrder", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "고객사코드", "COM_CODE", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "고객사명", "COM_NAME", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "도착지코드", "SALES_COM_CODE", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "도착지명", "SALES_COM_NAME", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "고객주문유형", "SALES_Order_TYPE", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "품목", "ITEM_CODE", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "품명", "ITEM_NAME", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "생산납기일", "SALES_DUEDATE", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "주문수량", "SALES_QTY", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "출고수량", "SALES_Out_QTY", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "취소수량", "SALES_NO_QTY", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSales, "주문상태", "SALES_ORDER_STATE", true, 100);
 
             //행번호 추가
             DataGridViewUtil.DataGridViewRowNumSet(dgvSales);
         }
 
-        private void LoadShiftList()
+        private string CheckedList()
         {
-            ////서비스호출
-            //ShiftService service = new ShiftService();
-            //AllList = service.GetShiftList();
-            //dgvShift.DataSource = null;
-            //dgvShift.DataSource = AllList;
+            dgvSales.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            StringBuilder sb = new StringBuilder();
+            //품목 선택후 List를 전달
+            foreach (var item in dgvSales.Rows)
+            {
+                if (item is DataGridViewRow)
+                {
+                    DataGridViewRow row = item as DataGridViewRow;
+                    if (Convert.ToBoolean(row.Cells[0].Value))
+                    {
+                        sb.Append(row.Cells[1].Value.ToString() + "@");
+                    }
+                }
+            }
+            if (sb.Length < 1)
+            {
+                MessageBox.Show("품목을 선택해주십시오.", "품목 선택", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return "";
+            }
+
+            sb.Remove(sb.Length - 1, 1);
+
+            //체크 목록을 string으로 만듬
+            return sb.ToString();
+        }
+
+        private void LoadSalesWorkList()
+        {
+            //서비스호출
+            SalesService service = new SalesService();
+            AllList = service.GetSalesWorkList();
+            dgvSales.DataSource = null;
+            dgvSales.DataSource = AllList;
         }
 
         private void BindingComboBox()
         {
-            ////서비스호출
-            //ComboItemService service = new ComboItemService();
+            //서비스호출
+            ComboItemService service = new ComboItemService();
 
-            //var CommonList = service.GetCmCode();
-            //var ShiftList = (from item in CommonList select item).Where(p => p.COMMON_PARENT == "SHIFT").ToList();
-
-            //var FcltsList = service.GetFacilitiesCode();
-
-            //CommonUtil.ComboBinding<ComboItemVO>(cboShift, ShiftList, "COMMON_CODE", "COMMON_NAME", "");
-            //CommonUtil.ComboBinding<ComboItemVO>(cboFclts, FcltsList, "COMMON_CODE", "COMMON_NAME", "");
+            var commonlist = service.GetCmCode();
+            var statelist = (from item in commonlist select item).Where(p => p.COMMON_PARENT == "ORDER_STATE").ToList();
+            var companylist = service.GetCompanyCode();
+            var com2list = service.GetCompanyCode();
+            CommonUtil.ComboBinding<ComboItemVO>(cboState, statelist, "COMMON_CODE", "COMMON_NAME", "");
+            CommonUtil.ComboBinding<ComboItemVO>(cboCom, companylist, "COMMON_CODE", "COMMON_NAME", "");
+            CommonUtil.ComboBinding<ComboItemVO>(cboCom2, com2list, "COMMON_CODE", "COMMON_NAME", "");
         }
 
 
@@ -89,12 +122,12 @@ namespace TEAM3FINAL
 
         public void Insert(object sender, EventArgs e)
         {
-            //if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
-            //{
-            //    FrmShiftPop frm = new FrmShiftPop(InsertOrUpdate.insert);
-            //    frm.ShowDialog();
-            //    Reset(null, null);
-            //}
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                FrmSalesMasterPop frm = new FrmSalesMasterPop(InsertOrUpdate.insert);
+                frm.ShowDialog();
+                Reset(null, null);
+            }
         }
 
         public void Search(object sender, EventArgs e)
@@ -122,54 +155,54 @@ namespace TEAM3FINAL
 
         public void Reset(object sender, EventArgs e)
         {
-            //if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
-            //{
-            //    LoadShiftList();
-            //    cboFclts.SelectedIndex = 0;
-            //    cboShift.SelectedIndex = 0;
-            //}
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                LoadSalesWorkList();
+                //cboFclts.SelectedIndex = 0;
+                //cboShift.SelectedIndex = 0;
+            }
 
         }
 
         public void Update(object sender, EventArgs e)
         {
-            //if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
-            //{
-            //    string uid = CheckedList();
-            //    if (uid.Length < 1)
-            //        return;
-            //    if (uid.Contains("@"))
-            //    {
-            //        MessageBox.Show("수정할 품목 하나를 선택하세요.", "품목 선택", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //        return;
-            //    }
-            //    FrmShiftPop frm = new FrmShiftPop(InsertOrUpdate.update, uid);
-            //    frm.ShowDialog();
-            //    Reset(null, null);
-            //}
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                string uid = CheckedList();
+                if (uid.Length < 1)
+                    return;
+                if (uid.Contains("@"))
+                {
+                    MessageBox.Show("수정할 품목 하나를 선택하세요.", "품목 선택", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                FrmSalesMasterPop frm = new FrmSalesMasterPop(InsertOrUpdate.update, uid);
+                frm.ShowDialog();
+                Reset(null, null);
+            }
 
         }
 
         public void Delete(object sender, EventArgs e)
         {
-            //string lists = CheckedList();
-            //if (lists.Length > 0)
-            //{
-            //    if (MessageBox.Show("정말로 삭제하시겠습니까?", "삭제확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            //    {
-            //        //서비스 호출
-            //        ShiftService service = new ShiftService();
-            //        if (service.DeleteShiftList(lists, "@"))
-            //        {
-            //            MessageBox.Show("삭제되었습니다.", "삭제 성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("삭제 중 오류가 발생하였습니다. 다시 시도하여 주십시오.", "삭제 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        }
-            //    }
-            //}
-            //Reset(null, null);
+            string lists = CheckedList();
+            if (lists.Length > 0)
+            {
+                if (MessageBox.Show("정말로 삭제하시겠습니까?", "삭제확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    //서비스 호출
+                    SalesService service = new SalesService();
+                    if (service.DeleteSalesWorkList(lists, "@"))
+                    {
+                        MessageBox.Show("삭제되었습니다.", "삭제 성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("삭제 중 오류가 발생하였습니다. 다시 시도하여 주십시오.", "삭제 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            Reset(null, null);
 
         }
 
@@ -192,10 +225,10 @@ namespace TEAM3FINAL
             //콤보박스 바인딩
             BindingComboBox();
             //데이터 조회
-            LoadShiftList();
+            LoadSalesWorkList();
         }
 
         #endregion
-    
+
     }
 }
