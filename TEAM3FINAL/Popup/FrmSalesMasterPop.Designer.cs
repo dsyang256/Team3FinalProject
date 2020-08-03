@@ -32,7 +32,6 @@
             this.txtID = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.cboCOM2 = new System.Windows.Forms.ComboBox();
-            this.txtItem = new System.Windows.Forms.TextBox();
             this.txtOrderQTY = new System.Windows.Forms.TextBox();
             this.cboItem = new System.Windows.Forms.ComboBox();
             this.cboMarket = new System.Windows.Forms.ComboBox();
@@ -60,11 +59,9 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -106,7 +103,6 @@
             this.panel2.Controls.Add(this.txtID);
             this.panel2.Controls.Add(this.label27);
             this.panel2.Controls.Add(this.cboCOM2);
-            this.panel2.Controls.Add(this.txtItem);
             this.panel2.Controls.Add(this.txtOrderQTY);
             this.panel2.Controls.Add(this.cboItem);
             this.panel2.Controls.Add(this.cboMarket);
@@ -134,11 +130,9 @@
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.label21);
             this.panel2.Controls.Add(this.label16);
-            this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label20);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label31);
             this.panel2.Controls.Add(this.label22);
             this.panel2.Controls.Add(this.label4);
@@ -182,15 +176,6 @@
             this.cboCOM2.Size = new System.Drawing.Size(121, 23);
             this.cboCOM2.TabIndex = 168;
             // 
-            // txtItem
-            // 
-            this.txtItem.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtItem.Location = new System.Drawing.Point(154, 94);
-            this.txtItem.Name = "txtItem";
-            this.txtItem.ReadOnly = true;
-            this.txtItem.Size = new System.Drawing.Size(121, 23);
-            this.txtItem.TabIndex = 167;
-            // 
             // txtOrderQTY
             // 
             this.txtOrderQTY.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -205,7 +190,7 @@
             this.cboItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboItem.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.cboItem.FormattingEnabled = true;
-            this.cboItem.Location = new System.Drawing.Point(419, 90);
+            this.cboItem.Location = new System.Drawing.Point(154, 130);
             this.cboItem.Name = "cboItem";
             this.cboItem.Size = new System.Drawing.Size(121, 23);
             this.cboItem.TabIndex = 165;
@@ -359,7 +344,7 @@
             // dtpDueDate
             // 
             this.dtpDueDate.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.dtpDueDate.Location = new System.Drawing.Point(154, 130);
+            this.dtpDueDate.Location = new System.Drawing.Point(154, 94);
             this.dtpDueDate.Name = "dtpDueDate";
             this.dtpDueDate.Size = new System.Drawing.Size(121, 23);
             this.dtpDueDate.TabIndex = 135;
@@ -411,7 +396,7 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label19.Location = new System.Drawing.Point(57, 135);
+            this.label19.Location = new System.Drawing.Point(57, 99);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(43, 15);
             this.label19.TabIndex = 140;
@@ -433,7 +418,7 @@
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label18.Location = new System.Drawing.Point(33, 133);
+            this.label18.Location = new System.Drawing.Point(33, 97);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(12, 15);
             this.label18.TabIndex = 148;
@@ -444,7 +429,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label15.Location = new System.Drawing.Point(323, 96);
+            this.label15.Location = new System.Drawing.Point(58, 136);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(31, 15);
             this.label15.TabIndex = 140;
@@ -472,23 +457,12 @@
             this.label16.TabIndex = 148;
             this.label16.Text = "*";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label13.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label13.Location = new System.Drawing.Point(57, 98);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(59, 15);
-            this.label13.TabIndex = 140;
-            this.label13.Text = "고객 품목";
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label14.Location = new System.Drawing.Point(299, 93);
+            this.label14.Location = new System.Drawing.Point(34, 133);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(12, 15);
             this.label14.TabIndex = 148;
@@ -515,17 +489,6 @@
             this.label5.Size = new System.Drawing.Size(43, 15);
             this.label5.TabIndex = 140;
             this.label5.Text = "고객사";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label12.Location = new System.Drawing.Point(33, 97);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(12, 15);
-            this.label12.TabIndex = 148;
-            this.label12.Text = "*";
             // 
             // label31
             // 
@@ -564,7 +527,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label11.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label11.Location = new System.Drawing.Point(57, 22);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(56, 15);
@@ -575,7 +538,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label3.Location = new System.Drawing.Point(33, 21);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(12, 15);
@@ -625,11 +588,9 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label4;
@@ -639,7 +600,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cboOrderTyp;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox txtItem;
         private System.Windows.Forms.TextBox txtOrderQTY;
         private System.Windows.Forms.ComboBox cboItem;
         private System.Windows.Forms.ComboBox cboMarket;

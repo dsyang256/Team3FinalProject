@@ -32,41 +32,32 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.cboFclts = new System.Windows.Forms.ComboBox();
+            this.cboCom = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.cboState = new System.Windows.Forms.ComboBox();
+            this.cboOrderGubun = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
+            this.cboCom2 = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.comboBox9 = new System.Windows.Forms.ComboBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
             this.menuPanel1 = new TEAM3FINAL.MenuPanel();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtItem = new System.Windows.Forms.TextBox();
+            this.txtPO = new System.Windows.Forms.TextBox();
             this.dgvSales = new WindowsFormsApp18.MyDataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -81,36 +72,27 @@
             // panel2
             // 
             this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel2.Controls.Add(this.textBox2);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.dateTimePicker3);
-            this.panel2.Controls.Add(this.dateTimePicker2);
-            this.panel2.Controls.Add(this.dateTimePicker1);
+            this.panel2.Controls.Add(this.txtPO);
+            this.panel2.Controls.Add(this.txtItem);
+            this.panel2.Controls.Add(this.dtpTo);
+            this.panel2.Controls.Add(this.dtpFrom);
             this.panel2.Controls.Add(this.label26);
             this.panel2.Controls.Add(this.label27);
             this.panel2.Controls.Add(this.label28);
-            this.panel2.Controls.Add(this.comboBox9);
-            this.panel2.Controls.Add(this.label22);
-            this.panel2.Controls.Add(this.label23);
-            this.panel2.Controls.Add(this.comboBox8);
+            this.panel2.Controls.Add(this.cboCom2);
             this.panel2.Controls.Add(this.label20);
             this.panel2.Controls.Add(this.label21);
             this.panel2.Controls.Add(this.label18);
             this.panel2.Controls.Add(this.label19);
-            this.panel2.Controls.Add(this.comboBox5);
-            this.panel2.Controls.Add(this.comboBox6);
+            this.panel2.Controls.Add(this.cboState);
+            this.panel2.Controls.Add(this.cboOrderGubun);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.label16);
             this.panel2.Controls.Add(this.label17);
-            this.panel2.Controls.Add(this.comboBox3);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.cboFclts);
+            this.panel2.Controls.Add(this.cboCom);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Size = new System.Drawing.Size(1220, 150);
@@ -125,20 +107,20 @@
             this.panel3.Controls.Add(this.dgvSales);
             this.panel3.Size = new System.Drawing.Size(1220, 321);
             // 
-            // cboFclts
+            // cboCom
             // 
-            this.cboFclts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboFclts.FormattingEnabled = true;
-            this.cboFclts.Location = new System.Drawing.Point(530, 18);
-            this.cboFclts.Name = "cboFclts";
-            this.cboFclts.Size = new System.Drawing.Size(199, 23);
-            this.cboFclts.TabIndex = 37;
+            this.cboCom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCom.FormattingEnabled = true;
+            this.cboCom.Location = new System.Drawing.Point(530, 59);
+            this.cboCom.Name = "cboCom";
+            this.cboCom.Size = new System.Drawing.Size(199, 23);
+            this.cboCom.TabIndex = 37;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label5.Location = new System.Drawing.Point(436, 19);
+            this.label5.Location = new System.Drawing.Point(436, 60);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 20);
             this.label5.TabIndex = 33;
@@ -149,7 +131,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label4.Location = new System.Drawing.Point(417, 22);
+            this.label4.Location = new System.Drawing.Point(417, 63);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 18);
             this.label4.TabIndex = 35;
@@ -159,7 +141,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label2.Location = new System.Drawing.Point(436, 48);
+            this.label2.Location = new System.Drawing.Point(431, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 20);
             this.label2.TabIndex = 39;
@@ -170,86 +152,37 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label6.Location = new System.Drawing.Point(417, 51);
+            this.label6.Location = new System.Drawing.Point(412, 21);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(15, 18);
             this.label6.TabIndex = 41;
             this.label6.Text = "*";
             // 
-            // comboBox3
+            // cboState
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(176, 76);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(199, 23);
-            this.comboBox3.TabIndex = 50;
+            this.cboState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboState.FormattingEnabled = true;
+            this.cboState.Location = new System.Drawing.Point(176, 61);
+            this.cboState.Name = "cboState";
+            this.cboState.Size = new System.Drawing.Size(199, 23);
+            this.cboState.TabIndex = 56;
             // 
-            // label9
+            // cboOrderGubun
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label9.Location = new System.Drawing.Point(436, 77);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(54, 20);
-            this.label9.TabIndex = 45;
-            this.label9.Text = "등록일";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label10.Location = new System.Drawing.Point(417, 80);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(15, 18);
-            this.label10.TabIndex = 47;
-            this.label10.Text = "*";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label12.Location = new System.Drawing.Point(77, 77);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(84, 20);
-            this.label12.TabIndex = 46;
-            this.label12.Text = "고객사라인";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label13.Location = new System.Drawing.Point(58, 80);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(15, 18);
-            this.label13.TabIndex = 48;
-            this.label13.Text = "*";
-            // 
-            // comboBox5
-            // 
-            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(176, 105);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(199, 23);
-            this.comboBox5.TabIndex = 56;
-            // 
-            // comboBox6
-            // 
-            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(530, 105);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(199, 23);
-            this.comboBox6.TabIndex = 55;
+            this.cboOrderGubun.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboOrderGubun.FormattingEnabled = true;
+            this.cboOrderGubun.Items.AddRange(new object[] {
+            "P/O"});
+            this.cboOrderGubun.Location = new System.Drawing.Point(176, 104);
+            this.cboOrderGubun.Name = "cboOrderGubun";
+            this.cboOrderGubun.Size = new System.Drawing.Size(199, 23);
+            this.cboOrderGubun.TabIndex = 55;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label14.Location = new System.Drawing.Point(436, 106);
+            this.label14.Location = new System.Drawing.Point(77, 107);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(69, 20);
             this.label14.TabIndex = 51;
@@ -260,7 +193,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label15.Location = new System.Drawing.Point(417, 109);
+            this.label15.Location = new System.Drawing.Point(58, 110);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(15, 18);
             this.label15.TabIndex = 53;
@@ -270,7 +203,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label16.Location = new System.Drawing.Point(77, 106);
+            this.label16.Location = new System.Drawing.Point(77, 62);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(39, 20);
             this.label16.TabIndex = 52;
@@ -281,7 +214,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label17.Location = new System.Drawing.Point(58, 109);
+            this.label17.Location = new System.Drawing.Point(58, 65);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(15, 18);
             this.label17.TabIndex = 54;
@@ -308,20 +241,20 @@
             this.label19.TabIndex = 58;
             this.label19.Text = "*";
             // 
-            // comboBox8
+            // cboCom2
             // 
-            this.comboBox8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Location = new System.Drawing.Point(911, 49);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(199, 23);
-            this.comboBox8.TabIndex = 62;
+            this.cboCom2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCom2.FormattingEnabled = true;
+            this.cboCom2.Location = new System.Drawing.Point(911, 57);
+            this.cboCom2.Name = "cboCom2";
+            this.cboCom2.Size = new System.Drawing.Size(199, 23);
+            this.cboCom2.TabIndex = 62;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label20.Location = new System.Drawing.Point(793, 48);
+            this.label20.Location = new System.Drawing.Point(793, 59);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(54, 20);
             this.label20.TabIndex = 60;
@@ -332,41 +265,11 @@
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label21.Location = new System.Drawing.Point(774, 51);
+            this.label21.Location = new System.Drawing.Point(774, 60);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(15, 18);
             this.label21.TabIndex = 61;
             this.label21.Text = "*";
-            // 
-            // comboBox9
-            // 
-            this.comboBox9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox9.FormattingEnabled = true;
-            this.comboBox9.Location = new System.Drawing.Point(911, 80);
-            this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(199, 23);
-            this.comboBox9.TabIndex = 65;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label22.Location = new System.Drawing.Point(793, 79);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(39, 20);
-            this.label22.TabIndex = 63;
-            this.label22.Text = "잔량";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label23.Location = new System.Drawing.Point(774, 82);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(15, 18);
-            this.label23.TabIndex = 64;
-            this.label23.Text = "*";
             // 
             // menuPanel1
             // 
@@ -409,21 +312,21 @@
             this.button2.Text = "영업마스터생성";
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // dateTimePicker2
+            // dtpTo
             // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(284, 16);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(91, 23);
-            this.dateTimePicker2.TabIndex = 72;
+            this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTo.Location = new System.Drawing.Point(284, 16);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Size = new System.Drawing.Size(91, 23);
+            this.dtpTo.TabIndex = 72;
             // 
-            // dateTimePicker1
+            // dtpFrom
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(176, 16);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(91, 23);
-            this.dateTimePicker1.TabIndex = 73;
+            this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFrom.Location = new System.Drawing.Point(176, 16);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Size = new System.Drawing.Size(91, 23);
+            this.dtpFrom.TabIndex = 73;
             // 
             // label26
             // 
@@ -456,27 +359,19 @@
             this.label28.TabIndex = 71;
             this.label28.Text = "*";
             // 
-            // dateTimePicker3
+            // txtItem
             // 
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker3.Location = new System.Drawing.Point(530, 75);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(199, 23);
-            this.dateTimePicker3.TabIndex = 74;
+            this.txtItem.Location = new System.Drawing.Point(530, 15);
+            this.txtItem.Name = "txtItem";
+            this.txtItem.Size = new System.Drawing.Size(199, 23);
+            this.txtItem.TabIndex = 75;
             // 
-            // textBox1
+            // txtPO
             // 
-            this.textBox1.Location = new System.Drawing.Point(530, 46);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(199, 23);
-            this.textBox1.TabIndex = 75;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(911, 15);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(199, 23);
-            this.textBox2.TabIndex = 76;
+            this.txtPO.Location = new System.Drawing.Point(911, 15);
+            this.txtPO.Name = "txtPO";
+            this.txtPO.Size = new System.Drawing.Size(199, 23);
+            this.txtPO.TabIndex = 76;
             // 
             // dgvSales
             // 
@@ -545,26 +440,18 @@
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox cboFclts;
+        private System.Windows.Forms.ComboBox cboCom;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox cboState;
+        private System.Windows.Forms.ComboBox cboOrderGubun;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox9;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.ComboBox comboBox8;
+        private System.Windows.Forms.ComboBox cboCom2;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label18;
@@ -572,11 +459,10 @@
         private MenuPanel menuPanel1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox txtPO;
+        private System.Windows.Forms.TextBox txtItem;
+        private System.Windows.Forms.DateTimePicker dtpTo;
+        private System.Windows.Forms.DateTimePicker dtpFrom;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;

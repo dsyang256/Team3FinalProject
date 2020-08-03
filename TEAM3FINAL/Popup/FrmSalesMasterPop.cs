@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using TEAM3FINALVO;
+using Message = TEAM3FINALVO.Message;
 
 namespace TEAM3FINAL
 {
@@ -42,86 +43,98 @@ namespace TEAM3FINAL
             var ComList = service.GetCompanyCode();
 
             //콤보박스 바인딩 
-            CommonUtil.ComboBinding<ComboItemVO>(cboCOM, Itemlist, "COMMON_NAME", "COMMON_CODE");
-            CommonUtil.ComboBinding<ComboItemVO>(cboCOM2, Itemlist, "COMMON_NAME", "COMMON_CODE");
-            CommonUtil.ComboBinding<ComboItemVO>(cboItem, Itemlist, "COMMON_NAME", "COMMON_CODE");
+            CommonUtil.ComboBinding<ComboItemVO>(cboCOM, ComList, "COMMON_CODE", "COMMON_NAME");
+            CommonUtil.ComboBinding<ComboItemVO>(cboCOM2, ComList, "COMMON_CODE", "COMMON_NAME");
+            CommonUtil.ComboBinding<ComboItemVO>(cboItem, Itemlist, "COMMON_CODE", "COMMON_NAME");
         }
         #endregion
 
+        #region 이벤트
         private void FrmSalesMasterPop_Load(object sender, EventArgs e)
         {
             //콤보박스 바인딩
             BindingComboBox();
 
-            ////초기값
-            //txtMDFDate.Text = DateTime.Now.ToShortDateString();
-            //cboShift.SelectedIndex = 0;
-            //cboShiftUseYN.SelectedIndex = 0;
-            //cboFcltsCode.SelectedIndex = 1;
+            //초기값
+            cboCOM.SelectedIndex = 0;
+            cboCOM2.SelectedIndex = 0;
+            cboMarket.SelectedIndex = 0;
+            cboOrderTyp.SelectedIndex = 0;
+            cboItem.SelectedIndex = 0;
 
-            //if (InsertOrUpdate == 2) //수정
-            //{
-            //    //서비스 호출
-            //    ShiftService service = new ShiftService();
-            //    var vo = service.GetShiftInfo(ShiftCode);
-            //    cboFcltsCode.SelectedIndex = cboFcltsCode.FindStringExact(vo.FCLTS_CODE);
-            //    txtFcltsName.Text = vo.FCLTS_NAME;
-            //    cboShift.SelectedIndex = cboShift.FindStringExact(vo.SHIFT_TYP);
-            //    cboShiftUseYN.SelectedIndex = cboShiftUseYN.FindStringExact(vo.SHIFT_USE_YN);
-            //    txtSTARTTIME.Text = vo.SHIFT_STARTTIME.ToString().PadLeft(6, '0'); ;
-            //    txtENDTIME.Text = vo.SHIFT_ENDTIME.ToString().PadLeft(6, '0');
-            //    dtpApplyStartTime.Value = Convert.ToDateTime(vo.SHIFT_APPLY_STARTTIME);
-            //    dtpApplyEndTime.Value = Convert.ToDateTime(vo.SHIFT_APPLY_ENDTIME);
-            //    txtPersonDirect.Text = vo.SHIFT_PERSON_DIR.ToString();
-            //    txtShiftCode.Text = vo.SHIFT_CODE.ToString();
-            //    txtRemark.Text = vo.SHIFT_REMARK;
-            //}
+            if (InsertOrUpdate == 2) //수정
+            {
+                ////서비스 호출
+                SALES_WORK_VO vo = new SALES_WORK_VO();
+                txtID.Text = vo.SALES_ID.ToString();
+                txtWO.Text = vo.SALES_Work_Order_ID;
+                txtPO.Text = vo.SO_PurchaseOrder;
+                cboCOM.SelectedIndex = cboCOM.FindStringExact(vo.COM_CODE);
+                cboCOM2.SelectedIndex = cboCOM2.FindStringExact(vo.SALES_COM_CODE);
+                dtpDueDate.Value = Convert.ToDateTime(vo.SALES_DUEDATE);
+                cboItem.SelectedValue = cboItem.FindStringExact(vo.ITEM_CODE);
+                txtOrderQTY.Text = vo.SALES_QTY.ToString();
+                txtOutQTY.Text = vo.SALES_Out_QTY.ToString();
+                txtNoQTY.Text = vo.SALES_NO_QTY.ToString();
+                cboMarket.SelectedIndex = cboMarket.FindStringExact(vo.SALES_MKT);
+                cboOrderTyp.SelectedIndex = cboOrderTyp.FindStringExact(vo.SALES_Order_TYPE);
+                txtRemark.Text = vo.SALES_REMARK;
+            }
 
         }
 
+        /// <summary>
+        /// W/O 저장하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOK_Click(object sender, EventArgs e)
         {
-            ////유효값 확인
-            //bool bStartTime = txtSTARTTIME.Text.Length == 6;
-            //bool bEndTime = txtENDTIME.Text.Length == 6;
-            //bool bPerson = txtPersonDirect.Text.Length > 0 && int.Parse(txtPersonDirect.Text) > 0;
+            //유효값 확인
+            bool bQTY = txtOrderQTY.Text.Length > 0;
+            bool bWO = txtWO.Text.Trim().Length > 0;
 
-            //if (!(bStartTime || bEndTime || bPerson))
-            //{
-            //    MessageBox.Show("필수값을 입력해주세요.", "필수값 입력 확인", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
+            if (!(bQTY || bWO))
+            {
+                MessageBox.Show("필수값을 입력해주세요.", "필수값 입력 확인", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            ////전달 vo 생성
-            //SHIFT_VO vo = new SHIFT_VO();
-            //vo.SHIFT_CODE = 0; //등록
-            //if (InsertOrUpdate == 2)
-            //    vo.SHIFT_CODE = int.Parse(txtShiftCode.Text); //수정
-            //vo.SHIFT_TYP = cboShift.Text;
-            //vo.SHIFT_STARTTIME = int.Parse(txtSTARTTIME.Text);
-            //vo.SHIFT_ENDTIME = int.Parse(txtENDTIME.Text);
-            //vo.SHIFT_APPLY_STARTTIME = dtpApplyStartTime.Value.ToShortDateString();
-            //vo.SHIFT_APPLY_ENDTIME = dtpApplyEndTime.Value.ToShortDateString();
-            //vo.SHIFT_PERSON_DIR = int.Parse(txtPersonDirect.Text);
-            //vo.SHIFT_USE_YN = cboShiftUseYN.Text;
-            //vo.SHIFT_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
-            //vo.SHIFT_LAST_MDFY = DateTime.Now.ToShortDateString();
-            //vo.SHIFT_REMARK = txtRemark.Text;
-            //vo.FCLTS_CODE = cboFcltsCode.Text;
+            //전달 vo 생성
+            SALES_WORK_VO vo = new SALES_WORK_VO();
+            vo.SALES_ID = 0; //등록
+            if (InsertOrUpdate == 2)
+                vo.SALES_ID = int.Parse(txtID.Text); //수정
+            vo.SALES_Work_Order_ID = txtWO.Text.Trim();
+            vo.SO_PurchaseOrder = txtPO.Text.Trim();
+            vo.COM_CODE = cboCOM.SelectedValue.ToString();
+            vo.SALES_COM_CODE = cboCOM2.SelectedValue.ToString();
+            vo.SALES_DUEDATE = dtpDueDate.Value.ToShortDateString();
+            vo.ITEM_CODE = cboItem.SelectedValue.ToString();
+            vo.SALES_QTY = int.Parse(txtOrderQTY.Text);
+            if (txtOutQTY.Text.Trim().Length < 1)
+                txtOutQTY.Text = "0";
+            vo.SALES_Out_QTY = int.Parse(txtOutQTY.Text);
+            if (txtNoQTY.Text.Trim().Length < 1)
+                txtNoQTY.Text = "0";
+            vo.SALES_NO_QTY = int.Parse(txtNoQTY.Text);
+            vo.SALES_MKT = cboMarket.Text;
+            vo.SALES_Order_TYPE = cboOrderTyp.Text;
+            vo.SALES_REMARK = txtRemark.Text;
 
-            ////서비스호출
-            //ShiftService service = new ShiftService();
-            //Message msg = service.InsertOrUpdateShift(vo);
-            //if (msg.IsSuccess)
-            //{
-            //    MessageBox.Show(msg.ResultMessage);
-            //    this.Close();
-            //}
-            //else
-            //{
-            //    MessageBox.Show(msg.ResultMessage);
-            //    return;
-            //}
+            //서비스호출
+            SalesService service = new SalesService();
+            Message msg = service.InsertOrUpdateSalesWork(vo);
+            if (msg.IsSuccess)
+            {
+                MessageBox.Show(msg.ResultMessage);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show(msg.ResultMessage);
+                return;
+            }
 
         }
 
@@ -138,5 +151,7 @@ namespace TEAM3FINAL
                 e.Handled = true;
             }
         }
+        #endregion
+
     }
 }
