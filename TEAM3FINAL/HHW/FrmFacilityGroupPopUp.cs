@@ -107,7 +107,7 @@ namespace TEAM3FINAL
 
         private void ComboBinding()
         {
-            ComboItemService service = new ComboItemService();
+            CommonService service = new CommonService();
             List<ComboItemVO> commonlist = service.GetITEMCmCode();
 
             var listUse_YN = (from item in commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
