@@ -300,6 +300,7 @@
             this.menuPanel1.TabIndex = 0;
             this.menuPanel1.TitleFont = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.menuPanel1.TitleName = "발주현황";
+            this.menuPanel1.Load += new System.EventHandler(this.menuPanel1_Load);
             // 
             // dvgReorder
             // 

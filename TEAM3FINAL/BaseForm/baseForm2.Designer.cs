@@ -92,6 +92,7 @@
             this.Name = "baseForm2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "bessForm";
+            this.Load += new System.EventHandler(this.baseForm2_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

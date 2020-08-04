@@ -32,7 +32,7 @@ namespace TEAM3FINAL
         private void DataGridViewBinding()
         {
             ReorderService item = new ReorderService();
-            dgvReorder.DataSource = item.SelectBOM();
+            dgvReorder.DataSource = item.SelectREORDER();
         }
         /// <summary>
         /// 콤보 박스 바인딩
@@ -211,6 +211,15 @@ namespace TEAM3FINAL
         }
 
         private void button2_Click(object sender, EventArgs e)
+        {
+            FrmReorderSearchPopUp frm = new FrmReorderSearchPopUp();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show(frm.day);
+            }
+        }
+
+        private void menuPanel1_Load(object sender, EventArgs e)
         {
 
         }

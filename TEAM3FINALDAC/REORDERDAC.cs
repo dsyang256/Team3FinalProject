@@ -10,7 +10,7 @@ namespace TEAM3FINALDAC
 {
     public class REORDERDAC : ConnectionAccess
     {
-        public DataTable SelectBOM()
+        public DataTable SelectREORDER()
         {
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(this.ConnectionString);
@@ -43,7 +43,7 @@ namespace TEAM3FINALDAC
             return dt;
         }
 
-        public DataTable GetSearchREORDER(string sday ,string eday,string comcodeout,string item,string state, string order, string comcodein)
+        public DataTable GetSearchREORDER(string sday, string eday, string comcodeout, string item, string state, string order, string comcodein)
         {
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(this.ConnectionString);
@@ -61,6 +61,21 @@ namespace TEAM3FINALDAC
                 da.Fill(dt);
             }
             return dt;
+        }
+        public DataTable GetCOM()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            conn.Open();
+            string sql = @"SELECT ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx,COM_CODE , COM_NAME 
+                             FROM COMPANY";
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
+            {
+                da.Fill(dt);
+            }
+            return dt;
+
+
         }
     }
 }

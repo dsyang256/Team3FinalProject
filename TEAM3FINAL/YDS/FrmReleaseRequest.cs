@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TEAM3FINAL
 {
-    public partial class FrmReleasecsRequest : baseForm2
+    public partial class FrmReleaseRequest : baseForm2
     {
-        public FrmReleasecsRequest()
+        public FrmReleaseRequest()
         {
             InitializeComponent();
         }

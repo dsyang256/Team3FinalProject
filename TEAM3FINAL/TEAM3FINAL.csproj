@@ -85,6 +85,12 @@
     </Compile>
     <Compile Include="Services\BORService.cs" />
     <Compile Include="Services\CostService.cs" />
+    <Compile Include="YDS\FrmReorderSearchPopUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YDS\FrmReorderSearchPopUp.Designer.cs">
+      <DependentUpon>FrmReorderSearchPopUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="YDS\FrmReorder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -570,6 +576,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Popup\FrmShiftPop.resx">
       <DependentUpon>FrmShiftPop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YDS\FrmReorderSearchPopUp.resx">
+      <DependentUpon>FrmReorderSearchPopUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="YDS\FrmWarehousingWait.resx">
       <DependentUpon>FrmWarehousingWait.cs</DependentUpon>
