@@ -24,6 +24,7 @@ namespace TEAM3FINAL
             BtnSet();
             DataGridViewColumnSet();
             ComboBinding();
+            DataGridViewBinding();
         }
         /// <summary>
         /// 데이터 그리드 바인딩
@@ -31,7 +32,7 @@ namespace TEAM3FINAL
         private void DataGridViewBinding()
         {
             ReorderService item = new ReorderService();
-            dgvReorder.DataSource = item.AllReorder();
+            dgvReorder.DataSource = item.SelectBOM();
         }
         /// <summary>
         /// 콤보 박스 바인딩
@@ -65,24 +66,24 @@ namespace TEAM3FINAL
         {
             DataGridViewUtil.InitSettingGridView(dgvReorder);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "no", "idx", true, 30);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "no", "idx", true, 30);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "발주번호", "ITEM_TYP", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "협렵사", "ITEM_CODE", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "납품업체", "ITEM_NAME", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "주문상태", "ITEM_STND", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "품목", "ITEM_UNIT", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "품명", "ITEM_QTY_UNIT", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "규격", "ITEM_UNIT_CNVR", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "단위", "ITEM_QTY_CNVR", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "납기일", "ITEM_INCOME_YN", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "발주량", "ITEM_PROCS_YN", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "입고량", "ITEM_XPORT_YN", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "출발량", "ITEM_DSCN_YN", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "취소량", "ITEM_FREE_YN", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "취소가능량", "ITEM_COM_DLVR", true, 140);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "발주일", "ITEM_COM_REORDER", true, 140);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "출발일", "ITEM_COM_REORDER", true, 140);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "발주자", "ITEM_COM_REORDER", true, 140);
+            DataGridViewUtil.DataGridViewCheckBoxSet(dgvReorder, "all");
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "발주번호", "REORDER_CODE", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "협렵사", "COM_CODE", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "납품업체", "REORDER_COM_DLVR", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "주문상태", "REORDER_STATE", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "품목", "ITEM_CODE", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "품명", "ITEM_NAME", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "규격", "ITEM_STND", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "단위", "ITEM_UNIT", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "납기일", "REORDER_DATE_IN", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "발주량", "REORDER_QTY", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "입고량", "REORDER_DETAIL_QTY_GOOD", true, 100);
+            //DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "출발량", "REORDER_DETAIL_QTY_START", true, 100);
+            //DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "취소량", "ITEM_FREE_YN", true, 100);
+            //DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "취소가능량", "REORDER_QTY_CANCEL", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "발주일", "REORDER_DATE", true, 100);
+            //DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "출발일", "ITEM_COM_REORDER", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "발주자", "MANAGER_NAME", true, 100);
             DataGridViewCheckBoxAllCheck();
         }
         /// <summary>
@@ -148,7 +149,16 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-
+                ReorderService service = new ReorderService();
+                dgvReorder.DataSource = null;
+                dgvReorder.DataSource = service.GetSearchREORDER(
+                    sday.Value.ToShortDateString()
+                    , eday.Value.ToShortDateString()
+                    , (COM_CODE_OUT.Text.Length < 1) ? "" : COM_CODE_OUT.SelectedValue.ToString()
+                    , (ITEM_CODE.Text.Length < 1) ? "" : ITEM_CODE.SelectedValue.ToString()
+                    , REORDER_STATE.Text
+                    , REORDER_CODE.Text
+                    , (COM_CODE_IN.Text.Length < 1) ? "": COM_CODE_IN.SelectedValue.ToString());
             }
         }
         /// <summary>
@@ -198,6 +208,11 @@ namespace TEAM3FINAL
             {
 
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
