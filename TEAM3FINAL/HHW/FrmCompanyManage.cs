@@ -19,6 +19,8 @@ namespace TEAM3FINAL
             InitializeComponent();
         }
 
+        #region 체크박스 포함한 그리드뷰 컬럼 생성
+
         private void DataGridViewColumnSet()
         {
             //데이터그리드뷰 초기설정
@@ -72,6 +74,8 @@ namespace TEAM3FINAL
                 chk.Value = headerChk.Checked;
             }
         }
+
+        #endregion
 
         private void FrmCompanyManage_Load(object sender, EventArgs e)
         {
@@ -178,9 +182,24 @@ namespace TEAM3FINAL
                     frm.COM_USE_YN = dgvCompanyList.CurrentRow.Cells[14].Value.ToString();
                     frm.COM_LAST_MDFR = dgvCompanyList.CurrentRow.Cells[15].Value.ToString();
                     frm.COM_LAST_MDFY = dgvCompanyList.CurrentRow.Cells[16].Value.ToString();
-                    frm.COM_STR_DATE = dgvCompanyList.CurrentRow.Cells[17].Value.ToString();
-                    frm.COM_END_DATE = dgvCompanyList.CurrentRow.Cells[18].Value.ToString();
-                    frm.COM_INFO = dgvCompanyList.CurrentRow.Cells[19].Value.ToString();
+                    try
+                    {
+                        frm.COM_STR_DATE = dgvCompanyList.CurrentRow.Cells[18].Value.ToString();
+                    }
+                    catch
+                    {
+                        frm.COM_STR_DATE = " ";
+                    }
+                    try
+                    {
+                        frm.COM_END_DATE = dgvCompanyList.CurrentRow.Cells[19].Value.ToString();
+                    }
+                    catch
+                    {
+                        frm.COM_END_DATE = " ";
+                    }
+                    
+                    frm.COM_INFO = dgvCompanyList.CurrentRow.Cells[20].Value.ToString();
                     frm.ShowDialog();
                     if (frm.DialogResult == DialogResult.OK)
                     {

@@ -49,6 +49,7 @@ namespace TEAM3FINAL
             }
 
             BOR_VO vo = new BOR_VO();
+            vo.BOR_CODE = BOR_CODE;
             vo.ITEM_CODE = cboItemCode.Text;
             vo.BOR_PROCS_CODE = cboPROC.Text;
             vo.FCLTS_CODE = cboFacil.Text;
@@ -74,7 +75,7 @@ namespace TEAM3FINAL
             vo.BOR_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
             BORService service = new BORService();
-            Message msg = service.SaveBOR(vo);
+            Message msg = service.SaveBOR(vo, Update);
             if (msg.IsSuccess)
             {
                 MessageBox.Show(msg.ResultMessage);
@@ -93,6 +94,7 @@ namespace TEAM3FINAL
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            Update = false;
             this.Close();
         }
 
@@ -108,7 +110,7 @@ namespace TEAM3FINAL
                 cboPROC.Text = BOR_PROCS_CODE;
                 cboFacil.Text = FCLTS_CODE;
                 txtTime.Text = BOR_PROCS_TIME.ToString();
-                txtLead.Text = BOR_PROCS_LEADTIME.ToString();
+                txtLead.Text = (BOR_PROCS_LEADTIME ==0) ? "": BOR_PROCS_LEADTIME.ToString();
                 txtPrio.Text = BOR_PRIORT.ToString();
                 txtYIELD.Text = BOR_YIELD.ToString();
                 cboUseYN.Text = BOR_USE_YN;
@@ -129,7 +131,7 @@ namespace TEAM3FINAL
 
         private void txtTime_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back) || txtLead.Text == ""))
             {
                 e.Handled = true;
             }
@@ -137,7 +139,7 @@ namespace TEAM3FINAL
 
         private void txtYIELD_KeyPress(object sender, KeyPressEventArgs e)
         {            
-            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == 46))
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == 46 || txtYIELD.Text == ""))
             {
                 e.Handled = true;
             }

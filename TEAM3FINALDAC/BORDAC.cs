@@ -49,7 +49,7 @@ namespace TEAM3FINALDAC
             }
         }
 
-        public Message SaveBOR(BOR_VO vo)
+        public Message SaveBOR(BOR_VO vo, bool update)
         {
             try
             {
@@ -58,6 +58,7 @@ namespace TEAM3FINALDAC
                     cmd.Connection = new SqlConnection(this.ConnectionString);
                     cmd.CommandText = "SP_SaveBOR";
                     cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@P_UPDATE", update);
                     cmd.Parameters.AddWithValue("@P_BOR_CODE", vo.BOR_CODE);
                     cmd.Parameters.AddWithValue("@P_BOR_PROCS_CODE", vo.BOR_PROCS_CODE);
                     cmd.Parameters.AddWithValue("@P_BOR_PROCS_TIME", vo.BOR_PROCS_TIME);

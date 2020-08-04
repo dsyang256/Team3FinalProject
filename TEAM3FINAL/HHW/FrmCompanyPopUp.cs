@@ -50,6 +50,11 @@ namespace TEAM3FINAL
 
         private void FrmCompanyPopUp_Load(object sender, EventArgs e)
         {
+            dtpEnd.Checked = false;
+            dtpStart.Checked = false;//datetimepicker 기본 null값
+            dtpEnd_ValueChanged(null, null);
+            dtpStart_ValueChanged(null, null);
+
             ComboBinding();
             txtModifier.Enabled = false;
             txtModifyDate.Enabled = false;
@@ -60,16 +65,31 @@ namespace TEAM3FINAL
             {
                 txtComCode.Text = COM_CODE;
                 txtComName.Text = COM_NAME;
-                txtComType.Text = COM_TYP;
+                txtComType.Text = COM_TYP_INDSTRY;
                 txtOwnerName.Text = COM_CEO;
                 txtRegNum.Text = COM_REG_NUM;
-                cboComType.Text = COM_TYP_INDSTRY;
+                cboComType.Text = COM_TYP;
                 txtTypeTEA.Text = COM_TYP_BSNS;
                 txtManager.Text = COM_MANAGER;
                 txtEmail.Text = COM_EML;
                 txtTell.Text = COM_TEL;
-                dtpStart.Value = Convert.ToDateTime(COM_STR_DATE); //주의
-                dtpEnd.Value = Convert.ToDateTime(COM_END_DATE);
+                try 
+                {
+                    dtpStart.Value = Convert.ToDateTime(COM_STR_DATE);
+                }
+                catch
+                {
+                    dtpStart.Checked = false;
+                }
+                try
+                {
+                    dtpEnd.Value = Convert.ToDateTime(COM_END_DATE);
+                }
+                catch
+                {
+                    dtpEnd.Checked = false;
+                }
+                
                 cboTradeYN.Text = COM_TRAD_YN;
                 txtFAX.Text = COM_FAX;
                 cboAutoYN.Text = COM_AUTOIN_YN;
@@ -77,10 +97,7 @@ namespace TEAM3FINAL
                 cboUseYN.Text = COM_USE_YN;
                 txtComDesc.Text = COM_INFO;
             }
-            else
-            {
-                //데이터타임 피크에 null값 주기
-            }
+
         }
 
         private void ComboBinding()
@@ -98,24 +115,30 @@ namespace TEAM3FINAL
             }
 
             COMPANY_VO vo = new COMPANY_VO();
-            vo.COM_CODE = COM_CODE;
-            vo.COM_NAME = COM_NAME;
-            vo.COM_TYP = COM_TYP;
-            vo.COM_CEO = COM_CEO;
-            vo.COM_REG_NUM = COM_REG_NUM;
-            vo.COM_TYP_INDSTRY = COM_TYP_INDSTRY;
-            vo.COM_TYP_BSNS = COM_TYP_BSNS;
-            vo.COM_MANAGER = COM_MANAGER;
-            vo.COM_EML = COM_EML;
-            vo.COM_TEL = COM_TEL;
-            vo.COM_STR_DATE = COM_STR_DATE;
-            vo.COM_END_DATE = COM_END_DATE;
-            vo.COM_TRAD_YN = COM_TRAD_YN;
-            vo.COM_FAX = COM_FAX;
-            vo.COM_AUTOIN_YN = COM_AUTOIN_YN;
-            vo.COM_START_YN = COM_START_YN;
-            vo.COM_USE_YN = COM_USE_YN;
-            vo.COM_INFO = COM_INFO;
+            vo.COM_CODE = txtComCode.Text;
+            vo.COM_NAME = txtComName.Text;
+            vo.COM_TYP = cboComType.Text;
+            vo.COM_CEO = txtOwnerName.Text;
+            vo.COM_REG_NUM = txtRegNum.Text;
+            vo.COM_TYP_INDSTRY = txtComType.Text;
+            vo.COM_TYP_BSNS = txtTypeTEA.Text;
+            vo.COM_MANAGER = txtManager.Text;
+            vo.COM_EML = txtEmail.Text;
+            vo.COM_TEL = txtTell.Text;
+            if (dtpStart.Checked)
+                vo.COM_STR_DATE = dtpStart.Value.ToString("yyyy-MM-dd");
+            else
+                vo.COM_STR_DATE = null;
+            if (dtpEnd.Checked)
+                vo.COM_END_DATE = dtpEnd.Value.ToString("yyyy-MM-dd");
+            else
+                vo.COM_END_DATE = null;
+            vo.COM_TRAD_YN = cboTradeYN.Text;
+            vo.COM_FAX = txtFAX.Text;
+            vo.COM_AUTOIN_YN = cboAutoYN.Text;
+            vo.COM_START_YN = cboStartYN.Text;
+            vo.COM_USE_YN = cboUseYN.Text;
+            vo.COM_INFO = txtComDesc.Text;
             vo.COM_LAST_MDFR = COM_LAST_MDFR;
             vo.COM_LAST_MDFY = COM_LAST_MDFY;
 
@@ -131,6 +154,35 @@ namespace TEAM3FINAL
             {
                 MessageBox.Show(msg.ResultMessage);
                 return;
+            }
+        }
+
+        //등록화면시 거래종료날짜 null
+        private void dtpEnd_ValueChanged(object sender, EventArgs e)
+        {            
+            if (!dtpEnd.Checked)
+            {                
+                dtpEnd.CustomFormat = " ";
+                dtpEnd.Format = DateTimePickerFormat.Custom;
+            }
+            else
+            {
+                dtpEnd.CustomFormat = null;
+                dtpEnd.Format = DateTimePickerFormat.Long;
+            }
+        }
+
+        private void dtpStart_ValueChanged(object sender, EventArgs e)
+        {
+            if (!dtpStart.Checked)
+            {
+                dtpStart.CustomFormat = " ";
+                dtpStart.Format = DateTimePickerFormat.Custom;
+            }
+            else
+            {
+                dtpStart.CustomFormat = null;
+                dtpStart.Format = DateTimePickerFormat.Long;
             }
         }
     }
