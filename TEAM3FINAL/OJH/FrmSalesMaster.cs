@@ -139,16 +139,54 @@ namespace TEAM3FINAL
             {
                 list = (from item in AllList select item).Where
                     (p => (Convert.ToDateTime(p.SALES_DUEDATE) < dtpTo.Value) && Convert.ToDateTime(p.SALES_DUEDATE) > dtpFrom.Value).ToList();
+
+
+
+                //품목명
+                if (txtItem.Text.Trim().Length > 0)
+                {
+                    list = (from item in list select item).Where
+                    (p => p.ITEM_NAME.Contains(txtItem.Text.Trim())).ToList();
+                }
+
+                //고객주문번호
+                if(txtPO.Text.Trim().Length>0)
+                {
+                    list = (from item in list select item).Where
+                    (p => p.SO_PurchaseOrder.Contains(txtPO.Text.Trim())).ToList();
+                }
+
+                //상태
+                if(cboState.Text.Length>0)
+                {
+                    list = (from item in list select item).Where
+                    (p => p.SO_PurchaseOrder.Contains(cboState.Text)).ToList();
+                }
+
+                //고객사
+                if(cboCom.Text.Length>0)
+                {
+                    list = (from item in list select item).Where
+                    (p => p.COM_NAME.Contains(cboCom.Text)).ToList();
+                }
+
+                //도착지
+                if(cboCom2.Text.Length>0)
+                {
+                    list = (from item in list select item).Where
+                    (p => p.SALES_COM_NAME.Contains(cboCom2.Text)).ToList();
+                }
+
+                //발주구분
+                if (cboOrderGubun.Text.Length > 0)
+                {
+                    list = (from item in list select item).Where
+                    (p => p.SALES_Order_TYPE.Contains(cboOrderGubun.Text)).ToList();
+                }
+
+                dgvSales.DataSource = null;
+                dgvSales.DataSource = list;
             }
-
-
-            //업체명 조회
-            if (txtItem.Text.Trim().Length > 0)
-            {
-            }
-            dgvSales.DataSource = null;
-            dgvSales.DataSource = list;
-
         }
 
         public void Reset(object sender, EventArgs e)
@@ -232,7 +270,7 @@ namespace TEAM3FINAL
 
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
         {
-            if(dtpFrom.Value > dtpTo.Value)
+            if (dtpFrom.Value > dtpTo.Value)
             {
                 MessageBox.Show("시작일은 종료일보다 늦을 수 없습니다.");
                 dtpTo.Value = dtpFrom.Value;
