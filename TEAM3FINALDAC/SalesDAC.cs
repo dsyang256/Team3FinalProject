@@ -25,25 +25,12 @@ namespace TEAM3FINALDAC
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = new SqlConnection(this.ConnectionString);
-                    cmd.CommandText = $@"select
-                                  [MC_Code]
-                                 ,C.[COM_Code]
-                                 ,C.[COM_NAME]
-                                 , I.[ITEM_Code]
-                                 , I.ITEM_NAME
-                                 ,I.ITEM_STND
-                                 ,I.ITEM_UNIT
-                                 , [MC_UNITPRICE_CUR]
-                                 , [MC_UNITPRICE_EX]
-                                 ,CONVERT(CHAR(10), [MC_STARTDATE], 23) [MC_STARTDATE]
-                                 ,CONVERT(CHAR(10), [MC_ENDDATE], 23) [MC_ENDDATE]
-                                 , [MC_REMARK]
-                                 , [MC_USE_YN]
-
-                                 from [dbo].[MATERIAL_COST] M inner join ITEM I on m.ITEM_Code = i.ITEM_CODE
-                                 inner join COMPANY C on c.COM_CODE = m.COM_Code
-                                 where MC_Code=@MC_Code";
-                    cmd.Parameters.AddWithValue("@MC_Code", salesID);
+                    cmd.CommandText = $@"select SALES_ID ,SALES_Work_Order_ID,SALES_Out_QTY,SALES_MKT ,CONVERT(CHAR(10), SALES_DUEDATE, 23) SALES_DUEDATE,SALES_QTY,SALES_Order_TYPE,SALES_COM_CODE,SALES_REMARK,s.COM_CODE,s.ITEM_CODE,SO_PurchaseOrder,SALES_NO_QTY
+                                        from SALES_WORK s inner join COMPANY c on s.COM_CODE = c.COM_CODE
+                                           inner join ITEM i on i.ITEM_CODE = s.ITEM_CODE
+                                        where i.ITEM_USE_YN<>'미사용'
+                                         AND SALES_ID=@SALES_ID";
+                    cmd.Parameters.AddWithValue("@SALES_ID", salesID);
                     cmd.Connection.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
                     list = Helper.DataReaderMapToList<SALES_WORK_VO>(reader);

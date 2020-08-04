@@ -65,14 +65,15 @@ namespace TEAM3FINAL
             if (InsertOrUpdate == 2) //수정
             {
                 ////서비스 호출
-                SALES_WORK_VO vo = new SALES_WORK_VO();
+                SalesService service = new SalesService();
+                var vo = service.GetSalesWorkInfo(SalesID);
                 txtID.Text = vo.SALES_ID.ToString();
                 txtWO.Text = vo.SALES_Work_Order_ID;
                 txtPO.Text = vo.SO_PurchaseOrder;
-                cboCOM.SelectedIndex = cboCOM.FindStringExact(vo.COM_CODE);
-                cboCOM2.SelectedIndex = cboCOM2.FindStringExact(vo.SALES_COM_CODE);
+                cboCOM.SelectedIndex = cboCOM.FindIndexByValue(vo.COM_CODE);
+                cboCOM2.SelectedIndex = cboCOM2.FindIndexByValue(vo.SALES_COM_CODE);
                 dtpDueDate.Value = Convert.ToDateTime(vo.SALES_DUEDATE);
-                cboItem.SelectedValue = cboItem.FindStringExact(vo.ITEM_CODE);
+                cboItem.SelectedIndex = cboItem.FindIndexByValue(vo.ITEM_CODE);
                 txtOrderQTY.Text = vo.SALES_QTY.ToString();
                 txtOutQTY.Text = vo.SALES_Out_QTY.ToString();
                 txtNoQTY.Text = vo.SALES_NO_QTY.ToString();
@@ -150,6 +151,15 @@ namespace TEAM3FINAL
             {
                 e.Handled = true;
             }
+        }
+        /// <summary>
+        /// 폼 종료 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
         #endregion
 

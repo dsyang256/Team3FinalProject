@@ -146,6 +146,35 @@ namespace TEAM3FINAL
     }
 
 
-
 }
 
+/// <summary>
+/// 확장메서드 클래스
+/// </summary>
+public static class ExtensionClass 
+{ 
+    /// <summary>
+    /// 콤보박스의 리스트 중 일치하는 ValueMember를 찾아 인덱스를 반환하는 확장메서드
+    /// </summary>
+    /// <param name="combo"></param>
+    /// <param name="valueName"></param>
+    /// <returns></returns>
+    public static int FindIndexByValue(this ComboBox combo, string ValueMember) 
+    {
+        int Selected = -1; //기본값 (일치값 없을시)
+        int count = combo.Items.Count;
+        if (count > 0)
+        {
+            for (int i = 0; (i <= (count - 1)); i++)
+            {
+                combo.SelectedIndex = i;
+                if ((string)(combo.SelectedValue) == ValueMember)
+                {
+                    Selected = i;
+                    break;
+                }
+            }
+        }
+        return Selected;
+    }
+}

@@ -60,6 +60,7 @@
     <Compile Include="ITEMDAC.cs" />
     <Compile Include="LoginDAC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="REORDERDAC.cs" />
     <Compile Include="SalesDAC.cs" />
     <Compile Include="ShiftDAC.cs" />
     <Compile Include="Utils\ConnectionAccess.cs" />
