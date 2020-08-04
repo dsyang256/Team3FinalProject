@@ -16,5 +16,10 @@ namespace TEAM3FINAL
         {
             InitializeComponent();
         }
+
+        private void baseForm2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

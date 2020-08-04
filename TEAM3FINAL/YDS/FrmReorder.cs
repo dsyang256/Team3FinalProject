@@ -111,7 +111,11 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                
+                FrmReorderPopUp frm = new FrmReorderPopUp();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    Search(null, null);
+                }
             }
         }
         /// <summary>

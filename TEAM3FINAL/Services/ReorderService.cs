@@ -10,16 +10,21 @@ namespace TEAM3FINAL
 {
     public class ReorderService
     {
-        public DataTable SelectBOM()
+        public DataTable SelectREORDER()
         {
             REORDERDAC dac = new REORDERDAC();
-            return dac.SelectBOM();
+            return dac.SelectREORDER();
         }
 
         public DataTable GetSearchREORDER(string sday, string eday, string comcodeout, string item, string state, string order, string comcodein)
         {
             REORDERDAC dac = new REORDERDAC();
             return dac.GetSearchREORDER(sday, eday, comcodeout, item, state, order, comcodein);
+        }
+        public DataTable GetCOM()
+        {
+            REORDERDAC dac = new REORDERDAC();
+            return dac.GetCOM();
         }
     }
 }
