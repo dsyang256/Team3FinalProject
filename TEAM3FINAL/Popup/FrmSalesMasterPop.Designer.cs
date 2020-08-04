@@ -93,6 +93,7 @@
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(332, 443);
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // panel2
             // 

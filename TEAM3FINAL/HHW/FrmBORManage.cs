@@ -70,6 +70,7 @@ namespace TEAM3FINAL
 
         private void FrmBORManage_Load(object sender, EventArgs e)
         {
+            ComboBinding();
             btnset();
             DataGridViewColumnSet();
             GetBORList();
@@ -85,11 +86,15 @@ namespace TEAM3FINAL
             frm.eReset += Reset;
             frm.ePrint += Print;
         }
+        private void ComboBinding()
+        {
+
+        }
 
         private void GetBORList()
         {
             BORService service = new BORService();
-            dgvBORList.DataSource = null;
+            //dgvBORList.DataSource = null;
             dgvBORList.DataSource = service.GetBORList();
         }
 
@@ -128,7 +133,47 @@ namespace TEAM3FINAL
 
         public void Update(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                //수정 시 여러개의 체크박스를 선택하는것을 막음
+                dgvBORList.EndEdit();
+                string sb = string.Empty;
+                int cnt = 0;
+                //체크가 되었는지 확인
+                foreach (DataGridViewRow item in dgvBORList.Rows)
+                {
+                    if (Convert.ToBoolean(item.Cells[0].Value))
+                    {
+                        sb = item.Cells[1].Value.ToString();
+                        cnt++;
+                    }
+                }
+                if (cnt == 1) //하나일 경우 PopUp창 띄움 ************************
+                {
+                    FrmBORPopUp frm = new FrmBORPopUp();
+                    frm.Update = true;
+                    frm.BOR_CODE = Convert.ToInt32(dgvBORList.CurrentRow.Cells[1].Value);
+                    frm.ITEM_CODE = dgvBORList.CurrentRow.Cells[2].Value.ToString();
+                    frm.BOR_PROCS_CODE = dgvBORList.CurrentRow.Cells[4].Value.ToString();
+                    frm.FCLTS_CODE = dgvBORList.CurrentRow.Cells[6].Value.ToString();
+                    frm.BOR_PROCS_TIME = Convert.ToInt32(dgvBORList.CurrentRow.Cells[8].Value);
+                    frm.BOR_PRIORT = Convert.ToInt32(dgvBORList.CurrentRow.Cells[9].Value);
+                    frm.BOR_PROCS_LEADTIME = Convert.ToInt32(dgvBORList.CurrentRow.Cells[10].Value);
+                    frm.BOR_YIELD = Convert.ToInt32(dgvBORList.CurrentRow.Cells[11].Value);
+                    frm.BOR_USE_YN = dgvBORList.CurrentRow.Cells[12].Value.ToString();
+                    frm.BOR_REMARK = dgvBORList.CurrentRow.Cells[13].Value.ToString();
+                    frm.ShowDialog();
+                    if (frm.DialogResult == DialogResult.OK)
+                    {
+                        GetBORList();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("하나의 항목씩만 수정 가능");
+                return;
+            }
         }
 
         public void Delete(object sender, EventArgs e)

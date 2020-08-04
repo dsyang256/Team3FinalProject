@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using TEAM3FINALVO;
 using Message = TEAM3FINALVO.Message;
@@ -57,7 +58,16 @@ namespace TEAM3FINAL
                 vo.BOR_PROCS_LEADTIME = plzNull1;
             else
                 vo.BOR_PROCS_LEADTIME = null;
-            vo.BOR_YIELD = Convert.ToDecimal(txtYIELD.Text);
+            try
+            {
+                vo.BOR_YIELD = Convert.ToDecimal(txtYIELD.Text);
+            }
+            catch
+            {
+                MessageBox.Show("err수율 : 올바른 소수점의 형태가 아닙니다.");
+                return;
+            }
+
             vo.BOR_USE_YN = cboUseYN.Text;
             vo.BOR_REMARK = txtREMARK.Text;
             vo.BOR_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
@@ -115,6 +125,22 @@ namespace TEAM3FINAL
             //CommonUtil.ComboBinding<ComboItemVO>(cboItemCode, listITEM, "COMMON_CODE", "COMMON_NAME", "");
             //var listYN = (from item in commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
             //CommonUtil.ComboBinding<ComboItemVO>(cboUseYN, listYN, "COMMON_CODE", "COMMON_NAME", "");
+        }
+
+        private void txtTime_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtYIELD_KeyPress(object sender, KeyPressEventArgs e)
+        {            
+            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back) || e.KeyChar == 46))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
