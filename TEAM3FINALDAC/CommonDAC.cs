@@ -150,6 +150,11 @@ namespace TEAM3FINALDAC
                       
                                          Union
 
+                                        SELECT FCLTS_CODE 'COMMON_CODE',FCLTS_NAME 'COMMON_NAME', ('설비')'COMMON_PARENT', null 'COMMON_SEQ'
+                                          FROM FACTORY
+                      
+                                         Union
+
                                          SELECT PLAN_ID 'COMMON_CODE',PLAN_ID 'COMMON_NAME', ('PLAN_ID')'COMMON_PARENT', null 'COMMON_SEQ'
                                          FROM DEMAND_PLANNING 
 

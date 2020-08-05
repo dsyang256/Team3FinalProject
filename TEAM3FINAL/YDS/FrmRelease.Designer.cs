@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.ITEM_MANAGER = new System.Windows.Forms.ComboBox();
-            this.ITEM_WRHS_IN = new System.Windows.Forms.ComboBox();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.STATE = new System.Windows.Forms.ComboBox();
+            this.FCLTS = new System.Windows.Forms.ComboBox();
+            this.ITEM1 = new System.Windows.Forms.ComboBox();
+            this.ITEM2 = new System.Windows.Forms.ComboBox();
             this.ITEM_TYP = new System.Windows.Forms.ComboBox();
-            this.ITEM_USE_YN = new System.Windows.Forms.ComboBox();
-            this.ITEM_WRHS_OUT = new System.Windows.Forms.ComboBox();
             this.ITEM_NAME = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -56,8 +56,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.menuPanel1 = new TEAM3FINAL.MenuPanel();
             this.button2 = new System.Windows.Forms.Button();
-            this.dgv1 = new WindowsFormsApp18.MyDataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.list1 = new WindowsFormsApp18.MyDataGridView();
+            this.WRHS = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.eday = new System.Windows.Forms.DateTimePicker();
             this.sday = new System.Windows.Forms.DateTimePicker();
@@ -67,7 +67,7 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.list1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -82,12 +82,12 @@
             this.panel2.Controls.Add(this.label20);
             this.panel2.Controls.Add(this.label21);
             this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.comboBox1);
-            this.panel2.Controls.Add(this.ITEM_MANAGER);
-            this.panel2.Controls.Add(this.ITEM_WRHS_IN);
+            this.panel2.Controls.Add(this.WRHS);
+            this.panel2.Controls.Add(this.STATE);
+            this.panel2.Controls.Add(this.FCLTS);
+            this.panel2.Controls.Add(this.ITEM1);
+            this.panel2.Controls.Add(this.ITEM2);
             this.panel2.Controls.Add(this.ITEM_TYP);
-            this.panel2.Controls.Add(this.ITEM_USE_YN);
-            this.panel2.Controls.Add(this.ITEM_WRHS_OUT);
             this.panel2.Controls.Add(this.ITEM_NAME);
             this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.label18);
@@ -113,49 +113,49 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.dgv1);
+            this.panel3.Controls.Add(this.list1);
             this.panel3.Location = new System.Drawing.Point(15, 252);
             this.panel3.Size = new System.Drawing.Size(1268, 406);
             // 
-            // ITEM_MANAGER
+            // STATE
             // 
-            this.ITEM_MANAGER.FormattingEnabled = true;
-            this.ITEM_MANAGER.Location = new System.Drawing.Point(231, 128);
-            this.ITEM_MANAGER.Name = "ITEM_MANAGER";
-            this.ITEM_MANAGER.Size = new System.Drawing.Size(193, 23);
-            this.ITEM_MANAGER.TabIndex = 29;
+            this.STATE.FormattingEnabled = true;
+            this.STATE.Location = new System.Drawing.Point(231, 128);
+            this.STATE.Name = "STATE";
+            this.STATE.Size = new System.Drawing.Size(193, 23);
+            this.STATE.TabIndex = 29;
             // 
-            // ITEM_WRHS_IN
+            // FCLTS
             // 
-            this.ITEM_WRHS_IN.FormattingEnabled = true;
-            this.ITEM_WRHS_IN.Location = new System.Drawing.Point(600, 78);
-            this.ITEM_WRHS_IN.Name = "ITEM_WRHS_IN";
-            this.ITEM_WRHS_IN.Size = new System.Drawing.Size(193, 23);
-            this.ITEM_WRHS_IN.TabIndex = 25;
+            this.FCLTS.FormattingEnabled = true;
+            this.FCLTS.Location = new System.Drawing.Point(600, 78);
+            this.FCLTS.Name = "FCLTS";
+            this.FCLTS.Size = new System.Drawing.Size(193, 23);
+            this.FCLTS.TabIndex = 25;
+            // 
+            // ITEM1
+            // 
+            this.ITEM1.FormattingEnabled = true;
+            this.ITEM1.Location = new System.Drawing.Point(600, 128);
+            this.ITEM1.Name = "ITEM1";
+            this.ITEM1.Size = new System.Drawing.Size(193, 23);
+            this.ITEM1.TabIndex = 30;
+            // 
+            // ITEM2
+            // 
+            this.ITEM2.FormattingEnabled = true;
+            this.ITEM2.Location = new System.Drawing.Point(974, 130);
+            this.ITEM2.Name = "ITEM2";
+            this.ITEM2.Size = new System.Drawing.Size(193, 23);
+            this.ITEM2.TabIndex = 32;
             // 
             // ITEM_TYP
             // 
             this.ITEM_TYP.FormattingEnabled = true;
-            this.ITEM_TYP.Location = new System.Drawing.Point(600, 128);
+            this.ITEM_TYP.Location = new System.Drawing.Point(974, 78);
             this.ITEM_TYP.Name = "ITEM_TYP";
             this.ITEM_TYP.Size = new System.Drawing.Size(193, 23);
-            this.ITEM_TYP.TabIndex = 30;
-            // 
-            // ITEM_USE_YN
-            // 
-            this.ITEM_USE_YN.FormattingEnabled = true;
-            this.ITEM_USE_YN.Location = new System.Drawing.Point(974, 130);
-            this.ITEM_USE_YN.Name = "ITEM_USE_YN";
-            this.ITEM_USE_YN.Size = new System.Drawing.Size(193, 23);
-            this.ITEM_USE_YN.TabIndex = 32;
-            // 
-            // ITEM_WRHS_OUT
-            // 
-            this.ITEM_WRHS_OUT.FormattingEnabled = true;
-            this.ITEM_WRHS_OUT.Location = new System.Drawing.Point(974, 78);
-            this.ITEM_WRHS_OUT.Name = "ITEM_WRHS_OUT";
-            this.ITEM_WRHS_OUT.Size = new System.Drawing.Size(193, 23);
-            this.ITEM_WRHS_OUT.TabIndex = 27;
+            this.ITEM_TYP.TabIndex = 27;
             // 
             // ITEM_NAME
             // 
@@ -352,53 +352,53 @@
             this.button2.Text = "출고";
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // dgv1
+            // list1
             // 
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            this.dgv1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgv1.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Menu;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv1.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dgv1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv1.EnableHeadersVisualStyles = false;
-            this.dgv1.Location = new System.Drawing.Point(0, 0);
-            this.dgv1.Name = "dgv1";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv1.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.dgv1.RowHeadersWidth = 30;
-            this.dgv1.RowTemplate.Height = 23;
-            this.dgv1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv1.Size = new System.Drawing.Size(1268, 406);
-            this.dgv1.TabIndex = 0;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.list1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.list1.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.list1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.list1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.list1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.list1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.list1.EnableHeadersVisualStyles = false;
+            this.list1.Location = new System.Drawing.Point(0, 0);
+            this.list1.Name = "list1";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.list1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.list1.RowHeadersWidth = 30;
+            this.list1.RowTemplate.Height = 23;
+            this.list1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.list1.Size = new System.Drawing.Size(1268, 406);
+            this.list1.TabIndex = 0;
             // 
-            // comboBox1
+            // WRHS
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(600, 25);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(193, 23);
-            this.comboBox1.TabIndex = 45;
+            this.WRHS.FormattingEnabled = true;
+            this.WRHS.Location = new System.Drawing.Point(600, 25);
+            this.WRHS.Name = "WRHS";
+            this.WRHS.Size = new System.Drawing.Size(193, 23);
+            this.WRHS.TabIndex = 45;
             // 
             // textBox1
             // 
@@ -472,18 +472,18 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.list1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox ITEM_MANAGER;
-        private System.Windows.Forms.ComboBox ITEM_WRHS_IN;
+        private System.Windows.Forms.ComboBox STATE;
+        private System.Windows.Forms.ComboBox FCLTS;
+        private System.Windows.Forms.ComboBox ITEM1;
+        private System.Windows.Forms.ComboBox ITEM2;
         private System.Windows.Forms.ComboBox ITEM_TYP;
-        private System.Windows.Forms.ComboBox ITEM_USE_YN;
-        private System.Windows.Forms.ComboBox ITEM_WRHS_OUT;
         private System.Windows.Forms.TextBox ITEM_NAME;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
@@ -502,10 +502,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private MenuPanel menuPanel1;
-        private WindowsFormsApp18.MyDataGridView dgv1;
+        private WindowsFormsApp18.MyDataGridView list1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox WRHS;
         private System.Windows.Forms.DateTimePicker eday;
         private System.Windows.Forms.DateTimePicker sday;
         private System.Windows.Forms.Label label26;
