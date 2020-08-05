@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using TEAM3FINAL.Services;
+using TEAM3FINALVO;
 using Message = TEAM3FINALVO.Message;
 
 namespace TEAM3FINAL
@@ -88,7 +90,11 @@ namespace TEAM3FINAL
         }
         private void ComboBinding()
         {
+            CommonService service = new CommonService();
+            List<ComboItemVO> commonList = service.GetITEMCmCode();
 
+            var listTool = (from item in commonList where item.COMMON_PARENT == "PROC_TOOL" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(cboPROC, listTool, "COMMON_CODE", "COMMON_NAME", "");
         }
 
         private void GetBORList()
@@ -219,7 +225,7 @@ namespace TEAM3FINAL
 
         public void Print(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         #endregion

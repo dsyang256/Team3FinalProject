@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using TEAM3FINALVO;
@@ -102,7 +103,23 @@ namespace TEAM3FINAL
 
         private void ComboBinding()
         {
-            
+            CommonService service = new CommonService();
+            List<ComboItemVO> commonlist = service.GetITEMCmCode();
+
+            var listYN = (from item in commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(cboTradeYN, listYN, "COMMON_CODE", "COMMON_NAME", "");
+
+            var listYN2 = (from item in commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(cboAutoYN, listYN2, "COMMON_CODE", "COMMON_NAME", "");
+
+            var listYN3 = (from item in commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(cboStartYN, listYN3, "COMMON_CODE", "COMMON_NAME", "");
+
+            var listYN4 = (from item in commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(cboUseYN, listYN4, "COMMON_CODE", "COMMON_NAME", "");
+
+            var listVENDOR_TYP = (from item in commonlist where item.COMMON_PARENT == "VENDOR_TYP" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(cboComType, listVENDOR_TYP, "COMMON_CODE", "COMMON_NAME", "");
         }
 
         private void btnOK_Click(object sender, EventArgs e)
