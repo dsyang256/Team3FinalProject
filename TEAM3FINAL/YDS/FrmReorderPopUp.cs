@@ -24,7 +24,7 @@ namespace TEAM3FINAL
         {
             this.Close();
         }
-
+       
         private void FrmReorderPopUp_Load(object sender, EventArgs e)
         {
             ComboBinding();
@@ -32,6 +32,12 @@ namespace TEAM3FINAL
             DataGridViewColumnSet2();
             DataGridViewBinding1();
         }
+        #region 올체크 이벤트
+        /// <summary>
+        /// 올체크 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ComboBinding()
         {
             CommonService service = new CommonService();
@@ -42,6 +48,9 @@ namespace TEAM3FINAL
             CommonUtil.ComboBinding<ComboItemVO>(ITEM_COM_REORDER, listCOM_REORDER, "COMMON_CODE", "COMMON_NAME", "");
 
         }
+        #endregion
+
+        #region 데이터 그리드뷰 컬럼+체크박스 만들기
         /// <summary>
         /// 데이터 그리드뷰 컬럼+체크박스 만들기
         /// </summary>
@@ -77,6 +86,9 @@ namespace TEAM3FINAL
             DataGridViewCheckBoxAllCheck2();
 
         }
+        #endregion
+
+        #region 데이터 그리드 바인딩
         /// <summary>
         /// 데이터 그리드 바인딩
         /// </summary>
@@ -86,6 +98,15 @@ namespace TEAM3FINAL
             ReorderService service = new ReorderService();
             dgv1.DataSource = service.GetCOM();
         }
+        private void DataGridViewBinding2()
+        {
+            //dgv2.DataSource = null;
+            //ReorderService service = new ReorderService();
+            //dgv2.DataSource = service.GetCOM();
+        }
+        #endregion
+
+        #region 데이터 그리드뷰 올체크 체크박스 만들기
         /// <summary>
         /// 데이터 그리드뷰 올체크 체크박스 만들기
         /// </summary>
@@ -102,13 +123,17 @@ namespace TEAM3FINAL
         private void DataGridViewCheckBoxAllCheck2()
         {
             headerChk1 = new CheckBox();
-            Point headerCell = dgv1.GetCellDisplayRectangle(1, -1, true).Location;
+            Point headerCell = dgv2.GetCellDisplayRectangle(1, -1, true).Location;
             headerChk1.Location = new Point(headerCell.X + 4, headerCell.Y + 15);
             headerChk1.Size = new Size(18, 18);
             headerChk1.BackColor = Color.FromArgb(245, 245, 246);
             headerChk1.Click += HeaderChk_Clicked2;
-            dgv1.Controls.Add(headerChk1);
+            dgv2.Controls.Add(headerChk1);
         }
+        #endregion
+
+        #region 올체크 이벤트
+
         /// <summary>
         /// 올체크 이벤트
         /// </summary>
@@ -136,5 +161,6 @@ namespace TEAM3FINAL
                 chk.Value = headerChk.Checked;
             }
         }
+        #endregion
     }
 }
