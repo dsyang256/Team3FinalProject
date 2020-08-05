@@ -51,11 +51,11 @@ namespace TEAM3FINAL
             CommonUtil.ComboBinding<ComboItemVO>(STATE, listSTATE, "COMMON_CODE", "COMMON_NAME", "");
 
             //재고량
-            var list1 = (from item in Commonlist where item.COMMON_PARENT == "FACILITY_TYPE" select item).ToList();
+            var list1 = (from item in Commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(ITEM1, list1, "COMMON_CODE", "COMMON_NAME", "");
 
             //잔량
-            var list2 = (from item in Commonlist where item.COMMON_PARENT == "FACILITY_TYPE" select item).ToList();
+            var list2 = (from item in Commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(ITEM1, list2, "COMMON_CODE", "COMMON_NAME", "");
 
         }

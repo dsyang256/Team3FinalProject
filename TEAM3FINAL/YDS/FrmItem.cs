@@ -61,11 +61,11 @@ namespace TEAM3FINAL
             CommonUtil.ComboBinding<ComboItemVO>(ITEM_COM_DLVR, listCOM_DLVR, "COMMON_CODE", "COMMON_NAME", "");
 
             //입고창고
-            var listWRHS_IN = (from item in Commonlist where item.COMMON_PARENT == "FACILITY_TYPE" select item).ToList();
+            var listWRHS_IN = (from item in Commonlist where item.COMMON_PARENT == "창고" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(ITEM_WRHS_IN, listWRHS_IN, "COMMON_CODE", "COMMON_NAME", "");
 
             //출고창고
-            var listWRHS_OUT = (from item in Commonlist where item.COMMON_PARENT == "FACILITY_TYPE" select item).ToList();
+            var listWRHS_OUT = (from item in Commonlist where item.COMMON_PARENT == "창고" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(ITEM_WRHS_OUT, listWRHS_OUT, "COMMON_CODE", "COMMON_NAME", "");
 
             //담당자

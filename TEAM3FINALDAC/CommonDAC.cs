@@ -130,38 +130,38 @@ namespace TEAM3FINALDAC
                 {
                     cmd.Connection = new SqlConnection(this.ConnectionString);
                     cmd.CommandText = $@"SELECT MANAGER_ID 'COMMON_CODE',MANAGER_NAME 'COMMON_NAME', ('담당자')'COMMON_PARENT', null 'COMMON_SEQ'
-                                         FROM MANAGER
-
-                                         Union
-
-                                         SELECT COM_CODE 'COMMON_CODE',COM_NAME 'COMMON_NAME', ('업체명')'COMMON_PARENT', null 'COMMON_SEQ'
-                                         FROM COMPANY
-
-                                         Union
-
-                                         SELECT COMMON_CODE, COMMON_NAME, COMMON_PARENT, COMMON_SEQ
-                                         FROM COMMON
-
-                                         Union
-
-                                         SELECT FAC_CODE 'COMMON_CODE',FAC_NAME 'COMMON_NAME', ('창고')'COMMON_PARENT', null 'COMMON_SEQ'
-                                          FROM FACTORY
-                                         WHERE FAC_TYP = '창고'
-                      
-                                         Union
-
-                                        SELECT FCLTS_CODE 'COMMON_CODE',FCLTS_NAME 'COMMON_NAME', ('설비')'COMMON_PARENT', null 'COMMON_SEQ'
-                                          FROM FACTORY
-                      
-                                         Union
-
-                                         SELECT PLAN_ID 'COMMON_CODE',PLAN_ID 'COMMON_NAME', ('PLAN_ID')'COMMON_PARENT', null 'COMMON_SEQ'
-                                         FROM DEMAND_PLANNING 
-
-                                         Union
-
-                                         SELECT ITEM_CODE 'COMMON_CODE',ITEM_NAME 'COMMON_NAME', ('품목')'COMMON_PARENT', null 'COMMON_SEQ'
-                                         FROM ITEM ";
+                                           FROM MANAGER
+                                           
+                                           Union
+                                           
+                                           SELECT COM_CODE 'COMMON_CODE',COM_NAME 'COMMON_NAME', ('업체명')'COMMON_PARENT', null 'COMMON_SEQ'
+                                           FROM COMPANY
+                                           
+                                           Union
+                                           
+                                           SELECT COMMON_CODE, COMMON_NAME, COMMON_PARENT, COMMON_SEQ
+                                           FROM COMMON
+                                           
+                                           Union
+                                           
+                                           SELECT FAC_CODE 'COMMON_CODE',FAC_NAME 'COMMON_NAME', ('창고')'COMMON_PARENT', null 'COMMON_SEQ'
+                                            FROM FACTORY
+                                           WHERE FAC_FCLTY = '창고'
+                                        
+                                           Union
+                                        
+                                           SELECT FCLTS_CODE 'COMMON_CODE',FCLTS_NAME 'COMMON_NAME', ('설비')'COMMON_PARENT', null 'COMMON_SEQ'
+                                            FROM FACILITY
+                                        
+                                           Union
+                                        
+                                           SELECT PLAN_ID 'COMMON_CODE',PLAN_ID 'COMMON_NAME', ('PLAN_ID')'COMMON_PARENT', null 'COMMON_SEQ'
+                                           FROM DEMAND_PLANNING 
+                                        
+                                           Union
+                                        
+                                           SELECT ITEM_CODE 'COMMON_CODE',ITEM_NAME 'COMMON_NAME', ('품목')'COMMON_PARENT', null 'COMMON_SEQ'
+                                           FROM ITEM ";
 
                     cmd.Connection.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
