@@ -23,10 +23,12 @@ namespace TEAM3FINAL
         private void FrmReceiving_Load(object sender, EventArgs e)
         {
             ComboBinding();
+            DataGridViewColumnSet1();
+            DataGridViewColumnSet2();
         }
-        #region 올체크 이벤트
+        #region 콤보박스 바인딩
         /// <summary>
-        /// 올체크 이벤트
+        /// 콤보박스 바인딩
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -58,8 +60,20 @@ namespace TEAM3FINAL
             DataGridViewUtil.InitSettingGridView(dgv1);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "no", "idx", true, 30);
             DataGridViewUtil.DataGridViewCheckBoxSet(dgv1, "all");
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "발주업체", "COM_NAME", true, 155);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "발주업체코드", "COM_CODE", false, 30);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "업체", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "납품업체", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품명", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "규격", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목유형", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "단위", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "검사여부", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "출발처리유무", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "발주수량", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "잔량", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "납기일", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "주문상태", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "생성일", "", true, 100);
 
             DataGridViewCheckBoxAllCheck1();
 
@@ -69,19 +83,18 @@ namespace TEAM3FINAL
             DataGridViewUtil.InitSettingGridView(dgv2);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "no", "idx", true, 30);
             DataGridViewUtil.DataGridViewCheckBoxSet(dgv2, "all");
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주업체", "COM_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주코드", "COM_CODE", false, 30);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "납품업체", "COM_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "납품코드", "COM_CODE", false, 30);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "담당자", "COM_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품목", "COM_NAME", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품명", "COM_NAME", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "창고", "COM_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "검사여부", "COM_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주제안수량", "COM_NAME", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주수량", "COM_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "현재고", "COM_NAME", true, 80);
-
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품목", "", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품명", "", false, 30);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "규격", "", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품목유형", "", false, 30);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "단위", "", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "입고창고", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "입고일자", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "입고량", "", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "단가", "", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "수정자", "", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "비고", "", true, 80);
+          
             DataGridViewCheckBoxAllCheck2();
 
         }

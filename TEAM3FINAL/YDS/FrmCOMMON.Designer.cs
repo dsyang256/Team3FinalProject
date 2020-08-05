@@ -181,7 +181,7 @@
             // 
             this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button2.ForeColor = System.Drawing.SystemColors.Window;
-            this.button2.Location = new System.Drawing.Point(465, 21);
+            this.button2.Location = new System.Drawing.Point(455, 21);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(79, 29);

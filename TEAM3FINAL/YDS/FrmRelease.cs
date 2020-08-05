@@ -22,6 +22,7 @@ namespace TEAM3FINAL
         private void FrmRelease_Load(object sender, EventArgs e)
         {
             ComboBinding();
+            DataGridViewColumnSet();
         }
         #region 콤보박스 바인딩
         /// <summary>
@@ -67,11 +68,25 @@ namespace TEAM3FINAL
         /// </summary>
         private void DataGridViewColumnSet()
         {
-            DataGridViewUtil.InitSettingGridView(list1);
-            DataGridViewUtil.AddNewColumnToDataGridView(list1, "no", "idx", true, 30);
-            DataGridViewUtil.DataGridViewCheckBoxSet(list1, "all");
-            DataGridViewUtil.AddNewColumnToDataGridView(list1, "발주업체", "COM_NAME", true, 155);
-            DataGridViewUtil.AddNewColumnToDataGridView(list1, "발주업체코드", "COM_CODE", false, 30);
+            DataGridViewUtil.InitSettingGridView(dgv1);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "no", "idx", true, 30);
+            DataGridViewUtil.DataGridViewCheckBoxSet(dgv1, "all");
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "작업지시서", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "요청일", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품명", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "규격", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목유형", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "요청창고", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "불출일자", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "불출창고", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "현재고", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "표준불출수량", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "계획수량", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "소요량", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "요청수량", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "출고수량", "", true, 100);
+
 
             DataGridViewCheckBoxAllCheck();
 
@@ -85,7 +100,7 @@ namespace TEAM3FINAL
         /// </summary>
         private void DataGridViewBinding1()
         {
-            list1.DataSource = null;
+            dgv1.DataSource = null;
 
 
         }
@@ -99,12 +114,12 @@ namespace TEAM3FINAL
         private void DataGridViewCheckBoxAllCheck()
         {
             headerChk = new CheckBox();
-            Point headerCell = list1.GetCellDisplayRectangle(1, -1, true).Location;
+            Point headerCell = dgv1.GetCellDisplayRectangle(1, -1, true).Location;
             headerChk.Location = new Point(headerCell.X + 4, headerCell.Y + 15);
             headerChk.Size = new Size(18, 18);
             headerChk.BackColor = Color.FromArgb(245, 245, 246);
             headerChk.Click += HeaderChk_Clicked;
-            list1.Controls.Add(headerChk);
+            dgv1.Controls.Add(headerChk);
         }
 
         #endregion
@@ -118,10 +133,10 @@ namespace TEAM3FINAL
         /// <param name="e"></param>
         private void HeaderChk_Clicked(object sender, EventArgs e)
         {
-            list1.EndEdit();
+            dgv1.EndEdit();
 
             //데이터그리드뷰의 전체 행의 체크를 체크 or 언체크
-            foreach (DataGridViewRow row in list1.Rows)
+            foreach (DataGridViewRow row in dgv1.Rows)
             {
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells["all"];
                 chk.Value = headerChk.Checked;

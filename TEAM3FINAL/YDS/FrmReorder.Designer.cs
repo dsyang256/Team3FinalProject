@@ -68,6 +68,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvReorder = new WindowsFormsApp18.MyDataGridView();
+            this.menuPanel1 = new TEAM3FINAL.MenuPanel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -121,11 +122,13 @@
             // 
             this.label1.Size = new System.Drawing.Size(55, 15);
             this.label1.Text = "정규발주";
+            this.label1.Visible = false;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.dgvReorder);
-            this.panel3.Size = new System.Drawing.Size(1254, 318);
+            this.panel3.Location = new System.Drawing.Point(15, 252);
+            this.panel3.Size = new System.Drawing.Size(1254, 298);
             // 
             // ITEM_TYP
             // 
@@ -509,16 +512,36 @@
             this.dgvReorder.RowHeadersWidth = 30;
             this.dgvReorder.RowTemplate.Height = 23;
             this.dgvReorder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReorder.Size = new System.Drawing.Size(1254, 318);
+            this.dgvReorder.Size = new System.Drawing.Size(1254, 298);
             this.dgvReorder.TabIndex = 0;
+            // 
+            // menuPanel1
+            // 
+            this.menuPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.menuPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.menuPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.menuPanel1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.menuPanel1.Location = new System.Drawing.Point(15, 217);
+            this.menuPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.menuPanel1.Name = "menuPanel1";
+            this.menuPanel1.Size = new System.Drawing.Size(1257, 32);
+            this.menuPanel1.TabIndex = 4;
+            this.menuPanel1.TitleFont = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.menuPanel1.TitleName = "정규발주";
             // 
             // FrmReorder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.ClientSize = new System.Drawing.Size(1284, 562);
+            this.Controls.Add(this.menuPanel1);
             this.Name = "FrmReorder";
             this.Text = "정규발주";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.panel3, 0);
+            this.Controls.SetChildIndex(this.menuPanel1, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -567,5 +590,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private WindowsFormsApp18.MyDataGridView dgvReorder;
+        private MenuPanel menuPanel1;
     }
 }

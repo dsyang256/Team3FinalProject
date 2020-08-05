@@ -44,7 +44,7 @@
             this.eday = new System.Windows.Forms.DateTimePicker();
             this.sday = new System.Windows.Forms.DateTimePicker();
             this.label26 = new System.Windows.Forms.Label();
-            this.REORDER_STATE = new System.Windows.Forms.ComboBox();
+            this.FACILITY = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -74,7 +74,7 @@
             this.panel2.Controls.Add(this.eday);
             this.panel2.Controls.Add(this.sday);
             this.panel2.Controls.Add(this.label26);
-            this.panel2.Controls.Add(this.REORDER_STATE);
+            this.panel2.Controls.Add(this.FACILITY);
             this.panel2.Controls.Add(this.label19);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label12);
@@ -84,7 +84,6 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Size = new System.Drawing.Size(1263, 180);
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // label1
             // 
@@ -245,13 +244,13 @@
             this.label26.TabIndex = 163;
             this.label26.Text = "~";
             // 
-            // REORDER_STATE
+            // FACILITY
             // 
-            this.REORDER_STATE.FormattingEnabled = true;
-            this.REORDER_STATE.Location = new System.Drawing.Point(206, 104);
-            this.REORDER_STATE.Name = "REORDER_STATE";
-            this.REORDER_STATE.Size = new System.Drawing.Size(193, 23);
-            this.REORDER_STATE.TabIndex = 149;
+            this.FACILITY.FormattingEnabled = true;
+            this.FACILITY.Location = new System.Drawing.Point(206, 104);
+            this.FACILITY.Name = "FACILITY";
+            this.FACILITY.Size = new System.Drawing.Size(193, 23);
+            this.FACILITY.TabIndex = 149;
             // 
             // label19
             // 
@@ -357,6 +356,7 @@
             this.Controls.Add(this.menuPanel1);
             this.Name = "FrmReleaseRequest";
             this.Text = "자재분출요청";
+            this.Load += new System.EventHandler(this.FrmReleaseRequest_Load);
             this.Controls.SetChildIndex(this.menuPanel1, 0);
             this.Controls.SetChildIndex(this.menuPanel2, 0);
             this.Controls.SetChildIndex(this.panel4, 0);
@@ -386,7 +386,7 @@
         private System.Windows.Forms.DateTimePicker eday;
         private System.Windows.Forms.DateTimePicker sday;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.ComboBox REORDER_STATE;
+        private System.Windows.Forms.ComboBox FACILITY;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label12;

@@ -56,7 +56,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.menuPanel1 = new TEAM3FINAL.MenuPanel();
             this.button2 = new System.Windows.Forms.Button();
-            this.list1 = new WindowsFormsApp18.MyDataGridView();
+            this.dgv1 = new WindowsFormsApp18.MyDataGridView();
             this.WRHS = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.eday = new System.Windows.Forms.DateTimePicker();
@@ -67,7 +67,7 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.list1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -113,7 +113,7 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.list1);
+            this.panel3.Controls.Add(this.dgv1);
             this.panel3.Location = new System.Drawing.Point(15, 252);
             this.panel3.Size = new System.Drawing.Size(1268, 406);
             // 
@@ -352,11 +352,11 @@
             this.button2.Text = "출고";
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // list1
+            // dgv1
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.list1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.list1.BackgroundColor = System.Drawing.Color.White;
+            this.dgv1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv1.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -364,8 +364,8 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.list1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.list1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -373,11 +373,11 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Menu;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.list1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.list1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.list1.EnableHeadersVisualStyles = false;
-            this.list1.Location = new System.Drawing.Point(0, 0);
-            this.list1.Name = "list1";
+            this.dgv1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv1.EnableHeadersVisualStyles = false;
+            this.dgv1.Location = new System.Drawing.Point(0, 0);
+            this.dgv1.Name = "dgv1";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -385,12 +385,12 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.list1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.list1.RowHeadersWidth = 30;
-            this.list1.RowTemplate.Height = 23;
-            this.list1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.list1.Size = new System.Drawing.Size(1268, 406);
-            this.list1.TabIndex = 0;
+            this.dgv1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv1.RowHeadersWidth = 30;
+            this.dgv1.RowTemplate.Height = 23;
+            this.dgv1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv1.Size = new System.Drawing.Size(1268, 406);
+            this.dgv1.TabIndex = 0;
             // 
             // WRHS
             // 
@@ -472,7 +472,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.list1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -502,7 +502,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private MenuPanel menuPanel1;
-        private WindowsFormsApp18.MyDataGridView list1;
+        private WindowsFormsApp18.MyDataGridView dgv1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox WRHS;

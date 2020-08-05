@@ -42,6 +42,7 @@
             this.day = new System.Windows.Forms.DateTimePicker();
             this.BOM_USE_YN = new System.Windows.Forms.ComboBox();
             this.dgvBOM = new WindowsFormsApp18.MyDataGridView();
+            this.menuPanel1 = new TEAM3FINAL.MenuPanel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -65,11 +66,15 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Size = new System.Drawing.Size(1174, 113);
             // 
+            // label1
+            // 
+            this.label1.Visible = false;
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.dgvBOM);
-            this.panel3.Location = new System.Drawing.Point(15, 158);
-            this.panel3.Size = new System.Drawing.Size(1174, 392);
+            this.panel3.Location = new System.Drawing.Point(15, 190);
+            this.panel3.Size = new System.Drawing.Size(1174, 360);
             // 
             // ITEM_NAEM
             // 
@@ -191,16 +196,36 @@
             this.dgvBOM.RowHeadersWidth = 30;
             this.dgvBOM.RowTemplate.Height = 23;
             this.dgvBOM.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBOM.Size = new System.Drawing.Size(1174, 392);
+            this.dgvBOM.Size = new System.Drawing.Size(1174, 360);
             this.dgvBOM.TabIndex = 0;
+            // 
+            // menuPanel1
+            // 
+            this.menuPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.menuPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.menuPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.menuPanel1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.menuPanel1.Location = new System.Drawing.Point(12, 155);
+            this.menuPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.menuPanel1.Name = "menuPanel1";
+            this.menuPanel1.Size = new System.Drawing.Size(1180, 32);
+            this.menuPanel1.TabIndex = 4;
+            this.menuPanel1.TitleFont = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.menuPanel1.TitleName = "BOM";
             // 
             // FrmBOM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.ClientSize = new System.Drawing.Size(1204, 562);
+            this.Controls.Add(this.menuPanel1);
             this.Name = "FrmBOM";
             this.Text = "BOM";
             this.Load += new System.EventHandler(this.FrmBOM_Load);
+            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.panel3, 0);
+            this.Controls.SetChildIndex(this.menuPanel1, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -222,5 +247,6 @@
         private System.Windows.Forms.DateTimePicker day;
         private System.Windows.Forms.ComboBox BOM_USE_YN;
         private WindowsFormsApp18.MyDataGridView dgvBOM;
+        private MenuPanel menuPanel1;
     }
 }

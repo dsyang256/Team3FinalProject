@@ -106,8 +106,8 @@
             // 
             this.panel3.Controls.Add(this.dgvReorder);
             this.panel3.Controls.Add(this.dvgReorder);
-            this.panel3.Location = new System.Drawing.Point(12, 275);
-            this.panel3.Size = new System.Drawing.Size(1246, 292);
+            this.panel3.Location = new System.Drawing.Point(12, 252);
+            this.panel3.Size = new System.Drawing.Size(1246, 315);
             // 
             // REORDER_STATE
             // 
@@ -339,7 +339,7 @@
             this.dvgReorder.RowHeadersWidth = 30;
             this.dvgReorder.RowTemplate.Height = 23;
             this.dvgReorder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dvgReorder.Size = new System.Drawing.Size(1246, 292);
+            this.dvgReorder.Size = new System.Drawing.Size(1246, 315);
             this.dvgReorder.TabIndex = 0;
             // 
             // COM_CODE_OUT
@@ -387,7 +387,7 @@
             this.dgvReorder.RowHeadersWidth = 30;
             this.dgvReorder.RowTemplate.Height = 23;
             this.dgvReorder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReorder.Size = new System.Drawing.Size(1246, 292);
+            this.dgvReorder.Size = new System.Drawing.Size(1246, 315);
             this.dgvReorder.TabIndex = 1;
             // 
             // button2
