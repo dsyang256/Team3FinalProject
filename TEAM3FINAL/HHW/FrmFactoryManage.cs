@@ -70,7 +70,6 @@ namespace TEAM3FINAL
         }
 
         #endregion
-
         private void FrmFactoryManage_Load(object sender, EventArgs e)
         {
             ComboBinding();

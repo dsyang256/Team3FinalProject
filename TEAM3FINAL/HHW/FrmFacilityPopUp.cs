@@ -132,7 +132,6 @@ namespace TEAM3FINAL
         {
             CommonService service = new CommonService();
             List<ComboItemVO> commonlist = service.GetITEMCmCode();
-            List<ComboItemVO> commonlist2 = service.GetFACTORYCmCode();
 
             var listYN = (from item in commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(cboFACUseYN, listYN, "COMMON_CODE", "COMMON_NAME", "");
@@ -140,13 +139,13 @@ namespace TEAM3FINAL
             var listYN2 = (from item in commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(cboEXTRLYN, listYN2, "COMMON_CODE", "COMMON_NAME", "");
 
-            var listFAC1 = (from item in commonlist2 select item).ToList();
+            var listFAC1 = (from item in commonlist where item.COMMON_PARENT == "창고" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(cboFACEXHST, listFAC1, "COMMON_CODE", "COMMON_NAME", "");
 
-            var listFAC2 = (from item in commonlist2 select item).ToList();
+            var listFAC2 = (from item in commonlist where item.COMMON_PARENT == "창고" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(cboFACGOOD, listFAC2, "COMMON_CODE", "COMMON_NAME", "");
 
-            var listFAC3 = (from item in commonlist2 select item).ToList();
+            var listFAC3 = (from item in commonlist where item.COMMON_PARENT == "창고" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(cboFACBAD, listFAC3, "COMMON_CODE", "COMMON_NAME", "");
         }
     }

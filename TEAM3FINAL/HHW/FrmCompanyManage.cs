@@ -180,8 +180,8 @@ namespace TEAM3FINAL
                     frm.COM_AUTOIN_YN = dgvCompanyList.CurrentRow.Cells[12].Value.ToString();
                     frm.COM_START_YN = dgvCompanyList.CurrentRow.Cells[13].Value.ToString();
                     frm.COM_USE_YN = dgvCompanyList.CurrentRow.Cells[14].Value.ToString();
-                    frm.COM_LAST_MDFR = dgvCompanyList.CurrentRow.Cells[15].Value.ToString();
-                    frm.COM_LAST_MDFY = dgvCompanyList.CurrentRow.Cells[16].Value.ToString();
+                    frm.COM_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
+                    frm.COM_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd");
                     try
                     {
                         frm.COM_STR_DATE = dgvCompanyList.CurrentRow.Cells[18].Value.ToString();

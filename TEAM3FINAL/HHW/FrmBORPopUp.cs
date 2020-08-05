@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -89,7 +90,6 @@ namespace TEAM3FINAL
             }
 
             #endregion
-
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -123,10 +123,12 @@ namespace TEAM3FINAL
             CommonService service = new CommonService();
             List<ComboItemVO> commonList = service.GetITEMCmCode();
 
-            //var listITEM = (from item in commonList where item.COMMON_PARENT == "품목" select item).ToList;
-            //CommonUtil.ComboBinding<ComboItemVO>(cboItemCode, listITEM, "COMMON_CODE", "COMMON_NAME", "");
-            //var listYN = (from item in commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
-            //CommonUtil.ComboBinding<ComboItemVO>(cboUseYN, listYN, "COMMON_CODE", "COMMON_NAME", "");
+            var listITEM = (from item in commonList where item.COMMON_PARENT == "품목" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(cboItemCode, listITEM, "COMMON_NAME", "COMMON_CODE", "");
+            var listTool = (from item in commonList where item.COMMON_PARENT == "PROC_TOOL" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(cboPROC, listTool, "COMMON_CODE", "COMMON_NAME", "");
+            var listYN = (from item in commonList where item.COMMON_PARENT == "사용유무" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(cboUseYN, listYN, "COMMON_CODE", "COMMON_NAME", "");
         }
 
         private void txtTime_KeyPress(object sender, KeyPressEventArgs e)
