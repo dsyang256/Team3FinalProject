@@ -137,13 +137,16 @@ namespace TEAM3FINAL
             var listYN1 = (from item in commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(cboDemandYN, listYN1, "COMMON_CODE", "COMMON_NAME", "");
             var listYN2 = (from item in commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(cboMtrlYN, listYN2, "COMMON_CODE", "COMMON_NAME");
+            CommonUtil.ComboBinding<ComboItemVO>(cboMtrlYN, listYN2, "COMMON_CODE", "COMMON_NAME", "");
             var listYN3 = (from item in commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(cboFreeYN, listYN3, "COMMON_CODE", "COMMON_NAME");
+            CommonUtil.ComboBinding<ComboItemVO>(cboFreeYN, listYN3, "COMMON_CODE", "COMMON_NAME", "");
             var listYN4 = (from item in commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(cboProcYN, listYN4, "COMMON_CODE", "COMMON_NAME");
+            CommonUtil.ComboBinding<ComboItemVO>(cboProcYN, listYN4, "COMMON_CODE", "COMMON_NAME", "");
             var listYN5 = (from item in commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(cboUseYN, listYN5, "COMMON_CODE", "COMMON_NAME");
+            CommonUtil.ComboBinding<ComboItemVO>(cboUseYN, listYN5, "COMMON_CODE", "COMMON_NAME", "");
+            var listCom = (from item in commonlist where item.COMMON_PARENT == "COMPANY_TYP" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(cboCategory, listCom, "COMMON_CODE", "COMMON_NAME", "");
+
         }
     }
 }
