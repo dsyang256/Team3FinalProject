@@ -147,6 +147,16 @@ namespace TEAM3FINALDAC
                                          SELECT FAC_CODE 'COMMON_CODE',FAC_NAME 'COMMON_NAME', ('창고')'COMMON_PARENT', null 'COMMON_SEQ'
                                           FROM FACTORY
                                          WHERE FAC_TYP = '창고'
+                      
+                                         Union
+
+                                        SELECT FCLTS_CODE 'COMMON_CODE',FCLTS_NAME 'COMMON_NAME', ('설비')'COMMON_PARENT', null 'COMMON_SEQ'
+                                          FROM FACTORY
+                      
+                                         Union
+
+                                         SELECT PLAN_ID 'COMMON_CODE',PLAN_ID 'COMMON_NAME', ('PLAN_ID')'COMMON_PARENT', null 'COMMON_SEQ'
+                                         FROM DEMAND_PLANNING 
 
                                          Union
 
