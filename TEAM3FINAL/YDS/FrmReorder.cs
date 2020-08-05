@@ -71,7 +71,7 @@ namespace TEAM3FINAL
 
 
             //PLAN_ID
-            var listPLAN_ID = (from item in Commonlist where item.COMMON_PARENT == "1" select item).ToList();
+            var listPLAN_ID = (from item in Commonlist where item.COMMON_PARENT == "PLAN_ID" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(PLAN_ID, listPLAN_ID, "COMMON_CODE", "COMMON_NAME", "");
 
             //업체코드
@@ -79,7 +79,7 @@ namespace TEAM3FINAL
             CommonUtil.ComboBinding<ComboItemVO>(COM_CODE, listCOM_CODE, "COMMON_CODE", "COMMON_NAME", "");
 
             //창고
-            var listFACILITY_TYPE = (from item in Commonlist where item.COMMON_PARENT == "FACILITY_TYPE" select item).ToList();
+            var listFACILITY_TYPE = (from item in Commonlist where item.COMMON_PARENT == "창고" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(FACILITY_TYPE, listFACILITY_TYPE, "COMMON_CODE", "COMMON_NAME", "");
 
             //품목형태
