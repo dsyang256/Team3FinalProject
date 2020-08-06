@@ -106,6 +106,12 @@
     </Compile>
     <Compile Include="Services\BORService.cs" />
     <Compile Include="Services\CostService.cs" />
+    <Compile Include="XtraBORList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XtraBORList.Designer.cs">
+      <DependentUpon>XtraBORList.cs</DependentUpon>
+    </Compile>
     <Compile Include="XtraItemList.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -610,6 +616,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Popup\FrmShiftPop.resx">
       <DependentUpon>FrmShiftPop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XtraBORList.resx">
+      <DependentUpon>XtraBORList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="XtraItemList.resx">
       <DependentUpon>XtraItemList.cs</DependentUpon>
