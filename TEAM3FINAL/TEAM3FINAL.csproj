@@ -98,6 +98,7 @@
     <Compile Include="SalesService.cs" />
     <Compile Include="Services\CommonService.cs" />
     <Compile Include="Services\ReorderService.cs" />
+    <Compile Include="Services\ServiceWorkRecord.cs" />
     <Compile Include="UserControl\MenuPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
