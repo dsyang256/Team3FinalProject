@@ -124,6 +124,10 @@ namespace TEAM3FINAL
             }
             IsOpen = _port.IsOpen;
         }
+        public FrmMAIN()
+        {
+            InitializeComponent();
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.PortName.Length > 0)

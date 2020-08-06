@@ -26,8 +26,32 @@ namespace TEAM3FINAL
             ComboBinding();
             DataGridViewColumnSet();
             DataGridViewBinding();
+            ((FrmMAIN)this.MdiParent).Readed += Readed_BarCode;
 
         }
+        private void Readed_BarCode(object sender, ReadEventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                string name = "";
+                foreach (DataGridViewRow item in dgvitem.Rows)
+                {
+                    if (item.Cells[3].Value.ToString() == e.ReadMsg)
+                    {
+                        item.Cells[1].Value = true;
+                        name = item.Cells[4].Value.ToString();
+                    }
+                }
+                if (name.Length < 1)
+                {
+                    MessageBox.Show("항목이 없습니다 다시 확인해주세요.");
+                    return;
+                }
+                if (MessageBox.Show($"{name} - 품목을 수정하시겠습니까?", "수정확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    Update(null, null);
+            }
+        }
+
 
         /// <summary>
         /// 버튼 이벤트 델리게이트 추가
@@ -296,7 +320,20 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
+                string name = "";
+                foreach (DataGridViewRow item in dgvitem.Rows)
+                {
+                    if (item.Cells[3].Value.ToString() == "CHAIR_01")
+                    {
+                        item.Cells[1].Value = true;
+                        name = item.Cells[4].Value.ToString();
+                    }
+                }
+                if (MessageBox.Show($"{name} - 품목을 수정하시겠습니까?", "수정확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    Update(null, null);
             }
         }
+
+       
     }
 }
