@@ -33,10 +33,13 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
+                string msg = e.ReadMsg.Replace("%O","_");
+                ((FrmMAIN)this.MdiParent).ClearStrings();
+                MessageBox.Show(msg);
                 string name = "";
                 foreach (DataGridViewRow item in dgvitem.Rows)
                 {
-                    if (item.Cells[3].Value.ToString() == e.ReadMsg)
+                    if (item.Cells[3].Value.ToString() == msg)
                     {
                         item.Cells[1].Value = true;
                         name = item.Cells[4].Value.ToString();
@@ -334,6 +337,27 @@ namespace TEAM3FINAL
             }
         }
 
-       
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<string> chkList = new List<string>();
+
+            for (int i = 0; i < dgvitem.Rows.Count; i++)
+            {
+                bool isCellChecked = (bool)dgvitem.Rows[i].Cells[1].EditedFormattedValue;
+                if (isCellChecked)
+                {
+                    chkList.Add(dgvitem.Rows[i].Cells[3].Value.ToString()); ;
+                }
+            }
+            if (chkList.Count == 0)
+            {
+                MessageBox.Show("출력할 바코드를 선택해주세요.");
+                return;
+            }
+
+            string strChkBarCodes = string.Join(",", chkList);
+            MessageBox.Show(strChkBarCodes);
+            ItemService service = new ItemService();
+        }
     }
 }
