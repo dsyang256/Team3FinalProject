@@ -38,6 +38,33 @@ namespace TEAM3FINALDAC
             
         }
 
+        public DataTable GetBaCodeItemList(string appendCode)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    SqlConnection conn = new SqlConnection(this.ConnectionString);
+                    string sql = @"select ITEM_CODE, ITEM_NAME, ITEM_STND, ITEM_TYP
+                            from item
+                            where  ITEM_CODE  in ("+ appendCode + ") ";
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+                    da.Fill(dt);
+                    conn.Close();
+
+                    return dt;
+                }
+            }
+            catch (Exception err)
+            {
+                return new DataTable();
+            }
+
+        }
+
         public ITEM_VO GetItem(string code)
         {
             List<ITEM_VO> list = default;

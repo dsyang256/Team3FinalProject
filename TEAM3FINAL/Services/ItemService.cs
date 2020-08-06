@@ -39,5 +39,12 @@ namespace TEAM3FINAL
             return dac.DeleteItem(appendCode);
         }
 
+        public DataTable GetBaCodeItemList(string appendCode)
+        {
+            ITEMDAC dac = new ITEMDAC();
+            return dac.GetBaCodeItemList(appendCode);
+        }
+
+
     }
 }
