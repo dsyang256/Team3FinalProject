@@ -66,7 +66,8 @@ namespace TEAM3FINAL
 
         private void FrmItemPopUp_Load(object sender, EventArgs e)
         {
-            
+            ITEM_LAST_MDFR.Text = LoginInfo.UserInfo.LI_NAME;
+            ITEM_LAST_MDFR.Enabled = false;
         }
         private void ComboBinding()
         {
