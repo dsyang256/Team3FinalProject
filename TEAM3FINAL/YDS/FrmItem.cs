@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using TEAM3FINAL.Services;
 using TEAM3FINALVO;
 using System.Linq;
+using DevExpress.XtraReports.UI;
 
 namespace TEAM3FINAL
 {
@@ -33,7 +34,7 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                string msg = e.ReadMsg.Replace("%O","_");
+                string msg = e.ReadMsg.Replace("%O","_").Trim();
                 ((FrmMAIN)this.MdiParent).ClearStrings();
                 MessageBox.Show(msg);
                 string name = "";
@@ -346,7 +347,7 @@ namespace TEAM3FINAL
                 bool isCellChecked = (bool)dgvitem.Rows[i].Cells[1].EditedFormattedValue;
                 if (isCellChecked)
                 {
-                    chkList.Add(dgvitem.Rows[i].Cells[3].Value.ToString()); ;
+                    chkList.Add("'"+dgvitem.Rows[i].Cells[3].Value.ToString()+ "'"); ;
                 }
             }
             if (chkList.Count == 0)
@@ -356,8 +357,17 @@ namespace TEAM3FINAL
             }
 
             string strChkBarCodes = string.Join(",", chkList);
-            MessageBox.Show(strChkBarCodes);
+            
             ItemService service = new ItemService();
+            XtraItemList rpt = new XtraItemList();
+            DataTable dt = service.GetBaCodeItemList(strChkBarCodes);
+            rpt.Parameters["uName"].Value = LoginInfo.UserInfo.LI_NAME;
+            rpt.DataSource = dt;
+            rpt.CreateDocument();
+            using (ReportPrintTool printTool = new ReportPrintTool(rpt))
+            { 
+                printTool.ShowRibbonPreviewDialog();
+            }
         }
     }
 }
