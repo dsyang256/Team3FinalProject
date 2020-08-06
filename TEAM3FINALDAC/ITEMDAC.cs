@@ -46,11 +46,11 @@ namespace TEAM3FINALDAC
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     SqlConnection conn = new SqlConnection(this.ConnectionString);
-                    string sql = @"select ITEM_CODE, ITEM_NAME, ITEM_STND, ITEM_TYP
+                    string sql = @"select upper( ITEM_CODE) ITEM_CODE, ITEM_NAME, ITEM_STND, ITEM_TYP
                             from item
-                            where  ITEM_CODE  in ("+ appendCode + ") ";
+                            where  ITEM_CODE  in (" + appendCode + ") ";
                     conn.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
+
                     SqlDataAdapter da = new SqlDataAdapter(sql, conn);
                     da.Fill(dt);
                     conn.Close();
