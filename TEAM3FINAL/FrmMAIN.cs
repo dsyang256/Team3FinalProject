@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using log4net.Core;
@@ -26,7 +28,66 @@ namespace TEAM3FINAL
         public event EventHandler eDelete;
         public event EventHandler ePrint;
         public event EventHandler eReset;
+        public delegate void BarCodeReadComplete(object sender, ReadEventArgs e);
+        public event BarCodeReadComplete Readed;
+        public SerialPort _port;
+        public SerialPort Port
+        {
+            get
+            {
+                if (_port == null)
+                {
+                    _port = new SerialPort();
+                    _port.DataReceived += Port_DataReceived;
 
+                }
+                return _port;
+            }
+        }
+        public StringBuilder _strings;
+        public String Strings
+        {
+            set
+            {
+                if (_strings == null)
+                {
+                    _strings = new StringBuilder(1024);
+                }
+                if (Readed != null)
+                {
+                    ReadEventArgs args = new ReadEventArgs();
+                    args.ReadMsg = _strings.ToString();
+                    Readed(this, args);
+                }
+                _strings.AppendLine(value);
+
+            }
+        }
+        public void ClearString()
+        {
+            _strings.Clear();
+        }
+        public void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            Thread.Sleep(500);
+
+            string msg = Port.ReadExisting();
+            this.Invoke(new EventHandler(delegate
+            {
+                Strings = msg;
+            }));
+        }
+
+        public void SerialReceived(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        private bool _Isopen;
+        public bool IsOpen
+        {
+            get { return _Isopen; }
+            set { _Isopen = value; }
+        }
 
 
         public FrmMAIN()
@@ -318,6 +379,17 @@ namespace TEAM3FINAL
             LoginInfo.UserInfo.InitMember();
             //로그인호출
             LoadLogin();
+        }
+
+    }
+    public class ReadEventArgs : EventArgs
+    {
+        private string msg;
+
+        public string ReadMsg
+        {
+            get { return msg; }
+            set { msg = value; }
         }
 
     }
