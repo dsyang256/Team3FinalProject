@@ -55,6 +55,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.txtREMARK = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -220,9 +221,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(67, 202);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(96, 15);
+            this.label10.Size = new System.Drawing.Size(67, 15);
             this.label10.TabIndex = 31;
-            this.label10.Text = "공정선행일(Day)";
+            this.label10.Text = "공정선행일";
             // 
             // label12
             // 
@@ -237,9 +238,9 @@
             // 
             // txtLead
             // 
-            this.txtLead.Location = new System.Drawing.Point(166, 202);
+            this.txtLead.Location = new System.Drawing.Point(151, 202);
             this.txtLead.Name = "txtLead";
-            this.txtLead.Size = new System.Drawing.Size(177, 23);
+            this.txtLead.Size = new System.Drawing.Size(192, 23);
             this.txtLead.TabIndex = 30;
             this.txtLead.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTime_KeyPress);
             // 
@@ -362,6 +363,15 @@
             this.txtREMARK.Size = new System.Drawing.Size(552, 117);
             this.txtREMARK.TabIndex = 33;
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(98, 217);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(36, 15);
+            this.label21.TabIndex = 31;
+            this.label21.Text = "(Day)";
+            // 
             // FrmBORPopUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -371,6 +381,7 @@
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
+            this.Controls.Add(this.label21);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtYIELD);
             this.Controls.Add(this.label12);
@@ -422,6 +433,7 @@
             this.Controls.SetChildIndex(this.label12, 0);
             this.Controls.SetChildIndex(this.txtYIELD, 0);
             this.Controls.SetChildIndex(this.label10, 0);
+            this.Controls.SetChildIndex(this.label21, 0);
             this.Controls.SetChildIndex(this.label15, 0);
             this.Controls.SetChildIndex(this.label16, 0);
             this.Controls.SetChildIndex(this.label19, 0);
@@ -463,5 +475,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtREMARK;
+        private System.Windows.Forms.Label label21;
     }
 }

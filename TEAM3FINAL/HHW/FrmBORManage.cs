@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraReports.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -65,7 +66,7 @@ namespace TEAM3FINAL
             //데이터그리드뷰의 전체 행의 체크를 체크 or 언체크
             foreach (DataGridViewRow row in dgvBORList.Rows)
             {
-                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[1];
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
                 chk.Value = headerChk.Checked;
             }
         }
@@ -76,6 +77,33 @@ namespace TEAM3FINAL
             btnset();
             DataGridViewColumnSet();
             GetBORList();
+            ((FrmMAIN)this.MdiParent).Readed += Readed_BarCode;
+        }
+       
+        private void Readed_BarCode(object sender, ReadEventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                string msg = e.ReadMsg.Replace("0", "").Trim();
+                ((FrmMAIN)this.MdiParent).ClearStrings();
+                MessageBox.Show(msg);
+                int i = 0;
+                foreach (DataGridViewRow item in dgvBORList.Rows)
+                {
+                    if (item.Cells[1].Value.ToString() == msg)
+                    {
+                        item.Cells[0].Value = true;
+                        i++;
+                    }
+                }
+                if (i < 1)
+                {
+                    MessageBox.Show("항목이 없습니다 다시 확인해주세요.");
+                    return;
+                }
+                if (MessageBox.Show("해당을 수정하시겠습니까?", "수정확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    Update(null, null);
+            }
         }
 
         private void btnset()
@@ -229,5 +257,40 @@ namespace TEAM3FINAL
         }
 
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<string> chkList = new List<string>();
+
+            for (int i = 0; i < dgvBORList.Rows.Count; i++)
+            {
+                bool isCellChecked = (bool)dgvBORList.Rows[i].Cells[0].EditedFormattedValue;
+                if (isCellChecked)
+                {
+                    chkList.Add(dgvBORList.Rows[i].Cells[1].Value.ToString()); 
+                }
+            }
+            if (chkList.Count == 0)
+            {
+                MessageBox.Show("출력할 바코드를 선택해주세요.");
+                return;
+            }
+
+            string strChkBarCodes = string.Join(",", chkList);
+
+            BORService service = new BORService();
+            XtraBORList rpt = new XtraBORList();
+
+            DataTable dt = service.GetBaCodeBORList(strChkBarCodes);
+
+            rpt.Parameters["uName"].Value = LoginInfo.UserInfo.LI_NAME;
+            rpt.DataSource = dt;
+            rpt.CreateDocument();
+            using (ReportPrintTool printTool = new ReportPrintTool(rpt))
+            {
+                printTool.ShowRibbonPreviewDialog();
+            }
+
+        }
     }
 }

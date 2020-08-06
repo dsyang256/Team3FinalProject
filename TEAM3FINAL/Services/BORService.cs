@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,12 @@ namespace TEAM3FINAL
         {
             BORDAC dac = new BORDAC();
             return dac.SaveBOR(vo, update);
+        }
+
+        internal DataTable GetBaCodeBORList(string strChkBarCodes)
+        {
+            BORDAC dac = new BORDAC();
+            return dac.GetBaCodeBORList(strChkBarCodes);
         }
     }
 }

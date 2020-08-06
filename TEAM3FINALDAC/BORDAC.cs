@@ -30,6 +30,32 @@ namespace TEAM3FINALDAC
             }
         }
 
+        public DataTable GetBaCodeBORList(string strChkBarCodes)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    SqlConnection conn = new SqlConnection(this.ConnectionString);
+                    string sql = $@"select concat(REPLICATE('0',5 - LEN(BOR_CODE)), BOR_CODE) BOR_CODE, BOR_PROCS_CODE, FCLTS_CODE, BOR_PROCS_TIME, ITEM_CODE
+                                    from BOR
+                                    where BOR_CODE in ({strChkBarCodes})";
+                    conn.Open();
+
+                    SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+                    da.Fill(dt);
+                    conn.Close();
+
+                    return dt;
+                }
+            }
+            catch (Exception err)
+            {
+                return new DataTable();
+            }
+        }
+
         public List<BOR_VO> SearchBOR(string itemCode, string proc, string facility)
         {
             List<BOR_VO> list = null;
