@@ -94,6 +94,19 @@ namespace TEAM3FINAL
         {
             if (!Port.IsOpen) //연결
             {
+                int a = 0;
+                foreach(var item in SerialPort.GetPortNames())
+                {
+                    if(item == Properties.Settings.Default.PortName)
+                    {
+                        Port.PortName = Properties.Settings.Default.PortName;
+                        a++;
+                    }
+                }
+                if(a == 0)
+                {
+                    return;
+                }
                 Port.PortName = Properties.Settings.Default.PortName;
                 Port.BaudRate = Convert.ToInt32(Properties.Settings.Default.BaudRate);
                 Port.DataBits = Convert.ToInt32(Properties.Settings.Default.DataSize);

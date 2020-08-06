@@ -58,7 +58,9 @@ namespace TEAM3FINAL
         }
         private void FrmBOMPopUp_Load(object sender, EventArgs e)
         {
-          
+            BOM_LAST_MDFR.Text = LoginInfo.UserInfo.LI_NAME;
+            BOM_LAST_MDFR.Enabled = false;
+
         }
         /// <summary>
         /// 콤보 박스 바인딩
