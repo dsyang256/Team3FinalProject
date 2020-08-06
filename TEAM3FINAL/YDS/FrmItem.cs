@@ -33,10 +33,13 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
+                string msg = e.ReadMsg.Replace("%O","_");
+                ((FrmMAIN)this.MdiParent).ClearStrings();
+                MessageBox.Show(msg);
                 string name = "";
                 foreach (DataGridViewRow item in dgvitem.Rows)
                 {
-                    if (item.Cells[3].Value.ToString() == e.ReadMsg)
+                    if (item.Cells[3].Value.ToString() == msg)
                     {
                         item.Cells[1].Value = true;
                         name = item.Cells[4].Value.ToString();
