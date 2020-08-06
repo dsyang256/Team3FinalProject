@@ -87,7 +87,8 @@ where MC_Code=@MC_Code";
                                                     , [MC_USE_YN]
 
                                                     from [dbo].[MATERIAL_COST] M inner join ITEM I on m.ITEM_Code = i.ITEM_CODE
-inner join COMPANY C on c.COM_CODE = m.COM_Code";
+inner join COMPANY C on c.COM_CODE = m.COM_Code 
+order by COM_NAME,ITEM_NAME, MC_ENDDATE desc";
                     cmd.Connection.Open();
 
                     SqlDataReader reader = cmd.ExecuteReader();

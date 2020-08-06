@@ -15,16 +15,66 @@ namespace TEAM3FINAL
 
         #region 멤버변수
         List<MaterialCostList_VO> AllList;
+        CheckBox headerChk;
         #endregion
 
         #region 생성자
         public FrmMaterialCost()
         {
             InitializeComponent();
+
         }
         #endregion
 
         #region 메서드
+        /// <summary>
+        /// 데이터 그리드뷰 올체크 체크박스 만들기
+        /// </summary>
+        private void DataGridViewCheckBoxAllCheck()
+        {
+            headerChk = new CheckBox();
+            Point headerCell = dgvCost.GetCellDisplayRectangle(1, -1, true).Location;
+            headerChk.Location = new Point(headerCell.X + 4, headerCell.Y + 15);
+            headerChk.Size = new Size(18, 18);
+            headerChk.BackColor = Color.FromArgb(245, 245, 246);
+            headerChk.Click += HeaderChk_Clicked;
+            dgvCost.Controls.Add(headerChk);
+        }
+        /// <summary>
+        /// 올체크 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HeaderChk_Clicked(object sender, EventArgs e)
+        {
+            dgvCost.EndEdit();
+
+            //데이터그리드뷰의 전체 행의 체크를 체크 or 언체크
+            foreach (DataGridViewRow row in dgvCost.Rows)
+            {
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells["all"];
+                chk.Value = headerChk.Checked;
+            }
+        }
+
+
+        private void Readed_BarCode(object sender, ReadEventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                string msg = e.ReadMsg.Replace("%O", "_").Trim();
+                ((FrmMAIN)this.MdiParent).ClearStrings();
+
+                if (msg.Length > 0)
+                {
+                    dtpDate.Checked = false;
+                    txtItemName.Text = msg;
+                    Search(null, null);
+                    txtItemName.Clear();
+                }
+            }
+        }
+
         /// <summary>
         /// 그리드뷰 컬럼 설정
         /// </summary>
@@ -49,6 +99,8 @@ namespace TEAM3FINAL
 
             //행번호 추가
             DataGridViewUtil.DataGridViewRowNumSet(dgvCost);
+            //체크박스추가
+            DataGridViewCheckBoxAllCheck();
         }
 
         /// <summary>
@@ -139,11 +191,18 @@ namespace TEAM3FINAL
 
         public void Insert(object sender, EventArgs e)
         {
-            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            try
             {
-                FrmMaterialCostPop frm = new FrmMaterialCostPop(InsertOrUpdate.insert);
-                frm.ShowDialog();
-                Reset(null, null);
+                if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+                {
+                    FrmMaterialCostPop frm = new FrmMaterialCostPop(InsertOrUpdate.insert);
+                    frm.ShowDialog();
+                    Reset(null, null);
+                }
+            }
+            catch (Exception err)
+            {
+
             }
         }
 
@@ -154,37 +213,53 @@ namespace TEAM3FINAL
 
         public void Reset(object sender, EventArgs e)
         {
-            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            try
             {
-                LoadCostList();
-                txtItemName.Clear();
-                cboCompany.SelectedIndex = 0;
+                if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+                {
+                    LoadCostList();
+                    txtItemName.Clear();
+                    cboCompany.SelectedIndex = 0;
+
+                }
+            }
+            catch (Exception err)
+            {
 
             }
         }
 
         public void Search(object sender, EventArgs e)
         {
-            List<MaterialCostList_VO> list = null;
-            //기준날짜, 품목 조회
-            if (AllList.Count > 0 && dtpDate.Checked)
+            try
             {
-                list = (from item in AllList select item).Where
-                    (p => Convert.ToDateTime(p.MC_STARTDATE) < dtpDate.Value && Convert.ToDateTime(p.MC_ENDDATE) > dtpDate.Value
-                    && p.ITEM_Code.Contains(txtItemName.Text.Trim())).ToList();
+                if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+                {
+                    List<MaterialCostList_VO> list = null;
+                    //기준날짜, 품목 조회
+                    if (AllList.Count > 0 && dtpDate.Checked)
+                    {
+                        list = (from item in AllList select item).Where
+                            (p => Convert.ToDateTime(p.MC_STARTDATE) < dtpDate.Value && Convert.ToDateTime(p.MC_ENDDATE) > dtpDate.Value
+                            && p.ITEM_Code.Contains(txtItemName.Text.Trim())).ToList();
+                    }
+                    else if (AllList.Count > 0 && !(dtpDate.Checked))
+                    {
+                        list = (from item in AllList select item).Where(p => p.ITEM_Code.Contains(txtItemName.Text.Trim())).ToList();
+                    }
+                    //업체명 조회
+                    if (cboCompany.Text.Length > 0)
+                    {
+                        list = (from item in list select item).Where(p => p.COM_NAME.Contains(cboCompany.Text)).ToList();
+                    }
+                    dgvCost.DataSource = null;
+                    dgvCost.DataSource = list;
+                }
             }
-            else if (AllList.Count > 0 && !(dtpDate.Checked))
+            catch (Exception err)
             {
-                list = (from item in AllList select item).Where(p => p.ITEM_Code.Contains(txtItemName.Text.Trim())).ToList();
-            }
-            //업체명 조회
-            if (cboCompany.Text.Length > 0)
-            {
-                list = (from item in list select item).Where(p => p.COM_NAME.Contains(cboCompany.Text)).ToList();
-            }
-            dgvCost.DataSource = null;
-            dgvCost.DataSource = list;
 
+            }
         }
 
         public void Update(object sender, EventArgs e)
@@ -213,12 +288,15 @@ namespace TEAM3FINAL
         {
             //그리드 초기화
             DataGridViewColumnSet();
+
             //공통버튼적용
             BtnSet();
             //콤보박스 바인딩
             BindingComboBox();
             //데이터 조회
             LoadCostList();
+
+            ((FrmMAIN)this.MdiParent).Readed += Readed_BarCode;
         }
 
         private void dgvCost_CellClick(object sender, DataGridViewCellEventArgs e)
