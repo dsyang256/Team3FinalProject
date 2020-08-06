@@ -82,5 +82,17 @@ namespace TEAM3FINAL.Properties {
                 this["Handshake"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string 설정 {
+            get {
+                return ((string)(this["설정"]));
+            }
+            set {
+                this["설정"] = value;
+            }
+        }
     }
 }

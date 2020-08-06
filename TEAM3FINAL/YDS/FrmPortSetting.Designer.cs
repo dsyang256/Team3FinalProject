@@ -233,7 +233,9 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PortSetting";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PortSetting";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PortSetting_FormClosing);
             this.Load += new System.EventHandler(this.PortSetting_Load);

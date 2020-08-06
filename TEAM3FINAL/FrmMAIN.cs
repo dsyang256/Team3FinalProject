@@ -28,9 +28,12 @@ namespace TEAM3FINAL
         public event EventHandler eDelete;
         public event EventHandler ePrint;
         public event EventHandler eReset;
+       
         public delegate void BarCodeReadComplete(object sender, ReadEventArgs e);
         public event BarCodeReadComplete Readed;
-        public SerialPort _port;
+
+        SerialPort _port;
+
         public SerialPort Port
         {
             get
@@ -39,35 +42,44 @@ namespace TEAM3FINAL
                 {
                     _port = new SerialPort();
                     _port.DataReceived += Port_DataReceived;
-
                 }
+
                 return _port;
             }
         }
-        public StringBuilder _strings;
+
+        private StringBuilder _strings;
         public String Strings
         {
             set
             {
                 if (_strings == null)
-                {
                     _strings = new StringBuilder(1024);
-                }
+
+                _strings.AppendLine(value);
+
                 if (Readed != null)
                 {
                     ReadEventArgs args = new ReadEventArgs();
                     args.ReadMsg = _strings.ToString();
                     Readed(this, args);
                 }
-                _strings.AppendLine(value);
-
             }
         }
-        public void ClearString()
+
+        private bool _isopen;
+        public bool IsOpen
+        {
+            get { return _isopen; }
+            set { _isopen = value; }
+        }
+
+        public void ClearStrings()
         {
             _strings.Clear();
         }
-        public void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
+
+        private void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             Thread.Sleep(500);
 
@@ -78,26 +90,48 @@ namespace TEAM3FINAL
             }));
         }
 
-        public void SerialReceived(object sender, EventArgs e)
+        private void SerialPortConnecting()
         {
-            throw new NotImplementedException();
-        }
-        private bool _Isopen;
-        public bool IsOpen
-        {
-            get { return _Isopen; }
-            set { _Isopen = value; }
-        }
+            if (!Port.IsOpen) //연결
+            {
+                Port.PortName = Properties.Settings.Default.PortName;
+                Port.BaudRate = Convert.ToInt32(Properties.Settings.Default.BaudRate);
+                Port.DataBits = Convert.ToInt32(Properties.Settings.Default.DataSize);
 
+                Parity par = Parity.None;
+                if (Properties.Settings.Default.Parity == "even")
+                    par = Parity.Even;
+                else if (Properties.Settings.Default.Parity == "odd")
+                    par = Parity.Odd;
+                Port.Parity = par;
 
+                Handshake hands = Handshake.None;
+                Port.Handshake = hands;
+
+                try
+                {
+                    Port.Open();
+
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show(err.Message);
+                }
+            }
+            else
+            {
+                Port.Close();
+            }
+            IsOpen = _port.IsOpen;
+        }
         public FrmMAIN()
         {
             InitializeComponent();
-            //  _log = new LoggingUtility("gudiProject", Level.Debug, 15); //최근 15일만 보관
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.PortName.Length > 0)
+                SerialPortConnecting();
             //status strip Timer
             timer1.Start();
             timer1.Tick += ((send, args) => lblDateTime.Text = DateTime.Now.ToString("yyyy년 MM월 dd일 HH시 mm분 ss초"));
@@ -381,6 +415,19 @@ namespace TEAM3FINAL
             LoadLogin();
         }
 
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            if (Port.IsOpen)
+                Port.Close();
+
+            PortSetting frm = new PortSetting();
+            frm.ShowDialog();
+
+            if (Properties.Settings.Default.PortName.Length > 0)
+            {
+                SerialPortConnecting();
+            }
+        }
     }
     public class ReadEventArgs : EventArgs
     {
