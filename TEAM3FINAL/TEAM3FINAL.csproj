@@ -76,6 +76,7 @@
     <Compile Include="HHW\FrmCompanyPopUp.Designer.cs">
       <DependentUpon>FrmCompanyPopUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlanService.cs" />
     <Compile Include="Services\CompanyService.cs" />
     <Compile Include="HHW\FrmCompanyManage.cs">
       <SubType>Form</SubType>
