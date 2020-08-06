@@ -61,6 +61,7 @@
             this.ITEM_COM_DLVR = new System.Windows.Forms.ComboBox();
             this.dgvitem = new WindowsFormsApp18.MyDataGridView();
             this.menuPanel1 = new TEAM3FINAL.MenuPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -419,10 +420,25 @@
             this.menuPanel1.TitleFont = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.menuPanel1.TitleName = "품목정보";
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.AutoSize = true;
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.Location = new System.Drawing.Point(1052, 221);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(89, 25);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "바코드출력";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FrmItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.ClientSize = new System.Drawing.Size(1156, 574);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.menuPanel1);
             this.Name = "FrmItem";
             this.Text = "품목";
@@ -431,6 +447,7 @@
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.panel3, 0);
             this.Controls.SetChildIndex(this.menuPanel1, 0);
+            this.Controls.SetChildIndex(this.button1, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -472,5 +489,6 @@
         private System.Windows.Forms.Label label7;
         private WindowsFormsApp18.MyDataGridView dgvitem;
         private MenuPanel menuPanel1;
+        private System.Windows.Forms.Button button1;
     }
 }
