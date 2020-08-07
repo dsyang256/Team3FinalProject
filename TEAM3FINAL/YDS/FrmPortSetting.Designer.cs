@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPortSetting));
             this.panel2 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -44,6 +45,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -51,7 +53,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button3);
             this.panel1.Size = new System.Drawing.Size(420, 56);
+            this.panel1.Controls.SetChildIndex(this.label1, 0);
+            this.panel1.Controls.SetChildIndex(this.button3, 0);
             // 
             // label1
             // 
@@ -67,6 +72,7 @@
             this.btnOK.Location = new System.Drawing.Point(175, 510);
             this.btnOK.Size = new System.Drawing.Size(58, 25);
             this.btnOK.Text = "종료";
+            this.btnOK.Visible = false;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
@@ -78,6 +84,7 @@
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.label6);
@@ -85,18 +92,20 @@
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Location = new System.Drawing.Point(12, 63);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(396, 487);
+            this.panel2.Size = new System.Drawing.Size(396, 450);
             this.panel2.TabIndex = 3;
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.RoyalBlue;
             this.button2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button2.Location = new System.Drawing.Point(23, 391);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(346, 36);
             this.button2.TabIndex = 14;
             this.button2.Text = "저장";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox1
@@ -120,13 +129,15 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.RoyalBlue;
             this.button1.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button1.Location = new System.Drawing.Point(23, 215);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(346, 36);
             this.button1.TabIndex = 11;
             this.button1.Text = "연결";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox1
@@ -265,12 +276,22 @@
             this.label8.TabIndex = 2;
             this.label8.Text = "data size";
             // 
-            // Form1
+            // button3
+            // 
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.Location = new System.Drawing.Point(372, 17);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(24, 23);
+            this.button3.TabIndex = 4;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // FrmPortSetting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.ClientSize = new System.Drawing.Size(420, 562);
+            this.ClientSize = new System.Drawing.Size(420, 528);
             this.Controls.Add(this.panel2);
-            this.Name = "Form1";
+            this.Name = "FrmPortSetting";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PortSetting_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Controls.SetChildIndex(this.label2, 0);
@@ -307,5 +328,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button3;
     }
 }

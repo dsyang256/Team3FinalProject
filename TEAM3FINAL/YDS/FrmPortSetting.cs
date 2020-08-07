@@ -138,5 +138,10 @@ namespace TEAM3FINAL
             if (Port.IsOpen)
                 Port.Close();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
