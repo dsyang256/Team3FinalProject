@@ -11,10 +11,10 @@ namespace TEAM3FINAL
 {
     public class PlanService
     {
-        public DataTable GetDemandPlan()
+        public DataTable GetDemandPlan(string FromDate, string ToDate, string PlanID)
         {
             PlanDAC dac = new PlanDAC();
-            return dac.GetDemandPlan();
+            return dac.GetDemandPlan(FromDate,ToDate,PlanID);
         }
     }
 }
