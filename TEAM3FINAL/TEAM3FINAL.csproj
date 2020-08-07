@@ -106,6 +106,7 @@
     </Compile>
     <Compile Include="Services\BORService.cs" />
     <Compile Include="Services\CostService.cs" />
+    <Compile Include="Services\WorkOrderService.cs" />
     <Compile Include="XtraBORList.cs">
       <SubType>Component</SubType>
     </Compile>

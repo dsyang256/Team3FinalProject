@@ -66,6 +66,7 @@
     <Compile Include="Utils\ConnectionAccess.cs" />
     <Compile Include="Utils\Helper.cs" />
     <Compile Include="Utils\LoggingUtility.cs" />
+    <Compile Include="WorkOrderDAC.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="LibraryConfig.xml">
