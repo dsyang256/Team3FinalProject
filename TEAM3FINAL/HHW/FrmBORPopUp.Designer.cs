@@ -145,10 +145,6 @@
             // cboPROC
             // 
             this.cboPROC.FormattingEnabled = true;
-            this.cboPROC.Items.AddRange(new object[] {
-            "회사",
-            "공장",
-            "창고"});
             this.cboPROC.Location = new System.Drawing.Point(509, 99);
             this.cboPROC.Name = "cboPROC";
             this.cboPROC.Size = new System.Drawing.Size(193, 23);
@@ -178,10 +174,6 @@
             // cboFacil
             // 
             this.cboFacil.FormattingEnabled = true;
-            this.cboFacil.Items.AddRange(new object[] {
-            "회사",
-            "공장",
-            "창고"});
             this.cboFacil.Location = new System.Drawing.Point(151, 150);
             this.cboFacil.Name = "cboFacil";
             this.cboFacil.Size = new System.Drawing.Size(193, 23);
@@ -326,10 +318,6 @@
             // cboUseYN
             // 
             this.cboUseYN.FormattingEnabled = true;
-            this.cboUseYN.Items.AddRange(new object[] {
-            "회사",
-            "공장",
-            "창고"});
             this.cboUseYN.Location = new System.Drawing.Point(509, 249);
             this.cboUseYN.Name = "cboUseYN";
             this.cboUseYN.Size = new System.Drawing.Size(193, 23);

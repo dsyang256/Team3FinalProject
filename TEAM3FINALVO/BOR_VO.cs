@@ -22,7 +22,7 @@ namespace TEAM3FINALVO
         public string ITEM_CODE { get; set; }
         public string ITEM_NAME { get; set; }
         public string BOR_PROCS_CODE { get; set; }
-        public string COMMON_CODE { get; set; }
+        public string COMMON_NAME { get; set; }
         public string FCLTS_CODE { get; set; }
         public string FCLTS_NAME { get; set; }
         public int? BOR_PROCS_TIME { get; set; }
