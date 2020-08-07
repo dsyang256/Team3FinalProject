@@ -70,6 +70,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="YDS\FrmPortSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YDS\FrmPortSetting.Designer.cs">
+      <DependentUpon>FrmPortSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="HHW\FrmCompanyPopUp.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -492,12 +498,6 @@
     <Compile Include="YDS\FrmReorderPopUp.Designer.cs">
       <DependentUpon>FrmReorderPopUp.cs</DependentUpon>
     </Compile>
-    <Compile Include="YDS\FrmPortSetting.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="YDS\FrmPortSetting.Designer.cs">
-      <DependentUpon>FrmPortSetting.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="BaseForm\baseFormPopUP.resx">
       <DependentUpon>baseFormPopUP.cs</DependentUpon>
     </EmbeddedResource>
@@ -509,6 +509,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaseForm\ProjectBaseForm.resx">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YDS\FrmPortSetting.resx">
+      <DependentUpon>FrmPortSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HHW\FrmCompanyPopUp.resx">
       <DependentUpon>FrmCompanyPopUp.cs</DependentUpon>
@@ -706,9 +709,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="YDS\FrmReorderSearch.resx">
       <DependentUpon>FrmReorderSearch.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="YDS\FrmPortSetting.resx">
-      <DependentUpon>FrmPortSetting.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

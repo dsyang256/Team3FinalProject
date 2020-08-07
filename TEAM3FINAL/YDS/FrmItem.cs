@@ -36,13 +36,14 @@ namespace TEAM3FINAL
             {
                 string msg = e.ReadMsg.Replace("%O","_").Trim();
                 ((FrmMAIN)this.MdiParent).ClearStrings();
-                MessageBox.Show(msg);
+      
                 string name = "";
                 foreach (DataGridViewRow item in dgvitem.Rows)
                 {
                     if (item.Cells[3].Value.ToString() == msg)
                     {
                         item.Cells[1].Value = true;
+                        item.Selected = true;
                         name = item.Cells[4].Value.ToString();
                     }
                 }
