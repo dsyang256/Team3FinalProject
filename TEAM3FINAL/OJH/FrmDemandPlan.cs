@@ -17,8 +17,26 @@ namespace TEAM3FINAL
         private void DataGridViewColumnSet()
         {
             //데이터그리드뷰 초기설정
-            DataGridViewUtil.InitSettingGridView(dgvPlan);
-            DataGridViewUtil.DataGridViewCheckBoxSet(dgvPlan, "  ");
+            dgvPlan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvPlan.AutoGenerateColumns = true;
+            dgvPlan.AllowUserToAddRows = false;
+            dgvPlan.MultiSelect = false;
+            dgvPlan.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPlan.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvPlan.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
+            dgvPlan.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            DataGridViewColumn column = dgvPlan.Columns[0];
+            column.Width = 200;
+            column = dgvPlan.Columns[1];
+            column.Width = 200;
+            column = dgvPlan.Columns[2];
+            column.Width = 150;
+            column = dgvPlan.Columns[3];
+            column.Width = 150;
+
+
+
 
             //행번호 추가
             DataGridViewUtil.DataGridViewRowNumSet(dgvPlan);
@@ -51,9 +69,21 @@ namespace TEAM3FINAL
             frm.eReset += Reset;
         }
 
+        private void BtnUnSet()
+        {
+            FrmMAIN frm = (FrmMAIN)this.MdiParent;
+            frm.eSearch -= Search;
+            frm.eInsert -= Insert;
+            frm.eUpdate -= Update;
+            frm.eDelete -= Delete;
+            frm.ePrint -= Print;
+            frm.eReset -= Reset;
+        }
+
 
         public void Insert(object sender, EventArgs e)
         {
+  
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
                 //FrmSalesMasterPop frm = new FrmSalesMasterPop(InsertOrUpdate.insert);
@@ -131,23 +161,28 @@ namespace TEAM3FINAL
 
         private void FrmDemandPlan_Load(object sender, EventArgs e)
         {
-            //그리드 초기화
-            DataGridViewColumnSet();
             //공통버튼적용
             BtnSet();
             //콤보박스 바인딩
             BindingComboBox();
             //데이터 조회
             LoadDemandPlan();
+            //그리드 초기화
+            DataGridViewColumnSet();
         }
 
         private void LoadDemandPlan()
         {
             //서비스호출
             PlanService service = new PlanService();
-            DataTable dt = service.GetDemandPlan();
+            DataTable dt = service.GetDemandPlan("2020-08-01","2020-08-31","");
             dgvPlan.DataSource = null;
             dgvPlan.DataSource = dt;
+        }
+
+        private void FrmDemandPlan_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            BtnUnSet();
         }
     }
 }
