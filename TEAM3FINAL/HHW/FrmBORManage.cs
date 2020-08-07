@@ -27,13 +27,13 @@ namespace TEAM3FINAL
             //데이터그리드뷰 초기설정
             DataGridViewUtil.InitSettingGridView(dgvBORList);
             //데이터그리드뷰 체크박스 컬럼 추가
-            DataGridViewUtil.DataGridViewCheckBoxSet(dgvBORList, "");
+            DataGridViewUtil.DataGridViewCheckBoxSet(dgvBORList, ""); 
             //일반컬럼 추가
             DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "PK", "BOR_CODE", false, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "품목", "ITEM_CODE", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "품명", "ITEM_NAME", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "공정", "BOR_PROCS_CODE", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "공정명", "COMMON_CODE", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "공정명", "COMMON_NAME", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "설비", "FCLTS_CODE", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "설비명", "FCLTS_NAME", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "Tack Time", "BOR_PROCS_TIME", true, 80);
@@ -82,27 +82,35 @@ namespace TEAM3FINAL
        
         private void Readed_BarCode(object sender, ReadEventArgs e)
         {
-            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            try
             {
-                string msg = e.ReadMsg.Replace("0", "").Trim();
-                ((FrmMAIN)this.MdiParent).ClearStrings();
-                MessageBox.Show(msg);
-                int i = 0;
-                foreach (DataGridViewRow item in dgvBORList.Rows)
+                if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
                 {
-                    if (item.Cells[1].Value.ToString() == msg)
+                    string msg = e.ReadMsg.Replace("0", "").Trim();
+                    ((FrmMAIN)this.MdiParent).ClearStrings();
+
+                    int i = 0;
+                    foreach (DataGridViewRow item in dgvBORList.Rows)
                     {
-                        item.Cells[0].Value = true;
-                        i++;
+                        if (item.Cells[1].Value.ToString() == msg)
+                        {
+                            item.Cells[0].Value = true;
+                            item.Selected = true;
+                            i++;
+                        }
                     }
+                    if (i < 1)
+                    {
+                        MessageBox.Show("항목이 없습니다 다시 확인해주세요.");
+                        return;
+                    }
+                    if (MessageBox.Show("해당을 수정하시겠습니까?", "수정확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        Update(null, null);
                 }
-                if (i < 1)
-                {
-                    MessageBox.Show("항목이 없습니다 다시 확인해주세요.");
-                    return;
-                }
-                if (MessageBox.Show("해당을 수정하시겠습니까?", "수정확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    Update(null, null);
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show(err.Message);
             }
         }
 

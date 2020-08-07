@@ -308,5 +308,9 @@ namespace TEAM3FINAL
         }
         #endregion
 
+        private void FrmMaterialCost_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ((FrmMAIN)this.MdiParent).Readed -= Readed_BarCode;
+        }
     }
 }

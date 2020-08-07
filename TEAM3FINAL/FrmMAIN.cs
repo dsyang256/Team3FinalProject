@@ -433,7 +433,7 @@ namespace TEAM3FINAL
             if (Port.IsOpen)
                 Port.Close();
 
-            PortSetting frm = new PortSetting();
+            FrmPortSetting frm = new FrmPortSetting();
             frm.ShowDialog();
 
             if (Properties.Settings.Default.PortName.Length > 0)

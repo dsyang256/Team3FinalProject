@@ -121,13 +121,15 @@ namespace TEAM3FINAL
         private void ComboBinding()
         {
             CommonService service = new CommonService();
+            ComboItemService service1 = new ComboItemService();
             List<ComboItemVO> commonList = service.GetITEMCmCode();
-
+            List<ComboItemVO> facList = service1.GetFacilitiesCode();
+            CommonUtil.ComboBinding<ComboItemVO>(cboFacil, facList, "COMMON_CODE", "COMMON_NAME", "");
             var listITEM = (from item in commonList where item.COMMON_PARENT == "품목" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(cboItemCode, listITEM, "COMMON_NAME", "COMMON_CODE", "");
             var listTool = (from item in commonList where item.COMMON_PARENT == "PROC_TOOL" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(cboPROC, listTool, "COMMON_CODE", "COMMON_NAME", "");
-            var listYN = (from item in commonList where item.COMMON_PARENT == "사용유무" select item).ToList();
+            var listYN = (from item in commonList where item.COMMON_PARENT == "사용여부" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(cboUseYN, listYN, "COMMON_CODE", "COMMON_NAME", "");
         }
 

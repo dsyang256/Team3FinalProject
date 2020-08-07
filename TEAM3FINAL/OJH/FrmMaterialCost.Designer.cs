@@ -210,6 +210,7 @@
             this.ClientSize = new System.Drawing.Size(1080, 565);
             this.Name = "FrmMaterialCost";
             this.Text = "자재단가";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMaterialCost_FormClosing);
             this.Load += new System.EventHandler(this.FrmMaterialCost_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

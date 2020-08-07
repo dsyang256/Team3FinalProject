@@ -70,12 +70,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="YDS\FrmPortSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YDS\FrmPortSetting.Designer.cs">
+      <DependentUpon>FrmPortSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="HHW\FrmCompanyPopUp.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HHW\FrmCompanyPopUp.Designer.cs">
       <DependentUpon>FrmCompanyPopUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Services\PlanService.cs" />
     <Compile Include="Services\CompanyService.cs" />
     <Compile Include="HHW\FrmCompanyManage.cs">
       <SubType>Form</SubType>
@@ -95,9 +102,10 @@
     <Compile Include="Popup\FrmSMUpLoadPop.Designer.cs">
       <DependentUpon>FrmSMUpLoadPop.cs</DependentUpon>
     </Compile>
-    <Compile Include="SalesService.cs" />
+    <Compile Include="Services\SalesService.cs" />
     <Compile Include="Services\CommonService.cs" />
     <Compile Include="Services\ReorderService.cs" />
+    <Compile Include="Services\ServiceWorkRecord.cs" />
     <Compile Include="UserControl\MenuPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -106,17 +114,16 @@
     </Compile>
     <Compile Include="Services\BORService.cs" />
     <Compile Include="Services\CostService.cs" />
-    <Compile Include="Services\WorkOrderService.cs" />
-    <Compile Include="XtraBORList.cs">
+    <Compile Include="Report\XtraBORList.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="XtraBORList.Designer.cs">
+    <Compile Include="Report\XtraBORList.Designer.cs">
       <DependentUpon>XtraBORList.cs</DependentUpon>
     </Compile>
-    <Compile Include="XtraItemList.cs">
+    <Compile Include="Report\XtraItemList.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="XtraItemList.Designer.cs">
+    <Compile Include="Report\XtraItemList.Designer.cs">
       <DependentUpon>XtraItemList.cs</DependentUpon>
     </Compile>
     <Compile Include="YDS\FrmReorderSearchPopUp.cs">
@@ -491,12 +498,6 @@
     <Compile Include="YDS\FrmReorderPopUp.Designer.cs">
       <DependentUpon>FrmReorderPopUp.cs</DependentUpon>
     </Compile>
-    <Compile Include="YDS\FrmPortSetting.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="YDS\FrmPortSetting.Designer.cs">
-      <DependentUpon>FrmPortSetting.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="BaseForm\baseFormPopUP.resx">
       <DependentUpon>baseFormPopUP.cs</DependentUpon>
     </EmbeddedResource>
@@ -508,6 +509,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaseForm\ProjectBaseForm.resx">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YDS\FrmPortSetting.resx">
+      <DependentUpon>FrmPortSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HHW\FrmCompanyPopUp.resx">
       <DependentUpon>FrmCompanyPopUp.cs</DependentUpon>
@@ -618,10 +622,10 @@
     <EmbeddedResource Include="Popup\FrmShiftPop.resx">
       <DependentUpon>FrmShiftPop.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="XtraBORList.resx">
+    <EmbeddedResource Include="Report\XtraBORList.resx">
       <DependentUpon>XtraBORList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="XtraItemList.resx">
+    <EmbeddedResource Include="Report\XtraItemList.resx">
       <DependentUpon>XtraItemList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="YDS\FrmReorderSearchPopUp.resx">
@@ -705,9 +709,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="YDS\FrmReorderSearch.resx">
       <DependentUpon>FrmReorderSearch.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="YDS\FrmPortSetting.resx">
-      <DependentUpon>FrmPortSetting.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
