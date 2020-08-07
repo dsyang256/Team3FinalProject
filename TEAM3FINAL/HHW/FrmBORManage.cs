@@ -82,27 +82,35 @@ namespace TEAM3FINAL
        
         private void Readed_BarCode(object sender, ReadEventArgs e)
         {
-            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            try
             {
-                string msg = e.ReadMsg.Replace("0", "").Trim();
-                ((FrmMAIN)this.MdiParent).ClearStrings();
-                MessageBox.Show(msg);
-                int i = 0;
-                foreach (DataGridViewRow item in dgvBORList.Rows)
+                if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
                 {
-                    if (item.Cells[1].Value.ToString() == msg)
+                    string msg = e.ReadMsg.Replace("0", "").Trim();
+                    ((FrmMAIN)this.MdiParent).ClearStrings();
+
+                    int i = 0;
+                    foreach (DataGridViewRow item in dgvBORList.Rows)
                     {
-                        item.Cells[0].Value = true;
-                        i++;
+                        if (item.Cells[1].Value.ToString() == msg)
+                        {
+                            item.Cells[0].Value = true;
+                            item.Selected = true;
+                            i++;
+                        }
                     }
+                    if (i < 1)
+                    {
+                        MessageBox.Show("항목이 없습니다 다시 확인해주세요.");
+                        return;
+                    }
+                    if (MessageBox.Show("해당을 수정하시겠습니까?", "수정확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        Update(null, null);
                 }
-                if (i < 1)
-                {
-                    MessageBox.Show("항목이 없습니다 다시 확인해주세요.");
-                    return;
-                }
-                if (MessageBox.Show("해당을 수정하시겠습니까?", "수정확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    Update(null, null);
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show(err.Message);
             }
         }
 

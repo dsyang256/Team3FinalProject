@@ -1,26 +1,22 @@
-﻿//using DevExpress.RichEdit.Export;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO.Ports;
-using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TEAM3FINAL
-
 {
-    public partial class PortSetting : Form
+    public partial class FrmPortSetting : TEAM3FINAL.baseFormPopUP
     {
         SerialPort _port;
 
         private SerialPort Port
         {
-            get 
+            get
             {
                 if (_port == null)
                 {
@@ -73,12 +69,12 @@ namespace TEAM3FINAL
         }
 
 
-        public PortSetting()
+        public FrmPortSetting()
         {
             InitializeComponent();
         }
 
-        private void PortSetting_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
             //시리얼포트 목록 조회
             cbComPort.DataSource = SerialPort.GetPortNames();
@@ -104,9 +100,9 @@ namespace TEAM3FINAL
                 try
                 {
                     Port.Open();
-                    textBox1.Text = "연결 됨";                    
+                    textBox1.Text = "연결 됨";
                 }
-                catch(Exception err)
+                catch (Exception err)
                 {
                     MessageBox.Show(err.Message);
                 }
@@ -133,6 +129,10 @@ namespace TEAM3FINAL
             }
         }
 
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
         private void PortSetting_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (Port.IsOpen)
