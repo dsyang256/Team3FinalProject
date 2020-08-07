@@ -59,6 +59,7 @@
     <Compile Include="FactoryDAC.cs" />
     <Compile Include="ITEMDAC.cs" />
     <Compile Include="LoginDAC.cs" />
+    <Compile Include="PlanDAC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="REORDERDAC.cs" />
     <Compile Include="SalesDAC.cs" />
