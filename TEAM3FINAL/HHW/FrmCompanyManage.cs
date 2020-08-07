@@ -182,22 +182,9 @@ namespace TEAM3FINAL
                     frm.COM_USE_YN = dgvCompanyList.CurrentRow.Cells[14].Value.ToString();
                     frm.COM_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
                     frm.COM_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd");
-                    try
-                    {
-                        frm.COM_STR_DATE = dgvCompanyList.CurrentRow.Cells[18].Value.ToString();
-                    }
-                    catch
-                    {
-                        frm.COM_STR_DATE = " ";
-                    }
-                    try
-                    {
-                        frm.COM_END_DATE = dgvCompanyList.CurrentRow.Cells[19].Value.ToString();
-                    }
-                    catch
-                    {
-                        frm.COM_END_DATE = " ";
-                    }
+                    frm.COM_STR_DATE = (dgvCompanyList.CurrentRow.Cells[18].Value == null) ? " ": dgvCompanyList.CurrentRow.Cells[18].Value.ToString();
+                    frm.COM_END_DATE = (dgvCompanyList.CurrentRow.Cells[19].Value== null) ? " " : dgvCompanyList.CurrentRow.Cells[19].Value.ToString();
+
                     
                     frm.COM_INFO = dgvCompanyList.CurrentRow.Cells[20].Value.ToString();
                     frm.ShowDialog();
