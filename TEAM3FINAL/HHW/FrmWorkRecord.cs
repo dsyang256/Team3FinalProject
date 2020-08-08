@@ -53,8 +53,9 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "비고", "WO_REMARK", true, 80); //20
             DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "수정자", "WO_LAST_MDFR", true, 80); //21
             DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "수정일", "WO_LAST_MDFY", true, 80); //22
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "작업지시서번호", "SALES_WORK_ORDER_ID", true, 80); //23
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "계획ID", "PLAN_ID", true, 80); //24
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "작업지시번호", "WO_Code", true, 80); //23
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "작업지시서번호", "SALES_WORK_ORDER_ID", true, 80); //24
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "계획ID", "PLAN_ID", true, 80); //25
             DataGridViewUtil.DataGridViewRowNumSet(dgvWorkRecordList);
             DataGridViewCheckBoxAllCheck();
         }
@@ -126,7 +127,7 @@ namespace TEAM3FINAL
 
         public void Insert(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Search(object sender, EventArgs e)
@@ -148,22 +149,22 @@ namespace TEAM3FINAL
 
         public void Reset(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Update(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Delete(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Print(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         #endregion
@@ -229,6 +230,39 @@ namespace TEAM3FINAL
             frm.eUpdate -= Update;
             frm.eReset -= Reset; //입력필요
             frm.ePrint -= Print; //입력필요
+        }
+
+        private void btnWorkCancel_Click(object sender, EventArgs e)
+        {
+            string state = dgvWorkRecordList.CurrentRow.Cells[8].Value.ToString();
+            if (state == "작업완료" || state == "")
+            {
+                MessageBox.Show("이미 완료 상태입니다.");
+                return;
+            }
+            else
+            {
+                if(MessageBox.Show($"{dgvWorkRecordList.CurrentRow.Cells[24].Value.ToString()} 를 작업을 취소하시겠습니까?", "작업취소", MessageBoxButtons.OKCancel) == DialogResult.OK);
+                {
+                    WorkOrderService service = new WorkOrderService();
+                    Message msg = service.WorkCancel(dgvWorkRecordList.CurrentRow.Cells[23].Value.ToString());
+                    if (msg.IsSuccess)
+                    {
+                        MessageBox.Show(msg.ResultMessage);
+                        GetWorkOrderInfo();
+                    }
+                    else
+                    {
+                        MessageBox.Show(msg.ResultMessage);
+                        return;
+                    }
+                }
+            }
+        }
+
+        private void btnMOVE_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

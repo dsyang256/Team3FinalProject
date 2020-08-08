@@ -34,6 +34,37 @@ group by WO_PLAN_DATE, WO_PROD_DATE, w.FCLTS_CODE, f.FCLTS_NAME, WO_WORK_SEQ, w.
             }
         }
 
+        public Message WorkCancel(string code)
+        {
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = new SqlConnection(this.ConnectionString);
+                cmd.CommandText = "update WORKORDER set WO_WORK_STATE = '작업취소' where WO_Code = @WO_Code";
+                cmd.Parameters.AddWithValue("@WO_Code", code);
+                cmd.Connection.Open();
+                int iResult = cmd.ExecuteNonQuery();
+                string result;
+                if (iResult > 0)
+                    result = "S02";
+                else
+                    result = "S00";
+                Message message = new Message();
+                if (result == "S02")
+                {
+                    message.IsSuccess = true;
+                    message.ResultMessage = "성공적으로 수정되었습니다.";
+                }
+                else if (result == "S0")
+                {
+                    message.IsSuccess = true;
+                    message.ResultMessage = "실패하였습니다.";
+                }
+
+                return message;
+
+            }
+        }
+
         public List<WORKORDER_VO> SearchWORKORDER(string dateTYP, string fromDATE, string fromTO, string state)
         {
             List<WORKORDER_VO> list = null;

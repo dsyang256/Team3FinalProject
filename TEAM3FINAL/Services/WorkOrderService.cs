@@ -22,5 +22,11 @@ namespace TEAM3FINAL
             WorkOrderDAC dac = new WorkOrderDAC();
             return dac.SearchWORKORDER(dateTYP, fromDATE, fromTO, state);
         }
+
+        internal Message WorkCancel(string code)
+        {
+            WorkOrderDAC dac = new WorkOrderDAC();
+            return dac.WorkCancel(code);
+        }
     }
 }
