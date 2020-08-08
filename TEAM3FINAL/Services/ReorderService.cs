@@ -26,5 +26,11 @@ namespace TEAM3FINAL
             REORDERDAC dac = new REORDERDAC();
             return dac.GetCOM();
         }
+
+        internal object GetReorderItem()
+        {
+            REORDERDAC dac = new REORDERDAC();
+            return dac.GetReorderItem();
+        }
     }
 }

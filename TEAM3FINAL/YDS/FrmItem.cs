@@ -370,5 +370,10 @@ namespace TEAM3FINAL
                 printTool.ShowRibbonPreviewDialog();
             }
         }
+
+        private void dgvitem_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

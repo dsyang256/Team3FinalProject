@@ -43,6 +43,11 @@ namespace TEAM3FINALDAC
             return dt;
         }
 
+        public DataTable GetReorderItem()
+        {
+            throw new NotImplementedException();
+        }
+
         public DataTable GetSearchREORDER(string sday, string eday, string comcodeout, string item, string state, string order, string comcodein)
         {
             DataTable dt = new DataTable();

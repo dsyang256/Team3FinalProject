@@ -100,9 +100,9 @@ namespace TEAM3FINAL
         }
         private void DataGridViewBinding2()
         {
-            //dgv2.DataSource = null;
-            //ReorderService service = new ReorderService();
-            //dgv2.DataSource = service.GetCOM();
+            dgv2.DataSource = null;
+            ReorderService service = new ReorderService();
+            dgv2.DataSource = service.GetReorderItem();
         }
         #endregion
 
