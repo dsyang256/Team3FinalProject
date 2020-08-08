@@ -16,5 +16,11 @@ namespace TEAM3FINAL
             WorkOrderDAC dac = new WorkOrderDAC();
             return dac.GetWorkOrderInfo();
         }
+
+        internal List<WORKORDER_VO> SearchWORKORDER(string dateTYP, string fromDATE, string fromTO, string state)
+        {
+            WorkOrderDAC dac = new WorkOrderDAC();
+            return dac.SearchWORKORDER(dateTYP, fromDATE, fromTO, state);
+        }
     }
 }
