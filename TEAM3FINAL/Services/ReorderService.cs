@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TEAM3FINALDAC;
+using TEAM3FINALVO;
 
 namespace TEAM3FINAL
 {
@@ -27,10 +28,21 @@ namespace TEAM3FINAL
             return dac.GetCOM();
         }
 
-        internal object GetReorderItem()
+        public DataTable GetReorderItem()
         {
             REORDERDAC dac = new REORDERDAC();
             return dac.GetReorderItem();
+        }
+        public DataTable GetReorderItem2(string com)
+        {
+            REORDERDAC dac = new REORDERDAC();
+            return dac.GetReorderItem2(com);
+        }
+
+        internal void insertREORDER(REORDER_VO vo)
+        {
+            REORDERDAC dac = new REORDERDAC();
+            return dac.insertREORDER(vo);
         }
     }
 }

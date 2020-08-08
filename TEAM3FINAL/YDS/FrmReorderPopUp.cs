@@ -13,6 +13,7 @@ namespace TEAM3FINAL
 {
     public partial class FrmReorderPopUp : baseFormPopUP
     {
+        DataTable dt;
         CheckBox headerChk;
         CheckBox headerChk1;
         public FrmReorderPopUp()
@@ -31,10 +32,11 @@ namespace TEAM3FINAL
             DataGridViewColumnSet1();
             DataGridViewColumnSet2();
             DataGridViewBinding1();
+            DataGridViewBinding2();
         }
-        #region 올체크 이벤트
+        #region 콤보박스바인딩
         /// <summary>
-        /// 올체크 이벤트
+        /// 콤보박스바인딩
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -70,17 +72,17 @@ namespace TEAM3FINAL
             DataGridViewUtil.InitSettingGridView(dgv2);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "no", "idx", true, 30);
             DataGridViewUtil.DataGridViewCheckBoxSet(dgv2, "all");
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주업체", "COM_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주코드", "COM_CODE", false, 30);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "납품업체", "COM_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "납품코드", "COM_CODE", false, 30);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "담당자", "COM_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품목", "COM_NAME", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품명", "COM_NAME", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "창고", "COM_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "검사여부", "COM_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주제안수량", "COM_NAME", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주수량", "COM_NAME", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주업체", "ITEM_COM_REORDER", true, 150);
+            //DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주코드", "COM_CODE", false, 30);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "납품업체", "ITEM_COM_DLVR", true, 150);
+            //DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "납품코드", "COM_CODE", false, 30);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "담당자", "ITEM_MANAGER", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품목", "ITEM_CODE", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품명", "ITEM_NAME", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "창고", "ITEM_WRHS_IN", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "검사여부", "ITEM_INCOME_YN", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주방식", "ITEM_REORDER_TYP", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주수량", "COM_NAME", true, 100, readOnly: false);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "현재고", "COM_NAME", true, 80);
 
             DataGridViewCheckBoxAllCheck2();
@@ -102,6 +104,7 @@ namespace TEAM3FINAL
         {
             dgv2.DataSource = null;
             ReorderService service = new ReorderService();
+            dt = service.GetReorderItem();
             dgv2.DataSource = service.GetReorderItem();
         }
         #endregion
@@ -149,6 +152,7 @@ namespace TEAM3FINAL
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells["all"];
                 chk.Value = headerChk.Checked;
             }
+            dgv1_CellContentClick(null, null);
         }
         private void HeaderChk_Clicked2(object sender, EventArgs e)
         {
@@ -158,9 +162,70 @@ namespace TEAM3FINAL
             foreach (DataGridViewRow row in dgv2.Rows)
             {
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells["all"];
-                chk.Value = headerChk.Checked;
+                chk.Value = headerChk1.Checked;
             }
         }
         #endregion
+
+        private void dgv1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgv1.EndEdit();
+            StringBuilder sb = new StringBuilder();
+            foreach (DataGridViewRow item in dgv1.Rows)
+            {
+                if (Convert.ToBoolean(item.Cells[1].Value) == true)
+                {
+                   sb.Append("'"+item.Cells[2].Value.ToString()+"',");
+                }
+            }
+            if(sb.ToString().Length <1)
+            {
+                return;
+            }
+            MessageBox.Show(sb.ToString().TrimEnd(','));
+            ReorderService service = new ReorderService();
+            dgv2.DataSource = service.GetReorderItem2(sb.ToString().TrimEnd(','));
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int a = 0;
+            dgv2.EndEdit();
+            ReorderService service = new ReorderService();
+            foreach (DataGridViewRow item in dgv2.Rows)
+            {
+                if (Convert.ToBoolean(item.Cells[1].Value) == true)
+                {
+                    a++;
+                    if (item.Cells[10].Value == null)
+                    {
+                        MessageBox.Show("발주할 품목의 수량을 입력해주세요");
+                        return;
+                    }
+                }
+            }
+            if (a == 0)
+            {
+                MessageBox.Show("발주할 품목을 선택해주세요");
+                return;
+            }
+            foreach (DataGridViewRow item in dgv2.Rows)
+            {
+                if (Convert.ToBoolean(item.Cells[1].Value) == true)
+                {
+                    REORDER_VO vo = new REORDER_VO();
+                    vo.REORDER_DATE = DateTime.Now;
+                    vo.REORDER_DATE_IN = DateTime.Now.AddDays(3);
+                    vo.REORDER_COM_DLVR = item.Cells[3].Value.ToString();
+                    vo.REORDER_TYP = (item.Cells[4].Value == null) ?"정량" : item.Cells[4].Value.ToString();
+                    vo.REORDER_QTY = Convert.ToInt32(item.Cells[10].Value);
+                    vo.REORDER_STATE = "발주";
+                    vo.ITEM_CODE = item.Cells[5].Value.ToString();
+                    vo.COM_CODE = item.Cells[2].Value.ToString();
+                    vo.MANAGER_ID = LoginInfo.UserInfo.LI_ID;
+                    service.insertREORDER(vo);
+                }
+            }
+        }
     }
 }

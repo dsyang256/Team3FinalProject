@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TEAM3FINALVO;
 
 namespace TEAM3FINALDAC
 {
@@ -43,9 +44,63 @@ namespace TEAM3FINALDAC
             return dt;
         }
 
+        public void insertREORDER(REORDER_VO vo)
+        {
+            bool Result = false;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = $@"INSERT INTO Reorder(COMMON_CODE, COMMON_NAME,COMMON_PARENT, COMMON_SEQ)
+                                              VALUES(@COMMON_CODE, @COMMON_NAME,@COMMON_PARENT,@COMMON_SEQ) ";
+                    cmd.Parameters.AddWithValue("@COMMON_CODE", code + "_" + name);
+                    cmd.Parameters.AddWithValue("@COMMON_NAME", name);
+                    cmd.Parameters.AddWithValue("@COMMON_PARENT", code);
+                    cmd.Parameters.AddWithValue("@COMMON_SEQ", SEQ);
+                    cmd.Connection.Open();
+                    int iResult = cmd.ExecuteNonQuery();
+                    cmd.Connection.Close();
+                    //return (iResult > 0) ? true : false;
+                }
+            }
+            catch (Exception err)
+            {
+                string msg = err.Message;
+                //return Result;
+            }
+        }
+
         public DataTable GetReorderItem()
         {
-            throw new NotImplementedException();
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            string sql = @"SELECT ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx,ITEM_COM_REORDER,ITEM_COM_DLVR,ITEM_MANAGER,ITEM_CODE,ITEM_NAME,ITEM_WRHS_IN,ITEM_INCOME_YN,ITEM_REORDER_TYP
+                            from ITEM 
+                           where ITEM_TYP = '원자재'";
+            conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
+            {
+
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable GetReorderItem2(string com)
+        {
+            //i join BOM b on i.ITEM_CODE = b.ITEM_CODE
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            string sql = $@"SELECT ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx,ITEM_COM_REORDER,ITEM_COM_DLVR,ITEM_MANAGER,ITEM_CODE,ITEM_NAME,ITEM_WRHS_IN,ITEM_INCOME_YN,ITEM_REORDER_TYP
+                            from ITEM
+                           where ITEM_TYP = '원자재' and ITEM_COM_REORDER in({com})";
+            conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
+            {
+
+                da.Fill(dt);
+            }
+            return dt;
         }
 
         public DataTable GetSearchREORDER(string sday, string eday, string comcodeout, string item, string state, string order, string comcodein)
