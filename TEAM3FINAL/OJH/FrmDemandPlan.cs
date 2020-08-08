@@ -27,16 +27,20 @@ namespace TEAM3FINAL
             dgvPlan.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             DataGridViewColumn column = dgvPlan.Columns[0];
+            dgvPlan.Columns[0].Frozen = true;
             column.Width = 200;
+
             column = dgvPlan.Columns[1];
+            dgvPlan.Columns[1].Frozen = true;
             column.Width = 200;
+
             column = dgvPlan.Columns[2];
+            dgvPlan.Columns[2].Frozen = true;
             column.Width = 150;
+
             column = dgvPlan.Columns[3];
+            dgvPlan.Columns[3].Frozen = true;
             column.Width = 150;
-
-
-
 
             //행번호 추가
             DataGridViewUtil.DataGridViewRowNumSet(dgvPlan);

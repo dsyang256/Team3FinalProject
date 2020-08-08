@@ -120,6 +120,16 @@ namespace TEAM3FINAL
             frm.eReset += Reset;
         }
 
+        private void BtnUnSet()
+        {
+            FrmMAIN frm = (FrmMAIN)this.MdiParent;
+            frm.eSearch -= Search;
+            frm.eInsert -= Insert;
+            frm.eUpdate -= Update;
+            frm.eDelete -= Delete;
+            frm.ePrint -= Print;
+            frm.eReset -= Reset;
+        }
 
         public void Insert(object sender, EventArgs e)
         {
@@ -139,8 +149,6 @@ namespace TEAM3FINAL
             {
                 list = (from item in AllList select item).Where
                     (p => (Convert.ToDateTime(p.SALES_DUEDATE) < dtpTo.Value) && Convert.ToDateTime(p.SALES_DUEDATE) > dtpFrom.Value).ToList();
-
-
 
                 //품목명
                 if (txtItem.Text.Trim().Length > 0)
@@ -241,14 +249,12 @@ namespace TEAM3FINAL
                 }
             }
             Reset(null, null);
-
         }
 
         public void Print(object sender, EventArgs e)
         {
             //미구현
         }
-
         #endregion
 
         #endregion
@@ -265,8 +271,6 @@ namespace TEAM3FINAL
             //데이터 조회
             LoadSalesWorkList();
         }
-
-        #endregion
 
         private void dtpFrom_ValueChanged(object sender, EventArgs e)
         {
@@ -285,5 +289,12 @@ namespace TEAM3FINAL
                 dtpFrom.Value = dtpTo.Value;
             }
         }
+
+        private void FrmSalesMaster_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            BtnUnSet();
+        }
+        #endregion
+
     }
 }

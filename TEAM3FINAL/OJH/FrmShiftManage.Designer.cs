@@ -228,6 +228,7 @@
             this.ClientSize = new System.Drawing.Size(1080, 565);
             this.Name = "FrmShiftManage";
             this.Text = "SHIFT스케줄관리";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmShiftManage_FormClosing);
             this.Load += new System.EventHandler(this.FrmShiftManage_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

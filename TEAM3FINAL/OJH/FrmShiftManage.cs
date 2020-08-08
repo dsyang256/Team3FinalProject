@@ -24,43 +24,49 @@ namespace TEAM3FINAL
         #endregion
 
         #region 메서드
-
-        #endregion
-        private void FrmShiftManage_Load(object sender, EventArgs e)
-        {
-            //그리드 초기화
-            DataGridViewColumnSet();
-
-            LoadShiftList();
-        }
-
         /// <summary>
         /// 그리드뷰 컬럼 설정
         /// </summary>
         private void DataGridViewColumnSet()
         {
             //데이터그리드뷰 초기설정
-            DataGridViewUtil.InitSettingGridView(dgvShift);
-            DataGridViewUtil.DataGridViewCheckBoxSet(dgvShift, "선택");
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "No.", "RowNumber", true, 50);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "shiftCode", "SHIFT_CODE", false, 50);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "설비명", "FCLTS_NAME", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "설비코드", "FCLTS_CODE", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "Shift", "SHIFT_TYP", true, 70);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "시작시간", "SHIFT_STARTTIME", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "완료시간", "SHIFT_ENDTIME", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "적용시간일자", "SHIFT_APPLY_STARTTIME", true, 150);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "적용완료일자", "SHIFT_APPLY_ENDTIME", true, 150);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "투입인원", "SHIFT_PERSON_DIR", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "사용유무", "SHIFT_USE_YN", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "수정자", "SHIFT_LAST_MDFR", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "수정시간", "SHIFT_LAST_MDFY", true, 150);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "비고", "SHIFT_REMARK", true, 300);
+            dgvShift.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvShift.AutoGenerateColumns = true;
+            dgvShift.AllowUserToAddRows = false;
+            dgvShift.MultiSelect = false;
+            dgvShift.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvShift.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvShift.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
+            dgvShift.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            DataGridViewColumn column = dgvShift.Columns[0];
+            dgvShift.Columns[0].Frozen = true;
+            column.Width = 150;
+
+            column = dgvShift.Columns[1];
+            dgvShift.Columns[1].Frozen = true;
+            column.Width = 150;
+
+            column = dgvShift.Columns[2];
+            dgvShift.Columns[2].Frozen = true;
+            column.Width = 150;
 
             //행번호 추가
             DataGridViewUtil.DataGridViewRowNumSet(dgvShift);
         }
+        private void BindingComboBox()
+        {
+            //서비스호출
+            //ComboItemService service = new ComboItemService();
 
+            //var commonlist = service.GetCmCode();
+            //var statelist = (from item in commonlist select item).Where(p => p.COMMON_PARENT == "ORDER_STATE").ToList();
+            //var companylist = service.GetCompanyCode();
+            //var com2list = service.GetCompanyCode();
+            //CommonUtil.ComboBinding<ComboItemVO>(cboState, statelist, "COMMON_CODE", "COMMON_NAME", "");
+            //CommonUtil.ComboBinding<ComboItemVO>(cboCom, companylist, "COMMON_CODE", "COMMON_NAME", "");
+            //CommonUtil.ComboBinding<ComboItemVO>(cboCom2, com2list, "COMMON_CODE", "COMMON_NAME", "");
+        }
         private void LoadShiftList()
         {
             //서비스호출
@@ -68,7 +74,6 @@ namespace TEAM3FINAL
             var list = service.GetShiftList();
             dgvShift.DataSource = list;
         }
-
 
         #region 공통버튼 적용
         /// <summary>
@@ -83,6 +88,16 @@ namespace TEAM3FINAL
             frm.eDelete += Delete;
             frm.ePrint += Print;
             frm.eReset += Reset;
+        }
+        private void BtnUnSet()
+        {
+            FrmMAIN frm = (FrmMAIN)this.MdiParent;
+            frm.eSearch -= Search;
+            frm.eInsert -= Insert;
+            frm.eUpdate -= Update;
+            frm.eDelete -= Delete;
+            frm.ePrint -= Print;
+            frm.eReset -= Reset;
         }
 
         public void Insert(object sender, EventArgs e)
@@ -114,6 +129,26 @@ namespace TEAM3FINAL
         {
             throw new NotImplementedException();
         }
+        #endregion
+        #endregion
+
+        #region 이벤트
+        private void FrmShiftManage_Load(object sender, EventArgs e)
+        {
+            //그리드 초기화
+            DataGridViewColumnSet();
+            //공통버튼적용
+            BtnSet();
+            //콤보박스 바인딩
+            BindingComboBox();
+            //데이터 조회
+            LoadShiftList();
+        }
+        private void FrmShiftManage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            BtnUnSet();
+        }
+
         #endregion
     }
 }
