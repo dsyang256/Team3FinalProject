@@ -209,20 +209,21 @@ namespace TEAM3FINAL
                 MessageBox.Show("발주할 품목을 선택해주세요");
                 return;
             }
+            REORDER_VO vo = new REORDER_VO();
+            vo.REORDER_DATE = DateTime.Now;
+            vo.REORDER_DATE_IN = DateTime.Now.AddDays(3);
+            vo.REORDER_STATE = "발주";
+            vo.MANAGER_ID = LoginInfo.UserInfo.LI_ID;
             foreach (DataGridViewRow item in dgv2.Rows)
             {
                 if (Convert.ToBoolean(item.Cells[1].Value) == true)
                 {
-                    REORDER_VO vo = new REORDER_VO();
-                    vo.REORDER_DATE = DateTime.Now;
-                    vo.REORDER_DATE_IN = DateTime.Now.AddDays(3);
+                    
                     vo.REORDER_COM_DLVR = item.Cells[3].Value.ToString();
                     vo.REORDER_TYP = (item.Cells[4].Value == null) ?"정량" : item.Cells[4].Value.ToString();
                     vo.REORDER_QTY = Convert.ToInt32(item.Cells[10].Value);
-                    vo.REORDER_STATE = "발주";
                     vo.ITEM_CODE = item.Cells[5].Value.ToString();
                     vo.COM_CODE = item.Cells[2].Value.ToString();
-                    vo.MANAGER_ID = LoginInfo.UserInfo.LI_ID;
                     service.insertREORDER(vo);
                 }
             }

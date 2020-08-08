@@ -44,7 +44,7 @@ namespace TEAM3FINALDAC
             return dt;
         }
 
-        public void insertREORDER(REORDER_VO vo)
+        public bool insertREORDER(REORDER_VO vo)
         {
             bool Result = false;
             try
@@ -52,22 +52,28 @@ namespace TEAM3FINALDAC
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = new SqlConnection(this.ConnectionString);
-                    cmd.CommandText = $@"INSERT INTO Reorder(COMMON_CODE, COMMON_NAME,COMMON_PARENT, COMMON_SEQ)
-                                              VALUES(@COMMON_CODE, @COMMON_NAME,@COMMON_PARENT,@COMMON_SEQ) ";
-                    cmd.Parameters.AddWithValue("@COMMON_CODE", code + "_" + name);
-                    cmd.Parameters.AddWithValue("@COMMON_NAME", name);
-                    cmd.Parameters.AddWithValue("@COMMON_PARENT", code);
-                    cmd.Parameters.AddWithValue("@COMMON_SEQ", SEQ);
+                    cmd.CommandText = $@"INSERT INTO Reorder(REORDER_DATE, REORDER_DATE_IN,REORDER_COM_DLVR, REORDER_TYP,REORDER_QTY,REORDER_STATE,ITEM_CODE,COM_CODE, MANAGER_ID)
+                                              VALUES(@REORDER_DATE, @REORDER_DATE_IN,@REORDER_COM_DLVR, @REORDER_TYP,@REORDER_QTY,@REORDER_STATE,@ITEM_CODE,@COM_CODE, @MANAGER_ID) ";
+                    cmd.Parameters.AddWithValue("@REORDER_DATE",vo.REORDER_DATE);
+                    cmd.Parameters.AddWithValue("@REORDER_DATE_IN",vo.REORDER_DATE_IN);
+                    cmd.Parameters.AddWithValue("@REORDER_COM_DLVR",vo.REORDER_COM_DLVR);
+                    cmd.Parameters.AddWithValue("@REORDER_TYP",vo.REORDER_TYP);
+                    cmd.Parameters.AddWithValue("@REORDER_QTY",vo.REORDER_QTY );
+                    cmd.Parameters.AddWithValue("@REORDER_STATE",vo.REORDER_STATE);
+                    cmd.Parameters.AddWithValue("@ITEM_CODE",vo.ITEM_CODE);
+                    cmd.Parameters.AddWithValue("@COM_CODE",vo.COM_CODE);
+                    cmd.Parameters.AddWithValue("@MANAGER_ID",vo.MANAGER_ID);
+
                     cmd.Connection.Open();
                     int iResult = cmd.ExecuteNonQuery();
                     cmd.Connection.Close();
-                    //return (iResult > 0) ? true : false;
+                    return (iResult > 0) ? true : false;
                 }
             }
             catch (Exception err)
             {
                 string msg = err.Message;
-                //return Result;
+                return Result;
             }
         }
 

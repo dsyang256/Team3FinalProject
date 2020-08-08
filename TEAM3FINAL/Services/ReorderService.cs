@@ -39,7 +39,7 @@ namespace TEAM3FINAL
             return dac.GetReorderItem2(com);
         }
 
-        internal void insertREORDER(REORDER_VO vo)
+        internal bool insertREORDER(REORDER_VO vo)
         {
             REORDERDAC dac = new REORDERDAC();
             return dac.insertREORDER(vo);
