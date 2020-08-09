@@ -9,7 +9,7 @@ using TEAM3FINALVO;
 
 namespace TEAM3FINALDAC
 {
-   public class SalesDAC : ConnectionAccess
+    public class SalesDAC : ConnectionAccess
     {
         /// <summary>
         /// W/O 항목을 가져오는 메서드
@@ -43,6 +43,84 @@ namespace TEAM3FINALDAC
                 return new SALES_WORK_VO();
             }
             return list[0];
+        }
+
+        /// <summary>
+        /// WO 주문대기 => 주문확정 으로 업데이트하는 메서드
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public bool UpdateSalesWork(List<DEMAND_PLANNING_VO> list)
+        {
+            int iCnt = 0;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = $@"Update SALES_WORK set SALES_ORDER_STATE = '주문확정'
+                                                    where SALES_Work_Order_ID = @PLAN_Work_Order_ID
+";
+
+                    cmd.Parameters.Add("@PLAN_Work_Order_ID", SqlDbType.NVarChar, 20);
+
+                    cmd.Connection.Open();
+
+                    foreach (var item in list)
+                    {
+                        cmd.Parameters["@PLAN_Work_Order_ID"].Value = item.PLAN_Work_Order_ID;
+                        iCnt += cmd.ExecuteNonQuery();
+                    }
+                    cmd.Connection.Close();
+                }
+
+            }
+            catch (Exception err)
+            {
+                string msg = err.Message;
+            }
+            return iCnt > 0 ? true : false;
+        }
+
+        /// <summary>
+        /// 수요계획 생성메서드
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public bool InsertDemandPlan(List<DEMAND_PLANNING_VO> list)
+        {
+            int iCnt = 0;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = $@"insert DEMAND_PLANNING (PLAN_ID,PLAN_Date,PLAN_Work_Order_ID,SO_PurchaseOrder)
+                                                                        values (@PLAN_ID,@PLAN_Date,@PLAN_Work_Order_ID,@SO_PurchaseOrder)";
+
+                    cmd.Parameters.Add("@PLAN_ID", SqlDbType.NVarChar, 20);
+                    cmd.Parameters.Add("@PLAN_Date", SqlDbType.DateTime);
+                    cmd.Parameters.Add("@PLAN_Work_Order_ID", SqlDbType.NVarChar, 20);
+                    cmd.Parameters.Add("@SO_PurchaseOrder", SqlDbType.NVarChar, 20);
+
+                    cmd.Connection.Open();
+                    foreach (var item in list)
+                    {
+                        cmd.Parameters["@PLAN_ID"].Value = item.PLAN_ID;
+                        cmd.Parameters["@PLAN_Date"].Value = item.PLAN_Date;
+                        cmd.Parameters["@PLAN_Work_Order_ID"].Value = item.PLAN_Work_Order_ID;
+                        cmd.Parameters["@SO_PurchaseOrder"].Value = item.SO_PurchaseOrder;
+                        iCnt += cmd.ExecuteNonQuery();
+                    }
+
+                    cmd.Connection.Close();
+                }
+            }
+            catch (Exception err)
+            {
+                string msg = err.Message;
+            }
+            return iCnt > 0 ? true : false;
         }
 
         /// <summary>

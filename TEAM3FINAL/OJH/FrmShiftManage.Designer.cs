@@ -40,8 +40,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpFromdate = new System.Windows.Forms.DateTimePicker();
+            this.dtpTodate = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvShift = new WindowsFormsApp18.MyDataGridView();
             this.panel1.SuspendLayout();
@@ -56,8 +56,8 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.dateTimePicker2);
-            this.panel2.Controls.Add(this.dateTimePicker1);
+            this.panel2.Controls.Add(this.dtpTodate);
+            this.panel2.Controls.Add(this.dtpFromdate);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label6);
@@ -79,6 +79,9 @@
             // 
             this.cboShift.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboShift.FormattingEnabled = true;
+            this.cboShift.Items.AddRange(new object[] {
+            "주간",
+            "야간"});
             this.cboShift.Location = new System.Drawing.Point(489, 18);
             this.cboShift.Name = "cboShift";
             this.cboShift.Size = new System.Drawing.Size(121, 23);
@@ -156,21 +159,21 @@
             this.label6.TabIndex = 40;
             this.label6.Text = "*";
             // 
-            // dateTimePicker1
+            // dtpFromdate
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(157, 18);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(91, 23);
-            this.dateTimePicker1.TabIndex = 41;
+            this.dtpFromdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFromdate.Location = new System.Drawing.Point(157, 18);
+            this.dtpFromdate.Name = "dtpFromdate";
+            this.dtpFromdate.Size = new System.Drawing.Size(91, 23);
+            this.dtpFromdate.TabIndex = 41;
             // 
-            // dateTimePicker2
+            // dtpTodate
             // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(265, 18);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(91, 23);
-            this.dateTimePicker2.TabIndex = 41;
+            this.dtpTodate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTodate.Location = new System.Drawing.Point(265, 18);
+            this.dtpTodate.Name = "dtpTodate";
+            this.dtpTodate.Size = new System.Drawing.Size(91, 23);
+            this.dtpTodate.TabIndex = 41;
             // 
             // label7
             // 
@@ -248,8 +251,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpTodate;
+        private System.Windows.Forms.DateTimePicker dtpFromdate;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;

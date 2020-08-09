@@ -50,6 +50,38 @@ namespace TEAM3FINALDAC
             }
             return list;
         }
+
+        /// <summary>
+        /// 스케줄 일별 조회
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetShiftManage(string fromdate, string todate)
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter();
+                string sql = "SP_GetShiftSchedule";
+                using (SqlConnection conn = new SqlConnection(this.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add(new SqlParameter("@P_S_DATE", fromdate));
+                        cmd.Parameters.Add(new SqlParameter("@P_E_DATE", todate));
+                        conn.Open();
+                        da.SelectCommand = cmd;
+                        da.Fill(ds);
+                    }
+                }
+                return ds.Tables[0];
+            }
+            catch (Exception err)
+            {
+                return new DataTable();
+            }
+        }
+
         /// <summary>
         /// Shift 항목을 가져오는 메서드
         /// </summary>

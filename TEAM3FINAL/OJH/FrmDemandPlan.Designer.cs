@@ -41,9 +41,6 @@
             this.cboShift = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.cboFclts = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -52,13 +49,10 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1056, 160);
+            this.panel1.Size = new System.Drawing.Size(1056, 82);
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.cboFclts);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.dateTimePicker2);
             this.panel2.Controls.Add(this.dateTimePicker1);
             this.panel2.Controls.Add(this.label7);
@@ -67,7 +61,7 @@
             this.panel2.Controls.Add(this.cboShift);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Size = new System.Drawing.Size(1050, 138);
+            this.panel2.Size = new System.Drawing.Size(1050, 62);
             // 
             // panel3
             // 
@@ -191,36 +185,6 @@
             this.label3.TabIndex = 43;
             this.label3.Text = "*";
             // 
-            // cboFclts
-            // 
-            this.cboFclts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboFclts.FormattingEnabled = true;
-            this.cboFclts.Location = new System.Drawing.Point(843, 18);
-            this.cboFclts.Name = "cboFclts";
-            this.cboFclts.Size = new System.Drawing.Size(121, 23);
-            this.cboFclts.TabIndex = 52;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label5.Location = new System.Drawing.Point(793, 19);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 20);
-            this.label5.TabIndex = 50;
-            this.label5.Text = "설비";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label4.Location = new System.Drawing.Point(774, 22);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(15, 18);
-            this.label4.TabIndex = 51;
-            this.label4.Text = "*";
-            // 
             // FrmDemandPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -250,8 +214,5 @@
         private System.Windows.Forms.ComboBox cboShift;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cboFclts;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
     }
 }

@@ -42,14 +42,20 @@ namespace TEAM3FINAL
             DataGridViewColumn column = dgvShift.Columns[0];
             dgvShift.Columns[0].Frozen = true;
             column.Width = 150;
+            column.HeaderText = "설비명";
 
             column = dgvShift.Columns[1];
             dgvShift.Columns[1].Frozen = true;
             column.Width = 150;
+            column.HeaderText = "Shift";
 
             column = dgvShift.Columns[2];
             dgvShift.Columns[2].Frozen = true;
             column.Width = 150;
+            column.HeaderText = "구분";
+
+            column = dgvShift.Columns[3];
+            column.Visible = false;
 
             //행번호 추가
             DataGridViewUtil.DataGridViewRowNumSet(dgvShift);
@@ -57,22 +63,23 @@ namespace TEAM3FINAL
         private void BindingComboBox()
         {
             //서비스호출
-            //ComboItemService service = new ComboItemService();
+            ComboItemService service = new ComboItemService();
 
-            //var commonlist = service.GetCmCode();
-            //var statelist = (from item in commonlist select item).Where(p => p.COMMON_PARENT == "ORDER_STATE").ToList();
-            //var companylist = service.GetCompanyCode();
-            //var com2list = service.GetCompanyCode();
-            //CommonUtil.ComboBinding<ComboItemVO>(cboState, statelist, "COMMON_CODE", "COMMON_NAME", "");
-            //CommonUtil.ComboBinding<ComboItemVO>(cboCom, companylist, "COMMON_CODE", "COMMON_NAME", "");
-            //CommonUtil.ComboBinding<ComboItemVO>(cboCom2, com2list, "COMMON_CODE", "COMMON_NAME", "");
+            var facilist = service.GetFacilitiesCode();
+
+
+            CommonUtil.ComboBinding<ComboItemVO>(cboFclts, facilist, "COMMON_CODE", "COMMON_NAME", "");
         }
         private void LoadShiftList()
         {
             //서비스호출
             ShiftService service = new ShiftService();
-            var list = service.GetShiftList();
+            var list = service.GetShiftManage(dtpFromdate.Value.ToShortDateString(), dtpTodate.Value.ToShortDateString());
+            dgvShift.DataSource = null;
             dgvShift.DataSource = list;
+            //그리드 초기화
+            if(list.Rows.Count>0)
+            DataGridViewColumnSet();
         }
 
         #region 공통버튼 적용
@@ -102,47 +109,63 @@ namespace TEAM3FINAL
 
         public void Insert(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //사용안함
         }
 
         public void Search(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                //서비스호출
+                ShiftService service = new ShiftService();
+                DataTable list = service.GetShiftManage(dtpFromdate.Value.ToShortDateString(), dtpTodate.Value.ToShortDateString());
+
+                if (list.Rows.Count >0)
+                {
+
+                }
+                if (list.Rows.Count > 0)
+                    //그리드 초기화
+                    DataGridViewColumnSet();
+            }
+
         }
 
         public void Reset(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            LoadShiftList();
         }
 
         public void Update(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //사용안함
         }
 
         public void Delete(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //사용안함
         }
 
         public void Print(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //미구현
         }
         #endregion
+
         #endregion
 
         #region 이벤트
         private void FrmShiftManage_Load(object sender, EventArgs e)
         {
-            //그리드 초기화
-            DataGridViewColumnSet();
+            dtpFromdate.Value = DateTime.Now;
+            dtpTodate.Value = dtpFromdate.Value.AddDays(1);
             //공통버튼적용
             BtnSet();
             //콤보박스 바인딩
             BindingComboBox();
             //데이터 조회
             LoadShiftList();
+
         }
         private void FrmShiftManage_FormClosing(object sender, FormClosingEventArgs e)
         {

@@ -114,6 +114,17 @@ namespace TEAM3FINAL
             frm.ePrint += Print;
             frm.eReset += Reset;
         }
+        private void BtnUnSet()
+        {
+            FrmMAIN frm = (FrmMAIN)this.MdiParent;
+            frm.eSearch -= Search;
+            frm.eInsert -= Insert;
+            frm.eUpdate -= Update;
+            frm.eDelete -= Delete;
+            frm.ePrint -= Print;
+            frm.eReset -= Reset;
+        }
+
 
         public void Insert(object sender, EventArgs e)
         {
@@ -218,5 +229,10 @@ namespace TEAM3FINAL
             LoadShiftList();
         }
         #endregion
+
+        private void FrmShift_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            BtnUnSet();
+        }
     }
 }

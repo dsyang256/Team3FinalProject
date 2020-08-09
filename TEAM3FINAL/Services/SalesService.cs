@@ -32,6 +32,16 @@ namespace TEAM3FINAL
 
         }
 
-  
+        internal bool InsertDemandPlan(List<DEMAND_PLANNING_VO> list)
+        {
+            SalesDAC dac = new SalesDAC();
+            return dac.InsertDemandPlan(list);
+        }
+
+        internal bool UpdateSalesWork(List<DEMAND_PLANNING_VO> list)
+        {
+            SalesDAC dac = new SalesDAC();
+            return dac.UpdateSalesWork(list);
+        }
     }
 }

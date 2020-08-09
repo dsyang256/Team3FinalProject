@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,12 @@ namespace TEAM3FINAL
         {
             ShiftDAC dac = new ShiftDAC();
             return dac.GetShiftInfo(shiftCode);
+        }
+
+        public DataTable GetShiftManage(string fromdate,string todate)
+        {
+            ShiftDAC dac = new ShiftDAC();
+            return dac.GetShiftManage(fromdate,todate);
         }
     }
 }

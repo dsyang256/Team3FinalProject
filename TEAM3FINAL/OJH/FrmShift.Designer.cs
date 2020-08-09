@@ -171,6 +171,7 @@
             this.ClientSize = new System.Drawing.Size(1080, 565);
             this.Name = "FrmShift";
             this.Text = "SHIFT기준정보";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmShift_FormClosing);
             this.Load += new System.EventHandler(this.FrmShift_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

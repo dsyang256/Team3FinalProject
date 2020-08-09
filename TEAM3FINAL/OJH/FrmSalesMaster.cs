@@ -81,6 +81,34 @@ namespace TEAM3FINAL
             return sb.ToString();
         }
 
+        private string CheckedDemandList()
+        {
+            dgvSales.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            StringBuilder sb = new StringBuilder();
+            //품목 선택후 List를 전달
+            foreach (var item in dgvSales.Rows)
+            {
+                if (item is DataGridViewRow)
+                {
+                    DataGridViewRow row = item as DataGridViewRow;
+                    if (row.Cells[15].Value.ToString() == "주문대기")
+                    {
+                        sb.Append(row.Cells[1].Value.ToString() + "@");
+                    }
+                }
+            }
+            if (sb.Length < 1)
+            {
+                MessageBox.Show("계획생성할 주문이 없습니다.", "주문 없음", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return "";
+            }
+
+            sb.Remove(sb.Length - 1, 1);
+
+            //체크 목록을 string으로 만듬
+            return sb.ToString();
+        }
+
         private void LoadSalesWorkList()
         {
             //서비스호출
@@ -158,28 +186,28 @@ namespace TEAM3FINAL
                 }
 
                 //고객주문번호
-                if(txtPO.Text.Trim().Length>0)
+                if (txtPO.Text.Trim().Length > 0)
                 {
                     list = (from item in list select item).Where
                     (p => p.SO_PurchaseOrder.Contains(txtPO.Text.Trim())).ToList();
                 }
 
                 //상태
-                if(cboState.Text.Length>0)
+                if (cboState.Text.Length > 0)
                 {
                     list = (from item in list select item).Where
                     (p => p.SO_PurchaseOrder.Contains(cboState.Text)).ToList();
                 }
 
                 //고객사
-                if(cboCom.Text.Length>0)
+                if (cboCom.Text.Length > 0)
                 {
                     list = (from item in list select item).Where
                     (p => p.COM_NAME.Contains(cboCom.Text)).ToList();
                 }
 
                 //도착지
-                if(cboCom2.Text.Length>0)
+                if (cboCom2.Text.Length > 0)
                 {
                     list = (from item in list select item).Where
                     (p => p.SALES_COM_NAME.Contains(cboCom2.Text)).ToList();
@@ -293,6 +321,54 @@ namespace TEAM3FINAL
         private void FrmSalesMaster_FormClosing(object sender, FormClosingEventArgs e)
         {
             BtnUnSet();
+        }
+        /// <summary>
+        /// 수요계획 생성
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDemandPlan_Click(object sender, EventArgs e)
+        {
+            List<DEMAND_PLANNING_VO> list = new List<DEMAND_PLANNING_VO>();
+            if (dgvSales.RowCount > 0)
+            {
+                foreach (DataGridViewRow item in dgvSales.Rows)
+                {
+                    
+                    if (item.Cells[15].Value.ToString().Equals("주문대기"))
+                    {
+                        DEMAND_PLANNING_VO vo = new DEMAND_PLANNING_VO();
+                        vo.PLAN_ID = DateTime.Now.ToString("yyyy-MM-dd").Replace("-", "") + "_P";
+                        vo.PLAN_Date = DateTime.Now.ToString("yyyy-MM-dd");
+                        vo.PLAN_Work_Order_ID = item.Cells[2].Value.ToString();
+                        vo.SO_PurchaseOrder = "";
+                        if (item.Cells[3].Value != null)
+                            vo.SO_PurchaseOrder = item.Cells[3].Value.ToString();
+
+                        list.Add(vo);
+                    }
+                }
+                if (list.Count > 0)
+                {
+                    //서비스호출
+                    SalesService service = new SalesService();
+                    if(service.InsertDemandPlan(list))
+                    {
+                        service.UpdateSalesWork(list);
+                        MessageBox.Show("수요계획이 생성되었습니다.", "계획 생성", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("계획생성에 실패하였습니다.", "생성 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("생성할 계획이 없습니다..", "계획 없음", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            Reset(null,null);
+
         }
         #endregion
 

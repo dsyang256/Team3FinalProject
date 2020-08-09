@@ -49,8 +49,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.menuPanel1 = new TEAM3FINAL.MenuPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnDemandPlan = new System.Windows.Forms.Button();
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.label26 = new System.Windows.Forms.Label();
@@ -286,31 +285,19 @@
             this.menuPanel1.TitleFont = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.menuPanel1.TitleName = "영업마스터";
             // 
-            // button1
+            // btnDemandPlan
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.AutoSize = true;
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(1150, 195);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 25);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "수요계획생성";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.AutoSize = true;
-            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button2.Location = new System.Drawing.Point(1051, 195);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(101, 25);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "영업마스터생성";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnDemandPlan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDemandPlan.AutoSize = true;
+            this.btnDemandPlan.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnDemandPlan.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnDemandPlan.Location = new System.Drawing.Point(1150, 195);
+            this.btnDemandPlan.Name = "btnDemandPlan";
+            this.btnDemandPlan.Size = new System.Drawing.Size(89, 25);
+            this.btnDemandPlan.TabIndex = 5;
+            this.btnDemandPlan.Text = "수요계획생성";
+            this.btnDemandPlan.UseVisualStyleBackColor = false;
+            this.btnDemandPlan.Click += new System.EventHandler(this.btnDemandPlan_Click);
             // 
             // dtpTo
             // 
@@ -419,19 +406,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.ClientSize = new System.Drawing.Size(1250, 565);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnDemandPlan);
             this.Controls.Add(this.menuPanel1);
             this.Name = "FrmSalesMaster";
             this.Text = "영업마스터";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmSalesMaster_FormClosing);
             this.Load += new System.EventHandler(this.FrmSalesMaster_Load);
+            this.Controls.SetChildIndex(this.menuPanel1, 0);
+            this.Controls.SetChildIndex(this.btnDemandPlan, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.panel3, 0);
-            this.Controls.SetChildIndex(this.menuPanel1, 0);
-            this.Controls.SetChildIndex(this.button1, 0);
-            this.Controls.SetChildIndex(this.button2, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -460,8 +445,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private MenuPanel menuPanel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDemandPlan;
         private System.Windows.Forms.TextBox txtPO;
         private System.Windows.Forms.TextBox txtItem;
         private System.Windows.Forms.DateTimePicker dtpTo;
