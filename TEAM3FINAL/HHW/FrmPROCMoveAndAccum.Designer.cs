@@ -34,15 +34,17 @@
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(9, 10);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.panel2.Size = new System.Drawing.Size(809, 132);
+            this.panel2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.panel2.Location = new System.Drawing.Point(12, 13);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel2.Size = new System.Drawing.Size(1040, 175);
             // 
             // FrmPROCMoveAndAccum
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.ClientSize = new System.Drawing.Size(840, 424);
-            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ClientSize = new System.Drawing.Size(1080, 565);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmPROCMoveAndAccum";
             this.Text = "공정이동";
             this.panel1.ResumeLayout(false);

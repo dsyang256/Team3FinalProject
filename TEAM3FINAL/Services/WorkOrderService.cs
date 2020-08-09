@@ -17,16 +17,28 @@ namespace TEAM3FINAL
             return dac.GetWorkOrderInfo();
         }
 
-        internal List<WORKORDER_VO> SearchWORKORDER(string dateTYP, string fromDATE, string fromTO, string state)
+        public List<WORKORDER_VO> SearchWORKORDER(string dateTYP, string fromDATE, string fromTO, string state)
         {
             WorkOrderDAC dac = new WorkOrderDAC();
             return dac.SearchWORKORDER(dateTYP, fromDATE, fromTO, state);
         }
 
-        internal Message WorkCancel(string code)
+        public Message WorkCancel(string code)
         {
             WorkOrderDAC dac = new WorkOrderDAC();
             return dac.WorkCancel(code);
+        }
+
+        public List<WorkMOVE_VO> GetWorkMOVEInfo()
+        {
+            WorkOrderDAC dac = new WorkOrderDAC();
+            return dac.GetWorkMOVEInfo();
+        }
+
+        internal Message WorkMOVE(string code)
+        {
+            WorkOrderDAC dac = new WorkOrderDAC();
+            return dac.WorkMOVE(code);
         }
     }
 }

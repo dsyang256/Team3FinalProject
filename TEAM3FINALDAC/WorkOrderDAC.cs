@@ -34,6 +34,54 @@ group by WO_PLAN_DATE, WO_PROD_DATE, w.FCLTS_CODE, f.FCLTS_NAME, WO_WORK_SEQ, w.
             }
         }
 
+        public Message WorkMOVE(string code)
+        {
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = new SqlConnection(this.ConnectionString);
+                cmd.CommandText = "update WORKORDER set WO_WORK_STATE = '실적등록' where WO_Code = @WO_Code";
+                cmd.Parameters.AddWithValue("@WO_Code", code);
+                cmd.Connection.Open();
+                int iResult = cmd.ExecuteNonQuery();
+                string result;
+                if (iResult > 0)
+                    result = "S02";
+                else
+                    result = "S00";
+                Message message = new Message();
+                if (result == "S02")
+                {
+                    message.IsSuccess = true;
+                    message.ResultMessage = "성공적으로 수정되었습니다.";
+                }
+                else if (result == "S0")
+                {
+                    message.IsSuccess = true;
+                    message.ResultMessage = "실패하였습니다.";
+                }
+
+                return message;
+            }
+        }
+
+        public List<WorkMOVE_VO> GetWorkMOVEInfo()
+        {
+            List<WorkMOVE_VO> list = null;
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = new SqlConnection(this.ConnectionString);
+                cmd.CommandText = @"select w.ITEM_CODE, i.ITEM_NAME, i.ITEM_STND, ('최종조립반') as FCLTS_NAME, w.WO_QTY_OUT, w.WO_REMARK, WO_Code
+from WORKORDER w inner join ITEM i on w.ITEM_CODE = i.ITEM_CODE
+				 inner join FACILITY f on w.FCLTS_CODE = f.FCLTS_CODE
+where WO_WORK_STATE = '실적등록'";
+                cmd.Connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                list = Helper.DataReaderMapToList<WorkMOVE_VO>(reader);
+
+                return list;
+            }
+        }
+
         public Message WorkCancel(string code)
         {
             using (SqlCommand cmd = new SqlCommand())
@@ -61,7 +109,6 @@ group by WO_PLAN_DATE, WO_PROD_DATE, w.FCLTS_CODE, f.FCLTS_NAME, WO_WORK_SEQ, w.
                 }
 
                 return message;
-
             }
         }
 
