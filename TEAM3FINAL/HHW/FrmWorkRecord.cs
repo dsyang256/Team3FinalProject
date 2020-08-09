@@ -15,7 +15,7 @@ namespace TEAM3FINAL
     public partial class FrmWorkRecord : TEAM3FINAL.baseForm, CommonBtn
     {
         CheckBox headerChk;
-        List<WORKORDER_VO> list = null;
+        CheckBox headerChk2;
 
         public FrmWorkRecord()
         {
@@ -58,6 +58,23 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "계획ID", "PLAN_ID", true, 80); //25
             DataGridViewUtil.DataGridViewRowNumSet(dgvWorkRecordList);
             DataGridViewCheckBoxAllCheck();
+
+
+            //데이터그리드뷰 초기설정
+            DataGridViewUtil.InitSettingGridView(dgvMOVEList);
+            //데이터그리드뷰 체크박스 컬럼 추가
+            DataGridViewUtil.DataGridViewCheckBoxSet(dgvMOVEList, "");
+            //일반컬럼 추가
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "품목", "ITEM_CODE", true, 80); 
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "품명", "ITEM_NAME", true, 80); 
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "규격", "ITEM_STND", true, 80); 
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "이동창고", "FCLTS_NAME", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "이동수량", "WO_QTY_OUT", true, 80); //양품수량
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "비고", "WO_REMARK", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "작업지시번호", "WO_Code", true, 80);
+            DataGridViewUtil.DataGridViewRowNumSet(dgvMOVEList);
+            DataGridViewCheckBoxAllCheck2();
+
         }
 
         private void DataGridViewCheckBoxAllCheck()
@@ -69,6 +86,17 @@ namespace TEAM3FINAL
             headerChk.BackColor = Color.FromArgb(245, 245, 246);
             headerChk.Click += HeaderChk_Clicked;
             dgvWorkRecordList.Controls.Add(headerChk);
+        }
+
+        private void DataGridViewCheckBoxAllCheck2()
+        {
+            headerChk2 = new CheckBox();
+            Point headerCell = dgvMOVEList.GetCellDisplayRectangle(0, -1, true).Location;
+            headerChk2.Location = new Point(headerCell.X + 4, headerCell.Y + 15);
+            headerChk2.Size = new Size(18, 18);
+            headerChk2.BackColor = Color.FromArgb(245, 245, 246);
+            headerChk2.Click += HeaderChk_Clicked;
+            dgvMOVEList.Controls.Add(headerChk2);
         }
 
         private void HeaderChk_Clicked(object sender, EventArgs e)
@@ -83,6 +111,18 @@ namespace TEAM3FINAL
             }
         }
 
+        private void HeaderChk_Clicked2(object sender, EventArgs e)
+        {
+            dgvMOVEList.EndEdit();
+
+            //데이터그리드뷰의 전체 행의 체크를 체크 or 언체크
+            foreach (DataGridViewRow row in dgvMOVEList.Rows)
+            {
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
+                chk.Value = headerChk2.Checked;
+            }
+        }
+
         #endregion
 
         private void FrmWorkRecord_Load(object sender, EventArgs e)
@@ -90,7 +130,8 @@ namespace TEAM3FINAL
             ComboBinding();
             btnset();
             DataGridViewColumnSet();
-            GetWorkOrderInfo();
+            GetWorkOrderInfo(); //작업실적등록 뷰
+            GetWorkMOVEInfo(); //공정이동 뷰
         }
 
         private void GetWorkOrderInfo()
@@ -98,8 +139,13 @@ namespace TEAM3FINAL
             WorkOrderService service = new WorkOrderService();
             dgvWorkRecordList.DataSource = null;
             dgvWorkRecordList.DataSource = service.GetWorkOrderInfo();
-        }        
-
+        }
+        private void GetWorkMOVEInfo()
+        {
+            WorkOrderService service = new WorkOrderService();
+            dgvMOVEList.DataSource = null;
+            dgvMOVEList.DataSource = service.GetWorkMOVEInfo();
+        }
         // 버튼 이벤트 추가 메서드
         private void btnset()
         {
@@ -234,6 +280,7 @@ namespace TEAM3FINAL
 
         private void btnWorkCancel_Click(object sender, EventArgs e)
         {
+            dgvWorkRecordList.EndEdit();
             string state = dgvWorkRecordList.CurrentRow.Cells[8].Value.ToString();
             if (state == "작업완료" || state == "")
             {
@@ -262,7 +309,33 @@ namespace TEAM3FINAL
 
         private void btnMOVE_Click(object sender, EventArgs e)
         {
-
+            dgvMOVEList.EndEdit();
+            string state = dgvWorkRecordList.CurrentRow.Cells[8].Value.ToString();
+            if (state == "작업완료")
+            {
+                if (MessageBox.Show($"{dgvWorkRecordList.CurrentRow.Cells[24].Value.ToString()} 를 실적등록 하시겠습니까?", "실적등록", MessageBoxButtons.OKCancel) == DialogResult.OK) ;
+                {
+                    //상태 실적등록으로 업데이트
+                    WorkOrderService service = new WorkOrderService();
+                    Message msg = service.WorkMOVE(dgvWorkRecordList.CurrentRow.Cells[23].Value.ToString());
+                    if (msg.IsSuccess)
+                    {
+                        MessageBox.Show(msg.ResultMessage);
+                        GetWorkOrderInfo();
+                        GetWorkMOVEInfo();
+                    }
+                    else
+                    {
+                        MessageBox.Show(msg.ResultMessage);
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("작업완료 상태만 실적등록이 가능합니다.");
+                return;
+            }
         }
     }
 }

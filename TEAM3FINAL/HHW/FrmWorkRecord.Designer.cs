@@ -32,6 +32,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuPanel1 = new TEAM3FINAL.MenuPanel();
             this.dgvWorkRecordList = new WindowsFormsApp18.MyDataGridView();
             this.btnWorkCancel = new System.Windows.Forms.Button();
@@ -43,10 +47,14 @@
             this.cboSTATE = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.dgvMOVEList = new WindowsFormsApp18.MyDataGridView();
+            this.menuPanel2 = new TEAM3FINAL.MenuPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWorkRecordList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMOVEList)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -83,13 +91,13 @@
             // 
             this.panel3.Controls.Add(this.dgvWorkRecordList);
             this.panel3.Location = new System.Drawing.Point(15, 200);
-            this.panel3.Size = new System.Drawing.Size(1053, 537);
+            this.panel3.Size = new System.Drawing.Size(1053, 313);
             this.panel3.Controls.SetChildIndex(this.panel4, 0);
             this.panel3.Controls.SetChildIndex(this.dgvWorkRecordList, 0);
             // 
             // panel4
             // 
-            this.panel4.Location = new System.Drawing.Point(0, 792);
+            this.panel4.Location = new System.Drawing.Point(0, 568);
             this.panel4.Margin = new System.Windows.Forms.Padding(3);
             // 
             // menuPanel1
@@ -102,7 +110,7 @@
             this.menuPanel1.Location = new System.Drawing.Point(12, 153);
             this.menuPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.menuPanel1.Name = "menuPanel1";
-            this.menuPanel1.Size = new System.Drawing.Size(1057, 44);
+            this.menuPanel1.Size = new System.Drawing.Size(1053, 37);
             this.menuPanel1.TabIndex = 7;
             this.menuPanel1.TitleFont = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.menuPanel1.TitleName = "작업실적등록";
@@ -145,7 +153,7 @@
             this.dgvWorkRecordList.RowHeadersWidth = 30;
             this.dgvWorkRecordList.RowTemplate.Height = 23;
             this.dgvWorkRecordList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvWorkRecordList.Size = new System.Drawing.Size(1053, 537);
+            this.dgvWorkRecordList.Size = new System.Drawing.Size(1053, 313);
             this.dgvWorkRecordList.TabIndex = 8;
             // 
             // btnWorkCancel
@@ -154,7 +162,7 @@
             this.btnWorkCancel.AutoSize = true;
             this.btnWorkCancel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnWorkCancel.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnWorkCancel.Location = new System.Drawing.Point(700, 158);
+            this.btnWorkCancel.Location = new System.Drawing.Point(700, 154);
             this.btnWorkCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnWorkCancel.Name = "btnWorkCancel";
             this.btnWorkCancel.Size = new System.Drawing.Size(116, 33);
@@ -169,7 +177,7 @@
             this.btnMOVE.AutoSize = true;
             this.btnMOVE.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnMOVE.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnMOVE.Location = new System.Drawing.Point(824, 158);
+            this.btnMOVE.Location = new System.Drawing.Point(824, 154);
             this.btnMOVE.Margin = new System.Windows.Forms.Padding(4);
             this.btnMOVE.Name = "btnMOVE";
             this.btnMOVE.Size = new System.Drawing.Size(114, 33);
@@ -184,7 +192,7 @@
             this.button3.AutoSize = true;
             this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button3.Location = new System.Drawing.Point(939, 158);
+            this.button3.Location = new System.Drawing.Point(939, 154);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(121, 33);
@@ -259,11 +267,85 @@
             this.label3.TabIndex = 31;
             this.label3.Text = "*";
             // 
+            // dgvMOVEList
+            // 
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            this.dgvMOVEList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvMOVEList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvMOVEList.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMOVEList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvMOVEList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMOVEList.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvMOVEList.EnableHeadersVisualStyles = false;
+            this.dgvMOVEList.Location = new System.Drawing.Point(15, 578);
+            this.dgvMOVEList.Name = "dgvMOVEList";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvMOVEList.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvMOVEList.RowHeadersWidth = 30;
+            this.dgvMOVEList.RowTemplate.Height = 23;
+            this.dgvMOVEList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvMOVEList.Size = new System.Drawing.Size(1053, 383);
+            this.dgvMOVEList.TabIndex = 10;
+            // 
+            // menuPanel2
+            // 
+            this.menuPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.menuPanel2.BackColor = System.Drawing.Color.Transparent;
+            this.menuPanel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.menuPanel2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.menuPanel2.Location = new System.Drawing.Point(15, 529);
+            this.menuPanel2.Margin = new System.Windows.Forms.Padding(0);
+            this.menuPanel2.Name = "menuPanel2";
+            this.menuPanel2.Size = new System.Drawing.Size(1053, 37);
+            this.menuPanel2.TabIndex = 11;
+            this.menuPanel2.TitleFont = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.menuPanel2.TitleName = "공정이동";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.AutoSize = true;
+            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button1.Location = new System.Drawing.Point(939, 529);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(121, 33);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "이동처리";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // FrmWorkRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1080, 749);
+            this.ClientSize = new System.Drawing.Size(1080, 973);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.menuPanel2);
+            this.Controls.Add(this.dgvMOVEList);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnMOVE);
             this.Controls.Add(this.btnWorkCancel);
@@ -281,11 +363,15 @@
             this.Controls.SetChildIndex(this.btnWorkCancel, 0);
             this.Controls.SetChildIndex(this.btnMOVE, 0);
             this.Controls.SetChildIndex(this.button3, 0);
+            this.Controls.SetChildIndex(this.dgvMOVEList, 0);
+            this.Controls.SetChildIndex(this.menuPanel2, 0);
+            this.Controls.SetChildIndex(this.button1, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvWorkRecordList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMOVEList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,5 +390,8 @@
         private System.Windows.Forms.ComboBox cboDATEtype;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label3;
+        private WindowsFormsApp18.MyDataGridView dgvMOVEList;
+        private MenuPanel menuPanel2;
+        private System.Windows.Forms.Button button1;
     }
 }

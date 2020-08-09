@@ -65,6 +65,7 @@
     <Compile Include="SALES_ORDER_VO.cs" />
     <Compile Include="SALES_WORK_VO.cs" />
     <Compile Include="SHIFT_VO.cs" />
+    <Compile Include="WorkMOVE_VO.cs" />
     <Compile Include="WORKORDER_VO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
