@@ -71,18 +71,14 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "협렵사", "COM_CODE", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "납품업체", "REORDER_COM_DLVR", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "주문상태", "REORDER_STATE", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "품목", "ITEM_CODE", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "품명", "ITEM_NAME", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "품목", "ITEM_CODE", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "품명", "ITEM_NAME", true, 200);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "규격", "ITEM_STND", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "단위", "ITEM_UNIT", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "납기일", "REORDER_DATE_IN", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "납기일", "REORDER_DATE_IN", true, 200);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "발주량", "REORDER_QTY", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "입고량", "REORDER_DETAIL_QTY_GOOD", true, 100);
-            //DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "출발량", "REORDER_DETAIL_QTY_START", true, 100);
-            //DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "취소량", "ITEM_FREE_YN", true, 100);
-            //DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "취소가능량", "REORDER_QTY_CANCEL", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "발주일", "REORDER_DATE", true, 100);
-            //DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "출발일", "ITEM_COM_REORDER", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "발주일", "REORDER_DATE", true, 200);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "발주자", "MANAGER_NAME", true, 100);
             DataGridViewCheckBoxAllCheck();
         }
@@ -154,11 +150,11 @@ namespace TEAM3FINAL
                 dgvReorder.DataSource = service.GetSearchREORDER(
                     sday.Value.ToShortDateString()
                     , eday.Value.ToShortDateString()
-                    , (COM_CODE_OUT.Text.Length < 1) ? "" : COM_CODE_OUT.SelectedValue.ToString()
+                    , (COM_CODE_OUT.Text.Length < 1) ? "" : COM_CODE_OUT.Text
                     , (ITEM_CODE.Text.Length < 1) ? "" : ITEM_CODE.SelectedValue.ToString()
                     , REORDER_STATE.Text
                     , REORDER_CODE.Text
-                    , (COM_CODE_IN.Text.Length < 1) ? "": COM_CODE_IN.SelectedValue.ToString());
+                    , (COM_CODE_IN.Text.Length < 1) ? "": COM_CODE_IN.Text);;
             }
         }
         /// <summary>
@@ -170,7 +166,7 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-
+                DataGridViewBinding();
             }
         }
         /// <summary>
@@ -212,16 +208,77 @@ namespace TEAM3FINAL
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FrmReorderSearchPopUp frm = new FrmReorderSearchPopUp();
-            if (frm.ShowDialog() == DialogResult.OK)
+            dgvReorder.EndEdit();
+            StringBuilder sb = new StringBuilder();
+            int cnt = 0;
+            //품목 선택후 List를 전달
+            foreach (DataGridViewRow item in dgvReorder.Rows)
             {
-                MessageBox.Show(frm.day);
+                if (Convert.ToBoolean(item.Cells[1].Value))
+                {
+                    sb.Append(item.Cells[2].Value.ToString() + "@");
+                    cnt++;
+                }
             }
+            if (sb.Length < 1)
+            {
+                MessageBox.Show("납기일을 변경할 항목을 선택하여 주십시오.");
+                return;
+            }
+            sb.Remove(sb.Length - 1, 1);
+            if (MessageBox.Show($"총 {cnt}개의 항목의 납기일을 변경 하시겠습니까?", "변경", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                FrmReorderSearchPopUp frm = new FrmReorderSearchPopUp();
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    ReorderService item = new ReorderService();
+                    if(item.UpDateREORDER(frm.day, LoginInfo.UserInfo.LI_ID, sb.ToString()));
+                    {
+                        MessageBox.Show($"총 {cnt}개 의 납기일이 변경되었습니다.");
+                        DataGridViewBinding();
+                    }
+                    
+                }
+            }
+
         }
 
         private void menuPanel1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dgvReorder.EndEdit();
+            StringBuilder sb = new StringBuilder();
+            int cnt = 0;
+            //품목 선택후 List를 전달
+            foreach (DataGridViewRow item in dgvReorder.Rows)
+            {
+                if (Convert.ToBoolean(item.Cells[1].Value))
+                {
+                    sb.Append(item.Cells[2].Value.ToString() + "@");
+                    cnt++;
+                }
+            }
+            if (sb.Length < 1)
+            {
+                MessageBox.Show("삭제할 항목을 선택하여 주십시오.");
+                return;
+            }
+            sb.Remove(sb.Length - 1, 1);
+            if (MessageBox.Show($"총 {cnt}개의 항목의 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                ReorderService item = new ReorderService();
+                if (item.DeleteREORDER(sb.ToString())) ;
+                {
+                    MessageBox.Show($"총 {cnt}개 발주가 삭제되었습니다.");
+                    DataGridViewBinding();
+                }
+
+
+            }
         }
     }
 }

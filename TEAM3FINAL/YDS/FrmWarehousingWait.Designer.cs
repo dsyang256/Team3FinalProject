@@ -340,6 +340,8 @@
             this.dgv2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv2.Size = new System.Drawing.Size(1156, 170);
             this.dgv2.TabIndex = 1;
+            this.dgv2.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv2_CellValueChanged);
+            this.dgv2.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgv2_EditingControlShowing);
             // 
             // dgv1
             // 
@@ -393,6 +395,7 @@
             this.button2.TabIndex = 9;
             this.button2.Text = "입고처리";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // FrmWarehousingWait
             // 

@@ -44,5 +44,34 @@ namespace TEAM3FINAL
             REORDERDAC dac = new REORDERDAC();
             return dac.insertREORDER(vo);
         }
+        public bool UpDateREORDER(string day, string manager, string code)
+        {
+            REORDERDAC dac = new REORDERDAC();
+            return dac.UpDateREORDER(day, manager, code);
+        }
+
+        internal bool DeleteREORDER(string v)
+        {
+            REORDERDAC dac = new REORDERDAC();
+            return dac.DeleteREORDER(v);
+        }
+
+        public DataTable GetSearchReorder2(string reorder, string name)
+        {
+            REORDERDAC dac = new REORDERDAC();
+            return dac.GetSearchReorder2(reorder, name);
+        }
+
+        public DataTable GetWarehousingWait()
+        {
+            REORDERDAC dac = new REORDERDAC();
+            return dac.GetWarehousingWait();
+        }
+
+        internal bool insertREORDERDETATILS(REORDERDETATILS_VO vo ,ITEM_VO vo2)
+        {
+            REORDERDAC dac = new REORDERDAC();
+            return dac.insertREORDERDETATILS(vo,vo2);
+        }
     }
 }

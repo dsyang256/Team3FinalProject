@@ -44,6 +44,69 @@ namespace TEAM3FINALDAC
             return dt;
         }
 
+        public bool DeleteREORDER(string v)
+        {
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = new SqlConnection(this.ConnectionString);
+                cmd.CommandText = @"delete from REORDER 
+                                     where REORDER_CODE IN(SELECT * FROM[dbo].[SplitString](@appendCode, '@'))";
+                cmd.Parameters.AddWithValue("@appendCode", v);
+                cmd.Connection.Open();
+                int iResult = cmd.ExecuteNonQuery();
+                return (iResult > 0) ? true : false;
+            }
+        }
+
+        public bool insertREORDERDETATILS(REORDERDETATILS_VO vo,ITEM_VO vo2)
+        {
+            bool Result = false;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = $@"SP_insertREORDERDETATILS";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@P_REORDER_DETAIL_QTY_GOOD", vo.REORDER_DETAIL_QTY_GOOD);
+                    cmd.Parameters.AddWithValue("@P_REORDER_CODE", vo.REORDER);
+                    cmd.Parameters.AddWithValue("@P_REORDER_QTY", vo2.ITEM_QTY_UNIT);
+                    cmd.Parameters.AddWithValue("@P_ITEM_INCOME_YN", vo2.ITEM_INCOME_YN);
+                    cmd.Parameters.AddWithValue("@P_ITEM_CODE", vo2.ITEM_CODE);
+                    cmd.Parameters.AddWithValue("@P_ITEM_WRHS_IN", vo2.ITEM_WRHS_IN);
+                    cmd.Connection.Open();
+                    int iResult = cmd.ExecuteNonQuery();
+                    cmd.Connection.Close();
+                    return (iResult > 0) ? true : false;
+                }
+            }
+            catch (Exception err)
+            {
+                string msg = err.Message;
+                return Result;
+            }
+        }
+
+        public DataTable GetWarehousingWait()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            string sql = $@"SELECT ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx,r.REORDER_CODE,I.ITEM_CODE,I.ITEM_NAME,I.ITEM_STND,I.ITEM_UNIT,REORDER_QTY,ITEM_WRHS_IN,
+ 					isnull((REORDER_QTY-(select SUM(ISNULL(REORDER_DETAIL_QTY_GOOD, 0)) - sum(isnull(REORDER_DETAIL_QTY_BAD,0)) REORDER_DETAIL_QTY_GOOD  
+                    from REORDERDETATILS
+                    where REORDER_CODE = r.REORDER_CODE)), REORDER_QTY) REORDER_QTY1
+                    ,REORDER_STATE,REORDER_DATE_IN,REORDER_DATE,ITEM_INCOME_YN
+                    from ITEM I JOIN REORDER r ON I.ITEM_CODE =R.ITEM_CODE
+                    where ITEM_TYP = '원자재' AND REORDER_STATE in ('발주','입고대기')";
+             conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
+            {
+
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
         public bool insertREORDER(REORDER_VO vo)
         {
             bool Result = false;
@@ -142,6 +205,49 @@ namespace TEAM3FINALDAC
             return dt;
 
 
+        }
+        public bool UpDateREORDER(string day,string manager,string code)
+        {
+            bool Result = false;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = $@"UPDATE REORDER SET REORDER_DATE_IN = @REORDER_DATE_IN , MANAGER_ID = @MANAGER_ID
+                                          WHERE REORDER_CODE in ((SELECT * FROM[dbo].[SplitString]({code}, '@')))";
+                    cmd.Parameters.AddWithValue("@REORDER_DATE_IN", day);
+                    cmd.Parameters.AddWithValue("@MANAGER_ID", manager);
+                  
+                   
+
+                    cmd.Connection.Open();
+                    int iResult = cmd.ExecuteNonQuery();
+                    cmd.Connection.Close();
+                    return (iResult > 0) ? true : false;
+                }
+            }
+            catch (Exception err)
+            {
+                string msg = err.Message;
+                return Result;
+            }
+        }
+        public DataTable GetSearchReorder2(string reorder ,string name)
+        {
+            
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            string sql = $@"SP_GetSearchReorder2";
+            conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
+            {
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.AddWithValue("@P_ITEM_COM_REORDER", reorder);
+                da.SelectCommand.Parameters.AddWithValue("@P_ITEM_NAME", name);
+                da.Fill(dt);
+            }
+            return dt;
         }
     }
 }

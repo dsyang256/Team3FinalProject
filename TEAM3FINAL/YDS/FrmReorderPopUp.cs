@@ -81,9 +81,9 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품명", "ITEM_NAME", true, 150);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "창고", "ITEM_WRHS_IN", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "검사여부", "ITEM_INCOME_YN", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주방식", "ITEM_REORDER_TYP", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주방식", "ITEM_REORDER_TYP", false, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주수량", "COM_NAME", true, 100, readOnly: false);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "현재고", "COM_NAME", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "현재고", "COM_NAME", false, 80);
 
             DataGridViewCheckBoxAllCheck2();
 
@@ -105,7 +105,7 @@ namespace TEAM3FINAL
             dgv2.DataSource = null;
             ReorderService service = new ReorderService();
             dt = service.GetReorderItem();
-            dgv2.DataSource = service.GetReorderItem();
+            dgv2.DataSource = dt;
         }
         #endregion
 
@@ -224,9 +224,20 @@ namespace TEAM3FINAL
                     vo.REORDER_QTY = Convert.ToInt32(item.Cells[10].Value);
                     vo.ITEM_CODE = item.Cells[5].Value.ToString();
                     vo.COM_CODE = item.Cells[2].Value.ToString();
-                    service.insertREORDER(vo);
+                    if(service.insertREORDER(vo));
+                    {
+                        MessageBox.Show("발주가 완료 되었습니다.");
+                        this.Close();
+                    }
                 }
             }
+            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ReorderService service = new ReorderService();
+            dgv2.DataSource = service.GetSearchReorder2(ITEM_COM_REORDER.Text, ITEM_NAEM.Text);
         }
     }
 }

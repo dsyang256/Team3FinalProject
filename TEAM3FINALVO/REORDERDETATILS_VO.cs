@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TEAM3FINALVO
 {
-    class REORDERDETATILS_VO
+    public class REORDERDETATILS_VO
     {
         public int REORDER_DETAIL_CODE { get; set; }
         public string REORDER_DETAIL_INSPECT_YN { get; set; }
