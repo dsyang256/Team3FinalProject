@@ -11,6 +11,7 @@ namespace TEAM3FINALVO
         public string ITEM_CODE { get; set; }
         public string ITEM_NAME { get; set; }
         public string ITEM_STND { get; set; }
+        public string FCLTS_CODE { get; set; }
         public string FCLTS_NAME { get; set; }
         public int WO_QTY_OUT { get; set; }
         public string WO_REMARK { get; set; }

@@ -66,14 +66,15 @@ namespace TEAM3FINAL
             //데이터그리드뷰 체크박스 컬럼 추가
             DataGridViewUtil.DataGridViewCheckBoxSet(dgvMOVEList, "");
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "품목", "ITEM_CODE", true, 80); 
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "품명", "ITEM_NAME", true, 80); 
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "규격", "ITEM_STND", true, 80); 
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "이동창고", "FCLTS_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "이동수량", "WO_QTY_OUT", true, 80); //양품수량
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "비고", "WO_REMARK", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "작업지시번호", "WO_Code", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "TYPE", "ITEM_TYP", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "품목", "ITEM_CODE", true, 80); //1
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "품명", "ITEM_NAME", true, 80); //2
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "규격", "ITEM_STND", true, 80); //3
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "창고코드", "FCLTS_CODE", true, 80); //4
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "이동창고", "FCLTS_NAME", true, 80); //5
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "이동수량", "WO_QTY_OUT", true, 80); //6 양품수량
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "비고", "WO_REMARK", true, 80); //7
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "작업지시번호", "WO_Code", true, 80); //8
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "TYPE", "ITEM_TYP", true, 80); //9
             DataGridViewUtil.DataGridViewRowNumSet(dgvMOVEList);
             DataGridViewCheckBoxAllCheck2();
 
@@ -377,27 +378,65 @@ namespace TEAM3FINAL
         {
             //수정 시 여러개의 체크박스를 선택하는것을 막음
             dgvMOVEList.EndEdit();
-            string sb = string.Empty;
+            //string sb = string.Empty;
             int cnt = 0;
             //체크가 되었는지 확인
             foreach (DataGridViewRow item in dgvMOVEList.Rows)
             {
                 if (Convert.ToBoolean(item.Cells[0].Value))
                 {
-                    sb = item.Cells[23].Value.ToString();
+                    //sb = item.Cells[23].Value.ToString();
                     cnt++;
                 }
             }
             if (cnt == 1) //하나일 경우 PopUp창 띄움
             {
+                WORKORDER_VO vo = new WORKORDER_VO();
+                vo.WO_Code = dgvMOVEList.CurrentRow.Cells[8].Value.ToString();
+                vo.WO_QTY_OUT = Convert.ToInt32(dgvMOVEList.CurrentRow.Cells[6].Value);
+                vo.WO_LAST_MDFR = LoginInfo.UserInfo.LI_NAME;
+                vo.ITEM_CODE = dgvMOVEList.CurrentRow.Cells[1].Value.ToString();
+
                 if (MessageBox.Show($"공정이동 하시겠습니까?", "공정이동", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    //if()
-                }
+                {                 
+
+                    if (dgvMOVEList.CurrentRow.Cells[4].Value.ToString() == "OS")
+                    {
+                        vo.FCLTS_CODE = "OS";
+                        WorkOrderService service = new WorkOrderService();
+                        Message msg = service.InsertMoveUpdate(vo);
+                        if (msg.IsSuccess)
+                        {
+                            MessageBox.Show(msg.ResultMessage);
+                            GetWorkMOVEInfo();
+                        }
+                        else
+                        {
+                            MessageBox.Show(msg.ResultMessage);
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        vo.FCLTS_CODE = "H_01";
+                        WorkOrderService service = new WorkOrderService();
+                        Message msg = service.InsertMoveUpdate(vo);
+                        if (msg.IsSuccess)
+                        {
+                            MessageBox.Show(msg.ResultMessage);
+                            GetWorkMOVEInfo();
+                        }
+                        else
+                        {
+                            MessageBox.Show(msg.ResultMessage);
+                            return;
+                        }
+                    }
+                }                
             }
             else
             {
-                MessageBox.Show("하나의 항목씩만 수정 가능");
+                MessageBox.Show("하나의 항목씩만 공정이동 가능");
                 return;
             }
 
