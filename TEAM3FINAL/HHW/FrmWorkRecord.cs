@@ -56,6 +56,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "작업지시번호", "WO_Code", true, 80); //23
             DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "작업지시서번호", "SALES_WORK_ORDER_ID", true, 80); //24
             DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "계획ID", "PLAN_ID", true, 80); //25
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "TYPE", "ITEM_TYP", true, 80); //25
             DataGridViewUtil.DataGridViewRowNumSet(dgvWorkRecordList);
             DataGridViewCheckBoxAllCheck();
 
@@ -72,6 +73,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "이동수량", "WO_QTY_OUT", true, 80); //양품수량
             DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "비고", "WO_REMARK", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "작업지시번호", "WO_Code", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "TYPE", "ITEM_TYP", true, 80);
             DataGridViewUtil.DataGridViewRowNumSet(dgvMOVEList);
             DataGridViewCheckBoxAllCheck2();
 
@@ -289,10 +291,27 @@ namespace TEAM3FINAL
             }
             else
             {
-                if(MessageBox.Show($"{dgvWorkRecordList.CurrentRow.Cells[24].Value.ToString()} 를 작업을 취소하시겠습니까?", "작업취소", MessageBoxButtons.OKCancel) == DialogResult.OK);
+                StringBuilder sb = new StringBuilder();
+                int cnt = 0;
+                //품목 선택후 List를 전달
+                foreach (DataGridViewRow item in dgvWorkRecordList.Rows)
+                {
+                    if (Convert.ToBoolean(item.Cells[0].Value))
+                    {
+                        sb.Append(item.Cells[23].Value.ToString() + "@");
+                        cnt++;
+                    }
+                }
+                if (sb.Length < 1)
+                {
+                    MessageBox.Show("작업 취소할 항목을 선택하여 주십시오.");
+                    return;
+                }
+                sb.Remove(sb.Length - 1, 1);
+                if (MessageBox.Show($"총 {cnt}개의 항목을 작업취소 하시겠습니까?", "작업취소", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     WorkOrderService service = new WorkOrderService();
-                    Message msg = service.WorkCancel(dgvWorkRecordList.CurrentRow.Cells[23].Value.ToString());
+                    Message msg = service.WorkCancel(sb.ToString());
                     if (msg.IsSuccess)
                     {
                         MessageBox.Show(msg.ResultMessage);
@@ -313,11 +332,27 @@ namespace TEAM3FINAL
             string state = dgvWorkRecordList.CurrentRow.Cells[8].Value.ToString();
             if (state == "작업완료")
             {
-                if (MessageBox.Show($"{dgvWorkRecordList.CurrentRow.Cells[24].Value.ToString()} 를 실적등록 하시겠습니까?", "실적등록", MessageBoxButtons.OKCancel) == DialogResult.OK) ;
+                StringBuilder sb = new StringBuilder();
+                int cnt = 0;
+                //품목 선택후 List를 전달
+                foreach (DataGridViewRow item in dgvWorkRecordList.Rows)
                 {
-                    //상태 실적등록으로 업데이트
+                    if (Convert.ToBoolean(item.Cells[0].Value))
+                    {
+                        sb.Append(item.Cells[23].Value.ToString() + "@");
+                        cnt++;
+                    }
+                }
+                if (sb.Length < 1)
+                {
+                    MessageBox.Show("실적등록할 항목을 선택하여 주십시오.");
+                    return;
+                }
+                sb.Remove(sb.Length - 1, 1);
+                if (MessageBox.Show($"총 {cnt}개의 항목을 실적등록 하시겠습니까?", "실적등록", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
                     WorkOrderService service = new WorkOrderService();
-                    Message msg = service.WorkMOVE(dgvWorkRecordList.CurrentRow.Cells[23].Value.ToString());
+                    Message msg = service.WorkMOVE(sb.ToString());
                     if (msg.IsSuccess)
                     {
                         MessageBox.Show(msg.ResultMessage);
@@ -336,6 +371,36 @@ namespace TEAM3FINAL
                 MessageBox.Show("작업완료 상태만 실적등록이 가능합니다.");
                 return;
             }
+        }
+
+        private void btnFinalWork_Click(object sender, EventArgs e)
+        {
+            //수정 시 여러개의 체크박스를 선택하는것을 막음
+            dgvMOVEList.EndEdit();
+            string sb = string.Empty;
+            int cnt = 0;
+            //체크가 되었는지 확인
+            foreach (DataGridViewRow item in dgvMOVEList.Rows)
+            {
+                if (Convert.ToBoolean(item.Cells[0].Value))
+                {
+                    sb = item.Cells[23].Value.ToString();
+                    cnt++;
+                }
+            }
+            if (cnt == 1) //하나일 경우 PopUp창 띄움
+            {
+                if (MessageBox.Show($"공정이동 하시겠습니까?", "공정이동", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    //if()
+                }
+            }
+            else
+            {
+                MessageBox.Show("하나의 항목씩만 수정 가능");
+                return;
+            }
+
         }
     }
 }

@@ -15,7 +15,6 @@ namespace TEAM3FINALVO
         public int WO_QTY_OUT { get; set; }
         public string WO_REMARK { get; set; }
         public string WO_Code { get; set; }
-
-
+        public string ITEM_TYP { get; set; }
     }
 }

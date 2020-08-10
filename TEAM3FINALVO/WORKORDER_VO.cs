@@ -34,5 +34,6 @@ namespace TEAM3FINALVO
         public string FCLTS_WRHS_BAD { get; set; }
         public int SALES_NO_QTY { get; set; }
         public string PLAN_ID { get; set; } //계획ID
+        public string ITEM_TYP { get; set; }
     }
 }

@@ -49,7 +49,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dgvMOVEList = new WindowsFormsApp18.MyDataGridView();
             this.menuPanel2 = new TEAM3FINAL.MenuPanel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnFinalWork = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -324,26 +324,27 @@
             this.menuPanel2.TitleFont = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.menuPanel2.TitleName = "공정이동";
             // 
-            // button1
+            // btnFinalWork
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.AutoSize = true;
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(939, 529);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 33);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "이동처리";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnFinalWork.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFinalWork.AutoSize = true;
+            this.btnFinalWork.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnFinalWork.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnFinalWork.Location = new System.Drawing.Point(939, 529);
+            this.btnFinalWork.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFinalWork.Name = "btnFinalWork";
+            this.btnFinalWork.Size = new System.Drawing.Size(121, 33);
+            this.btnFinalWork.TabIndex = 9;
+            this.btnFinalWork.Text = "이동처리";
+            this.btnFinalWork.UseVisualStyleBackColor = false;
+            this.btnFinalWork.Click += new System.EventHandler(this.btnFinalWork_Click);
             // 
             // FrmWorkRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(1080, 973);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnFinalWork);
             this.Controls.Add(this.menuPanel2);
             this.Controls.Add(this.dgvMOVEList);
             this.Controls.Add(this.button3);
@@ -365,7 +366,7 @@
             this.Controls.SetChildIndex(this.button3, 0);
             this.Controls.SetChildIndex(this.dgvMOVEList, 0);
             this.Controls.SetChildIndex(this.menuPanel2, 0);
-            this.Controls.SetChildIndex(this.button1, 0);
+            this.Controls.SetChildIndex(this.btnFinalWork, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -392,6 +393,6 @@
         private System.Windows.Forms.Label label3;
         private WindowsFormsApp18.MyDataGridView dgvMOVEList;
         private MenuPanel menuPanel2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnFinalWork;
     }
 }
