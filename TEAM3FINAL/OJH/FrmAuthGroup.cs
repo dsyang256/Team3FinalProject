@@ -15,9 +15,8 @@ namespace TEAM3FINAL
             InitializeComponent();
         }
 
-        #region 이벤트
         /// <summary>
-        /// 그리드뷰 컬럼 생성 이벤트
+        /// 그리드뷰 컬럼 생성 메소드
         /// </summary>
         private void DataGridViewColumnSet()
         {
@@ -28,6 +27,8 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvGroup, "부서", "FAC_CODE", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvGroup, "그룹", "FAC_CODE", true, 100);
         }
+
+        #region 이벤트
 
         /// <summary>
         /// 폼 로드 이벤트

@@ -61,8 +61,27 @@ namespace TEAM3FINAL
             btn1.DefaultCellStyle.Padding = new Padding(5, topMargin, 5, bottomMargin);
             btn1.UseColumnTextForButtonValue = true;
             return dgv.Columns.Add(btn1);
-
-
+        }
+        /// <summary>
+        /// 그리드뷰 버튼컬럼 추가 메서드
+        /// </summary>
+        /// <param name="headerText"></param>
+        /// <param name="dgv"></param>
+        /// <param name="topMargin"></param>
+        /// <param name="bottomMargin"></param>
+        /// <returns></returns>
+        public static int DataGridViewBtnSet(string headerText,string text, DataGridView dgv, int topMargin = 37, int bottomMargin = 37)
+        {
+            DataGridViewButtonColumn btn1 = new DataGridViewButtonColumn();
+            btn1.HeaderText = headerText;
+            btn1.Text = text;
+            btn1.FlatStyle = FlatStyle.Flat;
+            btn1.DefaultCellStyle.BackColor = Color.RoyalBlue;
+            btn1.DefaultCellStyle.BackColor = Color.White;
+            btn1.Width = 80;
+            btn1.DefaultCellStyle.Padding = new Padding(5, topMargin, 5, bottomMargin);
+            btn1.UseColumnTextForButtonValue = true;
+            return dgv.Columns.Add(btn1);
         }
         /// <summary>
         /// 그리드뷰 이미지컬럼 추가 메서드
@@ -98,6 +117,23 @@ namespace TEAM3FINAL
             return dgv.Columns.Add(chb1);
         }
         /// <summary>
+        /// 그리드뷰 체크박스 컬럼 추가 메서드
+        /// </summary>
+        /// <param name="dgv"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static int DataGridViewCheckBoxSet(DataGridView dgv, string name,string HeaderText)
+        {
+            DataGridViewCheckBoxColumn chb1 = new DataGridViewCheckBoxColumn();
+            chb1.HeaderText = "        ";
+            chb1.Name = name;
+            chb1.Width = 60;
+            chb1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            chb1.DefaultCellStyle.Padding = new Padding(0, 0, 0, 0);
+            chb1.FlatStyle = FlatStyle.Flat;
+            return dgv.Columns.Add(chb1);
+        }
+        /// <summary>
         /// 그리드뷰 체크박스 컬럼 추가 메서드(컬럼헤더추가) -OJH
         /// </summary>
         /// <param name="dgv"></param>
@@ -111,7 +147,8 @@ namespace TEAM3FINAL
             chb1.HeaderText = HeaderText;
             chb1.Name = name;
             chb1.Width = Width;
-            chb1.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            chb1.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            chb1.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             chb1.DefaultCellStyle.Padding = new Padding(0, 0, 0, 0);
             chb1.FlatStyle = FlatStyle.Flat;
             return dgv.Columns.Add(chb1);

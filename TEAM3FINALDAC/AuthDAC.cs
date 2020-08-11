@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data; //참조
 using System.Data.SqlClient;
 using TEAM3FINALVO;
+using System.Data.Common;
 
 namespace TEAM3FINALDAC
 {
@@ -39,6 +40,42 @@ namespace TEAM3FINALDAC
                 string msg = err.Message;
             }
             return list;
+        }
+
+        public bool SaveManagerMenu(List<ManagerMenu_VO> list, string userID)
+        {
+            int iCnt = 0;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = $@"update MANAGER_MENU set ManagerR_CRUD = @ManagerR_CRUD
+										 where 1=1
+										 AND MANAGER_ID = @MANAGER_ID
+										 AND MENU_ID = @MENU_ID";
+
+                    cmd.Parameters.Add("@ManagerR_CRUD", SqlDbType.NVarChar, 20);
+                    cmd.Parameters.Add("@MANAGER_ID", SqlDbType.NVarChar, 20);
+                    cmd.Parameters.Add("@MENU_ID", SqlDbType.Int);
+                    cmd.Connection.Open();
+
+                    foreach (var item in list)
+                    {
+                        cmd.Parameters["@ManagerR_CRUD"].Value = item.CRUDPR;
+                        cmd.Parameters["@MANAGER_ID"].Value = userID;
+                        cmd.Parameters["@MENU_ID"].Value = item.MENU_ID;
+                        iCnt += cmd.ExecuteNonQuery();
+                    }
+                    cmd.Connection.Close();
+                }
+
+            }
+            catch (Exception err)
+            {
+                string msg = err.Message;
+            }
+            return iCnt > 0 ? true : false;
         }
 
         public List<ManagerRight_VO> GetRights(string userID)
@@ -80,23 +117,14 @@ namespace TEAM3FINALDAC
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = new SqlConnection(this.ConnectionString);
-                    cmd.CommandText = $@"select
-                                         m.MENU_ID
-                                        ,[MENU_NAME] 
-                                        ,case when CHARINDEX('C',ManagerR_CRUD) >0 then 'C' else '' END AS A
-                                        ,case when CHARINDEX('R',ManagerR_CRUD) >0 then 'R' else '' END AS B
-                                        ,case when CHARINDEX('U',ManagerR_CRUD) >0 then 'U' else '' END AS C
-                                        ,case when CHARINDEX('D',ManagerR_CRUD) >0 then 'D' else '' END AS D
-                                        ,case when CHARINDEX('P',ManagerR_CRUD) >0 then 'P' else '' END AS E
-                                         from dbo.MENU m left outer join dbo.MANAGER_MENU mm  on m.MENU_ID = mm.MANAGER_ID
-                                         where 1=1
-                                         AND [MENU_PARENT] is null
-                                         AND MENU_USE<>1
+                    cmd.CommandText = $@"select r.RIGHT_ID, RIGHT_GROUP, RIGHT_NAME, RIGHT_DESC
+                                        from RIGHTS r inner join dbo.MANAGER_RIGHT mr on r.RIGHT_ID = mr.RIGHT_ID
+                                        where 1=1
+                                         AND MANAGER_RIGHT_USE<>1
                                          AND MANAGER_ID = @MANAGER_ID
-                                         order by MENU_ID,MENU_SEQ, MENU_LEVEL";
-
-                    cmd.Connection.Open();
+                                        order by r.RIGHT_ID,RIGHT_GROUP, RIGHT_NAME";
                     cmd.Parameters.AddWithValue("@MANAGER_ID", userID);
+                    cmd.Connection.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
                     list = Helper.DataReaderMapToList<MANAGER_VO>(reader);
                     cmd.Connection.Close();
@@ -111,9 +139,9 @@ namespace TEAM3FINALDAC
 
         }
 
-        public List<MANAGER_VO> GetMenuList(string userID)
+        public List<MANAGERMENU_VO> GetMenuList(string userID)
         {
-            List<MANAGER_VO> list = default;
+            List<MANAGERMENU_VO> list = null;
 
             try
             {
@@ -128,23 +156,25 @@ namespace TEAM3FINALDAC
                                         ,case when CHARINDEX('U',ManagerR_CRUD) >0 then 'U' else '' END AS C
                                         ,case when CHARINDEX('D',ManagerR_CRUD) >0 then 'D' else '' END AS D
                                         ,case when CHARINDEX('P',ManagerR_CRUD) >0 then 'P' else '' END AS E
-                                         from dbo.MENU m left outer join dbo.MANAGER_MENU mm  on m.MENU_ID = mm.MANAGER_ID
+                                         ,case when CHARINDEX('P',ManagerR_CRUD) >0 then 'R' else '' END AS F
+                                         from dbo.MENU m left outer join dbo.MANAGER_MENU mm  on m.MENU_ID = mm.MENU_ID
                                          where 1=1
-                                         AND [MENU_PARENT] is null
+                                         AND [MENU_PARENT] is not null
                                          AND MENU_USE<>1
                                          AND MANAGER_ID = @MANAGER_ID
                                          order by MENU_ID,MENU_SEQ, MENU_LEVEL";
-
+                    cmd.Parameters.Add("@MANAGER_ID", SqlDbType.NVarChar,20);
+                    cmd.Parameters["@MANAGER_ID"].Value = userID;
                     cmd.Connection.Open();
-                    cmd.Parameters.AddWithValue("@MANAGER_ID", userID);
                     SqlDataReader reader = cmd.ExecuteReader();
-                    list = Helper.DataReaderMapToList<MANAGER_VO>(reader);
+                    list = Helper.DataReaderMapToList<MANAGERMENU_VO>(reader);
                     cmd.Connection.Close();
                 }
             }
             catch (Exception err)
             {
                 string msg = err.Message;
+                return new List<MANAGERMENU_VO>();
             }
             return list;
         }
