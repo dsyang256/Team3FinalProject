@@ -364,11 +364,11 @@
     <Compile Include="YDS\FrmWarehousingWait.Designer.cs">
       <DependentUpon>FrmWarehousingWait.cs</DependentUpon>
     </Compile>
-    <Compile Include="YDS\FrmReceiving.cs">
+    <Compile Include="YDS\FrmInspection.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="YDS\FrmReceiving.Designer.cs">
-      <DependentUpon>FrmReceiving.cs</DependentUpon>
+    <Compile Include="YDS\FrmInspection.Designer.cs">
+      <DependentUpon>FrmInspection.cs</DependentUpon>
     </Compile>
     <Compile Include="YDS\FrmReceivingSearch.cs">
       <SubType>Form</SubType>
@@ -689,8 +689,8 @@
     <EmbeddedResource Include="UserControl\ucTabControl.resx">
       <DependentUpon>ucTabControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="YDS\FrmReceiving.resx">
-      <DependentUpon>FrmReceiving.cs</DependentUpon>
+    <EmbeddedResource Include="YDS\FrmInspection.resx">
+      <DependentUpon>FrmInspection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="YDS\FrmReceivingSearch.resx">
       <DependentUpon>FrmReceivingSearch.cs</DependentUpon>

@@ -85,5 +85,11 @@ namespace TEAM3FINAL
             REORDERDAC dac = new REORDERDAC();
             return dac.SPGetWarehousingWait(day1, day2, code1, name, reorder, cod2);
         }
+
+        internal DataTable Inspection2()
+        {
+            REORDERDAC dac = new REORDERDAC();
+            return dac.Inspection2();
+        }
     }
 }
