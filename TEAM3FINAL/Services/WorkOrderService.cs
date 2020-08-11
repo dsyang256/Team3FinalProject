@@ -42,7 +42,7 @@ namespace TEAM3FINAL
             return dac.WorkMOVE(code);
         }
 
-        public Message InsertMoveUpdate(WORKORDER_VO vo)
+        public Message InsertMoveUpdate(INSTACK_VO vo)
         {
             WorkOrderDAC dac = new WorkOrderDAC();
             return dac.InsertMoveUpdate(vo);
@@ -62,6 +62,29 @@ namespace TEAM3FINAL
         {
             WorkOrderDAC dac = new WorkOrderDAC();
             return dac.SearchMOVELIST(wHouse, type, itemCode);
+        }
+
+        #endregion
+
+
+        #region 고객주문별현황
+
+        public List<WorkMOVE_VO> OrderList()
+        {
+            WorkOrderDAC dac = new WorkOrderDAC();
+            return dac.OrderList();
+        }
+
+        internal Message OrderMoveFac(WorkMOVE_VO vo)
+        {
+            WorkOrderDAC dac = new WorkOrderDAC();
+            return dac.OrderMoveFac(vo);
+        }
+
+        internal List<WorkMOVE_VO> SearchOrderState(string fromDATE, string fromTO, string code)
+        {
+            WorkOrderDAC dac = new WorkOrderDAC();
+            return dac.SearchOrderState(fromDATE, fromTO, code);
         }
 
         #endregion

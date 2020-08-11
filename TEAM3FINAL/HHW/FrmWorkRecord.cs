@@ -33,7 +33,7 @@ namespace TEAM3FINAL
             //일반컬럼 추가
             DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "지시일", "WO_PLAN_DATE", true, 80); //1
             DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "생산일", "WO_PROD_DATE", true, 80); //2
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "설비ID", "ITEM_CODE", true, 80); //3
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "설비ID", "FCLTS_CODE", true, 80); //3
             DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "설비명", "FCLTS_NAME", true, 80); //4
             DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "작업순서", "WO_WORK_SEQ", true, 80); //5
             DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "품목", "ITEM_CODE", true, 80); //6
@@ -385,24 +385,22 @@ namespace TEAM3FINAL
             {
                 if (Convert.ToBoolean(item.Cells[0].Value))
                 {
-                    //sb = item.Cells[23].Value.ToString();
                     cnt++;
                 }
             }
             if (cnt == 1) //하나일 경우 PopUp창 띄움
             {
-                WORKORDER_VO vo = new WORKORDER_VO();
-                vo.WO_Code = dgvMOVEList.CurrentRow.Cells[8].Value.ToString();
-                vo.WO_QTY_OUT = Convert.ToInt32(dgvMOVEList.CurrentRow.Cells[6].Value);
-                vo.WO_LAST_MDFR = LoginInfo.UserInfo.LI_NAME;
-                vo.ITEM_CODE = dgvMOVEList.CurrentRow.Cells[1].Value.ToString();
+                INSTACK_VO vo = new INSTACK_VO();
+                vo.WO_CODE = dgvMOVEList.CurrentRow.Cells[8].Value.ToString();
+                vo.INS_QTY = Convert.ToInt32(dgvMOVEList.CurrentRow.Cells[6].Value);
+                vo.ITEM_CODE = dgvMOVEList.CurrentRow.Cells[1].Value.ToString();                
 
-                if (MessageBox.Show($"공정이동 하시겠습니까?", "공정이동", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("공정이동 하시겠습니까?", "공정이동", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {                 
 
-                    if (dgvMOVEList.CurrentRow.Cells[4].Value.ToString() == "OS")
+                    if (dgvMOVEList.CurrentRow.Cells[3].Value.ToString() == "OS")
                     {
-                        vo.FCLTS_CODE = "OS";
+                        vo.INS_WRHS = "OS";
                         WorkOrderService service = new WorkOrderService();
                         Message msg = service.InsertMoveUpdate(vo);
                         if (msg.IsSuccess)
@@ -418,7 +416,7 @@ namespace TEAM3FINAL
                     }
                     else
                     {
-                        vo.FCLTS_CODE = "H_01";
+                        vo.INS_WRHS = "H_01";
                         WorkOrderService service = new WorkOrderService();
                         Message msg = service.InsertMoveUpdate(vo);
                         if (msg.IsSuccess)
