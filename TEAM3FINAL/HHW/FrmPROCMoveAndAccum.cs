@@ -29,16 +29,17 @@ namespace TEAM3FINAL
             //데이터그리드뷰 체크박스 컬럼 추가
             DataGridViewUtil.DataGridViewCheckBoxSet(dgvList, "");
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "창고코드", "FCLTS_CODE", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "창고코드", "INS_WRHS", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "창고", "FAC_NAME", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "TYPE", "INS_TYP", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "품목", "ITEM_CODE", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "품명", "ITEM_NAME", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "품목타입", "ITEM_TYP", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "규격", "ITEM_STND", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "재고량", "IN_QTY", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "재고량", "INS_QTY", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "단위", "ITEM_UNIT", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "수정자", "WHOUSE_LAST_MDFR", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "최종수정일", "IN_DATE", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "날짜", "INS_DATE", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "작업번호", "WO_CODE", true, 80);
             DataGridViewUtil.DataGridViewRowNumSet(dgvList);
             DataGridViewCheckBoxAllCheck();
         }
@@ -134,7 +135,9 @@ namespace TEAM3FINAL
 
         public void Reset(object sender, EventArgs e)
         {
-
+            txtITEM_CODE.Text = "";
+            cboWHouse.SelectedIndex = 0;
+            cboType.SelectedIndex = -1;
         }
 
         public void Update(object sender, EventArgs e)

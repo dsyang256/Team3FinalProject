@@ -95,8 +95,8 @@ namespace TEAM3FINAL
             frm.eInsert += Insert;
             frm.eDelete += Delete;
             frm.eUpdate += Update;
-            frm.eReset += Reset; //입력필요
-            frm.ePrint += Print; //입력필요
+            frm.eReset += Reset; 
+            frm.ePrint += Print; 
         }
 
         //콤보박스 바인딩

@@ -33,20 +33,21 @@ group by WO_PLAN_DATE, WO_PROD_DATE, w.FCLTS_CODE, f.FCLTS_NAME, WO_WORK_SEQ, w.
 
                 return list;
             }
-        }        
+        }
+        
 
-        public Message InsertMoveUpdate(WORKORDER_VO vo)
+        public Message InsertMoveUpdate(INSTACK_VO vo)
         {
             using (SqlCommand cmd = new SqlCommand())
             {
                 cmd.Connection = new SqlConnection(this.ConnectionString);
-                cmd.CommandText = @"insert into FACILITY_DETAIL(WO_Code, IN_QTY, FCLTS_CODE, WHOUSE_LAST_MDFR, ITEM_CODE) values(@WO_Code, @WO_QTY_OUT, @FCLTS_CODE, @WO_LAST_MDFR, @ITEM_CODE);
+                cmd.CommandText = @"insert into INSTACK(INS_QTY, INS_TYP, INS_WRHS, ITEM_CODE, WO_CODE) values(@INS_QTY, '출고', @INS_WRHS, @ITEM_CODE, @WO_CODE);
+                                    insert into INSTACK(INS_QTY, INS_TYP, INS_WRHS, ITEM_CODE, WO_CODE) values(@INS_QTY, '입고', @INS_WRHS, @ITEM_CODE, @WO_CODE);
                                     update WORKORDER set WO_WORK_STATE = '공정이동' where WO_Code = @WO_Code;";
-                cmd.Parameters.AddWithValue("@WO_Code", vo.WO_Code);
-                cmd.Parameters.AddWithValue("@WO_QTY_OUT", vo.WO_QTY_OUT);
-                cmd.Parameters.AddWithValue("@FCLTS_CODE", vo.FCLTS_CODE);
-                cmd.Parameters.AddWithValue("@WO_LAST_MDFR", vo.WO_LAST_MDFR);
+                cmd.Parameters.AddWithValue("@INS_QTY", vo.INS_QTY);
+                cmd.Parameters.AddWithValue("@INS_WRHS", vo.INS_WRHS);
                 cmd.Parameters.AddWithValue("@ITEM_CODE", vo.ITEM_CODE);
+                cmd.Parameters.AddWithValue("@WO_CODE", vo.WO_CODE);
                 cmd.Connection.Open();
                 int iResult = cmd.ExecuteNonQuery();
                 string result;
@@ -69,6 +70,7 @@ group by WO_PLAN_DATE, WO_PROD_DATE, w.FCLTS_CODE, f.FCLTS_NAME, WO_WORK_SEQ, w.
                 return message;
             }
         }
+
 
         public Message WorkMOVE(string code)
         {
@@ -169,6 +171,7 @@ where WO_WORK_STATE = '실적등록'";
 
         #endregion
 
+
         #region 공정재고현황
 
         public List<MOVESTATE_VO> MOVEList()
@@ -177,9 +180,10 @@ where WO_WORK_STATE = '실적등록'";
             using (SqlCommand cmd = new SqlCommand())
             {
                 cmd.Connection = new SqlConnection(this.ConnectionString);
-                cmd.CommandText = @"select f.FCLTS_CODE, FAC_NAME, f.ITEM_CODE, i.ITEM_NAME, i.ITEM_TYP, i.ITEM_STND, IN_QTY, i.ITEM_UNIT, WHOUSE_LAST_MDFR, convert(nvarchar, IN_DATE, 120) IN_DATE
-                                    from FACILITY_DETAIL f inner join FACTORY fa on f.FCLTS_CODE = fa.FAC_CODE
-					                                       inner join ITEM i on f.ITEM_CODE = i.ITEM_CODE";
+                cmd.CommandText = @"select i.INS_WRHS, FAC_NAME, INS_TYP, i.ITEM_CODE, it.ITEM_NAME, it.ITEM_TYP, it.ITEM_STND, INS_QTY, it.ITEM_UNIT, convert(nvarchar, INS_DATE, 120) INS_DATE, WO_CODE
+                                    from INSTACK i inner join FACTORY f on i.INS_WRHS = f.FAC_CODE
+			                                       inner join item it on i.ITEM_CODE = it.ITEM_CODE
+                                    where INS_DATE >= convert(nvarchar, getdate(), 23) and INS_DATE >= convert(nvarchar, getdate(), 23)";
                 cmd.Connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 list = Helper.DataReaderMapToList<MOVESTATE_VO>(reader);
@@ -201,6 +205,82 @@ where WO_WORK_STATE = '실적등록'";
                 cmd.Connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 list = Helper.DataReaderMapToList<MOVESTATE_VO>(reader);
+                return list;
+            }
+        }
+
+        #endregion
+
+
+        #region 고객주문별현황
+
+        public List<WorkMOVE_VO> OrderList()
+        {
+            List<WorkMOVE_VO> list = null;
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = new SqlConnection(this.ConnectionString);
+                cmd.CommandText = @"select w.ITEM_CODE, i.ITEM_NAME, i.ITEM_STND, w.FCLTS_CODE, f.FCLTS_NAME, w.WO_QTY_OUT, w.WO_REMARK, WO_Code, i.ITEM_TYP , ('제품창고') ToWHouse
+                                    from WORKORDER w inner join ITEM i on w.ITEM_CODE = i.ITEM_CODE
+				                                     inner join FACILITY f on w.FCLTS_CODE = f.FCLTS_CODE
+                                    where WO_WORK_STATE = '공정이동' and i.ITEM_TYP = '제품' and WO_WORK_STATE <> '작업완료'";
+                cmd.Connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                list = Helper.DataReaderMapToList<WorkMOVE_VO>(reader);
+                return list;
+            }
+        }
+
+        public Message OrderMoveFac(WorkMOVE_VO vo)
+        {
+            List<WorkMOVE_VO> list = null;
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = new SqlConnection(this.ConnectionString);
+                cmd.CommandText = @"insert into INSTACK(INS_QTY, INS_TYP, INS_WRHS, ITEM_CODE, WO_CODE) values(@INS_QTY, '출고', @INS_WRHS, @ITEM_CODE, @WO_CODE);
+                                    insert into INSTACK(INS_QTY, INS_TYP, INS_WRHS, ITEM_CODE, WO_CODE) values(@INS_QTY, '입고', 'M_01', @ITEM_CODE, @WO_CODE);
+                                    update WORKORDER set WO_WORK_STATE = '작업완료' where WO_Code = @WO_Code;";
+                cmd.Parameters.AddWithValue("@INS_QTY", vo.WO_QTY_OUT);
+                cmd.Parameters.AddWithValue("@INS_WRHS", vo.FCLTS_CODE);
+                cmd.Parameters.AddWithValue("@ITEM_CODE", vo.ITEM_CODE);
+                cmd.Parameters.AddWithValue("@WO_CODE", vo.WO_Code);
+                cmd.Connection.Open();
+                int iResult = cmd.ExecuteNonQuery();
+                string result;
+                if (iResult > 0)
+                    result = "S02";
+                else
+                    result = "S00";
+                Message message = new Message();
+                if (result == "S02")
+                {
+                    message.IsSuccess = true;
+                    message.ResultMessage = "완료 되었습니다.";
+                }
+                else if (result == "S0")
+                {
+                    message.IsSuccess = true;
+                    message.ResultMessage = "실패하였습니다.";
+                }
+
+                return message;
+            }
+        }
+        
+        public List<WorkMOVE_VO> SearchOrderState(string fromDATE, string fromTO, string code)
+        {
+            List<WorkMOVE_VO> list = null;
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = new SqlConnection(this.ConnectionString);
+                cmd.CommandText = "SP_SearchOrderState";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@P_FromDate", fromDATE);
+                cmd.Parameters.AddWithValue("@P_ToDate", fromTO);
+                cmd.Parameters.AddWithValue("@P_ITEM_CODE", code);
+                cmd.Connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                list = Helper.DataReaderMapToList<WorkMOVE_VO>(reader);
                 return list;
             }
         }
