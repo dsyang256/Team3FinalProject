@@ -175,7 +175,7 @@ namespace TEAM3FINAL
             vo.ITEM_NAME = ITEM_NAME.Text;
             vo.ITEM_STND = ITEM_STND.Text;
             vo.ITEM_UNIT = ITEM_UNIT.Text;
-            vo.ITEM_QTY_UNIT = (ITEM_QTY_UNIT.Text.Length < 1) ? 0 : int.Parse(ITEM_QTY_UNIT.Text);
+            vo.ITEM_QTY_UNIT = (ITEM_QTY_UNIT.Text.Length < 1) ? 1 : int.Parse(ITEM_QTY_UNIT.Text);
             vo.ITEM_TYP = ITEM_TYP.Text;
             vo.ITEM_INCOME_YN = ITEM_INCOME_YN.Text;
             vo.ITEM_PROCS_YN = ITEM_PROCS_YN.Text;
@@ -185,14 +185,14 @@ namespace TEAM3FINAL
             vo.ITEM_COM_REORDER = ITEM_COM_REORDER.Text;
             vo.ITEM_WRHS_IN = ITEM_WRHS_IN.Text;
             vo.ITEM_WRHS_OUT = ITEM_WRHS_OUT.Text;
-            vo.ITEM_LEADTIME = (ITEM_LEADTIME.Text.Length < 1) ? 0 : int.Parse(ITEM_LEADTIME.Text);
+            vo.ITEM_LEADTIME = (ITEM_LEADTIME.Text.Length < 1) ? 1 : int.Parse(ITEM_LEADTIME.Text);
             vo.ITEM_QTY_REORDER_MIN = (ITEM_QTY_REORDER_MIN.Text.Length < 1) ? 0 : int.Parse(ITEM_QTY_REORDER_MIN.Text);
-            vo.ITEM_QTY_STND = (ITEM_QTY_STND.Text.Length < 1) ? 0 : int.Parse(ITEM_QTY_STND.Text);
-            vo.ITEM_QTY_SAFE = (ITEM_QTY_SAFE.Text.Length < 1) ? 0 : int.Parse(ITEM_QTY_SAFE.Text);
+            vo.ITEM_QTY_STND = (ITEM_QTY_STND.Text.Length < 1) ? 1 : int.Parse(ITEM_QTY_STND.Text);
+            vo.ITEM_QTY_SAFE = (ITEM_QTY_SAFE.Text.Length < 1) ? 1 : int.Parse(ITEM_QTY_SAFE.Text);
             vo.ITEM_MANAGE_LEVEL = ITEM_MANAGE_LEVEL.Text;
             vo.ITEM_MANAGER = ITEM_MANAGER.Text;
             vo.ITEM_UNIT_CNVR = ITEM_UNIT_CNVR.Text;
-            vo.ITEM_QTY_CNVR = (ITEM_QTY_CNVR.Text.Length < 1) ? 0 : int.Parse(ITEM_QTY_CNVR.Text);
+            vo.ITEM_QTY_CNVR = (ITEM_QTY_CNVR.Text.Length < 1) ? 1 : int.Parse(ITEM_QTY_CNVR.Text);
             vo.ITEM_LAST_MDFR = ITEM_LAST_MDFR.Text;
             vo.ITEM_LAST_MDFY = ITEM_LAST_MDFY.Value.ToShortDateString();
             vo.ITEM_USE_YN = ITEM_USE_YN.Text;

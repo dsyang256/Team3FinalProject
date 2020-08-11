@@ -258,13 +258,18 @@ namespace TEAM3FINAL
             {
                 if (Convert.ToBoolean(item.Cells[1].Value))
                 {
+                    if(item.Cells[5].Value.ToString() != "발주")
+                    {
+                        MessageBox.Show("발주 상태만 취소 가능합니다.");
+                        return;
+                    }
                     sb.Append(item.Cells[2].Value.ToString() + "@");
                     cnt++;
                 }
             }
             if (sb.Length < 1)
             {
-                MessageBox.Show("삭제할 항목을 선택하여 주십시오.");
+                MessageBox.Show("취소할 항목을 선택하여 주십시오.");
                 return;
             }
             sb.Remove(sb.Length - 1, 1);

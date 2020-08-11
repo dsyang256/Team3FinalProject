@@ -129,7 +129,7 @@ namespace TEAM3FINAL
             vo.BOM_CODE = code;
             vo.BOM_PARENT_CODE = (BOM_PARENT_CODE.Text =="-") ? "-" : BOM_PARENT_CODE.SelectedValue.ToString();
             vo.ITEM_CODE = ITEM_CODE.SelectedValue.ToString();
-            vo.BOM_QTY = (BOM_QTY.Text.Length<1)? 0 : int.Parse(BOM_QTY.Text);
+            vo.BOM_QTY = (BOM_QTY.Text.Length<1)? 1 : int.Parse(BOM_QTY.Text);
             vo.BOM_STARTDATE = BOM_STARTDATE.Value.ToShortDateString();
             vo.BOM_ENDDATE = BOM_ENDDATE.Value.ToShortDateString();
             vo.BOM_USE_YN = BOM_USE_YN.Text;
