@@ -140,9 +140,9 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btnSearch.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnSearch.Font = new System.Drawing.Font("맑은 고딕", 11F, System.Drawing.FontStyle.Bold);
-            this.btnSearch.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnSearch.ForeColor = System.Drawing.SystemColors.Window;
             this.btnSearch.Location = new System.Drawing.Point(275, 79);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(61, 32);
