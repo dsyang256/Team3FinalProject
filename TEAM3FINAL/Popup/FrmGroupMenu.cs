@@ -40,7 +40,7 @@ namespace TEAM3FINAL
         /// <param name="e"></param>
         private void btnRightAdd_Click(object sender, EventArgs e)
         {
-            FrmAuthGroup frm = new FrmAuthGroup();
+            FrmGroupPop frm = new FrmGroupPop();
             frm.ShowDialog();
         }
 

@@ -265,17 +265,6 @@ namespace TEAM3FINAL
             dgvGroup.ClearSelection();
         }
 
-        /// <summary>
-        /// 탭페이지 인덱스 변경시 발생하는 이벤트
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
         private void btnSave_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -334,28 +323,49 @@ namespace TEAM3FINAL
                     BtnCell.Value = (string)"저장";
                 }
             }
-            else
+            else //버튼=="저장"
             {
                 if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
                 {
-                    dgvRight.EndEdit();
-                    //저장할 값 가져오기
-                    List<ManagerMenu_VO> list = GetRightValues();
-                    string userID = selectedUser;
-                    //서비스호출
-                    AuthService service = new AuthService();
-                    if (service.SaveManagerMenu(list, userID))
+                    if(tabControl1.SelectedIndex==0) // 관리자 권한 설정
                     {
-                        MessageBox.Show("저장되었습니다.", "저장 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        dgvRight.EndEdit();
+                        //저장할 값 가져오기
+                        List<ManagerMenu_VO> list = GetRightValues();
+                        string userID = selectedUser;
+                        //서비스호출
+                        AuthService service = new AuthService();
+                        if (service.SaveManagerMenu(list, userID))
+                        {
+                            MessageBox.Show("저장되었습니다.", "저장 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("저장에 실패하였습니다.", "저장 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                    else
+                    else //관리자 그룹 설정
                     {
-                        MessageBox.Show("저장에 실패하였습니다.", "저장 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        dgvGroup.EndEdit();
+                        //저장할 값 가져오기
+                        //List<ManagerMenu_VO> list = GetRightValues();
+                        //string userID = selectedUser;
+                        ////서비스호출
+                        //AuthService service = new AuthService();
+                        //if (service.SaveManagerMenu(list, userID))
+                        //{
+                        //    MessageBox.Show("저장되었습니다.", "저장 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //}
+                        //else
+                        //{
+                        //    MessageBox.Show("저장에 실패하였습니다.", "저장 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //}
                     }
 
                     var BtnCell = (DataGridViewButtonCell)dgvUsers.Rows[e.RowIndex].Cells[3];
                     BtnCell.UseColumnTextForButtonValue = false;
                     BtnCell.Value = (string)"설정";
+
                 }
             }
         }
@@ -407,6 +417,24 @@ namespace TEAM3FINAL
                 list.Add(vo);
             }
             return list;
+        }
+
+        private void tabControl1_Deselecting(object sender, TabControlCancelEventArgs e)
+        {
+            int cnt = 0;
+            //수정중인 작업이 있는경우
+            foreach (DataGridViewRow row in dgvUsers.Rows)
+            {
+                if (row.Cells[3].Value.ToString() == "저장")
+                    cnt++;
+                if (cnt > 0) //작업중
+                {
+                    MessageBox.Show("설정중인 내용을 저장해주세요.", "저장되지않은 설정 존재", MessageBoxButtons.OK);
+                    e.Cancel = true;
+                    return;
+                }
+            }
+          
         }
     }
 }
