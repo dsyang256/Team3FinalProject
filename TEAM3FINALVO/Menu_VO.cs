@@ -19,4 +19,11 @@ namespace TEAM3FINALVO
     public string MENU_PROGRAM { get; set; }
     public string MENU_DESC { get; set; }
 }
+
+    public class ManagerMenu_VO 
+    {
+        public int MENU_ID { get; set; }
+        public string CRUDPR { get; set; }
+
+    }
 }

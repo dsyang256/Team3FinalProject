@@ -300,6 +300,7 @@ namespace TEAM3FINAL
                             tsbPrint.Enabled = true;
                         if (menu.ManagerR_CRUD.Contains("R"))
                             tsbReset.Enabled = true;
+
                     }
                 }
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace TEAM3FINAL
             return dac.GetManagers();
         }
 
-        public List<MANAGER_VO> GetMenuList(string userID)
+        public List<MANAGERMENU_VO> GetMenuList(string userID)
         {
             AuthDAC dac = new AuthDAC();
             return dac.GetMenuList(userID);
@@ -39,6 +40,12 @@ namespace TEAM3FINAL
         {
             AuthDAC dac = new AuthDAC();
             return dac.GetRights(userID);
+        }
+
+        public bool SaveManagerMenu(List<ManagerMenu_VO> list, string userID)
+        {
+            AuthDAC dac = new AuthDAC();
+            return dac.SaveManagerMenu(list,userID);
         }
     }
 }
