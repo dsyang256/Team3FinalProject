@@ -87,6 +87,47 @@ namespace TEAM3FINALDAC
             }
         }
 
+        public DataTable SPGetWarehousingWait(string day1, string day2, string code1, string name, string reorder, string cod2)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter("SP_GetWarehousingWait", conn))
+            {
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.AddWithValue("@P_sday", day1);
+                da.SelectCommand.Parameters.AddWithValue("@P_eday", day2);
+                da.SelectCommand.Parameters.AddWithValue("@P_REORDER_COM_DLVR", code1);
+                da.SelectCommand.Parameters.AddWithValue("@P_ITEM_NAME", name);
+                da.SelectCommand.Parameters.AddWithValue("@P_REORDER_CODE", reorder);
+                da.SelectCommand.Parameters.AddWithValue("@P_COM_CODE", cod2);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+        public DataTable GetWarehousingWait2()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            string sql = $@"select ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx,REORDER_DATE,REORDER_COM_DLVR,COM_CODE,r.ITEM_CODE,ITEM_NAME,ITEM_STND,ITEM_UNIT,ITEM_INCOME_YN,REORDER_QTY
+                          ,isnull(((select SUM(ISNULL(REORDER_DETAIL_QTY_GOOD, 0)) - sum(isnull(REORDER_DETAIL_QTY_BAD,0)) REORDER_DETAIL_QTY_GOOD  
+                                             from REORDERDETATILS
+                                             where REORDER_CODE = r.REORDER_CODE)), REORDER_QTY) REORDER_QTY1
+                         ,isnull(REORDER_QTY-((select SUM(ISNULL(REORDER_DETAIL_QTY_GOOD, 0)) - sum(isnull(REORDER_DETAIL_QTY_BAD,0)) REORDER_DETAIL_QTY_GOOD  
+                                             from REORDERDETATILS
+                                             where REORDER_CODE = r.REORDER_CODE)), REORDER_QTY) REORDER_QTY2,REORDER_DATE_IN,REORDER_TYP
+                         from REORDER r , ITEM i
+                         where REORDER_STATE = '입고대기' and r.ITEM_CODE = i.ITEM_CODE";
+            conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
+            {
+
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
         public DataTable GetWarehousingWait()
         {
             DataTable dt = new DataTable();

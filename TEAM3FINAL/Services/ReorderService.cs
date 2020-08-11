@@ -73,5 +73,17 @@ namespace TEAM3FINAL
             REORDERDAC dac = new REORDERDAC();
             return dac.insertREORDERDETATILS(vo,vo2);
         }
+
+        public DataTable GetWarehousingWait2()
+        {
+            REORDERDAC dac = new REORDERDAC();
+            return dac.GetWarehousingWait2();
+        }
+
+        internal DataTable SPGetWarehousingWait(string day1, string day2, string code1, string name, string reorder, string cod2)
+        {
+            REORDERDAC dac = new REORDERDAC();
+            return dac.SPGetWarehousingWait(day1, day2, code1, name, reorder, cod2);
+        }
     }
 }

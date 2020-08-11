@@ -144,7 +144,7 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgv2.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgv2.EnableHeadersVisualStyles = false;
-            this.dgv2.Location = new System.Drawing.Point(262, 182);
+            this.dgv2.Location = new System.Drawing.Point(265, 182);
             this.dgv2.Name = "dgv2";
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;

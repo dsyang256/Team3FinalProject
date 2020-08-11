@@ -214,24 +214,29 @@ namespace TEAM3FINAL
             vo.REORDER_DATE_IN = DateTime.Now.AddDays(3);
             vo.REORDER_STATE = "발주";
             vo.MANAGER_ID = LoginInfo.UserInfo.LI_ID;
+            int su = 0;
             foreach (DataGridViewRow item in dgv2.Rows)
             {
                 if (Convert.ToBoolean(item.Cells[1].Value) == true)
                 {
                     
                     vo.REORDER_COM_DLVR = item.Cells[3].Value.ToString();
-                    vo.REORDER_TYP = (item.Cells[4].Value == null) ?"정량" : item.Cells[4].Value.ToString();
+                    vo.REORDER_TYP = (item.Cells[4].Value.ToString().Length < 1) ?"정량" : item.Cells[4].Value.ToString();
                     vo.REORDER_QTY = Convert.ToInt32(item.Cells[10].Value);
                     vo.ITEM_CODE = item.Cells[5].Value.ToString();
                     vo.COM_CODE = item.Cells[2].Value.ToString();
                     if(service.insertREORDER(vo));
                     {
-                        MessageBox.Show("발주가 완료 되었습니다.");
-                        this.Close();
+                        su++;
                     }
                 }
             }
-            
+            if (su > 0)
+            {
+                MessageBox.Show("발주가 완료 되었습니다.");
+                this.Close();
+            }
+
         }
 
         private void button2_Click(object sender, EventArgs e)
