@@ -87,6 +87,22 @@ namespace TEAM3FINALDAC
             }
         }
 
+        public DataTable Inspection2()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            string sql = @"select ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx,rd.REORDER_CODE,r.REORDER_DATE,rd.REORDER_DATE_IN,COM_CODE,r.ITEM_CODE,ITEM_NAME,ITEM_STND,rd.REORDER_DETAIL_QTY_GOOD,REORDER_DETAIL_CODE
+                             from REORDERDETATILS rd ,REORDER r,ITEM i
+                            where rd.REORDER_CODE = r.REORDER_CODE and r.ITEM_CODE = i.ITEM_CODE and REORDER_DETAIL_INSPECT_YN = 'N'";
+            conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
+            {
+
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
         public DataTable SPGetWarehousingWait(string day1, string day2, string code1, string name, string reorder, string cod2)
         {
             DataTable dt = new DataTable();

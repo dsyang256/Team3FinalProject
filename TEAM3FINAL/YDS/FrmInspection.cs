@@ -11,11 +11,11 @@ using TEAM3FINALVO;
 
 namespace TEAM3FINAL
 {
-    public partial class FrmReceiving : baseForm2
+    public partial class FrmInspection : baseForm2
     {
         CheckBox headerChk;
         CheckBox headerChk1;
-        public FrmReceiving()
+        public FrmInspection()
         {
             InitializeComponent();
         }
@@ -25,6 +25,7 @@ namespace TEAM3FINAL
             ComboBinding();
             DataGridViewColumnSet1();
             DataGridViewColumnSet2();
+            DataGridViewBinding2();
         }
         #region 콤보박스 바인딩
         /// <summary>
@@ -60,20 +61,20 @@ namespace TEAM3FINAL
             DataGridViewUtil.InitSettingGridView(dgv1);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "no", "idx", true, 30);
             DataGridViewUtil.DataGridViewCheckBoxSet(dgv1, "all");
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "업체", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "발주번호", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주상세번호", "REORDER_DETAIL_CODE", false, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "발주일", "", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "입고일", "", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "검사일", "", true, 200);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "납품업체", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품명", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목", "", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품명", "", true, 200);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "규격", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목유형", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "단위", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "검사여부", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "출발처리유무", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "발주수량", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "잔량", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "납기일", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "주문상태", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "생성일", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "최종결과", "", true, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "납품수량", "", true, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "불량수랑", "", true, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "검사자", "", true, 125);
+            
 
             DataGridViewCheckBoxAllCheck1();
 
@@ -83,18 +84,18 @@ namespace TEAM3FINAL
             DataGridViewUtil.InitSettingGridView(dgv2);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "no", "idx", true, 30);
             DataGridViewUtil.DataGridViewCheckBoxSet(dgv2, "all");
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품목", "", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품명", "", false, 30);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "규격", "", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품목유형", "", false, 30);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "단위", "", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "입고창고", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "입고일자", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "입고량", "", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "단가", "", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "수정자", "", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "비고", "", true, 80);
-          
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주번호", "REORDER_CODE", true, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주상세번호", "REORDER_DETAIL_CODE", false, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주일", "REORDER_DATE", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "입고일", "REORDER_DATE_IN", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "납품업체", "COM_CODE", true, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품목", "ITEM_CODE", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품명", "ITEM_NAME", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "규격", "ITEM_STND", true, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "납품수량", "REORDER_DETAIL_QTY_GOOD", true, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "불량수량", "", true, 100, readOnly: false);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "비고", "", true, 400 );
+
             DataGridViewCheckBoxAllCheck2();
 
         }
@@ -112,9 +113,9 @@ namespace TEAM3FINAL
         }
         private void DataGridViewBinding2()
         {
-            //dgv2.DataSource = null;
-            //ReorderService service = new ReorderService();
-            //dgv2.DataSource = service.GetCOM();
+            dgv2.DataSource = null;
+            ReorderService service = new ReorderService();
+            dgv2.DataSource = service.Inspection2();
         }
         #endregion
 
@@ -135,7 +136,7 @@ namespace TEAM3FINAL
         private void DataGridViewCheckBoxAllCheck2()
         {
             headerChk1 = new CheckBox();
-            Point headerCell = dgv2.GetCellDisplayRectangle(1, -1, true).Location;
+            Point headerCell = dgv1.GetCellDisplayRectangle(1, -1, true).Location;
             headerChk1.Location = new Point(headerCell.X + 4, headerCell.Y + 15);
             headerChk1.Size = new Size(18, 18);
             headerChk1.BackColor = Color.FromArgb(245, 245, 246);
@@ -170,9 +171,49 @@ namespace TEAM3FINAL
             foreach (DataGridViewRow row in dgv2.Rows)
             {
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells["all"];
-                chk.Value = headerChk.Checked;
+                chk.Value = headerChk1.Checked;
             }
         }
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int a = 0;
+            int bqty = 0;
+            int gqty = 0;
+            int reorder = 0;
+            int reorderD = 0;
+            dgv2.EndEdit();
+            ReorderService service = new ReorderService();
+            foreach (DataGridViewRow item in dgv2.Rows)
+            {
+                if (Convert.ToBoolean(item.Cells[1].Value) == true)
+                {
+                    if (item.Cells[10].Value == null)
+                    {
+                        bqty = 0;
+                    }
+                    else
+                    {
+                        bqty = Convert.ToInt32(item.Cells[10].Value);
+                    }
+                    gqty = Convert.ToInt32(item.Cells[10].Value);
+                    bqty = Convert.ToInt32(item.Cells[11].Value);
+                    reorder = Convert.ToInt32(item.Cells[2].Value);
+                    reorderD = Convert.ToInt32(item.Cells[3].Value);
+                    //service.insertInspection(gqty, bqty, reorder, reorderD);
+                    
+                }
+            }
+            if (a == 0)
+            {
+                MessageBox.Show("검사할 발주를 선택해주세요");
+                return;
+            }
+            DataGridViewBinding2();
+            MessageBox.Show("검사가 완료 되었습니다.");
+
+
+        }
     }
 }
