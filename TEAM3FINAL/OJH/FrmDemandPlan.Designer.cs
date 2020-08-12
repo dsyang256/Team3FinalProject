@@ -217,6 +217,7 @@
             this.btnProductPlan.TabIndex = 6;
             this.btnProductPlan.Text = "생산계획생성";
             this.btnProductPlan.UseVisualStyleBackColor = false;
+            this.btnProductPlan.Click += new System.EventHandler(this.btnProductPlan_Click);
             // 
             // FrmDemandPlan
             // 
