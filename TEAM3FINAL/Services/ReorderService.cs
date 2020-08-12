@@ -91,5 +91,11 @@ namespace TEAM3FINAL
             REORDERDAC dac = new REORDERDAC();
             return dac.Inspection2();
         }
+
+        internal bool insertInspection(int gqty, int bqty, int reorder, int reorderD)
+        {
+            REORDERDAC dac = new REORDERDAC();
+            return dac.insertInspection(gqty, bqty, reorder, reorderD);
+        }
     }
 }

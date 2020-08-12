@@ -9,6 +9,8 @@ namespace TEAM3FINALVO
     public class REORDER_VO
     {
         public int REORDER_CODE { get; set; }
+
+        public string SALES_Work_Order_ID { get; set; }
         public DateTime REORDER_DATE { get; set; }
         public DateTime REORDER_DATE_IN { get; set; }
         public string REORDER_COM_DLVR { get; set; }
