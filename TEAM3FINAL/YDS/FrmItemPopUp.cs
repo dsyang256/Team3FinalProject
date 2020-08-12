@@ -47,8 +47,8 @@ namespace TEAM3FINAL
             ITEM_FREE_YN.Text = vo.ITEM_FREE_YN;
             ITEM_COM_DLVR.Text = vo.ITEM_COM_DLVR;
             ITEM_COM_REORDER.Text = vo.ITEM_COM_REORDER;
-            ITEM_WRHS_IN.Text = vo.ITEM_WRHS_IN;
-            ITEM_WRHS_OUT.Text =vo.ITEM_WRHS_OUT;
+            ITEM_WRHS_IN.SelectedValue = vo.ITEM_WRHS_IN;
+            ITEM_WRHS_OUT.SelectedValue = vo.ITEM_WRHS_OUT;
             ITEM_LEADTIME.Text =vo.ITEM_LEADTIME.ToString();
             ITEM_QTY_REORDER_MIN.Text = vo.ITEM_QTY_REORDER_MIN.ToString();
             ITEM_QTY_STND.Text =vo.ITEM_QTY_STND.ToString();
@@ -183,8 +183,8 @@ namespace TEAM3FINAL
             vo.ITEM_FREE_YN = ITEM_FREE_YN.Text;
             vo.ITEM_COM_DLVR = ITEM_COM_DLVR.Text;
             vo.ITEM_COM_REORDER = ITEM_COM_REORDER.Text;
-            vo.ITEM_WRHS_IN = ITEM_WRHS_IN.Text;
-            vo.ITEM_WRHS_OUT = ITEM_WRHS_OUT.Text;
+            vo.ITEM_WRHS_IN = ITEM_WRHS_IN.SelectedValue.ToString();
+            vo.ITEM_WRHS_OUT = ITEM_WRHS_OUT.SelectedValue.ToString();
             vo.ITEM_LEADTIME = (ITEM_LEADTIME.Text.Length < 1) ? 1 : int.Parse(ITEM_LEADTIME.Text);
             vo.ITEM_QTY_REORDER_MIN = (ITEM_QTY_REORDER_MIN.Text.Length < 1) ? 0 : int.Parse(ITEM_QTY_REORDER_MIN.Text);
             vo.ITEM_QTY_STND = (ITEM_QTY_STND.Text.Length < 1) ? 1 : int.Parse(ITEM_QTY_STND.Text);

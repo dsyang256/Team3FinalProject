@@ -72,18 +72,20 @@ namespace TEAM3FINAL
             DataGridViewUtil.InitSettingGridView(dgv2);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "no", "idx", true, 30);
             DataGridViewUtil.DataGridViewCheckBoxSet(dgv2, "all");
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주업체", "ITEM_COM_REORDER", true, 150);
-            //DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주코드", "COM_CODE", false, 30);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "납품업체", "ITEM_COM_DLVR", true, 150);
-            //DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "납품코드", "COM_CODE", false, 30);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주업체", "ITEM_COM_REORDER", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "납품업체", "ITEM_COM_DLVR", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "담당자", "ITEM_MANAGER", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품목", "ITEM_CODE", true, 150);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품명", "ITEM_NAME", true, 150);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "창고", "ITEM_WRHS_IN", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "검사여부", "ITEM_INCOME_YN", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주방식", "ITEM_REORDER_TYP", false, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주수량", "COM_NAME", true, 100, readOnly: false);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "현재고", "COM_NAME", false, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "창고", "FAC_NAME", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "창고", "FAC_CODE", false, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "검사여부", "ITEM_INCOME_YN", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주방식", "ITEM_REORDER_TYP", false, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주제안", "발주제안", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "현재고", "현재고", true, 70);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "가상재고", "가상재고", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "작업지시번호", "SALES_Work_Order_ID", true, 180);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "ITEM_LEADTIME", "ITEM_LEADTIME", false, 180);
 
             DataGridViewCheckBoxAllCheck2();
 
@@ -211,7 +213,6 @@ namespace TEAM3FINAL
             }
             REORDER_VO vo = new REORDER_VO();
             vo.REORDER_DATE = DateTime.Now;
-            vo.REORDER_DATE_IN = DateTime.Now.AddDays(3);
             vo.REORDER_STATE = "발주";
             vo.MANAGER_ID = LoginInfo.UserInfo.LI_ID;
             int su = 0;
@@ -219,13 +220,14 @@ namespace TEAM3FINAL
             {
                 if (Convert.ToBoolean(item.Cells[1].Value) == true)
                 {
-                    
+                    vo.REORDER_DATE_IN = DateTime.Now.AddDays(Convert.ToInt32(item.Cells[15].Value));
                     vo.REORDER_COM_DLVR = item.Cells[3].Value.ToString();
                     vo.REORDER_TYP = (item.Cells[4].Value.ToString().Length < 1) ?"정량" : item.Cells[4].Value.ToString();
-                    vo.REORDER_QTY = Convert.ToInt32(item.Cells[10].Value);
+                    vo.REORDER_QTY = Convert.ToInt32(item.Cells[11].Value);
                     vo.ITEM_CODE = item.Cells[5].Value.ToString();
                     vo.COM_CODE = item.Cells[2].Value.ToString();
-                    if(service.insertREORDER(vo));
+                    vo.SALES_Work_Order_ID = item.Cells[14].Value.ToString();
+                    if (service.insertREORDER(vo));
                     {
                         su++;
                     }
@@ -243,6 +245,11 @@ namespace TEAM3FINAL
         {
             ReorderService service = new ReorderService();
             dgv2.DataSource = service.GetSearchReorder2(ITEM_COM_REORDER.Text, ITEM_NAEM.Text);
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

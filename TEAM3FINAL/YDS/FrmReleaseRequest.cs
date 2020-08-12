@@ -144,6 +144,7 @@ namespace TEAM3FINAL
         }
         private void HeaderChk_Clicked2(object sender, EventArgs e)
         {
+            
             dgv2.EndEdit();
 
             //데이터그리드뷰의 전체 행의 체크를 체크 or 언체크

@@ -62,7 +62,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "no", "idx", true, 30);
             DataGridViewUtil.DataGridViewCheckBoxSet(dgv1, "all");
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "발주번호", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주상세번호", "REORDER_DETAIL_CODE", false, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "발주상세번호", "REORDER_DETAIL_CODE", false, 125);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "발주일", "", true, 200);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "입고일", "", true, 200);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "검사일", "", true, 200);
@@ -92,7 +92,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품목", "ITEM_CODE", true, 200);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품명", "ITEM_NAME", true, 200);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "규격", "ITEM_STND", true, 125);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "납품수량", "REORDER_DETAIL_QTY_GOOD", true, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "납품수량", "REORDER_DETAIL_QTY", true, 125);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "불량수량", "", true, 100, readOnly: false);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "비고", "", true, 400 );
 
@@ -189,19 +189,20 @@ namespace TEAM3FINAL
             {
                 if (Convert.ToBoolean(item.Cells[1].Value) == true)
                 {
-                    if (item.Cells[10].Value == null)
+                    if (item.Cells[11].Value == null)
                     {
                         bqty = 0;
                     }
                     else
                     {
-                        bqty = Convert.ToInt32(item.Cells[10].Value);
+                        bqty = Convert.ToInt32(item.Cells[11].Value);
                     }
                     gqty = Convert.ToInt32(item.Cells[10].Value);
                     bqty = Convert.ToInt32(item.Cells[11].Value);
                     reorder = Convert.ToInt32(item.Cells[2].Value);
                     reorderD = Convert.ToInt32(item.Cells[3].Value);
-                    //service.insertInspection(gqty, bqty, reorder, reorderD);
+                    service.insertInspection(gqty, bqty, reorder, reorderD);
+                    a++;
                     
                 }
             }
