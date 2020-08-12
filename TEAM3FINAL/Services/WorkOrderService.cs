@@ -69,13 +69,13 @@ namespace TEAM3FINAL
 
         #region 고객주문별현황
 
-        public List<WorkMOVE_VO> OrderList()
+        public List<OrderState_VO> OrderList()
         {
             WorkOrderDAC dac = new WorkOrderDAC();
             return dac.OrderList();
         }
 
-        internal Message OrderMoveFac(WorkMOVE_VO vo)
+        internal Message OrderMoveFac(OrderState_VO vo)
         {
             WorkOrderDAC dac = new WorkOrderDAC();
             return dac.OrderMoveFac(vo);

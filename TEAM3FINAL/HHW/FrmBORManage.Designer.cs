@@ -250,6 +250,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmBORManage";
             this.Text = "BOR관리";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmBORManage_FormClosing);
             this.Load += new System.EventHandler(this.FrmBORManage_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.label1, 0);

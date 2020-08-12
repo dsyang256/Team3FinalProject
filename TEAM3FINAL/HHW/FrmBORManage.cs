@@ -298,7 +298,17 @@ namespace TEAM3FINAL
             {
                 printTool.ShowRibbonPreviewDialog();
             }
+        }
 
+        private void FrmBORManage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FrmMAIN frm = (FrmMAIN)this.MdiParent;
+            frm.eSearch -= Search;
+            frm.eInsert -= Insert;
+            frm.eDelete -= Delete;
+            frm.eUpdate -= Update;
+            frm.eReset -= Reset;
+            frm.ePrint -= Print;
         }
     }
 }

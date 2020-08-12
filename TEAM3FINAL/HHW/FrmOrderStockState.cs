@@ -32,11 +32,11 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "품목", "ITEM_CODE", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "품명", "ITEM_NAME", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "규격", "ITEM_STND", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "창고", "FCLTS_CODE", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "창고명", "FCLTS_NAME", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "창고", "FAC_CODE", false, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "창고", "FAC_NAME", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "이동량", "WO_QTY_OUT", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "비고", "WO_REMARK", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "작업번호", "WO_Code", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "작업지시ID", "SALES_WORK_ORDER_ID", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "제품타입", "ITEM_TYP", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "이동창고", "ToWHouse", true, 80);
             DataGridViewUtil.DataGridViewRowNumSet(dgvCustomerOrder);
@@ -177,11 +177,11 @@ namespace TEAM3FINAL
             }
             if (cnt == 1) //하나일 경우 PopUp창 띄움
             {
-                WorkMOVE_VO vo = new WorkMOVE_VO();
-                vo.WO_Code = dgvCustomerOrder.CurrentRow.Cells[8].Value.ToString();
+                OrderState_VO vo = new OrderState_VO();
+                vo.SALES_WORK_ORDER_ID = dgvCustomerOrder.CurrentRow.Cells[8].Value.ToString();
                 vo.WO_QTY_OUT = Convert.ToInt32(dgvCustomerOrder.CurrentRow.Cells[6].Value);
                 vo.ITEM_CODE = dgvCustomerOrder.CurrentRow.Cells[1].Value.ToString();
-                vo.FCLTS_CODE = dgvCustomerOrder.CurrentRow.Cells[4].Value.ToString();
+                vo.FAC_CODE = dgvCustomerOrder.CurrentRow.Cells[4].Value.ToString();
 
                 if(MessageBox.Show("작업완료 하시겠습니까?", "제품이동", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {

@@ -41,13 +41,13 @@ group by WO_PLAN_DATE, WO_PROD_DATE, w.FCLTS_CODE, f.FCLTS_NAME, WO_WORK_SEQ, w.
             using (SqlCommand cmd = new SqlCommand())
             {
                 cmd.Connection = new SqlConnection(this.ConnectionString);
-                cmd.CommandText = @"insert into INSTACK(INS_QTY, INS_TYP, INS_WRHS, ITEM_CODE, WO_CODE) values(@INS_QTY, '출고', @INS_WRHS, @ITEM_CODE, @WO_CODE);
-                                    insert into INSTACK(INS_QTY, INS_TYP, INS_WRHS, ITEM_CODE, WO_CODE) values(@INS_QTY, '입고', @INS_WRHS, @ITEM_CODE, @WO_CODE);
-                                    update WORKORDER set WO_WORK_STATE = '공정이동' where WO_Code = @WO_Code;";
+                cmd.CommandText = @"insert into INSTACK(INS_QTY, INS_TYP, INS_WRHS, ITEM_CODE, SALES_WORK_ORDER_ID) values(@INS_QTY, '출고', @INS_WRHS, @ITEM_CODE, @SALES_WORK_ORDER_ID);
+                                    insert into INSTACK(INS_QTY, INS_TYP, INS_WRHS, ITEM_CODE, SALES_WORK_ORDER_ID) values(@INS_QTY, '입고', @INS_WRHS, @ITEM_CODE, @SALES_WORK_ORDER_ID);
+                                    update WORKORDER set WO_WORK_STATE = '공정이동' where SALES_Work_Order_ID = @SALES_WORK_ORDER_ID;";
                 cmd.Parameters.AddWithValue("@INS_QTY", vo.INS_QTY);
                 cmd.Parameters.AddWithValue("@INS_WRHS", vo.INS_WRHS);
                 cmd.Parameters.AddWithValue("@ITEM_CODE", vo.ITEM_CODE);
-                cmd.Parameters.AddWithValue("@WO_CODE", vo.WO_CODE);
+                cmd.Parameters.AddWithValue("@SALES_WORK_ORDER_ID", vo.SALES_WORK_ORDER_ID);
                 cmd.Connection.Open();
                 int iResult = cmd.ExecuteNonQuery();
                 string result;
@@ -108,7 +108,7 @@ group by WO_PLAN_DATE, WO_PROD_DATE, w.FCLTS_CODE, f.FCLTS_NAME, WO_WORK_SEQ, w.
             using (SqlCommand cmd = new SqlCommand())
             {
                 cmd.Connection = new SqlConnection(this.ConnectionString);
-                cmd.CommandText = @"select w.ITEM_CODE, i.ITEM_NAME, i.ITEM_STND, w.FCLTS_CODE, f.FCLTS_NAME, w.WO_QTY_OUT, w.WO_REMARK, WO_Code, i.ITEM_TYP 
+                cmd.CommandText = @"select w.ITEM_CODE, i.ITEM_NAME, i.ITEM_STND, w.FCLTS_CODE, f.FCLTS_NAME, w.WO_QTY_OUT, w.WO_REMARK, SALES_WORK_ORDER_ID, i.ITEM_TYP 
 from WORKORDER w inner join ITEM i on w.ITEM_CODE = i.ITEM_CODE
 				 inner join FACILITY f on w.FCLTS_CODE = f.FCLTS_CODE
 where WO_WORK_STATE = '실적등록'";
@@ -180,10 +180,12 @@ where WO_WORK_STATE = '실적등록'";
             using (SqlCommand cmd = new SqlCommand())
             {
                 cmd.Connection = new SqlConnection(this.ConnectionString);
-                cmd.CommandText = @"select i.INS_WRHS, FAC_NAME, INS_TYP, i.ITEM_CODE, it.ITEM_NAME, it.ITEM_TYP, it.ITEM_STND, INS_QTY, it.ITEM_UNIT, convert(nvarchar, INS_DATE, 120) INS_DATE, WO_CODE
+                cmd.CommandText = @"select i.INS_WRHS, FAC_NAME, i.ITEM_CODE, it.ITEM_NAME, it.ITEM_TYP, it.ITEM_STND, it.ITEM_UNIT, 
+                                    sum(case when INS_TYP = '출고' then (INS_QTY*-1) when INS_TYP = '입고' then INS_QTY end) INS_QTY
                                     from INSTACK i inner join FACTORY f on i.INS_WRHS = f.FAC_CODE
-			                                       inner join item it on i.ITEM_CODE = it.ITEM_CODE
-                                    where INS_DATE >= convert(nvarchar, getdate(), 23) and INS_DATE >= convert(nvarchar, getdate(), 23)";
+			                        inner join item it on i.ITEM_CODE = it.ITEM_CODE
+                                    where 1=1 
+                                    group by i.INS_WRHS, FAC_NAME, i.ITEM_CODE, it.ITEM_NAME, it.ITEM_TYP, it.ITEM_STND, INS_QTY, it.ITEM_UNIT";
                 cmd.Connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 list = Helper.DataReaderMapToList<MOVESTATE_VO>(reader);
@@ -214,36 +216,37 @@ where WO_WORK_STATE = '실적등록'";
 
         #region 고객주문별현황
 
-        public List<WorkMOVE_VO> OrderList()
+        public List<OrderState_VO> OrderList()
         {
-            List<WorkMOVE_VO> list = null;
+            List<OrderState_VO> list = null;
             using (SqlCommand cmd = new SqlCommand())
             {
                 cmd.Connection = new SqlConnection(this.ConnectionString);
-                cmd.CommandText = @"select w.ITEM_CODE, i.ITEM_NAME, i.ITEM_STND, w.FCLTS_CODE, f.FCLTS_NAME, w.WO_QTY_OUT, w.WO_REMARK, WO_Code, i.ITEM_TYP , ('제품창고') ToWHouse
+                cmd.CommandText = @"select w.ITEM_CODE, i.ITEM_NAME, i.ITEM_STND, fa.FAC_CODE, fa.FAC_NAME, w.WO_QTY_OUT, w.WO_REMARK, SALES_WORK_ORDER_ID, i.ITEM_TYP , ('제품창고') ToWHouse
                                     from WORKORDER w inner join ITEM i on w.ITEM_CODE = i.ITEM_CODE
 				                                     inner join FACILITY f on w.FCLTS_CODE = f.FCLTS_CODE
+													 inner join FACTORY fa on f.FCLTS_WRHS_EXHST = fa.FAC_CODE
                                     where WO_WORK_STATE = '공정이동' and i.ITEM_TYP = '제품' and WO_WORK_STATE <> '작업완료'";
                 cmd.Connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
-                list = Helper.DataReaderMapToList<WorkMOVE_VO>(reader);
+                list = Helper.DataReaderMapToList<OrderState_VO>(reader);
                 return list;
             }
         }
 
-        public Message OrderMoveFac(WorkMOVE_VO vo)
+        public Message OrderMoveFac(OrderState_VO vo)
         {
             List<WorkMOVE_VO> list = null;
             using (SqlCommand cmd = new SqlCommand())
             {
                 cmd.Connection = new SqlConnection(this.ConnectionString);
-                cmd.CommandText = @"insert into INSTACK(INS_QTY, INS_TYP, INS_WRHS, ITEM_CODE, WO_CODE) values(@INS_QTY, '출고', @INS_WRHS, @ITEM_CODE, @WO_CODE);
-                                    insert into INSTACK(INS_QTY, INS_TYP, INS_WRHS, ITEM_CODE, WO_CODE) values(@INS_QTY, '입고', 'M_01', @ITEM_CODE, @WO_CODE);
-                                    update WORKORDER set WO_WORK_STATE = '작업완료' where WO_Code = @WO_Code;";
+                cmd.CommandText = @"insert into INSTACK(INS_QTY, INS_TYP, INS_WRHS, ITEM_CODE, SALES_WORK_ORDER_ID) values(@INS_QTY, '출고', @INS_WRHS, @ITEM_CODE, @SALES_WORK_ORDER_ID);
+                                    insert into INSTACK(INS_QTY, INS_TYP, INS_WRHS, ITEM_CODE, SALES_WORK_ORDER_ID) values(@INS_QTY, '입고', 'M_01', @ITEM_CODE, @SALES_WORK_ORDER_ID);
+                                    update WORKORDER set WO_WORK_STATE = '제품이동' where SALES_WORK_ORDER_ID = @SALES_WORK_ORDER_ID;";
                 cmd.Parameters.AddWithValue("@INS_QTY", vo.WO_QTY_OUT);
-                cmd.Parameters.AddWithValue("@INS_WRHS", vo.FCLTS_CODE);
+                cmd.Parameters.AddWithValue("@INS_WRHS", vo.FAC_CODE);
                 cmd.Parameters.AddWithValue("@ITEM_CODE", vo.ITEM_CODE);
-                cmd.Parameters.AddWithValue("@WO_CODE", vo.WO_Code);
+                cmd.Parameters.AddWithValue("@SALES_WORK_ORDER_ID", vo.SALES_WORK_ORDER_ID);
                 cmd.Connection.Open();
                 int iResult = cmd.ExecuteNonQuery();
                 string result;
