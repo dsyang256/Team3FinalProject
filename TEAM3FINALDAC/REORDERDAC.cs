@@ -87,7 +87,23 @@ namespace TEAM3FINALDAC
             }
         }
 
-        public bool insertInspection(int gqty, int bqty, int reorder, int reorderD)
+        public DataTable Inspection1()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            string sql = @"select ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx,rd.REORDER_CODE,r.REORDER_DATE,rd.REORDER_DATE_IN,COM_CODE,r.ITEM_CODE,ITEM_NAME,ITEM_STND,rd.REORDER_DETAIL_QTY,REORDER_DETAIL_CODE,REORDER_INSPECT_DATE,rd.REORDER_DETAIL_QTY_BAD,REORDER_INSPECT,(SELECT M.MANAGER_NAME FROM MANAGER M WHERE M.MANAGER_ID = r.MANAGER_ID) AS MANAGER_NAME
+                             from REORDERDETATILS rd ,REORDER r,ITEM i
+                            where rd.REORDER_CODE = r.REORDER_CODE and r.ITEM_CODE = i.ITEM_CODE and REORDER_DETAIL_INSPECT_YN = 'Y' and i.ITEM_INCOME_YN = '사용'";
+            conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
+            {
+
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+        public bool insertInspection(int gqty, int bqty, int reorder, int reorderD,string code)
         {
             bool Result = false;
             try
@@ -95,12 +111,13 @@ namespace TEAM3FINALDAC
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = new SqlConnection(this.ConnectionString);
-                    cmd.CommandText = $@"SP_insertREORDERDETATILS";
+                    cmd.CommandText = $@"SP_insertInspection";
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@P_REORDER_DETAIL_QTY_GOOD", gqty);
-                    cmd.Parameters.AddWithValue("@P_REORDER_CODE", bqty);
-                    cmd.Parameters.AddWithValue("@P_REORDER_QTY", reorder);
-                    cmd.Parameters.AddWithValue("@P_ITEM_INCOME_YN", reorderD);
+                    cmd.Parameters.AddWithValue("@P_REORDER_DETAIL_QTY", gqty);
+                    cmd.Parameters.AddWithValue("@P_REORDER_DETAIL_QTY_BAD", bqty);
+                    cmd.Parameters.AddWithValue("@P_REORDER_CODE", reorder);
+                    cmd.Parameters.AddWithValue("@P_REORDER_DETAIL_CODE", reorderD);
+                    cmd.Parameters.AddWithValue("@P_ITEM_CODE", code);
 
                     cmd.Connection.Open();
                     int iResult = cmd.ExecuteNonQuery();
@@ -155,10 +172,10 @@ namespace TEAM3FINALDAC
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(this.ConnectionString);
             string sql = $@"select ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx,REORDER_DATE,REORDER_COM_DLVR,COM_CODE,r.ITEM_CODE,ITEM_NAME,ITEM_STND,ITEM_UNIT,ITEM_INCOME_YN,REORDER_QTY
-                          ,isnull(((select SUM(ISNULL(REORDER_DETAIL_QTY_GOOD, 0)) - sum(isnull(REORDER_DETAIL_QTY_BAD,0)) REORDER_DETAIL_QTY_GOOD  
+                          ,isnull(((select SUM(ISNULL(REORDER_DETAIL_QTY_GOOD, 0)) REORDER_DETAIL_QTY_GOOD  
                                              from REORDERDETATILS
                                              where REORDER_CODE = r.REORDER_CODE)), REORDER_QTY) REORDER_QTY1
-                         ,isnull(REORDER_QTY-((select SUM(ISNULL(REORDER_DETAIL_QTY_GOOD, 0)) - sum(isnull(REORDER_DETAIL_QTY_BAD,0)) REORDER_DETAIL_QTY_GOOD  
+                         ,isnull(REORDER_QTY-((select SUM(ISNULL(REORDER_DETAIL_QTY_GOOD, 0)) REORDER_DETAIL_QTY_GOOD  
                                              from REORDERDETATILS
                                              where REORDER_CODE = r.REORDER_CODE)), REORDER_QTY) REORDER_QTY2,REORDER_DATE_IN,REORDER_TYP
                          from REORDER r , ITEM i
@@ -176,13 +193,21 @@ namespace TEAM3FINALDAC
         {
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(this.ConnectionString);
-            string sql = $@"SELECT ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx,r.REORDER_CODE,I.ITEM_CODE,I.ITEM_NAME,I.ITEM_STND,I.ITEM_UNIT,REORDER_QTY,ITEM_WRHS_IN,
- 					isnull((REORDER_QTY-(select SUM(ISNULL(REORDER_DETAIL_QTY_GOOD, 0)) - sum(isnull(REORDER_DETAIL_QTY_BAD,0)) REORDER_DETAIL_QTY_GOOD  
-                    from REORDERDETATILS
-                    where REORDER_CODE = r.REORDER_CODE)), REORDER_QTY) REORDER_QTY1
-                    ,REORDER_STATE,REORDER_DATE_IN,REORDER_DATE,ITEM_INCOME_YN
-                    from ITEM I JOIN REORDER r ON I.ITEM_CODE =R.ITEM_CODE
-                    where ITEM_TYP = '원자재' AND REORDER_STATE in ('발주','입고대기')";
+            string sql = $@"SELECT ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx
+                            ,r.REORDER_CODE
+                            ,I.ITEM_CODE
+                            ,I.ITEM_NAME
+                            ,I.ITEM_STND
+                            ,I.ITEM_UNIT
+                            ,REORDER_QTY
+                            ,ITEM_WRHS_IN,
+                            isnull((REORDER_QTY-
+                            (select sum(isnull(REORDER_DETAIL_QTY_GOOD,0))
+                            from REORDERDETATILS
+                            where REORDER_CODE = r.REORDER_CODE)), REORDER_QTY) REORDER_QTY1
+                            ,REORDER_STATE,REORDER_DATE_IN,REORDER_DATE,ITEM_INCOME_YN
+                            from ITEM I JOIN REORDER r ON I.ITEM_CODE =R.ITEM_CODE
+                            where ITEM_TYP = '원자재' AND REORDER_STATE in ('발주','입고대기')";
              conn.Open();
             using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
             {

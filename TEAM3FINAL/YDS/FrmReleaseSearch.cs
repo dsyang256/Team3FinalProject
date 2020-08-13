@@ -12,7 +12,7 @@ using TEAM3FINALVO;
 namespace TEAM3FINAL
 { 
 
-    public partial class FrmReleaseSearch : baseForm2
+    public partial class FrmReleaseSearch : baseForm2, CommonBtn
     {
         
         public FrmReleaseSearch()
@@ -24,6 +24,7 @@ namespace TEAM3FINAL
         {
             ComboBinding();
             DataGridViewColumnSet();
+            DataGridViewBinding1();
         }
         #region 콤보박스 바인딩
         /// <summary>
@@ -44,9 +45,6 @@ namespace TEAM3FINAL
             var listTYP = (from item in Commonlist where item.COMMON_PARENT == "입고유형" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(TYP, listTYP, "COMMON_CODE", "COMMON_NAME", "");
 
-            //입고카테고리
-            var listSTATE = (from item in Commonlist where item.COMMON_PARENT == "발주상태" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(STATE, listSTATE, "COMMON_CODE", "COMMON_NAME", "");
 
             //품목유형
             var listITEM_TYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
@@ -68,18 +66,17 @@ namespace TEAM3FINAL
         {
             DataGridViewUtil.InitSettingGridView(dgv1);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "no", "idx", true, 30);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "입출고일", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "구분", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "카테고리", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "FROM창고", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "창고", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "규격", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목형태", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "관리등급", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "수불량", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "단가", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "금액", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "입출고일", "INS_DATE", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "구분", "INS_TYP", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "창고", "FAC_NAME", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목", "ITEM_CODE", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품명", "ITEM_NAME", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "규격", "ITEM_STND", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목형태", "ITEM_TYP", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "관리등급", "ITEM_MANAGE_LEVEL", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "수불량", "INS_QTY", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "단가", "MC_UNITPRICE_CUR", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "금액", "price", true, 200);
 
 
         }
@@ -93,14 +90,74 @@ namespace TEAM3FINAL
         private void DataGridViewBinding1()
         {
             dgv1.DataSource = null;
+            INSTACKService service = new INSTACKService();
+            dgv1.DataSource = service.INSTACDataTable();
 
 
         }
 
         #endregion
 
-       
+        #region 버튼이벤트
+        /// <summary>
+        /// 버튼이벤트
+        /// </summary>
+        public void Insert(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
 
-        
+            }
+        }
+
+        public void Search(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                string day1 = sday.Value.ToShortDateString();
+                string day2 = eday.Value.ToShortDateString();
+                string wrhs = WRHS.SelectedValue.ToString();
+                string name = ITEM.Text;
+                string typ = TYP.Text;
+                string level = ITEM_MANAGER.Text;
+                string itemtyp = ITEM_TYP.Text;
+                INSTACKService service = new INSTACKService();
+                dgv1.DataSource = service.INSTACDataTable(day1, day2,wrhs,name,typ, level, itemtyp);
+            }
+        }
+
+        public void Reset(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+
+            }
+        }
+
+        public void Update(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+
+            }
+        }
+
+        public void Delete(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+
+            }
+        }
+
+        public void Print(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+
+            }
+        }
+
+        #endregion
     }
 }

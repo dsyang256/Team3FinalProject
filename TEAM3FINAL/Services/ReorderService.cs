@@ -92,10 +92,16 @@ namespace TEAM3FINAL
             return dac.Inspection2();
         }
 
-        internal bool insertInspection(int gqty, int bqty, int reorder, int reorderD)
+        internal bool insertInspection(int gqty, int bqty, int reorder, int reorderD,string code)
         {
             REORDERDAC dac = new REORDERDAC();
-            return dac.insertInspection(gqty, bqty, reorder, reorderD);
+            return dac.insertInspection(gqty, bqty, reorder, reorderD,code);
+        }
+
+        internal DataTable Inspection1()
+        {
+            REORDERDAC dac = new REORDERDAC();
+            return dac.Inspection1();
         }
     }
 }

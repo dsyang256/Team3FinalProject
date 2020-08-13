@@ -39,6 +39,8 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUT, "품명", "ITEM_NAME", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUT, "주문수량", "WO_PLAN_QTY", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUT, "현재고량", "INS_QTY", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUT, "출고된수량", "OUTed_QTY", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUT, "출고할수량", "OUTing_QTY", true, 80, readOnly: false);
             DataGridViewUtil.DataGridViewRowNumSet(dgvProductOUT);
             DataGridViewCheckBoxAllCheck();
         }
@@ -97,6 +99,14 @@ namespace TEAM3FINAL
             GetProductOUT();
         }
 
+
+        #region 그리드뷰 로우 내용 수정
+
+        private void dgvProductOUT_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress += new KeyPressEventHandler(Control_KeyPress);
+        }
+
         private void Control_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))    //숫자와 백스페이스를 제외한 나머지를 바로 처리
@@ -104,7 +114,9 @@ namespace TEAM3FINAL
                 e.Handled = true;
             }
         }
-    
+
+        #endregion
+
 
         private void GetProductOUT()
         {
@@ -148,6 +160,7 @@ namespace TEAM3FINAL
 
         #endregion
 
+
         private void btnMOVE_Click(object sender, EventArgs e)
         {
             dgvProductOUT.EndEdit();
@@ -166,19 +179,40 @@ namespace TEAM3FINAL
                 vo.SALES_WORK_ORDER_ID = dgvProductOUT.CurrentRow.Cells[1].Value.ToString();
                 vo.SALES_COM_CODE = dgvProductOUT.CurrentRow.Cells[5].Value.ToString();
                 vo.ITEM_CODE = dgvProductOUT.CurrentRow.Cells[6].Value.ToString();
+                vo.WO_PLAN_QTY = Convert.ToInt32(dgvProductOUT.CurrentRow.Cells[8].Value);
                 vo.INS_QTY = Convert.ToInt32(dgvProductOUT.CurrentRow.Cells[9].Value); //현재 창고 안의 재고수량
-                //if(vo.INS_QTY > )
+                vo.OUTed_QTY = Convert.ToInt32(dgvProductOUT.CurrentRow.Cells[10].Value);
+                vo.OUTing_QTY = Convert.ToInt32(dgvProductOUT.CurrentRow.Cells[11].Value);
+                if (vo.INS_QTY < vo.OUTing_QTY)
+                {
+                    MessageBox.Show("출고수량이 현 창고의 재고수량보다 많을 수 없습니다.");
+                    return;
+                }
+                if(vo.WO_PLAN_QTY < vo.OUTed_QTY + vo.OUTing_QTY)
+                {
+                    MessageBox.Show("출고 수량이 주문수량을 초과합니다.");
+                    return;
+                }
+
+                ProductOUTService service = new ProductOUTService();
+                Message msg = service.ProductOUT(vo, LoginInfo.UserInfo.LI_NAME);
+                if (msg.IsSuccess)
+                {
+                    MessageBox.Show(msg.ResultMessage);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show(msg.ResultMessage);
+                    return;
+                }
             }
             else
             {
                 MessageBox.Show("하나의 항목씩만 가능");
                 return;
             }
-        }
-
-        private void dgvProductOUT_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            e.Control.KeyPress += new KeyPressEventHandler(Control_KeyPress);
-        }
+        }        
     }
 }

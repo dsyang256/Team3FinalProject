@@ -57,6 +57,7 @@
     <Compile Include="CostDAC.cs" />
     <Compile Include="FacilityDAC.cs" />
     <Compile Include="FactoryDAC.cs" />
+    <Compile Include="INSTACKDAC.cs" />
     <Compile Include="ITEMDAC.cs" />
     <Compile Include="LoginDAC.cs" />
     <Compile Include="PlanDAC.cs" />

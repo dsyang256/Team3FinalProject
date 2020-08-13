@@ -52,9 +52,9 @@ namespace TEAM3FINAL
             vo.FACG_CODE = txtFACGCODE.Text;
             vo.FCLTS_CODE = txtFACCODE.Text;
             vo.FCLTS_NAME = txtFACNAME.Text;
-            vo.FCLTS_WRHS_EXHST = cboFACEXHST.Text;
-            vo.FCLTS_WRHS_GOOD = cboFACGOOD.Text;
-            vo.FCLTS_WRHS_BAD = cboFACBAD.Text;
+            vo.FCLTS_WRHS_EXHST = cboFACEXHST.SelectedValue.ToString();
+            vo.FCLTS_WRHS_GOOD = cboFACGOOD.SelectedValue.ToString();
+            vo.FCLTS_WRHS_BAD = (cboFACBAD.SelectedValue == null) ? "" : cboFACBAD.SelectedValue.ToString();
             vo.FCLTS_USE_YN = cboFACUseYN.Text;
             vo.FCLTS_EXTRL_YN = cboEXTRLYN.Text;
             vo.FCLTS_LAST_MDFR = FCLTS_LAST_MDFR;
@@ -116,8 +116,8 @@ namespace TEAM3FINAL
                 txtFACGCODE.Text = FACG_CODE;
                 txtFACCODE.Text = FCLTS_CODE;
                 txtFACNAME.Text = FCLTS_NAME;
-                cboFACEXHST.Text = FCLTS_WRHS_EXHST;
-                cboFACGOOD.Text = FCLTS_WRHS_GOOD;
+                cboFACEXHST.SelectedIndex = cboFACEXHST.FindStringExact(FCLTS_WRHS_EXHST);
+                cboFACGOOD.SelectedIndex = cboFACEXHST.FindStringExact(FCLTS_WRHS_GOOD);
                 cboFACBAD.Text = FCLTS_WRHS_BAD;
                 cboFACUseYN.Text = FCLTS_USE_YN;
                 cboEXTRLYN.Text = FCLTS_EXTRL_YN;

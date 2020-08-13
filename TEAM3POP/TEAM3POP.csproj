@@ -106,10 +106,6 @@
       <Project>{6dd41fff-416c-4c82-8319-53a9f358586d}</Project>
       <Name>TEAM3FINALVO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TEAM3FINAL\TEAM3FINAL.csproj">
-      <Project>{00c1c951-2a3d-4c08-b1a5-a22499824bf3}</Project>
-      <Name>TEAM3FINAL</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

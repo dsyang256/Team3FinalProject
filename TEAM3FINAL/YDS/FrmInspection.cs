@@ -25,6 +25,7 @@ namespace TEAM3FINAL
             ComboBinding();
             DataGridViewColumnSet1();
             DataGridViewColumnSet2();
+            DataGridViewBinding1();
             DataGridViewBinding2();
         }
         #region 콤보박스 바인딩
@@ -61,19 +62,19 @@ namespace TEAM3FINAL
             DataGridViewUtil.InitSettingGridView(dgv1);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "no", "idx", true, 30);
             DataGridViewUtil.DataGridViewCheckBoxSet(dgv1, "all");
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "발주번호", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "발주번호", "REORDER_CODE", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "발주상세번호", "REORDER_DETAIL_CODE", false, 125);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "발주일", "", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "입고일", "", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "검사일", "", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "납품업체", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목", "", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품명", "", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "규격", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "최종결과", "", true, 125);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "납품수량", "", true, 125);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "불량수랑", "", true, 125);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "검사자", "", true, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "발주일", "REORDER_DATE", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "입고일", "REORDER_DATE_IN", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "검사일", "REORDER_INSPECT_DATE", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "납품업체", "COM_CODE", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목", "ITEM_CODE", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품명", "ITEM_NAME", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "규격", "ITEM_STND", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "최종결과", "REORDER_INSPECT", true, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "납품수량", "REORDER_DETAIL_QTY", true, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "불량수랑", "REORDER_DETAIL_QTY_BAD", true, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "검사자", "MANAGER_NAME", true, 125);
             
 
             DataGridViewCheckBoxAllCheck1();
@@ -109,7 +110,7 @@ namespace TEAM3FINAL
         {
             dgv1.DataSource = null;
             ReorderService service = new ReorderService();
-            dgv1.DataSource = service.GetCOM();
+            dgv1.DataSource = service.Inspection1();
         }
         private void DataGridViewBinding2()
         {
@@ -183,6 +184,7 @@ namespace TEAM3FINAL
             int gqty = 0;
             int reorder = 0;
             int reorderD = 0;
+            string code = "";
             dgv2.EndEdit();
             ReorderService service = new ReorderService();
             foreach (DataGridViewRow item in dgv2.Rows)
@@ -201,7 +203,8 @@ namespace TEAM3FINAL
                     bqty = Convert.ToInt32(item.Cells[11].Value);
                     reorder = Convert.ToInt32(item.Cells[2].Value);
                     reorderD = Convert.ToInt32(item.Cells[3].Value);
-                    service.insertInspection(gqty, bqty, reorder, reorderD);
+                    code = item.Cells[7].Value.ToString();
+                    service.insertInspection(gqty, bqty, reorder, reorderD,code);
                     a++;
                     
                 }

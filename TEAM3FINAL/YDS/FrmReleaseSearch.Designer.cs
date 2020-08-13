@@ -35,14 +35,12 @@
             this.dgv1 = new WindowsFormsApp18.MyDataGridView();
             this.TYP = new System.Windows.Forms.ComboBox();
             this.ITEM_MANAGER = new System.Windows.Forms.ComboBox();
-            this.STATE = new System.Windows.Forms.ComboBox();
             this.ITEM_TYP = new System.Windows.Forms.ComboBox();
             this.WRHS = new System.Windows.Forms.ComboBox();
             this.ITEM = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -50,7 +48,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.eday = new System.Windows.Forms.DateTimePicker();
             this.sday = new System.Windows.Forms.DateTimePicker();
             this.label26 = new System.Windows.Forms.Label();
@@ -65,7 +62,7 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1273, 200);
+            this.panel1.Size = new System.Drawing.Size(1273, 156);
             // 
             // panel2
             // 
@@ -76,14 +73,12 @@
             this.panel2.Controls.Add(this.label21);
             this.panel2.Controls.Add(this.TYP);
             this.panel2.Controls.Add(this.ITEM_MANAGER);
-            this.panel2.Controls.Add(this.STATE);
             this.panel2.Controls.Add(this.ITEM_TYP);
             this.panel2.Controls.Add(this.WRHS);
             this.panel2.Controls.Add(this.ITEM);
             this.panel2.Controls.Add(this.label18);
             this.panel2.Controls.Add(this.label19);
             this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label8);
@@ -91,19 +86,19 @@
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Size = new System.Drawing.Size(1267, 180);
+            this.panel2.Size = new System.Drawing.Size(1267, 135);
             // 
             // label1
             // 
             this.label1.Size = new System.Drawing.Size(67, 15);
             this.label1.Text = "입출고입력";
+            this.label1.Visible = false;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.dgv1);
-            this.panel3.Location = new System.Drawing.Point(15, 252);
-            this.panel3.Size = new System.Drawing.Size(1267, 395);
+            this.panel3.Location = new System.Drawing.Point(15, 214);
+            this.panel3.Size = new System.Drawing.Size(1267, 433);
             // 
             // dgv1
             // 
@@ -142,7 +137,7 @@
             this.dgv1.RowHeadersWidth = 30;
             this.dgv1.RowTemplate.Height = 23;
             this.dgv1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv1.Size = new System.Drawing.Size(1267, 395);
+            this.dgv1.Size = new System.Drawing.Size(1267, 433);
             this.dgv1.TabIndex = 0;
             // 
             // TYP
@@ -156,18 +151,10 @@
             // ITEM_MANAGER
             // 
             this.ITEM_MANAGER.FormattingEnabled = true;
-            this.ITEM_MANAGER.Location = new System.Drawing.Point(217, 128);
+            this.ITEM_MANAGER.Location = new System.Drawing.Point(586, 74);
             this.ITEM_MANAGER.Name = "ITEM_MANAGER";
             this.ITEM_MANAGER.Size = new System.Drawing.Size(193, 23);
             this.ITEM_MANAGER.TabIndex = 56;
-            // 
-            // STATE
-            // 
-            this.STATE.FormattingEnabled = true;
-            this.STATE.Location = new System.Drawing.Point(586, 78);
-            this.STATE.Name = "STATE";
-            this.STATE.Size = new System.Drawing.Size(193, 23);
-            this.STATE.TabIndex = 52;
             // 
             // ITEM_TYP
             // 
@@ -213,20 +200,11 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(136, 134);
+            this.label13.Location = new System.Drawing.Point(516, 81);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(55, 15);
             this.label13.TabIndex = 68;
             this.label13.Text = "관리등급";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(516, 80);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(55, 15);
-            this.label15.TabIndex = 66;
-            this.label15.Text = "카테고리";
             // 
             // label14
             // 
@@ -301,17 +279,6 @@
             this.label4.TabIndex = 55;
             this.label4.Text = "*";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label3.Location = new System.Drawing.Point(112, 131);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 17);
-            this.label3.TabIndex = 53;
-            this.label3.Text = "*";
-            // 
             // eday
             // 
             this.eday.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -365,10 +332,10 @@
             this.menuPanel1.BackColor = System.Drawing.Color.Transparent;
             this.menuPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.menuPanel1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.menuPanel1.Location = new System.Drawing.Point(12, 217);
+            this.menuPanel1.Location = new System.Drawing.Point(12, 173);
             this.menuPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.menuPanel1.Name = "menuPanel1";
-            this.menuPanel1.Size = new System.Drawing.Size(1270, 32);
+            this.menuPanel1.Size = new System.Drawing.Size(1276, 32);
             this.menuPanel1.TabIndex = 1;
             this.menuPanel1.TitleFont = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.menuPanel1.TitleName = "입출고현황";
@@ -401,14 +368,12 @@
         private WindowsFormsApp18.MyDataGridView dgv1;
         private System.Windows.Forms.ComboBox TYP;
         private System.Windows.Forms.ComboBox ITEM_MANAGER;
-        private System.Windows.Forms.ComboBox STATE;
         private System.Windows.Forms.ComboBox ITEM_TYP;
         private System.Windows.Forms.ComboBox WRHS;
         private System.Windows.Forms.TextBox ITEM;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label8;
@@ -416,7 +381,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker eday;
         private System.Windows.Forms.DateTimePicker sday;
         private System.Windows.Forms.Label label26;

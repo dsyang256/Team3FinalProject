@@ -16,5 +16,11 @@ namespace TEAM3FINAL.HHW
             ProductOUTDAC dac = new ProductOUTDAC();
             return dac.GetProductOUTList();
         }
+
+        internal Message ProductOUT(ProductOUT_VO vo, string id)
+        {
+            ProductOUTDAC dac = new ProductOUTDAC();
+            return dac.ProductOUT(vo, id);
+        }
     }
 }
