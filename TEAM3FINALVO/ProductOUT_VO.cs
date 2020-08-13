@@ -17,5 +17,7 @@ namespace TEAM3FINALVO
         public string SALES_DUEDATE { get; set; }
         public int WO_PLAN_QTY { get; set; }
         public int INS_QTY { get; set; }
+        public int OUTed_QTY { get; set; }
+        public int OUTing_QTY { get; set; }
     }
 }

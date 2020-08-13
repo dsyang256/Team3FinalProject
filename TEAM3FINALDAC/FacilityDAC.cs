@@ -185,8 +185,8 @@ from FACILITY_GROP";
             using (SqlCommand cmd = new SqlCommand())
             {
                 cmd.Connection = new SqlConnection(this.ConnectionString);
-                cmd.CommandText = @"select FCLTS_CODE, FCLTS_NAME, FCLTS_WRHS_EXHST, FCLTS_WRHS_GOOD, FCLTS_WRHS_BAD, FCLTS_USE_YN, FCLTS_EXTRL_YN, FCLTS_LAST_MDFR, convert(nvarchar, FCLTS_LAST_MDFY, 120) FCLTS_LAST_MDFY, FCLTS_NOTE, FCLTS_REMARK, FACG_CODE
-from FACILITY";
+                cmd.CommandText = @"select FCLTS_CODE, FCLTS_NAME, (fa.FAC_NAME) FCLTS_WRHS_EXHST, (fa.FAC_NAME) FCLTS_WRHS_GOOD, FCLTS_WRHS_BAD, FCLTS_USE_YN, FCLTS_EXTRL_YN, FCLTS_LAST_MDFR, convert(nvarchar, FCLTS_LAST_MDFY, 120) FCLTS_LAST_MDFY, FCLTS_NOTE, FCLTS_REMARK, FACG_CODE
+from FACILITY f inner join FACTORY fa on f.FCLTS_WRHS_EXHST = fa.FAC_CODE";
                 cmd.Connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 list = Helper.DataReaderMapToList<FACILITY_VO>(reader);
