@@ -284,7 +284,7 @@ namespace TEAM3FINAL
                     vo2.ITEM_QTY_UNIT = Convert.ToInt32(item.Cells[8].Value);
                     vo2.ITEM_CODE = item.Cells[3].Value.ToString();
                     vo2.ITEM_INCOME_YN = item.Cells[13].Value.ToString();
-                    vo2.ITEM_WRHS_IN = (item.Cells[14].Value == null) ? "자재창고_01" : item.Cells[14].Value.ToString();
+                    vo2.ITEM_WRHS_IN = (item.Cells[14].Value == null) ? "R-01" : item.Cells[14].Value.ToString();
                     vo.REORDER_DETAIL_QTY_GOOD = Convert.ToInt32(item.Cells[9].Value);
                     vo.REORDER = Convert.ToInt32(item.Cells[2].Value);
                     if (service.insertREORDERDETATILS(vo, vo2)) ;
