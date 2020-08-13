@@ -53,10 +53,9 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel3.Controls.Add(this.dgvFacilityGroupList);
-            this.panel3.Location = new System.Drawing.Point(19, 75);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Location = new System.Drawing.Point(15, 56);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(796, 659);
+            this.panel3.Size = new System.Drawing.Size(619, 494);
             this.panel3.TabIndex = 5;
             // 
             // dgvFacilityGroupList
@@ -84,7 +83,6 @@
             this.dgvFacilityGroupList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvFacilityGroupList.EnableHeadersVisualStyles = false;
             this.dgvFacilityGroupList.Location = new System.Drawing.Point(0, 0);
-            this.dgvFacilityGroupList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvFacilityGroupList.Name = "dgvFacilityGroupList";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -97,7 +95,7 @@
             this.dgvFacilityGroupList.RowHeadersWidth = 30;
             this.dgvFacilityGroupList.RowTemplate.Height = 23;
             this.dgvFacilityGroupList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFacilityGroupList.Size = new System.Drawing.Size(796, 659);
+            this.dgvFacilityGroupList.Size = new System.Drawing.Size(619, 494);
             this.dgvFacilityGroupList.TabIndex = 0;
             this.dgvFacilityGroupList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFacilityGroupList_CellClick);
             // 
@@ -105,10 +103,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(30, 24);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(23, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 25);
+            this.label1.Size = new System.Drawing.Size(54, 20);
             this.label1.TabIndex = 4;
             this.label1.Text = "설비군";
             // 
@@ -118,10 +115,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.dgvFacilityList);
-            this.panel1.Location = new System.Drawing.Point(865, 75);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Location = new System.Drawing.Point(673, 56);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(870, 659);
+            this.panel1.Size = new System.Drawing.Size(677, 494);
             this.panel1.TabIndex = 6;
             // 
             // dgvFacilityList
@@ -151,7 +147,6 @@
             this.dgvFacilityList.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvFacilityList.EnableHeadersVisualStyles = false;
             this.dgvFacilityList.Location = new System.Drawing.Point(0, 0);
-            this.dgvFacilityList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvFacilityList.Name = "dgvFacilityList";
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
@@ -164,33 +159,32 @@
             this.dgvFacilityList.RowHeadersWidth = 30;
             this.dgvFacilityList.RowTemplate.Height = 23;
             this.dgvFacilityList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFacilityList.Size = new System.Drawing.Size(870, 659);
+            this.dgvFacilityList.Size = new System.Drawing.Size(677, 494);
             this.dgvFacilityList.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(882, 24);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(686, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 25);
+            this.label2.Size = new System.Drawing.Size(39, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "설비";
             // 
             // FrmFacilityGroup
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1751, 749);
+            this.ClientSize = new System.Drawing.Size(1362, 562);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmFacilityGroup";
             this.Text = "설비관리";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmFacilityGroup_FormClosing);
             this.Load += new System.EventHandler(this.FrmFacilityGroup_Load);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacilityGroupList)).EndInit();

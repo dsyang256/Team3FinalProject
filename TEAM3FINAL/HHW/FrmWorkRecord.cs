@@ -73,7 +73,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "이동창고", "FCLTS_NAME", true, 80); //5
             DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "이동수량", "WO_QTY_OUT", true, 80); //6 양품수량
             DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "비고", "WO_REMARK", true, 80); //7
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "작업지시번호", "WO_Code", true, 80); //8
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "작업지시서번호", "SALES_WORK_ORDER_ID", true, 80); //8
             DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "TYPE", "ITEM_TYP", true, 80); //9
             DataGridViewUtil.DataGridViewRowNumSet(dgvMOVEList);
             DataGridViewCheckBoxAllCheck2();
@@ -391,7 +391,7 @@ namespace TEAM3FINAL
             if (cnt == 1) //하나일 경우 PopUp창 띄움
             {
                 INSTACK_VO vo = new INSTACK_VO();
-                vo.WO_CODE = dgvMOVEList.CurrentRow.Cells[8].Value.ToString();
+                vo.SALES_WORK_ORDER_ID = dgvMOVEList.CurrentRow.Cells[8].Value.ToString();
                 vo.INS_QTY = Convert.ToInt32(dgvMOVEList.CurrentRow.Cells[6].Value);
                 vo.ITEM_CODE = dgvMOVEList.CurrentRow.Cells[1].Value.ToString();                
 

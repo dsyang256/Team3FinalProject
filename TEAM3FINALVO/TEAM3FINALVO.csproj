@@ -58,6 +58,8 @@
     <Compile Include="Menu_VO.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="MOVESTATE_VO.cs" />
+    <Compile Include="OrderState_VO.cs" />
+    <Compile Include="ProductOUT_VO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="REORDERDETATILS_VO.cs" />
     <Compile Include="REORDER_VO.cs" />

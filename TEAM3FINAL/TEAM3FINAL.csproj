@@ -70,7 +70,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\INSTACKService.cs" />
     <Compile Include="Services\WorkOrderService.cs" />
     <Compile Include="YDS\FrmPortSetting.cs">
       <SubType>Form</SubType>

@@ -14,6 +14,6 @@ namespace TEAM3FINALVO
         public string INS_TYP { get; set; }
         public string INS_WRHS { get; set; }
         public string ITEM_CODE { get; set; }
-        public string WO_CODE { get; set; }
+        public string SALES_WORK_ORDER_ID { get; set; }
     }
 }
