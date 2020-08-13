@@ -38,7 +38,7 @@ namespace TEAM3FINALDAC
                     cmd.Parameters.AddWithValue("@P_FAC_LAST_MDFY", fac.FAC_LAST_MDFY);
                     cmd.Parameters.AddWithValue("@P_FAC_USE_YN", fac.FAC_USE_YN);
                     cmd.Parameters.AddWithValue("@P_FAC_DESC", fac.FAC_DESC);
-                    cmd.Parameters.AddWithValue("@P_COM_CODE", fac.COM_CODE);
+                    cmd.Parameters.AddWithValue("@P_COM_NAME", fac.COM_NAME);
                     cmd.Parameters.Add(new SqlParameter("@P_ReturnCode", System.Data.SqlDbType.NVarChar, 5));
                     cmd.Parameters["@P_ReturnCode"].Direction = System.Data.ParameterDirection.Output;
 
@@ -86,8 +86,8 @@ namespace TEAM3FINALDAC
             using (SqlCommand cmd = new SqlCommand())
             {
                 cmd.Connection = new SqlConnection(this.ConnectionString);
-                cmd.CommandText = @"select [FAC_CODE], [FAC_FCLTY], [FAC_FCLTY_PARENT], [FAC_NAME], [FAC_TYP], [FAC_FREE_YN], [FAC_TYP_SORT], [FAC_DEMAND_YN], [FAC_PROCS_YN], [FAC_MTRL_YN], [FAC_LAST_MDFR], convert(varchar, [FAC_LAST_MDFY], 120) [FAC_LAST_MDFY], [FAC_USE_YN], [FAC_DESC], [COM_CODE]
-from[dbo].[FACTORY]";
+                cmd.CommandText = @"select FAC_CODE, FAC_FCLTY, FAC_FCLTY_PARENT, FAC_NAME, FAC_TYP, FAC_FREE_YN, FAC_TYP_SORT, FAC_DEMAND_YN, FAC_PROCS_YN, FAC_MTRL_YN, FAC_LAST_MDFR, convert(varchar, FAC_LAST_MDFY, 120) FAC_LAST_MDFY, FAC_USE_YN, FAC_DESC, c.COM_NAME
+from FACTORY f left outer join COMPANY c on f.COM_CODE = c.COM_CODE";
                 cmd.Connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();                
                 list = Helper.DataReaderMapToList<FACTORY_VO>(reader);

@@ -40,7 +40,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "수요차감", "FAC_DEMAND_YN", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "공정차감", "FAC_PROCS_YN", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "자재차감여부", "FAC_MTRL_YN", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "업체코드", "COM_CODE", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "업체코드", "COM_NAME", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "사용유무", "FAC_USE_YN", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "최종수정자", "FAC_LAST_MDFR", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "최종수정시간", "FAC_LAST_MDFY", true, 80);

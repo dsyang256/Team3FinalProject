@@ -70,7 +70,7 @@ namespace TEAM3FINAL
             vo.FAC_LAST_MDFY = txtModifyDate.Text;
             vo.FAC_USE_YN = cboUseYN.Text;
             vo.FAC_DESC = txtDesc.Text;
-            vo.COM_CODE = cboCom.Text;
+            vo.COM_NAME = cboCom.SelectedValue.ToString();
 
 
             FactoryService service = new FactoryService();
@@ -146,7 +146,8 @@ namespace TEAM3FINAL
             CommonUtil.ComboBinding<ComboItemVO>(cboUseYN, listYN5, "COMMON_CODE", "COMMON_NAME", "");
             var listCom = (from item in commonlist where item.COMMON_PARENT == "COMPANY_TYP" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(cboCategory, listCom, "COMMON_CODE", "COMMON_NAME", "");
-
+            var listComName = (from item in commonlist where item.COMMON_PARENT == "업체명" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(cboCom, listComName, "COMMON_CODE", "COMMON_NAME", "");
         }
     }
 }
