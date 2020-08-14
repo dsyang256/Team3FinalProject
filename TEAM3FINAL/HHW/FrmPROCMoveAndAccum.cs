@@ -135,6 +135,7 @@ namespace TEAM3FINAL
             txtITEM_CODE.Text = "";
             cboWHouse.SelectedIndex = 0;
             cboType.SelectedIndex = -1;
+            MOVEList();
         }
 
         public void Update(object sender, EventArgs e)
