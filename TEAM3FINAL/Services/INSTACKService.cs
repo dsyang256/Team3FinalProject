@@ -21,5 +21,10 @@ namespace TEAM3FINAL
             INSTACKDAC dac = new INSTACKDAC();
             return dac.INSTACDataTable(day1, day2, wrhs, name, typ, level, itemtyp);
         }
+        public DataTable ReceivingSearch()
+        {
+            INSTACKDAC dac = new INSTACKDAC();
+            return dac.ReceivingSearch();
+        }
     }
 }

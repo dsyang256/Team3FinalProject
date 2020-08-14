@@ -32,7 +32,7 @@ namespace TEAM3FINALDAC
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(this.ConnectionString);
             conn.Open();
-            using (SqlDataAdapter da = new SqlDataAdapter("SP_GetWarehousingWait", conn))
+            using (SqlDataAdapter da = new SqlDataAdapter("SP_ReleaseSearch", conn))
             {
                 da.SelectCommand.CommandType = CommandType.StoredProcedure;
                 da.SelectCommand.Parameters.AddWithValue("@P_sday", day1);
@@ -42,6 +42,40 @@ namespace TEAM3FINALDAC
                 da.SelectCommand.Parameters.AddWithValue("@P_typ", typ);
                 da.SelectCommand.Parameters.AddWithValue("@P_level", level);
                 da.SelectCommand.Parameters.AddWithValue("@P_itemtyp", itemtyp);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public DataTable ReceivingSearch()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            string sql = @"select ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx
+                          ,f.FAC_NAME
+						  ,i.INS_WRHS
+                          ,i.ITEM_CODE
+                          ,te.ITEM_NAME
+                          ,te.ITEM_TYP
+                          ,te.ITEM_STND
+                          ,v.현재고
+                          ,te.ITEM_UNIT
+                          ,te.ITEM_MANAGE_LEVEL
+                           FROM INSTACK i , FACTORY f,item te ,INSTACK_WORK_V v
+                          WHERE i.INS_WRHS = f.FAC_CODE and i.ITEM_CODE = te.ITEM_CODE and i.ITEM_CODE = v.ITEM_CODE  
+                          GROUP BY 
+                           f.FAC_NAME
+						  ,i.INS_WRHS
+                          ,i.ITEM_CODE
+                          ,te.ITEM_NAME
+                          ,te.ITEM_TYP
+                          ,te.ITEM_STND
+                          ,te.ITEM_UNIT
+                          ,te.ITEM_MANAGE_LEVEL
+                          ,v.현재고";
+            conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
+            {
+
                 da.Fill(dt);
             }
             return dt;
