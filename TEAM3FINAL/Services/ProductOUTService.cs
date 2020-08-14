@@ -17,10 +17,34 @@ namespace TEAM3FINAL.HHW
             return dac.GetProductOUTList();
         }
 
-        internal Message ProductOUT(ProductOUT_VO vo, string id)
+        public Message ProductOUT(ProductOUT_VO vo, string id)
         {
             ProductOUTDAC dac = new ProductOUTDAC();
             return dac.ProductOUT(vo, id);
+        }
+
+        public List<ProductOUT_VO> SearchProductOUT(string id, string item, string company)
+        {
+            ProductOUTDAC dac = new ProductOUTDAC();
+            return dac.SearchProductOUT(id, item, company);
+        }
+
+        public List<ProductOUT_VO> GetProductOUTStateList()
+        {
+            ProductOUTDAC dac = new ProductOUTDAC();
+            return dac.GetProductOUTStateList();
+        }
+
+        public Message ProductOUTCancel(ProductOUT_VO vo, string id)
+        {
+            ProductOUTDAC dac = new ProductOUTDAC();
+            return dac.ProductOUTCancel(vo, id);
+        }
+
+        public List<ProductOUT_VO> SearchProductOUTState(string id, string item, string company)
+        {
+            ProductOUTDAC dac = new ProductOUTDAC();
+            return dac.SearchProductOUTState(id, item, company);
         }
     }
 }

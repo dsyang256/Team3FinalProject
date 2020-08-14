@@ -38,7 +38,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.cboShift = new System.Windows.Forms.ComboBox();
+            this.cboPlan = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.menuPanel1 = new TEAM3FINAL.MenuPanel();
@@ -60,7 +60,7 @@
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.cboShift);
+            this.panel2.Controls.Add(this.cboPlan);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Size = new System.Drawing.Size(1050, 62);
@@ -162,14 +162,14 @@
             this.label6.TabIndex = 47;
             this.label6.Text = "*";
             // 
-            // cboShift
+            // cboPlan
             // 
-            this.cboShift.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboShift.FormattingEnabled = true;
-            this.cboShift.Location = new System.Drawing.Point(494, 18);
-            this.cboShift.Name = "cboShift";
-            this.cboShift.Size = new System.Drawing.Size(121, 23);
-            this.cboShift.TabIndex = 44;
+            this.cboPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPlan.FormattingEnabled = true;
+            this.cboPlan.Location = new System.Drawing.Point(494, 18);
+            this.cboPlan.Name = "cboPlan";
+            this.cboPlan.Size = new System.Drawing.Size(121, 23);
+            this.cboPlan.TabIndex = 44;
             // 
             // label11
             // 
@@ -252,7 +252,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cboShift;
+        private System.Windows.Forms.ComboBox cboPlan;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label3;
         private MenuPanel menuPanel1;

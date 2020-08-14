@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using TEAM3FINALVO;
 
 namespace TEAM3FINAL
 {
@@ -48,15 +49,10 @@ namespace TEAM3FINAL
         private void BindingComboBox()
         {
             ////서비스호출
-            //ComboItemService service = new ComboItemService();
+            ComboItemService service = new ComboItemService();
 
-            //var commonlist = service.GetCmCode();
-            //var statelist = (from item in commonlist select item).Where(p => p.COMMON_PARENT == "ORDER_STATE").ToList();
-            //var companylist = service.GetCompanyCode();
-            //var com2list = service.GetCompanyCode();
-            //CommonUtil.ComboBinding<ComboItemVO>(cboState, statelist, "COMMON_CODE", "COMMON_NAME", "");
-            //CommonUtil.ComboBinding<ComboItemVO>(cboCom, companylist, "COMMON_CODE", "COMMON_NAME", "");
-            //CommonUtil.ComboBinding<ComboItemVO>(cboCom2, com2list, "COMMON_CODE", "COMMON_NAME", "");
+            var planlist = service.GetCmCode();
+            CommonUtil.ComboBinding<ComboItemVO>(cboPlan, planlist, "COMMON_CODE", "COMMON_NAME", "");
         }
         #region 공통버튼 적용
         /// <summary>
@@ -191,7 +187,12 @@ namespace TEAM3FINAL
 
         private void btnProductPlan_Click(object sender, EventArgs e)
         {
+            //생산계획 생성
+            //생성 가능 여부 확인
 
+            //작업지시 생성
+
+            //확인여부 출력
         }
     }
 }

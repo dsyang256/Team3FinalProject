@@ -81,19 +81,8 @@ namespace TEAM3FINAL
             frm.ePrint += Print;
         }
 
-        //콤보박스 바인딩
-        private void ComboBinding()
-        {
-            CommonService service = new CommonService();
-            List<ComboItemVO> commonlist = service.GetITEMCmCode();
-
-            //var listCOMPANY_TYP = (from item in commonlist where item.COMMON_PARENT == "COMPANY_TYP" select item).ToList();
-            //CommonUtil.ComboBinding<ComboItemVO>(cboCategory, listCOMPANY_TYP, "COMMON_CODE", "COMMON_NAME", "");
-        }
-
         private void FrmProductOUT_Load(object sender, EventArgs e)
         {
-            ComboBinding();
             btnset();
             DataGridViewColumnSet();
             GetProductOUT();
@@ -135,12 +124,21 @@ namespace TEAM3FINAL
 
         public void Search(object sender, EventArgs e)
         {
-            
+            string id = txtID.Text;
+            string item = txtITEM.Text;
+            string company = txtCompany.Text;
+
+            ProductOUTService service = new ProductOUTService();
+            dgvProductOUT.DataSource = null;
+            dgvProductOUT.DataSource = service.SearchProductOUT(id, item, company);
         }
 
         public void Reset(object sender, EventArgs e)
         {
-            
+            txtCompany.Text = "";
+            txtID.Text = "";
+            txtITEM.Text = "";
+            GetProductOUT();
         }
 
         public void Update(object sender, EventArgs e)
@@ -193,6 +191,11 @@ namespace TEAM3FINAL
                     MessageBox.Show("출고 수량이 주문수량을 초과합니다.");
                     return;
                 }
+                if(vo.OUTing_QTY == 0)
+                {
+                    MessageBox.Show("출고할 수량을 입력하여 주십시오.");
+                    return;
+                }
 
                 ProductOUTService service = new ProductOUTService();
                 Message msg = service.ProductOUT(vo, LoginInfo.UserInfo.LI_NAME);
@@ -200,7 +203,7 @@ namespace TEAM3FINAL
                 {
                     MessageBox.Show(msg.ResultMessage);
                     this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    GetProductOUT();
                 }
                 else
                 {
@@ -213,6 +216,17 @@ namespace TEAM3FINAL
                 MessageBox.Show("하나의 항목씩만 가능");
                 return;
             }
-        }        
+        }
+
+        private void FrmProductOUT_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FrmMAIN frm = (FrmMAIN)this.MdiParent;
+            frm.eSearch -= Search;
+            frm.eInsert -= Insert;
+            frm.eDelete -= Delete;
+            frm.eUpdate -= Update;
+            frm.eReset -= Reset;
+            frm.ePrint -= Print;
+        }
     }
 }
