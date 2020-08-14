@@ -24,7 +24,8 @@ namespace TEAM3FINAL
         {
             ComboBinding();
             DataGridViewColumnSet();
-            DataGridViewBinding1();
+            DataGridViewBinding();
+            BtnSet(); 
         }
         #region 콤보박스 바인딩
         /// <summary>
@@ -87,7 +88,7 @@ namespace TEAM3FINAL
         /// <summary>
         /// 데이터 그리드 바인딩
         /// </summary>
-        private void DataGridViewBinding1()
+        private void DataGridViewBinding()
         {
             dgv1.DataSource = null;
             INSTACKService service = new INSTACKService();
@@ -102,6 +103,16 @@ namespace TEAM3FINAL
         /// <summary>
         /// 버튼이벤트
         /// </summary>
+        private void BtnSet()
+        {
+            FrmMAIN frm = (FrmMAIN)this.MdiParent;
+            frm.eSearch += Search;
+            frm.eInsert += Insert;
+            frm.eUpdate += Update;
+            frm.eDelete += Delete;
+            frm.ePrint += Print;
+            frm.eReset += Reset;
+        }
         public void Insert(object sender, EventArgs e)
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
@@ -116,7 +127,7 @@ namespace TEAM3FINAL
             {
                 string day1 = sday.Value.ToShortDateString();
                 string day2 = eday.Value.ToShortDateString();
-                string wrhs = WRHS.SelectedValue.ToString();
+                string wrhs = (WRHS.Text.Length < 1) ? "": WRHS.SelectedValue.ToString();
                 string name = ITEM.Text;
                 string typ = TYP.Text;
                 string level = ITEM_MANAGER.Text;
@@ -130,7 +141,14 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-
+                sday.Value = DateTime.Now;
+                eday.Value = DateTime.Now;
+                WRHS.SelectedIndex  = -1;
+                ITEM.Text = "";
+                TYP.Text = "";
+                ITEM_MANAGER.Text = "";
+                ITEM_TYP.Text = "";
+                DataGridViewBinding();
             }
         }
 

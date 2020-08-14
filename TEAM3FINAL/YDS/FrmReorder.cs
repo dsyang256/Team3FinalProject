@@ -19,6 +19,8 @@ namespace TEAM3FINAL
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            dateTimePicker1.Value = DateTime.Now.AddDays(-5);
+            dateTimePicker2.Value = DateTime.Now.AddDays(5);
             BtnSet();
             ComboBinding();
             DataGridViewColumnSet();
@@ -78,27 +80,9 @@ namespace TEAM3FINAL
             var listCOM_CODE = (from item in Commonlist where item.COMMON_PARENT == "업체명" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(COM_CODE, listCOM_CODE, "COMMON_CODE", "COMMON_NAME", "");
 
-            //창고
-            var listFACILITY_TYPE = (from item in Commonlist where item.COMMON_PARENT == "창고" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(FACILITY_TYPE, listFACILITY_TYPE, "COMMON_CODE", "COMMON_NAME", "");
-
             //품목형태
             var listITEM_TYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listITEM_TYP, "COMMON_CODE", "COMMON_NAME", "");
-
-            //담당자
-            var listMANAGER = (from item in Commonlist where item.COMMON_PARENT == "담당자" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(MANAGER, listMANAGER, "COMMON_CODE", "COMMON_NAME", "");
-
-            //사용여부
-            var listYN = (from item in Commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(USE_YN, listYN, "COMMON_CODE", "COMMON_NAME", "");
-
-            //발주유형
-            var listREORDER_TYP = (from item in Commonlist where item.COMMON_PARENT == "발주방식" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(REORDER_TYP, listREORDER_TYP, "COMMON_CODE", "COMMON_NAME", "");
-
-
 
 
         }
@@ -140,11 +124,8 @@ namespace TEAM3FINAL
             ITEM_STND.Text = "";
             PLAN_ID.SelectedIndex = -1;
             COM_CODE.SelectedIndex = -1;
-            FACILITY_TYPE.SelectedIndex = -1;
             ITEM_TYP.SelectedIndex = -1;
-            USE_YN.SelectedIndex = -1;
             ITEM_TYP.SelectedIndex = -1;
-            USE_YN.SelectedIndex = -1;
             //DataGridViewBinding();
         }
         /// <summary>

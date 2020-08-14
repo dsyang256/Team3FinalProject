@@ -22,8 +22,10 @@ namespace TEAM3FINAL
 
         private void FrmReceivingSearch_Load(object sender, EventArgs e)
         {
+            
             ComboBinding();
             DataGridViewColumnSet();
+            DataGridViewBinding();
         }
         #region 콤보박스 바인딩
         /// <summary>
@@ -64,18 +66,17 @@ namespace TEAM3FINAL
             DataGridViewUtil.InitSettingGridView(dgv1);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "no", "idx", true, 30);
             DataGridViewUtil.DataGridViewCheckBoxSet(dgv1, "all");
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "입고번호", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "입고일", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "입고유형", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "입고창고", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품명", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "규격", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "단위", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "입고량", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "잔량", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "업체", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "납품업체", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "창고이름", "FAC_NAME", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "창고코드", "INS_WRHS", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목", "ITEM_CODE", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품명", "ITEM_NAME", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품명유형", "ITEM_TYP", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "현재고", "현재고", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "규격", "ITEM_STND", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "개수", "ITEM_UNIT", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "관리등급", "ITEM_MANAGE_LEVEL", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "비고", "", true, 400);
+
 
 
             DataGridViewCheckBoxAllCheck();
@@ -88,11 +89,11 @@ namespace TEAM3FINAL
         /// <summary>
         /// 데이터 그리드 바인딩
         /// </summary>
-        private void DataGridViewBinding1()
+        private void DataGridViewBinding()
         {
             dgv1.DataSource = null;
-           
-            
+            INSTACKService service = new INSTACKService();
+            dgv1.DataSource = service.ReceivingSearch();
         }
         
         #endregion
