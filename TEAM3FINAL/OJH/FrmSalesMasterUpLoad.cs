@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace TEAM3FINAL
 {
@@ -43,7 +44,7 @@ namespace TEAM3FINAL
         }
 
 
-  
+
         private void Sales_Master_Upload_Load(object sender, EventArgs e)
         {
             DataGridViewColumnSet();
@@ -163,8 +164,87 @@ namespace TEAM3FINAL
 
         #endregion
         */
-   
 
-    #endregion
-}
+
+        #endregion
+
+        /// <summary>
+            /// 양식을 다운로드하는 이벤트
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
+        private void btnYangsic_Click(object sender, EventArgs e)
+        {
+            Excel.Application xlApp;
+            Excel.Workbook xlWorkBook;
+            Excel.Worksheet xlWorkSheet;
+
+            int i, j;
+
+            saveFileDialog1.Filter = "Excel Files (*.xls)|*.xls";
+            saveFileDialog1.InitialDirectory = "C:";
+            saveFileDialog1.Title = "Save";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                xlApp = new Excel.Application();
+                xlWorkBook = xlApp.Workbooks.Add();
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                xlWorkSheet.Cells[1, 1] = "planDate";
+                xlWorkSheet.Cells[1, 2] = "순번";
+                xlWorkSheet.Cells[1, 3] = "WORK_ORDER_ID";
+                xlWorkSheet.Cells[1, 4] = "업체CODE";
+                xlWorkSheet.Cells[1, 5] = "납품처";
+                xlWorkSheet.Cells[1, 6] = "발주구분";
+                xlWorkSheet.Cells[1, 7] = "ITEM CODE";
+                xlWorkSheet.Cells[1, 8] = "계획수량합계";
+                xlWorkSheet.Cells[1, 9] = "납기일";
+
+
+
+
+                xlWorkBook.SaveAs(saveFileDialog1.FileName, Excel.XlFileFormat.xlWorkbookNormal);
+                xlWorkBook.Close(true);
+                xlApp.Quit();
+
+                releaseObject(xlWorkSheet);
+                releaseObject(xlWorkBook);
+                releaseObject(xlApp);
+
+            }
+        }
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
+            }
+        }
+
+        private void FrmSalesMasterUpLoad_Load(object sender, EventArgs e)
+        {
+            //그리드 설정
+
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMaster_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
