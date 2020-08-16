@@ -33,7 +33,7 @@ namespace TEAM3FINAL
         private void DataGridViewCheckBoxAllCheck()
         {
             headerChk = new CheckBox();
-            Point headerCell = dgvCost.GetCellDisplayRectangle(1, -1, true).Location;
+            Point headerCell = dgvCost.GetCellDisplayRectangle(0, -1, true).Location;
             headerChk.Location = new Point(headerCell.X + 4, headerCell.Y + 15);
             headerChk.Size = new Size(18, 18);
             headerChk.BackColor = Color.FromArgb(245, 245, 246);
@@ -52,12 +52,10 @@ namespace TEAM3FINAL
             //데이터그리드뷰의 전체 행의 체크를 체크 or 언체크
             foreach (DataGridViewRow row in dgvCost.Rows)
             {
-                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells["all"];
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
                 chk.Value = headerChk.Checked;
             }
         }
-
-
         private void Readed_BarCode(object sender, ReadEventArgs e)
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
@@ -74,7 +72,6 @@ namespace TEAM3FINAL
                 }
             }
         }
-
         /// <summary>
         /// 그리드뷰 컬럼 설정
         /// </summary>
@@ -90,12 +87,21 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "품명", "ITEM_NAME", true, 200);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "규격", "ITEM_STND", true, 150);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "단위", "ITEM_UNIT", true, 100);
+            dgvCost.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "현재단가", "MC_UNITPRICE_CUR", true, 100);
+            dgvCost.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "이전단가", "MC_UNITPRICE_EX", true, 100);
+            dgvCost.Columns[9].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "시작일", "MC_STARTDATE", true, 120);
+            dgvCost.Columns[10].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "종료일", "MC_ENDDATE", true, 120);
+            dgvCost.Columns[11].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "비고", "MC_REMARK", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCost, "사용유무", "MC_USE_YN", true, 100);
+            dgvCost.Columns[13].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dgvCost.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvCost.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
 
             //행번호 추가
             DataGridViewUtil.DataGridViewRowNumSet(dgvCost);
@@ -165,6 +171,16 @@ namespace TEAM3FINAL
             frm.eDelete += Delete;
             frm.ePrint += Print;
             frm.eReset += Reset;
+        }
+        private void BtnUnSet()
+        {
+            FrmMAIN frm = (FrmMAIN)this.MdiParent;
+            frm.eSearch -= Search;
+            frm.eInsert -= Insert;
+            frm.eUpdate -= Update;
+            frm.eDelete -= Delete;
+            frm.ePrint -= Print;
+            frm.eReset -= Reset;
         }
 
         public void Delete(object sender, EventArgs e)
@@ -310,7 +326,8 @@ namespace TEAM3FINAL
 
         private void FrmMaterialCost_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ((FrmMAIN)this.MdiParent).Readed -= Readed_BarCode;
+            BtnUnSet();
+           ((FrmMAIN)this.MdiParent).Readed -= Readed_BarCode;
         }
     }
 }

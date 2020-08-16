@@ -14,6 +14,7 @@ namespace TEAM3FINAL
     {
         #region 멤버변수
         List<SHIFTList_VO> AllList;
+        CheckBox headerChk;
         #endregion
 
         #region 생성자
@@ -26,6 +27,37 @@ namespace TEAM3FINAL
         #region 메서드
 
         /// <summary>
+        /// 데이터 그리드뷰 올체크 체크박스 만들기
+        /// </summary>
+        private void DataGridViewCheckBoxAllCheck()
+        {
+            headerChk = new CheckBox();
+            Point headerCell = dgvShift.GetCellDisplayRectangle(0, -1, true).Location;
+            headerChk.Location = new Point(headerCell.X + 8, headerCell.Y + 15);
+            headerChk.Size = new Size(18, 18);
+            headerChk.BackColor = Color.FromArgb(245, 245, 246);
+            headerChk.Click += HeaderChk_Clicked;
+            dgvShift.Controls.Add(headerChk);
+        }
+        /// <summary>
+        /// 올체크 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HeaderChk_Clicked(object sender, EventArgs e)
+        {
+            dgvShift.EndEdit();
+
+            //데이터그리드뷰의 전체 행의 체크를 체크 or 언체크
+            foreach (DataGridViewRow row in dgvShift.Rows)
+            {
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
+                chk.Value = headerChk.Checked;
+            }
+        }
+
+
+        /// <summary>
         /// 그리드뷰 컬럼 설정
         /// </summary>
         private void DataGridViewColumnSet()
@@ -34,19 +66,25 @@ namespace TEAM3FINAL
             DataGridViewUtil.InitSettingGridView(dgvShift);
             DataGridViewUtil.DataGridViewCheckBoxSet(dgvShift, "  ");
             DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "shiftCode", "SHIFT_CODE", false, 50);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "설비명", "FCLTS_NAME", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "설비코드", "FCLTS_CODE", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "SHIFT", "SHIFT_TYP", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "시작시간", "SHIFT_STARTTIME", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "완료시간", "SHIFT_ENDTIME", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "적용시간일자", "SHIFT_APPLY_STARTTIME", true, 150);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "적용완료일자", "SHIFT_APPLY_ENDTIME", true, 150);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "투입인원", "SHIFT_PERSON_DIR", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "사용유무", "SHIFT_USE_YN", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "비고", "SHIFT_REMARK", true, 300);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "설비명", "FCLTS_NAME", true, 300, DataGridViewContentAlignment.MiddleCenter);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "설비코드", "FCLTS_CODE", true, 300, DataGridViewContentAlignment.MiddleCenter);
+            dgvShift.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "SHIFT", "SHIFT_TYP", true, 100, DataGridViewContentAlignment.MiddleCenter);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "시작시간", "SHIFT_STARTTIME", true, 150, DataGridViewContentAlignment.MiddleCenter);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "완료시간", "SHIFT_ENDTIME", true, 150, DataGridViewContentAlignment.MiddleCenter);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "적용시간일자", "SHIFT_APPLY_STARTTIME", true, 150, DataGridViewContentAlignment.MiddleCenter);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "적용완료일자", "SHIFT_APPLY_ENDTIME", true, 150, DataGridViewContentAlignment.MiddleCenter);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "투입인원", "SHIFT_PERSON_DIR", true, 100, DataGridViewContentAlignment.MiddleCenter);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "사용유무", "SHIFT_USE_YN", true, 100, DataGridViewContentAlignment.MiddleCenter);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvShift, "비고", "SHIFT_REMARK", true, 250, DataGridViewContentAlignment.MiddleCenter);
+            dgvShift.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvShift.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
 
             //행번호 추가
             DataGridViewUtil.DataGridViewRowNumSet(dgvShift);
+
+            //체크박스추가
+            DataGridViewCheckBoxAllCheck();
         }
         /// <summary>
         /// 데이터그리드뷰의 체크된 품목의 코드에 해당하는 품목리스트를 가져오는 메서드
@@ -211,7 +249,7 @@ namespace TEAM3FINAL
 
         public void Print(object sender, EventArgs e)
         {
-            //미구현
+            //사용안함
         }
         #endregion
         #endregion 

@@ -290,6 +290,8 @@ namespace TEAM3FINAL
         #region 이벤트
         private void FrmSalesMaster_Load(object sender, EventArgs e)
         {
+            dtpTo.Value = DateTime.Now.AddDays(7);
+            dtpFrom.Value = DateTime.Now;
             //그리드 초기화
             DataGridViewColumnSet();
             //공통버튼적용

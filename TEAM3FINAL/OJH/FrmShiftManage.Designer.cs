@@ -44,6 +44,7 @@
             this.dtpTodate = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.dgvShift = new WindowsFormsApp18.MyDataGridView();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -166,6 +167,7 @@
             this.dtpFromdate.Name = "dtpFromdate";
             this.dtpFromdate.Size = new System.Drawing.Size(91, 23);
             this.dtpFromdate.TabIndex = 41;
+            this.dtpFromdate.ValueChanged += new System.EventHandler(this.dtpFromdate_ValueChanged);
             // 
             // dtpTodate
             // 
@@ -174,6 +176,7 @@
             this.dtpTodate.Name = "dtpTodate";
             this.dtpTodate.Size = new System.Drawing.Size(91, 23);
             this.dtpTodate.TabIndex = 41;
+            this.dtpTodate.ValueChanged += new System.EventHandler(this.dtpTodate_ValueChanged);
             // 
             // label7
             // 
@@ -257,5 +260,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private WindowsFormsApp18.MyDataGridView dgvShift;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
