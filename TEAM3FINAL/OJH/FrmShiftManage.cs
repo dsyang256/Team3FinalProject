@@ -185,7 +185,7 @@ namespace TEAM3FINAL
                         int i, j;
                         saveFileDialog1.Filter = "Excel Files (*.xls)|*.xls";
                         saveFileDialog1.InitialDirectory = "C:";
-                        saveFileDialog1.Title = "Save";
+                        saveFileDialog1.Title = "SaveShiftManage";
                         if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                         {
                             xlApp = new Microsoft.Office.Interop.Excel.Application();
@@ -224,9 +224,12 @@ namespace TEAM3FINAL
                     }
                     finally
                     {
-                        releaseObject(xlWorkSheet);
-                        releaseObject(xlWorkBook);
-                        releaseObject(xlApp);
+                        if (xlApp != null)
+                        {
+                            releaseObject(xlWorkSheet);
+                            releaseObject(xlWorkBook);
+                            releaseObject(xlApp);
+                        }
                     }
                 }
 

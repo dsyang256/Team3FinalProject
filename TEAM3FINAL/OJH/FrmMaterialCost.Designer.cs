@@ -42,6 +42,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.cboCompany = new System.Windows.Forms.ComboBox();
             this.dgvCost = new WindowsFormsApp18.MyDataGridView();
+            this.menuPanel1 = new TEAM3FINAL.MenuPanel();
+            this.btnYangsic = new System.Windows.Forms.Button();
+            this.btnExcel = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -63,7 +68,7 @@
             this.panel2.Controls.Add(this.dtpDate);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Size = new System.Drawing.Size(1050, 60);
+            this.panel2.Size = new System.Drawing.Size(1050, 62);
             // 
             // label1
             // 
@@ -72,8 +77,8 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.dgvCost);
-            this.panel3.Location = new System.Drawing.Point(15, 102);
-            this.panel3.Size = new System.Drawing.Size(1050, 451);
+            this.panel3.Location = new System.Drawing.Point(15, 134);
+            this.panel3.Size = new System.Drawing.Size(1050, 419);
             // 
             // dtpDate
             // 
@@ -201,17 +206,73 @@
             this.dgvCost.RowHeadersWidth = 30;
             this.dgvCost.RowTemplate.Height = 23;
             this.dgvCost.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCost.Size = new System.Drawing.Size(1050, 451);
+            this.dgvCost.Size = new System.Drawing.Size(1050, 419);
             this.dgvCost.TabIndex = 0;
+            // 
+            // menuPanel1
+            // 
+            this.menuPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.menuPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.menuPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.menuPanel1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.menuPanel1.Location = new System.Drawing.Point(12, 99);
+            this.menuPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.menuPanel1.Name = "menuPanel1";
+            this.menuPanel1.Size = new System.Drawing.Size(1053, 32);
+            this.menuPanel1.TabIndex = 5;
+            this.menuPanel1.TitleFont = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.menuPanel1.TitleName = "자재단가";
+            // 
+            // btnYangsic
+            // 
+            this.btnYangsic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnYangsic.AutoSize = true;
+            this.btnYangsic.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnYangsic.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnYangsic.Location = new System.Drawing.Point(889, 103);
+            this.btnYangsic.Name = "btnYangsic";
+            this.btnYangsic.Size = new System.Drawing.Size(89, 25);
+            this.btnYangsic.TabIndex = 9;
+            this.btnYangsic.Text = "양식다운로드";
+            this.btnYangsic.UseVisualStyleBackColor = false;
+            this.btnYangsic.Click += new System.EventHandler(this.btnYangsic_Click);
+            // 
+            // btnExcel
+            // 
+            this.btnExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcel.AutoSize = true;
+            this.btnExcel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnExcel.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnExcel.Location = new System.Drawing.Point(976, 103);
+            this.btnExcel.Name = "btnExcel";
+            this.btnExcel.Size = new System.Drawing.Size(89, 25);
+            this.btnExcel.TabIndex = 8;
+            this.btnExcel.Text = "EXCEL등록";
+            this.btnExcel.UseVisualStyleBackColor = false;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // FrmMaterialCost
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.ClientSize = new System.Drawing.Size(1080, 565);
+            this.Controls.Add(this.btnYangsic);
+            this.Controls.Add(this.btnExcel);
+            this.Controls.Add(this.menuPanel1);
             this.Name = "FrmMaterialCost";
             this.Text = "자재단가";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMaterialCost_FormClosing);
             this.Load += new System.EventHandler(this.FrmMaterialCost_Load);
+            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.panel3, 0);
+            this.Controls.SetChildIndex(this.menuPanel1, 0);
+            this.Controls.SetChildIndex(this.btnExcel, 0);
+            this.Controls.SetChildIndex(this.btnYangsic, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -234,5 +295,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
         private WindowsFormsApp18.MyDataGridView dgvCost;
+        private MenuPanel menuPanel1;
+        private System.Windows.Forms.Button btnYangsic;
+        private System.Windows.Forms.Button btnExcel;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

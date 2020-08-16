@@ -73,6 +73,12 @@
     <Compile Include="Services\INSTACKService.cs" />
     <Compile Include="Services\ProductOUTService.cs" />
     <Compile Include="Services\WorkOrderService.cs" />
+    <Compile Include="Utils\FrmWaitAsync.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\FrmWaitAsync.Designer.cs">
+      <DependentUpon>FrmWaitAsync.cs</DependentUpon>
+    </Compile>
     <Compile Include="YDS\FrmPortSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -511,6 +517,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaseForm\ProjectBaseForm.resx">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\FrmWaitAsync.resx">
+      <DependentUpon>FrmWaitAsync.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="YDS\FrmPortSetting.resx">
       <DependentUpon>FrmPortSetting.cs</DependentUpon>

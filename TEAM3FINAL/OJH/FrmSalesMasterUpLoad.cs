@@ -175,42 +175,50 @@ namespace TEAM3FINAL
             /// <param name="e"></param>
         private void btnYangsic_Click(object sender, EventArgs e)
         {
-            Excel.Application xlApp;
-            Excel.Workbook xlWorkBook;
-            Excel.Worksheet xlWorkSheet;
-
-            int i, j;
-
-            saveFileDialog1.Filter = "Excel Files (*.xls)|*.xls";
-            saveFileDialog1.InitialDirectory = "C:";
-            saveFileDialog1.Title = "Save";
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            Excel.Application xlApp=null;
+            Excel.Workbook xlWorkBook = null;
+            Excel.Worksheet xlWorkSheet = null;
+            try
             {
-                xlApp = new Excel.Application();
-                xlWorkBook = xlApp.Workbooks.Add();
-                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+                int i, j;
 
-                xlWorkSheet.Cells[1, 1] = "planDate";
-                xlWorkSheet.Cells[1, 2] = "순번";
-                xlWorkSheet.Cells[1, 3] = "WORK_ORDER_ID";
-                xlWorkSheet.Cells[1, 4] = "업체CODE";
-                xlWorkSheet.Cells[1, 5] = "납품처";
-                xlWorkSheet.Cells[1, 6] = "발주구분";
-                xlWorkSheet.Cells[1, 7] = "ITEM CODE";
-                xlWorkSheet.Cells[1, 8] = "계획수량합계";
-                xlWorkSheet.Cells[1, 9] = "납기일";
+                saveFileDialog1.Filter = "Excel Files (*.xls)|*.xls";
+                saveFileDialog1.InitialDirectory = "C:";
+                saveFileDialog1.Title = "SaveSalesMasterUpLoad";
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    xlApp = new Excel.Application();
+                    xlWorkBook = xlApp.Workbooks.Add();
+                    xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
+                    xlWorkSheet.Cells[1, 1] = "순번";
+                    xlWorkSheet.Cells[1, 2] = "WORK_ORDER_ID";
+                    xlWorkSheet.Cells[1, 3] = "업체 CODE";
+                    xlWorkSheet.Cells[1, 4] = "납품처";
+                    xlWorkSheet.Cells[1, 5] = "MKT";
+                    xlWorkSheet.Cells[1, 6] = "발주구분";
+                    xlWorkSheet.Cells[1, 7] = "ITEM CODE";
+                    xlWorkSheet.Cells[1, 8] = "계획수량합계";
+                    xlWorkSheet.Cells[1, 9] = "납기일";
 
-
-
-                xlWorkBook.SaveAs(saveFileDialog1.FileName, Excel.XlFileFormat.xlWorkbookNormal);
-                xlWorkBook.Close(true);
-                xlApp.Quit();
-
-                releaseObject(xlWorkSheet);
-                releaseObject(xlWorkBook);
-                releaseObject(xlApp);
-
+                    xlWorkBook.SaveAs(saveFileDialog1.FileName, Excel.XlFileFormat.xlWorkbookNormal);
+                    xlWorkBook.Close(true);
+                    xlApp.Quit();
+                    MessageBox.Show("다운로드되었습니다.", "다운로드 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("다운로드에 실패하였습니다.", "다운로드 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                if (xlApp != null)
+                {
+                    releaseObject(xlWorkSheet);
+                    releaseObject(xlWorkBook);
+                    releaseObject(xlApp);
+                }
             }
         }
         private void releaseObject(object obj)
@@ -242,6 +250,7 @@ namespace TEAM3FINAL
 
         }
 
+        //영업마스터 생성
         private void btnMaster_Click(object sender, EventArgs e)
         {
 
