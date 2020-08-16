@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\SalesEndService.cs" />
     <Compile Include="Services\INSTACKService.cs" />
     <Compile Include="Services\ProductOUTService.cs" />
     <Compile Include="Services\WorkOrderService.cs" />
