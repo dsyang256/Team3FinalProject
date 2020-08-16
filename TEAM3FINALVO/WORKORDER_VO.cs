@@ -36,4 +36,20 @@ namespace TEAM3FINALVO
         public string PLAN_ID { get; set; } //계획ID
         public string ITEM_TYP { get; set; }
     }
+
+    public class WORKORDERCREATE_VO
+    {
+        public string WO_Code { get; set; } //작업지시번호
+        public int WO_PLAN_QTY { get; set; } //계획수량(지시량) *
+        public int WO_QTY_PROD { get; set; }
+        public int Tacminute { get; set; }
+        public string WO_WORK_STATE { get; set; } //작업지시상태 *
+        public string WO_PLAN_STARTTIME { get; set; } //계획실제시작일
+        public string WO_PLAN_ENDTIME { get; set; } //계획실제종료일
+        public string ITEM_CODE { get; set; } //품목코드 *
+        public string ITEM_NAME { get; set; }
+        public string FCLTS_CODE { get; set; } //작업장코드 *
+        public string FCLTS_Name { get; set; }
+        public string ITEM_STND { get; set; }
+    }
 }

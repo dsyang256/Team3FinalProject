@@ -70,6 +70,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OJH\FrmOutProductionPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OJH\FrmOutProductionPlan.Designer.cs">
+      <DependentUpon>FrmOutProductionPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\FrmDemandPlanPop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup\FrmDemandPlanPop.Designer.cs">
+      <DependentUpon>FrmDemandPlanPop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\SalesEndService.cs" />
     <Compile Include="Services\INSTACKService.cs" />
     <Compile Include="Services\ProductOUTService.cs" />
@@ -80,6 +92,7 @@
     <Compile Include="Utils\FrmWaitAsync.Designer.cs">
       <DependentUpon>FrmWaitAsync.cs</DependentUpon>
     </Compile>
+    <Compile Include="Services\WorkOrderINService.cs" />
     <Compile Include="YDS\FrmPortSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -518,6 +531,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaseForm\ProjectBaseForm.resx">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup\FrmDemandPlanPop.resx">
+      <DependentUpon>FrmDemandPlanPop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\FrmWaitAsync.resx">
       <DependentUpon>FrmWaitAsync.cs</DependentUpon>

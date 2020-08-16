@@ -41,6 +41,32 @@ namespace TEAM3FINALDAC
             return list;
         }
 
+        public List<ComboItemVO> GetPlanID()
+        {
+            List<ComboItemVO> list = default;
+
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = $@"select distinct [PLAN_ID] COMMON_CODE, [PLAN_ID] COMMON_NAME, null COMMON_PARENT, null COMMON_SEQ
+                                                    from [dbo].[DEMAND_PLANNING]
+                                                    where 1=1  ";
+
+                    cmd.Connection.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    list = Helper.DataReaderMapToList<ComboItemVO>(reader);
+                    cmd.Connection.Close();
+                }
+            }
+            catch (Exception err)
+            {
+                string msg = err.Message;
+            }
+            return list;
+        }
+
         public List<ComboItemVO> GetFacilitiesCode()
         {
             List<ComboItemVO> list = default;

@@ -49,18 +49,18 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(883, 116);
+            this.panel1.Size = new System.Drawing.Size(880, 82);
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.groupBox1);
-            this.panel2.Size = new System.Drawing.Size(877, 92);
+            this.panel2.Size = new System.Drawing.Size(874, 62);
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.dgvGroup);
-            this.panel3.Location = new System.Drawing.Point(15, 170);
-            this.panel3.Size = new System.Drawing.Size(877, 380);
+            this.panel3.Location = new System.Drawing.Point(15, 134);
+            this.panel3.Size = new System.Drawing.Size(877, 416);
             // 
             // ITEM_NAME
             // 
@@ -95,7 +95,7 @@
             this.groupBox1.Controls.Add(this.ITEM_NAME);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Location = new System.Drawing.Point(15, 15);
+            this.groupBox1.Location = new System.Drawing.Point(15, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(318, 59);
             this.groupBox1.TabIndex = 22;
@@ -108,7 +108,7 @@
             this.btnRight.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnRight.Font = new System.Drawing.Font("맑은 고딕", 11F, System.Drawing.FontStyle.Bold);
             this.btnRight.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnRight.Location = new System.Drawing.Point(619, 134);
+            this.btnRight.Location = new System.Drawing.Point(619, 98);
             this.btnRight.Name = "btnRight";
             this.btnRight.Size = new System.Drawing.Size(138, 30);
             this.btnRight.TabIndex = 52;
@@ -122,7 +122,7 @@
             this.btnGroup.BackColor = System.Drawing.Color.RoyalBlue;
             this.btnGroup.Font = new System.Drawing.Font("맑은 고딕", 11F, System.Drawing.FontStyle.Bold);
             this.btnGroup.ForeColor = System.Drawing.SystemColors.Window;
-            this.btnGroup.Location = new System.Drawing.Point(755, 134);
+            this.btnGroup.Location = new System.Drawing.Point(755, 98);
             this.btnGroup.Name = "btnGroup";
             this.btnGroup.Size = new System.Drawing.Size(138, 30);
             this.btnGroup.TabIndex = 53;
@@ -137,7 +137,7 @@
             this.menuPanel1.BackColor = System.Drawing.Color.Transparent;
             this.menuPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.menuPanel1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.menuPanel1.Location = new System.Drawing.Point(12, 133);
+            this.menuPanel1.Location = new System.Drawing.Point(12, 98);
             this.menuPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.menuPanel1.Name = "menuPanel1";
             this.menuPanel1.Size = new System.Drawing.Size(883, 32);
@@ -182,7 +182,7 @@
             this.dgvGroup.RowHeadersWidth = 30;
             this.dgvGroup.RowTemplate.Height = 23;
             this.dgvGroup.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvGroup.Size = new System.Drawing.Size(877, 380);
+            this.dgvGroup.Size = new System.Drawing.Size(877, 416);
             this.dgvGroup.TabIndex = 0;
             // 
             // FrmAuthGroup

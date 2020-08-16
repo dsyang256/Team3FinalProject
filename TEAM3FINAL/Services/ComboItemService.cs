@@ -34,7 +34,12 @@ namespace TEAM3FINAL
             return dac.GetCompanyCode();
         }
 
+        public List<ComboItemVO> GetPlanID()
+        {
+            ComboItemDAC dac = new ComboItemDAC();
+            return dac.GetPlanID();
+        }
 
-       
+
     }
 }

@@ -16,5 +16,23 @@ namespace TEAM3FINAL
             PlanDAC dac = new PlanDAC();
             return dac.GetDemandPlan(FromDate,ToDate,PlanID);
         }
+
+        public string CheckDemandPlan(string planID)
+        {
+            PlanDAC dac = new PlanDAC();
+            return dac.CheckDemandPlan(planID);
+        }
+
+        public bool CheckWOCreate(string planID)
+        {
+            PlanDAC dac = new PlanDAC();
+            return dac.CheckWOCreate(planID);
+        }
+
+        public bool InsertWorkOrders(string planID)
+        {
+            PlanDAC dac = new PlanDAC();
+            return dac.InsertWorkOrders(planID);
+        }
     }
 }

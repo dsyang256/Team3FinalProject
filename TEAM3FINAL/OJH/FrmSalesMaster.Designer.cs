@@ -58,6 +58,7 @@
             this.txtItem = new System.Windows.Forms.TextBox();
             this.txtPO = new System.Windows.Forms.TextBox();
             this.dgvSales = new WindowsFormsApp18.MyDataGridView();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -98,7 +99,7 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(12, 192);
+            this.label1.Location = new System.Drawing.Point(2, 573);
             this.label1.Visible = false;
             // 
             // panel3
@@ -140,7 +141,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label2.Location = new System.Drawing.Point(431, 18);
+            this.label2.Location = new System.Drawing.Point(436, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 20);
             this.label2.TabIndex = 39;
@@ -151,7 +152,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label6.Location = new System.Drawing.Point(412, 21);
+            this.label6.Location = new System.Drawing.Point(417, 21);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(15, 18);
             this.label6.TabIndex = 41;
@@ -454,5 +455,6 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
         private WindowsFormsApp18.MyDataGridView dgvSales;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

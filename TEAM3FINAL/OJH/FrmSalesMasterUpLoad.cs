@@ -5,14 +5,16 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using TEAM3FINALVO;
 using Excel = Microsoft.Office.Interop.Excel;
+using Message = TEAM3FINALVO.Message;
 
 namespace TEAM3FINAL
 {
     public partial class FrmSalesMasterUpLoad : TEAM3FINAL.baseForm2
     {
         #region 멤버변수
-
+        List<SALES_WORK_VO> RList = new List<SALES_WORK_VO>();
         #endregion
 
         #region 생성자
@@ -30,14 +32,21 @@ namespace TEAM3FINAL
         {
             //데이터그리드뷰 초기설정
             DataGridViewUtil.InitSettingGridView(dgvSalesMaster);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "planDate", "", true, 160);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "WORK_ORDER_ID", "", true, 180);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "업체CODE", "", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "발주구분", "", true, 90);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "납품처", "", true, 90);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "ITEM CODE", " ", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "계획수량합계", "", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "납기일", "", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "SALES_ID", "SALES_ID", false, 160);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "SALES Work Order ID", "SALES_Work_Order_ID", true, 250);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "업체CODE", "COM_CODE", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "발주구분", "SALES_Order_TYPE", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "납품처", "SALES_COM_CODE", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "품목", "ITEM_CODE", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "계획수량합계", "SALES_QTY", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "납기일", "SALES_DUEDATE", true, 300);
+
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "생략", "SO_PurchaseOrder", false, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "생략1", "SALES_Out_QTY", false, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "생략2", "SALES_NO_QTY", false, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "생략3", "SALES_MKT", false, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "생략4", "SALES_Order_TYPE", false, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesMaster, "생략5", "SALES_REMARK", false, 200);
 
             //행번호 추가
             DataGridViewUtil.DataGridViewRowNumSet(dgvSalesMaster);
@@ -47,135 +56,18 @@ namespace TEAM3FINAL
 
         private void Sales_Master_Upload_Load(object sender, EventArgs e)
         {
-            DataGridViewColumnSet();
         }
-        /*
-        #region btnClick Methods
-
-        private void button3_Click(object sender, EventArgs e) //영업마스터 업로드
-        {
-
-            MasterCreate frm = new MasterCreate();
-            frm.StartPosition = FormStartPosition.CenterScreen;
-
-            if (frm.ShowDialog() == DialogResult.OK)
-            {
-                DataTable dt = frm.ExcelData;
-                dataGridView1.DataSource = dt;
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)//저장
-        {
-            List<SalesMasterVO> sales = new List<SalesMasterVO>();
-
-            if (dataGridView1.RowCount > 0)
-            {
-                for (int i = 0; i < dataGridView1.RowCount; i++)
-                {
-                    SalesMasterVO sale = new SalesMasterVO();
-                    sale.SALES_OrderDate = dataGridView1.Rows[i].Cells[0].Value.ToString();
-                    sale.SO_WorkOrderID = dataGridView1.Rows[i].Cells[1].Value.ToString();
-                    sale.COM_Code = dataGridView1.Rows[i].Cells[2].Value.ToString();
-                    sale.PO_Type = dataGridView1.Rows[i].Cells[3].Value.ToString();
-                    sale.ITEM_Code = dataGridView1.Rows[i].Cells[5].Value.ToString();
-                    sale.SALES_OrderQty = Convert.ToInt32(dataGridView1.Rows[i].Cells[6].Value);
-                    sale.SALES_Duedate = dataGridView1.Rows[i].Cells[7].Value.ToString();
-
-                    sales.Add(sale);
-                }
-
-                HSM_Service service = new HSM_Service();
-                if (service.UploadSalesMaster(sales))
-                {
-                    MessageBox.Show("영업마스터가 저장되었습니다.");
-                    dataGridView1.DataSource = null;
-                }
-                else
-                {
-                    MessageBox.Show("저장실패");
-                }
-
-            }
-            else
-            {
-                MessageBox.Show("영업마스터를 먼저 업로드 하세요.");
-            }
-
-        }
-
-        private void button2_Click(object sender, EventArgs e) //양식다운로드
-        {
-            Excel.Application xlApp;
-            Excel.Workbook xlWorkBook;
-            Excel.Worksheet xlWorkSheet;
-
-            int i, j;
-
-            saveFileDialog1.Filter = "Excel Files (*.xls)|*.xls";
-            saveFileDialog1.InitialDirectory = "C:";
-            saveFileDialog1.Title = "Save";
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                xlApp = new Excel.Application();
-                xlWorkBook = xlApp.Workbooks.Add();
-                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-                xlWorkSheet.Cells[1, 1] = "planDate";
-                xlWorkSheet.Cells[1, 2] = "순번";
-                xlWorkSheet.Cells[1, 3] = "WORK_ORDER_ID";
-                xlWorkSheet.Cells[1, 4] = "업체CODE";
-                xlWorkSheet.Cells[1, 5] = "납품처";
-                xlWorkSheet.Cells[1, 6] = "발주구분";
-                xlWorkSheet.Cells[1, 7] = "ITEM CODE";
-                xlWorkSheet.Cells[1, 8] = "계획수량합계";
-                xlWorkSheet.Cells[1, 9] = "납기일";
-
-
-
-
-                xlWorkBook.SaveAs(saveFileDialog1.FileName, Excel.XlFileFormat.xlWorkbookNormal);
-                xlWorkBook.Close(true);
-                xlApp.Quit();
-
-                releaseObject(xlWorkSheet);
-                releaseObject(xlWorkBook);
-                releaseObject(xlApp);
-            }
-        }
-
-        private void releaseObject(object obj)
-        {
-            try
-            {
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
-                obj = null;
-            }
-            catch (Exception ex)
-            {
-                obj = null;
-                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
-            }
-            finally
-            {
-                GC.Collect();
-            }
-        }
-
-        #endregion
-        */
-
 
         #endregion
 
         /// <summary>
-            /// 양식을 다운로드하는 이벤트
-            /// </summary>
-            /// <param name="sender"></param>
-            /// <param name="e"></param>
+        /// 양식을 다운로드하는 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnYangsic_Click(object sender, EventArgs e)
         {
-            Excel.Application xlApp=null;
+            Excel.Application xlApp = null;
             Excel.Workbook xlWorkBook = null;
             Excel.Worksheet xlWorkSheet = null;
             try
@@ -242,18 +134,64 @@ namespace TEAM3FINAL
         private void FrmSalesMasterUpLoad_Load(object sender, EventArgs e)
         {
             //그리드 설정
-
+            DataGridViewColumnSet();
         }
 
         private void btnExcel_Click(object sender, EventArgs e)
         {
+            FrmSMUpLoadPop frm = new FrmSMUpLoadPop();
+            frm.StartPosition = FormStartPosition.CenterScreen;
 
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                RList = frm.SalesMasterList;
+                if (RList.Count > 0)
+                {
+                    dgvSalesMaster.DataSource = null;
+                    dgvSalesMaster.DataSource = RList;
+                }
+            }
         }
 
         //영업마스터 생성
         private void btnMaster_Click(object sender, EventArgs e)
         {
+            if (dgvSalesMaster.Rows.Count > 0)
+            {
+                Message msg=new TEAM3FINALVO.Message();
+                //DB에 저장
+                for (int i = 0; i < RList.Count; i++)
+                {
+                    //전달 vo 생성
+                    SALES_WORK_VO vo1 = new SALES_WORK_VO();
+                    vo1.SALES_ID = 0; //등록
+                    vo1.SALES_Work_Order_ID = RList[i].SALES_Work_Order_ID;
+                    vo1.SO_PurchaseOrder = "";
+                    vo1.COM_CODE = RList[i].COM_CODE;
+                    vo1.SALES_COM_CODE = RList[i].SALES_COM_CODE;
+                    vo1.SALES_DUEDATE = RList[i].SALES_DUEDATE;
+                    vo1.ITEM_CODE = RList[i].ITEM_CODE;
+                    vo1.SALES_QTY = RList[i].SALES_QTY;
+                    vo1.SALES_Out_QTY = 0;
+                    vo1.SALES_NO_QTY = 0;
+                    vo1.SALES_MKT = RList[i].SALES_MKT;
+                    vo1.SALES_Order_TYPE = RList[i].SALES_Order_TYPE;
+                    vo1.SALES_REMARK = "";
 
+                    //서비스호출
+                    SalesService service = new SalesService();
+                    msg = service.InsertOrUpdateSalesWork(vo1);
+                }
+                if(msg.IsSuccess)
+                {
+                    MessageBox.Show("생성되었습니다.", "생성 확인", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("생성에 실패하였습니다.", "생성 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
         }
     }
 }

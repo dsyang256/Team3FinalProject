@@ -75,8 +75,6 @@ namespace TEAM3FINAL
             ComboItemService service = new ComboItemService();
 
             var facilist = service.GetFacilitiesCode();
-
-
             CommonUtil.ComboBinding<ComboItemVO>(cboFclts, facilist, "COMMON_CODE", "COMMON_NAME", "");
         }
         private void LoadShiftList()

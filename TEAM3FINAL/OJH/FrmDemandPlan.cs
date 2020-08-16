@@ -5,11 +5,12 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using TEAM3FINAL.Popup;
 using TEAM3FINALVO;
 
 namespace TEAM3FINAL
 {
-    public partial class FrmDemandPlan : TEAM3FINAL.baseForm2 , CommonBtn
+    public partial class FrmDemandPlan : TEAM3FINAL.baseForm2, CommonBtn
     {
         public FrmDemandPlan()
         {
@@ -27,32 +28,41 @@ namespace TEAM3FINAL
             dgvPlan.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             dgvPlan.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            DataGridViewColumn column = dgvPlan.Columns[0];
-            dgvPlan.Columns[0].Frozen = true;
-            column.Width = 200;
 
-            column = dgvPlan.Columns[1];
-            dgvPlan.Columns[1].Frozen = true;
-            column.Width = 200;
+            if (dgvPlan.Rows.Count > 0)
+            {
+                DataGridViewColumn column = dgvPlan.Columns[0];
+                dgvPlan.Columns[0].Frozen = true;
+                column.Width = 200;
 
-            column = dgvPlan.Columns[2];
-            dgvPlan.Columns[2].Frozen = true;
-            column.Width = 150;
+                column = dgvPlan.Columns[1];
+                dgvPlan.Columns[1].Frozen = true;
+                column.Width = 200;
 
-            column = dgvPlan.Columns[3];
-            dgvPlan.Columns[3].Frozen = true;
-            column.Width = 150;
+                column = dgvPlan.Columns[2];
+                dgvPlan.Columns[2].Frozen = true;
+                column.Width = 150;
 
-            //행번호 추가
-            DataGridViewUtil.DataGridViewRowNumSet(dgvPlan);
+                column = dgvPlan.Columns[3];
+                dgvPlan.Columns[3].Frozen = true;
+                column.Width = 150;
+
+                foreach (DataGridViewColumn item in dgvPlan.Columns)
+                {
+                    item.ReadOnly = true;
+                }
+
+                //행번호 추가
+                DataGridViewUtil.DataGridViewRowNumSet(dgvPlan);
+            }
         }
         private void BindingComboBox()
         {
             ////서비스호출
             ComboItemService service = new ComboItemService();
 
-            var planlist = service.GetCmCode();
-            CommonUtil.ComboBinding<ComboItemVO>(cboPlan, planlist, "COMMON_CODE", "COMMON_NAME", "");
+            var planlist = service.GetPlanID();
+            CommonUtil.ComboBinding<ComboItemVO>(cboPlan, planlist, "COMMON_CODE", "COMMON_NAME");
         }
         #region 공통버튼 적용
         /// <summary>
@@ -83,78 +93,119 @@ namespace TEAM3FINAL
 
         public void Insert(object sender, EventArgs e)
         {
-  
-            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
-            {
-                //FrmSalesMasterPop frm = new FrmSalesMasterPop(InsertOrUpdate.insert);
-                //frm.ShowDialog();
-                //Reset(null, null);
-            }
+            //사용하지않음
         }
 
         public void Search(object sender, EventArgs e)
         {
-
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                //데이터 조회
+                LoadDemandPlan();
+                //그리드 초기화
+                DataGridViewColumnSet();
+            }
         }
 
         public void Reset(object sender, EventArgs e)
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                //LoadSalesWorkList();
-                //cboState.SelectedIndex = 0;
-                //cboCom.SelectedIndex = 0;
-                //cboCom2.SelectedIndex = 0;
-                //cboOrderGubun.SelectedIndex = 0;
+                cboPlan.SelectedIndex = 0;
+                dtpToDate.Value = DateTime.Now.AddMonths(1);
+                dtpFrom.Value = DateTime.Now;
+                //데이터 조회
+                LoadDemandPlan();
+                //그리드 초기화
+                DataGridViewColumnSet();
             }
-
         }
 
         public void Update(object sender, EventArgs e)
         {
-            //if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
-            //{
-            //    string uid = CheckedList();
-            //    if (uid.Length < 1)
-            //        return;
-            //    if (uid.Contains("@"))
-            //    {
-            //        MessageBox.Show("수정할 품목 하나를 선택하세요.", "품목 선택", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //        return;
-            //    }
-            //    FrmSalesMasterPop frm = new FrmSalesMasterPop(InsertOrUpdate.update, uid);
-            //    frm.ShowDialog();
-            //    Reset(null, null);
-            //}
-
+            //사용하지않음
         }
 
         public void Delete(object sender, EventArgs e)
         {
-            //string lists = CheckedList();
-            //if (lists.Length > 0)
-            //{
-            //    if (MessageBox.Show("정말로 삭제하시겠습니까?", "삭제확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            //    {
-            //        //서비스 호출
-            //        SalesService service = new SalesService();
-            //        if (service.DeleteSalesWorkList(lists, "@"))
-            //        {
-            //            MessageBox.Show("삭제되었습니다.", "삭제 성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("삭제 중 오류가 발생하였습니다. 다시 시도하여 주십시오.", "삭제 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        }
-            //    }
-            //}
-            //Reset(null, null);
-
+            //사용안함
         }
 
         public void Print(object sender, EventArgs e)
         {
-            //미구현
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                if (dgvPlan.Rows.Count > 0)
+                {
+                    Microsoft.Office.Interop.Excel.Application xlApp = null;
+                    Microsoft.Office.Interop.Excel.Workbook xlWorkBook = null;
+                    Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet = null;
+                    try
+                    {
+                        int i, j;
+                        saveFileDialog1.Filter = "Excel Files (*.xls)|*.xls";
+                        saveFileDialog1.InitialDirectory = "C:";
+                        saveFileDialog1.Title = "SaveDemandPlan";
+                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                        {
+                            xlApp = new Microsoft.Office.Interop.Excel.Application();
+                            xlWorkBook = xlApp.Workbooks.Add();
+                            xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                            for (int k = 1; k < dgvPlan.ColumnCount; k++)
+                            {
+                                xlWorkSheet.Cells[1, k] = dgvPlan.Columns[k].HeaderText.ToString();
+                            }
+
+                            for (i = 0; i < dgvPlan.RowCount; i++)
+                            {
+                                for (j = 0; j < dgvPlan.ColumnCount - 1; j++)
+                                {
+                                    if (dgvPlan[j, i].Value != null)
+                                        xlWorkSheet.Cells[i + 2, j + 1] = dgvPlan[j, i].Value.ToString();
+                                }
+                            }
+
+                            xlWorkBook.SaveAs(saveFileDialog1.FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
+                            xlWorkBook.Close(true);
+                            xlApp.Quit();
+                            MessageBox.Show("출력되었습니다.", "출력 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show("출력에 실패하였습니다.", "출력 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        if (xlApp != null)
+                        {
+                            releaseObject(xlWorkSheet);
+                            releaseObject(xlWorkBook);
+                            releaseObject(xlApp);
+                        }
+                    }
+                }
+
+            }
+
+        }
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
+            }
         }
 
         #endregion
@@ -165,17 +216,19 @@ namespace TEAM3FINAL
             BtnSet();
             //콤보박스 바인딩
             BindingComboBox();
-            //데이터 조회
-            LoadDemandPlan();
-            //그리드 초기화
-            DataGridViewColumnSet();
+
+            dtpToDate.Value = DateTime.Now.AddMonths(1);
+            dtpFrom.Value = DateTime.Now;
+            Search(null, null);
         }
 
         private void LoadDemandPlan()
         {
+            string fromDate = dtpFrom.Value.ToShortDateString();
+            string toDate = dtpToDate.Value.ToShortDateString();
             //서비스호출
             PlanService service = new PlanService();
-            DataTable dt = service.GetDemandPlan("2020-08-01","2020-08-31","");
+            DataTable dt = service.GetDemandPlan(fromDate, toDate, cboPlan.Text);
             dgvPlan.DataSource = null;
             dgvPlan.DataSource = dt;
         }
@@ -189,10 +242,50 @@ namespace TEAM3FINAL
         {
             //생산계획 생성
             //생성 가능 여부 확인
+            FrmDemandPlanPop frm = new FrmDemandPlanPop();
+            if(frm.ShowDialog() == DialogResult.OK)
+            {
+                //작업지시 생성 여부 확인
+                PlanService service = new PlanService();
+                if (service.CheckWOCreate(frm.PlanID)) //생성가능
+                {
+                    //작업지시 생성
+                    PlanService service1 = new PlanService();
+                    if(service1.InsertWorkOrders(frm.PlanID))
+                    {
+                        MessageBox.Show("생산계획이 생성되었습니다.", "생산계획 생성확인", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("생산계획이 생성에 실패하였습니다.", "생산계획 생성실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else //생성불가
+                {
+                    MessageBox.Show("생산계획을 생성할 수 없습니다. 이미 생성된 계획입니다.", "생산계획 생성확인", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                //확인여부 출력
 
-            //작업지시 생성
+            }
+        }
 
-            //확인여부 출력
+        private void dtpFrom_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpFrom.Value > dtpToDate.Value)
+            {
+                MessageBox.Show("시작일은 종료일보다 늦을 수 없습니다.");
+                dtpToDate.Value = dtpFrom.Value;
+            }
+        }
+
+        private void dtpToDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpToDate.Value < dtpFrom.Value)
+            {
+                MessageBox.Show("종료일은 시작일보다 빠를 수 없습니다.");
+                dtpFrom.Value = dtpToDate.Value;
+            }
         }
     }
 }
