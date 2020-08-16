@@ -13,5 +13,10 @@ namespace TEAM3FINAL
 {
     public class WorkOrderINService
     {
+        public List<WORKORDERCREATE_VO> GetWorkList()
+        {
+            WorkOrderINDAC dac = new WorkOrderINDAC();
+            return dac.GetWorkList();
+        }
     }
 }

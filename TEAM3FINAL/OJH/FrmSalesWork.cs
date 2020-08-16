@@ -12,7 +12,7 @@ namespace TEAM3FINAL
     public partial class FrmSalesWork : TEAM3FINAL.baseForm2
     {
         #region 멤버변수
-        List<WORKORDER_VO> AllList;
+        List<WORKORDERCREATE_VO> AllList;
         CheckBox headerChk;
         #endregion
         #region 생성자
@@ -29,12 +29,12 @@ namespace TEAM3FINAL
         private void DataGridViewCheckBoxAllCheck()
         {
             headerChk = new CheckBox();
-            Point headerCell = dgvWork.GetCellDisplayRectangle(0, -1, true).Location;
+            Point headerCell = c.GetCellDisplayRectangle(0, -1, true).Location;
             headerChk.Location = new Point(headerCell.X + 8, headerCell.Y + 15);
             headerChk.Size = new Size(18, 18);
             headerChk.BackColor = Color.FromArgb(245, 245, 246);
             headerChk.Click += HeaderChk_Clicked;
-            dgvWork.Controls.Add(headerChk);
+            c.Controls.Add(headerChk);
         }
         /// <summary>
         /// 올체크 이벤트
@@ -43,10 +43,10 @@ namespace TEAM3FINAL
         /// <param name="e"></param>
         private void HeaderChk_Clicked(object sender, EventArgs e)
         {
-            dgvWork.EndEdit();
+            c.EndEdit();
 
             //데이터그리드뷰의 전체 행의 체크를 체크 or 언체크
-            foreach (DataGridViewRow row in dgvWork.Rows)
+            foreach (DataGridViewRow row in c.Rows)
             {
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
                 chk.Value = headerChk.Checked;
@@ -60,28 +60,30 @@ namespace TEAM3FINAL
         private void DataGridViewColumnSet()
         {
             //데이터그리드뷰 초기설정
-            DataGridViewUtil.InitSettingGridView(dgvWork);
-            DataGridViewUtil.DataGridViewCheckBoxSet(dgvWork, "  ");
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWork, "품목", "ITEM_CODE", true, 300, DataGridViewContentAlignment.MiddleCenter);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWork, "품명", "ITEM_NAME", true, 300, DataGridViewContentAlignment.MiddleCenter);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWork, "규격", "ITEM_STND", true, 100, DataGridViewContentAlignment.MiddleCenter);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWork, "상태", "WO_WORK_STATE", true, 150, DataGridViewContentAlignment.MiddleCenter);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWork, "설비코드", "FCLTS_CODE", true, 150, DataGridViewContentAlignment.MiddleCenter);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWork, "설비명", "FCLTS_NAME", true, 150, DataGridViewContentAlignment.MiddleCenter);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWork, "계획수량", "WO_PLAN_QTY", true, 150, DataGridViewContentAlignment.MiddleCenter);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWork, "지시수량", "WO_QTY_PROD", true, 100, DataGridViewContentAlignment.MiddleCenter);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWork, "계획시작일", "WO_PLAN_STARTTIME", true, 100, DataGridViewContentAlignment.MiddleCenter);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWork, "소요시간(Min.)", "", true, 250, DataGridViewContentAlignment.MiddleCenter);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWork, "계획완료일", "WO_PLAN_ENDTIME", true, 150, DataGridViewContentAlignment.MiddleCenter);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWork, "작업지시번호", "WO_Code", true, 150, DataGridViewContentAlignment.MiddleCenter);
-            dgvWork.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvWork.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
+            DataGridViewUtil.InitSettingGridView(c);
+            DataGridViewUtil.DataGridViewCheckBoxSet(c, "  ");
+            DataGridViewColumn dc = c.Columns[0];
+            dc.Frozen = true;
+            DataGridViewUtil.AddNewColumnToDataGridView(c, "품목", "ITEM_CODE", true, 200, DataGridViewContentAlignment.MiddleLeft);
+            DataGridViewUtil.AddNewColumnToDataGridView(c, "품명", "ITEM_NAME", true, 200, DataGridViewContentAlignment.MiddleLeft);
+            DataGridViewUtil.AddNewColumnToDataGridView(c, "규격", "ITEM_STND", true, 100, DataGridViewContentAlignment.MiddleLeft);
+            DataGridViewUtil.AddNewColumnToDataGridView(c, "상태", "WO_WORK_STATE", true, 150, DataGridViewContentAlignment.MiddleCenter);
+            DataGridViewUtil.AddNewColumnToDataGridView(c, "설비코드", "FCLTS_CODE", true, 150, DataGridViewContentAlignment.MiddleCenter);
+            DataGridViewUtil.AddNewColumnToDataGridView(c, "설비명", "FCLTS_NAME", true, 150, DataGridViewContentAlignment.MiddleCenter);
+            DataGridViewUtil.AddNewColumnToDataGridView(c, "계획수량", "WO_PLAN_QTY", true, 100, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(c, "지시수량", "WO_QTY_PROD", true, 100, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(c, "계획시작일", "WO_PLAN_STARTTIME", true, 100, DataGridViewContentAlignment.MiddleCenter);
+            DataGridViewUtil.AddNewColumnToDataGridView(c, "소요시간(Min.)", "Tacminute", true, 150, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(c, "계획완료일", "WO_PLAN_ENDTIME", true, 150, DataGridViewContentAlignment.MiddleCenter);
+            DataGridViewUtil.AddNewColumnToDataGridView(c, "작업지시번호", "WO_Code", true, 150, DataGridViewContentAlignment.MiddleCenter);
+            c.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            c.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
 
 
 
 
         //행번호 추가
-        DataGridViewUtil.DataGridViewRowNumSet(dgvWork);
+        DataGridViewUtil.DataGridViewRowNumSet(c);
 
             //체크박스추가
             DataGridViewCheckBoxAllCheck();
@@ -91,10 +93,10 @@ namespace TEAM3FINAL
         /// </summary>
         private string CheckedList()
         {
-            dgvWork.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            c.CommitEdit(DataGridViewDataErrorContexts.Commit);
             StringBuilder sb = new StringBuilder();
             //품목 선택후 List를 전달
-            foreach (var item in dgvWork.Rows)
+            foreach (var item in c.Rows)
             {
                 if (item is DataGridViewRow)
                 {
@@ -120,9 +122,9 @@ namespace TEAM3FINAL
         {
             //서비스호출
             WorkOrderINService service = new WorkOrderINService();
-            //AllList = service.GetShiftList();
-            //dgvWork.DataSource = null;
-            //dgvWork.DataSource = AllList;
+            AllList = service.GetWorkList();
+            c.DataSource = null;
+            c.DataSource = AllList;
         }
         private void BindingComboBox()
         {
