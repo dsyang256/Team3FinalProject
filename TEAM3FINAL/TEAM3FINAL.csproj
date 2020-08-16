@@ -532,6 +532,9 @@
     <EmbeddedResource Include="BaseForm\ProjectBaseForm.resx">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OJH\FrmOutProductionPlan.resx">
+      <DependentUpon>FrmOutProductionPlan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Popup\FrmDemandPlanPop.resx">
       <DependentUpon>FrmDemandPlanPop.cs</DependentUpon>
     </EmbeddedResource>
