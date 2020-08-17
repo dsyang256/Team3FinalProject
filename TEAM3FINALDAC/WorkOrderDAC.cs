@@ -24,7 +24,7 @@ convert(nvarchar, WO_PLAN_ENDTIME, 23) WO_PLAN_ENDTIME, WO_REMARK, WO_LAST_MDFR,
 from WORKORDER w inner join FACILITY f on w.FCLTS_CODE = f.FCLTS_CODE
 				 inner join ITEM i on w.ITEM_CODE = i.ITEM_CODE
 				 inner join SALES_WORK s on w.SALES_WORK_ORDER_ID = s.SALES_Work_Order_ID
-where 1=1 and WO_WORK_STATE <> '실적등록' and WO_WORK_STATE <> '공정이동' and WO_WORK_STATE <> '제품이동' and WO_WORK_STATE <> '마감중' and WO_WORK_STATE <> '마감완료'
+where 1=1 and WO_WORK_STATE <> '실적등록' and WO_WORK_STATE <> '공정이동' and WO_WORK_STATE <> '제품이동' and WO_WORK_STATE <> '마감중' and WO_WORK_STATE <> '마감완료' and WO_WORK_STATE <> '판매완료'
 group by WO_PLAN_DATE, WO_PROD_DATE, w.FCLTS_CODE, f.FCLTS_NAME, WO_WORK_SEQ, w.ITEM_CODE, i.ITEM_NAME, WO_WORK_STATE, f.FCLTS_WRHS_GOOD, f.FCLTS_WRHS_BAD, WO_PLAN_QTY, s.SALES_NO_QTY, WO_QTY_OUT, WO_QTY_IN, WO_PLAN_STARTTIME, 
 		 WO_PLAN_ENDTIME, WO_REMARK, WO_LAST_MDFR, WO_LAST_MDFY, w.SALES_WORK_ORDER_ID, PLAN_ID, WO_Code, i.ITEM_TYP";
                 cmd.Connection.Open();

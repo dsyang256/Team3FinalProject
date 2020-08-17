@@ -28,15 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // panel1
+            // 
+            this.panel1.Size = new System.Drawing.Size(1400, 200);
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(12, 13);
+            this.panel2.Size = new System.Drawing.Size(1377, 175);
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel3.Location = new System.Drawing.Point(12, 222);
+            this.panel3.Size = new System.Drawing.Size(645, 522);
+            // 
+            // panel4
+            // 
+            this.panel4.Location = new System.Drawing.Point(665, 222);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(747, 522);
+            this.panel4.TabIndex = 4;
+            // 
             // FrmCompanyEndByMonth
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.ClientSize = new System.Drawing.Size(800, 562);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.ClientSize = new System.Drawing.Size(1424, 749);
+            this.Controls.Add(this.panel4);
+            this.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.Name = "FrmCompanyEndByMonth";
             this.Text = "거래처월별마감";
+            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.panel3, 0);
+            this.Controls.SetChildIndex(this.panel4, 0);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -44,5 +74,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel panel4;
     }
 }

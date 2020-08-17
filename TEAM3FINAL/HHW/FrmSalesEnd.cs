@@ -140,8 +140,48 @@ namespace TEAM3FINAL
             throw new NotImplementedException();
         }
 
+
         #endregion
 
-        
+        private void btnMOVE_Click(object sender, EventArgs e)
+        {
+            dgvSalesEnd.EndEdit();
+            int cnt = 0;
+            //체크가 되었는지 확인
+            foreach (DataGridViewRow item in dgvSalesEnd.Rows)
+            {
+                if (Convert.ToBoolean(item.Cells[0].Value))
+                {
+                    cnt++;
+                }
+            }
+            if (cnt == 1)
+            {
+                if (MessageBox.Show("마감처리 하시겠습니까?", "매출마감", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    SalesEndState_VO vo = new SalesEndState_VO();
+                    vo.SALES_WORK_ORDER_ID = dgvSalesEnd.CurrentRow.Cells[1].Value.ToString();
+                    vo.SALES_COM_CODE = dgvSalesEnd.CurrentRow.Cells[3].Value.ToString();
+                    vo.ITEM_CODE = dgvSalesEnd.CurrentRow.Cells[4].Value.ToString();
+                    vo.SALES_DUEDATE = dgvSalesEnd.CurrentRow.Cells[6].Value.ToString();
+                    vo.SALES_QTY = Convert.ToInt32(dgvSalesEnd.CurrentRow.Cells[7].Value);
+                    vo.SALES_TTL = Convert.ToInt32(dgvSalesEnd.CurrentRow.Cells[10].Value);
+
+                    SalesEndService service = new SalesEndService();
+                    Message msg = service.SalesRecord(vo, LoginInfo.UserInfo.LI_NAME);
+                    if (msg.IsSuccess)
+                    {
+                        MessageBox.Show(msg.ResultMessage);
+                        this.DialogResult = DialogResult.OK;
+                        GetSalesEnd();
+                    }
+                    else
+                    {
+                        MessageBox.Show(msg.ResultMessage);
+                        return;
+                    }
+                }
+            }
+        }
     }
 }
