@@ -102,6 +102,24 @@ namespace TEAM3FINALDAC
             }
             return dt;
         }
+        public DataTable SP_Inspection(string day1, string day2, string com, string name, string inspect, string code)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter("SP_Inspection", conn))
+            {
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.AddWithValue("@P_day1", day1);
+                da.SelectCommand.Parameters.AddWithValue("@P_day2", day2);
+                da.SelectCommand.Parameters.AddWithValue("@P_com", com);
+                da.SelectCommand.Parameters.AddWithValue("@P_name", name);
+                da.SelectCommand.Parameters.AddWithValue("@P_inspect", inspect);
+                da.SelectCommand.Parameters.AddWithValue("@P_code", code);
+                da.Fill(dt);
+            }
+            return dt;
+        }
 
         public bool insertInspection(int gqty, int bqty, int reorder, int reorderD,string code)
         {

@@ -221,6 +221,7 @@
             this.Controls.Add(this.menuPanel1);
             this.Name = "FrmBOM";
             this.Text = "BOM";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmBOM_FormClosing);
             this.Load += new System.EventHandler(this.FrmBOM_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.label1, 0);

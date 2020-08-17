@@ -11,7 +11,7 @@ using TEAM3FINALVO;
 
 namespace TEAM3FINAL
 {
-    public partial class FrmReceivingSearch : baseForm2
+    public partial class FrmReceivingSearch : baseForm2, CommonBtn
     {
         private CheckBox headerChk;
 
@@ -133,7 +133,49 @@ namespace TEAM3FINAL
                 chk.Value = headerChk.Checked;
             }
         }
-        
         #endregion
+        public void Insert(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+            }
+        }
+
+        public void Search(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+            }
+        }
+
+        public void Reset(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+            }
+        }
+
+        public void Update(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+            }
+        }
+
+        public void Delete(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+            }
+        }
+
+        public void Print(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+            }
+        }
+
+       
     }
 }
