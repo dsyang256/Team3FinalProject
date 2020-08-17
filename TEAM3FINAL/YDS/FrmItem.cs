@@ -375,5 +375,20 @@ namespace TEAM3FINAL
         {
 
         }
+        private void BtnUnSet()
+        {
+            FrmMAIN frm = (FrmMAIN)this.MdiParent;
+            frm.eSearch -= Search;
+            frm.eInsert -= Insert;
+            frm.eUpdate -= Update;
+            frm.eDelete -= Delete;
+            frm.ePrint -= Print;
+            frm.eReset -= Reset;
+        }
+
+        private void FrmItem_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            BtnUnSet();
+        }
     }
 }

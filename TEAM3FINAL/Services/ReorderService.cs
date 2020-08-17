@@ -103,5 +103,10 @@ namespace TEAM3FINAL
             REORDERDAC dac = new REORDERDAC();
             return dac.Inspection1();
         }
+        public DataTable SP_Inspection(string day1, string day2, string com, string name, string inspect, string code)
+        {
+            REORDERDAC dac = new REORDERDAC();
+            return dac.SP_Inspection(day1, day2, com, name, inspect, code);
+        }
     }
 }

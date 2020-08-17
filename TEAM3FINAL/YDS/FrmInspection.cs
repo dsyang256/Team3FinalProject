@@ -11,7 +11,7 @@ using TEAM3FINALVO;
 
 namespace TEAM3FINAL
 {
-    public partial class FrmInspection : baseForm2
+    public partial class FrmInspection : baseForm2, CommonBtn
     {
         CheckBox headerChk;
         CheckBox headerChk1;
@@ -27,6 +27,7 @@ namespace TEAM3FINAL
             DataGridViewColumnSet2();
             DataGridViewBinding1();
             DataGridViewBinding2();
+            BtnSet();
         }
         #region 콤보박스 바인딩
         /// <summary>
@@ -39,16 +40,17 @@ namespace TEAM3FINAL
             CommonService service = new CommonService();
             List<ComboItemVO> Commonlist = service.GetITEMCmCode();
 
-            //발주업체
-            var listCOM_REORDER_OUT = (from item in Commonlist where item.COMMON_PARENT == "업체명" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(COM_REORDER_OUT, listCOM_REORDER_OUT, "COMMON_CODE", "COMMON_NAME", "");
+            //수입검사
+            var listINSPECT = (from item in Commonlist where item.COMMON_PARENT == "수입검사" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(INSPECT, listINSPECT, "COMMON_CODE", "COMMON_NAME", "");
+
+            ////납품업체
+            //var listREORDER_CODE = (from item in Commonlist where item.COMMON_PARENT == "업체명" select item).ToList();
+            //CommonUtil.ComboBinding<ComboItemVO>(REORDER_CODE, listREORDER_CODE, "COMMON_CODE", "COMMON_NAME", "");
 
             //납품업체
-            var listCOM_REORDER_IN = (from item in Commonlist where item.COMMON_PARENT == "업체명" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(COM_REORDER_IN, listCOM_REORDER_IN, "COMMON_CODE", "COMMON_NAME", "");
-
-            var listREORDER_STATE = (from item in Commonlist where item.COMMON_PARENT == "발주상태" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(REORDER_STATE, listREORDER_STATE, "COMMON_CODE", "COMMON_NAME", "");
+            var listREORDER_COM = (from item in Commonlist where item.COMMON_PARENT == "업체명" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(REORDER_COM, listREORDER_COM, "COMMON_CODE", "COMMON_NAME", "");
 
         }
         #endregion
@@ -82,20 +84,20 @@ namespace TEAM3FINAL
         }
         private void DataGridViewColumnSet2()
         {
-            DataGridViewUtil.InitSettingGridView(dgv2);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "no", "idx", true, 30);
-            DataGridViewUtil.DataGridViewCheckBoxSet(dgv2, "all");
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주번호", "REORDER_CODE", true, 125);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주상세번호", "REORDER_DETAIL_CODE", false, 125);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주일", "REORDER_DATE", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "입고일", "REORDER_DATE_IN", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "납품업체", "COM_CODE", true, 125);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품목", "ITEM_CODE", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품명", "ITEM_NAME", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "규격", "ITEM_STND", true, 125);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "납품수량", "REORDER_DETAIL_QTY", true, 125);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "불량수량", "", true, 100, readOnly: false);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "비고", "", true, 400 );
+            DataGridViewUtil.InitSettingGridView(COMPANY);
+            DataGridViewUtil.AddNewColumnToDataGridView(COMPANY, "no", "idx", true, 30);
+            DataGridViewUtil.DataGridViewCheckBoxSet(COMPANY, "all");
+            DataGridViewUtil.AddNewColumnToDataGridView(COMPANY, "발주번호", "REORDER_CODE", true, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(COMPANY, "발주상세번호", "REORDER_DETAIL_CODE", false, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(COMPANY, "발주일", "REORDER_DATE", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(COMPANY, "입고일", "REORDER_DATE_IN", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(COMPANY, "납품업체", "COM_CODE", true, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(COMPANY, "품목", "ITEM_CODE", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(COMPANY, "품명", "ITEM_NAME", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(COMPANY, "규격", "ITEM_STND", true, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(COMPANY, "납품수량", "REORDER_DETAIL_QTY", true, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(COMPANY, "불량수량", "", true, 100, readOnly: false);
+            DataGridViewUtil.AddNewColumnToDataGridView(COMPANY, "비고", "", true, 400 );
 
             DataGridViewCheckBoxAllCheck2();
 
@@ -114,9 +116,9 @@ namespace TEAM3FINAL
         }
         private void DataGridViewBinding2()
         {
-            dgv2.DataSource = null;
+            COMPANY.DataSource = null;
             ReorderService service = new ReorderService();
-            dgv2.DataSource = service.Inspection2();
+            COMPANY.DataSource = service.Inspection2();
         }
         #endregion
 
@@ -142,7 +144,7 @@ namespace TEAM3FINAL
             headerChk1.Size = new Size(18, 18);
             headerChk1.BackColor = Color.FromArgb(245, 245, 246);
             headerChk1.Click += HeaderChk_Clicked2;
-            dgv2.Controls.Add(headerChk1);
+            COMPANY.Controls.Add(headerChk1);
         }
         #endregion
 
@@ -166,10 +168,10 @@ namespace TEAM3FINAL
         }
         private void HeaderChk_Clicked2(object sender, EventArgs e)
         {
-            dgv2.EndEdit();
+            COMPANY.EndEdit();
 
             //데이터그리드뷰의 전체 행의 체크를 체크 or 언체크
-            foreach (DataGridViewRow row in dgv2.Rows)
+            foreach (DataGridViewRow row in COMPANY.Rows)
             {
                 DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells["all"];
                 chk.Value = headerChk1.Checked;
@@ -185,9 +187,9 @@ namespace TEAM3FINAL
             int reorder = 0;
             int reorderD = 0;
             string code = "";
-            dgv2.EndEdit();
+            COMPANY.EndEdit();
             ReorderService service = new ReorderService();
-            foreach (DataGridViewRow item in dgv2.Rows)
+            foreach (DataGridViewRow item in COMPANY.Rows)
             {
                 if (Convert.ToBoolean(item.Cells[1].Value) == true)
                 {
@@ -218,6 +220,92 @@ namespace TEAM3FINAL
             MessageBox.Show("검사가 완료 되었습니다.");
 
 
+        }
+
+        private void BtnSet()
+        {
+            FrmMAIN frm = (FrmMAIN)this.MdiParent;
+            frm.eSearch += Search;
+            frm.eInsert += Insert;
+            frm.eUpdate += Update;
+            frm.eDelete += Delete;
+            frm.ePrint += Print;
+            frm.eReset += Reset;
+        }
+        private void BtnUnSet()
+        {
+            FrmMAIN frm = (FrmMAIN)this.MdiParent;
+            frm.eSearch -= Search;
+            frm.eInsert -= Insert;
+            frm.eUpdate -= Update;
+            frm.eDelete -= Delete;
+            frm.ePrint -= Print;
+            frm.eReset -= Reset;
+        }
+        private void FrmInspection_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            BtnUnSet();
+        }
+
+        public void Insert(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public void Search(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                string day1 = sday.Value.ToShortDateString();
+                string day2 = eday.Value.ToShortDateString();
+                string com = REORDER_COM.Text;
+                string name = ITEMNAME.Text;
+                string inspect = INSPECT.Text;
+                string code = REORDER_CODE.Text;
+                ReorderService service = new ReorderService();
+                dgv1.DataSource = null;
+                dgv1.DataSource = service.SP_Inspection(day1, day2, com, name, inspect, code);
+            }
+        }
+
+        public void Reset(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                sday.Value = DateTime.Now;
+                eday.Value = DateTime.Now;
+                REORDER_COM.SelectedIndex = -1;
+                ITEMNAME.Text = "";
+                INSPECT.SelectedIndex = -1;
+                REORDER_CODE.Text = "";
+            }
+        }
+
+        public void Update(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+               
+            }
+        }
+
+        public void Delete(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+               
+            }
+        }
+
+        public void Print(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                
+            }
         }
     }
 }
