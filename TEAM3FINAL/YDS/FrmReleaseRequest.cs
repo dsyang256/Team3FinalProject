@@ -232,7 +232,13 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-
+                string day1 = sday.Value.ToShortDateString();
+                string day2 = eday.Value.ToShortDateString();
+                string item = ITEMNAME.Text;
+                string id = WORKORDER.Text;
+                string name = FACILITY.Text;
+                WorkOrderDSService service = new WorkOrderDSService();
+                dgv1.DataSource = service.SP_GetWorkOrder(day1, day2, id, item, name);
             }
         }
 
@@ -240,6 +246,13 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
+                DataGridViewBinding1();
+                dgv2.DataSource = null;
+                sday.Value = DateTime.Now;
+                eday.Value = DateTime.Now;
+                ITEMNAME.Text = "";
+                WORKORDER.Text = "";
+                FACILITY.Text = "";
             }
         }
 

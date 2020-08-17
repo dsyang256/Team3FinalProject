@@ -73,6 +73,23 @@ namespace TEAM3FINALDAC
             }
             return dt;
         }
-       
+        public DataTable SP_GetWorkOrder(string sday, string eday, string code, string item, string name)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter("SP_GetWorkOrder", conn))
+            {
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.AddWithValue("@P_DATE_IN_S", sday);
+                da.SelectCommand.Parameters.AddWithValue("@P_DATE_IN_E", eday);
+                da.SelectCommand.Parameters.AddWithValue("@P_WO_Code", code);
+                da.SelectCommand.Parameters.AddWithValue("@P_ITEM_NAME", item);
+                da.SelectCommand.Parameters.AddWithValue("@P_FCLTS_NAME", name);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
     }
 }

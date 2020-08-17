@@ -23,5 +23,10 @@ namespace TEAM3FINAL
             WorkOrderDSDAC dac = new WorkOrderDSDAC();
             return dac.GetWorkOrder2(code);
         }
+        public DataTable SP_GetWorkOrder(string sday, string eday, string code, string item, string name)
+        {
+            WorkOrderDSDAC dac = new WorkOrderDSDAC();
+            return dac.SP_GetWorkOrder(sday, eday,code,item,name);
+        }
     }
 }
