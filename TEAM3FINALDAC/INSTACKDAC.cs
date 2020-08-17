@@ -80,5 +80,23 @@ namespace TEAM3FINALDAC
             }
             return dt;
         }
+        public DataTable SP_ReceivingSearch(string day, string name, string typ, string wrhs ,  string qty, string level)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter("SP_ReceivingSearch", conn))
+            {
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.AddWithValue("@P_INS_DATE", day);
+                da.SelectCommand.Parameters.AddWithValue("@P_ITEM_NAME", name);
+                da.SelectCommand.Parameters.AddWithValue("@P_ITEM_TYP", typ);
+                da.SelectCommand.Parameters.AddWithValue("@P_INS_WRHS", wrhs);
+                da.SelectCommand.Parameters.AddWithValue("@P_STOCK", qty);
+                da.SelectCommand.Parameters.AddWithValue("@P_ITEM_MANAGE_LEVEL", level);
+                da.Fill(dt);
+            }
+            return dt;
+        }
     }
 }

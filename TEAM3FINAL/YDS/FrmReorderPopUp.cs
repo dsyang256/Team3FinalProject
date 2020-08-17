@@ -184,7 +184,6 @@ namespace TEAM3FINAL
             {
                 return;
             }
-            MessageBox.Show(sb.ToString().TrimEnd(','));
             ReorderService service = new ReorderService();
             dgv2.DataSource = service.GetReorderItem2(sb.ToString().TrimEnd(','));
         }

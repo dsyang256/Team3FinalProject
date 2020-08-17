@@ -71,6 +71,7 @@
     <Compile Include="Utils\Helper.cs" />
     <Compile Include="Utils\LoggingUtility.cs" />
     <Compile Include="WorkOrderDAC.cs" />
+    <Compile Include="WorkOrderDSDAC.cs" />
     <Compile Include="WorkOrderINDAC.cs" />
   </ItemGroup>
   <ItemGroup>

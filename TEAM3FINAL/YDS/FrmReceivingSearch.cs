@@ -26,6 +26,7 @@ namespace TEAM3FINAL
             ComboBinding();
             DataGridViewColumnSet();
             DataGridViewBinding();
+            BtnSet();
         }
         #region 콤보박스 바인딩
         /// <summary>
@@ -139,6 +140,16 @@ namespace TEAM3FINAL
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        private void BtnSet()
+        {
+            FrmMAIN frm = (FrmMAIN)this.MdiParent;
+            frm.eSearch += Search;
+            frm.eInsert += Insert;
+            frm.eUpdate += Update;
+            frm.eDelete += Delete;
+            frm.ePrint += Print;
+            frm.eReset += Reset;
+        }
         public void Insert(object sender, EventArgs e)
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
@@ -150,11 +161,19 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-
+                string day = sday.Value.ToShortDateString();
+                string name = ITEMENAME.Text;
+                string typ = ITEM_TYP.Text;
+                string wrhs = (WRHS.Text.Length < 1) ? "": WRHS.SelectedValue.ToString();
+                string qty = QTY.Text;
+                string level = ITEM_MANAGE_LEVEL.Text;
+                INSTACKService service = new INSTACKService();
+                dgv1.DataSource = null;
+                dgv1.DataSource = service.SP_ReceivingSearch(day, name, typ, wrhs, qty, level);
             }
         }
 
-        public void Reset(object sender, EventArgs e)
+        public void Reset(object sender, EventArgs e) 
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
@@ -183,5 +202,9 @@ namespace TEAM3FINAL
         }
         #endregion
 
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

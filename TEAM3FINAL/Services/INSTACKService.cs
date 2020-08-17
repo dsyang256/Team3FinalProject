@@ -26,6 +26,10 @@ namespace TEAM3FINAL
             INSTACKDAC dac = new INSTACKDAC();
             return dac.ReceivingSearch();
         }
-        
+        public DataTable SP_ReceivingSearch(string day, string name, string typ, string wrhs, string qty, string level)
+        {
+            INSTACKDAC dac = new INSTACKDAC();
+            return dac.SP_ReceivingSearch(day, name, typ, wrhs, qty, level);
+        }
     }
 }
