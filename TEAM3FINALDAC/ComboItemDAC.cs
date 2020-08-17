@@ -41,6 +41,59 @@ namespace TEAM3FINALDAC
             return list;
         }
 
+        public List<ComboItemVO> GetWOCode()
+        {
+            List<ComboItemVO> list = default;
+
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = $@"select distinct SALES_Work_Order_ID COMMON_CODE, SALES_Work_Order_ID COMMON_NAME, null COMMON_PARENT, null COMMON_SEQ
+                                                        from SALES_WORK
+                                                        where 1=1  ";
+
+                    cmd.Connection.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    list = Helper.DataReaderMapToList<ComboItemVO>(reader);
+                    cmd.Connection.Close();
+                }
+            }
+            catch (Exception err)
+            {
+                string msg = err.Message;
+            }
+            return list;
+
+        }
+        public List<ComboItemVO> GetFactoryCode()
+        {
+            List<ComboItemVO> list = default;
+
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = $@"select distinct FAC_CODE COMMON_CODE, FAC_NAME COMMON_NAME, null COMMON_PARENT, null COMMON_SEQ
+                                                        from [dbo].[FACTORY]
+                                                        where FAC_FCLTY = '창고' ";
+
+                    cmd.Connection.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    list = Helper.DataReaderMapToList<ComboItemVO>(reader);
+                    cmd.Connection.Close();
+                }
+            }
+            catch (Exception err)
+            {
+                string msg = err.Message;
+            }
+            return list;
+
+        }
+
         public List<ComboItemVO> GetPlanID()
         {
             List<ComboItemVO> list = default;

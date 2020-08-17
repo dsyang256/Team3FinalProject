@@ -32,16 +32,17 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpToDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.cboShift = new System.Windows.Forms.ComboBox();
+            this.cboPlan = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.menuPanel1 = new TEAM3FINAL.MenuPanel();
             this.dgvPlan = new WindowsFormsApp18.MyDataGridView();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -54,12 +55,12 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.dateTimePicker2);
-            this.panel2.Controls.Add(this.dateTimePicker1);
+            this.panel2.Controls.Add(this.dtpToDate);
+            this.panel2.Controls.Add(this.dtpFrom);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.cboShift);
+            this.panel2.Controls.Add(this.cboPlan);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Size = new System.Drawing.Size(1220, 62);
@@ -74,21 +75,23 @@
             this.panel3.Location = new System.Drawing.Point(15, 134);
             this.panel3.Size = new System.Drawing.Size(1220, 419);
             // 
-            // dateTimePicker2
+            // dtpToDate
             // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(265, 18);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(91, 23);
-            this.dateTimePicker2.TabIndex = 56;
+            this.dtpToDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpToDate.Location = new System.Drawing.Point(265, 18);
+            this.dtpToDate.Name = "dtpToDate";
+            this.dtpToDate.Size = new System.Drawing.Size(91, 23);
+            this.dtpToDate.TabIndex = 56;
+            this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpToDate_ValueChanged);
             // 
-            // dateTimePicker1
+            // dtpFrom
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(157, 18);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(91, 23);
-            this.dateTimePicker1.TabIndex = 57;
+            this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFrom.Location = new System.Drawing.Point(157, 18);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Size = new System.Drawing.Size(91, 23);
+            this.dtpFrom.TabIndex = 57;
+            this.dtpFrom.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
             // 
             // label7
             // 
@@ -121,14 +124,14 @@
             this.label6.TabIndex = 55;
             this.label6.Text = "*";
             // 
-            // cboShift
+            // cboPlan
             // 
-            this.cboShift.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboShift.FormattingEnabled = true;
-            this.cboShift.Location = new System.Drawing.Point(494, 18);
-            this.cboShift.Name = "cboShift";
-            this.cboShift.Size = new System.Drawing.Size(121, 23);
-            this.cboShift.TabIndex = 52;
+            this.cboPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPlan.FormattingEnabled = true;
+            this.cboPlan.Location = new System.Drawing.Point(494, 18);
+            this.cboPlan.Name = "cboPlan";
+            this.cboPlan.Size = new System.Drawing.Size(121, 23);
+            this.cboPlan.TabIndex = 52;
             // 
             // label11
             // 
@@ -153,10 +156,12 @@
             // 
             // menuPanel1
             // 
+            this.menuPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.menuPanel1.BackColor = System.Drawing.Color.Transparent;
             this.menuPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.menuPanel1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.menuPanel1.Location = new System.Drawing.Point(12, 97);
+            this.menuPanel1.Location = new System.Drawing.Point(12, 98);
             this.menuPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.menuPanel1.Name = "menuPanel1";
             this.menuPanel1.Size = new System.Drawing.Size(1229, 32);
@@ -229,15 +234,16 @@
 
         #endregion
 
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpToDate;
+        private System.Windows.Forms.DateTimePicker dtpFrom;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cboShift;
+        private System.Windows.Forms.ComboBox cboPlan;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label3;
         private MenuPanel menuPanel1;
         private WindowsFormsApp18.MyDataGridView dgvPlan;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

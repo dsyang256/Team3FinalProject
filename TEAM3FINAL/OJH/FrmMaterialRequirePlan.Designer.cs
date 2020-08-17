@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dtpToDate = new System.Windows.Forms.DateTimePicker();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
@@ -42,6 +42,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.menuPanel1 = new TEAM3FINAL.MenuPanel();
             this.dgvPlan = new WindowsFormsApp18.MyDataGridView();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -62,7 +63,7 @@
             this.panel2.Controls.Add(this.cboPlan);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Size = new System.Drawing.Size(1226, 62);
+            this.panel2.Size = new System.Drawing.Size(1220, 62);
             // 
             // label1
             // 
@@ -72,7 +73,7 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.dgvPlan);
-            this.panel3.Location = new System.Drawing.Point(15, 131);
+            this.panel3.Location = new System.Drawing.Point(15, 134);
             this.panel3.Size = new System.Drawing.Size(1220, 422);
             // 
             // dtpToDate
@@ -82,6 +83,7 @@
             this.dtpToDate.Name = "dtpToDate";
             this.dtpToDate.Size = new System.Drawing.Size(91, 23);
             this.dtpToDate.TabIndex = 56;
+            this.dtpToDate.ValueChanged += new System.EventHandler(this.dtpToDate_ValueChanged);
             // 
             // dtpFrom
             // 
@@ -90,6 +92,7 @@
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.Size = new System.Drawing.Size(91, 23);
             this.dtpFrom.TabIndex = 57;
+            this.dtpFrom.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
             // 
             // label7
             // 
@@ -154,51 +157,53 @@
             // 
             // menuPanel1
             // 
+            this.menuPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.menuPanel1.BackColor = System.Drawing.Color.Transparent;
             this.menuPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.menuPanel1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.menuPanel1.Location = new System.Drawing.Point(12, 97);
+            this.menuPanel1.Location = new System.Drawing.Point(12, 98);
             this.menuPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.menuPanel1.Name = "menuPanel1";
-            this.menuPanel1.Size = new System.Drawing.Size(1229, 32);
+            this.menuPanel1.Size = new System.Drawing.Size(1226, 32);
             this.menuPanel1.TabIndex = 58;
             this.menuPanel1.TitleFont = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.menuPanel1.TitleName = "자재소요계획";
             // 
             // dgvPlan
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dgvPlan.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            this.dgvPlan.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvPlan.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPlan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPlan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvPlan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Menu;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPlan.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPlan.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvPlan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPlan.EnableHeadersVisualStyles = false;
             this.dgvPlan.Location = new System.Drawing.Point(0, 0);
             this.dgvPlan.Name = "dgvPlan";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPlan.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPlan.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvPlan.RowHeadersWidth = 30;
             this.dgvPlan.RowTemplate.Height = 23;
             this.dgvPlan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -211,7 +216,9 @@
             this.ClientSize = new System.Drawing.Size(1250, 565);
             this.Controls.Add(this.menuPanel1);
             this.Name = "FrmMaterialRequirePlan";
-            this.Text = "1250, 565";
+            this.Text = "자재소요계획";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmMaterialRequirePlan_FormClosing);
+            this.Load += new System.EventHandler(this.FrmMaterialRequirePlan_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.panel3, 0);
@@ -238,5 +245,6 @@
         private System.Windows.Forms.Label label3;
         private MenuPanel menuPanel1;
         private WindowsFormsApp18.MyDataGridView dgvPlan;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

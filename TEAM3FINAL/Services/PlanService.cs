@@ -34,5 +34,24 @@ namespace TEAM3FINAL
             PlanDAC dac = new PlanDAC();
             return dac.InsertWorkOrders(planID);
         }
+
+        public DataTable GetMaterialDemandPlan(string fromDate, string toDate, string PlanID)
+        {
+            PlanDAC dac = new PlanDAC();
+            return dac.GetMaterialDemandPlan(fromDate, toDate, PlanID);
+        }
+
+        public DataTable GetProductPlan(string fromDate, string toDate, string PlanID)
+        {
+            PlanDAC dac = new PlanDAC();
+            return dac.GetProductPlan(fromDate, toDate, PlanID);
+
+        }
+
+        public DataTable GetOutProductPlan(string fromDate, string toDate, string PlanID)
+        {
+            PlanDAC dac = new PlanDAC();
+            return dac.GetOutProductPlan(fromDate, toDate, PlanID);
+        }
     }
 }

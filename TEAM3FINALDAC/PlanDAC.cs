@@ -34,6 +34,70 @@ namespace TEAM3FINALDAC
             return ds.Tables[0];
         }
 
+        public DataTable GetMaterialDemandPlan(string fromDate, string toDate, string planID)
+        {
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter();
+            string sql = "SP_MaterialDemandPlan";
+            using (SqlConnection conn = new SqlConnection(this.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@P_S_DATE", fromDate));
+                    cmd.Parameters.Add(new SqlParameter("@P_E_DATE", toDate));
+                    cmd.Parameters.Add(new SqlParameter("@P_PLANID", planID));
+                    conn.Open();
+                    da.SelectCommand = cmd;
+                    da.Fill(ds);
+                }
+            }
+            return ds.Tables[0];
+        }
+
+        public DataTable GetOutProductPlan(string fromDate, string toDate, string planID)
+        {
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter();
+            string sql = "SP_OutProductPlan";
+            using (SqlConnection conn = new SqlConnection(this.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@P_S_DATE", fromDate));
+                    cmd.Parameters.Add(new SqlParameter("@P_E_DATE", toDate));
+                    cmd.Parameters.Add(new SqlParameter("@P_PLAN_ID", planID));
+                    conn.Open();
+                    da.SelectCommand = cmd;
+                    da.Fill(ds);
+                }
+            }
+            return ds.Tables[0];
+
+        }
+
+        public DataTable GetProductPlan(string fromDate, string toDate, string planID)
+        {
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter();
+            string sql = "SP_ProductPlan";
+            using (SqlConnection conn = new SqlConnection(this.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@P_S_DATE", fromDate));
+                    cmd.Parameters.Add(new SqlParameter("@P_E_DATE", toDate));
+                    cmd.Parameters.Add(new SqlParameter("@P_PLAN_ID", planID));
+                    conn.Open();
+                    da.SelectCommand = cmd;
+                    da.Fill(ds);
+                }
+            }
+            return ds.Tables[0];
+        }
+
         public bool InsertWorkOrders(string planID)
         {
             string fromDate = planID.Substring(0, 4) + "-" + planID.Substring(4, 2) + "-" + planID.Substring(6, 2);
