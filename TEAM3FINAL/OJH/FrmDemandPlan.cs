@@ -265,8 +265,6 @@ namespace TEAM3FINAL
                     MessageBox.Show("생산계획을 생성할 수 없습니다. 이미 생성된 계획입니다.", "생산계획 생성확인", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                //확인여부 출력
-
             }
         }
 

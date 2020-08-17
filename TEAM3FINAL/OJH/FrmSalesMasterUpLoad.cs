@@ -192,6 +192,10 @@ namespace TEAM3FINAL
 
                 }
             }
+            else
+            {
+                MessageBox.Show("생성할 영업마스터가 존재하지않습니다.", "영업마스터 확인", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

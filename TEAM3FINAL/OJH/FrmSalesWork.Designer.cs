@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtItem = new System.Windows.Forms.TextBox();
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
@@ -48,11 +48,12 @@
             this.cboWOITEM = new System.Windows.Forms.ComboBox();
             this.menuPanel1 = new TEAM3FINAL.MenuPanel();
             this.btnUpdateState = new System.Windows.Forms.Button();
-            this.c = new WindowsFormsApp18.MyDataGridView();
+            this.dgvWork = new WindowsFormsApp18.MyDataGridView();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.c)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvWork)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -86,7 +87,7 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.c);
+            this.panel3.Controls.Add(this.dgvWork);
             this.panel3.Location = new System.Drawing.Point(15, 167);
             this.panel3.Size = new System.Drawing.Size(1145, 386);
             // 
@@ -104,6 +105,7 @@
             this.dtpTo.Name = "dtpTo";
             this.dtpTo.Size = new System.Drawing.Size(91, 23);
             this.dtpTo.TabIndex = 96;
+            this.dtpTo.ValueChanged += new System.EventHandler(this.dtpTo_ValueChanged);
             // 
             // dtpFrom
             // 
@@ -112,6 +114,7 @@
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.Size = new System.Drawing.Size(91, 23);
             this.dtpFrom.TabIndex = 97;
+            this.dtpFrom.ValueChanged += new System.EventHandler(this.dtpFrom_ValueChanged);
             // 
             // label26
             // 
@@ -169,10 +172,10 @@
             this.cboState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboState.FormattingEnabled = true;
             this.cboState.Items.AddRange(new object[] {
+            "",
             "작업생성",
             "작업지시",
-            "작업취소",
-            "작업완료"});
+            "작업취소"});
             this.cboState.Location = new System.Drawing.Point(181, 54);
             this.cboState.Name = "cboState";
             this.cboState.Size = new System.Drawing.Size(199, 23);
@@ -215,8 +218,8 @@
             this.cboSearchDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSearchDate.FormattingEnabled = true;
             this.cboSearchDate.Items.AddRange(new object[] {
-            "계획시작",
-            "납기일자"});
+            "",
+            "계획시작"});
             this.cboSearchDate.Location = new System.Drawing.Point(79, 17);
             this.cboSearchDate.Name = "cboSearchDate";
             this.cboSearchDate.Size = new System.Drawing.Size(82, 23);
@@ -227,6 +230,7 @@
             this.cboWOITEM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboWOITEM.FormattingEnabled = true;
             this.cboWOITEM.Items.AddRange(new object[] {
+            "",
             "WO",
             "품목"});
             this.cboWOITEM.Location = new System.Drawing.Point(443, 17);
@@ -261,46 +265,47 @@
             this.btnUpdateState.TabIndex = 7;
             this.btnUpdateState.Text = "작업지시확정";
             this.btnUpdateState.UseVisualStyleBackColor = false;
+            this.btnUpdateState.Click += new System.EventHandler(this.btnUpdateState_Click);
             // 
-            // c
+            // dgvWork
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.c.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.c.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.c.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.c.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Menu;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.c.DefaultCellStyle = dataGridViewCellStyle3;
-            this.c.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.c.EnableHeadersVisualStyles = false;
-            this.c.Location = new System.Drawing.Point(0, 0);
-            this.c.Name = "c";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.c.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.c.RowHeadersWidth = 30;
-            this.c.RowTemplate.Height = 23;
-            this.c.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.c.Size = new System.Drawing.Size(1145, 386);
-            this.c.TabIndex = 0;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            this.dgvWork.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvWork.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvWork.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dgvWork.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvWork.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvWork.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvWork.EnableHeadersVisualStyles = false;
+            this.dgvWork.Location = new System.Drawing.Point(0, 0);
+            this.dgvWork.Name = "dgvWork";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvWork.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvWork.RowHeadersWidth = 30;
+            this.dgvWork.RowTemplate.Height = 23;
+            this.dgvWork.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvWork.Size = new System.Drawing.Size(1145, 386);
+            this.dgvWork.TabIndex = 0;
             // 
             // FrmSalesWork
             // 
@@ -321,7 +326,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.c)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvWork)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -344,6 +349,7 @@
         private System.Windows.Forms.ComboBox cboSearchDate;
         private MenuPanel menuPanel1;
         private System.Windows.Forms.Button btnUpdateState;
-        private WindowsFormsApp18.MyDataGridView c;
+        private WindowsFormsApp18.MyDataGridView dgvWork;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
