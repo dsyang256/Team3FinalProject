@@ -34,21 +34,24 @@ namespace TEAM3FINALDAC
 
                            ,((select isnull(sum(INS_QTY),0)
                            from INSTACK 
-                           where INS_TYP = '입고' and SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and INS_WRHS = f.FCLTS_WRHS_EXHST and ITEM_CODE = w.ITEM_CODE)-
+                           where INS_TYP = '입고' and SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and INS_WRHS = f.FCLTS_WRHS_EXHST and ITEM_CODE = m.ITEM_CODE)-
                            (select isnull(sum(INS_QTY),0)
                            from INSTACK 
-                           where INS_TYP = '출고' and SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and INS_WRHS = f.FCLTS_WRHS_EXHST and ITEM_CODE = w.ITEM_CODE)) as 현재고
+                           where INS_TYP = '출고' and SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and INS_WRHS = f.FCLTS_WRHS_EXHST and ITEM_CODE = m.ITEM_CODE)) as 현재고
                            
                            ,I.ITEM_QTY_STND as 표준불출수량
                            ,w.WO_PLAN_QTY
+                           ,f.FCLTS_WRHS_GOOD
+                           ,w.SALES_WORK_ORDER_ID
+                           ,f.FCLTS_WRHS_EXHST
                            
                            ,(select isnull(sum(INS_QTY),0) 
                            from INSTACK 
-                           where INS_TYP = '출고' and SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and INS_WRHS = f.FCLTS_WRHS_EXHST and ITEM_CODE = w.ITEM_CODE) as 출고
+                           where INS_TYP = '출고' and SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and INS_WRHS = f.FCLTS_WRHS_EXHST and ITEM_CODE = m.ITEM_CODE) as 출고
                            
                            ,(W.WO_PLAN_QTY - (select isnull(sum(INS_QTY),0) 
                            from INSTACK 
-                           where INS_TYP = '출고' and SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and INS_WRHS = f.FCLTS_WRHS_EXHST and ITEM_CODE = w.ITEM_CODE)) as 잔량
+                           where INS_TYP = '출고' and SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and INS_WRHS = f.FCLTS_WRHS_EXHST and ITEM_CODE = m.ITEM_CODE)) as 잔량
                            
                            FROM BOM m
                            , WORKORDER w
@@ -70,5 +73,6 @@ namespace TEAM3FINALDAC
             }
             return dt;
         }
+       
     }
 }

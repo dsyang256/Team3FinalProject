@@ -54,7 +54,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.WORKORDER = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -69,7 +70,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.textBox2);
+            this.panel2.Controls.Add(this.WORKORDER);
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.eday);
             this.panel2.Controls.Add(this.sday);
@@ -177,6 +178,7 @@
             this.dgv2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv2.Size = new System.Drawing.Size(1263, 127);
             this.dgv2.TabIndex = 0;
+            this.dgv2.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv2_CellValueChanged);
             this.dgv2.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dgv2_EditingControlShowing);
             // 
             // dgv1
@@ -341,23 +343,40 @@
             this.textBox1.Size = new System.Drawing.Size(193, 23);
             this.textBox1.TabIndex = 1;
             // 
-            // textBox2
+            // button2
             // 
-            this.textBox2.Location = new System.Drawing.Point(943, 55);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(193, 23);
-            this.textBox2.TabIndex = 166;
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.AutoSize = true;
+            this.button2.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button2.Location = new System.Drawing.Point(1168, 490);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(101, 25);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "불출요청";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // WORKORDER
+            // 
+            this.WORKORDER.FormattingEnabled = true;
+            this.WORKORDER.Location = new System.Drawing.Point(943, 54);
+            this.WORKORDER.Name = "WORKORDER";
+            this.WORKORDER.Size = new System.Drawing.Size(193, 23);
+            this.WORKORDER.TabIndex = 166;
             // 
             // FrmReleaseRequest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1293, 661);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.menuPanel2);
             this.Controls.Add(this.menuPanel1);
             this.Name = "FrmReleaseRequest";
             this.Text = "자재분출요청";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmReleaseRequest_FormClosing);
             this.Load += new System.EventHandler(this.FrmReleaseRequest_Load);
             this.Controls.SetChildIndex(this.menuPanel1, 0);
             this.Controls.SetChildIndex(this.menuPanel2, 0);
@@ -365,6 +384,7 @@
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.panel3, 0);
+            this.Controls.SetChildIndex(this.button2, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -397,6 +417,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox WORKORDER;
     }
 }

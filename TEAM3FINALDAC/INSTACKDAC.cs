@@ -98,5 +98,25 @@ namespace TEAM3FINALDAC
             }
             return dt;
         }
+        public bool INSERT_instack(int qty, string whrsin, string whesout, string code, string id)
+        {
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = new SqlConnection(this.ConnectionString);
+                cmd.CommandText = @"INSERT INTO instack (INS_QTY,INS_TYP,INS_WRHS,ITEM_CODE,SALES_WORK_ORDER_ID)
+                                    VALUES (@INS_QTY,'입고',@INS_WRHS_IN,@ITEM_CODE,@SALES_WORK_ORDER_ID)
+
+                                    INSERT INTO instack (INS_QTY,INS_TYP,INS_WRHS,ITEM_CODE,SALES_WORK_ORDER_ID)
+                                    VALUES (@INS_QTY,'출고',@INS_WRHS_OUT,@ITEM_CODE,@SALES_WORK_ORDER_ID)";
+                cmd.Parameters.AddWithValue("@INS_QTY", qty);
+                cmd.Parameters.AddWithValue("@INS_WRHS_IN", whrsin);
+                cmd.Parameters.AddWithValue("@INS_WRHS_OUT", whesout);
+                cmd.Parameters.AddWithValue("@ITEM_CODE", code);
+                cmd.Parameters.AddWithValue("@SALES_WORK_ORDER_ID", id);
+                cmd.Connection.Open();
+                int iResult = cmd.ExecuteNonQuery();
+                return (iResult > 0) ? true : false;
+            }
+        }
     }
 }

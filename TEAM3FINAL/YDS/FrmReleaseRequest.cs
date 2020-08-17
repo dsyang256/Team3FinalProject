@@ -11,7 +11,7 @@ using TEAM3FINALVO;
 
 namespace TEAM3FINAL
 {
-    public partial class FrmReleaseRequest : baseForm2
+    public partial class FrmReleaseRequest : baseForm2, CommonBtn
     {
         public CheckBox headerChk;
 
@@ -26,7 +26,9 @@ namespace TEAM3FINAL
             DataGridViewColumnSet1();
             DataGridViewColumnSet2();
             DataGridViewBinding1();
+            BtnSet();
         }
+
         #region 콤보박스 바인딩
         /// <summary>
         /// 콤보박스 바인딩
@@ -41,6 +43,9 @@ namespace TEAM3FINAL
             //설비
             var listFACILITY = (from item in Commonlist where item.COMMON_PARENT == "설비" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(FACILITY, listFACILITY, "COMMON_CODE", "COMMON_NAME", "");
+            //작업지시id
+            var listid = (from item in Commonlist where item.COMMON_PARENT == "작업지시" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(WORKORDER, listid, "COMMON_CODE", "COMMON_NAME", "");
 
         }
         #endregion
@@ -81,9 +86,11 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "표준불출수량", "표준불출수량", true, 150);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "계획요청수량", "WO_PLAN_QTY", true, 150);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "요청수량", "", true, 100, readOnly:false) ;
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "출고수량", "출고", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "잔량", "잔량", true, 100);
-
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "출고수량", "출고", true, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "잔량", "잔량", true, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "입고창고", "FCLTS_WRHS_GOOD", false, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "작업번호", "SALES_WORK_ORDER_ID", false, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "출고창고", "FCLTS_WRHS_EXHST", false, 125);
             DataGridViewCheckBoxAllCheck();
 
         }
@@ -157,6 +164,119 @@ namespace TEAM3FINAL
             {
                 e.Handled = true;
             }
+        }
+
+        private void dgv2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 10)
+            {
+                dgv2.EndEdit();
+                int a = Convert.ToInt32(dgv2.Rows[e.RowIndex].Cells[7].Value);
+                int b = Convert.ToInt32(dgv2.Rows[e.RowIndex].Cells[12].Value);
+                int c = Convert.ToInt32(dgv2.Rows[e.RowIndex].Cells[10].Value);
+                if (c > a)
+                {
+                    MessageBox.Show("요청량이 재고보다 많습니다.");
+                    dgv2.Rows[e.RowIndex].Cells[10].Value = null;
+                    return;
+                }
+                if (c >b)
+                {
+                    MessageBox.Show("요청량이 잔량보다 많습니다.");
+                    dgv2.Rows[e.RowIndex].Cells[10].Value = null;
+                    return;
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dgv2.EndEdit();
+            INSTACKService service = new INSTACKService();
+            foreach (DataGridViewRow item in dgv2.Rows)
+            {
+                if (Convert.ToBoolean(item.Cells[1].Value) && item.Cells[10].Value != null)
+                {
+                    int qty = Convert.ToInt32(item.Cells[10].Value);
+                    string code = item.Cells[2].Value.ToString();
+                    string wrhsin = item.Cells[13].Value.ToString();
+                    string id = item.Cells[14].Value.ToString();
+                    string wrhsout = item.Cells[15].Value.ToString();
+                    service.INSERT_instack(qty, wrhsin, wrhsout, code, id);
+                }
+            }
+            dgv2.DataSource = null;
+            
+            
+        }
+        private void BtnSet()
+        {
+            FrmMAIN frm = (FrmMAIN)this.MdiParent;
+            frm.eSearch += Search;
+            frm.eInsert += Insert;
+            frm.eUpdate += Update;
+            frm.eDelete += Delete;
+            frm.ePrint += Print;
+            frm.eReset += Reset;
+           
+        }
+
+        public void Insert(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+            }
+        }
+
+        public void Search(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+
+            }
+        }
+
+        public void Reset(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+            }
+        }
+
+        public void Update(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+            }
+        }
+
+        public void Delete(object sender, EventArgs e)
+        {
+            if(((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+            }
+        }
+
+        public void Print(object sender, EventArgs e)
+        {
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+
+            }
+        }
+        private void BtnUnSet()
+        {
+            FrmMAIN frm = (FrmMAIN)this.MdiParent;
+            frm.eSearch -= Search;
+            frm.eInsert -= Insert;
+            frm.eUpdate -= Update;
+            frm.eDelete -= Delete;
+            frm.ePrint -= Print;
+            frm.eReset -= Reset;
+        }
+        private void FrmReleaseRequest_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            BtnUnSet();
         }
     }
 }

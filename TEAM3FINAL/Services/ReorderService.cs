@@ -68,10 +68,10 @@ namespace TEAM3FINAL
             return dac.GetWarehousingWait();
         }
 
-        internal bool insertREORDERDETATILS(REORDERDETATILS_VO vo ,ITEM_VO vo2)
+        internal bool insertREORDERDETATILS(REORDERDETATILS_VO vo ,ITEM_VO vo2,string id)
         {
             REORDERDAC dac = new REORDERDAC();
-            return dac.insertREORDERDETATILS(vo,vo2);
+            return dac.insertREORDERDETATILS(vo,vo2,id);
         }
 
         public DataTable GetWarehousingWait2()
@@ -92,10 +92,10 @@ namespace TEAM3FINAL
             return dac.Inspection2();
         }
 
-        internal bool insertInspection(int gqty, int bqty, int reorder, int reorderD,string code)
+        internal bool insertInspection(int gqty, int bqty, int reorder, int reorderD,string code,string id)
         {
             REORDERDAC dac = new REORDERDAC();
-            return dac.insertInspection(gqty, bqty, reorder, reorderD,code);
+            return dac.insertInspection(gqty, bqty, reorder, reorderD,code,id);
         }
 
         internal DataTable Inspection1()

@@ -97,6 +97,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(COMPANY, "규격", "ITEM_STND", true, 125);
             DataGridViewUtil.AddNewColumnToDataGridView(COMPANY, "납품수량", "REORDER_DETAIL_QTY", true, 125);
             DataGridViewUtil.AddNewColumnToDataGridView(COMPANY, "불량수량", "", true, 100, readOnly: false);
+            DataGridViewUtil.AddNewColumnToDataGridView(COMPANY, "작업번호", "SALES_WORK_ORDER_ID", false, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(COMPANY, "비고", "", true, 400 );
 
             DataGridViewCheckBoxAllCheck2();
@@ -187,6 +188,7 @@ namespace TEAM3FINAL
             int reorder = 0;
             int reorderD = 0;
             string code = "";
+            string id = "";
             COMPANY.EndEdit();
             ReorderService service = new ReorderService();
             foreach (DataGridViewRow item in COMPANY.Rows)
@@ -206,7 +208,8 @@ namespace TEAM3FINAL
                     reorder = Convert.ToInt32(item.Cells[2].Value);
                     reorderD = Convert.ToInt32(item.Cells[3].Value);
                     code = item.Cells[7].Value.ToString();
-                    service.insertInspection(gqty, bqty, reorder, reorderD,code);
+                    id = item.Cells[12].Value.ToString();
+                    service.insertInspection(gqty, bqty, reorder, reorderD,code,id);
                     a++;
                     
                 }

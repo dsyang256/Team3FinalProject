@@ -98,6 +98,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "발주일자", "REORDER_DATE", true, 200);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "검사유무", "ITEM_INCOME_YN", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "입고창고", "ITEM_WRHS_IN", false, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "작업번호", "SALES_WORK_ORDER_ID", false, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "비고", "", true, 100);
             DataGridViewCheckBoxAllCheck2();
         }
@@ -287,7 +288,8 @@ namespace TEAM3FINAL
                     vo2.ITEM_WRHS_IN = (item.Cells[14].Value == null) ? "R-01" : item.Cells[14].Value.ToString();
                     vo.REORDER_DETAIL_QTY_GOOD = Convert.ToInt32(item.Cells[9].Value);
                     vo.REORDER = Convert.ToInt32(item.Cells[2].Value);
-                    if (service.insertREORDERDETATILS(vo, vo2)) ;
+                    string id = item.Cells[15].Value.ToString();
+                    if (service.insertREORDERDETATILS(vo, vo2,id)) ;
                     {
                         su++;
                     }

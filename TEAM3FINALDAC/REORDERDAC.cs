@@ -58,7 +58,7 @@ namespace TEAM3FINALDAC
             }
         }
 
-        public bool insertREORDERDETATILS(REORDERDETATILS_VO vo,ITEM_VO vo2)
+        public bool insertREORDERDETATILS(REORDERDETATILS_VO vo,ITEM_VO vo2,string id)
         {
             bool Result = false;
             try
@@ -74,6 +74,7 @@ namespace TEAM3FINALDAC
                     cmd.Parameters.AddWithValue("@P_ITEM_INCOME_YN", vo2.ITEM_INCOME_YN);
                     cmd.Parameters.AddWithValue("@P_ITEM_CODE", vo2.ITEM_CODE);
                     cmd.Parameters.AddWithValue("@P_ITEM_WRHS_IN", vo2.ITEM_WRHS_IN);
+                    cmd.Parameters.AddWithValue("@P_SALES_WORK_ORDER_ID", id);
                     cmd.Connection.Open();
                     int iResult = cmd.ExecuteNonQuery();
                     cmd.Connection.Close();
@@ -121,7 +122,7 @@ namespace TEAM3FINALDAC
             return dt;
         }
 
-        public bool insertInspection(int gqty, int bqty, int reorder, int reorderD,string code)
+        public bool insertInspection(int gqty, int bqty, int reorder, int reorderD,string code,string id)
         {
             bool Result = false;
             try
@@ -136,6 +137,7 @@ namespace TEAM3FINALDAC
                     cmd.Parameters.AddWithValue("@P_REORDER_CODE", reorder);
                     cmd.Parameters.AddWithValue("@P_REORDER_DETAIL_CODE", reorderD);
                     cmd.Parameters.AddWithValue("@P_ITEM_CODE", code);
+                    cmd.Parameters.AddWithValue("@P_SALES_WORK_ORDER_ID", id);
 
                     cmd.Connection.Open();
                     int iResult = cmd.ExecuteNonQuery();
@@ -154,7 +156,7 @@ namespace TEAM3FINALDAC
         {
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(this.ConnectionString);
-            string sql = @"select ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx,rd.REORDER_CODE,r.REORDER_DATE,rd.REORDER_DATE_IN,COM_CODE,r.ITEM_CODE,ITEM_NAME,ITEM_STND,rd.REORDER_DETAIL_QTY,REORDER_DETAIL_CODE
+            string sql = @"select ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx,rd.REORDER_CODE,r.REORDER_DATE,rd.REORDER_DATE_IN,COM_CODE,r.ITEM_CODE,ITEM_NAME,ITEM_STND,rd.REORDER_DETAIL_QTY,REORDER_DETAIL_CODE,r.SALES_WORK_ORDER_ID
                              from REORDERDETATILS rd ,REORDER r,ITEM i
                             where rd.REORDER_CODE = r.REORDER_CODE and r.ITEM_CODE = i.ITEM_CODE and REORDER_DETAIL_INSPECT_YN = 'N'";
             conn.Open();
@@ -223,7 +225,8 @@ namespace TEAM3FINALDAC
                             (select sum(isnull(REORDER_DETAIL_QTY_GOOD,0))
                             from REORDERDETATILS
                             where REORDER_CODE = r.REORDER_CODE)), REORDER_QTY) REORDER_QTY1
-                            ,REORDER_STATE,REORDER_DATE_IN,REORDER_DATE,ITEM_INCOME_YN
+                            ,REORDER_STATE,REORDER_DATE_IN,REORDER_DATE,ITEM_INCOME_YN,R.SALES_WORK_ORDER_ID
+
                             from ITEM I JOIN REORDER r ON I.ITEM_CODE =R.ITEM_CODE
                             where ITEM_TYP = '원자재' AND REORDER_STATE in ('발주','입고대기')";
              conn.Open();
@@ -273,39 +276,47 @@ namespace TEAM3FINALDAC
         {
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(this.ConnectionString);
-            string sql = @"SELECT ITEM_COM_REORDER,ITEM_COM_DLVR,ITEM_MANAGER,v.ITEM_CODE,ITEM_NAME,ITEM_WRHS_IN,ITEM_INCOME_YN,ITEM_REORDER_TYP,FAC_NAME,s.SALES_Work_Order_ID,
-(v.QTY+
-((select i.ITEM_QTY_SAFE from ITEM i where ITEM_CODE = v.ITEM_CODE) -
-(((select isnull(sum(INS_QTY),0) from INSTACK i where ITEM_CODE = v.ITEM_CODE and i.INS_TYP = '입고' and i.INS_WRHS ='R-01') -
-(select isnull(sum(INS_QTY),0) from INSTACK i where ITEM_CODE = v.ITEM_CODE and i.INS_TYP = '출고'and i.INS_WRHS ='R-01'))+
-(select isnull(sum(r.REORDER_QTY),0)-isnull(sum(rd.REORDER_DETAIL_QTY_GOOD),0) 
-from REORDER r left outer join REORDERDETATILS rd on r.REORDER_CODE = rd.REORDER_CODE 
-where ITEM_CODE = v.ITEM_CODE  )))) as '발주제안',
+            string sql = @"select s.SALES_Work_Order_ID, ITEM_COM_DLVR,ITEM_COM_REORDER,ITEM_MANAGER,b.ITEM_CODE,i.ITEM_NAME,ITEM_WRHS_IN,f.FAC_NAME,ITEM_INCOME_YN,ITEM_REORDER_TYP,ITEM_LEADTIME
 
 
-((select isnull(sum(INS_QTY),0) from INSTACK i where ITEM_CODE = v.ITEM_CODE and i.INS_TYP = '입고' and i.INS_WRHS ='R-01') -
-(select isnull(sum(INS_QTY),0) from INSTACK i where ITEM_CODE = v.ITEM_CODE and i.INS_TYP = '출고' and i.INS_WRHS ='R-01')) as '현재고',
-
-(((select isnull(sum(INS_QTY),0) from INSTACK i where ITEM_CODE = v.ITEM_CODE and i.INS_TYP = '입고' and i.INS_WRHS ='R-01') -
-(select isnull(sum(INS_QTY),0) from INSTACK i where ITEM_CODE = v.ITEM_CODE and i.INS_TYP = '출고' and i.INS_WRHS ='R-01'))+
-(select isnull(sum(r.REORDER_QTY),0)-isnull(sum(rd.REORDER_DETAIL_QTY_GOOD),0) 
-from REORDER r left outer join REORDERDETATILS rd on r.REORDER_CODE = rd.REORDER_CODE 
-where ITEM_CODE = v.ITEM_CODE )) AS '가상재고', i.ITEM_LEADTIME
-
-
-
-from ITEM i ,FACTORY f,BOM_SALES_WORK_V v,SALES_WORK S
-where ITEM_TYP = '원자재' and i.ITEM_WRHS_IN =f.FAC_CODE 
-and i.ITEM_CODE =v.ITEM_CODE 
-and v.SALES_DUEDATE = s.SALES_DUEDATE 
-and v.SALES_DUEDATE > GETDATE()
-and (v.QTY+
-((select i.ITEM_QTY_SAFE from ITEM i where ITEM_CODE = v.ITEM_CODE) -
-(((select isnull(sum(INS_QTY),0) from INSTACK i where ITEM_CODE = v.ITEM_CODE and i.INS_TYP = '입고' and i.INS_WRHS ='R-01') -
-(select isnull(sum(INS_QTY),0) from INSTACK i where ITEM_CODE = v.ITEM_CODE and i.INS_TYP = '출고' and i.INS_WRHS ='R-01'))+
-(select isnull(sum(r.REORDER_QTY),0)-isnull(sum(rd.REORDER_DETAIL_QTY_GOOD),0) 
-from REORDER r left outer join REORDERDETATILS rd on r.REORDER_CODE = rd.REORDER_CODE 
-where ITEM_CODE = v.ITEM_CODE  )))) > 0";
+                            ,(s.SALES_QTY *q.A_QTY) as 발주제한 
+                            
+                            ,((select ISNULL(sum(INS_QTY),'0') 
+                            from INSTACK 
+                            where ITEM_CODE = B.ITEM_CODE AND INS_TYP = '입고'AND SALES_WORK_ORDER_ID = S.SALES_Work_Order_ID)-
+                            
+                            (select ISNULL(sum(INS_QTY),0) 
+                            from INSTACK 
+                            where ITEM_CODE = B.ITEM_CODE AND INS_TYP = '출고' AND SALES_WORK_ORDER_ID = S.SALES_Work_Order_ID)) AS 현재고
+                            
+                            ,((select ISNULL(sum(INS_QTY),0) 
+                            from INSTACK 
+                            where ITEM_CODE = B.ITEM_CODE AND INS_TYP = '입고' AND SALES_WORK_ORDER_ID = S.SALES_Work_Order_ID)-
+                            
+                            (select ISNULL(sum(INS_QTY),0) 
+                            from INSTACK 
+                            where ITEM_CODE = B.ITEM_CODE AND INS_TYP = '출고' AND SALES_WORK_ORDER_ID = S.SALES_Work_Order_ID))+
+                            
+                            ((select ISNULL(SUM(REORDER_QTY),0) 
+                            from REORDER r 
+                            where ITEM_CODE =  B.ITEM_CODE and  r.SALES_Work_Order_ID = S.SALES_Work_Order_ID)-
+                            
+                            (select ISNULL(sum(REORDER_DETAIL_QTY_GOOD),0)
+                            from REORDER r ,REORDERDETATILS rd
+                            where ITEM_CODE =  B.ITEM_CODE and  r.SALES_Work_Order_ID = S.SALES_Work_Order_ID)) as 가상재고 
+                            
+                            from BOM_V b,SALES_WORK s,ITEM i,FACTORY f,BOM_QTY q
+                            where 
+                             b.BOM_TOP_CODE = s.ITEM_CODE 
+                             and b.SALES_DUEDATE= s.SALES_DUEDATE
+                             and b.ITEM_CODE = i.ITEM_CODE
+                             and ITEM_TYP = '원자재'
+                             and f.FAC_CODE = ITEM_WRHS_IN
+                             and b.ITEM_CODE = q.ITEM_CODE
+                             and s.SALES_QTY *q.A_QTY != 
+                            (select ISNULL(SUM(REORDER_QTY),0) 
+                            from REORDER r 
+                            where ITEM_CODE =  B.ITEM_CODE and  r.SALES_Work_Order_ID = S.SALES_Work_Order_ID)";
             conn.Open();
             using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
             {

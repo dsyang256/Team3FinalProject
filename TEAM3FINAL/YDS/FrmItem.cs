@@ -27,7 +27,6 @@ namespace TEAM3FINAL
             ComboBinding();
             DataGridViewColumnSet();
             DataGridViewBinding();
-            ((FrmMAIN)this.MdiParent).Readed += Readed_BarCode;
 
         }
         private void Readed_BarCode(object sender, ReadEventArgs e)
@@ -70,6 +69,7 @@ namespace TEAM3FINAL
             frm.eDelete += Delete;
             frm.ePrint += Print;
             frm.eReset += Reset;
+            frm.Readed += Readed_BarCode;
         }
 
         /// <summary>
@@ -384,6 +384,7 @@ namespace TEAM3FINAL
             frm.eDelete -= Delete;
             frm.ePrint -= Print;
             frm.eReset -= Reset;
+            frm.Readed -= Readed_BarCode;
         }
 
         private void FrmItem_FormClosing(object sender, FormClosingEventArgs e)

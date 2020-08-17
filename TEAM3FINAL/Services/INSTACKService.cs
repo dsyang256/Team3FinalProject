@@ -31,5 +31,10 @@ namespace TEAM3FINAL
             INSTACKDAC dac = new INSTACKDAC();
             return dac.SP_ReceivingSearch(day, name, typ, wrhs, qty, level);
         }
+        public bool INSERT_instack(int qty, string whrsin, string whesout, string code, string id)
+        {
+            INSTACKDAC dac = new INSTACKDAC();
+            return dac.INSERT_instack(qty, whrsin, whesout, code, id);
+        }
     }
 }
