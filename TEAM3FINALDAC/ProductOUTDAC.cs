@@ -29,7 +29,7 @@ namespace TEAM3FINALDAC
 				                                     inner join COMPANY c on s.COM_CODE = c.COM_CODE
 				                                     inner join ITEM i on w.ITEM_CODE = i.ITEM_CODE
 				                                     inner join INSTACK ii on w.ITEM_CODE = ii.ITEM_CODE
-                                    where INS_WRHS = 'M_01' and w.WO_WORK_STATE <> '마감완료'
+                                    where INS_WRHS = 'M_01' and (w.WO_WORK_STATE = '제품등록' or w.WO_WORK_STATE = '마감중')
                                     group by w.SALES_WORK_ORDER_ID, s.COM_CODE, c.COM_NAME, s.SALES_COM_CODE, w.ITEM_CODE, i.ITEM_NAME, s.SALES_DUEDATE, w.WO_PLAN_QTY, ii.INS_WRHS";
                 cmd.Connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -125,7 +125,7 @@ namespace TEAM3FINALDAC
 				                                     inner join COMPANY c on s.COM_CODE = c.COM_CODE
 				                                     inner join ITEM i on w.ITEM_CODE = i.ITEM_CODE
 				                                     inner join INSTACK ii on w.ITEM_CODE = ii.ITEM_CODE
-                                    where INS_WRHS = 'M_01'
+                                    where INS_WRHS = 'M_01' and (w.WO_WORK_STATE = '마감완료' or w.WO_WORK_STATE = '마감중')
                                     group by w.SALES_WORK_ORDER_ID, s.COM_CODE, c.COM_NAME, s.SALES_COM_CODE, w.ITEM_CODE, i.ITEM_NAME, s.SALES_DUEDATE, w.WO_PLAN_QTY, ii.INS_WRHS";
                 cmd.Connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
