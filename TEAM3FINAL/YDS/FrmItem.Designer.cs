@@ -443,6 +443,7 @@
             this.Controls.Add(this.menuPanel1);
             this.Name = "FrmItem";
             this.Text = "품목";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmItem_FormClosing);
             this.Load += new System.EventHandler(this.FrmItem_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.label1, 0);
