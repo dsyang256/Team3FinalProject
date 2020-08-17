@@ -54,6 +54,11 @@
     <Reference Include="DevExpress.XtraPrinting.v20.1, Version=20.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraReports.v20.1, Version=20.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraReports.v20.1.Extensions, Version=20.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="Interop.Microsoft.Office.Interop.Excel, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>Resources\Interop.Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
@@ -777,30 +782,13 @@
   <ItemGroup>
     <None Include="Resources\tag_window_50px.png" />
     <None Include="Resources\exit_30px.png" />
+    <Content Include="Resources\Interop.Microsoft.Office.Core.dll" />
+    <Content Include="Resources\Interop.Microsoft.Office.Interop.Excel.dll" />
+    <Content Include="Resources\Interop.VBIDE.dll" />
     <Content Include="Resources\plus_math_30px.png" />
     <Content Include="Resources\reset_24px.png" />
     <Content Include="Resources\Save_16x16.png" />
     <Content Include="Resources\subtract_30px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="Microsoft.Office.Interop.Excel">
-      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>7</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="VBIDE">
-      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
-      <VersionMajor>5</VersionMajor>
-      <VersionMinor>3</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
