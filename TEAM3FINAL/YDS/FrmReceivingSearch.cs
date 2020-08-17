@@ -38,21 +38,18 @@ namespace TEAM3FINAL
             CommonService service = new CommonService();
             List<ComboItemVO> Commonlist = service.GetITEMCmCode();
 
-            //발주업체
-            var listCOM_OUT = (from item in Commonlist where item.COMMON_PARENT == "업체명" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(COM_OUT, listCOM_OUT, "COMMON_CODE", "COMMON_NAME", "");
 
-            //납품업체
-            var listCOM_IN = (from item in Commonlist where item.COMMON_PARENT == "업체명" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(COM_IN, listCOM_IN, "COMMON_CODE", "COMMON_NAME", "");
-
-            //발주상태
-            var listUSER = (from item in Commonlist where item.COMMON_PARENT == "담당자" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(USER, listUSER, "COMMON_CODE", "COMMON_NAME", "");
+            //품목유형
+            var listITEM_TYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listITEM_TYP, "COMMON_CODE", "COMMON_NAME", "");
 
             //창고
             var listWRHS = (from item in Commonlist where item.COMMON_PARENT == "창고" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(WRHS, listWRHS, "COMMON_CODE", "COMMON_NAME", "");
+
+            //관리등급
+            var listLEVEL = (from item in Commonlist where item.COMMON_PARENT == "관리등급" select item).ToList();
+            CommonUtil.ComboBinding<ComboItemVO>(ITEM_MANAGE_LEVEL, listLEVEL, "COMMON_CODE", "COMMON_NAME", "");
 
         }
         #endregion
@@ -134,6 +131,14 @@ namespace TEAM3FINAL
             }
         }
         #endregion
+
+        #region 버튼 이벤트
+
+        /// <summary>
+        /// 버튼 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Insert(object sender, EventArgs e)
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
@@ -145,6 +150,7 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
+
             }
         }
 
@@ -175,7 +181,7 @@ namespace TEAM3FINAL
             {
             }
         }
+        #endregion
 
-       
     }
 }
