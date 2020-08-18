@@ -47,5 +47,10 @@ namespace TEAM3POP
 
 
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string code  = comboBox1.Text;
+        }
     }
 }
