@@ -159,6 +159,11 @@ namespace TEAM3FINALDAC
                                            FROM DEMAND_PLANNING 
                                         
                                            Union
+
+                                           SELECT FACG_CODE 'COMMON_CODE',FACG_NAME 'COMMON_NAME', ('설비군')'COMMON_PARENT', null 'COMMON_SEQ'
+                                           FROM FACILITY_GROP 
+                                        
+                                           Union
                                         
                                            SELECT WO_Code 'COMMON_CODE',WO_Code 'COMMON_NAME', ('작업지시')'COMMON_PARENT', null 'COMMON_SEQ'
                                            FROM WORKORDER 

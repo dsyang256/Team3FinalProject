@@ -134,9 +134,10 @@ namespace TEAM3FINAL
         {
             if (e.RowIndex < 0) return;
             string code = dgv1.Rows[e.RowIndex].Cells[5].Value.ToString();
+            string id = dgv1.Rows[e.RowIndex].Cells[2].Value.ToString();
             dgv2.DataSource = null;
             WorkOrderDSService service = new WorkOrderDSService();
-            dgv2.DataSource = service.GetWorkOrder2(code);
+            dgv2.DataSource = service.GetWorkOrder2(code,id);
         }
 
         private void dgv2_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)

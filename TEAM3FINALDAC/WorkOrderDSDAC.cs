@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using TEAM3FINALVO;
 
 namespace TEAM3FINALDAC
 {
@@ -26,7 +27,98 @@ namespace TEAM3FINALDAC
             return dt;
         }
 
-        public DataTable GetWorkOrder2(string code)
+        public DataTable POPDGV1()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            string sql = @"SELECT ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx,WO_Code,ITEM_CODE,WO_PLAN_QTY,WO_WORK_STATE
+                             FROM WORKORDER
+                            WHERE WO_WORK_STATE ='작업지시'";
+            conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
+            {
+
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+        public DataTable ComboBinding(string v)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            string sql = @"  SELECT WO_Code
+                               FROM WORKORDER
+                               where WO_WORK_STATE = '작업지시' and FCLTS_CODE = @FCLTS_CODE";
+            conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
+            {
+                da.SelectCommand.Parameters.AddWithValue("@FCLTS_CODE", v);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+        public DataTable POPDGVselect1(string v)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            string sql = @"  SELECT WO_Code,ITEM_CODE,PLAN_ID,f.FCLTS_NAME,WO_PLAN_QTY,WO_QTY_IN,WO_QTY_OUT,WO_QTY_PROD,WO_QTY_BAD
+                               FROM  WORKORDER w, FACILITY f
+                              WHERE w.FCLTS_CODE = f.FCLTS_CODE
+                                AND WO_Code = @WO_Code";
+            conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
+            {
+                da.SelectCommand.Parameters.AddWithValue("@WO_Code", v);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+        public List<POPVO> POPFACILITY()
+        {
+            List<POPVO> list = default;
+
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = $@"   SELECT POP_CODE, FCLTS_CODE, FCLTS_NAME, FCLTS_IP, FCLTS_PORT
+                                                    FROM POP";
+
+                    cmd.Connection.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    list = Helper.DataReaderMapToList<POPVO>(reader);
+                    cmd.Connection.Close();
+                }
+            }
+            catch (Exception err)
+            {
+                string msg = err.Message;
+            }
+            return list;
+        }
+
+        public DataTable POPDGVselect(string day1, string day2, string fac, string facg)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter("SP_POPDGVselect", conn))
+            {
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.AddWithValue("@P_day1", day1);
+                da.SelectCommand.Parameters.AddWithValue("@P_day2", day2);
+                da.SelectCommand.Parameters.AddWithValue("@P_fac", fac);
+                da.SelectCommand.Parameters.AddWithValue("@P_facg", facg);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
+
+        public DataTable GetWorkOrder2(string code,string id)
         {
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(this.ConnectionString);
@@ -64,11 +156,13 @@ namespace TEAM3FINALDAC
                            and m.ITEM_CODE = i.ITEM_CODE 
                            and m.BOM_PARENT_CODE = w.ITEM_CODE 
                            and w.WO_WORK_STATE = '작업지시'
-                           and m.BOM_PARENT_CODE = @code";
+                           and m.BOM_PARENT_CODE = @code
+						   and w.WO_Code = @WO_Code";
             conn.Open();
             using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
             {
                 da.SelectCommand.Parameters.AddWithValue("@code", code);
+                da.SelectCommand.Parameters.AddWithValue("@WO_Code", id);
                 da.Fill(dt);
             }
             return dt;

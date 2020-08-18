@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmPOP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPOP.Designer.cs">
+      <DependentUpon>FrmPOP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPOPALL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPOPALL.Designer.cs">
+      <DependentUpon>FrmPOPALL.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPOPMAIN.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +70,12 @@
     <Compile Include="FrmPOPMDI.Designer.cs">
       <DependentUpon>FrmPOPMDI.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MyDataGridView.Designer.cs">
+      <DependentUpon>MyDataGridView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProjectBaseForm.cs">
       <SubType>Form</SubType>
@@ -66,11 +84,23 @@
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FrmPOPALL.resx">
+      <DependentUpon>FrmPOPALL.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPOPMAIN.resx">
       <DependentUpon>FrmPOPMAIN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPOPMDI.resx">
       <DependentUpon>FrmPOPMDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MyDataGridView.resx">
+      <DependentUpon>MyDataGridView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectBaseForm.resx">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
@@ -84,6 +114,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -105,6 +138,10 @@
     <ProjectReference Include="..\TEAM3FINALVO\TEAM3FINALVO.csproj">
       <Project>{6dd41fff-416c-4c82-8319-53a9f358586d}</Project>
       <Name>TEAM3FINALVO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TEAM3FINAL\TEAM3FINAL.csproj">
+      <Project>{00c1c951-2a3d-4c08-b1a5-a22499824bf3}</Project>
+      <Name>TEAM3FINAL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
