@@ -23,8 +23,15 @@ namespace TEAM3FINAL
             dateTimePicker2.Value = DateTime.Now.AddDays(5);
             BtnSet();
             ComboBinding();
+            cboPlan.SelectedIndex = 1;
             DataGridViewColumnSet();
+            
+            Search(null, null);
+           
+
         }
+       
+       
         /// <summary>
         /// 버튼 이벤트 델리게이트 추가
         /// </summary>
@@ -43,25 +50,46 @@ namespace TEAM3FINAL
         /// </summary>
         private void DataGridViewColumnSet()
         {
-            DataGridViewUtil.InitSettingGridView(dgvReorder);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "no", "idx", true, 30);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "품목", "ITEM_TYP", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "품목명", "ITEM_CODE", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "품목유형", "ITEM_NAME", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "항목", "ITEM_STND", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "단위", "ITEM_UNIT", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "단위수량", "ITEM_QTY_UNIT", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "환산단위", "ITEM_UNIT_CNVR", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "환산수량", "ITEM_QTY_CNVR", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "수입검사여부", "ITEM_INCOME_YN", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "공정검사여부", "ITEM_PROCS_YN", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "출하검사여부", "ITEM_XPORT_YN", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "단종유무", "ITEM_DSCN_YN", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "유무상구분", "ITEM_FREE_YN", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "납품업체", "ITEM_COM_DLVR", true, 140);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "발주업체", "ITEM_COM_REORDER", true, 140);
+            //데이터그리드뷰 초기설정
+            dgvReorder.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvReorder.AutoGenerateColumns = true;
+            dgvReorder.AllowUserToAddRows = false;
+            dgvReorder.MultiSelect = false;
+            dgvReorder.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvReorder.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvReorder.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
+            dgvReorder.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
 
+            if (dgvReorder.Rows.Count > 0)
+            {
+                DataGridViewColumn column = dgvReorder.Columns[0];
+                dgvReorder.Columns[0].Frozen = true;
+                column.Width = 200;
+
+                column = dgvReorder.Columns[1];
+                dgvReorder.Columns[1].Frozen = true;
+                column.Width = 200;
+
+                column = dgvReorder.Columns[2];
+                dgvReorder.Columns[2].Frozen = true;
+                column.Width = 150;
+
+                column = dgvReorder.Columns[3];
+                dgvReorder.Columns[3].Frozen = true;
+                column.Width = 150;
+
+                column = dgvReorder.Columns[4];
+                column.Visible = false;
+
+                foreach (DataGridViewColumn item in dgvReorder.Columns)
+                {
+                    item.ReadOnly = true;
+                }
+
+                //행번호 추가
+                DataGridViewUtil.DataGridViewRowNumSet(dgvReorder);
+            }
         }
         /// <summary>
         /// 콤보 박스 바인딩
@@ -74,15 +102,9 @@ namespace TEAM3FINAL
 
             //PLAN_ID
             var listPLAN_ID = (from item in Commonlist where item.COMMON_PARENT == "PLAN_ID" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(PLAN_ID, listPLAN_ID, "COMMON_CODE", "COMMON_NAME", "");
+            CommonUtil.ComboBinding<ComboItemVO>(cboPlan, listPLAN_ID, "COMMON_CODE", "COMMON_NAME", "");
 
-            //업체코드
-            var listCOM_CODE = (from item in Commonlist where item.COMMON_PARENT == "업체명" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(COM_CODE, listCOM_CODE, "COMMON_CODE", "COMMON_NAME", "");
-
-            //품목형태
-            var listITEM_TYP = (from item in Commonlist where item.COMMON_PARENT == "품목유형" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(ITEM_TYP, listITEM_TYP, "COMMON_CODE", "COMMON_NAME", "");
+           
 
 
         }
@@ -111,8 +133,25 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                
+                //데이터 조회
+                LoadDemandPlan();
+                //그리드 초기화
+                DataGridViewColumnSet();
+
+                DataGridViewNullToZero();
+                DataGridViewColor();
+               
             }
+        }
+        private void LoadDemandPlan()
+        {
+            string fromDate = dateTimePicker1.Value.ToShortDateString();
+            string toDate = dateTimePicker2.Value.ToShortDateString();
+            //서비스호출
+            PlanService service = new PlanService();
+            DataTable dt = service.GetMaterialDemandPlan(fromDate, toDate, cboPlan.Text);
+            dgvReorder.DataSource = null;
+            dgvReorder.DataSource = dt;
         }
         /// <summary>
         /// 리셋 버튼 이벤드
@@ -121,12 +160,15 @@ namespace TEAM3FINAL
         /// <param name="e"></param>
         public void Reset(object sender, EventArgs e)
         {
-            ITEM_STND.Text = "";
-            PLAN_ID.SelectedIndex = -1;
-            COM_CODE.SelectedIndex = -1;
-            ITEM_TYP.SelectedIndex = -1;
-            ITEM_TYP.SelectedIndex = -1;
-            //DataGridViewBinding();
+           
+            cboPlan.SelectedIndex = -1;
+            dateTimePicker1.Value = DateTime.Now.AddMonths(1);
+            dateTimePicker2.Value = DateTime.Now;
+            //데이터 조회
+            LoadDemandPlan();
+            //그리드 초기화
+            DataGridViewColumnSet();
+
         }
         /// <summary>
         /// 업데이트 버튼 이벤드
@@ -159,6 +201,43 @@ namespace TEAM3FINAL
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
             }
+        }
+        private void DataGridViewNullToZero()
+        {
+            //grid의 null값 => 0
+            foreach (DataGridViewRow row in dgvReorder.Rows)
+            {
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    if (cell.ColumnIndex > 5)
+                    {
+                        if (cell.Value == null || cell.Value.ToString() == string.Empty)
+                        {
+                            cell.Value = "0";
+                        }
+                    }
+                }
+            }
+        }
+        private void DataGridViewColor()
+        {
+            foreach (DataGridViewRow row in dgvReorder.Rows)
+            {
+                if (row.Cells[3].Value.ToString() == "발주제안")
+                {
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        if (cell.ColumnIndex > 5)
+                        {
+                            if (cell.Value.ToString() != "0")
+                            {
+                                cell.Style.BackColor = Color.Khaki;
+                            }
+                        }
+                    }
+                }
+            }
+
         }
     }
 }

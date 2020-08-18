@@ -32,21 +32,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.ITEM_TYP = new System.Windows.Forms.ComboBox();
-            this.PLAN_ID = new System.Windows.Forms.ComboBox();
-            this.COM_CODE = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.ITEM_STND = new System.Windows.Forms.TextBox();
+            this.cboPlan = new System.Windows.Forms.ComboBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dgvReorder = new WindowsFormsApp18.MyDataGridView();
@@ -63,21 +54,12 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.ITEM_TYP);
-            this.panel2.Controls.Add(this.PLAN_ID);
-            this.panel2.Controls.Add(this.COM_CODE);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.ITEM_STND);
+            this.panel2.Controls.Add(this.cboPlan);
             this.panel2.Controls.Add(this.dateTimePicker2);
             this.panel2.Controls.Add(this.dateTimePicker1);
             this.panel2.Controls.Add(this.label26);
             this.panel2.Controls.Add(this.label27);
             this.panel2.Controls.Add(this.label28);
-            this.panel2.Controls.Add(this.label18);
-            this.panel2.Controls.Add(this.label19);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Size = new System.Drawing.Size(1254, 103);
@@ -94,60 +76,14 @@
             this.panel3.Location = new System.Drawing.Point(15, 178);
             this.panel3.Size = new System.Drawing.Size(1254, 372);
             // 
-            // ITEM_TYP
+            // cboPlan
             // 
-            this.ITEM_TYP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ITEM_TYP.FormattingEnabled = true;
-            this.ITEM_TYP.Location = new System.Drawing.Point(566, 62);
-            this.ITEM_TYP.Name = "ITEM_TYP";
-            this.ITEM_TYP.Size = new System.Drawing.Size(199, 23);
-            this.ITEM_TYP.TabIndex = 149;
-            // 
-            // PLAN_ID
-            // 
-            this.PLAN_ID.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.PLAN_ID.FormattingEnabled = true;
-            this.PLAN_ID.Location = new System.Drawing.Point(189, 30);
-            this.PLAN_ID.Name = "PLAN_ID";
-            this.PLAN_ID.Size = new System.Drawing.Size(199, 23);
-            this.PLAN_ID.TabIndex = 147;
-            // 
-            // COM_CODE
-            // 
-            this.COM_CODE.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.COM_CODE.FormattingEnabled = true;
-            this.COM_CODE.Location = new System.Drawing.Point(189, 61);
-            this.COM_CODE.Name = "COM_CODE";
-            this.COM_CODE.Size = new System.Drawing.Size(199, 23);
-            this.COM_CODE.TabIndex = 146;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label3.Location = new System.Drawing.Point(68, 61);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 20);
-            this.label3.TabIndex = 144;
-            this.label3.Text = "품목";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label7.Location = new System.Drawing.Point(49, 64);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(15, 18);
-            this.label7.TabIndex = 145;
-            this.label7.Text = "*";
-            // 
-            // ITEM_STND
-            // 
-            this.ITEM_STND.Location = new System.Drawing.Point(947, 31);
-            this.ITEM_STND.Name = "ITEM_STND";
-            this.ITEM_STND.Size = new System.Drawing.Size(199, 23);
-            this.ITEM_STND.TabIndex = 143;
+            this.cboPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPlan.FormattingEnabled = true;
+            this.cboPlan.Location = new System.Drawing.Point(189, 30);
+            this.cboPlan.Name = "cboPlan";
+            this.cboPlan.Size = new System.Drawing.Size(199, 23);
+            this.cboPlan.TabIndex = 147;
             // 
             // dateTimePicker2
             // 
@@ -195,48 +131,6 @@
             this.label28.Size = new System.Drawing.Size(15, 18);
             this.label28.TabIndex = 140;
             this.label28.Text = "*";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label18.Location = new System.Drawing.Point(829, 35);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(39, 20);
-            this.label18.TabIndex = 130;
-            this.label18.Text = "품명";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label19.Location = new System.Drawing.Point(810, 38);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(15, 18);
-            this.label19.TabIndex = 131;
-            this.label19.Text = "*";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label2.Location = new System.Drawing.Point(449, 64);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 20);
-            this.label2.TabIndex = 117;
-            this.label2.Text = "품목형태";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label6.Location = new System.Drawing.Point(430, 67);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(15, 18);
-            this.label6.TabIndex = 118;
-            this.label6.Text = "*";
             // 
             // label5
             // 
@@ -337,22 +231,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox ITEM_TYP;
-        private System.Windows.Forms.ComboBox PLAN_ID;
-        private System.Windows.Forms.ComboBox COM_CODE;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox ITEM_STND;
+        private System.Windows.Forms.ComboBox cboPlan;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private WindowsFormsApp18.MyDataGridView dgvReorder;

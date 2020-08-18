@@ -83,6 +83,7 @@
             this.설비관리ToolStripMenuItem.Name = "설비관리ToolStripMenuItem";
             this.설비관리ToolStripMenuItem.Size = new System.Drawing.Size(160, 49);
             this.설비관리ToolStripMenuItem.Text = "설비관리";
+            this.설비관리ToolStripMenuItem.Click += new System.EventHandler(this.설비관리ToolStripMenuItem_Click);
             // 
             // FrmPOPMDI
             // 

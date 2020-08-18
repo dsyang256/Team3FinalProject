@@ -28,53 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.button1 = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.FCLTS_NAME = new System.Windows.Forms.TextBox();
+            this.ITEM_CODE = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.PLAN_ID = new System.Windows.Forms.TextBox();
+            this.WO_Code = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.WO_PLAN_QTY = new System.Windows.Forms.TextBox();
+            this.WO_QTY_OUT = new System.Windows.Forms.TextBox();
+            this.WO_QTY_ALL = new System.Windows.Forms.TextBox();
+            this.WO_QTY_PROD = new System.Windows.Forms.TextBox();
+            this.WO_QTY_BAD = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.asdfa = new System.Windows.Forms.TabPage();
+            this.dgv1 = new WindowsFormsApp18.MyDataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.asdfa.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -90,6 +93,57 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(118, 847);
             this.panel1.TabIndex = 1;
+            // 
+            // button6
+            // 
+            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button6.Location = new System.Drawing.Point(0, 472);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(118, 118);
+            this.button6.TabIndex = 4;
+            this.button6.Text = "button6";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button5.Location = new System.Drawing.Point(0, 354);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(118, 118);
+            this.button5.TabIndex = 3;
+            this.button5.Text = "작업종료";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button4.Location = new System.Drawing.Point(0, 236);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(118, 118);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "설비STOP";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button3.Location = new System.Drawing.Point(0, 118);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(118, 118);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "작업시작";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button2.Location = new System.Drawing.Point(0, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(118, 118);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "설비가동";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // groupBox1
             // 
@@ -109,6 +163,40 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "검색조건";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker2.Location = new System.Drawing.Point(337, 65);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(142, 36);
+            this.dateTimePicker2.TabIndex = 9;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(485, 65);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(139, 41);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "검색";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(157, 224);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(193, 38);
+            this.comboBox2.TabIndex = 7;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(157, 145);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(193, 38);
+            this.comboBox1.TabIndex = 6;
             // 
             // label4
             // 
@@ -156,16 +244,12 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.textBox6);
-            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.FCLTS_NAME);
+            this.groupBox2.Controls.Add(this.ITEM_CODE);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.PLAN_ID);
+            this.groupBox2.Controls.Add(this.WO_Code);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Font = new System.Drawing.Font("맑은 고딕", 16F);
@@ -176,121 +260,26 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "세부정보";
             // 
-            // comboBox1
+            // FCLTS_NAME
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(157, 145);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(193, 38);
-            this.comboBox1.TabIndex = 6;
+            this.FCLTS_NAME.Location = new System.Drawing.Point(436, 195);
+            this.FCLTS_NAME.Name = "FCLTS_NAME";
+            this.FCLTS_NAME.ReadOnly = true;
+            this.FCLTS_NAME.Size = new System.Drawing.Size(172, 36);
+            this.FCLTS_NAME.TabIndex = 20;
             // 
-            // comboBox2
+            // ITEM_CODE
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(157, 224);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(193, 38);
-            this.comboBox2.TabIndex = 7;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(485, 65);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 41);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "검색";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(337, 65);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(142, 36);
-            this.dateTimePicker2.TabIndex = 9;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 224);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 30);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "시작시간";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(17, 145);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 30);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "계획번호";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(17, 67);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(101, 30);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "지시번호";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(124, 67);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(172, 36);
-            this.textBox1.TabIndex = 13;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(124, 142);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(172, 36);
-            this.textBox2.TabIndex = 14;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(125, 224);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(172, 36);
-            this.textBox3.TabIndex = 15;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(422, 224);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(172, 36);
-            this.textBox4.TabIndex = 21;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(421, 142);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(172, 36);
-            this.textBox5.TabIndex = 20;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(421, 67);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(172, 36);
-            this.textBox6.TabIndex = 19;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(315, 224);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(101, 30);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "종료시간";
+            this.ITEM_CODE.Location = new System.Drawing.Point(436, 120);
+            this.ITEM_CODE.Name = "ITEM_CODE";
+            this.ITEM_CODE.ReadOnly = true;
+            this.ITEM_CODE.Size = new System.Drawing.Size(172, 36);
+            this.ITEM_CODE.TabIndex = 19;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(314, 145);
+            this.label9.Location = new System.Drawing.Point(329, 198);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(79, 30);
             this.label9.TabIndex = 17;
@@ -299,11 +288,45 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(314, 67);
+            this.label10.Location = new System.Drawing.Point(329, 120);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(101, 30);
             this.label10.TabIndex = 16;
             this.label10.Text = "품목코드";
+            // 
+            // PLAN_ID
+            // 
+            this.PLAN_ID.Location = new System.Drawing.Point(139, 195);
+            this.PLAN_ID.Name = "PLAN_ID";
+            this.PLAN_ID.ReadOnly = true;
+            this.PLAN_ID.Size = new System.Drawing.Size(172, 36);
+            this.PLAN_ID.TabIndex = 14;
+            // 
+            // WO_Code
+            // 
+            this.WO_Code.Location = new System.Drawing.Point(139, 120);
+            this.WO_Code.Name = "WO_Code";
+            this.WO_Code.ReadOnly = true;
+            this.WO_Code.Size = new System.Drawing.Size(172, 36);
+            this.WO_Code.TabIndex = 13;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(32, 198);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(101, 30);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "계획번호";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(32, 120);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(101, 30);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "지시번호";
             // 
             // label11
             // 
@@ -355,118 +378,73 @@
             this.label16.TabIndex = 25;
             this.label16.Text = "양품수량";
             // 
-            // textBox7
+            // WO_PLAN_QTY
             // 
-            this.textBox7.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox7.Font = new System.Drawing.Font("맑은 고딕", 16F);
-            this.textBox7.Location = new System.Drawing.Point(1477, 45);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(219, 36);
-            this.textBox7.TabIndex = 22;
-            this.textBox7.Text = "0";
-            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.WO_PLAN_QTY.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.WO_PLAN_QTY.Font = new System.Drawing.Font("맑은 고딕", 16F);
+            this.WO_PLAN_QTY.Location = new System.Drawing.Point(1477, 45);
+            this.WO_PLAN_QTY.Name = "WO_PLAN_QTY";
+            this.WO_PLAN_QTY.ReadOnly = true;
+            this.WO_PLAN_QTY.Size = new System.Drawing.Size(219, 36);
+            this.WO_PLAN_QTY.TabIndex = 22;
+            this.WO_PLAN_QTY.Text = "0";
+            this.WO_PLAN_QTY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox8
+            // WO_QTY_OUT
             // 
-            this.textBox8.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox8.Font = new System.Drawing.Font("맑은 고딕", 16F);
-            this.textBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.textBox8.Location = new System.Drawing.Point(1477, 98);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(219, 36);
-            this.textBox8.TabIndex = 27;
-            this.textBox8.Text = "0";
-            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.WO_QTY_OUT.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.WO_QTY_OUT.Font = new System.Drawing.Font("맑은 고딕", 16F);
+            this.WO_QTY_OUT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.WO_QTY_OUT.Location = new System.Drawing.Point(1477, 98);
+            this.WO_QTY_OUT.Name = "WO_QTY_OUT";
+            this.WO_QTY_OUT.ReadOnly = true;
+            this.WO_QTY_OUT.Size = new System.Drawing.Size(219, 36);
+            this.WO_QTY_OUT.TabIndex = 27;
+            this.WO_QTY_OUT.Text = "0";
+            this.WO_QTY_OUT.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox9
+            // WO_QTY_ALL
             // 
-            this.textBox9.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox9.Font = new System.Drawing.Font("맑은 고딕", 16F);
-            this.textBox9.ForeColor = System.Drawing.Color.Yellow;
-            this.textBox9.Location = new System.Drawing.Point(1477, 157);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(219, 36);
-            this.textBox9.TabIndex = 28;
-            this.textBox9.Text = "0";
-            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.WO_QTY_ALL.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.WO_QTY_ALL.Font = new System.Drawing.Font("맑은 고딕", 16F);
+            this.WO_QTY_ALL.ForeColor = System.Drawing.Color.Yellow;
+            this.WO_QTY_ALL.Location = new System.Drawing.Point(1477, 157);
+            this.WO_QTY_ALL.Name = "WO_QTY_ALL";
+            this.WO_QTY_ALL.ReadOnly = true;
+            this.WO_QTY_ALL.Size = new System.Drawing.Size(219, 36);
+            this.WO_QTY_ALL.TabIndex = 28;
+            this.WO_QTY_ALL.Text = "0";
+            this.WO_QTY_ALL.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox10
+            // WO_QTY_PROD
             // 
-            this.textBox10.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox10.Font = new System.Drawing.Font("맑은 고딕", 16F);
-            this.textBox10.ForeColor = System.Drawing.Color.Lime;
-            this.textBox10.Location = new System.Drawing.Point(1477, 204);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(219, 36);
-            this.textBox10.TabIndex = 29;
-            this.textBox10.Text = "0";
-            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.WO_QTY_PROD.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.WO_QTY_PROD.Font = new System.Drawing.Font("맑은 고딕", 16F);
+            this.WO_QTY_PROD.ForeColor = System.Drawing.Color.Lime;
+            this.WO_QTY_PROD.Location = new System.Drawing.Point(1477, 204);
+            this.WO_QTY_PROD.Name = "WO_QTY_PROD";
+            this.WO_QTY_PROD.ReadOnly = true;
+            this.WO_QTY_PROD.Size = new System.Drawing.Size(219, 36);
+            this.WO_QTY_PROD.TabIndex = 29;
+            this.WO_QTY_PROD.Text = "0";
+            this.WO_QTY_PROD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox11
+            // WO_QTY_BAD
             // 
-            this.textBox11.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.textBox11.Font = new System.Drawing.Font("맑은 고딕", 16F);
-            this.textBox11.ForeColor = System.Drawing.Color.Red;
-            this.textBox11.Location = new System.Drawing.Point(1477, 257);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(219, 36);
-            this.textBox11.TabIndex = 30;
-            this.textBox11.Text = "0";
-            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(118, 118);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button3.Location = new System.Drawing.Point(0, 118);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(118, 118);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button4.Location = new System.Drawing.Point(0, 236);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(118, 118);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button5.Location = new System.Drawing.Point(0, 354);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(118, 118);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button6.Location = new System.Drawing.Point(0, 472);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(118, 118);
-            this.button6.TabIndex = 4;
-            this.button6.Text = "button6";
-            this.button6.UseVisualStyleBackColor = true;
+            this.WO_QTY_BAD.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.WO_QTY_BAD.Font = new System.Drawing.Font("맑은 고딕", 16F);
+            this.WO_QTY_BAD.ForeColor = System.Drawing.Color.Red;
+            this.WO_QTY_BAD.Location = new System.Drawing.Point(1477, 257);
+            this.WO_QTY_BAD.Name = "WO_QTY_BAD";
+            this.WO_QTY_BAD.ReadOnly = true;
+            this.WO_QTY_BAD.Size = new System.Drawing.Size(219, 36);
+            this.WO_QTY_BAD.TabIndex = 30;
+            this.WO_QTY_BAD.Text = "0";
+            this.WO_QTY_BAD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.asdfa);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -477,15 +455,57 @@
             this.tabControl1.Size = new System.Drawing.Size(1822, 512);
             this.tabControl1.TabIndex = 31;
             // 
-            // tabPage1
+            // asdfa
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 39);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1814, 469);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "생산현황";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.asdfa.Controls.Add(this.dgv1);
+            this.asdfa.Location = new System.Drawing.Point(4, 39);
+            this.asdfa.Name = "asdfa";
+            this.asdfa.Padding = new System.Windows.Forms.Padding(3);
+            this.asdfa.Size = new System.Drawing.Size(1814, 469);
+            this.asdfa.TabIndex = 0;
+            this.asdfa.Text = "생산현황";
+            this.asdfa.UseVisualStyleBackColor = true;
+            // 
+            // dgv1
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgv1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv1.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv1.EnableHeadersVisualStyles = false;
+            this.dgv1.Location = new System.Drawing.Point(3, 3);
+            this.dgv1.Name = "dgv1";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv1.RowHeadersWidth = 100;
+            this.dgv1.RowTemplate.Height = 100;
+            this.dgv1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv1.Size = new System.Drawing.Size(1808, 463);
+            this.dgv1.TabIndex = 0;
+            this.dgv1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv1_CellClick);
             // 
             // tabPage2
             // 
@@ -511,11 +531,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.ClientSize = new System.Drawing.Size(1940, 847);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.textBox11);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.textBox9);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.WO_QTY_BAD);
+            this.Controls.Add(this.WO_QTY_PROD);
+            this.Controls.Add(this.WO_QTY_ALL);
+            this.Controls.Add(this.WO_QTY_OUT);
+            this.Controls.Add(this.WO_PLAN_QTY);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label11);
@@ -526,12 +546,15 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmPOPMAIN";
+            this.Load += new System.EventHandler(this.FrmPOPMAIN_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.asdfa.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -550,16 +573,12 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox FCLTS_NAME;
+        private System.Windows.Forms.TextBox ITEM_CODE;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox PLAN_ID;
+        private System.Windows.Forms.TextBox WO_Code;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label11;
@@ -567,19 +586,20 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox WO_PLAN_QTY;
+        private System.Windows.Forms.TextBox WO_QTY_OUT;
+        private System.Windows.Forms.TextBox WO_QTY_ALL;
+        private System.Windows.Forms.TextBox WO_QTY_PROD;
+        private System.Windows.Forms.TextBox WO_QTY_BAD;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage asdfa;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
+        private WindowsFormsApp18.MyDataGridView dgv1;
     }
 }
