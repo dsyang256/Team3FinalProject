@@ -45,9 +45,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.cboCOM = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboDate = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -58,30 +57,28 @@
             // 
             // panel1
             // 
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.panel1.Size = new System.Drawing.Size(1089, 125);
+            this.panel1.Size = new System.Drawing.Size(1400, 167);
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.cboDate);
             this.panel2.Controls.Add(this.cboCOM);
-            this.panel2.Controls.Add(this.dateTimePicker1);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(9, 9);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.panel2.Size = new System.Drawing.Size(1071, 107);
+            this.panel2.Location = new System.Drawing.Point(12, 12);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel2.Size = new System.Drawing.Size(1376, 142);
             // 
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel3.Controls.Add(this.dgvCom);
-            this.panel3.Location = new System.Drawing.Point(9, 175);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
-            this.panel3.Size = new System.Drawing.Size(502, 383);
+            this.panel3.Location = new System.Drawing.Point(12, 233);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.panel3.Size = new System.Drawing.Size(645, 511);
             // 
             // panel4
             // 
@@ -89,10 +86,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.Controls.Add(this.dgvComDetail);
-            this.panel4.Location = new System.Drawing.Point(517, 175);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2);
+            this.panel4.Location = new System.Drawing.Point(665, 233);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(581, 383);
+            this.panel4.Size = new System.Drawing.Size(747, 511);
             this.panel4.TabIndex = 4;
             // 
             // dgvComDetail
@@ -120,6 +116,7 @@
             this.dgvComDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvComDetail.EnableHeadersVisualStyles = false;
             this.dgvComDetail.Location = new System.Drawing.Point(0, 0);
+            this.dgvComDetail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvComDetail.Name = "dgvComDetail";
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
@@ -132,7 +129,7 @@
             this.dgvComDetail.RowHeadersWidth = 30;
             this.dgvComDetail.RowTemplate.Height = 23;
             this.dgvComDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvComDetail.Size = new System.Drawing.Size(581, 383);
+            this.dgvComDetail.Size = new System.Drawing.Size(747, 511);
             this.dgvComDetail.TabIndex = 1;
             // 
             // menuPanel1
@@ -140,10 +137,10 @@
             this.menuPanel1.BackColor = System.Drawing.Color.Transparent;
             this.menuPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.menuPanel1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.menuPanel1.Location = new System.Drawing.Point(12, 141);
+            this.menuPanel1.Location = new System.Drawing.Point(12, 188);
             this.menuPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.menuPanel1.Name = "menuPanel1";
-            this.menuPanel1.Size = new System.Drawing.Size(499, 32);
+            this.menuPanel1.Size = new System.Drawing.Size(645, 41);
             this.menuPanel1.TabIndex = 5;
             this.menuPanel1.TitleFont = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.menuPanel1.TitleName = "업체";
@@ -155,10 +152,10 @@
             this.menuPanel2.BackColor = System.Drawing.Color.Transparent;
             this.menuPanel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.menuPanel2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.menuPanel2.Location = new System.Drawing.Point(517, 141);
+            this.menuPanel2.Location = new System.Drawing.Point(665, 188);
             this.menuPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.menuPanel2.Name = "menuPanel2";
-            this.menuPanel2.Size = new System.Drawing.Size(584, 32);
+            this.menuPanel2.Size = new System.Drawing.Size(750, 41);
             this.menuPanel2.TabIndex = 5;
             this.menuPanel2.TitleFont = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.menuPanel2.TitleName = "상세내용";
@@ -188,6 +185,7 @@
             this.dgvCom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCom.EnableHeadersVisualStyles = false;
             this.dgvCom.Location = new System.Drawing.Point(0, 0);
+            this.dgvCom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvCom.Name = "dgvCom";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -200,15 +198,17 @@
             this.dgvCom.RowHeadersWidth = 30;
             this.dgvCom.RowTemplate.Height = 23;
             this.dgvCom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCom.Size = new System.Drawing.Size(502, 383);
+            this.dgvCom.Size = new System.Drawing.Size(645, 511);
             this.dgvCom.TabIndex = 0;
+            this.dgvCom.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCom_CellClick);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(425, 46);
+            this.label5.Location = new System.Drawing.Point(546, 61);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 15);
+            this.label5.Size = new System.Drawing.Size(39, 20);
             this.label5.TabIndex = 36;
             this.label5.Text = "업체";
             // 
@@ -217,18 +217,20 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label4.Location = new System.Drawing.Point(400, 44);
+            this.label4.Location = new System.Drawing.Point(514, 59);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(15, 18);
+            this.label4.Size = new System.Drawing.Size(18, 24);
             this.label4.TabIndex = 38;
             this.label4.Text = "*";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(82, 46);
+            this.label11.Location = new System.Drawing.Point(105, 61);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(43, 15);
+            this.label11.Size = new System.Drawing.Size(54, 20);
             this.label11.TabIndex = 37;
             this.label11.Text = "마감월";
             // 
@@ -237,46 +239,40 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label3.Location = new System.Drawing.Point(58, 44);
+            this.label3.Location = new System.Drawing.Point(75, 59);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(15, 18);
+            this.label3.Size = new System.Drawing.Size(18, 24);
             this.label3.TabIndex = 39;
             this.label3.Text = "*";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CustomFormat = "yyyy-MM";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(162, 44);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(145, 23);
-            this.dateTimePicker1.TabIndex = 41;
             // 
             // cboCOM
             // 
             this.cboCOM.FormattingEnabled = true;
-            this.cboCOM.Location = new System.Drawing.Point(494, 43);
+            this.cboCOM.Location = new System.Drawing.Point(635, 57);
+            this.cboCOM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboCOM.Name = "cboCOM";
-            this.cboCOM.Size = new System.Drawing.Size(145, 23);
+            this.cboCOM.Size = new System.Drawing.Size(185, 28);
             this.cboCOM.TabIndex = 42;
             // 
-            // comboBox1
+            // cboDate
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(728, 43);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 23);
-            this.comboBox1.TabIndex = 43;
+            this.cboDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDate.FormattingEnabled = true;
+            this.cboDate.Location = new System.Drawing.Point(199, 58);
+            this.cboDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboDate.Name = "cboDate";
+            this.cboDate.Size = new System.Drawing.Size(193, 28);
+            this.cboDate.TabIndex = 43;
             // 
             // FrmCompanyEndByMonth
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.ClientSize = new System.Drawing.Size(1108, 562);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.ClientSize = new System.Drawing.Size(1425, 749);
             this.Controls.Add(this.menuPanel2);
             this.Controls.Add(this.menuPanel1);
             this.Controls.Add(this.panel4);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.Name = "FrmCompanyEndByMonth";
             this.Text = "거래처월별마감";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCompanyEndByMonth_FormClosing);
@@ -306,12 +302,11 @@
         private MenuPanel menuPanel2;
         private WindowsFormsApp18.MyDataGridView dgvCom;
         private WindowsFormsApp18.MyDataGridView dgvComDetail;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cboCOM;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboDate;
     }
 }

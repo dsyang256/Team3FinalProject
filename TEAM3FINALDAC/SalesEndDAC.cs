@@ -97,6 +97,7 @@ order by SALES_DUEDATE";
                 cmd.Connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 list = Helper.DataReaderMapToList<SalesEnd_VO>(reader);
+                cmd.Connection.Close();
                 return list;
             }
         }

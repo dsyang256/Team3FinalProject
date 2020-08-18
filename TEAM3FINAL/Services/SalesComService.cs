@@ -23,5 +23,17 @@ namespace TEAM3FINAL
             SalesComDAC dac = new SalesComDAC();
             return dac.GetSalesComDetail();
         }
+
+        public List<SalesCOM_VO> SearchSalesCom(string date, string company)
+        {
+            SalesComDAC dac = new SalesComDAC();
+            return dac.SearchSalesCom(date, company);
+        }
+
+        public List<SalesCOMDedail_VO> SearchSalesComDetail(string date, string company)
+        {
+            SalesComDAC dac = new SalesComDAC();
+            return dac.SearchSalesComDetail(date, company);
+        }
     }
 }
