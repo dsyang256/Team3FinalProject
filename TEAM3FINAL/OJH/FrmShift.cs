@@ -227,7 +227,9 @@ namespace TEAM3FINAL
 
         public void Delete(object sender, EventArgs e)
         {
-            string lists = CheckedList();
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                string lists = CheckedList();
             if (lists.Length > 0)
             {
                 if (MessageBox.Show("정말로 삭제하시겠습니까?", "삭제확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -245,6 +247,7 @@ namespace TEAM3FINAL
                 }
             }
             Reset(null, null);
+            }
         }
 
         public void Print(object sender, EventArgs e)

@@ -32,7 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.ITEM_NAME = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -62,12 +62,12 @@
             this.panel3.Location = new System.Drawing.Point(15, 134);
             this.panel3.Size = new System.Drawing.Size(877, 416);
             // 
-            // ITEM_NAME
+            // txtName
             // 
-            this.ITEM_NAME.Location = new System.Drawing.Point(112, 22);
-            this.ITEM_NAME.Name = "ITEM_NAME";
-            this.ITEM_NAME.Size = new System.Drawing.Size(193, 23);
-            this.ITEM_NAME.TabIndex = 21;
+            this.txtName.Location = new System.Drawing.Point(112, 22);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(193, 23);
+            this.txtName.TabIndex = 21;
             // 
             // label11
             // 
@@ -92,7 +92,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.ITEM_NAME);
+            this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Location = new System.Drawing.Point(15, 0);
@@ -194,6 +194,7 @@
             this.Controls.Add(this.menuPanel1);
             this.Name = "FrmAuthGroup";
             this.Text = "사용자별권한관리";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmAuthGroup_FormClosing);
             this.Load += new System.EventHandler(this.FrmAuthGroup_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.label1, 0);
@@ -213,7 +214,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox ITEM_NAME;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;

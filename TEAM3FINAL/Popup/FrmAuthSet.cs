@@ -17,7 +17,8 @@ namespace TEAM3FINAL
         #region 멤버변수
         List<MANAGER_VO> managerlist = null;
         List<MANAGERMENU_VO> menulist = null;
-        List<MANAGER_VO> rightlist = null;
+        List<Right_VO> rightlist = null;
+        List<Right_VO> managerRightlist = null;
         List<ComboItemVO> commonlist = null;
         CheckBox chkbox1;
         CheckBox chkbox2;
@@ -25,7 +26,8 @@ namespace TEAM3FINAL
         CheckBox chkbox4;
         CheckBox chkbox5;
         CheckBox chkbox6;
-        string selectedUser="";
+        CheckBox chkbox7;
+        string selectedUser = "";
 
         #endregion
         public FrmAuthSet()
@@ -64,7 +66,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvUsers, "이름", "MANAGER_NAME", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvUsers, "부서", "MANAGER_DEP", true, 80);
             DataGridViewUtil.DataGridViewBtnSet("  ", "설정", dgvUsers, 0, 0);
-
+            dgvUsers.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             //권한 설정
             DataGridViewUtil.InitSettingGridView(dgvRight);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvRight, "메뉴ID", "MENU_ID", false, 100);
@@ -77,7 +79,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.DataGridViewCheckBoxSet(dgvRight, "F", "리셋", 100);
             DataGridViewColumn col = this.dgvRight.Columns[1];
             col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
+            dgvRight.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             DataGridViewCheckBoxAllCheck();
 
 
@@ -88,6 +90,28 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvGroup, "그룹", "RIGHT_GROUP", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvGroup, "그룹명", "RIGHT_NAME", true, 150);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvGroup, "상세설명", "RIGHT_DESC", true, 300);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvGroup, "1", "RIGHT_USE", false, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvGroup, "1", "RIGHT_FIRST_MDFR", false, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvGroup, "1", "RIGHT_FIRST_MDFY", false, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvGroup, "1", "RIGHT_LAST_MDFR", false, 300);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvGroup, "1", "RIGHT_LAST_MDFY", false, 300);
+            col = this.dgvGroup.Columns[1];
+            col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvGroup.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            DataGridViewCheckBox();
+        }
+
+        private void DataGridViewCheckBox()
+        {
+            chkbox7 = new CheckBox();
+            Point headerCell = dgvGroup.GetCellDisplayRectangle(0, -1, true).Location;
+            chkbox7.Name = $"box{8}";
+            chkbox7.Location = new Point(headerCell.X + 40, headerCell.Y + 17);
+            chkbox7.Size = new Size(18, 18);
+            chkbox7.BackColor = Color.FromArgb(245, 245, 246);
+            chkbox7.Click += HeaderChk_Clicked;
+            dgvGroup.Controls.Add(chkbox7);
         }
 
 
@@ -157,29 +181,44 @@ namespace TEAM3FINAL
         /// <param name="e"></param>
         private void HeaderChk_Clicked(object sender, EventArgs e)
         {
-            dgvRight.EndEdit();
-            CheckBox checkBox = (CheckBox)sender;
-            //데이터그리드뷰의 전체 행의 체크를 체크 or 언체크
-            foreach (DataGridViewRow row in dgvRight.Rows)
+            if (tabControl1.SelectedIndex == 0)
             {
-                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells["A"];
-                if (checkBox.Name == "box2")
-                    chk.Value = chkbox1.Checked;
-                chk = (DataGridViewCheckBoxCell)row.Cells["B"];
-                if (checkBox == chkbox2)
-                    chk.Value = chkbox2.Checked;
-                chk = (DataGridViewCheckBoxCell)row.Cells["C"];
-                if (checkBox == chkbox3)
-                    chk.Value = chkbox3.Checked;
-                chk = (DataGridViewCheckBoxCell)row.Cells["D"];
-                if (checkBox == chkbox4)
-                    chk.Value = chkbox4.Checked;
-                chk = (DataGridViewCheckBoxCell)row.Cells["E"];
-                if (checkBox == chkbox5)
-                    chk.Value = chkbox5.Checked;
-                chk = (DataGridViewCheckBoxCell)row.Cells["F"];
-                if (checkBox == chkbox6)
-                    chk.Value = chkbox6.Checked;
+                dgvRight.EndEdit();
+                CheckBox checkBox = (CheckBox)sender;
+                //데이터그리드뷰의 전체 행의 체크를 체크 or 언체크
+                foreach (DataGridViewRow row in dgvRight.Rows)
+                {
+                    DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells["A"];
+                    if (checkBox.Name == "box2")
+                        chk.Value = chkbox1.Checked;
+                    chk = (DataGridViewCheckBoxCell)row.Cells["B"];
+                    if (checkBox == chkbox2)
+                        chk.Value = chkbox2.Checked;
+                    chk = (DataGridViewCheckBoxCell)row.Cells["C"];
+                    if (checkBox == chkbox3)
+                        chk.Value = chkbox3.Checked;
+                    chk = (DataGridViewCheckBoxCell)row.Cells["D"];
+                    if (checkBox == chkbox4)
+                        chk.Value = chkbox4.Checked;
+                    chk = (DataGridViewCheckBoxCell)row.Cells["E"];
+                    if (checkBox == chkbox5)
+                        chk.Value = chkbox5.Checked;
+                    chk = (DataGridViewCheckBoxCell)row.Cells["F"];
+                    if (checkBox == chkbox6)
+                        chk.Value = chkbox6.Checked;
+                }
+            }
+            else
+            {
+                dgvGroup.EndEdit();
+                CheckBox checkBox = (CheckBox)sender;
+                //데이터그리드뷰의 전체 행의 체크를 체크 or 언체크
+                foreach (DataGridViewRow row in dgvGroup.Rows)
+                {
+                    DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[0];
+                    if (checkBox == chkbox7)
+                        chk.Value = chkbox7.Checked;
+                }
             }
         }
 
@@ -263,6 +302,25 @@ namespace TEAM3FINAL
             dgvGroup.DataSource = null;
             dgvGroup.DataSource = rightlist;
             dgvGroup.ClearSelection();
+
+            managerRightlist = service.GetManagerRightList(userID);
+            CheckManagerRight();
+        }
+
+        private void CheckManagerRight()
+        {
+                foreach (Right_VO item in managerRightlist)
+                {
+                    foreach (DataGridViewRow row in dgvGroup.Rows)
+                    {
+                        if (row.Cells[1].Value.ToString().Equals(item.RIGHT_ID.ToString()))
+                        {
+                           row.Cells[0].Value = true;
+                        }
+                    }
+
+                }
+                managerRightlist.Clear();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -294,7 +352,7 @@ namespace TEAM3FINAL
 
         private void dgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgvRight.EndEdit();
+            dgvUsers.EndEdit();
             var senderGrid = (DataGridView)sender;
             if (senderGrid[3, e.RowIndex].Value.ToString() == "설정")
             {
@@ -315,8 +373,13 @@ namespace TEAM3FINAL
                     dgvGroup.DataSource = null;
                     dgvRight.DataSource = null;
                     selectedUser = dgvUsers[0, e.RowIndex].Value.ToString();
-                    LoadMenuList(selectedUser);
-                    LoadRightList(selectedUser);
+
+                    if (tabControl1.SelectedIndex == 0)
+                        LoadMenuList(selectedUser);
+                    else
+                    {
+                        LoadRightList(selectedUser);
+                    }
 
                     var BtnCell = (DataGridViewButtonCell)dgvUsers.Rows[e.RowIndex].Cells[3];
                     BtnCell.UseColumnTextForButtonValue = false;
@@ -327,7 +390,7 @@ namespace TEAM3FINAL
             {
                 if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.RowIndex >= 0)
                 {
-                    if(tabControl1.SelectedIndex==0) // 관리자 권한 설정
+                    if (tabControl1.SelectedIndex == 0) // 관리자 권한 설정
                     {
                         dgvRight.EndEdit();
                         //저장할 값 가져오기
@@ -348,18 +411,18 @@ namespace TEAM3FINAL
                     {
                         dgvGroup.EndEdit();
                         //저장할 값 가져오기
-                        //List<ManagerMenu_VO> list = GetRightValues();
-                        //string userID = selectedUser;
+                        List<Right_VO> list = GetGroupValues();
+                        string userID = selectedUser;
                         ////서비스호출
-                        //AuthService service = new AuthService();
-                        //if (service.SaveManagerMenu(list, userID))
-                        //{
-                        //    MessageBox.Show("저장되었습니다.", "저장 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //}
-                        //else
-                        //{
-                        //    MessageBox.Show("저장에 실패하였습니다.", "저장 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        //}
+                        AuthService service = new AuthService();
+                        if (service.SaveManagerGroup(list, userID))
+                        {
+                            MessageBox.Show("저장되었습니다.", "저장 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("저장에 실패하였습니다.", "저장 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
 
                     var BtnCell = (DataGridViewButtonCell)dgvUsers.Rows[e.RowIndex].Cells[3];
@@ -370,8 +433,34 @@ namespace TEAM3FINAL
             }
         }
 
+        private List<Right_VO> GetGroupValues()
+        {
+            dgvGroup.EndEdit();
+            List<Right_VO> list = new List<Right_VO>();
+            foreach (DataGridViewRow row in dgvGroup.Rows)
+            {
+                if (row.Index > -1)
+                {
+                    Right_VO vo = new Right_VO();
+                    if (row.Cells[0].Value != null)
+                    {
+                        if ((bool)row.Cells[0].Value)
+                        {
+                            vo.RIGHT_ID = Convert.ToInt32(row.Cells[1].Value);
+                            vo.RIGHT_NAME = selectedUser;
+                    list.Add(vo);
+                        }
+                    }
+
+                }
+            }
+            return list;
+
+        }
+
         private List<ManagerMenu_VO> GetRightValues()
         {
+            dgvRight.EndEdit();
             List<ManagerMenu_VO> list = new List<ManagerMenu_VO>();
             StringBuilder sb = new StringBuilder();
             foreach (DataGridViewRow row in dgvRight.Rows)
@@ -434,7 +523,7 @@ namespace TEAM3FINAL
                     return;
                 }
             }
-          
+
         }
     }
 }

@@ -368,7 +368,7 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(63, 33);
             this.btnSave.TabIndex = 55;
-            this.btnSave.Text = "저장";
+            this.btnSave.Text = "취소";
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
