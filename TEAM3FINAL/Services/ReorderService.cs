@@ -33,6 +33,13 @@ namespace TEAM3FINAL
             REORDERDAC dac = new REORDERDAC();
             return dac.GetReorderItem();
         }
+
+        internal object GetReorder(string v1, string v2)
+        {
+            REORDERDAC dac = new REORDERDAC();
+            return dac.GetReorder(v1,v2);
+        }
+
         public DataTable GetReorderItem2(string com)
         {
             REORDERDAC dac = new REORDERDAC();

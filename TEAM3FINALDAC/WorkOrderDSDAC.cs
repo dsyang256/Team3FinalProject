@@ -118,7 +118,7 @@ namespace TEAM3FINALDAC
         }
 
 
-        public DataTable GetWorkOrder2(string code)
+        public DataTable GetWorkOrder2(string code,string id)
         {
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(this.ConnectionString);
@@ -156,11 +156,13 @@ namespace TEAM3FINALDAC
                            and m.ITEM_CODE = i.ITEM_CODE 
                            and m.BOM_PARENT_CODE = w.ITEM_CODE 
                            and w.WO_WORK_STATE = '작업지시'
-                           and m.BOM_PARENT_CODE = @code";
+                           and m.BOM_PARENT_CODE = @code
+						   and w.WO_Code = @WO_Code";
             conn.Open();
             using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
             {
                 da.SelectCommand.Parameters.AddWithValue("@code", code);
+                da.SelectCommand.Parameters.AddWithValue("@WO_Code", id);
                 da.Fill(dt);
             }
             return dt;

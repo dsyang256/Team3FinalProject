@@ -44,6 +44,22 @@ namespace TEAM3FINALDAC
             return dt;
         }
 
+        public object GetReorder(string v1, string v2)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter("GetREORDER", conn))
+            {
+                da.SelectCommand.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand.Parameters.AddWithValue("@P_S_DATE", v1);
+                da.SelectCommand.Parameters.AddWithValue("@P_E_DATE", v2);
+                
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
         public bool DeleteREORDER(string v)
         {
             using (SqlCommand cmd = new SqlCommand())

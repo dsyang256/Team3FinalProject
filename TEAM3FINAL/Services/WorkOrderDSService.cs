@@ -18,10 +18,10 @@ namespace TEAM3FINAL
             return dac.GetWorkOrder();
         }
 
-        internal object GetWorkOrder2(string code)
+        internal object GetWorkOrder2(string code,string id)
         {
             WorkOrderDSDAC dac = new WorkOrderDSDAC();
-            return dac.GetWorkOrder2(code);
+            return dac.GetWorkOrder2(code,id);
         }
         public DataTable SP_GetWorkOrder(string sday, string eday, string code, string item, string name)
         {
