@@ -95,17 +95,7 @@ namespace TEAM3FINAL
             ComboBinding();
             DataGridViewColumnSet();
             GetSalesCom();
-            GetSalesComDetail();
-
-
-            string[] year = new string[36];
-
-            for (int i = 0; i < 36; i++)
-            {
-                year[i] = DateTime.Now.AddMonths(-i).ToString("yyyy-MM");
-            }
-
-            comboBox1.DataSource = year;
+            GetSalesComDetail();                                  
         }
 
         private void ComboBinding()
@@ -115,6 +105,15 @@ namespace TEAM3FINAL
 
             var listCOM = (from item in commonlist where item.COMMON_PARENT == "업체명" select item).ToList();
             CommonUtil.ComboBinding<ComboItemVO>(cboCOM, listCOM, "COMMON_CODE", "COMMON_NAME", "");
+
+            string[] year = new string[36];
+
+            for (int i = 0; i < 36; i++)
+            {
+                year[i] = DateTime.Now.AddMonths(-i).ToString("yyyy-MM");
+            }
+
+            cboDate.DataSource = year;
         }
 
         private void GetSalesCom()
@@ -152,12 +151,20 @@ namespace TEAM3FINAL
 
         public void Search(object sender, EventArgs e)
         {
-            
+            string date = cboDate.Text + "-01";
+            string company = (cboCOM.SelectedValue == null) ? "" : cboCOM.SelectedValue.ToString();
+            SalesComService service = new SalesComService();
+            dgvCom.DataSource = null;
+            dgvComDetail.DataSource = null;
+            dgvCom.DataSource = service.SearchSalesCom(date, company);
+            dgvComDetail.DataSource = service.SearchSalesComDetail(date, company);
         }
 
         public void Reset(object sender, EventArgs e)
         {
-            
+            ComboBinding();
+            GetSalesCom();
+            GetSalesComDetail();
         }
 
         public void Update(object sender, EventArgs e)
@@ -176,5 +183,21 @@ namespace TEAM3FINAL
         }
 
         #endregion
+
+        private void dgvCom_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                string company = dgvCom.CurrentRow.Cells[1].Value.ToString();
+                string date = dgvComDetail.Rows[1].Cells[2].Value.ToString();
+                SalesComService service = new SalesComService();
+                dgvComDetail.DataSource = null;
+                dgvComDetail.DataSource = service.SearchSalesComDetail(date, company);
+            }
+            catch(Exception err)
+            {
+                return;
+            }
+        }
     }
 }
