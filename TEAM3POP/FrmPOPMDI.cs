@@ -16,13 +16,19 @@ namespace TEAM3POP
         public FrmPOPMDI()
         {
             InitializeComponent();
-            //FormUtil.OpenOrCreateForm<FrmPOPMAIN>(this);
+            
+            FormUtil.OpenOrCreateForm<FrmPOPMAIN>(this);
         }
 
 
         private void 메인화면ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //FormUtil.OpenOrCreateForm<FrmPOPMAIN>(this);
+            FormUtil.OpenOrCreateForm<FrmPOPMAIN>(this);
+        }
+
+        private void 설비관리ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormUtil.OpenOrCreateForm<FrmPOPALL>(this);
         }
     }
 }
