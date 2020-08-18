@@ -38,7 +38,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "품명", "ITEM_NAME", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "납기일", "SALES_DUEDATE", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "주문수량", "SALES_QTY", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "납품수량", "SALES_TTL", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "판매액", "SALES_TTL", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "마감일", "SALES_ENDDATE", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "마감취소일", "SALES_CANCELDATE", true, 80);
             DataGridViewUtil.DataGridViewRowNumSet(dgvSalesEndState);
@@ -111,39 +111,84 @@ namespace TEAM3FINAL
 
         public void Insert(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Search(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            string id = txtID.Text;
+            string item = txtITEM.Text;
+            string company = txtCompany.Text;
+
+            SalesEndService service = new SalesEndService();
+            dgvSalesEndState.DataSource = null;
+            dgvSalesEndState.DataSource = service.SearchSalesEndState(id, item, company);
         }
 
         public void Reset(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            txtCompany.Text = "";
+            txtID.Text = "";
+            txtITEM.Text = "";
+            GetSalesEndState();
         }
 
         public void Update(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Delete(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Print(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         #endregion
 
         private void btnSalesCancel_Click(object sender, EventArgs e)
         {
-
+            dgvSalesEndState.EndEdit();
+            int cnt = 0;
+            foreach (DataGridViewRow item in dgvSalesEndState.Rows)
+            {
+                if (Convert.ToBoolean(item.Cells[0].Value))
+                {
+                    cnt++;
+                }
+            }
+            if (cnt == 1)
+            {
+                if (MessageBox.Show("마감취소 하시겠습니까?", "마감취소", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    SalesEndState_VO vo = new SalesEndState_VO();
+                    vo.SALES_WORK_ORDER_ID = dgvSalesEndState.CurrentRow.Cells[1].Value.ToString();
+                    vo.ITEM_CODE = dgvSalesEndState.CurrentRow.Cells[4].Value.ToString();
+                    
+                    SalesEndService service = new SalesEndService();
+                    Message msg = service.SalesCancel(vo, LoginInfo.UserInfo.LI_NAME);
+                    if (msg.IsSuccess)
+                    {
+                        MessageBox.Show(msg.ResultMessage);
+                        this.DialogResult = DialogResult.OK;
+                        GetSalesEndState();
+                    }
+                    else
+                    {
+                        MessageBox.Show(msg.ResultMessage);
+                        return;
+                    }
+                }    
+            }
+            else
+            {
+                MessageBox.Show("하나의 항목씩만 가능합니다.");
+                return;
+            }
         }
     }
 }

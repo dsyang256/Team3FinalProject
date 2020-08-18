@@ -112,32 +112,42 @@ namespace TEAM3FINAL
 
         public void Insert(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Search(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            string id = txtID.Text;
+            string item = txtITEM.Text;
+            string company = txtCompany.Text;
+
+            SalesEndService service = new SalesEndService();
+            dgvSalesEnd.DataSource = null;
+            dgvSalesEnd.DataSource = service.SearchSalesEnd(id, item, company);
+
         }
 
         public void Reset(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            txtCompany.Text = "";
+            txtID.Text = "";
+            txtITEM.Text = "";
+            GetSalesEnd();
         }
 
         public void Update(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+           
         }
 
         public void Delete(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Print(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
 
@@ -181,6 +191,11 @@ namespace TEAM3FINAL
                         return;
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("하나의 항목씩만 가능합니다.");
+                return;
             }
         }
     }

@@ -93,6 +93,7 @@
     <Compile Include="Popup\FrmDemandPlanPop.Designer.cs">
       <DependentUpon>FrmDemandPlanPop.cs</DependentUpon>
     </Compile>
+    <Compile Include="Services\SalesComService.cs" />
     <Compile Include="Services\WorkOrderDSService.cs" />
     <Compile Include="Services\SalesEndService.cs" />
     <Compile Include="Services\INSTACKService.cs" />

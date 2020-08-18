@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors.Controls;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -27,6 +28,24 @@ namespace TEAM3FINAL
         {
             SalesEndDAC dac = new SalesEndDAC();
             return dac.GetSalesEndState();
+        }
+
+        public List<SalesEnd_VO> SearchSalesEnd(string id, string item, string company)
+        {
+            SalesEndDAC dac = new SalesEndDAC();
+            return dac.SearchSalesEnd(id, item, company);
+        }
+
+        public Message SalesCancel(SalesEndState_VO vo, string id)
+        {
+            SalesEndDAC dac = new SalesEndDAC();
+            return dac.SalesCancel(vo, id);
+        }
+
+        public List<SalesEndState_VO> SearchSalesEndState(string id, string item, string company)
+        {
+            SalesEndDAC dac = new SalesEndDAC();
+            return dac.SearchSalesEndState(id, item, company);
         }
     }
 }
