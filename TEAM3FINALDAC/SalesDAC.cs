@@ -45,6 +45,36 @@ namespace TEAM3FINALDAC
             return list[0];
         }
 
+        public DataTable GetBaCodeWorkOrderList()
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    SqlConnection conn = new SqlConnection(this.ConnectionString);
+                    string sql = @"select WO_Code, ITEM_CODE, FCLTS_NAME
+                                ,CONVERT(Date, w.WO_PLAN_STARTTIME,23) WO_PLAN_STARTTIME
+                                ,CONVERT(Date, w.WO_PLAN_DATE,23) WO_PLAN_DATE
+                                ,w.WO_PLAN_QTY
+                                from WORKORDER w inner join FACILITY f on f.FCLTS_CODE = w.FCLTS_CODE
+                                where w.WO_WORK_STATE = '작업지시' ";
+                    conn.Open();
+
+                    SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+                    da.Fill(dt);
+                    conn.Close();
+
+                    return dt;
+                }
+            }
+            catch (Exception err)
+            {
+                return new DataTable();
+            }
+
+        }
+
         /// <summary>
         /// WO 주문대기 => 주문확정 으로 업데이트하는 메서드
         /// </summary>

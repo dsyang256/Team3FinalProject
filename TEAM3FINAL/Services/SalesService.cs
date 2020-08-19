@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,6 +43,12 @@ namespace TEAM3FINAL
         {
             SalesDAC dac = new SalesDAC();
             return dac.UpdateSalesWork(list);
+        }
+
+        public DataTable GetBaCodeWorkOrderList()
+        {
+            SalesDAC dac = new SalesDAC();
+            return dac.GetBaCodeWorkOrderList();
         }
     }
 }

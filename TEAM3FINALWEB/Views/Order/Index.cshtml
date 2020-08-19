@@ -17,15 +17,22 @@
      -->
 </section>
 
+<div class="pad margin no-print">
+    <div class="callout callout-primary" style="margin-bottom: 0!important;">
+        <h3><i class="fa fa-line-chart"></i> 월별 매출액</h3>
+        [ @ViewBag.Label1 ] 제품의 월별 매출액을 확인할 수 있습니다.
+    </div>
+</div>
+
 <!-- 차트 -->
 <div class="row">
     <!-- /.col (LEFT) -->
-    <div class="col-md-12">
+    <div class="col-md-8">
 
         <!-- LINE CHART -->
         <div class="box box-info">
             <div class="box-header with-border">
-                <h3 class="box-title">월별 매출 조회</h3>
+                <h3 class="box-title"><i class="fa fa-line-chart"></i> 월별 매출 조회</h3>
 
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -45,26 +52,72 @@
 
     </div>
     <!-- /.col (RIGHT) -->
+    <div class="col-md-4">
+
+        <!--현재 기준 누적 매출 -->
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-line-chart"></i> 거래처별 주문 비율</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="chart">
+                            <canvas id="pieChart" style="height:250px"></canvas>
+                        </div>
+                        <!-- ./chart-responsive -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-4">
+                        <ul class="chart-legend clearfix">
+                            <li><i class="fa fa-circle-o text-red"></i> A</li>
+                            <li><i class="fa fa-circle-o text-green"></i> B</li>
+                            <li><i class="fa fa-circle-o text-yellow"></i> C</li>
+                            <li><i class="fa fa-circle-o text-aqua"></i> D</li>
+                            <li><i class="fa fa-circle-o text-light-blue"></i> E</li>
+                            <li><i class="fa fa-circle-o text-gray"></i> F</li>
+                        </ul>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+  
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+
+    </div>
+
+
 </div>
-<!-- /.row -->
+    <!-- /.row -->
 
 
 
-@{
+    @{
 
-    string labels = ViewBag.Labels;
-    string label1 = ViewBag.Label1;
-    string data1 = ViewBag.data1;
+        string labels = ViewBag.Labels;
+        string label1 = ViewBag.Label1;
+        string data1 = ViewBag.data1;
 
-}
+    }
 
 
 
-<!-- 스크립트 영역 설정 -->
-@section scripts
+    <!-- 스크립트 영역 설정 -->
+    @section scripts
 {
-    <!-- page script -->
-    <script>
+        <!-- page script -->
+        <script>
   $(function () {
     /* ChartJS
      * -------
@@ -86,9 +139,9 @@
           pointStrokeColor    : '#c1c7d1',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : @data1
+              data: @data1
         }
-        
+
       ]
     }
 
@@ -140,7 +193,78 @@
     lineChartOptions.datasetFill = false
     lineChart.Line(areaChartData, lineChartOptions)
 
+      //-------------
+      //- PIE CHART -
+      //-------------
+      // Get context with jQuery - using jQuery's .get() method.
+      var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+      var pieChart = new Chart(pieChartCanvas)
+      var PieData = [
+          {
+              value: 10,
+              color: '#f56954',
+              highlight: '#f56954',
+              label: 'Chrome'
+          },
+          {
+              value: 10,
+              color: '#00a65a',
+              highlight: '#00a65a',
+              label: 'IE'
+          },
+          {
+              value: 10,
+              color: '#f39c12',
+              highlight: '#f39c12',
+              label: 'FireFox'
+          },
+          {
+              value: 600,
+              color: '#00c0ef',
+              highlight: '#00c0ef',
+              label: 'Safari'
+          },
+          {
+              value: 100,
+              color: '#3c8dbc',
+              highlight: '#3c8dbc',
+              label: 'Opera'
+          },
+          {
+              value: 10,
+              color: '#d2d6de',
+              highlight: '#d2d6de',
+              label: 'Navigator'
+          }
+      ]
+      var pieOptions = {
+          //Boolean - Whether we should show a stroke on each segment
+          segmentShowStroke: true,
+          //String - The colour of each segment stroke
+          segmentStrokeColor: '#fff',
+          //Number - The width of each segment stroke
+          segmentStrokeWidth: 2,
+          //Number - The percentage of the chart that we cut out of the middle
+          percentageInnerCutout: 50, // This is 0 for Pie charts
+          //Number - Amount of animation steps
+          animationSteps: 100,
+          //String - Animation easing effect
+          animationEasing: 'easeOutBounce',
+          //Boolean - Whether we animate the rotation of the Doughnut
+          animateRotate: true,
+          //Boolean - Whether we animate scaling the Doughnut from the centre
+          animateScale: false,
+          //Boolean - whether to make the chart responsive to window resizing
+          responsive: true,
+          // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+          maintainAspectRatio: true,
+          //String - A legend template
+          legendTemplate: '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+      }
+      //Create pie or douhnut chart
+      // You can switch between pie and douhnut using the method below.
+      pieChart.Doughnut(PieData, pieOptions)
   })
-    </script>
-}
+        </script>
+    }
 

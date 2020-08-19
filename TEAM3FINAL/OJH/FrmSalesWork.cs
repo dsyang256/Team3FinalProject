@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraReports.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -456,5 +457,19 @@ namespace TEAM3FINAL
             }
         }
 
+        private void btnBarcode_Click(object sender, EventArgs e)
+        {
+            SalesService service = new SalesService();
+            XtraWorkOrder rpt = new XtraWorkOrder();
+            DataTable dt = service.GetBaCodeWorkOrderList();
+            rpt.Parameters["uName"].Value = LoginInfo.UserInfo.LI_NAME;
+            rpt.DataSource = dt;
+            rpt.CreateDocument();
+            using (ReportPrintTool printTool = new ReportPrintTool(rpt))
+            {
+                printTool.ShowRibbonPreviewDialog();
+            }
+
+        }
     }
 }
