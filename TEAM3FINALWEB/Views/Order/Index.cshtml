@@ -1,6 +1,16 @@
-﻿
+﻿@model  TEAM3FINALWEB.Models.Order
+@model  TEAM3FINALWEB.Models.OrderList
 @{
     ViewBag.Title = "Index";
+}
+
+@{
+
+    string labels = ViewBag.Labels;
+    string label1 = ViewBag.Label1;
+    string data1 = ViewBag.data1;
+    string results = ViewBag.result;
+
 }
 
 <!-- Content Header (Page header) -->
@@ -17,6 +27,7 @@
      -->
 </section>
 
+<!-- 소제목 -->
 <div class="pad margin no-print">
     <div class="callout callout-primary" style="margin-bottom: 0!important;">
         <h3><i class="fa fa-line-chart"></i> 월별 매출액</h3>
@@ -78,18 +89,23 @@
                     <!-- /.col -->
                     <div class="col-md-4">
                         <ul class="chart-legend clearfix">
-                            <li><i class="fa fa-circle-o text-red"></i> A</li>
-                            <li><i class="fa fa-circle-o text-green"></i> B</li>
-                            <li><i class="fa fa-circle-o text-yellow"></i> C</li>
-                            <li><i class="fa fa-circle-o text-aqua"></i> D</li>
-                            <li><i class="fa fa-circle-o text-light-blue"></i> E</li>
-                            <li><i class="fa fa-circle-o text-gray"></i> F</li>
+
+                            <li><i class="fa fa-circle-o text-aqua"></i> @ViewBag.B1</li>
+                            <li><i class="fa fa-circle-o text-black"></i> @ViewBag.B2</li>
+                            <li><i class="fa fa-circle-o text-blue"></i> @ViewBag.B3</li>
+                            <li><i class="fa fa-circle-o text-gray"></i> @ViewBag.B4</li>
+                            <li><i class="fa fa-circle-o text-green"></i> @ViewBag.B5</li>
+                            <li><i class="fa fa-circle-o text-fuchsia"></i> @ViewBag.B6</li>
+                            <li><i class="fa fa-circle-o text-light-blue"></i> @ViewBag.B7</li>
+                            <li><i class="fa fa-circle-o text-lime"></i> @ViewBag.B8</li>
+                            <li><i class="fa fa-circle-o text-yellow"></i> @ViewBag.B9</li>
+
                         </ul>
                     </div>
                     <!-- /.col -->
                 </div>
                 <!-- /.row -->
-  
+
             </div>
             <!-- /.box-body -->
         </div>
@@ -99,25 +115,87 @@
 
 
 </div>
-    <!-- /.row -->
+<!-- /.row -->
+<!-- 소제목 -->
+<div class="pad margin no-print">
+    <div class="callout callout-primary" style="margin-bottom: 0!important;">
+        <h3><i class="fa fa-shopping-cart" aria-hidden="true"></i>  주문 현황</h3>
+        주문과 관련된 현황을 확인할 수 있습니다.
+    </div>
+</div>
+
+<!-- 주문현황 -->
+<div class="row">
+    <!-- /.col (LEFT) -->
+    <div class="col-md-6">
+
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Latest Orders</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="table-responsive">
+                    <table class="table no-margin">
+                        <thead>
+                            <tr>
+                                <th>Sales Order</th>
+                                <th>Plan ID</th>
+                                <th>품명</th>
+                                <th>주문수량</th>
+                                <th>상태</th>
+                                <th>납기일</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in ViewBag.OrderList as TEAM3FINALWEB.Models.OrderList)
+                            {
+
+                            }
+
+                            <tr>
+                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                <td>Call of Duty IV</td>
+                                <td></td>
+                                <td></td>
+                                <td><span class="label label-success">Shipped</span></td>
+                                <td>
+                                    <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.box-body -->
+        </div>
 
 
+    </div>
 
-    @{
+    <!-- /.col (RIGHT) -->
+    <div class="col-md-6">
 
-        string labels = ViewBag.Labels;
-        string label1 = ViewBag.Label1;
-        string data1 = ViewBag.data1;
-
-    }
-
+    </div>
+</div>
 
 
-    <!-- 스크립트 영역 설정 -->
-    @section scripts
+<!-- 스크립트 영역 설정 -->
+@section scripts
 {
-        <!-- page script -->
-        <script>
+    <!-- page script -->
+    <script>
   $(function () {
     /* ChartJS
      * -------
@@ -132,7 +210,7 @@
         labels: arrTemp,
       datasets: [
         {
-          label               : '@label1',
+          label: '@label1',
               fillColor: 'rgba(0, 192, 239, 1)',
               strokeColor: 'rgba(0, 192, 239, 1)',
               pointColor: 'rgba(255, 192, 239, 1)',
@@ -201,43 +279,61 @@
       var pieChart = new Chart(pieChartCanvas)
       var PieData = [
           {
-              value: 10,
+              value: @ViewBag.C1,
               color: '#f56954',
               highlight: '#f56954',
-              label: 'Chrome'
+              label: '@ViewBag.B1'
           },
           {
-              value: 10,
+              value: @ViewBag.C2,
               color: '#00a65a',
               highlight: '#00a65a',
-              label: 'IE'
+              label: '@ViewBag.B2'
           },
           {
-              value: 10,
+              value: @ViewBag.C3,
               color: '#f39c12',
               highlight: '#f39c12',
-              label: 'FireFox'
+              label: '@ViewBag.B3'
           },
           {
-              value: 600,
+              value: @ViewBag.C4,
               color: '#00c0ef',
               highlight: '#00c0ef',
-              label: 'Safari'
+              label: '@ViewBag.B4'
           },
           {
-              value: 100,
+              value: @ViewBag.C5,
               color: '#3c8dbc',
               highlight: '#3c8dbc',
-              label: 'Opera'
+              label: '@ViewBag.B5'
           },
           {
-              value: 10,
+              value: @ViewBag.C6,
               color: '#d2d6de',
               highlight: '#d2d6de',
-              label: 'Navigator'
+              label: '@ViewBag.B6'
+          },
+          {
+              value: @ViewBag.C7,
+              color: '#1b3180',
+              highlight: '#1b3180',
+              label: '@ViewBag.B7'
+          },
+          {
+              value: @ViewBag.C8,
+              color: '#46187a',
+              highlight: '#46187a',
+              label: '@ViewBag.B8'
+          },
+          {
+              value: @ViewBag.C9,
+              color: '#c9a3b5',
+              highlight: '#c9a3b5',
+              label: '@ViewBag.B9'
           }
       ]
-      var pieOptions = {
+    var pieOptions = {
           //Boolean - Whether we should show a stroke on each segment
           segmentShowStroke: true,
           //String - The colour of each segment stroke
@@ -261,10 +357,10 @@
           //String - A legend template
           legendTemplate: '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
       }
-      //Create pie or douhnut chart
-      // You can switch between pie and douhnut using the method below.
-      pieChart.Doughnut(PieData, pieOptions)
+          //Create pie or douhnut chart
+          // You can switch between pie and douhnut using the method below.
+          pieChart.Doughnut(PieData, pieOptions)
   })
-        </script>
-    }
+    </script>
+}
 
