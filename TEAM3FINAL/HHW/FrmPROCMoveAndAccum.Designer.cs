@@ -50,7 +50,8 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1056, 128);
+            this.panel1.Location = new System.Drawing.Point(12, 13);
+            this.panel1.Size = new System.Drawing.Size(1576, 109);
             // 
             // panel2
             // 
@@ -64,9 +65,9 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.cboType);
             this.panel2.Controls.Add(this.cboWHouse);
-            this.panel2.Location = new System.Drawing.Point(12, 13);
+            this.panel2.Location = new System.Drawing.Point(5, 20);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel2.Size = new System.Drawing.Size(1040, 103);
+            this.panel2.Size = new System.Drawing.Size(1568, 82);
             // 
             // panel3
             // 
@@ -74,22 +75,24 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.dgvList);
-            this.panel3.Location = new System.Drawing.Point(15, 145);
-            this.panel3.Size = new System.Drawing.Size(1053, 408);
+            this.panel3.Location = new System.Drawing.Point(15, 129);
+            this.panel3.Size = new System.Drawing.Size(1580, 612);
             this.panel3.Controls.SetChildIndex(this.panel4, 0);
             this.panel3.Controls.SetChildIndex(this.dgvList, 0);
             // 
             // panel4
             // 
-            this.panel4.Location = new System.Drawing.Point(0, 663);
+            this.panel4.Location = new System.Drawing.Point(0, 867);
+            this.panel4.Size = new System.Drawing.Size(2268, 36);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(64, 36);
+            this.label11.Font = new System.Drawing.Font("맑은 고딕", 11F);
+            this.label11.Location = new System.Drawing.Point(99, 25);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(39, 20);
+            this.label11.Size = new System.Drawing.Size(50, 25);
             this.label11.TabIndex = 33;
             this.label11.Text = "창고";
             // 
@@ -98,7 +101,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label3.Location = new System.Drawing.Point(33, 33);
+            this.label3.Location = new System.Drawing.Point(75, 29);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(18, 24);
@@ -108,7 +111,7 @@
             // cboWHouse
             // 
             this.cboWHouse.FormattingEnabled = true;
-            this.cboWHouse.Location = new System.Drawing.Point(129, 33);
+            this.cboWHouse.Location = new System.Drawing.Point(184, 25);
             this.cboWHouse.Name = "cboWHouse";
             this.cboWHouse.Size = new System.Drawing.Size(175, 28);
             this.cboWHouse.TabIndex = 32;
@@ -121,7 +124,7 @@
             "제품",
             "반제품",
             "원자재"});
-            this.cboType.Location = new System.Drawing.Point(464, 33);
+            this.cboType.Location = new System.Drawing.Point(690, 25);
             this.cboType.Name = "cboType";
             this.cboType.Size = new System.Drawing.Size(175, 28);
             this.cboType.TabIndex = 32;
@@ -131,7 +134,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label4.Location = new System.Drawing.Point(361, 33);
+            this.label4.Location = new System.Drawing.Point(536, 29);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(18, 24);
@@ -141,10 +144,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(392, 36);
+            this.label5.Font = new System.Drawing.Font("맑은 고딕", 11F);
+            this.label5.Location = new System.Drawing.Point(561, 25);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 20);
+            this.label5.Size = new System.Drawing.Size(88, 25);
             this.label5.TabIndex = 33;
             this.label5.Text = "품목타입";
             // 
@@ -153,7 +157,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label6.Location = new System.Drawing.Point(725, 33);
+            this.label6.Location = new System.Drawing.Point(1054, 29);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(18, 24);
@@ -163,10 +167,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(756, 36);
+            this.label7.Font = new System.Drawing.Font("맑은 고딕", 11F);
+            this.label7.Location = new System.Drawing.Point(1090, 25);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(39, 20);
+            this.label7.Size = new System.Drawing.Size(50, 25);
             this.label7.TabIndex = 33;
             this.label7.Text = "품목";
             // 
@@ -207,12 +212,12 @@
             this.dgvList.RowHeadersWidth = 30;
             this.dgvList.RowTemplate.Height = 23;
             this.dgvList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvList.Size = new System.Drawing.Size(1053, 408);
+            this.dgvList.Size = new System.Drawing.Size(1580, 612);
             this.dgvList.TabIndex = 8;
             // 
             // txtITEM_CODE
             // 
-            this.txtITEM_CODE.Location = new System.Drawing.Point(818, 33);
+            this.txtITEM_CODE.Location = new System.Drawing.Point(1162, 26);
             this.txtITEM_CODE.Name = "txtITEM_CODE";
             this.txtITEM_CODE.Size = new System.Drawing.Size(175, 27);
             this.txtITEM_CODE.TabIndex = 35;
@@ -221,7 +226,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1080, 565);
+            this.ClientSize = new System.Drawing.Size(1607, 753);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmPROCMoveAndAccum";
             this.Text = "공정이동";

@@ -57,7 +57,7 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1400, 167);
+            this.panel1.Size = new System.Drawing.Size(1576, 109);
             // 
             // panel2
             // 
@@ -67,18 +67,17 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(12, 12);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel2.Size = new System.Drawing.Size(1376, 142);
+            this.panel2.Size = new System.Drawing.Size(1568, 82);
             // 
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel3.Controls.Add(this.dgvCom);
-            this.panel3.Location = new System.Drawing.Point(12, 233);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.panel3.Size = new System.Drawing.Size(645, 511);
+            this.panel3.Location = new System.Drawing.Point(12, 175);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3);
+            this.panel3.Size = new System.Drawing.Size(645, 573);
             // 
             // panel4
             // 
@@ -86,9 +85,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.Controls.Add(this.dgvComDetail);
-            this.panel4.Location = new System.Drawing.Point(665, 233);
+            this.panel4.Location = new System.Drawing.Point(665, 175);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(747, 511);
+            this.panel4.Size = new System.Drawing.Size(929, 573);
             this.panel4.TabIndex = 4;
             // 
             // dgvComDetail
@@ -116,7 +115,7 @@
             this.dgvComDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvComDetail.EnableHeadersVisualStyles = false;
             this.dgvComDetail.Location = new System.Drawing.Point(0, 0);
-            this.dgvComDetail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvComDetail.Margin = new System.Windows.Forms.Padding(4);
             this.dgvComDetail.Name = "dgvComDetail";
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
@@ -129,7 +128,7 @@
             this.dgvComDetail.RowHeadersWidth = 30;
             this.dgvComDetail.RowTemplate.Height = 23;
             this.dgvComDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvComDetail.Size = new System.Drawing.Size(747, 511);
+            this.dgvComDetail.Size = new System.Drawing.Size(929, 573);
             this.dgvComDetail.TabIndex = 1;
             // 
             // menuPanel1
@@ -137,7 +136,7 @@
             this.menuPanel1.BackColor = System.Drawing.Color.Transparent;
             this.menuPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.menuPanel1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.menuPanel1.Location = new System.Drawing.Point(12, 188);
+            this.menuPanel1.Location = new System.Drawing.Point(15, 131);
             this.menuPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.menuPanel1.Name = "menuPanel1";
             this.menuPanel1.Size = new System.Drawing.Size(645, 41);
@@ -152,10 +151,10 @@
             this.menuPanel2.BackColor = System.Drawing.Color.Transparent;
             this.menuPanel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.menuPanel2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.menuPanel2.Location = new System.Drawing.Point(665, 188);
+            this.menuPanel2.Location = new System.Drawing.Point(665, 131);
             this.menuPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.menuPanel2.Name = "menuPanel2";
-            this.menuPanel2.Size = new System.Drawing.Size(750, 41);
+            this.menuPanel2.Size = new System.Drawing.Size(932, 41);
             this.menuPanel2.TabIndex = 5;
             this.menuPanel2.TitleFont = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.menuPanel2.TitleName = "상세내용";
@@ -185,7 +184,7 @@
             this.dgvCom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCom.EnableHeadersVisualStyles = false;
             this.dgvCom.Location = new System.Drawing.Point(0, 0);
-            this.dgvCom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvCom.Margin = new System.Windows.Forms.Padding(4);
             this.dgvCom.Name = "dgvCom";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -198,17 +197,18 @@
             this.dgvCom.RowHeadersWidth = 30;
             this.dgvCom.RowTemplate.Height = 23;
             this.dgvCom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCom.Size = new System.Drawing.Size(645, 511);
+            this.dgvCom.Size = new System.Drawing.Size(645, 573);
             this.dgvCom.TabIndex = 0;
             this.dgvCom.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCom_CellClick);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(546, 61);
+            this.label5.Font = new System.Drawing.Font("맑은 고딕", 11F);
+            this.label5.Location = new System.Drawing.Point(642, 25);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 20);
+            this.label5.Size = new System.Drawing.Size(50, 25);
             this.label5.TabIndex = 36;
             this.label5.Text = "업체";
             // 
@@ -217,7 +217,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label4.Location = new System.Drawing.Point(514, 59);
+            this.label4.Location = new System.Drawing.Point(616, 27);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(18, 24);
@@ -227,10 +227,11 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(105, 61);
+            this.label11.Font = new System.Drawing.Font("맑은 고딕", 11F);
+            this.label11.Location = new System.Drawing.Point(99, 25);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(54, 20);
+            this.label11.Size = new System.Drawing.Size(69, 25);
             this.label11.TabIndex = 37;
             this.label11.Text = "마감월";
             // 
@@ -239,7 +240,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label3.Location = new System.Drawing.Point(75, 59);
+            this.label3.Location = new System.Drawing.Point(73, 27);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(18, 24);
@@ -249,8 +250,8 @@
             // cboCOM
             // 
             this.cboCOM.FormattingEnabled = true;
-            this.cboCOM.Location = new System.Drawing.Point(635, 57);
-            this.cboCOM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboCOM.Location = new System.Drawing.Point(734, 23);
+            this.cboCOM.Margin = new System.Windows.Forms.Padding(4);
             this.cboCOM.Name = "cboCOM";
             this.cboCOM.Size = new System.Drawing.Size(185, 28);
             this.cboCOM.TabIndex = 42;
@@ -259,8 +260,8 @@
             // 
             this.cboDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDate.FormattingEnabled = true;
-            this.cboDate.Location = new System.Drawing.Point(199, 58);
-            this.cboDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboDate.Location = new System.Drawing.Point(203, 23);
+            this.cboDate.Margin = new System.Windows.Forms.Padding(4);
             this.cboDate.Name = "cboDate";
             this.cboDate.Size = new System.Drawing.Size(193, 28);
             this.cboDate.TabIndex = 43;
@@ -268,7 +269,7 @@
             // FrmCompanyEndByMonth
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.ClientSize = new System.Drawing.Size(1425, 749);
+            this.ClientSize = new System.Drawing.Size(1607, 753);
             this.Controls.Add(this.menuPanel2);
             this.Controls.Add(this.menuPanel1);
             this.Controls.Add(this.panel4);
