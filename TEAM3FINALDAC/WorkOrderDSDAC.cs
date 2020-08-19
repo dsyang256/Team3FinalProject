@@ -59,6 +59,31 @@ namespace TEAM3FINALDAC
             return dt;
         }
 
+        public DataTable ControlDgv(string code)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection(this.ConnectionString);
+            string sql = @"select m.ITEM_CODE ,w.WO_PLAN_QTY as 생산필요량
+                                         ,(select isnull(sum(i.INS_QTY),0) qty
+                                         from INSTACK i 
+                                         where i.SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and i.INS_TYP = '입고' and i.INS_WRHS = t.ITEM_WRHS_IN and ITEM_CODE = m.ITEM_CODE) as 현재고
+                                         ,m.BOM_QTY
+                                         ,m.BOM_PARENT_CODE
+                                         
+                                         from BOM m ,WORKORDER w,ITEM t,BOM_QTY q
+                                         where m.BOM_PARENT_CODE = w.ITEM_CODE
+                                         and WO_Code = @WO_Code 
+                                         and M.ITEM_CODE = t.ITEM_CODE
+                                         and m.ITEM_CODE = q.ITEM_CODE";
+                                                     conn.Open();
+            using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
+            {
+                da.SelectCommand.Parameters.AddWithValue("@WO_Code", code);
+                da.Fill(dt);
+            }
+            return dt;
+        }
+
         public DataTable POPDGVselect1(string v)
         {
             DataTable dt = new DataTable();
@@ -126,24 +151,24 @@ namespace TEAM3FINALDAC
 
                            ,((select isnull(sum(INS_QTY),0)
                            from INSTACK 
-                           where INS_TYP = '입고' and SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and INS_WRHS = f.FCLTS_WRHS_EXHST and ITEM_CODE = m.ITEM_CODE)-
+                           where INS_TYP = '입고' and SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and INS_WRHS = i.ITEM_WRHS_IN and ITEM_CODE = m.ITEM_CODE)-
                            (select isnull(sum(INS_QTY),0)
                            from INSTACK 
-                           where INS_TYP = '출고' and SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and INS_WRHS = f.FCLTS_WRHS_EXHST and ITEM_CODE = m.ITEM_CODE)) as 현재고
+                           where INS_TYP = '출고' and SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and INS_WRHS = i.ITEM_WRHS_IN and ITEM_CODE = m.ITEM_CODE)) as 현재고
                            
                            ,I.ITEM_QTY_STND as 표준불출수량
                            ,w.WO_PLAN_QTY
                            ,f.FCLTS_WRHS_GOOD
                            ,w.SALES_WORK_ORDER_ID
-                           ,f.FCLTS_WRHS_EXHST
+                           ,i.ITEM_WRHS_IN
                            
                            ,(select isnull(sum(INS_QTY),0) 
                            from INSTACK 
-                           where INS_TYP = '출고' and SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and INS_WRHS = f.FCLTS_WRHS_EXHST and ITEM_CODE = m.ITEM_CODE) as 출고
+                           where INS_TYP = '출고' and SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and INS_WRHS = i.ITEM_WRHS_IN and ITEM_CODE = m.ITEM_CODE) as 출고
                            
                            ,(W.WO_PLAN_QTY - (select isnull(sum(INS_QTY),0) 
                            from INSTACK 
-                           where INS_TYP = '출고' and SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and INS_WRHS = f.FCLTS_WRHS_EXHST and ITEM_CODE = m.ITEM_CODE)) as 잔량
+                           where INS_TYP = '출고' and SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and INS_WRHS = i.ITEM_WRHS_IN and ITEM_CODE = m.ITEM_CODE)) as 잔량
                            
                            FROM BOM m
                            , WORKORDER w
@@ -155,9 +180,9 @@ namespace TEAM3FINALDAC
                            and w.FCLTS_CODE = f.FCLTS_CODE 
                            and m.ITEM_CODE = i.ITEM_CODE 
                            and m.BOM_PARENT_CODE = w.ITEM_CODE 
-                           and w.WO_WORK_STATE = '작업지시'
                            and m.BOM_PARENT_CODE = @code
-						   and w.WO_Code = @WO_Code";
+						   and w.WO_Code = @WO_Code
+                           and i.ITEM_TYP = '원자재'";
             conn.Open();
             using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
             {
