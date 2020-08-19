@@ -48,6 +48,8 @@ namespace TEAM3FINAL
             DataGridViewUtil.InitSettingGridView(dgvFacilityList);
             //데이터그리드뷰 체크박스 컬럼 추가
             DataGridViewUtil.DataGridViewCheckBoxSet(dgvFacilityList, "");
+            DataGridViewColumn col = dgvFacilityList.Columns[0];
+            col.Frozen = true;
             //일반컬럼 추가
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "설비군코드", "FACG_CODE", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "설비코드", "FCLTS_CODE", true, 80);

@@ -275,7 +275,7 @@
             this.Controls.Add(this.panel4);
             this.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
             this.Name = "FrmCompanyEndByMonth";
-            this.Text = "거래처월별마감";
+            this.Text = "거래처별월마감(매출)";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCompanyEndByMonth_FormClosing);
             this.Load += new System.EventHandler(this.FrmCompanyEndByMonth_Load);
             this.Controls.SetChildIndex(this.panel1, 0);

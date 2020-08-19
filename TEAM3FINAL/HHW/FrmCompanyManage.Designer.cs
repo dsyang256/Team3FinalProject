@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvCompanyList = new WindowsFormsApp18.MyDataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.txtComCode = new System.Windows.Forms.TextBox();
@@ -83,43 +83,43 @@
             // 
             this.panel3.Controls.Add(this.dgvCompanyList);
             this.panel3.Location = new System.Drawing.Point(12, 237);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3);
             this.panel3.Size = new System.Drawing.Size(1487, 506);
             // 
             // dgvCompanyList
             // 
-            dataGridViewCellStyle33.BackColor = System.Drawing.Color.White;
-            this.dgvCompanyList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvCompanyList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvCompanyList.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle34.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
-            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCompanyList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCompanyList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCompanyList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle35.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle35.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle35.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Menu;
-            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCompanyList.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCompanyList.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvCompanyList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCompanyList.EnableHeadersVisualStyles = false;
             this.dgvCompanyList.Location = new System.Drawing.Point(0, 0);
             this.dgvCompanyList.Name = "dgvCompanyList";
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle36.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCompanyList.RowHeadersDefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCompanyList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCompanyList.RowHeadersWidth = 30;
             this.dgvCompanyList.RowTemplate.Height = 23;
             this.dgvCompanyList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -140,7 +140,7 @@
             // txtComCode
             // 
             this.txtComCode.Location = new System.Drawing.Point(266, 27);
-            this.txtComCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtComCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtComCode.Name = "txtComCode";
             this.txtComCode.Size = new System.Drawing.Size(247, 27);
             this.txtComCode.TabIndex = 30;
@@ -207,7 +207,7 @@
             // 
             this.cboComType.FormattingEnabled = true;
             this.cboComType.Location = new System.Drawing.Point(1169, 26);
-            this.cboComType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboComType.Margin = new System.Windows.Forms.Padding(4);
             this.cboComType.Name = "cboComType";
             this.cboComType.Size = new System.Drawing.Size(247, 28);
             this.cboComType.TabIndex = 31;
@@ -215,7 +215,7 @@
             // txtComName
             // 
             this.txtComName.Location = new System.Drawing.Point(725, 25);
-            this.txtComName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtComName.Margin = new System.Windows.Forms.Padding(4);
             this.txtComName.Name = "txtComName";
             this.txtComName.Size = new System.Drawing.Size(247, 27);
             this.txtComName.TabIndex = 30;
@@ -246,7 +246,7 @@
             // txtNum
             // 
             this.txtNum.Location = new System.Drawing.Point(266, 77);
-            this.txtNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNum.Margin = new System.Windows.Forms.Padding(4);
             this.txtNum.Name = "txtNum";
             this.txtNum.Size = new System.Drawing.Size(247, 27);
             this.txtNum.TabIndex = 30;
@@ -257,6 +257,7 @@
             this.ClientSize = new System.Drawing.Size(1511, 753);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmCompanyManage";
+            this.Text = "업체관리";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCompanyManage_FormClosing);
             this.Load += new System.EventHandler(this.FrmCompanyManage_Load);
             this.panel1.ResumeLayout(false);

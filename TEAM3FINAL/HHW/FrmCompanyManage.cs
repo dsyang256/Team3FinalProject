@@ -27,6 +27,8 @@ namespace TEAM3FINAL
             DataGridViewUtil.InitSettingGridView(dgvCompanyList);
             //데이터그리드뷰 체크박스 컬럼 추가
             DataGridViewUtil.DataGridViewCheckBoxSet(dgvCompanyList, "");
+            DataGridViewColumn col = dgvCompanyList.Columns[0];
+            col.Frozen = true;
             //일반컬럼 추가
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCompanyList, "업체코드", "COM_CODE", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCompanyList, "업체명", "COM_NAME", true, 80);
