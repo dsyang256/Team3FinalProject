@@ -51,13 +51,13 @@ namespace TEAM3FINAL
         public List<SalesCOM2_VO> SearchSalesCom2(string date, string company)
         {
             SalesComDAC dac = new SalesComDAC();
-            return dac.SearchSalesCom2();
+            return dac.SearchSalesCom2(date, company);
         }
 
         public List<SalesCOMDedail2_VO> SearchSalesComDetail2(string date, string company)
         {
             SalesComDAC dac = new SalesComDAC();
-            return dac.SearchSalesComDetail2();
+            return dac.SearchSalesComDetail2(date, company);
         }
     }
 }

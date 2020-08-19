@@ -133,8 +133,8 @@ namespace TEAM3FINAL
 
         public void Search(object sender, EventArgs e)
         {
-            string date = cboDate.Text + "-01";
-            string company = (cboCOM.SelectedValue == null) ? "" : cboCOM.SelectedValue.ToString();
+            string date = cboDate.Text;
+            string company = cboCOM.Text;
             SalesComService service = new SalesComService();
             dgvCom.DataSource = null;
             dgvComDetail.DataSource = null;
@@ -144,7 +144,9 @@ namespace TEAM3FINAL
 
         public void Reset(object sender, EventArgs e)
         {
-
+            ComboBinding();
+            GetSalesCom2();
+            GetSalesComDetail2();
         }
 
         public void Update(object sender, EventArgs e)

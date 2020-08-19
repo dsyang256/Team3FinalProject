@@ -143,14 +143,40 @@ group by c.COM_CODE, A.ITEM_COM_DLVR, c.COM_REG_NUM";
             }
         }
 
-        public List<SalesCOMDedail2_VO> SearchSalesComDetail2()
+        public List<SalesCOMDedail2_VO> SearchSalesComDetail2(string date, string company)
         {
-            throw new NotImplementedException();
+            List<SalesCOMDedail2_VO> list = null;
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = new SqlConnection(this.ConnectionString);
+                cmd.CommandText = "SP_SearchSalesComDetail2";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@P_SALES_COM_CODE", company);
+                cmd.Parameters.AddWithValue("@P_SALES_ENDDATE", date);
+                cmd.Connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                list = Helper.DataReaderMapToList<SalesCOMDedail2_VO>(reader);
+                cmd.Connection.Close();
+                return list;
+            }
         }
 
-        public List<SalesCOM2_VO> SearchSalesCom2()
+        public List<SalesCOM2_VO> SearchSalesCom2(string date, string company)
         {
-            throw new NotImplementedException();
+            List<SalesCOM2_VO> list = null;
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = new SqlConnection(this.ConnectionString);
+                cmd.CommandText = "SP_SearchSalesCom2";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@P_SALES_COM_CODE", company);
+                cmd.Parameters.AddWithValue("@P_SALES_ENDDATE", date);
+                cmd.Connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                list = Helper.DataReaderMapToList<SalesCOM2_VO>(reader);
+                cmd.Connection.Close();
+                return list;
+            }
         }
 
 
