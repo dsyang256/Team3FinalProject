@@ -30,6 +30,8 @@ namespace TEAM3FINAL
             DataGridViewUtil.InitSettingGridView(dgvWorkRecordList);
             //데이터그리드뷰 체크박스 컬럼 추가
             DataGridViewUtil.DataGridViewCheckBoxSet(dgvWorkRecordList, "");
+            DataGridViewColumn col = dgvWorkRecordList.Columns[0];
+            col.Frozen = true;
             //일반컬럼 추가
             DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "지시일", "WO_PLAN_DATE", true, 80); //1
             DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "생산일", "WO_PROD_DATE", true, 80); //2
@@ -57,6 +59,8 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "작업지시서번호", "SALES_WORK_ORDER_ID", true, 80); //24
             DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "계획ID", "PLAN_ID", true, 80); //25
             DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "TYPE", "ITEM_TYP", true, 80); //25
+            dgvWorkRecordList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvWorkRecordList.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvWorkRecordList);
             DataGridViewCheckBoxAllCheck();
 
@@ -75,6 +79,8 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "비고", "WO_REMARK", true, 80); //7
             DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "작업지시서번호", "SALES_WORK_ORDER_ID", true, 80); //8
             DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "TYPE", "ITEM_TYP", true, 80); //9
+            dgvMOVEList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvMOVEList.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvMOVEList);
             DataGridViewCheckBoxAllCheck2();
 

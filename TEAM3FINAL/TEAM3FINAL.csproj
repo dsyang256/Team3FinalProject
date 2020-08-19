@@ -75,6 +75,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HHW\FrmCompanyEndByMonth2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HHW\FrmCompanyEndByMonth2.Designer.cs">
+      <DependentUpon>FrmCompanyEndByMonth2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Popup\FrmSalesWorkPop.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -544,6 +550,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaseForm\ProjectBaseForm.resx">
       <DependentUpon>ProjectBaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HHW\FrmCompanyEndByMonth2.resx">
+      <DependentUpon>FrmCompanyEndByMonth2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OJH\FrmOutProductionPlan.resx">
       <DependentUpon>FrmOutProductionPlan.cs</DependentUpon>
