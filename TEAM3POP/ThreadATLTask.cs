@@ -54,11 +54,12 @@ namespace TEAM3POP
         /// <summary> Thread 종료 </summary>
         public void ThreadTerminate()
         {
-            lock (m_ThreadLock)
-            {
+            //lock (m_ThreadLock)
+            //{
                 // Thread 종료
+                m_Thread.Abort();
                 this.m_ThreadTerminateRequest.Set();
-            }
+            //}
         }
 
         /// <summary>
@@ -161,7 +162,7 @@ namespace TEAM3POP
                                     case "reset":
                                         break;
                                     default:
-                                        IF_SetValue($"[{laData[1]}] |{laData[2]}|{laData[3]}|{laData[4]}|{laData[5]}");
+                                        //_SetValue($"[{laData[1]}] |{laData[2]}|{laData[3]}|{laData[4]}|{laData[5]}");
                                         break;
                                 }
 
@@ -223,6 +224,8 @@ namespace TEAM3POP
                         cmd.Parameters.AddWithValue("@BadQty", int.Parse(arrData[4]));
 
                         cmd.ExecuteNonQuery();
+
+
                     }
                 }
             }

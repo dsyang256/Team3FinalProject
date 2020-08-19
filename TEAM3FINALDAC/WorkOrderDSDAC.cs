@@ -69,6 +69,10 @@ namespace TEAM3FINALDAC
                                          where i.SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and i.INS_TYP = '입고' and i.INS_WRHS = t.ITEM_WRHS_IN and ITEM_CODE = m.ITEM_CODE) as 현재고
                                          ,m.BOM_QTY
                                          ,m.BOM_PARENT_CODE
+                                         ,isnull(w.WO_QTY_BAD,0) as 불량수량
+                                         ,isnull(w.WO_QTY_PROD,0) as 생산수량
+                                         ,isnull(w.WO_QTY_OUT,0) as 양품수량
+ 
                                          
                                          from BOM m ,WORKORDER w,ITEM t,BOM_QTY q
                                          where m.BOM_PARENT_CODE = w.ITEM_CODE

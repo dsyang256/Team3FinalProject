@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cryptography, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TEAM3FINALDAC\LIB\Cryptography.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
@@ -50,12 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmATLTask.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmATLTask.Designer.cs">
-      <DependentUpon>frmATLTask.cs</DependentUpon>
-    </Compile>
+    <Compile Include="ATLTask.cs" />
     <Compile Include="FrmPOP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +85,8 @@
     <Compile Include="FrmPOPMDI.Designer.cs">
       <DependentUpon>FrmPOPMDI.cs</DependentUpon>
     </Compile>
+    <Compile Include="LIB\ConnectionAccess.cs" />
+    <Compile Include="LIB\Helper.cs" />
     <Compile Include="MyDataGridView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -108,9 +109,6 @@
     <Compile Include="UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="frmATLTask.resx">
-      <DependentUpon>frmATLTask.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmPOPALL.resx">
       <DependentUpon>FrmPOPALL.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +163,12 @@
       <Project>{00c1c951-2a3d-4c08-b1a5-a22499824bf3}</Project>
       <Name>TEAM3FINAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LIB\Cryptography.dll" />
+    <Content Include="LIB\LibraryConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
