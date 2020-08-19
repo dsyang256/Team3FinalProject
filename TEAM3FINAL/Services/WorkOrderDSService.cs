@@ -18,7 +18,7 @@ namespace TEAM3FINAL
             return dac.GetWorkOrder();
         }
 
-        internal object GetWorkOrder2(string code,string id)
+        internal DataTable GetWorkOrder2(string code,string id)
         {
             WorkOrderDSDAC dac = new WorkOrderDSDAC();
             return dac.GetWorkOrder2(code,id);
@@ -51,6 +51,13 @@ namespace TEAM3FINAL
             WorkOrderDSDAC dac = new WorkOrderDSDAC();
             return dac.ComboBinding(v);
         }
+
+        public DataTable ControlDgv(string code)
+        {
+            WorkOrderDSDAC dac = new WorkOrderDSDAC();
+            return dac.ControlDgv(code);
+        }
+
         public List<POPVO> POPFACILITY()
         {
             WorkOrderDSDAC dac = new WorkOrderDSDAC();
