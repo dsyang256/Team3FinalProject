@@ -224,7 +224,7 @@ namespace TEAM3FINAL
             {
                 foreach (DataGridViewCell cell in row.Cells)
                 {
-                    if (cell.ColumnIndex > 5)
+                    if (cell.ColumnIndex > 4)
                     {
                         if (cell.Value == null || cell.Value.ToString() == string.Empty)
                         {
@@ -242,9 +242,9 @@ namespace TEAM3FINAL
                 {
                     foreach (DataGridViewCell cell in row.Cells)
                     {
-                        if (cell.ColumnIndex > 5)
+                        if (cell.ColumnIndex > 4)
                         {
-                            if (cell.Value.ToString() != "0")
+                            if (cell.Value.ToString() != "0" && cell.Value != null && cell.Value != DBNull.Value)
                             {
                                 cell.Style.BackColor = Color.Khaki;
                             }

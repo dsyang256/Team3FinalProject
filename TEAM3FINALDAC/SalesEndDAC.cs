@@ -25,15 +25,15 @@ namespace TEAM3FINALDAC
 	   (select isnull(sum(case when INS_TYP = '출고' then INS_QTY end), 0)
 		from INSTACK 
 		where SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and INS_WRHS = ii.INS_WRHS) * 
-	   (select top 1 MC_UNITPRICE_CUR 
-		from MATERIAL_COST
+	   (select top 1 SC_UNITPRICE_CUR 
+		from SALES_COST
 		where ITEM_Code = w.ITEM_CODE
-		order by MC_ENDDATE desc) as EndPrice
+		order by SC_ENDDATE desc) as EndPrice
 from WORKORDER w inner join SALES_WORK s on w.SALES_WORK_ORDER_ID = s.SALES_Work_Order_ID
 				 inner join COMPANY c on s.COM_CODE = c.COM_CODE
 				 inner join ITEM i on w.ITEM_CODE = i.ITEM_CODE
 				 inner join INSTACK ii on w.ITEM_CODE = ii.ITEM_CODE
-				 inner join MATERIAL_COST m on w.ITEM_CODE = m.ITEM_Code
+				 inner join SALES_COST m on w.ITEM_CODE = m.ITEM_Code
 where ii.INS_WRHS = 'M_01' and (w.WO_WORK_STATE = '마감완료' or w.WO_WORK_STATE = '마감중') and ii.INS_TYP = '출고'
 group by w.SALES_WORK_ORDER_ID, s.COM_CODE, c.COM_NAME, s.SALES_COM_CODE, w.ITEM_CODE, i.ITEM_NAME, s.SALES_DUEDATE, w.WO_PLAN_QTY, ii.INS_WRHS
 order by SALES_DUEDATE";
@@ -43,7 +43,6 @@ order by SALES_DUEDATE";
                 return list;
             }
         }
-
 
         public Message SalesRecord(SalesEndState_VO vo, string name)
         {
@@ -84,6 +83,26 @@ order by SALES_DUEDATE";
             }
         }
 
+        public List<SalesEnd_VO> SearchSalesEnd(string id, string item, string company)
+        {
+            List<SalesEnd_VO> list = null;
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = new SqlConnection(this.ConnectionString);
+                cmd.CommandText = "SP_SearchSalesEnd";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@P_SALES_WORK_ORDER_ID", id);
+                cmd.Parameters.AddWithValue("@P_ITEM_CODE", item);
+                cmd.Parameters.AddWithValue("@P_SALES_COM_CODE", company);
+                cmd.Connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                list = Helper.DataReaderMapToList<SalesEnd_VO>(reader);
+                cmd.Connection.Close();
+                return list;
+            }
+        }
+
+
         #endregion
 
 
@@ -105,8 +124,60 @@ order by SALES_DUEDATE";
                 return list;
             }
         }
+        
 
+        public Message SalesCancel(SalesEndState_VO vo, string id)
+        {
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = new SqlConnection(this.ConnectionString);
+                cmd.CommandText = "SP_SalesCancel";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@P_SALES_WORK_ORDER_ID", vo.SALES_WORK_ORDER_ID);
+                cmd.Parameters.AddWithValue("@P_ITEM_CODE", vo.ITEM_CODE);
+                cmd.Parameters.AddWithValue("@P_WO_LAST_MDFR", id);
+                cmd.Parameters.Add(new SqlParameter("@P_ReturnCode", System.Data.SqlDbType.NVarChar, 5));
+                cmd.Parameters["@P_ReturnCode"].Direction = System.Data.ParameterDirection.Output;
 
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
+
+                string result = cmd.Parameters["@P_ReturnCode"].Value.ToString();
+
+                Message message = new Message();
+                if (result == "S01")
+                {
+                    message.IsSuccess = true;
+                    message.ResultMessage = "성공하였습니다.";
+                }
+                else if (result == "S00")
+                {
+                    message.IsSuccess = false;
+                    message.ResultMessage = "실패하였습니다.";
+                }
+
+                return message;
+            }
+        }
+
+        public List<SalesEndState_VO> SearchSalesEndState(string id, string item, string company)
+        {
+            List<SalesEndState_VO> list = null;
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = new SqlConnection(this.ConnectionString);
+                cmd.CommandText = "SP_SearchSalesEndState";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@P_SALES_WORK_ORDER_ID", id);
+                cmd.Parameters.AddWithValue("@P_ITEM_CODE", item);
+                cmd.Parameters.AddWithValue("@P_SALES_COM_CODE", company);
+                cmd.Connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                list = Helper.DataReaderMapToList<SalesEndState_VO>(reader);
+                return list;
+            }
+        }
 
         #endregion
     }

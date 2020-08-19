@@ -180,14 +180,13 @@ where WO_WORK_STATE = '실적등록'";
             using (SqlCommand cmd = new SqlCommand())
             {
                 cmd.Connection = new SqlConnection(this.ConnectionString);
-                cmd.CommandText = @"select i.INS_WRHS, FAC_NAME, i.ITEM_CODE, it.ITEM_NAME, it.ITEM_TYP, it.ITEM_STND, it.ITEM_UNIT, 
-                                           sum(case when INS_TYP = '출고' then (INS_QTY*-1) when INS_TYP = '입고' then INS_QTY end) INS_QTY
-                                    from (select i.INS_WRHS, i.ITEM_CODE, i.INS_TYP,
-			                                     sum(case when INS_TYP = '출고' then (INS_QTY*-1) when INS_TYP = '입고' then INS_QTY end) INS_QTY
-	                                      from INSTACK i
-	                                      group by i.INS_WRHS, i.ITEM_CODE, i.INS_TYP) i inner join FACTORY f on i.INS_WRHS = f.FAC_CODE
-													                                     inner join item it on i.ITEM_CODE = it.ITEM_CODE
-                                    where 1=1 
+                cmd.CommandText = @"select i.INS_WRHS, FAC_NAME, i.ITEM_CODE, it.ITEM_NAME, it.ITEM_TYP, it.ITEM_STND, it.ITEM_UNIT, INS_QTY
+                                      from (select i.INS_WRHS, i.ITEM_CODE, 
+	                                               sum(case when INS_TYP = '출고' then (INS_QTY*-1) when INS_TYP = '입고' then INS_QTY end) INS_QTY
+	                                          from INSTACK i
+	                                        group by i.INS_WRHS, i.ITEM_CODE) i inner join FACTORY f on i.INS_WRHS = f.FAC_CODE
+		  	   									                           	   inner join item it on i.ITEM_CODE = it.ITEM_CODE
+                                     where 1=1 
                                     group by i.INS_WRHS, FAC_NAME, i.ITEM_CODE, it.ITEM_NAME, it.ITEM_TYP, it.ITEM_STND, INS_QTY, it.ITEM_UNIT";
                 cmd.Connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();

@@ -64,6 +64,7 @@
     <Compile Include="ProductOUTDAC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="REORDERDAC.cs" />
+    <Compile Include="SalesComDAC.cs" />
     <Compile Include="SalesDAC.cs" />
     <Compile Include="SalesEndDAC.cs" />
     <Compile Include="ShiftDAC.cs" />

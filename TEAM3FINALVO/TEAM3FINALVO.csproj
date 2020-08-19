@@ -65,6 +65,7 @@
     <Compile Include="REORDERDETATILS_VO.cs" />
     <Compile Include="REORDER_VO.cs" />
     <Compile Include="Right_VO.cs" />
+    <Compile Include="SalesCOM_VO.cs" />
     <Compile Include="SalesEndState_VO.cs" />
     <Compile Include="SalesEnd_VO.cs" />
     <Compile Include="SALES_COST_VO.cs" />

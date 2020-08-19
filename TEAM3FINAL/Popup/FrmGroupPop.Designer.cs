@@ -63,6 +63,7 @@
             // 
             this.btnOK.Location = new System.Drawing.Point(208, 327);
             this.btnOK.Text = "저장";
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
@@ -108,11 +109,11 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label10.Location = new System.Drawing.Point(36, 63);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(17, 17);
+            this.label10.Size = new System.Drawing.Size(15, 18);
             this.label10.TabIndex = 160;
             this.label10.Text = "*";
             // 
@@ -129,11 +130,11 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label9.Location = new System.Drawing.Point(301, 63);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(17, 17);
+            this.label9.Size = new System.Drawing.Size(15, 18);
             this.label9.TabIndex = 159;
             this.label9.Text = "*";
             // 
@@ -159,11 +160,11 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label25.Location = new System.Drawing.Point(35, 140);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(17, 17);
+            this.label25.Size = new System.Drawing.Size(15, 18);
             this.label25.TabIndex = 156;
             this.label25.Text = "*";
             // 
@@ -172,7 +173,6 @@
             this.txtRightName.Location = new System.Drawing.Point(156, 60);
             this.txtRightName.MaxLength = 10;
             this.txtRightName.Name = "txtRightName";
-            this.txtRightName.ReadOnly = true;
             this.txtRightName.Size = new System.Drawing.Size(121, 23);
             this.txtRightName.TabIndex = 132;
             // 
@@ -186,6 +186,7 @@
             // 
             // cboRightgroup
             // 
+            this.cboRightgroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRightgroup.FormattingEnabled = true;
             this.cboRightgroup.Location = new System.Drawing.Point(156, 25);
             this.cboRightgroup.Name = "cboRightgroup";
@@ -224,11 +225,11 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label31.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label31.Location = new System.Drawing.Point(35, 96);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(17, 17);
+            this.label31.Size = new System.Drawing.Size(15, 18);
             this.label31.TabIndex = 149;
             this.label31.Text = "*";
             // 
@@ -256,11 +257,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.label3.Location = new System.Drawing.Point(35, 27);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 17);
+            this.label3.Size = new System.Drawing.Size(15, 18);
             this.label3.TabIndex = 153;
             this.label3.Text = "*";
             // 
@@ -270,6 +271,7 @@
             this.ClientSize = new System.Drawing.Size(590, 375);
             this.Controls.Add(this.panel2);
             this.Name = "FrmGroupPop";
+            this.Load += new System.EventHandler(this.FrmGroupPop_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
