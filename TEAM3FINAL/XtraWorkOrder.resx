@@ -117,13 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="timSocket_Connect.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="sqlDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="timSocket_Check.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>175, 17</value>
-  </metadata>
-  <metadata name="timSocket_Ka.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>329, 18</value>
-  </metadata>
+  <data name="customSqlQuery1.Sql" xml:space="preserve">
+    <value>select WO_Code, ITEM_CODE, FCLTS_NAME
+,CONVERT(Date, w.WO_PLAN_STARTTIME,23) WO_PLAN_STARTTIME
+,CONVERT(Date, w.WO_PLAN_DATE,23) WO_PLAN_DATE
+,w.WO_PLAN_QTY
+from WORKORDER w inner join FACILITY f on f.FCLTS_CODE = w.FCLTS_CODE
+where w.WO_WORK_STATE = '작업지시'</value>
+  </data>
+  <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlF1ZXJ5Ij48RmllbGQgTmFtZT0iV09fQ29kZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJJVEVNX0NPREUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iRkNMVFNfTkFNRSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJXT19QTEFOX1NUQVJUVElNRSIgVHlwZT0iRGF0ZVRpbWUiIC8+PEZpZWxkIE5hbWU9IldPX1BMQU5fREFURSIgVHlwZT0iRGF0ZVRpbWUiIC8+PEZpZWxkIE5hbWU9IldPX1BMQU5fUVRZIiBUeXBlPSJJbnQzMiIgLz48L1ZpZXc+PC9EYXRhU2V0Pg==</value>
+  </data>
 </root>

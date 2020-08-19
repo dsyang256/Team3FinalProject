@@ -1,6 +1,16 @@
-﻿
+﻿@model  TEAM3FINALWEB.Models.Order
+@model  TEAM3FINALWEB.Models.OrderList
 @{
     ViewBag.Title = "Index";
+}
+
+@{
+
+    string labels = ViewBag.Labels;
+    string label1 = ViewBag.Label1;
+    string data1 = ViewBag.data1;
+    string results = ViewBag.result;
+
 }
 
 <!-- Content Header (Page header) -->
@@ -17,6 +27,340 @@
      -->
 </section>
 
-<!-- 차트 -->
+<!-- 소제목 -->
+<div class="pad margin no-print">
+    <div class="callout callout-primary" style="margin-bottom: 0!important;">
+        <h3><i class="fa fa-line-chart"></i> 월별 매출액</h3>
+        [ @ViewBag.Label1 ] 제품의 월별 매출액을 확인할 수 있습니다.
+    </div>
+</div>
 
+<!-- 차트 -->
+<div class="row">
+    <!-- /.col (LEFT) -->
+    <div class="col-md-8">
+
+        <!-- LINE CHART -->
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-line-chart"></i> 월별 매출 조회</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="chart">
+                    <canvas id="lineChart" style="height:250px"></canvas>
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+
+    </div>
+    <!-- /.col (RIGHT) -->
+    <div class="col-md-4">
+
+        <!--현재 기준 누적 매출 -->
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-line-chart"></i> 거래처별 주문 비율</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="chart">
+                            <canvas id="pieChart" style="height:250px"></canvas>
+                        </div>
+                        <!-- ./chart-responsive -->
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-4">
+                        <ul class="chart-legend clearfix">
+
+                            <li><i class="fa fa-circle-o text-aqua"></i> @ViewBag.B1</li>
+                            <li><i class="fa fa-circle-o text-black"></i> @ViewBag.B2</li>
+                            <li><i class="fa fa-circle-o text-blue"></i> @ViewBag.B3</li>
+                            <li><i class="fa fa-circle-o text-gray"></i> @ViewBag.B4</li>
+                            <li><i class="fa fa-circle-o text-green"></i> @ViewBag.B5</li>
+                            <li><i class="fa fa-circle-o text-fuchsia"></i> @ViewBag.B6</li>
+                            <li><i class="fa fa-circle-o text-light-blue"></i> @ViewBag.B7</li>
+                            <li><i class="fa fa-circle-o text-lime"></i> @ViewBag.B8</li>
+                            <li><i class="fa fa-circle-o text-yellow"></i> @ViewBag.B9</li>
+
+                        </ul>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+
+    </div>
+
+
+</div>
+<!-- /.row -->
+<!-- 소제목 -->
+<div class="pad margin no-print">
+    <div class="callout callout-primary" style="margin-bottom: 0!important;">
+        <h3><i class="fa fa-shopping-cart" aria-hidden="true"></i>  주문 현황</h3>
+        주문과 관련된 현황을 확인할 수 있습니다.
+    </div>
+</div>
+
+<!-- 주문현황 -->
+<div class="row">
+    <!-- /.col (LEFT) -->
+    <div class="col-md-6">
+
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Latest Orders</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="table-responsive">
+                    <table class="table no-margin">
+                        <thead>
+                            <tr>
+                                <th>Sales Order</th>
+                                <th>Plan ID</th>
+                                <th>품명</th>
+                                <th>주문수량</th>
+                                <th>상태</th>
+                                <th>납기일</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in ViewBag.OrderList as TEAM3FINALWEB.Models.OrderList)
+                            {
+
+                            }
+
+                            <tr>
+                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                <td>Call of Duty IV</td>
+                                <td></td>
+                                <td></td>
+                                <td><span class="label label-success">Shipped</span></td>
+                                <td>
+                                    <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.box-body -->
+        </div>
+
+
+    </div>
+
+    <!-- /.col (RIGHT) -->
+    <div class="col-md-6">
+
+    </div>
+</div>
+
+
+<!-- 스크립트 영역 설정 -->
+@section scripts
+{
+    <!-- page script -->
+    <script>
+  $(function () {
+    /* ChartJS
+     * -------
+     * Here we will create a few charts using ChartJS
+     */
+
+      //C#=> JQuery로 데이터 넣어주기 위한 변환
+      var temp = "@labels";
+      var arrTemp = temp.split(',');
+
+    var areaChartData = {
+        labels: arrTemp,
+      datasets: [
+        {
+          label: '@label1',
+              fillColor: 'rgba(0, 192, 239, 1)',
+              strokeColor: 'rgba(0, 192, 239, 1)',
+              pointColor: 'rgba(255, 192, 239, 1)',
+          pointStrokeColor    : '#c1c7d1',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)',
+              data: @data1
+        }
+
+      ]
+    }
+
+    var areaChartOptions = {
+      //Boolean - If we should show the scale at all
+      showScale               : true,
+      //Boolean - Whether grid lines are shown across the chart
+      scaleShowGridLines      : false,
+      //String - Colour of the grid lines
+      scaleGridLineColor      : 'rgba(0,0,0,.05)',
+      //Number - Width of the grid lines
+      scaleGridLineWidth      : 1,
+      //Boolean - Whether to show horizontal lines (except X axis)
+      scaleShowHorizontalLines: true,
+      //Boolean - Whether to show vertical lines (except Y axis)
+      scaleShowVerticalLines  : true,
+      //Boolean - Whether the line is curved between points
+      bezierCurve             : true,
+      //Number - Tension of the bezier curve between points
+      bezierCurveTension      : 0.3,
+      //Boolean - Whether to show a dot for each point
+      pointDot                : false,
+      //Number - Radius of each point dot in pixels
+      pointDotRadius          : 4,
+      //Number - Pixel width of point dot stroke
+      pointDotStrokeWidth     : 1,
+      //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+      pointHitDetectionRadius : 20,
+      //Boolean - Whether to show a stroke for datasets
+      datasetStroke           : true,
+      //Number - Pixel width of dataset stroke
+      datasetStrokeWidth      : 2,
+      //Boolean - Whether to fill the dataset with a color
+      datasetFill             : true,
+      //String - A legend template
+      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].lineColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
+      //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+      maintainAspectRatio     : true,
+      //Boolean - whether to make the chart responsive to window resizing
+      responsive              : true
+    }
+
+    //-------------
+    //- LINE CHART -
+    //--------------
+    var lineChartCanvas          = $('#lineChart').get(0).getContext('2d')
+    var lineChart                = new Chart(lineChartCanvas)
+    var lineChartOptions         = areaChartOptions
+    lineChartOptions.datasetFill = false
+    lineChart.Line(areaChartData, lineChartOptions)
+
+      //-------------
+      //- PIE CHART -
+      //-------------
+      // Get context with jQuery - using jQuery's .get() method.
+      var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+      var pieChart = new Chart(pieChartCanvas)
+      var PieData = [
+          {
+              value: @ViewBag.C1,
+              color: '#f56954',
+              highlight: '#f56954',
+              label: '@ViewBag.B1'
+          },
+          {
+              value: @ViewBag.C2,
+              color: '#00a65a',
+              highlight: '#00a65a',
+              label: '@ViewBag.B2'
+          },
+          {
+              value: @ViewBag.C3,
+              color: '#f39c12',
+              highlight: '#f39c12',
+              label: '@ViewBag.B3'
+          },
+          {
+              value: @ViewBag.C4,
+              color: '#00c0ef',
+              highlight: '#00c0ef',
+              label: '@ViewBag.B4'
+          },
+          {
+              value: @ViewBag.C5,
+              color: '#3c8dbc',
+              highlight: '#3c8dbc',
+              label: '@ViewBag.B5'
+          },
+          {
+              value: @ViewBag.C6,
+              color: '#d2d6de',
+              highlight: '#d2d6de',
+              label: '@ViewBag.B6'
+          },
+          {
+              value: @ViewBag.C7,
+              color: '#1b3180',
+              highlight: '#1b3180',
+              label: '@ViewBag.B7'
+          },
+          {
+              value: @ViewBag.C8,
+              color: '#46187a',
+              highlight: '#46187a',
+              label: '@ViewBag.B8'
+          },
+          {
+              value: @ViewBag.C9,
+              color: '#c9a3b5',
+              highlight: '#c9a3b5',
+              label: '@ViewBag.B9'
+          }
+      ]
+    var pieOptions = {
+          //Boolean - Whether we should show a stroke on each segment
+          segmentShowStroke: true,
+          //String - The colour of each segment stroke
+          segmentStrokeColor: '#fff',
+          //Number - The width of each segment stroke
+          segmentStrokeWidth: 2,
+          //Number - The percentage of the chart that we cut out of the middle
+          percentageInnerCutout: 50, // This is 0 for Pie charts
+          //Number - Amount of animation steps
+          animationSteps: 100,
+          //String - Animation easing effect
+          animationEasing: 'easeOutBounce',
+          //Boolean - Whether we animate the rotation of the Doughnut
+          animateRotate: true,
+          //Boolean - Whether we animate scaling the Doughnut from the centre
+          animateScale: false,
+          //Boolean - whether to make the chart responsive to window resizing
+          responsive: true,
+          // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+          maintainAspectRatio: true,
+          //String - A legend template
+          legendTemplate: '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+      }
+          //Create pie or douhnut chart
+          // You can switch between pie and douhnut using the method below.
+          pieChart.Doughnut(PieData, pieOptions)
+  })
+    </script>
+}
 

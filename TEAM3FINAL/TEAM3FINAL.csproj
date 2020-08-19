@@ -112,6 +112,12 @@
       <DependentUpon>FrmWaitAsync.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\WorkOrderINService.cs" />
+    <Compile Include="XtraWorkOrder.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XtraWorkOrder.Designer.cs">
+      <DependentUpon>XtraWorkOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="YDS\FrmPortSetting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -565,6 +571,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\FrmWaitAsync.resx">
       <DependentUpon>FrmWaitAsync.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XtraWorkOrder.resx">
+      <DependentUpon>XtraWorkOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="YDS\FrmPortSetting.resx">
       <DependentUpon>FrmPortSetting.cs</DependentUpon>

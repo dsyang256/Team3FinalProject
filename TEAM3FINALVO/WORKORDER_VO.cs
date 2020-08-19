@@ -18,7 +18,7 @@ namespace TEAM3FINALVO
         public string WO_PLAN_ENDTIME { get; set; } //계획실제종료일
         public int WO_QTY { get; set; } //잔량
         public int WO_QTY_IN { get; set; } //투입수량 * 
-        public int WO_QTY_OUT { get; set; } //산출수량 *
+        public int WO_QTY_OUT { get; set; } //산출수량 * = 양품
         public int WO_QTY_BAD { get; set; } //불량수량 (투입수량 - 산출수량) *
         public int WO_QTY_PROD { get; set; } //생산수량 (양품 + 불량) *
         //public string WO_PROD_REQ_NUM { get; set; } //생산의뢰번호

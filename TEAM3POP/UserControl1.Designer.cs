@@ -28,10 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.task_code = new System.Windows.Forms.Label();
+            this.btnTaskStop = new System.Windows.Forms.Button();
+            this.dgv = new WindowsFormsApp18.MyDataGridView();
+            this.itemname = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.hostPort = new System.Windows.Forms.Label();
@@ -41,91 +49,153 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.btnTaskStart = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.BADQTY = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.residualqty = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.GOODQTY = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.qty = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.taskID = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.timSocket_Connect = new System.Windows.Forms.Timer(this.components);
+            this.timSocket_Check = new System.Windows.Forms.Timer(this.components);
+            this.timSocket_Ka = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.panel1.Controls.Add(this.textBox6);
-            this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.task_code);
+            this.panel1.Controls.Add(this.btnTaskStop);
+            this.panel1.Controls.Add(this.dgv);
+            this.panel1.Controls.Add(this.itemname);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.btnStop);
+            this.panel1.Controls.Add(this.btnStart);
+            this.panel1.Controls.Add(this.btnTaskStart);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Controls.Add(this.textBox4);
+            this.panel1.Controls.Add(this.BADQTY);
             this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.textBox3);
+            this.panel1.Controls.Add(this.residualqty);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.GOODQTY);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.qty);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.taskID);
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1899, 200);
             this.panel1.TabIndex = 0;
             // 
-            // textBox6
+            // button1
             // 
-            this.textBox6.Enabled = false;
-            this.textBox6.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox6.Location = new System.Drawing.Point(839, 122);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(261, 39);
-            this.textBox6.TabIndex = 30;
+            this.button1.Location = new System.Drawing.Point(1641, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(150, 78);
+            this.button1.TabIndex = 32;
+            this.button1.Text = "초기화";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox5
+            // panel3
             // 
-            this.textBox5.Enabled = false;
-            this.textBox5.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox5.Location = new System.Drawing.Point(838, 73);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(262, 39);
-            this.textBox5.TabIndex = 29;
+            this.panel3.BackColor = System.Drawing.Color.Red;
+            this.panel3.Location = new System.Drawing.Point(1260, 118);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(63, 54);
+            this.panel3.TabIndex = 8;
             // 
-            // label5
+            // task_code
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label5.Location = new System.Drawing.Point(653, 125);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(180, 27);
-            this.label5.TabIndex = 28;
-            this.label5.Text = "지시가능수량";
+            this.task_code.AutoSize = true;
+            this.task_code.Location = new System.Drawing.Point(1077, 58);
+            this.task_code.Name = "task_code";
+            this.task_code.Size = new System.Drawing.Size(38, 12);
+            this.task_code.TabIndex = 31;
+            this.task_code.Text = "label5";
+            this.task_code.Visible = false;
+            // 
+            // btnTaskStop
+            // 
+            this.btnTaskStop.Enabled = false;
+            this.btnTaskStop.Location = new System.Drawing.Point(1485, 19);
+            this.btnTaskStop.Name = "btnTaskStop";
+            this.btnTaskStop.Size = new System.Drawing.Size(150, 78);
+            this.btnTaskStop.TabIndex = 22;
+            this.btnTaskStop.Text = "설비중단";
+            this.btnTaskStop.UseVisualStyleBackColor = true;
+            this.btnTaskStop.Click += new System.EventHandler(this.btnTaskStop_Click);
+            // 
+            // dgv
+            // 
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
+            this.dgv.BackgroundColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Menu;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle19;
+            this.dgv.EnableHeadersVisualStyles = false;
+            this.dgv.Location = new System.Drawing.Point(658, 106);
+            this.dgv.Name = "dgv";
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            this.dgv.RowHeadersWidth = 20;
+            this.dgv.RowTemplate.Height = 23;
+            this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv.Size = new System.Drawing.Size(442, 81);
+            this.dgv.TabIndex = 30;
+            // 
+            // itemname
+            // 
+            this.itemname.Enabled = false;
+            this.itemname.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.itemname.Location = new System.Drawing.Point(740, 61);
+            this.itemname.Name = "itemname";
+            this.itemname.Size = new System.Drawing.Size(262, 39);
+            this.itemname.TabIndex = 29;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(653, 76);
+            this.label4.Location = new System.Drawing.Point(555, 64);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(124, 27);
             this.label4.TabIndex = 27;
@@ -140,7 +210,7 @@
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox1.Location = new System.Drawing.Point(144, 57);
+            this.groupBox1.Location = new System.Drawing.Point(28, 64);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(291, 124);
             this.groupBox1.TabIndex = 26;
@@ -216,47 +286,42 @@
             this.button6.Text = "로그보기";
             this.button6.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnStop
             // 
-            this.button3.Location = new System.Drawing.Point(1485, 103);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(150, 78);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "작업종료";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnStop.Enabled = false;
+            this.btnStop.Location = new System.Drawing.Point(1485, 103);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(150, 78);
+            this.btnStop.TabIndex = 24;
+            this.btnStop.Text = "작업종료";
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
-            // button2
+            // btnStart
             // 
-            this.button2.Location = new System.Drawing.Point(1329, 103);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 78);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "작업시작";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnStart.Location = new System.Drawing.Point(1329, 103);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(150, 78);
+            this.btnStart.TabIndex = 23;
+            this.btnStart.Text = "작업시작";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
-            // button5
+            // btnTaskStart
             // 
-            this.button5.Location = new System.Drawing.Point(1485, 19);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(150, 78);
-            this.button5.TabIndex = 22;
-            this.button5.Text = "설비중단";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(1329, 19);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(150, 78);
-            this.button4.TabIndex = 21;
-            this.button4.Text = "설비가동";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnTaskStart.Location = new System.Drawing.Point(1329, 19);
+            this.btnTaskStart.Name = "btnTaskStart";
+            this.btnTaskStart.Size = new System.Drawing.Size(150, 78);
+            this.btnTaskStart.TabIndex = 21;
+            this.btnTaskStart.Text = "설비가동";
+            this.btnTaskStart.UseVisualStyleBackColor = true;
+            this.btnTaskStart.Click += new System.EventHandler(this.btnTaskStart_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(653, 27);
+            this.label1.Location = new System.Drawing.Point(555, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(124, 27);
             this.label1.TabIndex = 19;
@@ -266,87 +331,91 @@
             // 
             this.comboBox1.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(838, 24);
+            this.comboBox1.Location = new System.Drawing.Point(740, 12);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(262, 35);
             this.comboBox1.TabIndex = 18;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // textBox4
+            // BADQTY
             // 
-            this.textBox4.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox4.Location = new System.Drawing.Point(524, 148);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(100, 39);
-            this.textBox4.TabIndex = 15;
+            this.BADQTY.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.BADQTY.Location = new System.Drawing.Point(430, 148);
+            this.BADQTY.Name = "BADQTY";
+            this.BADQTY.ReadOnly = true;
+            this.BADQTY.Size = new System.Drawing.Size(100, 39);
+            this.BADQTY.TabIndex = 15;
+            this.BADQTY.Text = "0";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(450, 151);
+            this.label9.Location = new System.Drawing.Point(356, 151);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(68, 27);
             this.label9.TabIndex = 14;
             this.label9.Text = "불량";
             // 
-            // textBox3
+            // residualqty
             // 
-            this.textBox3.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox3.Location = new System.Drawing.Point(524, 58);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(100, 39);
-            this.textBox3.TabIndex = 13;
+            this.residualqty.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.residualqty.Location = new System.Drawing.Point(430, 58);
+            this.residualqty.Name = "residualqty";
+            this.residualqty.ReadOnly = true;
+            this.residualqty.Size = new System.Drawing.Size(100, 39);
+            this.residualqty.TabIndex = 13;
+            this.residualqty.Text = "0";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.label8.Location = new System.Drawing.Point(450, 61);
+            this.label8.Location = new System.Drawing.Point(356, 61);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(68, 27);
             this.label8.TabIndex = 12;
             this.label8.Text = "잔여";
             // 
-            // textBox2
+            // GOODQTY
             // 
-            this.textBox2.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox2.Location = new System.Drawing.Point(524, 103);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(100, 39);
-            this.textBox2.TabIndex = 11;
+            this.GOODQTY.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.GOODQTY.Location = new System.Drawing.Point(430, 103);
+            this.GOODQTY.Name = "GOODQTY";
+            this.GOODQTY.ReadOnly = true;
+            this.GOODQTY.Size = new System.Drawing.Size(100, 39);
+            this.GOODQTY.TabIndex = 11;
+            this.GOODQTY.Text = "0";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label7.ForeColor = System.Drawing.Color.Lime;
-            this.label7.Location = new System.Drawing.Point(450, 106);
+            this.label7.Location = new System.Drawing.Point(356, 106);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 27);
             this.label7.TabIndex = 10;
             this.label7.Text = "양품";
             // 
-            // textBox1
+            // qty
             // 
-            this.textBox1.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox1.Location = new System.Drawing.Point(524, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(100, 39);
-            this.textBox1.TabIndex = 9;
+            this.qty.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.qty.Location = new System.Drawing.Point(430, 13);
+            this.qty.Name = "qty";
+            this.qty.ReadOnly = true;
+            this.qty.Size = new System.Drawing.Size(100, 39);
+            this.qty.TabIndex = 9;
+            this.qty.Text = "0";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("굴림", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label6.Location = new System.Drawing.Point(450, 16);
+            this.label6.Location = new System.Drawing.Point(356, 19);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 27);
             this.label6.TabIndex = 8;
@@ -355,9 +424,9 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Red;
-            this.panel2.Location = new System.Drawing.Point(28, 73);
+            this.panel2.Location = new System.Drawing.Point(1260, 34);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(98, 87);
+            this.panel2.Size = new System.Drawing.Size(63, 54);
             this.panel2.TabIndex = 7;
             // 
             // taskID
@@ -370,14 +439,17 @@
             this.taskID.TabIndex = 2;
             this.taskID.Text = "설비명";
             // 
-            // button1
+            // timSocket_Connect
             // 
-            this.button1.Location = new System.Drawing.Point(1641, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 78);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "화면보기";
-            this.button1.UseVisualStyleBackColor = true;
+            this.timSocket_Connect.Tick += new System.EventHandler(this.timSocket_Connect_Tick);
+            // 
+            // timSocket_Check
+            // 
+            this.timSocket_Check.Tick += new System.EventHandler(this.timSocket_Check_Tick);
+            // 
+            // timSocket_Ka
+            // 
+            this.timSocket_Ka.Tick += new System.EventHandler(this.timSocket_Ka_Tick);
             // 
             // UserControl1
             // 
@@ -386,8 +458,10 @@
             this.Controls.Add(this.panel1);
             this.Name = "UserControl1";
             this.Size = new System.Drawing.Size(1800, 215);
+            this.Load += new System.EventHandler(this.UserControl1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -399,16 +473,14 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox BADQTY;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox residualqty;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox GOODQTY;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox qty;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         public System.Windows.Forms.Label hostIP;
@@ -417,14 +489,21 @@
         public System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button btnTaskStop;
+        private System.Windows.Forms.Button btnTaskStart;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        public System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox itemname;
         public System.Windows.Forms.Label label4;
+        private WindowsFormsApp18.MyDataGridView dgv;
+        public System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Timer timSocket_Connect;
+        private System.Windows.Forms.Timer timSocket_Check;
+        private System.Windows.Forms.Timer timSocket_Ka;
+        private System.Windows.Forms.Label task_code;
+        public System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button button1;
     }
+  
 }

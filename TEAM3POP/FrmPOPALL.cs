@@ -31,6 +31,7 @@ namespace TEAM3POP
                 taskcontrol.Name = $"taskControl{iCnt}";
 
                 taskcontrol.Task_ID = task.FCLTS_NAME;
+                taskcontrol.Task_code = task.FCLTS_CODE;
                 taskcontrol.Task_IP = task.FCLTS_IP;
                 taskcontrol.Task_Port = task.FCLTS_PORT;
                

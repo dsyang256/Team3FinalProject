@@ -50,6 +50,7 @@
             this.btnUpdateState = new System.Windows.Forms.Button();
             this.dgvWork = new WindowsFormsApp18.MyDataGridView();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.btnBarcode = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -259,7 +260,7 @@
             this.btnUpdateState.AutoSize = true;
             this.btnUpdateState.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnUpdateState.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnUpdateState.Location = new System.Drawing.Point(1071, 135);
+            this.btnUpdateState.Location = new System.Drawing.Point(985, 135);
             this.btnUpdateState.Name = "btnUpdateState";
             this.btnUpdateState.Size = new System.Drawing.Size(89, 25);
             this.btnUpdateState.TabIndex = 7;
@@ -307,10 +308,25 @@
             this.dgvWork.Size = new System.Drawing.Size(1145, 386);
             this.dgvWork.TabIndex = 0;
             // 
+            // btnBarcode
+            // 
+            this.btnBarcode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBarcode.AutoSize = true;
+            this.btnBarcode.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnBarcode.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnBarcode.Location = new System.Drawing.Point(1072, 135);
+            this.btnBarcode.Name = "btnBarcode";
+            this.btnBarcode.Size = new System.Drawing.Size(89, 25);
+            this.btnBarcode.TabIndex = 8;
+            this.btnBarcode.Text = "바코드출력";
+            this.btnBarcode.UseVisualStyleBackColor = false;
+            this.btnBarcode.Click += new System.EventHandler(this.btnBarcode_Click);
+            // 
             // FrmSalesWork
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.ClientSize = new System.Drawing.Size(1175, 565);
+            this.Controls.Add(this.btnBarcode);
             this.Controls.Add(this.btnUpdateState);
             this.Controls.Add(this.menuPanel1);
             this.Name = "FrmSalesWork";
@@ -322,6 +338,7 @@
             this.Controls.SetChildIndex(this.panel3, 0);
             this.Controls.SetChildIndex(this.menuPanel1, 0);
             this.Controls.SetChildIndex(this.btnUpdateState, 0);
+            this.Controls.SetChildIndex(this.btnBarcode, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -351,5 +368,6 @@
         private System.Windows.Forms.Button btnUpdateState;
         private WindowsFormsApp18.MyDataGridView dgvWork;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button btnBarcode;
     }
 }

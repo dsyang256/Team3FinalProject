@@ -18,10 +18,10 @@ namespace WindowsFormsApp18
             InitializeComponent();
 
             this.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            this.RowHeadersWidth = 100;
+            this.RowHeadersWidth = 30;
             this.EnableHeadersVisualStyles = false;
             this.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.ColumnHeadersHeight = 100;
+            this.ColumnHeadersHeight = 30;
 
             //this.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(52, 52, 52);
             this.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(245, 245, 246);
