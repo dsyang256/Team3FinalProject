@@ -1,31 +1,32 @@
-﻿using log4net.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using TEAM3FINAL;
-using TEAM3FINALDAC;
-
+using System.Windows.Forms;
+using System.Threading;
+using System.Data;
+using log4net.Core;
+using System.Reflection;
+using System.Drawing;
 
 namespace TEAM3POP
 {
-    public partial class frmATLTask : Form 
+    public class ATLTask : ConnectionAccess
     {
-        public bool bExit = false;
-
+        System.Windows.Forms.Timer timSocket_Connect = new System.Windows.Forms.Timer();
+        System.Windows.Forms.Timer timSocket_Check = new System.Windows.Forms.Timer();
+        System.Windows.Forms.Timer timSocket_Ka = new System.Windows.Forms.Timer();
         string PGM_ID;
         string hostIP;
         int hostPort;
+        
+        string item ;
+        int qty;
+
         int timer_CONNECT = 100;
         int timer_READ = 100;
         int timer_KA = 100;
@@ -34,8 +35,6 @@ namespace TEAM3POP
         SqlConnection conn = null;
         ThreadATLTask m_ThreadATLTask = null;
 
-        bool LogVisible = false;
-
         int KEEP_ARRIVE_COUNT = 0;
         string STX = ((char)2).ToString();
         string ETX = ((char)3).ToString();
@@ -43,19 +42,20 @@ namespace TEAM3POP
         TCPControl client;
         bool wbConnect = false;
 
+        bool LogVisible = false;
+
         LoggingUtility _logging;
         public LoggingUtility Log
         {
             get { return _logging; }
         }
-
-        public frmATLTask(string pgmID, string host, string port)
+        public ATLTask(string pgmID, string host, string port,string item , int qty )
         {
-            InitializeComponent();
+            this.item = item;
+            this.qty = qty;
 
-            _logging = new LoggingUtility(pgmID, Level.Info, 30);
-            
-            //전역변수 설정
+            _logging = new LoggingUtility(pgmID, Level.Info, 30); 
+
             PGM_ID = pgmID;
             hostIP = host;
             hostPort = int.Parse(port);
@@ -63,6 +63,7 @@ namespace TEAM3POP
             timer_CHECK = Convert.ToInt32(ReadAppSettings("timer_Check", true));
             timer_READ = Convert.ToInt32(ReadAppSettings("timer_Read", true));
             timer_KA = Convert.ToInt32(ReadAppSettings("timer_Ka", true));
+
         }
 
         private string ReadAppSettings(string key, bool bNumber = false)
@@ -75,26 +76,25 @@ namespace TEAM3POP
                 return (bNumber) ? "0" : "";
         }
 
-        private void frmATLTask_Load(object sender, EventArgs e)
+        public void APTMAIN()
         {
-            //DB접속
             DBConnection();
 
             Log.WriteInfo($"{PGM_ID} : 통신 시작");
 
             //수신용 인스턴스 생성
             m_ThreadATLTask = new ThreadATLTask(conn, _logging, timer_READ);
-            m_ThreadATLTask.ReadData += ReadDataDisplay;
+            //m_ThreadATLTask.ReadData += ReadDataDisplay;
 
             //각 컨트롤에 값을 셋팅
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            this.lblVersion.Text = "Version: " + File.GetLastWriteTime(assembly.Location).ToString("yyyy.MM.dd");
+            //Assembly assembly = Assembly.GetExecutingAssembly();
+            //this.lblVersion.Text = "Version: " + File.GetLastWriteTime(assembly.Location).ToString("yyyy.MM.dd");
 
-            this.Label1.Text = $"{PGM_ID} 수신";
-            this.Text = PGM_ID;
-            lblIP.Text = hostIP;
-            lblPort.Text = hostPort.ToString();
-            this.lblSts.BackColor = Color.Red;
+            //this.Label1.Text = $"{PGM_ID} 수신";
+            //this.Text = PGM_ID;
+            //lblIP.Text = hostIP;
+            //lblPort.Text = hostPort.ToString();
+            //this.lblSts.BackColor = Color.Red;
 
             //timer 컨트롤 설정
             this.timSocket_Connect.Interval = timer_CONNECT;
@@ -106,24 +106,47 @@ namespace TEAM3POP
 
             Connect_NG_Timer(); //접속시도
         }
-
-        private void frmATLTask_KeyDown(object sender, KeyEventArgs e)
+        private void Connect_NG_Timer() //접속이 끊긴상태에서 접속을 시도하는 타이머
         {
-            if (e.KeyCode == Keys.F12)
-            {
-                if (this.Height == 435)
-                {
-                    this.Height = 135;
-                    LogVisible = false;
-                }
-                else
-                {
-                    this.Height = 435;
-                    LogVisible = true;
-                }
-            }
-        }        
+            //this.lblSts.BackColor = Color.Red;
 
+            timSocket_Connect.Start();      //연결 타이머 기동 
+            timSocket_Check.Stop();         //통신 체크 타이머 중지
+            timSocket_Ka.Stop();            //Ka 타이머 중지
+
+            m_ThreadATLTask.ClearClient();
+        }
+
+        private void Connect_OK_Timer() //접속이 된 상태에서 수신을 시도하는 타이머
+        {
+            //this.lblSts.BackColor = Color.Green;
+
+            timSocket_Connect.Stop();        //연결 타이머 기동 
+            timSocket_Check.Start();         //통신 체크 타이머 중지
+            timSocket_Ka.Start();            //Ka 타이머 중지
+        }
+        private void DBConnection()
+        {
+            try
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                    this.Log.WriteInfo("DB접속 해제");
+                }
+
+                Thread.Sleep(1000);
+
+                this.Log.WriteInfo("DB접속 시작");
+                conn = new SqlConnection(this.ConnectionString);
+                conn.Open();
+                this.Log.WriteInfo("DB접속 성공");
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteInfo($"DB접속 실패:{err.Message}");
+            }
+        }
         private void timSocket_Connect_Tick(object sender, EventArgs e)
         {
             SocketConnect();
@@ -167,54 +190,6 @@ namespace TEAM3POP
                 KEEP_ARRIVE_COUNT++;
             }
         }
-
-        private void frmATLTask_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (!bExit)
-            {
-                this.Hide();
-                e.Cancel = true; 
-            }
-        }
-
-        private void frmATLTask_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            //DB접속종료
-            if (conn.State == ConnectionState.Open)
-            {
-                conn.Close();
-                this.Log.WriteInfo("DB접속 해제");
-            }
-
-            //소켓종료
-            SocketDisConnect();
-            m_ThreadATLTask.ThreadTerminate();
-
-            Log.WriteInfo($"{PGM_ID} : 통신 중지");
-            Log.RemoveRepository(PGM_ID);
-        }
-
-
-        private void Connect_NG_Timer() //접속이 끊긴상태에서 접속을 시도하는 타이머
-        {
-            this.lblSts.BackColor = Color.Red;
-
-            timSocket_Connect.Start();      //연결 타이머 기동 
-            timSocket_Check.Stop();         //통신 체크 타이머 중지
-            timSocket_Ka.Stop();            //Ka 타이머 중지
-
-            m_ThreadATLTask.ClearClient();
-        }
-
-        private void Connect_OK_Timer() //접속이 된 상태에서 수신을 시도하는 타이머
-        {
-            this.lblSts.BackColor = Color.Green;
-
-            timSocket_Connect.Stop();        //연결 타이머 기동 
-            timSocket_Check.Start();         //통신 체크 타이머 중지
-            timSocket_Ka.Start();            //Ka 타이머 중지
-        }
-
         private void SocketConnect()
         {
             wbConnect = false;
@@ -223,7 +198,7 @@ namespace TEAM3POP
                 client = new TCPControl(hostIP, hostPort);
                 m_ThreadATLTask.SettingClient(client);
 
-                this.lblSts.BackColor = Color.Green;
+                //this.BackColor = Color.Green;
                 Connect_OK_Timer();
                 wbConnect = true;
             }
@@ -233,7 +208,6 @@ namespace TEAM3POP
                 this.Log.WriteError($"[{MethodBase.GetCurrentMethod().Name}]:{err.Message}", err);
             }
         }
-
         private void SocketDisConnect()
         {
             try
@@ -284,48 +258,6 @@ namespace TEAM3POP
                 wbConnect = false;
                 this.Log.WriteError($"[{MethodBase.GetCurrentMethod().Name}]:{err.Message}", err);
             }
-        }
-
-        private void DBConnection()
-        {
-            try
-            {
-                if (conn != null && conn.State == ConnectionState.Open)
-                {
-                    conn.Close();
-                    this.Log.WriteInfo("DB접속 해제");
-                }
-
-                Thread.Sleep(1000);
-
-                this.Log.WriteInfo("DB접속 시작");
-                
-            
-                //conn = new SqlConnection(//this.ConnectionString);
-                conn.Open();
-                this.Log.WriteInfo("DB접속 성공");
-            }
-            catch (Exception err)
-            {
-                this.Log.WriteInfo($"DB접속 실패:{err.Message}");
-            }
-        }
-
-        private void ReadDataDisplay(object sender, ReadDataEventAgrs e)
-        {
-            KEEP_ARRIVE_COUNT = 0;
-
-            if (LogVisible)
-            {
-                if (ListBox1.Items.Count > 50)
-                {
-                    this.Invoke((MethodInvoker)(() => ListBox1.Items.Clear()));
-                }
-
-                this.Invoke((MethodInvoker)(() => ListBox1.Items.Add(e.Data.Trim())));
-                this.Invoke((MethodInvoker)(() => ListBox1.SelectedIndex = ListBox1.Items.Count - 1));
-            }
-            txtReadATL.Invoke((MethodInvoker)delegate { txtReadATL.Text = e.Data.Trim(); });
         }
     }
 }
