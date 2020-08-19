@@ -41,12 +41,12 @@ namespace TEAM3FINALWEB.DAC
 		                        ,isnull( case Month(convert(nvarchar(10),SALES_ENDDATE,23)) when 10 THEN SUM( SALES_QTY*SALES_TTL) END,0) AS M10			
 		                        ,isnull( case Month(convert(nvarchar(10),SALES_ENDDATE,23)) when 11 THEN SUM( SALES_QTY*SALES_TTL) END,0) AS M11			
 		                        ,isnull( case Month(convert(nvarchar(10),SALES_ENDDATE,23)) when 12 THEN SUM( SALES_QTY*SALES_TTL) END,0) AS M12
-                        ,ITEM_CODE
-                        from SALES_RECORD
+                        ,ITEM_NAME
+                        from SALES_RECORD s inner join ITEM i on s.ITEM_CODE = i.ITEM_CODE
                         where 1=1
-                        AND YEAR(CONVERT(nvarchar(10),SALES_ENDDATE,23)) = '2020'
-                        group by Month(convert(nvarchar(10),SALES_ENDDATE,23)),ITEM_CODE
-                        order by Month(convert(nvarchar(10),SALES_ENDDATE,23)),ITEM_CODE
+                        AND YEAR(CONVERT(nvarchar(10),SALES_ENDDATE,23)) = YEAR(getdate())
+                        group by Month(convert(nvarchar(10),SALES_ENDDATE,23)),ITEM_NAME
+                        order by Month(convert(nvarchar(10),SALES_ENDDATE,23)),ITEM_NAME
                         ";
 
                 SqlDataAdapter da = new SqlDataAdapter(sql, conn);

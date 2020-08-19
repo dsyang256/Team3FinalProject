@@ -21,20 +21,20 @@ namespace TEAM3FINALWEB.Controllers
 
             string labels = "1월,2월,3월,4월,5월,6월,7월,8월,9월,10월,11월,12월";
 
-            ViewBag.Labels = labels;
             DataView dv = new DataView(dt);
-            ViewBag.Label1 = dv.ToTable().Rows[0][12];
-            ViewBag.data1 = data1;
-
             List<int> qtys = new List<int>();
 
             for (int i = 0; i < dv.ToTable().Columns.Count-1; i++)
             {
-                data1 = "[" + string.Join(",", Convert.ToInt32(dv.ToTable().Rows[0][i])) + "]";
+                qtys.Add(Convert.ToInt32(dv.ToTable().Rows[0][i]));
             }
+                data1 = "[" + string.Join(",", qtys.ToArray()) + "]";
 
-            string a = data1;
+                qtys.Clear();
 
+            ViewBag.Labels = labels;
+            ViewBag.Label1 = dv.ToTable().Rows[0][12];
+            ViewBag.data1 = data1;
             return View();
         }
     }
