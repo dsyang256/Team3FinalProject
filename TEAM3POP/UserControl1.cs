@@ -131,7 +131,6 @@ namespace TEAM3POP
                 GOODQTY.Text = dgv.Rows[0].Cells[7].Value.ToString();
             }
         }
-
         private void UserControl1_Load(object sender, EventArgs e)
         {
             dgv.DataSource = null;
@@ -284,13 +283,13 @@ namespace TEAM3POP
                     cmd.CommandText = "SP_POPSAVE";
                     cmd.CommandType = CommandType.StoredProcedure;
                     
-                    cmd.Parameters.AddWithValue("@WO_Code", code);
-                    cmd.Parameters.AddWithValue("@INS_QTY", qty3 - 1);
-                    cmd.Parameters.AddWithValue("@ITEM_CODE", name);
-                    cmd.Parameters.AddWithValue("@WO_QTY_OUT", qty3-1);
-                    cmd.Parameters.AddWithValue("@WO_QTY_PROD", qty3-1+ qty4);
-                    cmd.Parameters.AddWithValue("@WO_QTY_BAD", qty4);
-                    cmd.Parameters.AddWithValue("@WO_WORK_STATE", result);
+                    cmd.Parameters.AddWithValue("@P_WO_Code", code);
+                    cmd.Parameters.AddWithValue("@P_INS_QTY", qty3 );
+                    cmd.Parameters.AddWithValue("@P_ITEM_CODE", name);
+                    cmd.Parameters.AddWithValue("@P_WO_QTY_OUT", qty3);
+                    cmd.Parameters.AddWithValue("@P_WO_QTY_PROD", qty3+ qty4);
+                    cmd.Parameters.AddWithValue("@P_WO_QTY_BAD", qty4);
+                    cmd.Parameters.AddWithValue("@P_WO_WORK_STATE", result);
 
                     cmd.ExecuteNonQuery();
 
