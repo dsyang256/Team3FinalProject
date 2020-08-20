@@ -64,7 +64,7 @@ namespace TEAM3FINALDAC
                                         ,isnull( (select FAC_NAME from Factory where FAC_CODE = f.FCLTS_WRHS_GOOD),'') FCLTS_WRHS_GOOD
                                         ,isnull( (select FAC_NAME from Factory where FAC_CODE = f.FCLTS_WRHS_BAD) ,'') FCLTS_WRHS_BAD
                                         ,w.WO_PLAN_QTY
-                                        ,(isnull(w.WO_QTY_IN,0) - isnull(w.WO_QTY_OUT,0)) WO_QTY_BAD
+                                        ,(isnull(w.WO_QTY_PROD,0) - isnull(w.WO_QTY_OUT,0)) WO_QTY_BAD
                                         ,(isnull(w.WO_QTY_PROD,0) - (isnull(w.WO_QTY_IN,0) - isnull(w.WO_QTY_OUT,0))) WO_QTY_GOOD
                                         ,w.WO_Code
 
