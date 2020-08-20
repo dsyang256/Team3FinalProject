@@ -1,5 +1,4 @@
 ﻿@model  TEAM3FINALWEB.Models.Order
-@model  TEAM3FINALWEB.Models.OrderList
 @{
     ViewBag.Title = "Index";
 }
@@ -11,6 +10,7 @@
     string data1 = ViewBag.data1;
     string results = ViewBag.result;
 
+    List<TEAM3FINALWEB.Models.OrderList> olist = ViewBag.OrderList;
 }
 
 <!-- Content Header (Page header) -->
@@ -127,7 +127,7 @@
 <!-- 주문현황 -->
 <div class="row">
     <!-- /.col (LEFT) -->
-    <div class="col-md-6">
+    <div class="col-md-12">
 
         <div class="box box-info">
             <div class="box-header with-border">
@@ -156,22 +156,20 @@
                         </thead>
 
                         <tbody>
-                            @foreach (var item in ViewBag.OrderList as TEAM3FINALWEB.Models.OrderList)
+                            @foreach (var item in olist)
                             {
+                                <tr>
+                                    <td>@item.SALES_Work_Order_ID</td>
+                                    <td>@item.PLAN_ID</td>
+                                    <td>@item.ITEM_NAME</td>
+                                    <td>@item.SALES_QTY</td>
+                                    <td><span class="label label-success">Shipped</span>@item.SALES_ORDER_STATE</td>
+                                    <td>@item.SALES_DUEDATE</td>
 
+                                </tr>
                             }
 
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                <td>Call of Duty IV</td>
-                                <td></td>
-                                <td></td>
-                                <td><span class="label label-success">Shipped</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#00a65a" data-height="20"><canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas></div>
-                                </td>
 
-                            </tr>
                         </tbody>
 
                     </table>
