@@ -405,7 +405,7 @@
             this.Controls.Add(this.menuPanel2);
             this.Controls.Add(this.menuPanel1);
             this.Name = "FrmInspection";
-            this.Text = "수입검사";
+            this.Text = "6";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmInspection_FormClosing);
             this.Load += new System.EventHandler(this.FrmReceiving_Load);
             this.Controls.SetChildIndex(this.menuPanel1, 0);

@@ -382,7 +382,7 @@ namespace TEAM3FINAL
 
         private void btnFinalWork_Click(object sender, EventArgs e)
         {
-            //수정 시 여러개의 체크박스를 선택하는것을 막음
+             //수정 시 여러개의 체크박스를 선택하는것을 막음
             dgvMOVEList.EndEdit();
             //string sb = string.Empty;
             int cnt = 0;
