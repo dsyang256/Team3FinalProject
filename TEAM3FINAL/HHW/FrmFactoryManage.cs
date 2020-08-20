@@ -181,7 +181,7 @@ namespace TEAM3FINAL
                     frm.FAC_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                     frm.FAC_USE_YN = dgvFactoryList.CurrentRow.Cells[13].Value.ToString();
                     frm.FAC_DESC = dgvFactoryList.CurrentRow.Cells[6].Value.ToString();
-                    frm.COM_CODE = dgvFactoryList.CurrentRow.Cells[12].Value.ToString();
+                    frm.COM_CODE = (dgvFactoryList.CurrentRow.Cells[12].Value == null) ? "": dgvFactoryList.CurrentRow.Cells[12].Value.ToString();
                     frm.ShowDialog();
                     if (frm.DialogResult == DialogResult.OK)
                     {

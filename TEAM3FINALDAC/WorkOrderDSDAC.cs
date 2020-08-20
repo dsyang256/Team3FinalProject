@@ -165,6 +165,7 @@ namespace TEAM3FINALDAC
                            ,f.FCLTS_WRHS_GOOD
                            ,w.SALES_WORK_ORDER_ID
                            ,i.ITEM_WRHS_IN
+                           ,FCLTS_WRHS_EXHST
                            
                            ,(select isnull(sum(INS_QTY),0) 
                            from INSTACK 

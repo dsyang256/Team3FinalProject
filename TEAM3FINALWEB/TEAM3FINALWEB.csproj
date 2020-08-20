@@ -7297,6 +7297,9 @@
     <Content Include="bower_components\select2\src\scss\_single.scss" />
     <Content Include="dist\css\adminlte.css.map" />
     <Content Include="dist\css\adminlte.min.css.map" />
+    <None Include="Properties\PublishProfiles\gudiprojChair3rd - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\gudiprojChair3rd - ReadOnly - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\gudiprojChair3rd - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -7310,6 +7313,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\WorkController.cs" />
     <Compile Include="DAC\ConnectionAccess.cs" />
     <Compile Include="DAC\Helper.cs" />
     <Compile Include="DAC\OrderDAC.cs" />
@@ -7328,6 +7332,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Work\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
