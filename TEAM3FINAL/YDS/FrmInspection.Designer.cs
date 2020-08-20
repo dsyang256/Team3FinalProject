@@ -1,6 +1,6 @@
 ﻿namespace TEAM3FINAL
 {
-    partial class 수입검사
+    partial class FrmInspection
     {
         /// <summary>
         /// Required designer variable.
@@ -398,7 +398,7 @@
             this.REORDER_CODE.Size = new System.Drawing.Size(193, 23);
             this.REORDER_CODE.TabIndex = 169;
             // 
-            // 수입검사
+            // FrmInspection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -407,8 +407,8 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.menuPanel2);
             this.Controls.Add(this.menuPanel1);
-            this.Name = "수입검사";
-            this.Text = "6";
+            this.Name = "FrmInspection";
+            this.Text = "수입검사";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmInspection_FormClosing);
             this.Load += new System.EventHandler(this.FrmReceiving_Load);
             this.Controls.SetChildIndex(this.menuPanel1, 0);

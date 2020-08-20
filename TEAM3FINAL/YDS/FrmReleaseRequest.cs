@@ -292,5 +292,10 @@ namespace TEAM3FINAL
         {
             BtnUnSet();
         }
+
+        private void dgv1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

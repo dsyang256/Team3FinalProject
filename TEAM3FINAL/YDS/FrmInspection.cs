@@ -11,11 +11,11 @@ using TEAM3FINALVO;
 
 namespace TEAM3FINAL
 {
-    public partial class 수입검사 : baseForm2, CommonBtn
+    public partial class FrmInspection : baseForm2, CommonBtn
     {
         CheckBox headerChk;
         CheckBox headerChk1;
-        public 수입검사()
+        public FrmInspection()
         {
             InitializeComponent();
         }
