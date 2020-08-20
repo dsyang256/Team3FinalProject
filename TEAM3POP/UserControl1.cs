@@ -315,6 +315,20 @@ namespace TEAM3POP
         {
             try
             {
+                
+                foreach(DataGridViewRow row in dgv.Rows)
+                {
+                    int a = Convert.ToInt32(row.Cells[1].Value);
+                    int b = Convert.ToInt32(row.Cells[2].Value);
+                    if(a != b)
+                    {
+                        MessageBox.Show("자재가 부족합니다.");
+                        return;
+                    }
+                }
+
+
+
                 nowqty = 0;
                 code = comboBox1.Text;
                 name = itemname.Text;
