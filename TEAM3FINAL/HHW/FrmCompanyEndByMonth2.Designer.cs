@@ -57,8 +57,7 @@
             // 
             // panel1
             // 
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panel1.Size = new System.Drawing.Size(1576, 109);
+            this.panel1.Size = new System.Drawing.Size(1226, 82);
             // 
             // panel2
             // 
@@ -68,8 +67,8 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
-            this.panel2.Size = new System.Drawing.Size(1568, 82);
+            this.panel2.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            this.panel2.Size = new System.Drawing.Size(1220, 62);
             // 
             // label1
             // 
@@ -80,19 +79,19 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel3.Controls.Add(this.dgvCom);
-            this.panel3.Location = new System.Drawing.Point(12, 175);
-            this.panel3.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.panel3.Size = new System.Drawing.Size(650, 559);
+            this.panel3.Location = new System.Drawing.Point(9, 131);
+            this.panel3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel3.Size = new System.Drawing.Size(506, 419);
             // 
             // menuPanel1
             // 
             this.menuPanel1.BackColor = System.Drawing.Color.Transparent;
             this.menuPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.menuPanel1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.menuPanel1.Location = new System.Drawing.Point(15, 131);
+            this.menuPanel1.Location = new System.Drawing.Point(12, 98);
             this.menuPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.menuPanel1.Name = "menuPanel1";
-            this.menuPanel1.Size = new System.Drawing.Size(646, 41);
+            this.menuPanel1.Size = new System.Drawing.Size(503, 32);
             this.menuPanel1.TabIndex = 6;
             this.menuPanel1.TitleFont = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.menuPanel1.TitleName = "업체";
@@ -104,10 +103,10 @@
             this.menuPanel2.BackColor = System.Drawing.Color.Transparent;
             this.menuPanel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.menuPanel2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.menuPanel2.Location = new System.Drawing.Point(665, 131);
+            this.menuPanel2.Location = new System.Drawing.Point(517, 98);
             this.menuPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.menuPanel2.Name = "menuPanel2";
-            this.menuPanel2.Size = new System.Drawing.Size(918, 41);
+            this.menuPanel2.Size = new System.Drawing.Size(715, 32);
             this.menuPanel2.TabIndex = 7;
             this.menuPanel2.TitleFont = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.menuPanel2.TitleName = "상세내용";
@@ -118,10 +117,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.Controls.Add(this.dgvComDetail);
-            this.panel4.Location = new System.Drawing.Point(665, 175);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4);
+            this.panel4.Location = new System.Drawing.Point(517, 131);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(919, 499);
+            this.panel4.Size = new System.Drawing.Size(715, 374);
             this.panel4.TabIndex = 8;
             // 
             // dgvComDetail
@@ -149,7 +147,6 @@
             this.dgvComDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvComDetail.EnableHeadersVisualStyles = false;
             this.dgvComDetail.Location = new System.Drawing.Point(0, 0);
-            this.dgvComDetail.Margin = new System.Windows.Forms.Padding(4);
             this.dgvComDetail.Name = "dgvComDetail";
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
@@ -162,36 +159,33 @@
             this.dgvComDetail.RowHeadersWidth = 30;
             this.dgvComDetail.RowTemplate.Height = 23;
             this.dgvComDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvComDetail.Size = new System.Drawing.Size(919, 499);
+            this.dgvComDetail.Size = new System.Drawing.Size(715, 374);
             this.dgvComDetail.TabIndex = 1;
             // 
             // cboDate
             // 
             this.cboDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDate.FormattingEnabled = true;
-            this.cboDate.Location = new System.Drawing.Point(203, 23);
-            this.cboDate.Margin = new System.Windows.Forms.Padding(4);
+            this.cboDate.Location = new System.Drawing.Point(158, 17);
             this.cboDate.Name = "cboDate";
-            this.cboDate.Size = new System.Drawing.Size(193, 28);
+            this.cboDate.Size = new System.Drawing.Size(151, 23);
             this.cboDate.TabIndex = 49;
             // 
             // cboCOM
             // 
             this.cboCOM.FormattingEnabled = true;
-            this.cboCOM.Location = new System.Drawing.Point(734, 23);
-            this.cboCOM.Margin = new System.Windows.Forms.Padding(4);
+            this.cboCOM.Location = new System.Drawing.Point(571, 17);
             this.cboCOM.Name = "cboCOM";
-            this.cboCOM.Size = new System.Drawing.Size(185, 28);
+            this.cboCOM.Size = new System.Drawing.Size(145, 23);
             this.cboCOM.TabIndex = 48;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label5.Location = new System.Drawing.Point(642, 25);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(499, 19);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 25);
+            this.label5.Size = new System.Drawing.Size(39, 20);
             this.label5.TabIndex = 44;
             this.label5.Text = "업체";
             // 
@@ -200,10 +194,9 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label4.Location = new System.Drawing.Point(616, 27);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(479, 20);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(18, 24);
+            this.label4.Size = new System.Drawing.Size(15, 18);
             this.label4.TabIndex = 46;
             this.label4.Text = "*";
             // 
@@ -211,10 +204,9 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label11.Location = new System.Drawing.Point(99, 25);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(77, 19);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(69, 25);
+            this.label11.Size = new System.Drawing.Size(54, 20);
             this.label11.TabIndex = 45;
             this.label11.Text = "마감월";
             // 
@@ -223,10 +215,9 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label3.Location = new System.Drawing.Point(73, 29);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(57, 22);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(18, 24);
+            this.label3.Size = new System.Drawing.Size(15, 18);
             this.label3.TabIndex = 47;
             this.label3.Text = "*";
             // 
@@ -255,7 +246,6 @@
             this.dgvCom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCom.EnableHeadersVisualStyles = false;
             this.dgvCom.Location = new System.Drawing.Point(0, 0);
-            this.dgvCom.Margin = new System.Windows.Forms.Padding(4);
             this.dgvCom.Name = "dgvCom";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -268,19 +258,19 @@
             this.dgvCom.RowHeadersWidth = 30;
             this.dgvCom.RowTemplate.Height = 23;
             this.dgvCom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCom.Size = new System.Drawing.Size(650, 559);
+            this.dgvCom.Size = new System.Drawing.Size(506, 419);
             this.dgvCom.TabIndex = 0;
             // 
             // FrmCompanyEndByMonth2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.ClientSize = new System.Drawing.Size(1607, 753);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.ClientSize = new System.Drawing.Size(1250, 565);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.menuPanel2);
             this.Controls.Add(this.menuPanel1);
-            this.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmCompanyEndByMonth2";
-            this.Text = "거래처별월마감(매입)";
+            this.Text = "거래처월별마감";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCompanyEndByMonth2_FormClosing);
             this.Load += new System.EventHandler(this.FrmCompanyEndByMonth2_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
