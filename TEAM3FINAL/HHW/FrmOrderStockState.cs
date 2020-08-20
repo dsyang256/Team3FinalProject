@@ -143,7 +143,10 @@ namespace TEAM3FINAL
 
         public void Reset(object sender, EventArgs e)
         {
-            
+            txtITEM_CODE.Text = "";
+            dtpFrom.Value = DateTime.Now;
+            dtpTo.Value = DateTime.Now;
+            GetOrderInfo();
         }
 
         public void Update(object sender, EventArgs e)

@@ -206,7 +206,10 @@ namespace TEAM3FINAL
 
         public void Reset(object sender, EventArgs e)
         {
-            
+            cboDATEtype.SelectedIndex = -1;
+            ComboBinding();
+            GetWorkOrderInfo(); //작업실적등록 뷰
+            GetWorkMOVEInfo(); //공정이동 뷰
         }
 
         public void Update(object sender, EventArgs e)

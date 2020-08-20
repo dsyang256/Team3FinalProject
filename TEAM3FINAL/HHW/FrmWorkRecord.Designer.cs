@@ -59,9 +59,8 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 13);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panel1.Size = new System.Drawing.Size(1576, 109);
+            this.panel1.Location = new System.Drawing.Point(9, 10);
+            this.panel1.Size = new System.Drawing.Size(1226, 82);
             // 
             // panel2
             // 
@@ -72,15 +71,15 @@
             this.panel2.Controls.Add(this.dtpTO);
             this.panel2.Controls.Add(this.dtpFROM);
             this.panel2.Controls.Add(this.cboDATEtype);
-            this.panel2.Location = new System.Drawing.Point(5, 20);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel2.Size = new System.Drawing.Size(1568, 82);
+            this.panel2.Location = new System.Drawing.Point(4, 15);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.panel2.Size = new System.Drawing.Size(1220, 62);
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(15, 273);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label1.Size = new System.Drawing.Size(99, 20);
+            this.label1.Location = new System.Drawing.Point(12, 205);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Size = new System.Drawing.Size(79, 15);
             this.label1.Text = "작업실적등록";
             this.label1.Visible = false;
             // 
@@ -91,16 +90,17 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.dgvWorkRecordList);
-            this.panel3.Location = new System.Drawing.Point(15, 179);
-            this.panel3.Size = new System.Drawing.Size(1580, 334);
+            this.panel3.Location = new System.Drawing.Point(12, 134);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Size = new System.Drawing.Size(1229, 250);
             this.panel3.Controls.SetChildIndex(this.panel4, 0);
             this.panel3.Controls.SetChildIndex(this.dgvWorkRecordList, 0);
             // 
             // panel4
             // 
-            this.panel4.Location = new System.Drawing.Point(0, 589);
-            this.panel4.Margin = new System.Windows.Forms.Padding(3);
-            this.panel4.Size = new System.Drawing.Size(2268, 36);
+            this.panel4.Location = new System.Drawing.Point(0, 442);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Size = new System.Drawing.Size(1764, 27);
             // 
             // menuPanel1
             // 
@@ -109,10 +109,10 @@
             this.menuPanel1.BackColor = System.Drawing.Color.Transparent;
             this.menuPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.menuPanel1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.menuPanel1.Location = new System.Drawing.Point(15, 131);
+            this.menuPanel1.Location = new System.Drawing.Point(12, 98);
             this.menuPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.menuPanel1.Name = "menuPanel1";
-            this.menuPanel1.Size = new System.Drawing.Size(1575, 41);
+            this.menuPanel1.Size = new System.Drawing.Size(1226, 32);
             this.menuPanel1.TabIndex = 7;
             this.menuPanel1.TitleFont = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.menuPanel1.TitleName = "작업실적등록";
@@ -142,7 +142,6 @@
             this.dgvWorkRecordList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvWorkRecordList.EnableHeadersVisualStyles = false;
             this.dgvWorkRecordList.Location = new System.Drawing.Point(0, 0);
-            this.dgvWorkRecordList.Margin = new System.Windows.Forms.Padding(4);
             this.dgvWorkRecordList.Name = "dgvWorkRecordList";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -155,7 +154,7 @@
             this.dgvWorkRecordList.RowHeadersWidth = 30;
             this.dgvWorkRecordList.RowTemplate.Height = 23;
             this.dgvWorkRecordList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvWorkRecordList.Size = new System.Drawing.Size(1580, 334);
+            this.dgvWorkRecordList.Size = new System.Drawing.Size(1229, 250);
             this.dgvWorkRecordList.TabIndex = 8;
             // 
             // btnWorkCancel
@@ -164,10 +163,9 @@
             this.btnWorkCancel.AutoSize = true;
             this.btnWorkCancel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnWorkCancel.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnWorkCancel.Location = new System.Drawing.Point(1225, 139);
-            this.btnWorkCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnWorkCancel.Location = new System.Drawing.Point(949, 104);
             this.btnWorkCancel.Name = "btnWorkCancel";
-            this.btnWorkCancel.Size = new System.Drawing.Size(116, 33);
+            this.btnWorkCancel.Size = new System.Drawing.Size(94, 25);
             this.btnWorkCancel.TabIndex = 9;
             this.btnWorkCancel.Text = "작업취소/중단";
             this.btnWorkCancel.UseVisualStyleBackColor = false;
@@ -179,10 +177,9 @@
             this.btnMOVE.AutoSize = true;
             this.btnMOVE.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnMOVE.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnMOVE.Location = new System.Drawing.Point(1349, 139);
-            this.btnMOVE.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMOVE.Location = new System.Drawing.Point(1049, 104);
             this.btnMOVE.Name = "btnMOVE";
-            this.btnMOVE.Size = new System.Drawing.Size(114, 33);
+            this.btnMOVE.Size = new System.Drawing.Size(89, 25);
             this.btnMOVE.TabIndex = 9;
             this.btnMOVE.Text = "실적등록";
             this.btnMOVE.UseVisualStyleBackColor = false;
@@ -194,10 +191,9 @@
             this.button3.AutoSize = true;
             this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.button3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button3.Location = new System.Drawing.Point(1464, 139);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Location = new System.Drawing.Point(1138, 104);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(121, 33);
+            this.button3.Size = new System.Drawing.Size(95, 25);
             this.button3.TabIndex = 9;
             this.button3.Text = "///바코드란///";
             this.button3.UseVisualStyleBackColor = false;
@@ -211,9 +207,10 @@
             "지시일",
             "투입일",
             "생산일"});
-            this.cboDATEtype.Location = new System.Drawing.Point(75, 29);
+            this.cboDATEtype.Location = new System.Drawing.Point(58, 22);
+            this.cboDATEtype.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboDATEtype.Name = "cboDATEtype";
-            this.cboDATEtype.Size = new System.Drawing.Size(108, 28);
+            this.cboDATEtype.Size = new System.Drawing.Size(85, 23);
             this.cboDATEtype.TabIndex = 0;
             this.cboDATEtype.SelectedIndexChanged += new System.EventHandler(this.cboDATE_SelectedIndexChanged);
             // 
@@ -221,10 +218,11 @@
             // 
             this.dtpFROM.CustomFormat = "";
             this.dtpFROM.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFROM.Location = new System.Drawing.Point(209, 29);
+            this.dtpFROM.Location = new System.Drawing.Point(168, 22);
+            this.dtpFROM.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpFROM.Name = "dtpFROM";
             this.dtpFROM.ShowCheckBox = true;
-            this.dtpFROM.Size = new System.Drawing.Size(132, 27);
+            this.dtpFROM.Size = new System.Drawing.Size(125, 23);
             this.dtpFROM.TabIndex = 1;
             this.dtpFROM.ValueChanged += new System.EventHandler(this.dtpFROM_ValueChanged);
             // 
@@ -232,29 +230,30 @@
             // 
             this.dtpTO.CustomFormat = "";
             this.dtpTO.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpTO.Location = new System.Drawing.Point(385, 29);
+            this.dtpTO.Location = new System.Drawing.Point(304, 22);
+            this.dtpTO.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpTO.Name = "dtpTO";
             this.dtpTO.ShowCheckBox = true;
-            this.dtpTO.Size = new System.Drawing.Size(132, 27);
+            this.dtpTO.Size = new System.Drawing.Size(125, 23);
             this.dtpTO.TabIndex = 1;
             this.dtpTO.ValueChanged += new System.EventHandler(this.dtpTO_ValueChanged);
             // 
             // cboSTATE
             // 
             this.cboSTATE.FormattingEnabled = true;
-            this.cboSTATE.Location = new System.Drawing.Point(710, 28);
+            this.cboSTATE.Location = new System.Drawing.Point(552, 21);
+            this.cboSTATE.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboSTATE.Name = "cboSTATE";
-            this.cboSTATE.Size = new System.Drawing.Size(185, 28);
+            this.cboSTATE.Size = new System.Drawing.Size(145, 23);
             this.cboSTATE.TabIndex = 2;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label11.Location = new System.Drawing.Point(624, 28);
-            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Location = new System.Drawing.Point(485, 21);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(50, 25);
+            this.label11.Size = new System.Drawing.Size(39, 20);
             this.label11.TabIndex = 30;
             this.label11.Text = "상태";
             // 
@@ -263,10 +262,9 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label3.Location = new System.Drawing.Point(587, 29);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(457, 22);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(18, 24);
+            this.label3.Size = new System.Drawing.Size(15, 18);
             this.label3.TabIndex = 31;
             this.label3.Text = "*";
             // 
@@ -296,7 +294,8 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvMOVEList.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvMOVEList.EnableHeadersVisualStyles = false;
-            this.dgvMOVEList.Location = new System.Drawing.Point(15, 566);
+            this.dgvMOVEList.Location = new System.Drawing.Point(12, 424);
+            this.dgvMOVEList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvMOVEList.Name = "dgvMOVEList";
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
@@ -309,7 +308,7 @@
             this.dgvMOVEList.RowHeadersWidth = 30;
             this.dgvMOVEList.RowTemplate.Height = 23;
             this.dgvMOVEList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMOVEList.Size = new System.Drawing.Size(1580, 175);
+            this.dgvMOVEList.Size = new System.Drawing.Size(1229, 131);
             this.dgvMOVEList.TabIndex = 10;
             // 
             // menuPanel2
@@ -319,10 +318,10 @@
             this.menuPanel2.BackColor = System.Drawing.Color.Transparent;
             this.menuPanel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.menuPanel2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.menuPanel2.Location = new System.Drawing.Point(15, 517);
+            this.menuPanel2.Location = new System.Drawing.Point(12, 388);
             this.menuPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.menuPanel2.Name = "menuPanel2";
-            this.menuPanel2.Size = new System.Drawing.Size(1575, 41);
+            this.menuPanel2.Size = new System.Drawing.Size(1226, 32);
             this.menuPanel2.TabIndex = 11;
             this.menuPanel2.TitleFont = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.menuPanel2.TitleName = "공정이동";
@@ -333,10 +332,9 @@
             this.btnFinalWork.AutoSize = true;
             this.btnFinalWork.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnFinalWork.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnFinalWork.Location = new System.Drawing.Point(1464, 521);
-            this.btnFinalWork.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFinalWork.Location = new System.Drawing.Point(1139, 391);
             this.btnFinalWork.Name = "btnFinalWork";
-            this.btnFinalWork.Size = new System.Drawing.Size(121, 33);
+            this.btnFinalWork.Size = new System.Drawing.Size(94, 25);
             this.btnFinalWork.TabIndex = 9;
             this.btnFinalWork.Text = "이동처리";
             this.btnFinalWork.UseVisualStyleBackColor = false;
@@ -344,9 +342,9 @@
             // 
             // FrmWorkRecord
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1607, 753);
+            this.ClientSize = new System.Drawing.Size(1250, 565);
             this.Controls.Add(this.btnFinalWork);
             this.Controls.Add(this.menuPanel2);
             this.Controls.Add(this.dgvMOVEList);
@@ -354,7 +352,7 @@
             this.Controls.Add(this.btnMOVE);
             this.Controls.Add(this.btnWorkCancel);
             this.Controls.Add(this.menuPanel1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "FrmWorkRecord";
             this.Text = "작업실적";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmWorkRecord_FormClosing);
