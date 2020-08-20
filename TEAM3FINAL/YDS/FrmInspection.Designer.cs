@@ -69,7 +69,7 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1282, 200);
+            this.panel1.Size = new System.Drawing.Size(1282, 117);
             // 
             // panel2
             // 
@@ -90,7 +90,7 @@
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Size = new System.Drawing.Size(1276, 180);
+            this.panel2.Size = new System.Drawing.Size(1276, 95);
             // 
             // label1
             // 
@@ -101,8 +101,8 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.dgv1);
-            this.panel3.Location = new System.Drawing.Point(12, 252);
-            this.panel3.Size = new System.Drawing.Size(1282, 270);
+            this.panel3.Location = new System.Drawing.Point(12, 167);
+            this.panel3.Size = new System.Drawing.Size(1282, 355);
             // 
             // menuPanel1
             // 
@@ -111,7 +111,7 @@
             this.menuPanel1.BackColor = System.Drawing.Color.Transparent;
             this.menuPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.menuPanel1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.menuPanel1.Location = new System.Drawing.Point(12, 217);
+            this.menuPanel1.Location = new System.Drawing.Point(12, 132);
             this.menuPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.menuPanel1.Name = "menuPanel1";
             this.menuPanel1.Size = new System.Drawing.Size(1279, 32);
@@ -222,7 +222,7 @@
             this.dgv1.RowHeadersWidth = 30;
             this.dgv1.RowTemplate.Height = 23;
             this.dgv1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv1.Size = new System.Drawing.Size(1282, 270);
+            this.dgv1.Size = new System.Drawing.Size(1282, 355);
             this.dgv1.TabIndex = 5;
             // 
             // REORDER_COM

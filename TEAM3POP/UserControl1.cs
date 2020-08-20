@@ -284,7 +284,7 @@ namespace TEAM3POP
                     cmd.CommandType = CommandType.StoredProcedure;
                     
                     cmd.Parameters.AddWithValue("@P_WO_Code", code);
-                    cmd.Parameters.AddWithValue("@P_INS_QTY", qty3 );
+                    cmd.Parameters.AddWithValue("@P_INS_QTY", nowqty);
                     cmd.Parameters.AddWithValue("@P_ITEM_CODE", name);
                     cmd.Parameters.AddWithValue("@P_WO_QTY_OUT", qty3);
                     cmd.Parameters.AddWithValue("@P_WO_QTY_PROD", qty3+ qty4);
@@ -454,7 +454,7 @@ namespace TEAM3POP
 
                     }
                     qty3 ++;
-                    
+                    nowqty++;
                     this.Invoke((MethodInvoker)(() => GOODQTY.Text = qty3.ToString()));
                     qty2 = qty2 - 1;
                     this.Invoke((MethodInvoker)(() => residualqty.Text = (qty2).ToString()));
