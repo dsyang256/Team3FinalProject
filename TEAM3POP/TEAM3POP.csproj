@@ -85,6 +85,12 @@
     <Compile Include="FrmPOPMDI.Designer.cs">
       <DependentUpon>FrmPOPMDI.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPOPPortSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPOPPortSetting.Designer.cs">
+      <DependentUpon>FrmPOPPortSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="LIB\ConnectionAccess.cs" />
     <Compile Include="LIB\Helper.cs" />
     <Compile Include="MyDataGridView.cs">
@@ -117,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPOPMDI.resx">
       <DependentUpon>FrmPOPMDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPOPPortSetting.resx">
+      <DependentUpon>FrmPOPPortSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyDataGridView.resx">
       <DependentUpon>MyDataGridView.cs</DependentUpon>

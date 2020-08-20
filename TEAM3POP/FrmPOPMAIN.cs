@@ -16,6 +16,7 @@ namespace TEAM3POP
     public partial class FrmPOPMAIN : ProjectBaseForm
     {
         BackgroundWorker task;
+        DataTable dt = null;
         public FrmPOPMAIN()
         {
             InitializeComponent();
@@ -28,10 +29,28 @@ namespace TEAM3POP
 
         private void FrmPOPMAIN_Load(object sender, EventArgs e)
         {
+            FrmPOPMDI frm = (FrmPOPMDI)this.MdiParent;
+            frm.Readed += Readed_BarCode;
             ComboBinding();
             DataGridViewColumnSet1();
             DataGridViewBinding1();
         }
+
+        private void Readed_BarCode(object sender, ReadEventArgs e)
+        {
+            if (((FrmPOPMDI)this.MdiParent).ActiveMdiChild == this)
+            {
+                string msg = e.ReadMsg.Replace("%O", "_").Trim();
+                ((FrmPOPMDI)this.MdiParent).ClearStrings();
+                dt.AcceptChanges();
+                var dt2 = (from dr in dt.AsEnumerable() select dr).Where
+                 (p => p.Field<string>("WO_Code") == msg).ToList();
+                var dt3 = dt2.Any() ? dt2.CopyToDataTable() : new DataTable();
+                dgv1.DataSource = dt3;
+
+            }
+        }
+
         private void ComboBinding()
         {
             CommonService service = new CommonService();
@@ -64,7 +83,8 @@ namespace TEAM3POP
         {
             dgv1.DataSource = null;
             WorkOrderDSService work = new WorkOrderDSService();
-            dgv1.DataSource = work.POPDGV1();
+            dt = work.POPDGV1();
+            dgv1.DataSource = dt;
         }
 
         private void button1_Click(object sender, EventArgs e)
