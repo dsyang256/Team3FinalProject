@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPOPMDI));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.메인화면ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.설비관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -62,28 +64,41 @@
             // menuStrip1
             // 
             this.menuStrip1.Font = new System.Drawing.Font("맑은 고딕", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(50, 50);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.메인화면ToolStripMenuItem,
-            this.설비관리ToolStripMenuItem});
+            this.설비관리ToolStripMenuItem,
+            this.toolStripButton1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 104);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1924, 53);
+            this.menuStrip1.Size = new System.Drawing.Size(1924, 61);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // 메인화면ToolStripMenuItem
             // 
             this.메인화면ToolStripMenuItem.Name = "메인화면ToolStripMenuItem";
-            this.메인화면ToolStripMenuItem.Size = new System.Drawing.Size(160, 49);
+            this.메인화면ToolStripMenuItem.Size = new System.Drawing.Size(160, 57);
             this.메인화면ToolStripMenuItem.Text = "메인화면";
             this.메인화면ToolStripMenuItem.Click += new System.EventHandler(this.메인화면ToolStripMenuItem_Click);
             // 
             // 설비관리ToolStripMenuItem
             // 
             this.설비관리ToolStripMenuItem.Name = "설비관리ToolStripMenuItem";
-            this.설비관리ToolStripMenuItem.Size = new System.Drawing.Size(160, 49);
+            this.설비관리ToolStripMenuItem.Size = new System.Drawing.Size(160, 57);
             this.설비관리ToolStripMenuItem.Text = "설비관리";
             this.설비관리ToolStripMenuItem.Click += new System.EventHandler(this.설비관리ToolStripMenuItem_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(54, 54);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // FrmPOPMDI
             // 
@@ -98,6 +113,7 @@
             this.Name = "FrmPOPMDI";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmPOPMDI_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -114,6 +130,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 메인화면ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 설비관리ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
 

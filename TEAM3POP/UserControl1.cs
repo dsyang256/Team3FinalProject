@@ -21,7 +21,7 @@ namespace TEAM3POP
     public partial class UserControl1 : UserControl 
     {
         int qty1; //지시량
-        int qty2; //총생산량
+        int qty2; //남은량
         int qty3; //양품수량
         int qty4; //불량수량
 
@@ -92,8 +92,10 @@ namespace TEAM3POP
             get { return hostPort.Text; }
             set { hostPort.Text = value; }
         }
+        string fName;
         public UserControl1(string code)
         {
+            fName = code;
             InitializeComponent();
             ComboBinding(code);
         }
@@ -122,8 +124,8 @@ namespace TEAM3POP
                
                 qty1 = int.Parse(qty.Text);
                 qty2 = qty1 - Convert.ToInt32(dgv.Rows[0].Cells[6].Value.ToString());
-                qty3 = Convert.ToInt32(dgv.Rows[0].Cells[5].Value.ToString());
-                qty4 = Convert.ToInt32(dgv.Rows[0].Cells[7].Value.ToString());
+                qty3 = Convert.ToInt32(dgv.Rows[0].Cells[7].Value.ToString());
+                qty4 = Convert.ToInt32(dgv.Rows[0].Cells[5].Value.ToString());
                 BADQTY.Text = dgv.Rows[0].Cells[5].Value.ToString();
                 residualqty.Text = qty2.ToString();
                 GOODQTY.Text = dgv.Rows[0].Cells[7].Value.ToString();
@@ -205,10 +207,12 @@ namespace TEAM3POP
         }
         private void btnStop_Click(object sender, EventArgs e)
         {
+            btnStart.Enabled = true;           
             btnStop.Enabled = false;
             button1.Enabled = true;
+            
             panel3.BackColor = Color.Red;
-            IF_SetValue();
+            IF_UpValue();
             //DB접속종료
             if (conn.State == ConnectionState.Open)
             {
@@ -240,13 +244,53 @@ namespace TEAM3POP
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "insert into WorkQtyLog(ProductID, TaskID, Qty, BadQty) " +
-                        "                             values (@ProductID, @TaskID, @Qty, @BadQty)";
+                    cmd.CommandText = @"insert into TASKLOG(TaskLogWOCODE, TaskLogQTYGOOD, TaskLogQTYBAD, ITEM_CODE) 
+                                                       values (@TaskLogWOCODE, @TaskLogQTYGOOD, @TaskLogQTYBAD, @ITEM_CODE)";
 
-                    //cmd.Parameters.AddWithValue("@ProductID", int.Parse(arrData[2]));
-                    //cmd.Parameters.AddWithValue("@TaskID", int.Parse(arrData[1]));
-                    //cmd.Parameters.AddWithValue("@Qty", int.Parse(arrData[3]));
-                    //cmd.Parameters.AddWithValue("@BadQty", int.Parse(arrData[4]));
+                    cmd.Parameters.AddWithValue("@TaskLogWOCODE", code);
+                    cmd.Parameters.AddWithValue("@TaskLogQTYGOOD", 1);
+                    cmd.Parameters.AddWithValue("@TaskLogQTYBAD", 0);
+                    cmd.Parameters.AddWithValue("@ITEM_CODE", name);
+
+                    cmd.ExecuteNonQuery();
+
+                    
+                }
+
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV DB 저장중오류]]:{err.Message}");
+
+                if (strCALL_MSG.Contains("Connection Error") || err.Message.Contains("개체"))
+                {
+                    throw new Exception(strCALL_MSG);
+                }
+            }
+        }
+        private void IF_UpValue()
+        {
+            string result = "작업완료";
+            if (qty2 != 0)
+            {
+                result = "작업지시";
+            }
+            string strCALL_MSG = string.Empty;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SP_POPSAVE";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    
+                    cmd.Parameters.AddWithValue("@WO_Code", code);
+                    cmd.Parameters.AddWithValue("@INS_QTY", qty3 - 1);
+                    cmd.Parameters.AddWithValue("@ITEM_CODE", name);
+                    cmd.Parameters.AddWithValue("@WO_QTY_OUT", qty3-1);
+                    cmd.Parameters.AddWithValue("@WO_QTY_PROD", qty3-1+ qty4);
+                    cmd.Parameters.AddWithValue("@WO_QTY_BAD", qty4);
+                    cmd.Parameters.AddWithValue("@WO_WORK_STATE", result);
 
                     cmd.ExecuteNonQuery();
 
@@ -265,10 +309,17 @@ namespace TEAM3POP
             }
         }
 
+        string code;
+        string name;
+        int nowqty ;
         private void btnStart_Click(object sender, EventArgs e)
         {
             try
             {
+                nowqty = 0;
+                code = comboBox1.Text;
+                name = itemname.Text;
+                btnStart.Enabled = false;
                 button1.Enabled = false;
                 btnStop.Enabled = true;
                 worker = new BackgroundWorker();
@@ -395,23 +446,24 @@ namespace TEAM3POP
                 string[] str = e.Data.Split('|');
                 if (int.Parse(str[2]) < 10)
                 {
-                    if(qty3 == 0)
+                    if (qty2 == 0)
                     {
-                        qty3 = 1;
+                        this.Invoke((MethodInvoker)(() => btnTaskStop.PerformClick()));
+                        MessageBox.Show("작업이 완료되었습니다.");
+                        this.Invoke((MethodInvoker)(() => btnStop.PerformClick()));
+
+
                     }
+                    qty3 ++;
+                    
                     this.Invoke((MethodInvoker)(() => GOODQTY.Text = qty3.ToString()));
                     qty2 = qty2 - 1;
                     this.Invoke((MethodInvoker)(() => residualqty.Text = (qty2).ToString()));
-                    qty3++;
-                }
-                if (qty2 == 0)
-                {
-                    this.Invoke((MethodInvoker)(() => btnTaskStop.PerformClick()));
-                    MessageBox.Show("작업이 완료되었습니다.");
-                    this.Invoke((MethodInvoker)(() => btnStop.PerformClick()));
                     
-
+                    IF_SetValue();
                 }
+               
+               
             }
             catch(Exception err)
             {
@@ -553,6 +605,7 @@ namespace TEAM3POP
 
         private void button1_Click(object sender, EventArgs e)
         {
+            ComboBinding(fName);
             comboBox1.SelectedIndex = -1;
             itemname.Text = "";
             qty.Text = "0";
