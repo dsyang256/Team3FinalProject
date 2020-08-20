@@ -16,7 +16,8 @@ namespace TEAM3FINALDAC
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(this.ConnectionString);
             string sql = @"SELECT 
-                          R.REORDER_CODE          
+                          ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx
+                         ,R.REORDER_CODE          
                          ,COM_CODE                
                          ,REORDER_COM_DLVR        
                          ,REORDER_STATE           

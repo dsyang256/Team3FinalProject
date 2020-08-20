@@ -177,6 +177,13 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
+                DataGridViewBinding();
+                sday.Value = DateTime.Now;
+                ITEMENAME.Text = "";
+                ITEM_TYP.SelectedIndex = -1;
+                WRHS.SelectedIndex = -1;
+                QTY.Text = "";
+                ITEM_MANAGE_LEVEL.SelectedIndex = -1;
             }
         }
 
@@ -201,10 +208,26 @@ namespace TEAM3FINAL
             }
         }
         #endregion
+        private void BtnUnSet()
+        {
+            FrmMAIN frm = (FrmMAIN)this.MdiParent;
+            frm.eSearch -= Search;
+            frm.eInsert -= Insert;
+            frm.eUpdate -= Update;
+            frm.eDelete -= Delete;
+            frm.ePrint -= Print;
+            frm.eReset -= Reset;
+            
 
+        }
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void FrmReceivingSearch_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            BtnUnSet();
         }
     }
 }

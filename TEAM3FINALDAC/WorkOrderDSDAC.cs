@@ -66,10 +66,10 @@ namespace TEAM3FINALDAC
             string sql = @"select m.ITEM_CODE ,(w.WO_PLAN_QTY*m.BOM_QTY) as 생산필요량
                                          ,((select isnull(sum(i.INS_QTY),0) qty
                                          from INSTACK i 
-                                         where i.SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and i.INS_TYP = '입고' and i.INS_WRHS = f.FCLTS_WRHS_GOOD and ITEM_CODE = m.ITEM_CODE) -
+                                         where i.SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and i.INS_TYP = '입고' and i.INS_WRHS = f.FCLTS_WRHS_EXHST and ITEM_CODE = m.ITEM_CODE) -
 										 (select isnull(sum(i.INS_QTY),0) qty
                                          from INSTACK i 
-                                         where i.SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and i.INS_TYP = '출고' and i.INS_WRHS = f.FCLTS_WRHS_GOOD and ITEM_CODE = m.ITEM_CODE))
+                                         where i.SALES_WORK_ORDER_ID = w.SALES_WORK_ORDER_ID and i.INS_TYP = '출고' and i.INS_WRHS = f.FCLTS_WRHS_EXHST and ITEM_CODE = m.ITEM_CODE))
 										 as 현재고
                                          ,m.BOM_QTY
                                          ,m.BOM_PARENT_CODE

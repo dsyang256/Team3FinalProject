@@ -11,11 +11,11 @@ using TEAM3FINALVO;
 
 namespace TEAM3FINAL
 {
-    public partial class FrmInspection : baseForm2, CommonBtn
+    public partial class 수입검사 : baseForm2, CommonBtn
     {
         CheckBox headerChk;
         CheckBox headerChk1;
-        public FrmInspection()
+        public 수입검사()
         {
             InitializeComponent();
         }
@@ -284,6 +284,7 @@ namespace TEAM3FINAL
                 ITEMNAME.Text = "";
                 INSPECT.SelectedIndex = -1;
                 REORDER_CODE.Text = "";
+                DataGridViewBinding1();
             }
         }
 
