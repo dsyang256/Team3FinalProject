@@ -70,7 +70,7 @@ namespace TEAM3FINAL
             vo.FAC_LAST_MDFY = txtModifyDate.Text;
             vo.FAC_USE_YN = cboUseYN.Text;
             vo.FAC_DESC = txtDesc.Text;
-            vo.COM_NAME = cboCom.SelectedValue.ToString();
+            vo.COM_NAME = (cboCom.Text.Length<1)?"":cboCom.SelectedValue.ToString();
 
 
             FactoryService service = new FactoryService();

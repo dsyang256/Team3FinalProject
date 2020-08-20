@@ -207,7 +207,7 @@ namespace TEAM3FINAL
                     frm.BOR_PROCS_LEADTIME = Convert.ToInt32(dgvBORList.CurrentRow.Cells[10].Value);
                     frm.BOR_YIELD = Convert.ToDecimal(dgvBORList.CurrentRow.Cells[11].Value);
                     frm.BOR_USE_YN = dgvBORList.CurrentRow.Cells[12].Value.ToString();
-                    frm.BOR_REMARK = dgvBORList.CurrentRow.Cells[13].Value.ToString();
+                    frm.BOR_REMARK = (dgvBORList.CurrentRow.Cells[13].Value == null) ? "" : dgvBORList.CurrentRow.Cells[13].Value.ToString();
                     frm.ShowDialog();
                     if (frm.DialogResult == DialogResult.OK)
                     {

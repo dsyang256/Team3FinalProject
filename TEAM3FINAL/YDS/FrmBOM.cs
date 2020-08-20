@@ -90,9 +90,79 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
+                if (dgvBOM.Rows.Count > 0)
+                {
+                    Microsoft.Office.Interop.Excel.Application xlApp = null;
+                    Microsoft.Office.Interop.Excel.Workbook xlWorkBook = null;
+                    Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet = null;
+                    try
+                    {
+                        int i, j;
+                        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                        saveFileDialog1.Filter = "Excel Files (*.xls)|*.xls";
+                        saveFileDialog1.InitialDirectory = "C:";
+                        saveFileDialog1.Title = "SaveDemandPlan";
+                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                        {
+                            xlApp = new Microsoft.Office.Interop.Excel.Application();
+                            xlWorkBook = xlApp.Workbooks.Add();
+                            xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                            for (int k = 1; k < dgvBOM.ColumnCount; k++)
+                            {
+                                xlWorkSheet.Cells[1, k] = dgvBOM.Columns[k].HeaderText.ToString();
+                            }
+
+                            for (i = 0; i < dgvBOM.RowCount; i++)
+                            {
+                                for (j = 0; j < dgvBOM.ColumnCount - 1; j++)
+                                {
+                                    if (dgvBOM[j, i].Value != null)
+                                        xlWorkSheet.Cells[i + 2, j + 1] = dgvBOM[j, i].Value.ToString();
+                                }
+                            }
+
+                            xlWorkBook.SaveAs(saveFileDialog1.FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
+                            xlWorkBook.Close(true);
+                            xlApp.Quit();
+                            MessageBox.Show("출력되었습니다.", "출력 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show("출력에 실패하였습니다.", "출력 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        if (xlApp != null)
+                        {
+                            releaseObject(xlWorkSheet);
+                            releaseObject(xlWorkBook);
+                            releaseObject(xlApp);
+                        }
+                    }
+                }
 
             }
         }
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
+            }
+        }
+
         /// <summary>
         /// 리셋 버튼 이벤트
         /// </summary>

@@ -160,14 +160,16 @@ namespace TEAM3FINAL
         /// <param name="e"></param>
         public void Reset(object sender, EventArgs e)
         {
-           
-            cboPlan.SelectedIndex = -1;
-            dateTimePicker1.Value = DateTime.Now.AddMonths(1);
-            dateTimePicker2.Value = DateTime.Now;
-            //데이터 조회
-            LoadDemandPlan();
-            //그리드 초기화
-            DataGridViewColumnSet();
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                cboPlan.SelectedIndex = -1;
+                dateTimePicker1.Value = DateTime.Now.AddMonths(1);
+                dateTimePicker2.Value = DateTime.Now;
+                //데이터 조회
+                LoadDemandPlan();
+                //그리드 초기화
+                DataGridViewColumnSet();
+            }
 
         }
         /// <summary>
