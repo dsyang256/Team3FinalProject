@@ -256,6 +256,7 @@ namespace TEAM3FINAL
                 {
                     //TabPage 생성자에 Text를 넘길때 공백을 추가로 넣어서 이미지와 붙지 않게
                     TabPage tp = new TabPage(this.ActiveMdiChild.Text + "    ");
+                    tp.Name = this.ActiveMdiChild.Text;
                     tp.Tag = this.ActiveMdiChild;
                     tp.Parent = tabForms;
                     tabForms.SelectedTab = tp;
@@ -263,6 +264,14 @@ namespace TEAM3FINAL
                     this.ActiveMdiChild.Tag = tp;
                     this.ActiveMdiChild.FormClosed += new FormClosedEventHandler(ActiveMdiChild_FormClosed);
                 }
+                else
+                {
+                    if (tabForms.TabPages[this.ActiveMdiChild.Text] != null)
+                    {
+                        tabForms.SelectedTab = tabForms.TabPages[this.ActiveMdiChild.Text];
+                    }
+                }
+
 
                 if (!tabForms.Visible) tabForms.Visible = true;
 
