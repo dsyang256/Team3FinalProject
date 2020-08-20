@@ -320,7 +320,7 @@ namespace TEAM3POP
                 {
                     int a = Convert.ToInt32(row.Cells[1].Value);
                     int b = Convert.ToInt32(row.Cells[2].Value) / Convert.ToInt32(row.Cells[3].Value);
-                    if(a >= b)
+                    if(a <= b)
                     {
                         MessageBox.Show("자재가 부족합니다.");
                         return;

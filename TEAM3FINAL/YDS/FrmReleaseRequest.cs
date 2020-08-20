@@ -90,7 +90,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "잔량", "잔량", true, 125);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "입고창고", "FCLTS_WRHS_GOOD", false, 125);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "작업번호", "SALES_WORK_ORDER_ID", false, 125);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "출고창고", "ITEM_WRHS_IN", true, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "출고창고", "ITEM_WRHS_IN", false, 125);
             DataGridViewCheckBoxAllCheck();
 
         }
@@ -204,6 +204,7 @@ namespace TEAM3FINAL
                     string id = item.Cells[14].Value.ToString();
                     string wrhsout = item.Cells[15].Value.ToString();
                     service.INSERT_instack(qty, wrhsin, wrhsout, code, id);
+                    MessageBox.Show("자재가 불출되었습니다.");
                 }
             }
             dgv2.DataSource = null;

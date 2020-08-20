@@ -70,7 +70,7 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1153, 200);
+            this.panel1.Size = new System.Drawing.Size(1153, 117);
             // 
             // panel2
             // 
@@ -91,7 +91,8 @@
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Size = new System.Drawing.Size(1147, 180);
+            this.panel2.Size = new System.Drawing.Size(1147, 95);
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // label1
             // 
@@ -102,13 +103,13 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.dgv1);
-            this.panel3.Location = new System.Drawing.Point(9, 252);
-            this.panel3.Size = new System.Drawing.Size(1156, 270);
+            this.panel3.Location = new System.Drawing.Point(9, 169);
+            this.panel3.Size = new System.Drawing.Size(1156, 353);
             // 
             // COM_CODE_OUT
             // 
             this.COM_CODE_OUT.FormattingEnabled = true;
-            this.COM_CODE_OUT.Location = new System.Drawing.Point(515, 52);
+            this.COM_CODE_OUT.Location = new System.Drawing.Point(508, 15);
             this.COM_CODE_OUT.Name = "COM_CODE_OUT";
             this.COM_CODE_OUT.Size = new System.Drawing.Size(193, 23);
             this.COM_CODE_OUT.TabIndex = 166;
@@ -116,7 +117,7 @@
             // eday
             // 
             this.eday.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.eday.Location = new System.Drawing.Point(256, 52);
+            this.eday.Location = new System.Drawing.Point(249, 15);
             this.eday.Name = "eday";
             this.eday.Size = new System.Drawing.Size(85, 23);
             this.eday.TabIndex = 164;
@@ -124,7 +125,7 @@
             // sday
             // 
             this.sday.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.sday.Location = new System.Drawing.Point(148, 52);
+            this.sday.Location = new System.Drawing.Point(141, 15);
             this.sday.Name = "sday";
             this.sday.Size = new System.Drawing.Size(91, 23);
             this.sday.TabIndex = 165;
@@ -133,7 +134,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label26.Location = new System.Drawing.Point(238, 53);
+            this.label26.Location = new System.Drawing.Point(231, 16);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(20, 20);
             this.label26.TabIndex = 163;
@@ -142,14 +143,14 @@
             // COM_CODE_IN
             // 
             this.COM_CODE_IN.FormattingEnabled = true;
-            this.COM_CODE_IN.Location = new System.Drawing.Point(515, 109);
+            this.COM_CODE_IN.Location = new System.Drawing.Point(508, 54);
             this.COM_CODE_IN.Name = "COM_CODE_IN";
             this.COM_CODE_IN.Size = new System.Drawing.Size(193, 23);
             this.COM_CODE_IN.TabIndex = 153;
             // 
             // REORDER_CODE
             // 
-            this.REORDER_CODE.Location = new System.Drawing.Point(148, 109);
+            this.REORDER_CODE.Location = new System.Drawing.Point(141, 54);
             this.REORDER_CODE.Name = "REORDER_CODE";
             this.REORDER_CODE.Size = new System.Drawing.Size(193, 23);
             this.REORDER_CODE.TabIndex = 147;
@@ -157,106 +158,111 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(445, 112);
+            this.label18.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label18.Location = new System.Drawing.Point(438, 53);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(55, 15);
+            this.label18.Size = new System.Drawing.Size(69, 20);
             this.label18.TabIndex = 162;
             this.label18.Text = "납품업체";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(812, 58);
+            this.label19.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label19.Location = new System.Drawing.Point(805, 17);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(31, 15);
+            this.label19.Size = new System.Drawing.Size(39, 20);
             this.label19.TabIndex = 161;
             this.label19.Text = "품목";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(84, 110);
+            this.label15.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label15.Location = new System.Drawing.Point(77, 51);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(55, 15);
+            this.label15.Size = new System.Drawing.Size(69, 20);
             this.label15.TabIndex = 160;
             this.label15.Text = "발주번호";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(445, 54);
+            this.label14.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label14.Location = new System.Drawing.Point(438, 13);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(31, 15);
+            this.label14.Size = new System.Drawing.Size(39, 20);
             this.label14.TabIndex = 151;
             this.label14.Text = "업체";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(87, 56);
+            this.label11.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label11.Location = new System.Drawing.Point(80, 15);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(43, 15);
+            this.label11.Size = new System.Drawing.Size(54, 20);
             this.label11.TabIndex = 150;
             this.label11.Text = "납기일";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label8.Location = new System.Drawing.Point(422, 110);
+            this.label8.Location = new System.Drawing.Point(415, 55);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(17, 17);
+            this.label8.Size = new System.Drawing.Size(15, 18);
             this.label8.TabIndex = 158;
             this.label8.Text = "*";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label10.Location = new System.Drawing.Point(789, 55);
+            this.label10.Location = new System.Drawing.Point(782, 18);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(17, 17);
+            this.label10.Size = new System.Drawing.Size(15, 18);
             this.label10.TabIndex = 157;
             this.label10.Text = "*";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label5.Location = new System.Drawing.Point(61, 110);
+            this.label5.Location = new System.Drawing.Point(54, 55);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 17);
+            this.label5.Size = new System.Drawing.Size(15, 18);
             this.label5.TabIndex = 156;
             this.label5.Text = "*";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label7.Location = new System.Drawing.Point(422, 53);
+            this.label7.Location = new System.Drawing.Point(415, 16);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(17, 17);
+            this.label7.Size = new System.Drawing.Size(15, 18);
             this.label7.TabIndex = 155;
             this.label7.Text = "*";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("나눔고딕 ExtraBold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label2.Location = new System.Drawing.Point(63, 53);
+            this.label2.Location = new System.Drawing.Point(56, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 17);
+            this.label2.Size = new System.Drawing.Size(15, 18);
             this.label2.TabIndex = 152;
             this.label2.Text = "*";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(889, 55);
+            this.textBox1.Location = new System.Drawing.Point(882, 18);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(193, 23);
             this.textBox1.TabIndex = 167;
@@ -268,7 +274,7 @@
             this.menuPanel1.BackColor = System.Drawing.Color.Transparent;
             this.menuPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.menuPanel1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.menuPanel1.Location = new System.Drawing.Point(9, 217);
+            this.menuPanel1.Location = new System.Drawing.Point(9, 134);
             this.menuPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.menuPanel1.Name = "menuPanel1";
             this.menuPanel1.Size = new System.Drawing.Size(1159, 32);
@@ -381,7 +387,7 @@
             this.dgv1.RowHeadersWidth = 30;
             this.dgv1.RowTemplate.Height = 23;
             this.dgv1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv1.Size = new System.Drawing.Size(1156, 270);
+            this.dgv1.Size = new System.Drawing.Size(1156, 353);
             this.dgv1.TabIndex = 0;
             // 
             // button2

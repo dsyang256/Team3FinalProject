@@ -50,7 +50,7 @@
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1260, 126);
+            this.panel1.Size = new System.Drawing.Size(1260, 82);
             // 
             // panel2
             // 
@@ -62,7 +62,7 @@
             this.panel2.Controls.Add(this.label28);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Size = new System.Drawing.Size(1254, 103);
+            this.panel2.Size = new System.Drawing.Size(1254, 62);
             // 
             // label1
             // 
@@ -73,14 +73,14 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.dgvReorder);
-            this.panel3.Location = new System.Drawing.Point(15, 178);
-            this.panel3.Size = new System.Drawing.Size(1254, 372);
+            this.panel3.Location = new System.Drawing.Point(15, 134);
+            this.panel3.Size = new System.Drawing.Size(1254, 416);
             // 
             // cboPlan
             // 
             this.cboPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPlan.FormattingEnabled = true;
-            this.cboPlan.Location = new System.Drawing.Point(189, 30);
+            this.cboPlan.Location = new System.Drawing.Point(187, 15);
             this.cboPlan.Name = "cboPlan";
             this.cboPlan.Size = new System.Drawing.Size(199, 23);
             this.cboPlan.TabIndex = 147;
@@ -88,7 +88,7 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(674, 34);
+            this.dateTimePicker2.Location = new System.Drawing.Point(672, 19);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(91, 23);
             this.dateTimePicker2.TabIndex = 141;
@@ -96,7 +96,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(566, 34);
+            this.dateTimePicker1.Location = new System.Drawing.Point(564, 19);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(91, 23);
             this.dateTimePicker1.TabIndex = 142;
@@ -105,7 +105,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label26.Location = new System.Drawing.Point(656, 35);
+            this.label26.Location = new System.Drawing.Point(654, 20);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(20, 20);
             this.label26.TabIndex = 138;
@@ -115,7 +115,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label27.Location = new System.Drawing.Point(68, 33);
+            this.label27.Location = new System.Drawing.Point(66, 18);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(59, 20);
             this.label27.TabIndex = 139;
@@ -126,7 +126,7 @@
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label28.Location = new System.Drawing.Point(49, 36);
+            this.label28.Location = new System.Drawing.Point(47, 21);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(15, 18);
             this.label28.TabIndex = 140;
@@ -136,7 +136,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("맑은 고딕", 11F);
-            this.label5.Location = new System.Drawing.Point(449, 35);
+            this.label5.Location = new System.Drawing.Point(447, 20);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 20);
             this.label5.TabIndex = 115;
@@ -147,7 +147,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label4.Location = new System.Drawing.Point(430, 38);
+            this.label4.Location = new System.Drawing.Point(428, 23);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 18);
             this.label4.TabIndex = 116;
@@ -190,7 +190,7 @@
             this.dgvReorder.RowHeadersWidth = 30;
             this.dgvReorder.RowTemplate.Height = 23;
             this.dgvReorder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvReorder.Size = new System.Drawing.Size(1254, 372);
+            this.dgvReorder.Size = new System.Drawing.Size(1254, 416);
             this.dgvReorder.TabIndex = 0;
             // 
             // menuPanel1
@@ -200,7 +200,7 @@
             this.menuPanel1.BackColor = System.Drawing.Color.Transparent;
             this.menuPanel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.menuPanel1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.menuPanel1.Location = new System.Drawing.Point(9, 143);
+            this.menuPanel1.Location = new System.Drawing.Point(9, 99);
             this.menuPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.menuPanel1.Name = "menuPanel1";
             this.menuPanel1.Size = new System.Drawing.Size(1257, 32);
