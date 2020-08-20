@@ -39,12 +39,12 @@
             this.tsbPrint = new System.Windows.Forms.ToolStripButton();
             this.tsbLogout = new System.Windows.Forms.ToolStripLabel();
             this.tsbReset = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.stslLoginID = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblDateTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabForms = new TEAM3FINAL.ucTabControl();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -83,7 +83,7 @@
             this.tsbSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSearch.Name = "tsbSearch";
             this.tsbSearch.Size = new System.Drawing.Size(36, 36);
-            this.tsbSearch.Text = "toolStripButton1";
+            this.tsbSearch.Text = "조회";
             this.tsbSearch.Click += new System.EventHandler(this.tsbSearch_Click);
             // 
             // tsbInsert
@@ -93,7 +93,7 @@
             this.tsbInsert.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbInsert.Name = "tsbInsert";
             this.tsbInsert.Size = new System.Drawing.Size(36, 36);
-            this.tsbInsert.Text = "toolStripButton2";
+            this.tsbInsert.Text = "추가";
             this.tsbInsert.Click += new System.EventHandler(this.tsbInsert_Click);
             // 
             // tsbDelete
@@ -103,7 +103,7 @@
             this.tsbDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDelete.Name = "tsbDelete";
             this.tsbDelete.Size = new System.Drawing.Size(36, 36);
-            this.tsbDelete.Text = "toolStripButton3";
+            this.tsbDelete.Text = "삭제";
             this.tsbDelete.Click += new System.EventHandler(this.tsbDelete_Click);
             // 
             // tsbUpdate
@@ -113,7 +113,7 @@
             this.tsbUpdate.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbUpdate.Name = "tsbUpdate";
             this.tsbUpdate.Size = new System.Drawing.Size(36, 36);
-            this.tsbUpdate.Text = "toolStripButton4";
+            this.tsbUpdate.Text = "수정";
             this.tsbUpdate.Click += new System.EventHandler(this.tsbUpdate_Click);
             // 
             // tsbPrint
@@ -123,6 +123,7 @@
             this.tsbPrint.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPrint.Name = "tsbPrint";
             this.tsbPrint.Size = new System.Drawing.Size(36, 36);
+            this.tsbPrint.Text = "엑셀";
             this.tsbPrint.Click += new System.EventHandler(this.tsbPrint_Click);
             // 
             // tsbLogout
@@ -141,8 +142,19 @@
             this.tsbReset.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbReset.Name = "tsbReset";
             this.tsbReset.Size = new System.Drawing.Size(36, 36);
-            this.tsbReset.Text = "toolStripButton1";
+            this.tsbReset.Text = "초기화";
             this.tsbReset.Click += new System.EventHandler(this.tsbReset_Click);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(36, 36);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // statusStrip1
             // 
@@ -184,17 +196,6 @@
             this.tabForms.SelectedIndexChanged += new System.EventHandler(this.tabForms_SelectedIndexChanged);
             this.tabForms.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tabForms_MouseDown);
             // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(36, 36);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
             // FrmMAIN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -208,7 +209,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "FrmMAIN";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Chair 3rd";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MdiChildActivate += new System.EventHandler(this.Form1_MdiChildActivate);

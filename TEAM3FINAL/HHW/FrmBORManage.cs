@@ -27,23 +27,27 @@ namespace TEAM3FINAL
             //데이터그리드뷰 초기설정
             DataGridViewUtil.InitSettingGridView(dgvBORList);
             //데이터그리드뷰 체크박스 컬럼 추가
-            DataGridViewUtil.DataGridViewCheckBoxSet(dgvBORList, ""); 
+            DataGridViewUtil.DataGridViewCheckBoxSet(dgvBORList, "");
+            DataGridViewColumn dc = dgvBORList.Columns[0];
+            dc.Frozen = true;
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "PK", "BOR_CODE", false, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "품목", "ITEM_CODE", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "품명", "ITEM_NAME", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "PK", "BOR_CODE", false, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "품목", "ITEM_CODE", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "품명", "ITEM_NAME", true, 120);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "공정", "BOR_PROCS_CODE", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "공정명", "COMMON_NAME", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "설비", "FCLTS_CODE", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "설비명", "FCLTS_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "Tack Time", "BOR_PROCS_TIME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "우선순위", "BOR_PRIORT", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "공정선행일", "BOR_PROCS_LEADTIME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "수율", "BOR_YIELD", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "사용유무", "BOR_USE_YN", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "설비명", "FCLTS_NAME", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "Tack Time", "BOR_PROCS_TIME", true, 100, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "우선순위", "BOR_PRIORT", true, 100, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "공정선행일", "BOR_PROCS_LEADTIME", true, 200, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "수율", "BOR_YIELD", true, 80, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "사용유무", "BOR_USE_YN", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "비고", "BOR_REMARK", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "수정자", "BOR_LAST_MDFR", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "최종수정날짜", "BOR_LAST_MDFY", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "최종수정날짜", "BOR_LAST_MDFY", true, 200);
+            dgvBORList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvBORList.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvBORList);
             DataGridViewCheckBoxAllCheck();
         }

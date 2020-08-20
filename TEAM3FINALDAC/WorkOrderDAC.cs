@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using TEAM3FINALVO;
@@ -38,37 +39,47 @@ group by WO_PLAN_DATE, WO_PROD_DATE, w.FCLTS_CODE, f.FCLTS_NAME, WO_WORK_SEQ, w.
 
         public Message InsertMoveUpdate(INSTACK_VO vo)
         {
-            using (SqlCommand cmd = new SqlCommand())
+            Message message = new Message();
+            try
             {
-                cmd.Connection = new SqlConnection(this.ConnectionString);
-                cmd.CommandText = @"insert into INSTACK(INS_QTY, INS_TYP, INS_WRHS, ITEM_CODE, SALES_WORK_ORDER_ID) values(@INS_QTY, '출고', @INS_WRHS, @ITEM_CODE, @SALES_WORK_ORDER_ID);
+                
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = @"insert into INSTACK(INS_QTY, INS_TYP, INS_WRHS, ITEM_CODE, SALES_WORK_ORDER_ID) values(@INS_QTY, '출고', @INS_WRHS, @ITEM_CODE, @SALES_WORK_ORDER_ID);
                                     insert into INSTACK(INS_QTY, INS_TYP, INS_WRHS, ITEM_CODE, SALES_WORK_ORDER_ID) values(@INS_QTY, '입고', @INS_WRHS, @ITEM_CODE, @SALES_WORK_ORDER_ID);
-                                    update WORKORDER set WO_WORK_STATE = '공정이동' where SALES_Work_Order_ID = @SALES_WORK_ORDER_ID;";
-                cmd.Parameters.AddWithValue("@INS_QTY", vo.INS_QTY);
-                cmd.Parameters.AddWithValue("@INS_WRHS", vo.INS_WRHS);
-                cmd.Parameters.AddWithValue("@ITEM_CODE", vo.ITEM_CODE);
-                cmd.Parameters.AddWithValue("@SALES_WORK_ORDER_ID", vo.SALES_WORK_ORDER_ID);
-                cmd.Connection.Open();
-                int iResult = cmd.ExecuteNonQuery();
-                string result;
-                if (iResult > 0)
-                    result = "S02";
-                else
-                    result = "S00";
-                Message message = new Message();
-                if (result == "S02")
-                {
-                    message.IsSuccess = true;
-                    message.ResultMessage = "완료 되었습니다.";
-                }
-                else if (result == "S0")
-                {
-                    message.IsSuccess = true;
-                    message.ResultMessage = "실패하였습니다.";
-                }
+                                    update WORKORDER set WO_WORK_STATE = '공정이동' where SALES_Work_Order_ID = @SALES_WORK_ORDER_ID and ITEM_CODE = @ITEM_CODE;";
+                    cmd.Parameters.AddWithValue("@INS_QTY", vo.INS_QTY);
+                    cmd.Parameters.AddWithValue("@INS_WRHS", vo.INS_WRHS);
+                    cmd.Parameters.AddWithValue("@ITEM_CODE", vo.ITEM_CODE);
+                    cmd.Parameters.AddWithValue("@SALES_WORK_ORDER_ID", vo.SALES_WORK_ORDER_ID);                    
+                    cmd.Connection.Open();
+                    int iResult = cmd.ExecuteNonQuery();
+                    string result="";
+                    if (iResult > 0)
+                        result = "S02";
+                    else
+                        result = "S00";
 
-                return message;
+                    if (result == "S02")
+                    {
+                        message.IsSuccess = true;
+                        message.ResultMessage = "완료 되었습니다.";
+                    }
+                    else if (result == "S0")
+                    {
+                        message.IsSuccess = true;
+                        message.ResultMessage = "실패하였습니다.";
+                    }
+                }
+                
+
             }
+            catch(Exception err)
+            {
+                string str = err.Message;
+            }
+            return message;
         }
 
 
