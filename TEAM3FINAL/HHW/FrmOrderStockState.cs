@@ -29,16 +29,18 @@ namespace TEAM3FINAL
             //데이터그리드뷰 체크박스 컬럼 추가
             DataGridViewUtil.DataGridViewCheckBoxSet(dgvCustomerOrder, "");
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "품목", "ITEM_CODE", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "품명", "ITEM_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "규격", "ITEM_STND", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "창고", "FAC_CODE", false, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "창고", "FAC_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "이동량", "WO_QTY_OUT", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "품목", "ITEM_CODE", true, 90);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "품명", "ITEM_NAME", true, 90);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "규격", "ITEM_STND", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "창고", "FAC_CODE", false, 90);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "창고", "FAC_NAME", true, 90);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "이동량", "WO_QTY_OUT", true, 80, DataGridViewContentAlignment.MiddleRight);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "비고", "WO_REMARK", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "작업지시ID", "SALES_WORK_ORDER_ID", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "제품타입", "ITEM_TYP", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "이동창고", "ToWHouse", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "작업지시ID", "SALES_WORK_ORDER_ID", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "제품타입", "ITEM_TYP", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "이동창고", "ToWHouse", true, 100);
+            dgvCustomerOrder.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvCustomerOrder.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvCustomerOrder);
             DataGridViewCheckBoxAllCheck();
         }

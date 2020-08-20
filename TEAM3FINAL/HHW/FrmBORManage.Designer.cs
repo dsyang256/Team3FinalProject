@@ -79,7 +79,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.dgvBORList);
             this.panel3.Location = new System.Drawing.Point(15, 134);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Size = new System.Drawing.Size(1217, 382);
             this.panel3.Controls.SetChildIndex(this.dgvBORList, 0);
             this.panel3.Controls.SetChildIndex(this.panel4, 0);
@@ -87,7 +87,7 @@
             // panel4
             // 
             this.panel4.Location = new System.Drawing.Point(0, 572);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Size = new System.Drawing.Size(1843, 27);
             // 
             // cboPROC
@@ -200,7 +200,7 @@
             this.dgvBORList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvBORList.EnableHeadersVisualStyles = false;
             this.dgvBORList.Location = new System.Drawing.Point(0, 0);
-            this.dgvBORList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvBORList.Margin = new System.Windows.Forms.Padding(2);
             this.dgvBORList.Name = "dgvBORList";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -243,6 +243,7 @@
             this.button1.TabIndex = 8;
             this.button1.Text = "바코드출력";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmBORManage

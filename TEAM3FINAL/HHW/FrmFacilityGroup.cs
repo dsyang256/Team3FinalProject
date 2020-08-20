@@ -32,13 +32,17 @@ namespace TEAM3FINAL
             DataGridViewUtil.InitSettingGridView(dgvFacilityGroupList);
             //데이터그리드뷰 체크박스 컬럼 추가
             DataGridViewUtil.DataGridViewCheckBoxSet(dgvFacilityGroupList, "");
+            DataGridViewColumn dc = dgvFacilityGroupList.Columns[0];
+            dc.Frozen = true;
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityGroupList, "설비군 코드", "FACG_CODE", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityGroupList, "설비군명", "FACG_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityGroupList, "사용유무", "FACG_USE_YN", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityGroupList, "수정자", "FACG_LAST_MDFR", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityGroupList, "최종수정날짜", "FACG_LAST_MDFY", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityGroupList, "시설설명", "FACG_DESC", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityGroupList, "설비군코드", "FACG_CODE", true, 110);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityGroupList, "설비군명", "FACG_NAME", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityGroupList, "사용유무", "FACG_USE_YN", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityGroupList, "수정자", "FACG_LAST_MDFR", true, 90);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityGroupList, "최종수정날짜", "FACG_LAST_MDFY", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityGroupList, "시설설명", "FACG_DESC", true, 100);
+            dgvFacilityGroupList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvFacilityGroupList.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvFacilityGroupList);
             DataGridViewCheckBoxAllCheck();
 
@@ -51,18 +55,20 @@ namespace TEAM3FINAL
             DataGridViewColumn col = dgvFacilityList.Columns[0];
             col.Frozen = true;
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "설비군코드", "FACG_CODE", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "설비코드", "FCLTS_CODE", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "설비명", "FCLTS_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "소진창고", "FCLTS_WRHS_EXHST", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "양품창고", "FCLTS_WRHS_GOOD", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "불량창고", "FCLTS_WRHS_BAD", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "사용유무", "FCLTS_USE_YN", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "외주여부", "FCLTS_EXTRL_YN", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "수정자", "FCLTS_LAST_MDFR", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "최종수정일", "FCLTS_LAST_MDFY", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "특이사항", "FCLTS_NOTE", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "설비군코드", "FACG_CODE", true, 110);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "설비코드", "FCLTS_CODE", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "설비명", "FCLTS_NAME", true, 90);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "소진창고", "FCLTS_WRHS_EXHST", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "양품창고", "FCLTS_WRHS_GOOD", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "불량창고", "FCLTS_WRHS_BAD", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "사용유무", "FCLTS_USE_YN", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "외주여부", "FCLTS_EXTRL_YN", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "수정자", "FCLTS_LAST_MDFR", true, 90);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "최종수정일", "FCLTS_LAST_MDFY", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "특이사항", "FCLTS_NOTE", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFacilityList, "비고", "FCLTS_REMARK", true, 80);
+            dgvFacilityList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvFacilityList.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvFacilityList);
             DataGridViewCheckBoxAllCheck2();
         }

@@ -46,7 +46,7 @@ group by WO_PLAN_DATE, WO_PROD_DATE, w.FCLTS_CODE, f.FCLTS_NAME, WO_WORK_SEQ, w.
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = new SqlConnection(this.ConnectionString);
-                    cmd.CommandText = @"insert into INSTACK(INS_QTY, INS_TYP, INS_WRHS, ITEM_CODE, SALES_WORK_ORDER_ID) values(@INS_QTY, '출고', '@INS_WRHS', @ITEM_CODE, @SALES_WORK_ORDER_ID);
+                    cmd.CommandText = @"insert into INSTACK(INS_QTY, INS_TYP, INS_WRHS, ITEM_CODE, SALES_WORK_ORDER_ID) values(@INS_QTY, '출고', @INS_WRHS, @ITEM_CODE, @SALES_WORK_ORDER_ID);
                                         update WORKORDER set WO_WORK_STATE = '공정이동' where SALES_Work_Order_ID = @SALES_WORK_ORDER_ID and ITEM_CODE = @ITEM_CODE;                                   
                                         if(@INS_WRHS = 'OS')
                                         begin

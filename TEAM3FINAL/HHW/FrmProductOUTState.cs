@@ -29,16 +29,20 @@ namespace TEAM3FINAL
             DataGridViewUtil.InitSettingGridView(dgvProductOUTState);
             //데이터그리드뷰 체크박스 컬럼 추가
             DataGridViewUtil.DataGridViewCheckBoxSet(dgvProductOUTState, "");
+            DataGridViewColumn dc = dgvProductOUTState.Columns[0];
+            dc.Frozen = true;
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "고객주문번호", "SALES_WORK_ORDER_ID", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "납기일", "SALES_DUEDATE", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "고객사코드", "COM_CODE", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "고객사", "COM_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "도착지코드", "SALES_COM_CODE", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "품목", "ITEM_CODE", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "품명", "ITEM_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "주문수량", "WO_PLAN_QTY", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "출고된수량", "OUTed_QTY", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "고객주문번호", "SALES_WORK_ORDER_ID", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "납기일", "SALES_DUEDATE", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "고객사코드", "COM_CODE", true, 110);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "고객사", "COM_NAME", true, 110);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "도착지코드", "SALES_COM_CODE", true, 110);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "품목", "ITEM_CODE", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "품명", "ITEM_NAME", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "주문수량", "WO_PLAN_QTY", true, 100, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "출고된수량", "OUTed_QTY", true, 110, DataGridViewContentAlignment.MiddleRight);
+            dgvProductOUTState.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvProductOUTState.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvProductOUTState);
             DataGridViewCheckBoxAllCheck();
         }

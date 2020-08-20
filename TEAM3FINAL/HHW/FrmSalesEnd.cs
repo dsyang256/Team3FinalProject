@@ -31,16 +31,18 @@ namespace TEAM3FINAL
             //데이터그리드뷰 체크박스 컬럼 추가
             DataGridViewUtil.DataGridViewCheckBoxSet(dgvSalesEnd, "");
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEnd, "고객주문번호", "SALES_WORK_ORDER_ID", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEnd, "고객사", "COM_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEnd, "도착지명", "SALES_COM_CODE", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEnd, "품목", "ITEM_CODE", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEnd, "품명", "ITEM_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEnd, "납기일", "SALES_DUEDATE", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEnd, "주문수량", "WO_PLAN_QTY", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEnd, "출하수량", "OUTed_QTY", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEnd, "마감수량", "WO_PLAN_QTY", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEnd, "매출확정금액", "EndPrice", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEnd, "고객주문번호", "SALES_WORK_ORDER_ID", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEnd, "고객사", "COM_NAME", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEnd, "도착지명", "SALES_COM_CODE", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEnd, "품목", "ITEM_CODE", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEnd, "품명", "ITEM_NAME", true, 110);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEnd, "납기일", "SALES_DUEDATE", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEnd, "주문수량", "WO_PLAN_QTY", true, 100, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEnd, "출하수량", "OUTed_QTY", true, 100, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEnd, "마감수량", "WO_PLAN_QTY", true, 100, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEnd, "매출확정금액", "EndPrice", true, 120, DataGridViewContentAlignment.MiddleRight);
+            dgvSalesEnd.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvSalesEnd.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvSalesEnd);
             DataGridViewCheckBoxAllCheck();
         }

@@ -33,32 +33,32 @@ namespace TEAM3FINAL
             DataGridViewColumn col = dgvWorkRecordList.Columns[0];
             col.Frozen = true;
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "지시일", "WO_PLAN_DATE", true, 80); //1
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "생산일", "WO_PROD_DATE", true, 80); //2
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "설비ID", "FCLTS_CODE", true, 80); //3
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "설비명", "FCLTS_NAME", true, 80); //4
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "작업순서", "WO_WORK_SEQ", true, 80); //5
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "품목", "ITEM_CODE", true, 80); //6
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "품명", "ITEM_NAME", true, 80); //7
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "작업상태", "WO_WORK_STATE", true, 80); //8
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "양품창고", "FCLTS_WRHS_GOOD", true, 80); //9
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "불량창고", "FCLTS_WRHS_BAD", true, 80); //10
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "지시량", "WO_PLAN_QTY", true, 80); //11
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "취소수량", "SALES_NO_QTY", true, 80); //12
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "양품수량", "WO_QTY_OUT", true, 80); //13
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "투입수량", "WO_QTY_IN", true, 80); //14
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "불량수량", "WO_QTY_BAD", true, 80); //15
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "잔량", "WO_QTY", true, 80); //16
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "생산량", "WO_QTY_PROD", true, 80); //17
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "계획시작일", "WO_PLAN_STARTTIME", true, 80); //18
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "계획종료일", "WO_PLAN_ENDTIME", true, 80); //19
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "지시일", "WO_PLAN_DATE", true, 100); //1
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "생산일", "WO_PROD_DATE", true, 100); //2
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "설비ID", "FCLTS_CODE", true, 100); //3
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "설비명", "FCLTS_NAME", true, 100); //4
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "작업순서", "WO_WORK_SEQ", true, 100, DataGridViewContentAlignment.MiddleRight); //5
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "품목", "ITEM_CODE", true, 100); //6
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "품명", "ITEM_NAME", true, 100); //7
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "작업상태", "WO_WORK_STATE", true, 100); //8
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "양품창고", "FCLTS_WRHS_GOOD", true, 100); //9
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "불량창고", "FCLTS_WRHS_BAD", true, 100); //10
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "지시량", "WO_PLAN_QTY", true, 90, DataGridViewContentAlignment.MiddleRight); //11
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "취소수량", "SALES_NO_QTY", true, 100, DataGridViewContentAlignment.MiddleRight); //12
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "양품수량", "WO_QTY_OUT", true, 100, DataGridViewContentAlignment.MiddleRight); //13
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "투입수량", "WO_QTY_IN", true, 100, DataGridViewContentAlignment.MiddleRight); //14
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "불량수량", "WO_QTY_BAD", true, 100, DataGridViewContentAlignment.MiddleRight); //15
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "잔량", "WO_QTY", true, 80, DataGridViewContentAlignment.MiddleRight); //16
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "생산량", "WO_QTY_PROD", true, 90, DataGridViewContentAlignment.MiddleRight); //17
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "계획시작일", "WO_PLAN_STARTTIME", true, 110); //18
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "계획종료일", "WO_PLAN_ENDTIME", true, 110); //19
             DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "비고", "WO_REMARK", true, 80); //20
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "수정자", "WO_LAST_MDFR", true, 80); //21
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "수정일", "WO_LAST_MDFY", true, 80); //22
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "작업지시번호", "WO_Code", true, 80); //23
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "작업지시서번호", "SALES_WORK_ORDER_ID", true, 80); //24
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "계획ID", "PLAN_ID", true, 80); //25
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "TYPE", "ITEM_TYP", true, 80); //25
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "수정자", "WO_LAST_MDFR", true, 100); //21
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "수정일", "WO_LAST_MDFY", true, 200); //22
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "작업지시번호", "WO_Code", true, 120); //23
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "작업지시서번호", "SALES_WORK_ORDER_ID", true, 130, DataGridViewContentAlignment.MiddleRight); //24
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "계획ID", "PLAN_ID", true, 90); //25
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvWorkRecordList, "TYPE", "ITEM_TYP", true, 90); //25
             dgvWorkRecordList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvWorkRecordList.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvWorkRecordList);
@@ -69,15 +69,17 @@ namespace TEAM3FINAL
             DataGridViewUtil.InitSettingGridView(dgvMOVEList);
             //데이터그리드뷰 체크박스 컬럼 추가
             DataGridViewUtil.DataGridViewCheckBoxSet(dgvMOVEList, "");
+            DataGridViewColumn dc = dgvWorkRecordList.Columns[0];
+            dc.Frozen = true;
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "품목", "ITEM_CODE", true, 80); //1
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "품명", "ITEM_NAME", true, 80); //2
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "규격", "ITEM_STND", true, 80); //3
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "창고코드", "FCLTS_CODE", true, 80); //4
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "이동창고", "FCLTS_NAME", true, 80); //5
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "이동수량", "WO_QTY_OUT", true, 80); //6 양품수량
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "품목", "ITEM_CODE", true, 100); //1
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "품명", "ITEM_NAME", true, 100); //2
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "규격", "ITEM_STND", true, 100); //3
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "창고코드", "FCLTS_CODE", true, 100); //4
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "이동창고", "FCLTS_NAME", true, 100); //5
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "이동수량", "WO_QTY_OUT", true, 100, DataGridViewContentAlignment.MiddleRight); //6 양품수량
             DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "비고", "WO_REMARK", true, 80); //7
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "작업지시서번호", "SALES_WORK_ORDER_ID", true, 80); //8
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "작업지시서번호", "SALES_WORK_ORDER_ID", true, 150); //8
             DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "TYPE", "ITEM_TYP", true, 80); //9
             dgvMOVEList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvMOVEList.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);

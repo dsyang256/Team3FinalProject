@@ -29,10 +29,12 @@ namespace TEAM3FINAL
             //데이터그리드뷰 체크박스 컬럼 추가
             DataGridViewUtil.DataGridViewCheckBoxSet(dgvCom, "");
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "업체코드", "SALES_COM_CODE", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "업체명", "COM_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "사업자등록번호", "COM_REG_NUM", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "매출액", "SALES_TTL", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "업체코드", "SALES_COM_CODE", true, 90);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "업체명", "COM_NAME", true, 90);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "사업자등록번호", "COM_REG_NUM", true, 140);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "매출액", "SALES_TTL", true, 80, DataGridViewContentAlignment.MiddleRight);
+            dgvCom.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvCom.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvCom);
             DataGridViewCheckBoxAllCheck();
 
@@ -42,12 +44,14 @@ namespace TEAM3FINAL
             DataGridViewUtil.InitSettingGridView(dgvComDetail);
             //데이터그리드뷰 체크박스 컬럼 추가
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "업체코드", "SALES_COM_CODE", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "업체명", "COM_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "마감일", "SALES_ENDDATE", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "판매수량", "SALES_QTY", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "단가", "unitprice", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "총판매액", "SALES_TTL", true, 80);            
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "업체코드", "SALES_COM_CODE", true, 90);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "업체명", "COM_NAME", true, 90);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "마감일", "SALES_ENDDATE", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "판매수량", "SALES_QTY", true, 90, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "단가", "unitprice", true, 80, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "총판매액", "SALES_TTL", true, 100, DataGridViewContentAlignment.MiddleRight);
+            dgvComDetail.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvComDetail.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvComDetail);
         }
 
