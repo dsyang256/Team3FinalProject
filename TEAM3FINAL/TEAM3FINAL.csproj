@@ -734,6 +734,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMAIN.resx">
       <DependentUpon>FrmMAIN.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -814,6 +815,7 @@
     <Content Include="Resources\Interop.Microsoft.Office.Core.dll" />
     <Content Include="Resources\Interop.Microsoft.Office.Interop.Excel.dll" />
     <Content Include="Resources\Interop.VBIDE.dll" />
+    <None Include="Resources\logo1.png" />
     <Content Include="Resources\plus_math_30px.png" />
     <Content Include="Resources\reset_24px.png" />
     <Content Include="Resources\Save_16x16.png" />

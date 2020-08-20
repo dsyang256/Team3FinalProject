@@ -207,6 +207,33 @@ namespace TEAM3FINALDAC
             return list;
         }
 
+        public List<ComboItemVO> GetTopItemCode()
+        {
+            List<ComboItemVO> list = default;
+
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = $@"select [ITEM_CODE] COMMON_CODE,[ITEM_NAME] COMMON_NAME,null COMMON_PARENT, null COMMON_SEQ
+                                                      from [dbo].ITEM
+                                                      where 1=1
+													  and ITEM_TYP ='제품' ";
+
+                    cmd.Connection.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    list = Helper.DataReaderMapToList<ComboItemVO>(reader);
+                    cmd.Connection.Close();
+                }
+            }
+            catch (Exception err)
+            {
+                string msg = err.Message;
+            }
+            return list;
+        }
+
 
     }
 }

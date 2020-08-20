@@ -39,7 +39,7 @@ namespace TEAM3FINAL
         {
             //콤보박스 서비스 호출
             ComboItemService service = new ComboItemService();
-            var Itemlist = service.GetItemCode();
+            var Itemlist = service.GetTopItemCode();
             var ComList = service.GetCompanyCode();
 
             //콤보박스 바인딩 
