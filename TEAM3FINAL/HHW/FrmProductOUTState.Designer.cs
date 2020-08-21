@@ -69,9 +69,9 @@
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Location = new System.Drawing.Point(4, 15);
+            this.panel2.Location = new System.Drawing.Point(3, 11);
             this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.panel2.Size = new System.Drawing.Size(1220, 62);
+            this.panel2.Size = new System.Drawing.Size(1174, 62);
             // 
             // panel3
             // 
@@ -80,7 +80,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.dgvProductOUTState);
             this.panel3.Location = new System.Drawing.Point(9, 133);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Size = new System.Drawing.Size(1231, 426);
             this.panel3.Controls.SetChildIndex(this.panel4, 0);
             this.panel3.Controls.SetChildIndex(this.dgvProductOUTState, 0);
@@ -88,7 +88,7 @@
             // panel4
             // 
             this.panel4.Location = new System.Drawing.Point(0, 618);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Size = new System.Drawing.Size(1766, 27);
             // 
             // btnWorkCancel
@@ -158,7 +158,7 @@
             this.dgvProductOUTState.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProductOUTState.EnableHeadersVisualStyles = false;
             this.dgvProductOUTState.Location = new System.Drawing.Point(0, 0);
-            this.dgvProductOUTState.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvProductOUTState.Margin = new System.Windows.Forms.Padding(2);
             this.dgvProductOUTState.Name = "dgvProductOUTState";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -177,7 +177,7 @@
             // txtCompany
             // 
             this.txtCompany.Location = new System.Drawing.Point(843, 17);
-            this.txtCompany.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCompany.Margin = new System.Windows.Forms.Padding(2);
             this.txtCompany.Name = "txtCompany";
             this.txtCompany.Size = new System.Drawing.Size(145, 23);
             this.txtCompany.TabIndex = 42;
@@ -195,7 +195,7 @@
             // txtITEM
             // 
             this.txtITEM.Location = new System.Drawing.Point(501, 18);
-            this.txtITEM.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtITEM.Margin = new System.Windows.Forms.Padding(2);
             this.txtITEM.Name = "txtITEM";
             this.txtITEM.Size = new System.Drawing.Size(145, 23);
             this.txtITEM.TabIndex = 43;
@@ -224,7 +224,7 @@
             // txtID
             // 
             this.txtID.Location = new System.Drawing.Point(190, 18);
-            this.txtID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtID.Margin = new System.Windows.Forms.Padding(2);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(145, 23);
             this.txtID.TabIndex = 44;

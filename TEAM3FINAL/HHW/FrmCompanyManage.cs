@@ -38,7 +38,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCompanyList, "업종", "COM_TYP_INDSTRY", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCompanyList, "업태", "COM_TYP_BSNS", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCompanyList, "담당자명", "COM_MANAGER", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCompanyList, "이메일", "COM_EML", true, 90);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCompanyList, "이메일", "COM_EML", true, 160);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCompanyList, "전화번호", "COM_TEL", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCompanyList, "팩스", "COM_FAX", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCompanyList, "출하자동입고유무", "COM_AUTOIN_YN", true, 150);
@@ -47,9 +47,9 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCompanyList, "수정자", "COM_LAST_MDFR", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCompanyList, "최종수정시간", "COM_LAST_MDFY", true, 120);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCompanyList, "거래유무", "COM_TRAD_YN", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCompanyList, "거래시작일", "COM_STR_DATE", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCompanyList, "거래종료일", "COM_END_DATE", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCompanyList, "업체정보", "COM_INFO", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCompanyList, "거래시작일", "COM_STR_DATE", false, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCompanyList, "거래종료일", "COM_END_DATE", false, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCompanyList, "업체정보", "COM_INFO", false, 100);
             dgvCompanyList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvCompanyList.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvCompanyList);

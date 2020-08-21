@@ -111,7 +111,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "FrmPOPMDI";
-            this.Text = "Form1";
+            this.Text = "POP";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmPOPMDI_Load);
             this.panel1.ResumeLayout(false);
