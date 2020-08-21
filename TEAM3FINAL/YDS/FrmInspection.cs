@@ -420,7 +420,7 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-               
+                MessageBox.Show("사용안해요");
             }
         }
 
