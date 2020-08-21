@@ -430,6 +430,7 @@
             this.Controls.Add(this.menuPanel1);
             this.Name = "FrmWarehousingWait";
             this.Text = "입고대기";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmWarehousingWait_FormClosing);
             this.Load += new System.EventHandler(this.FrmWarehousingWait_Load);
             this.Controls.SetChildIndex(this.menuPanel1, 0);
             this.Controls.SetChildIndex(this.menuPanel2, 0);

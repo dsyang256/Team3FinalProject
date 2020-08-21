@@ -61,7 +61,7 @@ namespace TEAM3FINALDAC
                           ,te.ITEM_UNIT
                           ,te.ITEM_MANAGE_LEVEL
                            FROM INSTACK i , FACTORY f,item te ,INSTACK_WORK_V v
-                          WHERE i.INS_WRHS = f.FAC_CODE and i.ITEM_CODE = te.ITEM_CODE and i.ITEM_CODE = v.ITEM_CODE  
+                          WHERE i.INS_WRHS = f.FAC_CODE and i.ITEM_CODE = te.ITEM_CODE and i.ITEM_CODE = v.ITEM_CODE  AND I.INS_WRHS =V.INS_WRHS AND 현재고 <> 0 AND V.INS_WRHS <> 'delete'
                           GROUP BY 
                            f.FAC_NAME
 						  ,i.INS_WRHS

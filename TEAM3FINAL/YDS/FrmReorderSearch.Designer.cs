@@ -434,6 +434,7 @@
             this.Controls.Add(this.menuPanel1);
             this.Name = "FrmReorderSearch";
             this.Text = "발주현황";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmReorderSearch_FormClosing);
             this.Load += new System.EventHandler(this.FrmReorderSearch_Load);
             this.Controls.SetChildIndex(this.menuPanel1, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
