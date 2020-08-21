@@ -3,43 +3,96 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<div class="col-md-12">
-    <div class="callout callout-info">
-        <h4>공정별 생산 정보</h4>
-        <p></p>
+@{
+    List<TEAM3FINALWEB.Models.Work> works = ViewBag.PQ;
+    TEAM3FINALWEB.Models.Instack instack = ViewBag.Icount;
+}
+
+
+<!-- 소제목 -->
+<div class="pad margin no-print">
+    <div class="callout callout-primary" style="margin-bottom: 0!important;">
+        <h3><i class="fa fa-line-chart"></i> 공정별 생산 정보</h3>
+        공정별 생산정보를 확인할 수 있습니다.
     </div>
 </div>
+<div class="col-md-12">
+<div class="row">
 
+    <div class="col-md-3">
+        <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
 
-    <div class="col-md-9">
-        <div class="box box-default">
+            <div class="info-box-content">
+                <span class="info-box-text">현재 품목 갯수 </span>
+                <span class="info-box-number">@ViewBag.ItemCount</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <div class="col-md-3">
+        <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="fa fa-table"></i></span>
 
-            <div class="box-header with-border"><h4>공정 : 공정명</h4></div>
-            <div class="box-body">
+            <div class="info-box-content">
+                <span class="info-box-text">입,출고</span>
+                <span class="info-box-number">@instack.CountIN , @instack.CountOUT</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+    <!-- fix for small devices only -->
+    <div class="clearfix visible-sm-block"></div>
 
+    <div class="col-md-3">
+        <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="fa fa-android"></i></span>
+
+            <div class="info-box-content">
+                <span class="info-box-text">공정 총 가동횟수</span>
+                <span class="info-box-number">@ViewBag.fcount</span>
+            </div>
+            <!-- /.info-box-content -->
+        </div>
+        <!-- /.info-box -->
+    </div>
+    <!-- /.col -->
+
+</div>
+    </div>
+<div class="col-md-9">
+    <div class="box box-default">
+
+        <div class="box-header with-border"><h3>공정</h3></div>
+        <div class="box-body">
+            @foreach (var work in works)
+            {
                 <div class="row">
 
                     <div class="col-md-6">
                         <table class="table table-bordered">
                             <tbody>
                                 <tr>
-                                    <th style="font :700">공정별 생산량</th>
+                                    <th style="font :500">[@work.FCLTS_NAME] 공정 생산량</th>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div>생산률 90%</div>
+                                        <div>생산률 @work.Prate%</div>
                                         <div class="progress progress-number">
-                                            <div class="progress-bar progress-bar-aqua" style="width: 90%"></div>
+                                            <div class="progress-bar progress-bar-aqua" style="width: @work.Prate%"></div>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div>불량률 10%</div>
+                                        <div>불량률 @work.Frate%</div>
                                         <div class="progress progress-number">
-                                            <div class="progress-bar progress-bar-danger" style="width: 10%"></div>
+                                            <div class="progress-bar progress-bar-danger" style="width: @work.Frate%"></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -50,22 +103,22 @@
                         <table class="table table-bordered">
                             <tbody>
                                 <tr>
-                                    <th style="font :700">수량</th>
+                                    <th style="font :500">수량</th>
                                 </tr>
                                 <tr>
                                     <td>
                                         <div>생산수량/전체수량</div>
                                         <div>
-                                            <span class="badge bg-aqua" style="font : 500">50/200</span>
+                                            <span class="badge bg-aqua" style="font : 500">@work.TaskLogQTYGOOD/@work.QTY</span>
                                         </div>
                                     </td>
-                               
+
                                 </tr>
                                 <tr>
                                     <td>
                                         <div>불량수량/전체수량</div>
                                         <div>
-                                            <span class="badge bg-aqua" style="font : 500">50/200</span>
+                                            <span class="badge bg-aqua" style="font : 500">@work.TaskLogQTYBAD/@work.QTY</span>
                                         </div>
                                     </td>
 
@@ -76,7 +129,8 @@
 
                 </div>
 
-            </div>
-
+            }
         </div>
+
     </div>
+</div>
