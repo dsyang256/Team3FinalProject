@@ -10,16 +10,22 @@ using TEAM3FINALVO;
 using System.Linq;
 using Message = TEAM3FINALVO.Message;
 using TEAM3FINAL.HHW;
+using log4net.Core;
 
 namespace TEAM3FINAL
 {
     public partial class FrmProductOUTState : TEAM3FINAL.baseForm, CommonBtn
     {
         CheckBox headerChk;
-
+        LoggingUtility _logging;
+        public LoggingUtility Log
+        {
+            get { return _logging; }
+        }
         public FrmProductOUTState()
         {
             InitializeComponent();
+            _logging = new LoggingUtility(this.Name, Level.Info, 30);
         }
 
         #region 체크박스 포함한 그리드뷰 컬럼 생성
@@ -107,13 +113,20 @@ namespace TEAM3FINAL
 
         public void Search(object sender, EventArgs e)
         {
-            string id = txtID.Text;
-            string item = txtITEM.Text;
-            string company = txtCompany.Text;
+            try
+            {
+                string id = txtID.Text;
+                string item = txtITEM.Text;
+                string company = txtCompany.Text;
 
-            ProductOUTService service = new ProductOUTService();
-            dgvProductOUTState.DataSource = null;
-            dgvProductOUTState.DataSource = service.SearchProductOUTState(id, item, company);
+                ProductOUTService service = new ProductOUTService();
+                dgvProductOUTState.DataSource = null;
+                dgvProductOUTState.DataSource = service.SearchProductOUTState(id, item, company);
+            }
+            catch(Exception err)
+            {
+                _logging = new LoggingUtility(this.Name, Level.Info, 30);
+            }
         }
 
         public void Reset(object sender, EventArgs e)

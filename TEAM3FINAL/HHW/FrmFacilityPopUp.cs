@@ -9,6 +9,7 @@ using TEAM3FINALVO;
 using TEAM3FINAL.Services;
 using System.Linq;
 using Message = TEAM3FINALVO.Message;
+using log4net.Core;
 
 namespace TEAM3FINAL
 {
@@ -28,75 +29,88 @@ namespace TEAM3FINAL
         public string FCLTS_LAST_MDFY { get; set; } //최종수정일
         public string FCLTS_NOTE { get; set; } //특이사항
         public string FCLTS_REMARK { get; set; } //비고
-        
+
 
         #endregion
+        LoggingUtility _logging;
+        public LoggingUtility Log
+        {
+            get { return _logging; }
+        }
 
         public FrmFacilityPopUp()
         {
             InitializeComponent();
+            _logging = new LoggingUtility(this.Name, Level.Info, 30);
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            #region 설비군 등록&수정
-
-            if (txtFACGCODE.Text == "" || txtFACCODE.Text == "" || txtFACNAME.Text == "" ||
-                cboFACEXHST.Text == "" || cboFACGOOD.Text == "" || cboFACUseYN.Text == "")
+            try
             {
-                MessageBox.Show("필수정보 입력 필요");
-                return;
-            }
+                #region 설비군 등록&수정
 
-            FACILITY_VO vo = new FACILITY_VO();
-            vo.FACG_CODE = txtFACGCODE.Text;
-            vo.FCLTS_CODE = txtFACCODE.Text;
-            vo.FCLTS_NAME = txtFACNAME.Text;
-            vo.FCLTS_WRHS_EXHST = cboFACEXHST.SelectedValue.ToString();
-            vo.FCLTS_WRHS_GOOD = cboFACGOOD.SelectedValue.ToString();
-            vo.FCLTS_WRHS_BAD = (cboFACBAD.SelectedValue == null) ? "" : cboFACBAD.SelectedValue.ToString();
-            vo.FCLTS_USE_YN = cboFACUseYN.Text;
-            vo.FCLTS_EXTRL_YN = cboEXTRLYN.Text;
-            vo.FCLTS_LAST_MDFR = FCLTS_LAST_MDFR;
-            vo.FCLTS_LAST_MDFY = FCLTS_LAST_MDFY;
-            vo.FCLTS_NOTE = txtNote.Text;
-            vo.FCLTS_REMARK = txtREMARK.Text;
-
-            if (!Update) //설비 등록
-            {
-                FacilityService service = new FacilityService();
-                Message msg = service.InsertFacility(vo, Update);
-                if (msg.IsSuccess)
+                if (txtFACGCODE.Text == "" || txtFACCODE.Text == "" || txtFACNAME.Text == "" ||
+                    cboFACEXHST.Text == "" || cboFACGOOD.Text == "" || cboFACUseYN.Text == "")
                 {
-                    MessageBox.Show(msg.ResultMessage);
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show(msg.ResultMessage);
+                    MessageBox.Show("필수정보 입력 필요");
                     return;
                 }
 
-            }
-            else //설비 수정
-            {
-                FacilityService service = new FacilityService();
-                Message msg = service.UpdateFacility(vo, Update);
-                if (msg.IsSuccess)
-                {
-                    MessageBox.Show(msg.ResultMessage);
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show(msg.ResultMessage);
-                    return;
-                }
-            }
+                FACILITY_VO vo = new FACILITY_VO();
+                vo.FACG_CODE = txtFACGCODE.Text;
+                vo.FCLTS_CODE = txtFACCODE.Text;
+                vo.FCLTS_NAME = txtFACNAME.Text;
+                vo.FCLTS_WRHS_EXHST = cboFACEXHST.SelectedValue.ToString();
+                vo.FCLTS_WRHS_GOOD = cboFACGOOD.SelectedValue.ToString();
+                vo.FCLTS_WRHS_BAD = (cboFACBAD.SelectedValue == null) ? "" : cboFACBAD.SelectedValue.ToString();
+                vo.FCLTS_USE_YN = cboFACUseYN.Text;
+                vo.FCLTS_EXTRL_YN = cboEXTRLYN.Text;
+                vo.FCLTS_LAST_MDFR = FCLTS_LAST_MDFR;
+                vo.FCLTS_LAST_MDFY = FCLTS_LAST_MDFY;
+                vo.FCLTS_NOTE = txtNote.Text;
+                vo.FCLTS_REMARK = txtREMARK.Text;
 
-            #endregion
+                if (!Update) //설비 등록
+                {
+                    FacilityService service = new FacilityService();
+                    Message msg = service.InsertFacility(vo, Update);
+                    if (msg.IsSuccess)
+                    {
+                        MessageBox.Show(msg.ResultMessage);
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show(msg.ResultMessage);
+                        return;
+                    }
+
+                }
+                else //설비 수정
+                {
+                    FacilityService service = new FacilityService();
+                    Message msg = service.UpdateFacility(vo, Update);
+                    if (msg.IsSuccess)
+                    {
+                        MessageBox.Show(msg.ResultMessage);
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show(msg.ResultMessage);
+                        return;
+                    }
+                }
+
+                #endregion
+            }
+            catch(Exception err)
+            {
+                _logging = new LoggingUtility(this.Name, Level.Info, 30);
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
