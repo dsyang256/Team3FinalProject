@@ -51,7 +51,7 @@ namespace TEAM3FINAL
             REORDERDAC dac = new REORDERDAC();
             return dac.insertREORDER(vo);
         }
-        public bool UpDateREORDER(string day, string manager, string code)
+        public bool UpDateREORDER(DateTime day, string manager, string code)
         {
             REORDERDAC dac = new REORDERDAC();
             return dac.UpDateREORDER(day, manager, code);

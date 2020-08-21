@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,16 +17,30 @@ namespace TEAM3FINAL
         /// 그리드뷰 체크 박스 
         /// </summary>
         CheckBox headerChk;
+        LoggingUtility _logging;
+        public LoggingUtility Log
+        {
+            get { return _logging; }
+        }
         public FrmBOM()
         {
             InitializeComponent();
+            _logging = new LoggingUtility(this.Name, Level.Info, 30);
         }
+
         private void FrmBOM_Load(object sender, EventArgs e)
         {
-            BtnSet();
-            DataGridViewColumnSet();
-            DataGridViewBinding();
-            ComboBinding();
+            try
+            {
+                BtnSet();
+                DataGridViewColumnSet();
+                DataGridViewBinding();
+                ComboBinding();
+            }
+            catch(Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
         }
         /// <summary>
         /// 삭제 버튼 이벤트
@@ -36,34 +51,43 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                dgvBOM.EndEdit();
-                StringBuilder sb = new StringBuilder();
-                int cnt = 0;
-                //품목 선택후 List를 전달
-                foreach (DataGridViewRow item in dgvBOM.Rows)
+                try
                 {
-                    if (Convert.ToBoolean(item.Cells[1].Value))
+                    dgvBOM.EndEdit();
+                    StringBuilder sb = new StringBuilder();
+                    int cnt = 0;
+                    //품목 선택후 List를 전달
+                    foreach (DataGridViewRow item in dgvBOM.Rows)
                     {
-                        sb.Append(item.Cells[2].Value.ToString() + "@");
-                        cnt++;
+                        if (Convert.ToBoolean(item.Cells[1].Value))
+                        {
+                            sb.Append(item.Cells[2].Value.ToString() + "@");
+                            cnt++;
+                        }
+                    }
+                    if (sb.Length < 1)
+                    {
+                        MessageBox.Show("미사용 항목을 선택하여 주십시오.");
+                        return;
+                    }
+                    sb.Remove(sb.Length - 1, 1);
+                    if (MessageBox.Show($"총 {cnt}개의 항목을 미사용 하겠습니까?? 하위항목도 미사용됨니다. ", "미사용", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        BOMService service = new BOMService();
+                        if (service.DeleteBOM(sb))
+                        {
+                            MessageBox.Show("미사용 완료");
+                            DataGridViewBinding();
+                        }
                     }
                 }
-                if (sb.Length < 1)
+                catch (Exception err)
                 {
-                    MessageBox.Show("미사용 항목을 선택하여 주십시오.");
-                    return;
+                    this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
                 }
-                sb.Remove(sb.Length - 1, 1);
-                if (MessageBox.Show($"총 {cnt}개의 항목을 미사용 하겠습니까?? 하위항목도 미사용됨니다. ", "미사용", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    BOMService service = new BOMService();
-                    if (service.DeleteBOM(sb))
-                    {
-                        MessageBox.Show("미사용 완료");
-                        DataGridViewBinding();
-                    }
-                }
+
             }
+
         }
         /// <summary>
         /// 등록 버튼 이벤트
@@ -74,11 +98,19 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                FrmBOMPopUp frm = new FrmBOMPopUp();
-                if(frm.ShowDialog() == DialogResult.OK)
+                try
                 {
-                    DataGridViewBinding();
+                    FrmBOMPopUp frm = new FrmBOMPopUp();
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        DataGridViewBinding();
+                    }
                 }
+                catch (Exception err)
+                {
+                    this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+                }
+
             }
         }
         /// <summary>
@@ -90,57 +122,64 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                if (dgvBOM.Rows.Count > 0)
+                try
                 {
-                    Microsoft.Office.Interop.Excel.Application xlApp = null;
-                    Microsoft.Office.Interop.Excel.Workbook xlWorkBook = null;
-                    Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet = null;
-                    try
+                    if (dgvBOM.Rows.Count > 0)
                     {
-                        int i, j;
-                        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                        saveFileDialog1.Filter = "Excel Files (*.xls)|*.xls";
-                        saveFileDialog1.InitialDirectory = "C:";
-                        saveFileDialog1.Title = "SaveBOM";
-                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                        Microsoft.Office.Interop.Excel.Application xlApp = null;
+                        Microsoft.Office.Interop.Excel.Workbook xlWorkBook = null;
+                        Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet = null;
+                        try
                         {
-                            xlApp = new Microsoft.Office.Interop.Excel.Application();
-                            xlWorkBook = xlApp.Workbooks.Add();
-                            xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-                            for (int k = 1; k < dgvBOM.ColumnCount; k++)
+                            int i, j;
+                            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                            saveFileDialog1.Filter = "Excel Files (*.xls)|*.xls";
+                            saveFileDialog1.InitialDirectory = "C:";
+                            saveFileDialog1.Title = "SaveBOM";
+                            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                             {
-                                xlWorkSheet.Cells[1, k] = dgvBOM.Columns[k].HeaderText.ToString();
-                            }
+                                xlApp = new Microsoft.Office.Interop.Excel.Application();
+                                xlWorkBook = xlApp.Workbooks.Add();
+                                xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-                            for (i = 0; i < dgvBOM.RowCount; i++)
-                            {
-                                for (j = 0; j < dgvBOM.ColumnCount - 1; j++)
+                                for (int k = 1; k < dgvBOM.ColumnCount; k++)
                                 {
-                                    if (dgvBOM[j, i].Value != null)
-                                        xlWorkSheet.Cells[i + 2, j + 1] = dgvBOM[j, i].Value.ToString();
+                                    xlWorkSheet.Cells[1, k] = dgvBOM.Columns[k].HeaderText.ToString();
                                 }
-                            }
 
-                            xlWorkBook.SaveAs(saveFileDialog1.FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
-                            xlWorkBook.Close(true);
-                            xlApp.Quit();
-                            MessageBox.Show("출력되었습니다.", "출력 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                for (i = 0; i < dgvBOM.RowCount; i++)
+                                {
+                                    for (j = 0; j < dgvBOM.ColumnCount - 1; j++)
+                                    {
+                                        if (dgvBOM[j, i].Value != null)
+                                            xlWorkSheet.Cells[i + 2, j + 1] = dgvBOM[j, i].Value.ToString();
+                                    }
+                                }
+
+                                xlWorkBook.SaveAs(saveFileDialog1.FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
+                                xlWorkBook.Close(true);
+                                xlApp.Quit();
+                                MessageBox.Show("출력되었습니다.", "출력 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
-                    }
-                    catch (Exception err)
-                    {
-                        MessageBox.Show("출력에 실패하였습니다.", "출력 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    finally
-                    {
-                        if (xlApp != null)
+                        catch (Exception err)
                         {
-                            releaseObject(xlWorkSheet);
-                            releaseObject(xlWorkBook);
-                            releaseObject(xlApp);
+                            MessageBox.Show("출력에 실패하였습니다.", "출력 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        finally
+                        {
+                            if (xlApp != null)
+                            {
+                                releaseObject(xlWorkSheet);
+                                releaseObject(xlWorkBook);
+                                releaseObject(xlApp);
+                            }
                         }
                     }
+                }
+                catch (Exception err)
+                {
+                    this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
                 }
 
             }
@@ -152,10 +191,11 @@ namespace TEAM3FINAL
                 System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
                 obj = null;
             }
-            catch (Exception ex)
+            catch (Exception err)
             {
                 obj = null;
-                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+                MessageBox.Show("Exception Occured while releasing object " + err.ToString());
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
             }
             finally
             {
@@ -172,7 +212,14 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                DataGridViewBinding();
+                try
+                {
+                    DataGridViewBinding();
+                }
+                catch (Exception err)
+                {
+                    this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+                }
             }
         }
         /// <summary>
@@ -184,13 +231,20 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                if(ITEM_NAEM.Text.Length <1)
+                try
                 {
-                    MessageBox.Show("검색하실 품목명을 입력해주세요");
-                    return;
+                    if (ITEM_NAEM.Text.Length < 1)
+                    {
+                        MessageBox.Show("검색하실 품목명을 입력해주세요");
+                        return;
+                    }
+                    BOMService bom = new BOMService();
+                    dgvBOM.DataSource = bom.SearchBOM(day.Value.ToShortDateString(), ITEM_NAEM.Text, BOM_USE_YN.Text);
                 }
-                BOMService bom = new BOMService();
-                dgvBOM.DataSource = bom.SearchBOM(day.Value.ToShortDateString(), ITEM_NAEM.Text, BOM_USE_YN.Text);
+                catch (Exception err)
+                {
+                    this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+                }
             }
         }
         /// <summary>
@@ -202,37 +256,46 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                dgvBOM.EndEdit();
-                int cnt = 0;
-                int code = 0;
-                //체크가 되었는지 확인
-                foreach (DataGridViewRow item in dgvBOM.Rows)
+                try
                 {
-                    if (Convert.ToBoolean(item.Cells[1].Value))
+                    dgvBOM.EndEdit();
+                    int cnt = 0;
+                    int code = 0;
+                    //체크가 되었는지 확인
+                    foreach (DataGridViewRow item in dgvBOM.Rows)
                     {
-                        //MessageBox.Show(item.Cells[2].ToString());
-                        code = Convert.ToInt32(item.Cells[2].Value);
-                        cnt++;
+                        if (Convert.ToBoolean(item.Cells[1].Value))
+                        {
+                            //MessageBox.Show(item.Cells[2].ToString());
+                            code = Convert.ToInt32(item.Cells[2].Value);
+                            cnt++;
+                        }
+                    }
+                    if (cnt < 1)
+                    {
+                        MessageBox.Show("수정할 항목을 선택해주세요.");
+                        return;
+                    }
+                    if (cnt != 1)
+                    {
+                        MessageBox.Show("하나의 항목씩만 수정 가능 합니다.");
+                        return;
+                    }
+                    else if (cnt == 1)
+                    {
+                        FrmBOMPopUp frm = new FrmBOMPopUp(code);
+                        if (frm.ShowDialog() == DialogResult.OK)
+                        {
+                            Reset(null, null);
+                        }
                     }
                 }
-                if (cnt < 1)
+                catch (Exception err)
                 {
-                    MessageBox.Show("수정할 항목을 선택해주세요.");
-                    return;
+                    this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
                 }
-                if (cnt != 1)
-                {
-                    MessageBox.Show("하나의 항목씩만 수정 가능 합니다.");
-                    return;
-                }
-                else if (cnt == 1)
-                {
-                    FrmBOMPopUp frm = new FrmBOMPopUp(code);
-                    if (frm.ShowDialog() == DialogResult.OK)
-                    {
-                        Reset(null, null);
-                    }
-                }
+
+
             }
         }
         /// <summary>
