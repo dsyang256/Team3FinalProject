@@ -7317,6 +7317,7 @@
     <Compile Include="DAC\ConnectionAccess.cs" />
     <Compile Include="DAC\Helper.cs" />
     <Compile Include="DAC\OrderDAC.cs" />
+    <Compile Include="DAC\WorkDAC.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
