@@ -32,12 +32,12 @@ namespace TEAM3FINAL
             dc.Frozen = true;
             //일반컬럼 추가
             DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "PK", "BOR_CODE", false, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "품목", "ITEM_CODE", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "품명", "ITEM_NAME", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "품목", "ITEM_CODE", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "품명", "ITEM_NAME", true, 200);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "공정", "BOR_PROCS_CODE", true, 80);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "공정명", "COMMON_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "설비", "FCLTS_CODE", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "설비명", "FCLTS_NAME", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "설비", "FCLTS_CODE", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "설비명", "FCLTS_NAME", true, 150);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "Tack Time", "BOR_PROCS_TIME", true, 100, DataGridViewContentAlignment.MiddleRight);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "우선순위", "BOR_PRIORT", true, 100, DataGridViewContentAlignment.MiddleRight);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvBORList, "공정선행일", "BOR_PROCS_LEADTIME", true, 200, DataGridViewContentAlignment.MiddleRight);

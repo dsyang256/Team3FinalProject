@@ -64,30 +64,6 @@ namespace TEAM3FINALWEB.Controllers
             OrderDAC dac2 = new OrderDAC();
             ViewBag.OrderList = dac2.GetOrderList();
 
-            /*
-            //order
-            //List<string> names = new List<string>();
-            //names.Add("'#f56954'");
-            //names.Add("'#d2d6de'");
-            //names.Add("'#827b1a'");
-            //names.Add("'#827b1a'");
-            //names.Add("'#188066'");
-            //names.Add("'#1b3180'");
-            //names.Add("'#46187a'");
-            //names.Add("'#7a1846'");
-            //names.Add("'#c9a3b5'");
-            //int j = 0;
-            //System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            //foreach (var item in list)
-            //{
-            //    sb.Append("{ value: " + item.TotalPrice + " , color: " + names[j] + ", highlight: " + names[j] + ", label: " + item.COMNAME + "},");
-            //    j++;
-            //}
-            //string result = "[" + sb.ToString().TrimEnd(',') + "]";
-
-            //ViewBag.result = result;
-            */
-
             return View(orders);
         }
     }
