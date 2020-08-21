@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,62 +35,77 @@ namespace TEAM3FINAL
         public string BOR_LAST_MDFY { get; set; }
 
         #endregion 
+
+        LoggingUtility _logging;
+        public LoggingUtility Log
+        {
+            get { return _logging; }
+        }
+
         public FrmBORPopUp()
         {
             InitializeComponent();
+            _logging = new LoggingUtility(this.Name, Level.Info, 30);
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            #region BOR등록 & 수정
-            if (cboItemCode.Text == "" || cboPROC.Text == "" || cboFacil.Text == "" || txtTime.Text == "" ||
-                txtPrio.Text == "" || cboUseYN.Text == "")
-            {
-                MessageBox.Show("필수정보 입력 필요");
-                return;
-            }
-
-            BOR_VO vo = new BOR_VO();
-            vo.BOR_CODE = BOR_CODE;
-            vo.ITEM_CODE = cboItemCode.Text;
-            vo.BOR_PROCS_CODE = cboPROC.Text;
-            vo.FCLTS_CODE = cboFacil.Text;
-            vo.BOR_PROCS_TIME = int.Parse(txtTime.Text);
-            vo.BOR_PRIORT = int.Parse(txtPrio.Text);
-            if(int.TryParse(txtLead.Text, out int plzNull1))
-                vo.BOR_PROCS_LEADTIME = plzNull1;
-            else
-                vo.BOR_PROCS_LEADTIME = null;
             try
             {
-                vo.BOR_YIELD = Convert.ToDecimal(txtYIELD.Text);
-            }
-            catch
-            {
-                MessageBox.Show("err수율 : 올바른 소수점의 형태가 아닙니다.");
-                return;
-            }
+                #region BOR등록 & 수정
+                if (cboItemCode.Text == "" || cboPROC.Text == "" || cboFacil.Text == "" || txtTime.Text == "" ||
+                    txtPrio.Text == "" || cboUseYN.Text == "")
+                {
+                    MessageBox.Show("필수정보 입력 필요");
+                    return;
+                }
 
-            vo.BOR_USE_YN = cboUseYN.Text;
-            vo.BOR_REMARK = txtREMARK.Text;
-            vo.BOR_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
-            vo.BOR_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                BOR_VO vo = new BOR_VO();
+                vo.BOR_CODE = BOR_CODE;
+                vo.ITEM_CODE = cboItemCode.Text;
+                vo.BOR_PROCS_CODE = cboPROC.Text;
+                vo.FCLTS_CODE = cboFacil.Text;
+                vo.BOR_PROCS_TIME = int.Parse(txtTime.Text);
+                vo.BOR_PRIORT = int.Parse(txtPrio.Text);
+                if (int.TryParse(txtLead.Text, out int plzNull1))
+                    vo.BOR_PROCS_LEADTIME = plzNull1;
+                else
+                    vo.BOR_PROCS_LEADTIME = null;
+                try
+                {
+                    vo.BOR_YIELD = Convert.ToDecimal(txtYIELD.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("err수율 : 올바른 소수점의 형태가 아닙니다.");
+                    return;
+                }
 
-            BORService service = new BORService();
-            Message msg = service.SaveBOR(vo, Update);
-            if (msg.IsSuccess)
-            {
-                MessageBox.Show(msg.ResultMessage);
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show(msg.ResultMessage);
-                return;
-            }
+                vo.BOR_USE_YN = cboUseYN.Text;
+                vo.BOR_REMARK = txtREMARK.Text;
+                vo.BOR_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
+                vo.BOR_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
-            #endregion
+                BORService service = new BORService();
+                Message msg = service.SaveBOR(vo, Update);
+                if (msg.IsSuccess)
+                {
+                    MessageBox.Show(msg.ResultMessage);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show(msg.ResultMessage);
+                    return;
+                }
+
+                #endregion
+            }
+            catch(Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

@@ -397,10 +397,18 @@ namespace TEAM3FINAL
         //설비군 더블클릭하여 설비군을 모로 하는 설비리스트 찾기
         private void dgvFacilityGroupList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgvFacilityList.DataSource = null;
-            string code = dgvFacilityGroupList.SelectedRows[0].Cells[1].Value.ToString();
-            FacilityService service = new FacilityService();
-            dgvFacilityList.DataSource = service.SearchFacilityInfo(code);
+            try
+            {
+                dgvFacilityList.DataSource = null;
+                string code = dgvFacilityGroupList.SelectedRows[0].Cells[1].Value.ToString();
+                FacilityService service = new FacilityService();
+                dgvFacilityList.DataSource = service.SearchFacilityInfo(code);
+            }
+            catch(Exception err)
+            {
+                return;
+            }
+
         }
 
         private void FrmFacilityGroup_FormClosing(object sender, FormClosingEventArgs e)

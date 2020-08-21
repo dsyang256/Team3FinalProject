@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,9 +39,16 @@ namespace TEAM3FINAL
 
         #endregion
 
+        LoggingUtility _logging;
+        public LoggingUtility Log
+        {
+            get { return _logging; }
+        }
+
         public FrmCompanyPopUp()
         {
             InitializeComponent();
+            _logging = new LoggingUtility(this.Name, Level.Info, 30);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -62,43 +70,49 @@ namespace TEAM3FINAL
             txtModifier.Text = COM_LAST_MDFR;
             txtModifyDate.Text = COM_LAST_MDFY;
 
-            if (Update)
+            try
             {
-                txtComCode.Text = COM_CODE;
-                txtComName.Text = COM_NAME;
-                txtComType.Text = COM_TYP_INDSTRY;
-                txtOwnerName.Text = COM_CEO;
-                txtRegNum.Text = COM_REG_NUM;
-                cboComType.Text = COM_TYP;
-                txtTypeTEA.Text = COM_TYP_BSNS;
-                txtManager.Text = COM_MANAGER;
-                txtEmail.Text = COM_EML;
-                txtTell.Text = COM_TEL;
-                try 
+                if (Update)
                 {
-                    dtpStart.Value = Convert.ToDateTime(COM_STR_DATE);
-                }
-                catch
-                {
-                    dtpStart.Checked = false;
-                }
-                try
-                {
-                    dtpEnd.Value = Convert.ToDateTime(COM_END_DATE);
-                }
-                catch
-                {
-                    dtpEnd.Checked = false;
-                }
-                
-                cboTradeYN.Text = COM_TRAD_YN;
-                txtFAX.Text = COM_FAX;
-                cboAutoYN.Text = COM_AUTOIN_YN;
-                cboStartYN.Text = COM_START_YN;
-                cboUseYN.Text = COM_USE_YN;
-                txtComDesc.Text = COM_INFO;
-            }
+                    txtComCode.Text = COM_CODE;
+                    txtComName.Text = COM_NAME;
+                    txtComType.Text = COM_TYP_INDSTRY;
+                    txtOwnerName.Text = COM_CEO;
+                    txtRegNum.Text = COM_REG_NUM;
+                    cboComType.Text = COM_TYP;
+                    txtTypeTEA.Text = COM_TYP_BSNS;
+                    txtManager.Text = COM_MANAGER;
+                    txtEmail.Text = COM_EML;
+                    txtTell.Text = COM_TEL;
+                    try
+                    {
+                        dtpStart.Value = Convert.ToDateTime(COM_STR_DATE);
+                    }
+                    catch
+                    {
+                        dtpStart.Checked = false;
+                    }
+                    try
+                    {
+                        dtpEnd.Value = Convert.ToDateTime(COM_END_DATE);
+                    }
+                    catch
+                    {
+                        dtpEnd.Checked = false;
+                    }
 
+                    cboTradeYN.Text = COM_TRAD_YN;
+                    txtFAX.Text = COM_FAX;
+                    cboAutoYN.Text = COM_AUTOIN_YN;
+                    cboStartYN.Text = COM_START_YN;
+                    cboUseYN.Text = COM_USE_YN;
+                    txtComDesc.Text = COM_INFO;
+                }
+            }
+            catch(Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
         }
 
         private void ComboBinding()
@@ -124,82 +138,103 @@ namespace TEAM3FINAL
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (txtComCode.Text == "" || txtComName.Text == "" || cboComType.Text == "" || cboAutoYN.Text == "" ||
-                cboStartYN.Text == "" || cboUseYN.Text == "")
+            try
             {
-                MessageBox.Show("필수정보 입력 필요");
-                return;
-            }
+                if (txtComCode.Text == "" || txtComName.Text == "" || cboComType.Text == "" || cboAutoYN.Text == "" ||
+                    cboStartYN.Text == "" || cboUseYN.Text == "")
+                {
+                    MessageBox.Show("필수정보 입력 필요");
+                    return;
+                }
 
-            COMPANY_VO vo = new COMPANY_VO();
-            vo.COM_CODE = txtComCode.Text;
-            vo.COM_NAME = txtComName.Text;
-            vo.COM_TYP = cboComType.Text;
-            vo.COM_CEO = txtOwnerName.Text;
-            vo.COM_REG_NUM = txtRegNum.Text;
-            vo.COM_TYP_INDSTRY = txtComType.Text;
-            vo.COM_TYP_BSNS = txtTypeTEA.Text;
-            vo.COM_MANAGER = txtManager.Text;
-            vo.COM_EML = txtEmail.Text;
-            vo.COM_TEL = txtTell.Text;
-            if (dtpStart.Checked)
-                vo.COM_STR_DATE = dtpStart.Value.ToString("yyyy-MM-dd");
-            else
-                vo.COM_STR_DATE = null;
-            if (dtpEnd.Checked)
-                vo.COM_END_DATE = dtpEnd.Value.ToString("yyyy-MM-dd");
-            else
-                vo.COM_END_DATE = null;
-            vo.COM_TRAD_YN = cboTradeYN.Text;
-            vo.COM_FAX = txtFAX.Text;
-            vo.COM_AUTOIN_YN = cboAutoYN.Text;
-            vo.COM_START_YN = cboStartYN.Text;
-            vo.COM_USE_YN = cboUseYN.Text;
-            vo.COM_INFO = txtComDesc.Text;
-            vo.COM_LAST_MDFR = COM_LAST_MDFR;
-            vo.COM_LAST_MDFY = COM_LAST_MDFY;
+                COMPANY_VO vo = new COMPANY_VO();
+                vo.COM_CODE = txtComCode.Text;
+                vo.COM_NAME = txtComName.Text;
+                vo.COM_TYP = cboComType.Text;
+                vo.COM_CEO = txtOwnerName.Text;
+                vo.COM_REG_NUM = txtRegNum.Text;
+                vo.COM_TYP_INDSTRY = txtComType.Text;
+                vo.COM_TYP_BSNS = txtTypeTEA.Text;
+                vo.COM_MANAGER = txtManager.Text;
+                vo.COM_EML = txtEmail.Text;
+                vo.COM_TEL = txtTell.Text;
+                if (dtpStart.Checked)
+                    vo.COM_STR_DATE = dtpStart.Value.ToString("yyyy-MM-dd");
+                else
+                    vo.COM_STR_DATE = null;
+                if (dtpEnd.Checked)
+                    vo.COM_END_DATE = dtpEnd.Value.ToString("yyyy-MM-dd");
+                else
+                    vo.COM_END_DATE = null;
+                vo.COM_TRAD_YN = cboTradeYN.Text;
+                vo.COM_FAX = txtFAX.Text;
+                vo.COM_AUTOIN_YN = cboAutoYN.Text;
+                vo.COM_START_YN = cboStartYN.Text;
+                vo.COM_USE_YN = cboUseYN.Text;
+                vo.COM_INFO = txtComDesc.Text;
+                vo.COM_LAST_MDFR = COM_LAST_MDFR;
+                vo.COM_LAST_MDFY = COM_LAST_MDFY;
 
-            CompanyService service = new CompanyService();
-            Message msg = service.SaveCompany(vo, Update);
-            if (msg.IsSuccess)
-            {
-                MessageBox.Show(msg.ResultMessage);
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                CompanyService service = new CompanyService();
+                Message msg = service.SaveCompany(vo, Update);
+                if (msg.IsSuccess)
+                {
+                    MessageBox.Show(msg.ResultMessage);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show(msg.ResultMessage);
+                    return;
+                }
             }
-            else
+            catch(Exception err)
             {
-                MessageBox.Show(msg.ResultMessage);
-                return;
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
             }
         }
 
         //등록화면시 거래종료날짜 null
         private void dtpEnd_ValueChanged(object sender, EventArgs e)
-        {            
-            if (!dtpEnd.Checked)
-            {                
-                dtpEnd.CustomFormat = " ";
-                dtpEnd.Format = DateTimePickerFormat.Custom;
-            }
-            else
+        {
+            try
             {
-                dtpEnd.CustomFormat = null;
-                dtpEnd.Format = DateTimePickerFormat.Long;
+                if (!dtpEnd.Checked)
+                {
+                    dtpEnd.CustomFormat = " ";
+                    dtpEnd.Format = DateTimePickerFormat.Custom;
+                }
+                else
+                {
+                    dtpEnd.CustomFormat = null;
+                    dtpEnd.Format = DateTimePickerFormat.Long;
+                }
+            }
+            catch(Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
             }
         }
 
         private void dtpStart_ValueChanged(object sender, EventArgs e)
         {
-            if (!dtpStart.Checked)
+            try
             {
-                dtpStart.CustomFormat = " ";
-                dtpStart.Format = DateTimePickerFormat.Custom;
+                if (!dtpStart.Checked)
+                {
+                    dtpStart.CustomFormat = " ";
+                    dtpStart.Format = DateTimePickerFormat.Custom;
+                }
+                else
+                {
+                    dtpStart.CustomFormat = null;
+                    dtpStart.Format = DateTimePickerFormat.Long;
+                }
             }
-            else
+            catch(Exception err)
             {
-                dtpStart.CustomFormat = null;
-                dtpStart.Format = DateTimePickerFormat.Long;
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
             }
         }
     }
