@@ -9,6 +9,7 @@ using TEAM3FINAL.Services;
 using TEAM3FINALVO;
 using System.Linq;
 using Message = TEAM3FINALVO.Message;
+using log4net.Core;
 
 namespace TEAM3FINAL
 {
