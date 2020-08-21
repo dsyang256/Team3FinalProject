@@ -32,9 +32,9 @@ namespace TEAM3FINAL
             dc.Frozen = true;
             //일반컬럼 추가
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "시설군", "FAC_FCLTY", true, 90);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "시설구분", "FAC_TYP", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "시설코드", "FAC_CODE", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "시설명", "FAC_NAME", true, 90);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "시설구분", "FAC_TYP", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "시설코드", "FAC_CODE", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "시설명", "FAC_NAME", true, 150);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "상위시설", "FAC_FCLTY_PARENT", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "시설설명", "FAC_DESC", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "유무상구분", "FAC_FREE_YN", true, 110);
@@ -45,7 +45,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "업체코드", "COM_NAME", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "사용유무", "FAC_USE_YN", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "최종수정자", "FAC_LAST_MDFR", true, 110);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "최종수정시간", "FAC_LAST_MDFY", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "최종수정시간", "FAC_LAST_MDFY", true, 200);
             dgvFactoryList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvFactoryList.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvFactoryList);

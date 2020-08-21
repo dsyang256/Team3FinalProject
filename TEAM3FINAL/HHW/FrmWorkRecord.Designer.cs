@@ -40,7 +40,6 @@
             this.dgvWorkRecordList = new WindowsFormsApp18.MyDataGridView();
             this.btnWorkCancel = new System.Windows.Forms.Button();
             this.btnMOVE = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.cboDATEtype = new System.Windows.Forms.ComboBox();
             this.dtpFROM = new System.Windows.Forms.DateTimePicker();
             this.dtpTO = new System.Windows.Forms.DateTimePicker();
@@ -60,7 +59,7 @@
             // panel1
             // 
             this.panel1.Location = new System.Drawing.Point(9, 10);
-            this.panel1.Size = new System.Drawing.Size(1226, 82);
+            this.panel1.Size = new System.Drawing.Size(1232, 82);
             // 
             // panel2
             // 
@@ -73,7 +72,7 @@
             this.panel2.Controls.Add(this.cboDATEtype);
             this.panel2.Location = new System.Drawing.Point(3, 11);
             this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.panel2.Size = new System.Drawing.Size(1174, 62);
+            this.panel2.Size = new System.Drawing.Size(1224, 62);
             // 
             // label1
             // 
@@ -163,7 +162,7 @@
             this.btnWorkCancel.AutoSize = true;
             this.btnWorkCancel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnWorkCancel.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnWorkCancel.Location = new System.Drawing.Point(949, 104);
+            this.btnWorkCancel.Location = new System.Drawing.Point(1044, 102);
             this.btnWorkCancel.Name = "btnWorkCancel";
             this.btnWorkCancel.Size = new System.Drawing.Size(94, 25);
             this.btnWorkCancel.TabIndex = 9;
@@ -177,26 +176,13 @@
             this.btnMOVE.AutoSize = true;
             this.btnMOVE.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnMOVE.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnMOVE.Location = new System.Drawing.Point(1049, 104);
+            this.btnMOVE.Location = new System.Drawing.Point(1144, 102);
             this.btnMOVE.Name = "btnMOVE";
             this.btnMOVE.Size = new System.Drawing.Size(89, 25);
             this.btnMOVE.TabIndex = 9;
             this.btnMOVE.Text = "실적등록";
             this.btnMOVE.UseVisualStyleBackColor = false;
             this.btnMOVE.Click += new System.EventHandler(this.btnMOVE_Click);
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.AutoSize = true;
-            this.button3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.button3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button3.Location = new System.Drawing.Point(1138, 104);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(95, 25);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "///바코드란///";
-            this.button3.UseVisualStyleBackColor = false;
             // 
             // cboDATEtype
             // 
@@ -349,13 +335,12 @@
             this.Controls.Add(this.btnFinalWork);
             this.Controls.Add(this.menuPanel2);
             this.Controls.Add(this.dgvMOVEList);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.btnMOVE);
             this.Controls.Add(this.btnWorkCancel);
             this.Controls.Add(this.menuPanel1);
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "FrmWorkRecord";
-            this.Text = "작업실적";
+            this.Text = "작업실적등록";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmWorkRecord_FormClosing);
             this.Load += new System.EventHandler(this.FrmWorkRecord_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
@@ -365,7 +350,6 @@
             this.Controls.SetChildIndex(this.menuPanel1, 0);
             this.Controls.SetChildIndex(this.btnWorkCancel, 0);
             this.Controls.SetChildIndex(this.btnMOVE, 0);
-            this.Controls.SetChildIndex(this.button3, 0);
             this.Controls.SetChildIndex(this.dgvMOVEList, 0);
             this.Controls.SetChildIndex(this.menuPanel2, 0);
             this.Controls.SetChildIndex(this.btnFinalWork, 0);
@@ -386,7 +370,6 @@
         private WindowsFormsApp18.MyDataGridView dgvWorkRecordList;
         private System.Windows.Forms.Button btnWorkCancel;
         private System.Windows.Forms.Button btnMOVE;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox cboSTATE;
         private System.Windows.Forms.DateTimePicker dtpTO;
         private System.Windows.Forms.DateTimePicker dtpFROM;

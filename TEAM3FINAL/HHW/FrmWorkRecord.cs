@@ -72,15 +72,15 @@ namespace TEAM3FINAL
             DataGridViewColumn dc = dgvWorkRecordList.Columns[0];
             dc.Frozen = true;
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "품목", "ITEM_CODE", true, 100); //1
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "품명", "ITEM_NAME", true, 100); //2
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "규격", "ITEM_STND", true, 100); //3
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "창고코드", "FCLTS_CODE", true, 100); //4
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "이동창고", "FCLTS_NAME", true, 100); //5
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "품목", "ITEM_CODE", true, 150); //1
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "품명", "ITEM_NAME", true, 300); //2
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "규격", "ITEM_STND", true, 200); //3
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "창고코드", "FCLTS_CODE", true, 180); //4
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "이동창고", "FCLTS_NAME", true, 180); //5
             DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "이동수량", "WO_QTY_OUT", true, 100, DataGridViewContentAlignment.MiddleRight); //6 양품수량
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "비고", "WO_REMARK", true, 80); //7
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "작업지시서번호", "SALES_WORK_ORDER_ID", true, 150); //8
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "TYPE", "ITEM_TYP", true, 80); //9
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "비고", "WO_REMARK", true, 400); //7
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "작업지시서번호", "SALES_WORK_ORDER_ID", true, 200); //8
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "TYPE", "ITEM_TYP", true, 100); //9
             dgvMOVEList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvMOVEList.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvMOVEList);
