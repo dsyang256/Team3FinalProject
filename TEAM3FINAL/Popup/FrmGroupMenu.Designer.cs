@@ -37,14 +37,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.dgvGroups = new WindowsFormsApp18.MyDataGridView();
+            this.dgvMenus = new WindowsFormsApp18.MyDataGridView();
             this.label11 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnRightAdd = new System.Windows.Forms.Button();
             this.btnRightRemove = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancels = new System.Windows.Forms.Button();
-            this.dgvGroups = new WindowsFormsApp18.MyDataGridView();
-            this.dgvMenus = new WindowsFormsApp18.MyDataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -100,96 +100,6 @@
             this.splitContainer1.Size = new System.Drawing.Size(1025, 456);
             this.splitContainer1.SplitterDistance = 710;
             this.splitContainer1.TabIndex = 3;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label11.Location = new System.Drawing.Point(6, 77);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(69, 20);
-            this.label11.TabIndex = 55;
-            this.label11.Text = "권한그룹";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(721, 77);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(104, 20);
-            this.label4.TabIndex = 55;
-            this.label4.Text = "권한등록 메뉴";
-            // 
-            // btnRightAdd
-            // 
-            this.btnRightAdd.BackColor = System.Drawing.Color.Transparent;
-            this.btnRightAdd.FlatAppearance.BorderSize = 0;
-            this.btnRightAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRightAdd.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnRightAdd.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnRightAdd.Image = global::TEAM3FINAL.Properties.Resources.plus_math_30px;
-            this.btnRightAdd.Location = new System.Drawing.Point(668, 77);
-            this.btnRightAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnRightAdd.Name = "btnRightAdd";
-            this.btnRightAdd.Size = new System.Drawing.Size(20, 20);
-            this.btnRightAdd.TabIndex = 54;
-            this.btnRightAdd.UseVisualStyleBackColor = false;
-            this.btnRightAdd.Click += new System.EventHandler(this.btnRightAdd_Click);
-            // 
-            // btnRightRemove
-            // 
-            this.btnRightRemove.BackColor = System.Drawing.Color.Transparent;
-            this.btnRightRemove.FlatAppearance.BorderSize = 0;
-            this.btnRightRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRightRemove.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnRightRemove.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnRightRemove.Image = global::TEAM3FINAL.Properties.Resources.subtract_30px;
-            this.btnRightRemove.Location = new System.Drawing.Point(694, 77);
-            this.btnRightRemove.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnRightRemove.Name = "btnRightRemove";
-            this.btnRightRemove.Size = new System.Drawing.Size(20, 20);
-            this.btnRightRemove.TabIndex = 54;
-            this.btnRightRemove.UseVisualStyleBackColor = false;
-            this.btnRightRemove.Click += new System.EventHandler(this.btnRightRemove_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.BackColor = System.Drawing.Color.Transparent;
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnSave.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnSave.Image = global::TEAM3FINAL.Properties.Resources.Save_16x16;
-            this.btnSave.Location = new System.Drawing.Point(967, 61);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(63, 33);
-            this.btnSave.TabIndex = 54;
-            this.btnSave.Text = "저장";
-            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnCancels
-            // 
-            this.btnCancels.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancels.BackColor = System.Drawing.Color.Transparent;
-            this.btnCancels.FlatAppearance.BorderSize = 0;
-            this.btnCancels.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancels.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnCancels.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnCancels.Image = global::TEAM3FINAL.Properties.Resources.Save_16x16;
-            this.btnCancels.Location = new System.Drawing.Point(967, 13);
-            this.btnCancels.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnCancels.Name = "btnCancels";
-            this.btnCancels.Size = new System.Drawing.Size(63, 33);
-            this.btnCancels.TabIndex = 54;
-            this.btnCancels.Text = "취소";
-            this.btnCancels.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancels.UseVisualStyleBackColor = false;
-            this.btnCancels.Click += new System.EventHandler(this.btnCancels_Click);
             // 
             // dgvGroups
             // 
@@ -271,6 +181,96 @@
             this.dgvMenus.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMenus.Size = new System.Drawing.Size(311, 456);
             this.dgvMenus.TabIndex = 0;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label11.Location = new System.Drawing.Point(6, 77);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(69, 20);
+            this.label11.TabIndex = 55;
+            this.label11.Text = "권한그룹";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Location = new System.Drawing.Point(721, 77);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(104, 20);
+            this.label4.TabIndex = 55;
+            this.label4.Text = "권한등록 메뉴";
+            // 
+            // btnRightAdd
+            // 
+            this.btnRightAdd.BackColor = System.Drawing.Color.Transparent;
+            this.btnRightAdd.FlatAppearance.BorderSize = 0;
+            this.btnRightAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRightAdd.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnRightAdd.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnRightAdd.Image = global::TEAM3FINAL.Properties.Resources.plus_math_30px;
+            this.btnRightAdd.Location = new System.Drawing.Point(668, 77);
+            this.btnRightAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnRightAdd.Name = "btnRightAdd";
+            this.btnRightAdd.Size = new System.Drawing.Size(20, 20);
+            this.btnRightAdd.TabIndex = 54;
+            this.btnRightAdd.UseVisualStyleBackColor = false;
+            this.btnRightAdd.Click += new System.EventHandler(this.btnRightAdd_Click);
+            // 
+            // btnRightRemove
+            // 
+            this.btnRightRemove.BackColor = System.Drawing.Color.Transparent;
+            this.btnRightRemove.FlatAppearance.BorderSize = 0;
+            this.btnRightRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRightRemove.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnRightRemove.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnRightRemove.Image = global::TEAM3FINAL.Properties.Resources.subtract_30px;
+            this.btnRightRemove.Location = new System.Drawing.Point(694, 77);
+            this.btnRightRemove.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnRightRemove.Name = "btnRightRemove";
+            this.btnRightRemove.Size = new System.Drawing.Size(20, 20);
+            this.btnRightRemove.TabIndex = 54;
+            this.btnRightRemove.UseVisualStyleBackColor = false;
+            this.btnRightRemove.Click += new System.EventHandler(this.btnRightRemove_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.BackColor = System.Drawing.Color.Transparent;
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnSave.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnSave.Image = global::TEAM3FINAL.Properties.Resources.Save_16x16;
+            this.btnSave.Location = new System.Drawing.Point(967, 61);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(63, 33);
+            this.btnSave.TabIndex = 54;
+            this.btnSave.Text = "저장";
+            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnCancels
+            // 
+            this.btnCancels.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancels.BackColor = System.Drawing.Color.Transparent;
+            this.btnCancels.FlatAppearance.BorderSize = 0;
+            this.btnCancels.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancels.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnCancels.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.btnCancels.Image = global::TEAM3FINAL.Properties.Resources.delete_16px;
+            this.btnCancels.Location = new System.Drawing.Point(967, 13);
+            this.btnCancels.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCancels.Name = "btnCancels";
+            this.btnCancels.Size = new System.Drawing.Size(63, 33);
+            this.btnCancels.TabIndex = 54;
+            this.btnCancels.Text = "취소";
+            this.btnCancels.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCancels.UseVisualStyleBackColor = false;
+            this.btnCancels.Click += new System.EventHandler(this.btnCancels_Click);
             // 
             // FrmGroupMenu
             // 

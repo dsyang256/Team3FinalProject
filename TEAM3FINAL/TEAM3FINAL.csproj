@@ -812,6 +812,10 @@
   <ItemGroup>
     <None Include="Resources\tag_window_50px.png" />
     <None Include="Resources\exit_30px.png" />
+    <None Include="Resources\Image1.bmp" />
+    <None Include="Resources\delete_16px.png" />
+    <None Include="Resources\customer_64px.png" />
+    <None Include="Resources\import_24px.png" />
     <Content Include="Resources\Interop.Microsoft.Office.Core.dll" />
     <Content Include="Resources\Interop.Microsoft.Office.Interop.Excel.dll" />
     <Content Include="Resources\Interop.VBIDE.dll" />

@@ -60,6 +60,8 @@
             // btnOK
             // 
             this.btnOK.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnOK.Image = global::TEAM3FINAL.Properties.Resources.import_24px;
+            this.btnOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOK.Location = new System.Drawing.Point(100, 275);
             this.btnOK.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnOK.Size = new System.Drawing.Size(200, 52);
