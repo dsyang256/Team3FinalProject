@@ -296,7 +296,6 @@
             this.dgvMOVEList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMOVEList.Size = new System.Drawing.Size(1229, 131);
             this.dgvMOVEList.TabIndex = 10;
-            this.dgvMOVEList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMOVEList_CellContentClick);
             // 
             // menuPanel2
             // 

@@ -9,6 +9,7 @@ using TEAM3FINALVO;
 using TEAM3FINAL.Services;
 using System.Linq;
 using Message = TEAM3FINALVO.Message;
+using log4net.Core;
 
 namespace TEAM3FINAL
 {
@@ -25,63 +26,77 @@ namespace TEAM3FINAL
 
         #endregion
 
+        LoggingUtility _logging;
+        public LoggingUtility Log
+        {
+            get { return _logging; }
+        }
+
         public FrmFacilityGroupPopUp()
         {
             InitializeComponent();
+            _logging = new LoggingUtility(this.Name, Level.Info, 30);
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            #region 설비군 등록&수정
-
-            if(txtFACGCODE.Text == "" || txtFACGNAME.Text == "" || cboFACGUseYN.Text == "")
+            try
             {
-                MessageBox.Show("필수정보 입력 필요");
-                return;
-            }
+                #region 설비군 등록&수정
 
-            FACILITY_GROUP vo = new FACILITY_GROUP();
-            vo.FACG_CODE = txtFACGCODE.Text;
-            vo.FACG_NAME = txtFACGNAME.Text;
-            vo.FACG_USE_YN = cboFACGUseYN.Text;
-            vo.FACG_LAST_MDFR = txtModifier.Text;
-            vo.FACG_LAST_MDFY = txtModifyDate.Text;
-            vo.FACG_DESC = txtDesc.Text;
-
-            if(!Update) //설비군 등록
-            {
-                FacilityService service = new FacilityService();
-                Message msg = service.InsertFacilityGroup(vo, Update);
-                if(msg.IsSuccess)
+                if (txtFACGCODE.Text == "" || txtFACGNAME.Text == "" || cboFACGUseYN.Text == "")
                 {
-                    MessageBox.Show(msg.ResultMessage);
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show(msg.ResultMessage);
+                    MessageBox.Show("필수정보 입력 필요");
                     return;
                 }
-            }
-            else //설비군 수정
-            {
-                FacilityService service = new FacilityService();
-                Message msg = service.UpdateFacilityGroup(vo, Update);
-                if (msg.IsSuccess)
-                {
-                    MessageBox.Show("성공");
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show(msg.ResultMessage);
-                    return;
-                }
-            }
 
-            #endregion
+                FACILITY_GROUP vo = new FACILITY_GROUP();
+                vo.FACG_CODE = txtFACGCODE.Text;
+                vo.FACG_NAME = txtFACGNAME.Text;
+                vo.FACG_USE_YN = cboFACGUseYN.Text;
+                vo.FACG_LAST_MDFR = txtModifier.Text;
+                vo.FACG_LAST_MDFY = txtModifyDate.Text;
+                vo.FACG_DESC = txtDesc.Text;
+
+                if (!Update) //설비군 등록
+                {
+                    FacilityService service = new FacilityService();
+                    Message msg = service.InsertFacilityGroup(vo, Update);
+                    if (msg.IsSuccess)
+                    {
+                        MessageBox.Show(msg.ResultMessage);
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show(msg.ResultMessage);
+                        return;
+                    }
+                }
+                else //설비군 수정
+                {
+                    FacilityService service = new FacilityService();
+                    Message msg = service.UpdateFacilityGroup(vo, Update);
+                    if (msg.IsSuccess)
+                    {
+                        MessageBox.Show("성공");
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show(msg.ResultMessage);
+                        return;
+                    }
+                }
+
+                #endregion
+            }
+            catch(Exception err)
+            {
+                _logging = new LoggingUtility(this.Name, Level.Info, 30);
+            }
         }
 
         private void FrmFacilityGroupPopUp_Load(object sender, EventArgs e)

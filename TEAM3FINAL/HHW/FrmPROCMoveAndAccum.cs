@@ -9,16 +9,23 @@ using TEAM3FINAL.Services;
 using TEAM3FINALVO;
 using System.Linq;
 using Message = TEAM3FINALVO.Message;
+using log4net.Core;
 
 namespace TEAM3FINAL
 {
     public partial class FrmPROCMoveAndAccum : TEAM3FINAL.baseForm, CommonBtn
     {
         CheckBox headerChk;
+        LoggingUtility _logging;
+        public LoggingUtility Log
+        {
+            get { return _logging; }
+        }
 
         public FrmPROCMoveAndAccum()
         {
             InitializeComponent();
+            _logging = new LoggingUtility(this.Name, Level.Info, 30);
         }
 
         #region 체크박스 포함한 그리드뷰 컬럼 생성
@@ -128,9 +135,16 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                WorkOrderService service = new WorkOrderService();
-                dgvList.DataSource = null;
-                dgvList.DataSource = service.SearchMOVELIST((cboWHouse.SelectedValue == null) ? "" : cboWHouse.SelectedValue.ToString(), cboType.Text, txtITEM_CODE.Text);
+                try
+                {
+                    WorkOrderService service = new WorkOrderService();
+                    dgvList.DataSource = null;
+                    dgvList.DataSource = service.SearchMOVELIST((cboWHouse.SelectedValue == null) ? "" : cboWHouse.SelectedValue.ToString(), cboType.Text, txtITEM_CODE.Text);
+                }
+                catch(Exception err)
+                {
+                    _logging = new LoggingUtility(this.Name, Level.Info, 30);
+                }
             }
         }
 

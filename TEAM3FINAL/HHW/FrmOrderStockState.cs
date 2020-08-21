@@ -9,16 +9,22 @@ using TEAM3FINAL.Services;
 using TEAM3FINALVO;
 using System.Linq;
 using Message = TEAM3FINALVO.Message;
+using log4net.Core;
 
 namespace TEAM3FINAL
 {
     public partial class FrmOrderStockState : TEAM3FINAL.baseForm, CommonBtn
     {
         CheckBox headerChk;
-
+        LoggingUtility _logging;
+        public LoggingUtility Log
+        {
+            get { return _logging; }
+        }
         public FrmOrderStockState()
         {
             InitializeComponent();
+            _logging = new LoggingUtility(this.Name, Level.Info, 30);
         }
 
         #region 체크박스 포함한 그리드뷰 컬럼 생성
@@ -127,18 +133,24 @@ namespace TEAM3FINAL
 
         public void Search(object sender, EventArgs e)
         {
-            if(dtpFrom.Value > dtpTo.Value)
+            try
             {
-                MessageBox.Show("시작일이 종료일 보다 클 수 없습니다.");
-                return;
+                if (dtpFrom.Value > dtpTo.Value)
+                {
+                    MessageBox.Show("시작일이 종료일 보다 클 수 없습니다.");
+                    return;
+                }
+                string fromDATE = dtpFrom.Value.ToString("yyyy-MM-dd");
+                string fromTO = dtpTo.Value.ToString("yyyy-MM-dd");
+
+                WorkOrderService service = new WorkOrderService();
+                dgvCustomerOrder.DataSource = null;
+                dgvCustomerOrder.DataSource = service.SearchOrderState(fromDATE, fromTO, txtITEM_CODE.Text);
             }
-            string fromDATE = dtpFrom.Value.ToString("yyyy-MM-dd");
-            string fromTO = dtpTo.Value.ToString("yyyy-MM-dd");
-
-            WorkOrderService service = new WorkOrderService();
-            dgvCustomerOrder.DataSource = null;
-            dgvCustomerOrder.DataSource = service.SearchOrderState(fromDATE, fromTO, txtITEM_CODE.Text);
-
+            catch(Exception err)
+            {
+                _logging = new LoggingUtility(this.Name, Level.Info, 30);
+            }
         }
 
         public void Reset(object sender, EventArgs e)

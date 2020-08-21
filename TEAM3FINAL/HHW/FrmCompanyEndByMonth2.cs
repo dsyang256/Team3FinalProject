@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,10 +14,16 @@ namespace TEAM3FINAL
     public partial class FrmCompanyEndByMonth2 : TEAM3FINAL.baseForm2, CommonBtn
     {
         CheckBox headerChk;
+        LoggingUtility _logging;
+        public LoggingUtility Log
+        {
+            get { return _logging; }
+        }
 
         public FrmCompanyEndByMonth2()
         {
             InitializeComponent();
+            _logging = new LoggingUtility(this.Name, Level.Info, 30);
         }
 
         #region 체크박스 포함한 그리드뷰 컬럼 생성
@@ -137,13 +144,20 @@ namespace TEAM3FINAL
 
         public void Search(object sender, EventArgs e)
         {
-            string date = cboDate.Text;
-            string company = cboCOM.Text;
-            SalesComService service = new SalesComService();
-            dgvCom.DataSource = null;
-            dgvComDetail.DataSource = null;
-            dgvCom.DataSource = service.SearchSalesCom2(date, company);
-            dgvComDetail.DataSource = service.SearchSalesComDetail2(date, company);
+            try
+            {
+                string date = cboDate.Text;
+                string company = cboCOM.Text;
+                SalesComService service = new SalesComService();
+                dgvCom.DataSource = null;
+                dgvComDetail.DataSource = null;
+                dgvCom.DataSource = service.SearchSalesCom2(date, company);
+                dgvComDetail.DataSource = service.SearchSalesComDetail2(date, company);
+            }
+            catch(Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
         }
 
         public void Reset(object sender, EventArgs e)
