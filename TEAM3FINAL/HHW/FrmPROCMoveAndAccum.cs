@@ -43,9 +43,10 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "품목", "ITEM_CODE", true, 300);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "품명", "ITEM_NAME", true, 300);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "품목타입", "ITEM_TYP", true, 150);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "규격", "ITEM_STND", true, 300);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "규격", "ITEM_STND", true, 200);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "재고량", "INS_QTY", true, 120, DataGridViewContentAlignment.MiddleRight);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "단위", "ITEM_UNIT", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "비고", "", true, 370);
             dgvList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvList.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvList);
