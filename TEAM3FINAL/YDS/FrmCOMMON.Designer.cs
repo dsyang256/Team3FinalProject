@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -58,6 +59,8 @@
             this.cboGroup2 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.삭제ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -65,6 +68,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCOMMON)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SEQ)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -291,6 +295,7 @@
             this.dgvCOMMON.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCOMMON.Size = new System.Drawing.Size(528, 185);
             this.dgvCOMMON.TabIndex = 4;
+            this.dgvCOMMON.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvCOMMON_CellMouseClick);
             // 
             // button6
             // 
@@ -421,6 +426,20 @@
             this.label5.TabIndex = 50;
             this.label5.Text = "*";
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.삭제ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(99, 26);
+            // 
+            // 삭제ToolStripMenuItem
+            // 
+            this.삭제ToolStripMenuItem.Name = "삭제ToolStripMenuItem";
+            this.삭제ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
+            this.삭제ToolStripMenuItem.Text = "삭제";
+            this.삭제ToolStripMenuItem.Click += new System.EventHandler(this.삭제ToolStripMenuItem_Click);
+            // 
             // FrmCOMMON
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -446,6 +465,7 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCOMMON)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SEQ)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -479,5 +499,7 @@
         protected System.Windows.Forms.Button button6;
         private WindowsFormsApp18.MyDataGridView dgvCOMMON;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 삭제ToolStripMenuItem;
     }
 }

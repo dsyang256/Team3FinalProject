@@ -50,5 +50,11 @@ namespace TEAM3FINAL
             CommonDAC dac = new CommonDAC();
             return dac.CodeDelete(text);
         }
+
+        internal bool CodeDelete1(string code)
+        {
+            CommonDAC dac = new CommonDAC();
+            return dac.CodeDelete1(code);
+        }
     }
 }

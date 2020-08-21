@@ -61,16 +61,16 @@
             this.WO_QTY_ALL = new System.Windows.Forms.TextBox();
             this.WO_QTY_PROD = new System.Windows.Forms.TextBox();
             this.WO_QTY_BAD = new System.Windows.Forms.TextBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.asdfa = new System.Windows.Forms.TabPage();
             this.dgv1 = new WindowsFormsApp18.MyDataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.tabControl1.SuspendLayout();
             this.asdfa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -370,18 +370,24 @@
             this.WO_QTY_BAD.Text = "0";
             this.WO_QTY_BAD.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // tabControl1
+            // tabPage3
             // 
-            this.tabControl1.Controls.Add(this.asdfa);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabControl1.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tabControl1.Location = new System.Drawing.Point(0, 335);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1940, 512);
-            this.tabControl1.TabIndex = 31;
+            this.tabPage3.Location = new System.Drawing.Point(4, 39);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1932, 469);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "투입 현황";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 39);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1932, 469);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "불량현황";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // asdfa
             // 
@@ -435,24 +441,18 @@
             this.dgv1.TabIndex = 0;
             this.dgv1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv1_CellClick);
             // 
-            // tabPage2
+            // tabControl1
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 39);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1932, 469);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "불량현황";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 39);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1814, 469);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "투입 현황";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabControl1.Controls.Add(this.asdfa);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tabControl1.Font = new System.Drawing.Font("맑은 고딕", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tabControl1.Location = new System.Drawing.Point(0, 335);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1940, 512);
+            this.tabControl1.TabIndex = 31;
             // 
             // FrmPOPMAIN
             // 
@@ -478,9 +478,9 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
             this.asdfa.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -516,10 +516,10 @@
         private System.Windows.Forms.TextBox WO_QTY_ALL;
         private System.Windows.Forms.TextBox WO_QTY_PROD;
         private System.Windows.Forms.TextBox WO_QTY_BAD;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage asdfa;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage asdfa;
         private WindowsFormsApp18.MyDataGridView dgv1;
+        private System.Windows.Forms.TabControl tabControl1;
     }
 }

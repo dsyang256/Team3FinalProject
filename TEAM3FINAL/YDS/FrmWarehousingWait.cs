@@ -68,11 +68,11 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "발주일자", "REORDER_DATE", true, 200);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "발주업체", "COM_CODE", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "납품업체", "REORDER_COM_DLVR", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목", "ITEM_CODE", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품명", "ITEM_NAME", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "규격", "ITEM_STND", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "단위", "ITEM_UNIT", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "검사여부", "ITEM_INCOME_YN", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목", "ITEM_CODE", true, 250);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품명", "ITEM_NAME", true, 250);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "규격", "ITEM_STND", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "단위", "ITEM_UNIT", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "검사여부", "ITEM_INCOME_YN", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "발주량", "REORDER_QTY", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "입고량", "REORDER_QTY1", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "잔량", "REORDER_QTY2", true, 100);
@@ -99,7 +99,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "검사유무", "ITEM_INCOME_YN", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "입고창고", "ITEM_WRHS_IN", false, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "작업번호", "SALES_WORK_ORDER_ID", false, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "비고", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "비고", "", true, 150);
             DataGridViewCheckBoxAllCheck2();
         }
         #region 데이터 그리드 바인딩
@@ -352,6 +352,76 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
+                if (dgv1.Rows.Count > 0)
+                {
+                    Microsoft.Office.Interop.Excel.Application xlApp = null;
+                    Microsoft.Office.Interop.Excel.Workbook xlWorkBook = null;
+                    Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet = null;
+                    try
+                    {
+                        int i, j;
+                        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                        saveFileDialog1.Filter = "Excel Files (*.xls)|*.xls";
+                        saveFileDialog1.InitialDirectory = "C:";
+                        saveFileDialog1.Title = "SaveReorderSearch";
+                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                        {
+                            xlApp = new Microsoft.Office.Interop.Excel.Application();
+                            xlWorkBook = xlApp.Workbooks.Add();
+                            xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                            for (int k = 1; k < dgv1.ColumnCount; k++)
+                            {
+                                xlWorkSheet.Cells[1, k] = dgv1.Columns[k].HeaderText.ToString();
+                            }
+
+                            for (i = 0; i < dgv1.RowCount; i++)
+                            {
+                                for (j = 0; j < dgv1.ColumnCount - 1; j++)
+                                {
+                                    if (dgv1[j, i].Value != null)
+                                        xlWorkSheet.Cells[i + 2, j + 1] = dgv1[j, i].Value.ToString();
+                                }
+                            }
+
+                            xlWorkBook.SaveAs(saveFileDialog1.FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
+                            xlWorkBook.Close(true);
+                            xlApp.Quit();
+                            MessageBox.Show("출력되었습니다.", "출력 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show("출력에 실패하였습니다.", "출력 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        if (xlApp != null)
+                        {
+                            releaseObject(xlWorkSheet);
+                            releaseObject(xlWorkBook);
+                            releaseObject(xlApp);
+                        }
+                    }
+                }
+
+            }
+        }
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
             }
         }
 

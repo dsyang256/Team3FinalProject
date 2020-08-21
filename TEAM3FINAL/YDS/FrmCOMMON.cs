@@ -12,6 +12,7 @@ namespace TEAM3FINAL
 {
     public partial class FrmCOMMON : TEAM3FINAL.baseFormPopUP
     {
+        string code;
         CommonService service = new CommonService();
         public FrmCOMMON()
         {
@@ -187,6 +188,28 @@ namespace TEAM3FINAL
         private void button6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvCOMMON_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+            code = dgvCOMMON.Rows[e.RowIndex].Cells[1].Value.ToString();
+
+            dgvCOMMON.Rows[e.RowIndex].Selected = true;
+            dgvCOMMON.CurrentCell = dgvCOMMON.Rows[e.RowIndex].Cells[0];
+            contextMenuStrip1.Show(dgvCOMMON, e.Location);
+            contextMenuStrip1.Show(Cursor.Position);
+            
+            
+        }
+
+        private void 삭제ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (service.CodeDelete1(code)) 
+            {
+                MessageBox.Show("코드가 삭제되었습니다");
+                Reset();
+            }
         }
     }
 }
