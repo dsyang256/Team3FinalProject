@@ -73,7 +73,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "규격", "ITEM_STND", true, 200);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "개수", "ITEM_UNIT", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "관리등급", "ITEM_MANAGE_LEVEL", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "비고", "", true, 400);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "비고", "", true, 380);
 
 
 
@@ -154,6 +154,7 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
+                MessageBox.Show("사용안해요");
             }
         }
 

@@ -68,11 +68,11 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "발주일자", "REORDER_DATE", true, 200);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "발주업체", "COM_CODE", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "납품업체", "REORDER_COM_DLVR", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목", "ITEM_CODE", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품명", "ITEM_NAME", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "규격", "ITEM_STND", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "단위", "ITEM_UNIT", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "검사여부", "ITEM_INCOME_YN", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목", "ITEM_CODE", true, 250);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품명", "ITEM_NAME", true, 250);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "규격", "ITEM_STND", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "단위", "ITEM_UNIT", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "검사여부", "ITEM_INCOME_YN", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "발주량", "REORDER_QTY", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "입고량", "REORDER_QTY1", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "잔량", "REORDER_QTY2", true, 100);
@@ -99,7 +99,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "검사유무", "ITEM_INCOME_YN", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "입고창고", "ITEM_WRHS_IN", false, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "작업번호", "SALES_WORK_ORDER_ID", false, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "비고", "", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "비고", "", true, 150);
             DataGridViewCheckBoxAllCheck2();
         }
         #region 데이터 그리드 바인딩

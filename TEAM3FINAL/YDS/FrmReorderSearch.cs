@@ -67,7 +67,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.InitSettingGridView(dgvReorder);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "no", "idx", true, 30);
             DataGridViewUtil.DataGridViewCheckBoxSet(dgvReorder, "all");
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "발주번호", "REORDER_CODE", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "발주번호", "REORDER_CODE", true, 200);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "협렵사", "COM_CODE", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "납품업체", "REORDER_COM_DLVR", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvReorder, "주문상태", "REORDER_STATE", true, 100);

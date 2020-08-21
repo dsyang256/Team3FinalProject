@@ -26,7 +26,7 @@ namespace TEAM3FINAL
             cboPlan.SelectedIndex = 1;
             DataGridViewColumnSet();
             
-            Search(null, null);
+            //Search(null, null);
            
 
         }
@@ -133,6 +133,11 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
+                if(cboPlan.Text.Length <1)
+                {
+                    MessageBox.Show("PlanID를 선택해주세요");
+                    return;
+                }
                 //데이터 조회
                 LoadDemandPlan();
                 //그리드 초기화
@@ -162,13 +167,11 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
+                dgvReorder.DataSource = null;
                 cboPlan.SelectedIndex = -1;
-                dateTimePicker1.Value = DateTime.Now.AddMonths(1);
-                dateTimePicker2.Value = DateTime.Now;
-                //데이터 조회
-                LoadDemandPlan();
-                //그리드 초기화
-                DataGridViewColumnSet();
+                dateTimePicker1.Value = DateTime.Now.AddDays(-5);
+                dateTimePicker2.Value = DateTime.Now.AddDays(5);
+             
             }
 
         }
