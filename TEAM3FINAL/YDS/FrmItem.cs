@@ -543,10 +543,7 @@ namespace TEAM3FINAL
             }
         }
 
-        private void dgvitem_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+       
         private void BtnUnSet()
         {
             try

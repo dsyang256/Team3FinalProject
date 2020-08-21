@@ -423,12 +423,6 @@
     <Compile Include="YDS\FrmReceivingSearch.Designer.cs">
       <DependentUpon>FrmReceivingSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="YDS\FrmRelease.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="YDS\FrmRelease.Designer.cs">
-      <DependentUpon>FrmRelease.cs</DependentUpon>
-    </Compile>
     <Compile Include="YDS\FrmReleaseSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -760,9 +754,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="YDS\FrmReceivingSearch.resx">
       <DependentUpon>FrmReceivingSearch.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="YDS\FrmRelease.resx">
-      <DependentUpon>FrmRelease.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="YDS\FrmReleaseRequest.resx">
       <DependentUpon>FrmReleaseRequest.cs</DependentUpon>
