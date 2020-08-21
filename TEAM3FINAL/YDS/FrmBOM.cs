@@ -303,13 +303,20 @@ namespace TEAM3FINAL
         /// </summary>
         private void BtnSet()
         {
-            FrmMAIN frm = (FrmMAIN)this.MdiParent;
-            frm.eSearch += Search;
-            frm.eInsert += Insert;
-            frm.eUpdate += Update;
-            frm.eDelete += Delete;
-            frm.ePrint += Print;
-            frm.eReset += Reset;
+            try
+            {
+                FrmMAIN frm = (FrmMAIN)this.MdiParent;
+                frm.eSearch += Search;
+                frm.eInsert += Insert;
+                frm.eUpdate += Update;
+                frm.eDelete += Delete;
+                frm.ePrint += Print;
+                frm.eReset += Reset;
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
         }
 
         /// <summary>
@@ -317,15 +324,20 @@ namespace TEAM3FINAL
         /// </summary>
         private void ComboBinding()
         {
-            CommonService service = new CommonService();
-            List<ComboItemVO> Commonlist = service.GetITEMCmCode();
+            try
+            {
+                CommonService service = new CommonService();
+                List<ComboItemVO> Commonlist = service.GetITEMCmCode();
 
 
-            //발주업체
-            var listCOM_USE_YN = (from item in Commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(BOM_USE_YN, listCOM_USE_YN, "COMMON_CODE", "COMMON_NAME", "");
-
-
+                //발주업체
+                var listCOM_USE_YN = (from item in Commonlist where item.COMMON_PARENT == "사용여부" select item).ToList();
+                CommonUtil.ComboBinding<ComboItemVO>(BOM_USE_YN, listCOM_USE_YN, "COMMON_CODE", "COMMON_NAME", "");
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
 
         }
         /// <summary>
@@ -333,48 +345,68 @@ namespace TEAM3FINAL
         /// </summary>
         private void DataGridViewColumnSet()
         {
-            DataGridViewUtil.InitSettingGridView(dgvBOM);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "no", "idx", true, 30);
-            DataGridViewUtil.DataGridViewCheckBoxSet(dgvBOM, "all");
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "BOM_CODE", "BOM_CODE", false, 30);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "품목", "ITEM_CODE", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "품명", "ITEM_NAME", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "품목유형", "ITEM_TYP", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "단위", "ITEM_UNIT", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "소요량", "BOM_QTY", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "BOM레벨", "Lvl", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "시작일", "BOM_STARTDATE", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "종료일", "BOM_ENDDATE", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "사용여부", "BOM_USE_YN", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "소요계획", "BOM_PLAN_YN", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "자동차감", "BOM_AUTOREDUCE_YN", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "설비", "FCLTS_CODE", true, 140);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "설비명", "FCLTS_NAME", true, 140);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "규격", "ITEM_STND", true, 140);
-            DataGridViewCheckBoxAllCheck();
+            try
+            {
+                DataGridViewUtil.InitSettingGridView(dgvBOM);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "no", "idx", true, 30);
+                DataGridViewUtil.DataGridViewCheckBoxSet(dgvBOM, "all");
+                DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "BOM_CODE", "BOM_CODE", false, 30);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "품목", "ITEM_CODE", true, 200);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "품명", "ITEM_NAME", true, 200);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "품목유형", "ITEM_TYP", true, 100);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "단위", "ITEM_UNIT", true, 100);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "소요량", "BOM_QTY", true, 80);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "BOM레벨", "Lvl", true, 100);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "시작일", "BOM_STARTDATE", true, 120);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "종료일", "BOM_ENDDATE", true, 120);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "사용여부", "BOM_USE_YN", true, 120);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "소요계획", "BOM_PLAN_YN", true, 120);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "자동차감", "BOM_AUTOREDUCE_YN", true, 100);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "설비", "FCLTS_CODE", true, 140);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "설비명", "FCLTS_NAME", true, 140);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgvBOM, "규격", "ITEM_STND", true, 140);
+                DataGridViewCheckBoxAllCheck();
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
 
         }
         /// <summary>
         /// 데이터 그리드 바인딩
         /// </summary>
         private void DataGridViewBinding()
-        {
-            dgvBOM.DataSource = null;
-            BOMService bom = new BOMService();
-            dgvBOM.DataSource = bom.SelectBOM();
+        {   try
+            {
+                dgvBOM.DataSource = null;
+                BOMService bom = new BOMService();
+                dgvBOM.DataSource = bom.SelectBOM();
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
         }
         /// <summary>
         /// 데이터 그리드뷰 올체크 체크박스 만들기
         /// </summary>
         private void DataGridViewCheckBoxAllCheck()
         {
-            headerChk = new CheckBox();
-            Point headerCell = dgvBOM.GetCellDisplayRectangle(1, -1, true).Location;
-            headerChk.Location = new Point(headerCell.X + 4, headerCell.Y + 15);
-            headerChk.Size = new Size(18, 18);
-            headerChk.BackColor = Color.FromArgb(245, 245, 246);
-            headerChk.Click += HeaderChk_Clicked;
-            dgvBOM.Controls.Add(headerChk);
+            try
+            {
+                headerChk = new CheckBox();
+                Point headerCell = dgvBOM.GetCellDisplayRectangle(1, -1, true).Location;
+                headerChk.Location = new Point(headerCell.X + 4, headerCell.Y + 15);
+                headerChk.Size = new Size(18, 18);
+                headerChk.BackColor = Color.FromArgb(245, 245, 246);
+                headerChk.Click += HeaderChk_Clicked;
+                dgvBOM.Controls.Add(headerChk);
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
         }
         /// <summary>
         /// 올체크 이벤트
@@ -383,24 +415,38 @@ namespace TEAM3FINAL
         /// <param name="e"></param>
         private void HeaderChk_Clicked(object sender, EventArgs e)
         {
-            dgvBOM.EndEdit();
-
-            //데이터그리드뷰의 전체 행의 체크를 체크 or 언체크
-            foreach (DataGridViewRow row in dgvBOM.Rows)
+            try
             {
-                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells["all"];
-                chk.Value = headerChk.Checked;
+                dgvBOM.EndEdit();
+
+                //데이터그리드뷰의 전체 행의 체크를 체크 or 언체크
+                foreach (DataGridViewRow row in dgvBOM.Rows)
+                {
+                    DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells["all"];
+                    chk.Value = headerChk.Checked;
+                }
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
             }
         }
         private void BtnUnSet()
         {
-            FrmMAIN frm = (FrmMAIN)this.MdiParent;
-            frm.eSearch -= Search;
-            frm.eInsert -= Insert;
-            frm.eUpdate -= Update;
-            frm.eDelete -= Delete;
-            frm.ePrint -= Print;
-            frm.eReset -= Reset;
+            try
+            {
+                FrmMAIN frm = (FrmMAIN)this.MdiParent;
+                frm.eSearch -= Search;
+                frm.eInsert -= Insert;
+                frm.eUpdate -= Update;
+                frm.eDelete -= Delete;
+                frm.ePrint -= Print;
+                frm.eReset -= Reset;
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
         }
         private void FrmBOM_FormClosing(object sender, FormClosingEventArgs e)
         {
