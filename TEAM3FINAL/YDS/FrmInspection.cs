@@ -300,6 +300,7 @@ namespace TEAM3FINAL
                 }
                 DataGridViewBinding2();
                 MessageBox.Show("검사가 완료 되었습니다.");
+                Reset(null,null);
             }
             catch (Exception err)
             {
