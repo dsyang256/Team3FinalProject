@@ -28,10 +28,10 @@ namespace TEAM3FINAL
             //데이터그리드뷰 체크박스 컬럼 추가
             DataGridViewUtil.DataGridViewCheckBoxSet(dgvCom, "");
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "업체코드", "COM_CODE", true, 95);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "업체명", "ITEM_COM_DLVR", true, 95);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "업체코드", "COM_CODE", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "업체명", "ITEM_COM_DLVR", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "사업자번호", "COM_REG_NUM", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "금액", "TTLPRICE", true, 80, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "금액", "TTLPRICE", true, 110, DataGridViewContentAlignment.MiddleRight);
             dgvCom.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvCom.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvCom);
@@ -43,15 +43,15 @@ namespace TEAM3FINAL
             DataGridViewUtil.InitSettingGridView(dgvComDetail);
             //데이터그리드뷰 체크박스 컬럼 추가
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "업체명", "ITEM_COM_DLVR", true, 95);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "납품업체명", "ITEM_COM_REORDER", true, 105);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "입고일", "INS_DATE", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "카테고리", "INS_TYP", true, 90);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "창고", "FAC_NAME", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "품목", "ITEM_CODE", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "수불량", "INS_QTY", true, 80, DataGridViewContentAlignment.MiddleRight);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "단가", "MC_UNITPRICE_CUR", true, 80, DataGridViewContentAlignment.MiddleRight);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "금액", "TTLPRICE", true, 80, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "업체명", "ITEM_COM_DLVR", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "납품업체명", "ITEM_COM_REORDER", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "입고일", "INS_DATE", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "카테고리", "INS_TYP", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "창고", "FAC_NAME", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "품목", "ITEM_CODE", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "수불량", "INS_QTY", true, 120, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "단가", "MC_UNITPRICE_CUR", true, 120, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "금액", "TTLPRICE", true, 120, DataGridViewContentAlignment.MiddleRight);
             dgvComDetail.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvComDetail.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvComDetail);

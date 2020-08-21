@@ -80,7 +80,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel3.Controls.Add(this.dgvCom);
             this.panel3.Location = new System.Drawing.Point(9, 131);
-            this.panel3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel3.Margin = new System.Windows.Forms.Padding(5);
             this.panel3.Size = new System.Drawing.Size(506, 419);
             // 
             // menuPanel1
@@ -119,7 +119,7 @@
             this.panel4.Controls.Add(this.dgvComDetail);
             this.panel4.Location = new System.Drawing.Point(517, 131);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(715, 374);
+            this.panel4.Size = new System.Drawing.Size(715, 419);
             this.panel4.TabIndex = 8;
             // 
             // dgvComDetail
@@ -159,7 +159,7 @@
             this.dgvComDetail.RowHeadersWidth = 30;
             this.dgvComDetail.RowTemplate.Height = 23;
             this.dgvComDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvComDetail.Size = new System.Drawing.Size(715, 374);
+            this.dgvComDetail.Size = new System.Drawing.Size(715, 419);
             this.dgvComDetail.TabIndex = 1;
             // 
             // cboDate
