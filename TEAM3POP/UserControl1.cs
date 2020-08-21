@@ -630,5 +630,12 @@ namespace TEAM3POP
             BADQTY.Text = "0";
             dgv.DataSource = null;
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            frmLogViewer logFrm = new frmLogViewer();
+            logFrm.OpenFileName = $"Logs\\{Task_ID}.log";
+            logFrm.ShowDialog();
+        }
     }
 }

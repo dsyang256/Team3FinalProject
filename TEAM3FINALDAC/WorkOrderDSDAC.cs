@@ -186,7 +186,7 @@ namespace TEAM3FINALDAC
                            ,FACILITY f
                            ,FACTORY fa
                            WHERE
-                           f.FCLTS_WRHS_GOOD = fa.FAC_CODE
+                           f.FCLTS_WRHS_EXHST = fa.FAC_CODE
                            and w.FCLTS_CODE = f.FCLTS_CODE 
                            and m.ITEM_CODE = i.ITEM_CODE 
                            and m.BOM_PARENT_CODE = w.ITEM_CODE 

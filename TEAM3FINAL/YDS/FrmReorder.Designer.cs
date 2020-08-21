@@ -215,6 +215,7 @@
             this.Controls.Add(this.menuPanel1);
             this.Name = "FrmReorder";
             this.Text = "정규발주";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmReorder_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Controls.SetChildIndex(this.menuPanel1, 0);
             this.Controls.SetChildIndex(this.label1, 0);

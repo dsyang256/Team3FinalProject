@@ -88,9 +88,9 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "요청수량", "", true, 100, readOnly:false) ;
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "출고수량", "출고", true, 140);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "잔량", "잔량", true, 140);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "입고창고", "FCLTS_WRHS_GOOD", false, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "입고창고", "FCLTS_WRHS_EXHST", false, 125);
             DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "작업번호", "SALES_WORK_ORDER_ID", false, 125);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "출고창고", "ITEM_WRHS_IN", false, 125);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "출고창고", "ITEM_WRHS_IN", true, 125);
             DataGridViewCheckBoxAllCheck();
 
         }

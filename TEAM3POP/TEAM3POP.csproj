@@ -55,6 +55,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ATLTask.cs" />
+    <Compile Include="frmLogViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogViewer.Designer.cs">
+      <DependentUpon>frmLogViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPOP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,9 @@
     <Compile Include="UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmLogViewer.resx">
+      <DependentUpon>frmLogViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPOPALL.resx">
       <DependentUpon>FrmPOPALL.cs</DependentUpon>
     </EmbeddedResource>
