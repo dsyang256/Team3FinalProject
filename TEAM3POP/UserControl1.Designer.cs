@@ -488,7 +488,6 @@
         public System.Windows.Forms.Label taskID;
         public System.Windows.Forms.Label hostPort;
         public System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnStart;
@@ -505,6 +504,7 @@
         private System.Windows.Forms.Label task_code;
         public System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.ComboBox comboBox1;
     }
   
 }
