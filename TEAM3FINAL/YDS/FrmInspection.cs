@@ -254,7 +254,7 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                throw new NotImplementedException();
+                MessageBox.Show("사용안해요");
             }
         }
 
@@ -285,6 +285,7 @@ namespace TEAM3FINAL
                 INSPECT.SelectedIndex = -1;
                 REORDER_CODE.Text = "";
                 DataGridViewBinding1();
+                DataGridViewBinding2();
             }
         }
 

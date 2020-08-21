@@ -409,7 +409,7 @@ namespace TEAM3FINAL
                 if (MessageBox.Show("공정이동 하시겠습니까?", "공정이동", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {                 
 
-                    if (dgvMOVEList.CurrentRow.Cells[3].Value.ToString() == "OS")
+                    if (dgvMOVEList.CurrentRow.Cells[4].Value.ToString() == "OS")
                     {
                         vo.INS_WRHS = "OS";
                         WorkOrderService service = new WorkOrderService();
@@ -448,6 +448,11 @@ namespace TEAM3FINAL
                 MessageBox.Show("하나의 항목씩만 공정이동 가능");
                 return;
             }
+
+        }
+
+        private void dgvMOVEList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
