@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,9 +15,16 @@ namespace TEAM3FINAL
     {
         CheckBox headerChk;
 
+        LoggingUtility _logging;
+        public LoggingUtility Log
+        {
+            get { return _logging; }
+        }
+
         public FrmCompanyManage()
         {
             InitializeComponent();
+            _logging = new LoggingUtility(this.Name, Level.Info, 30);
         }
 
         #region 체크박스 포함한 그리드뷰 컬럼 생성
@@ -119,24 +127,39 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                FrmCompanyPopUp frm = new FrmCompanyPopUp();
-                frm.COM_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
-                frm.COM_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd");
-                frm.ShowDialog();
-                if (frm.DialogResult == DialogResult.OK)
+                try
                 {
-                    GetCompanyList();
+                    FrmCompanyPopUp frm = new FrmCompanyPopUp();
+                    frm.COM_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
+                    frm.COM_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd");
+                    frm.ShowDialog();
+                    if (frm.DialogResult == DialogResult.OK)
+                    {
+                        GetCompanyList();
+                    }
+                }
+                catch(Exception err)
+                {
+                    this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
                 }
             }
         }
 
         public void Search(object sender, EventArgs e)
         {
+
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                CompanyService service = new CompanyService();
-                dgvCompanyList.DataSource = null;
-                dgvCompanyList.DataSource = service.SearchCompany(txtComCode.Text, txtComName.Text, cboComType.Text, txtNum.Text);
+                try
+                {
+                    CompanyService service = new CompanyService();
+                    dgvCompanyList.DataSource = null;
+                    dgvCompanyList.DataSource = service.SearchCompany(txtComCode.Text, txtComName.Text, cboComType.Text, txtNum.Text);
+                }
+                catch(Exception err)
+                {
+                    this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+                }
             }
         }
 
@@ -153,102 +176,118 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                dgvCompanyList.EndEdit();
-            
-                string sb = string.Empty;
-                int cnt = 0;
-                //체크가 되었는지 확인
-                foreach (DataGridViewRow item in dgvCompanyList.Rows)
+                try
                 {
-                    if (Convert.ToBoolean(item.Cells[0].Value))
-                    {
-                        sb = item.Cells[1].Value.ToString();
-                        cnt++;
-                    }
-                }
-                if (cnt == 1) //하나일 경우 PopUp창 띄움
-                {
-                    FrmCompanyPopUp frm = new FrmCompanyPopUp();
-                    frm.Update = true;
-                    frm.COM_CODE = dgvCompanyList.CurrentRow.Cells[1].Value.ToString();
-                    frm.COM_NAME = dgvCompanyList.CurrentRow.Cells[2].Value.ToString();
-                    frm.COM_TYP = dgvCompanyList.CurrentRow.Cells[3].Value.ToString();
-                    frm.COM_CEO = dgvCompanyList.CurrentRow.Cells[4].Value.ToString();
-                    frm.COM_REG_NUM = dgvCompanyList.CurrentRow.Cells[5].Value.ToString();
-                    frm.COM_TYP_INDSTRY = dgvCompanyList.CurrentRow.Cells[6].Value.ToString();
-                    frm.COM_TYP_BSNS = dgvCompanyList.CurrentRow.Cells[7].Value.ToString();
-                    frm.COM_MANAGER = dgvCompanyList.CurrentRow.Cells[8].Value.ToString();
-                    frm.COM_EML = dgvCompanyList.CurrentRow.Cells[9].Value.ToString();
-                    frm.COM_TEL = dgvCompanyList.CurrentRow.Cells[10].Value.ToString();
-                    frm.COM_FAX = dgvCompanyList.CurrentRow.Cells[11].Value.ToString();
-                    frm.COM_AUTOIN_YN = dgvCompanyList.CurrentRow.Cells[12].Value.ToString();
-                    frm.COM_START_YN = dgvCompanyList.CurrentRow.Cells[13].Value.ToString();
-                    frm.COM_USE_YN = dgvCompanyList.CurrentRow.Cells[14].Value.ToString();
-                    frm.COM_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
-                    frm.COM_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd");
-                    frm.COM_STR_DATE = (dgvCompanyList.CurrentRow.Cells[18].Value == null) ? " ": dgvCompanyList.CurrentRow.Cells[18].Value.ToString();
-                    frm.COM_END_DATE = (dgvCompanyList.CurrentRow.Cells[19].Value== null) ? " " : dgvCompanyList.CurrentRow.Cells[19].Value.ToString();
 
-                    
-                    frm.COM_INFO = dgvCompanyList.CurrentRow.Cells[20].Value.ToString();
-                    frm.ShowDialog();
-                    if (frm.DialogResult == DialogResult.OK)
+                    dgvCompanyList.EndEdit();
+
+                    string sb = string.Empty;
+                    int cnt = 0;
+                    //체크가 되었는지 확인
+                    foreach (DataGridViewRow item in dgvCompanyList.Rows)
                     {
-                        GetCompanyList();
+                        if (Convert.ToBoolean(item.Cells[0].Value))
+                        {
+                            sb = item.Cells[1].Value.ToString();
+                            cnt++;
+                        }
+                    }
+                    if (cnt == 1) //하나일 경우 PopUp창 띄움
+                    {
+                        FrmCompanyPopUp frm = new FrmCompanyPopUp();
+                        frm.Update = true;
+                        frm.COM_CODE = dgvCompanyList.CurrentRow.Cells[1].Value.ToString();
+                        frm.COM_NAME = dgvCompanyList.CurrentRow.Cells[2].Value.ToString();
+                        frm.COM_TYP = dgvCompanyList.CurrentRow.Cells[3].Value.ToString();
+                        frm.COM_CEO = dgvCompanyList.CurrentRow.Cells[4].Value.ToString();
+                        frm.COM_REG_NUM = dgvCompanyList.CurrentRow.Cells[5].Value.ToString();
+                        frm.COM_TYP_INDSTRY = dgvCompanyList.CurrentRow.Cells[6].Value.ToString();
+                        frm.COM_TYP_BSNS = dgvCompanyList.CurrentRow.Cells[7].Value.ToString();
+                        frm.COM_MANAGER = dgvCompanyList.CurrentRow.Cells[8].Value.ToString();
+                        frm.COM_EML = dgvCompanyList.CurrentRow.Cells[9].Value.ToString();
+                        frm.COM_TEL = dgvCompanyList.CurrentRow.Cells[10].Value.ToString();
+                        frm.COM_FAX = dgvCompanyList.CurrentRow.Cells[11].Value.ToString();
+                        frm.COM_AUTOIN_YN = dgvCompanyList.CurrentRow.Cells[12].Value.ToString();
+                        frm.COM_START_YN = dgvCompanyList.CurrentRow.Cells[13].Value.ToString();
+                        frm.COM_USE_YN = dgvCompanyList.CurrentRow.Cells[14].Value.ToString();
+                        frm.COM_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
+                        frm.COM_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd");
+                        frm.COM_STR_DATE = (dgvCompanyList.CurrentRow.Cells[18].Value == null) ? " " : dgvCompanyList.CurrentRow.Cells[18].Value.ToString();
+                        frm.COM_END_DATE = (dgvCompanyList.CurrentRow.Cells[19].Value == null) ? " " : dgvCompanyList.CurrentRow.Cells[19].Value.ToString();
+
+
+                        frm.COM_INFO = dgvCompanyList.CurrentRow.Cells[20].Value.ToString();
+                        frm.ShowDialog();
+                        if (frm.DialogResult == DialogResult.OK)
+                        {
+                            GetCompanyList();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("하나의 항목씩만 수정 가능");
+                        return;
                     }
                 }
+                catch(Exception err)
+                {
+                    this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+                }
             }
-            else
-            {
-                MessageBox.Show("하나의 항목씩만 수정 가능");
-                return;
-            }
+            
         }
 
         public void Delete(object sender, EventArgs e)
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                dgvCompanyList.EndEdit();
-                StringBuilder sb = new StringBuilder();
-                int cnt = 0;
-                //품목 선택후 List를 전달
-                foreach (DataGridViewRow item in dgvCompanyList.Rows)
+                try
                 {
-                    if (Convert.ToBoolean(item.Cells[0].Value))
+                    dgvCompanyList.EndEdit();
+                    StringBuilder sb = new StringBuilder();
+                    int cnt = 0;
+                    //품목 선택후 List를 전달
+                    foreach (DataGridViewRow item in dgvCompanyList.Rows)
                     {
-                        sb.Append(item.Cells[1].Value.ToString() + "@");
-                        cnt++;
+                        if (Convert.ToBoolean(item.Cells[0].Value))
+                        {
+                            sb.Append(item.Cells[1].Value.ToString() + "@");
+                            cnt++;
+                        }
                     }
-                }
-                if (sb.Length < 1)
-                {
-                    MessageBox.Show("삭제할 항목을 선택하여 주십시오.");
-                    return;
-                }
-                sb.Remove(sb.Length - 1, 1);
-                if (MessageBox.Show($"총 {cnt}개의 항목을 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    FactoryService service = new FactoryService();
-
-                    Message msg = service.DeleteFactory("COMPANY", "COM_CODE", sb);
-                    if (msg.IsSuccess)
+                    if (sb.Length < 1)
                     {
-                        MessageBox.Show(msg.ResultMessage);
-                        GetCompanyList();
-                    }
-                    else
-                    {
-                        MessageBox.Show(msg.ResultMessage);
+                        MessageBox.Show("삭제할 항목을 선택하여 주십시오.");
                         return;
                     }
+                    sb.Remove(sb.Length - 1, 1);
+                    if (MessageBox.Show($"총 {cnt}개의 항목을 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        FactoryService service = new FactoryService();
+
+                        Message msg = service.DeleteFactory("COMPANY", "COM_CODE", sb);
+                        if (msg.IsSuccess)
+                        {
+                            MessageBox.Show(msg.ResultMessage);
+                            GetCompanyList();
+                        }
+                        else
+                        {
+                            MessageBox.Show(msg.ResultMessage);
+                            return;
+                        }
+                    }
+                }
+                catch(Exception err)
+                {
+                    this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
                 }
             }
         }
 
         public void Print(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         #endregion

@@ -10,16 +10,22 @@ using TEAM3FINALVO;
 using System.Linq;
 using Message = TEAM3FINALVO.Message;
 using TEAM3FINAL;
+using log4net.Core;
 
 namespace TEAM3FINAL
 {
     public partial class FrmSalesEndState : TEAM3FINAL.baseForm, CommonBtn
     {
         CheckBox headerChk;
-
+        LoggingUtility _logging;
+        public LoggingUtility Log
+        {
+            get { return _logging; }
+        }
         public FrmSalesEndState()
         {
             InitializeComponent();
+            _logging = new LoggingUtility(this.Name, Level.Info, 30);
         }
 
         #region 체크박스 포함한 그리드뷰 컬럼 생성
@@ -33,16 +39,16 @@ namespace TEAM3FINAL
             DataGridViewColumn dc = dgvSalesEndState.Columns[0];
             dc.Frozen = true;
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "고객주문번호", "SALES_WORK_ORDER_ID", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "고객사", "SALES_COM_CODE", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "고객사명", "COM_NAME", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "품목", "ITEM_CODE", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "품명", "ITEM_NAME", true, 110);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "납기일", "SALES_DUEDATE", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "주문수량", "SALES_QTY", true, 100, DataGridViewContentAlignment.MiddleRight);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "판매액", "SALES_TTL", true, 90, DataGridViewContentAlignment.MiddleRight);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "마감일", "SALES_ENDDATE", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "마감취소일", "SALES_CANCELDATE", true, 110);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "고객주문번호", "SALES_WORK_ORDER_ID", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "고객사", "SALES_COM_CODE", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "고객사명", "COM_NAME", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "품목", "ITEM_CODE", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "품명", "ITEM_NAME", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "납기일", "SALES_DUEDATE", true, 160);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "주문수량", "SALES_QTY", true, 160, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "판매액", "SALES_TTL", true, 160, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "마감일", "SALES_ENDDATE", true, 160);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvSalesEndState, "마감취소일", "SALES_CANCELDATE", true, 160);
             dgvSalesEndState.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvSalesEndState.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvSalesEndState);
@@ -120,13 +126,20 @@ namespace TEAM3FINAL
 
         public void Search(object sender, EventArgs e)
         {
-            string id = txtID.Text;
-            string item = txtITEM.Text;
-            string company = txtCompany.Text;
+            try
+            {
+                string id = txtID.Text;
+                string item = txtITEM.Text;
+                string company = txtCompany.Text;
 
-            SalesEndService service = new SalesEndService();
-            dgvSalesEndState.DataSource = null;
-            dgvSalesEndState.DataSource = service.SearchSalesEndState(id, item, company);
+                SalesEndService service = new SalesEndService();
+                dgvSalesEndState.DataSource = null;
+                dgvSalesEndState.DataSource = service.SearchSalesEndState(id, item, company);
+            }
+            catch(Exception err)
+            {
+                _logging = new LoggingUtility(this.Name, Level.Info, 30);
+            }
         }
 
         public void Reset(object sender, EventArgs e)

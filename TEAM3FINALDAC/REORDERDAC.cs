@@ -293,7 +293,7 @@ namespace TEAM3FINALDAC
         {
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(this.ConnectionString);
-            string sql = @"select s.SALES_Work_Order_ID, ITEM_COM_DLVR,ITEM_COM_REORDER,ITEM_MANAGER,b.ITEM_CODE,i.ITEM_NAME,ITEM_WRHS_IN,f.FAC_NAME,ITEM_INCOME_YN,ITEM_REORDER_TYP,ITEM_LEADTIME
+            string sql = @"select ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx,s.SALES_Work_Order_ID, ITEM_COM_DLVR,ITEM_COM_REORDER,ITEM_MANAGER,b.ITEM_CODE,i.ITEM_NAME,ITEM_WRHS_IN,f.FAC_NAME,ITEM_INCOME_YN,ITEM_REORDER_TYP,ITEM_LEADTIME
 
 
                             ,(s.SALES_QTY *q.A_QTY) as 발주제한 
@@ -347,39 +347,47 @@ namespace TEAM3FINALDAC
             //i join BOM b on i.ITEM_CODE = b.ITEM_CODE
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection(this.ConnectionString);
-            string sql = $@"SELECT ITEM_COM_REORDER,ITEM_COM_DLVR,ITEM_MANAGER,v.ITEM_CODE,ITEM_NAME,ITEM_WRHS_IN,ITEM_INCOME_YN,ITEM_REORDER_TYP,FAC_NAME,s.SALES_Work_Order_ID,
-(v.QTY+
-((select i.ITEM_QTY_SAFE from ITEM i where ITEM_CODE = v.ITEM_CODE) -
-(((select isnull(sum(INS_QTY),0) from INSTACK i where ITEM_CODE = v.ITEM_CODE and i.INS_TYP = '입고' and i.INS_WRHS ='R-01') -
-(select isnull(sum(INS_QTY),0) from INSTACK i where ITEM_CODE = v.ITEM_CODE and i.INS_TYP = '출고'and i.INS_WRHS ='R-01'))+
-(select isnull(sum(r.REORDER_QTY),0)-isnull(sum(rd.REORDER_DETAIL_QTY_GOOD),0) 
-from REORDER r left outer join REORDERDETATILS rd on r.REORDER_CODE = rd.REORDER_CODE 
-where ITEM_CODE = v.ITEM_CODE  )))) as '발주제안',
+            string sql = $@"select ROW_NUMBER() OVER(ORDER BY(SELECT 1)) idx,s.SALES_Work_Order_ID, ITEM_COM_DLVR,ITEM_COM_REORDER,ITEM_MANAGER,b.ITEM_CODE,i.ITEM_NAME,ITEM_WRHS_IN,f.FAC_NAME,ITEM_INCOME_YN,ITEM_REORDER_TYP,ITEM_LEADTIME
 
 
-((select isnull(sum(INS_QTY),0) from INSTACK i where ITEM_CODE = v.ITEM_CODE and i.INS_TYP = '입고' and i.INS_WRHS ='R-01') -
-(select isnull(sum(INS_QTY),0) from INSTACK i where ITEM_CODE = v.ITEM_CODE and i.INS_TYP = '출고' and i.INS_WRHS ='R-01')) as '현재고',
-
-(((select isnull(sum(INS_QTY),0) from INSTACK i where ITEM_CODE = v.ITEM_CODE and i.INS_TYP = '입고' and i.INS_WRHS ='R-01') -
-(select isnull(sum(INS_QTY),0) from INSTACK i where ITEM_CODE = v.ITEM_CODE and i.INS_TYP = '출고' and i.INS_WRHS ='R-01'))+
-(select isnull(sum(r.REORDER_QTY),0)-isnull(sum(rd.REORDER_DETAIL_QTY_GOOD),0) 
-from REORDER r left outer join REORDERDETATILS rd on r.REORDER_CODE = rd.REORDER_CODE 
-where ITEM_CODE = v.ITEM_CODE )) AS '가상재고', i.ITEM_LEADTIME
-
-
-
-from ITEM i ,FACTORY f,BOM_SALES_WORK_V v,SALES_WORK S
-where ITEM_TYP = '원자재' and i.ITEM_WRHS_IN =f.FAC_CODE 
-and i.ITEM_CODE =v.ITEM_CODE 
-and v.SALES_DUEDATE = s.SALES_DUEDATE 
-and v.SALES_DUEDATE > GETDATE()
-and (v.QTY+
-((select i.ITEM_QTY_SAFE from ITEM i where ITEM_CODE = v.ITEM_CODE) -
-(((select isnull(sum(INS_QTY),0) from INSTACK i where ITEM_CODE = v.ITEM_CODE and i.INS_TYP = '입고' and i.INS_WRHS ='R-01') -
-(select isnull(sum(INS_QTY),0) from INSTACK i where ITEM_CODE = v.ITEM_CODE and i.INS_TYP = '출고' and i.INS_WRHS ='R-01'))+
-(select isnull(sum(r.REORDER_QTY),0)-isnull(sum(rd.REORDER_DETAIL_QTY_GOOD),0) 
-from REORDER r left outer join REORDERDETATILS rd on r.REORDER_CODE = rd.REORDER_CODE 
-where ITEM_CODE = v.ITEM_CODE  )))) > 0 and ITEM_COM_REORDER in({com})";
+                            ,(s.SALES_QTY *q.A_QTY) as 발주제한 
+                            
+                            ,((select ISNULL(sum(INS_QTY),'0') 
+                            from INSTACK 
+                            where ITEM_CODE = B.ITEM_CODE AND INS_TYP = '입고'AND SALES_WORK_ORDER_ID = S.SALES_Work_Order_ID)-
+                            
+                            (select ISNULL(sum(INS_QTY),0) 
+                            from INSTACK 
+                            where ITEM_CODE = B.ITEM_CODE AND INS_TYP = '출고' AND SALES_WORK_ORDER_ID = S.SALES_Work_Order_ID)) AS 현재고
+                            
+                            ,((select ISNULL(sum(INS_QTY),0) 
+                            from INSTACK 
+                            where ITEM_CODE = B.ITEM_CODE AND INS_TYP = '입고' AND SALES_WORK_ORDER_ID = S.SALES_Work_Order_ID)-
+                            
+                            (select ISNULL(sum(INS_QTY),0) 
+                            from INSTACK 
+                            where ITEM_CODE = B.ITEM_CODE AND INS_TYP = '출고' AND SALES_WORK_ORDER_ID = S.SALES_Work_Order_ID))+
+                            
+                            ((select ISNULL(SUM(REORDER_QTY),0) 
+                            from REORDER r 
+                            where ITEM_CODE =  B.ITEM_CODE and  r.SALES_Work_Order_ID = S.SALES_Work_Order_ID)-
+                            
+                            (select ISNULL(sum(REORDER_DETAIL_QTY_GOOD),0)
+                            from REORDER r ,REORDERDETATILS rd
+                            where ITEM_CODE =  B.ITEM_CODE and  r.SALES_Work_Order_ID = S.SALES_Work_Order_ID)) as 가상재고 
+                            
+                            from BOM_V b,SALES_WORK s,ITEM i,FACTORY f,BOM_QTY q
+                            where 
+                             b.BOM_TOP_CODE = s.ITEM_CODE 
+                             and b.SALES_DUEDATE= s.SALES_DUEDATE
+                             and b.ITEM_CODE = i.ITEM_CODE
+                             and ITEM_TYP = '원자재'
+                             and f.FAC_CODE = ITEM_WRHS_IN
+                             and b.ITEM_CODE = q.ITEM_CODE
+                             and s.SALES_QTY *q.A_QTY != 
+                            (select ISNULL(SUM(REORDER_QTY),0) 
+                            from REORDER r 
+                            where ITEM_CODE =  B.ITEM_CODE and  r.SALES_Work_Order_ID = S.SALES_Work_Order_ID) and ITEM_COM_REORDER in({com})";
             conn.Open();
             using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
             {
@@ -423,7 +431,7 @@ where ITEM_CODE = v.ITEM_CODE  )))) > 0 and ITEM_COM_REORDER in({com})";
 
 
         }
-        public bool UpDateREORDER(string day,string manager,string code)
+        public bool UpDateREORDER(DateTime day,string manager,string code)
         {
             bool Result = false;
             try
@@ -432,7 +440,7 @@ where ITEM_CODE = v.ITEM_CODE  )))) > 0 and ITEM_COM_REORDER in({com})";
                 {
                     cmd.Connection = new SqlConnection(this.ConnectionString);
                     cmd.CommandText = $@"UPDATE REORDER SET REORDER_DATE_IN = @REORDER_DATE_IN , MANAGER_ID = @MANAGER_ID
-                                          WHERE REORDER_CODE in ((SELECT * FROM[dbo].[SplitString]({code}, '@')))";
+                                          WHERE REORDER_CODE in ((SELECT * FROM[dbo].[SplitString]('{code}', '@')))";
                     cmd.Parameters.AddWithValue("@REORDER_DATE_IN", day);
                     cmd.Parameters.AddWithValue("@MANAGER_ID", manager);
                   

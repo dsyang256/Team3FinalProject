@@ -71,7 +71,7 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Location = new System.Drawing.Point(3, 11);
             this.panel2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.panel2.Size = new System.Drawing.Size(1174, 62);
+            this.panel2.Size = new System.Drawing.Size(1218, 62);
             // 
             // panel3
             // 

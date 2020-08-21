@@ -9,6 +9,7 @@ using TEAM3FINAL.Services;
 using TEAM3FINALVO;
 using System.Linq;
 using Message = TEAM3FINALVO.Message;
+using log4net.Core;
 
 namespace TEAM3FINAL
 {
@@ -17,9 +18,16 @@ namespace TEAM3FINAL
         CheckBox headerChk;
         CheckBox headerChk2;
 
+        LoggingUtility _logging;
+        public LoggingUtility Log
+        {
+            get { return _logging; }
+        }
+
         public FrmWorkRecord()
         {
             InitializeComponent();
+            _logging = new LoggingUtility(this.Name, Level.Info, 30);
         }
 
         #region 체크박스 포함한 그리드뷰 컬럼 생성
@@ -72,15 +80,15 @@ namespace TEAM3FINAL
             DataGridViewColumn dc = dgvWorkRecordList.Columns[0];
             dc.Frozen = true;
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "품목", "ITEM_CODE", true, 100); //1
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "품명", "ITEM_NAME", true, 100); //2
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "규격", "ITEM_STND", true, 100); //3
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "창고코드", "FCLTS_CODE", true, 100); //4
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "이동창고", "FCLTS_NAME", true, 100); //5
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "품목", "ITEM_CODE", true, 150); //1
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "품명", "ITEM_NAME", true, 300); //2
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "규격", "ITEM_STND", true, 200); //3
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "창고코드", "FCLTS_CODE", true, 180); //4
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "이동창고", "FCLTS_NAME", true, 180); //5
             DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "이동수량", "WO_QTY_OUT", true, 100, DataGridViewContentAlignment.MiddleRight); //6 양품수량
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "비고", "WO_REMARK", true, 80); //7
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "작업지시서번호", "SALES_WORK_ORDER_ID", true, 150); //8
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "TYPE", "ITEM_TYP", true, 80); //9
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "비고", "WO_REMARK", true, 400); //7
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "작업지시서번호", "SALES_WORK_ORDER_ID", true, 200); //8
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvMOVEList, "TYPE", "ITEM_TYP", true, 100); //9
             dgvMOVEList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvMOVEList.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvMOVEList);
@@ -189,19 +197,26 @@ namespace TEAM3FINAL
 
         public void Search(object sender, EventArgs e)
         {
-            string fromDATE;
-            string fromTO;
-            WorkOrderService service = new WorkOrderService();
-            dgvWorkRecordList.DataSource = null;
-            if (dtpFROM.Checked)
-                fromDATE = dtpFROM.Value.ToString("yyyy-MM-dd");
-            else
-                fromDATE = string.Empty;
-            if (dtpTO.Checked)
-                fromTO = dtpTO.Value.ToString("yyyy-MM-dd");
-            else
-                fromTO = string.Empty;
-            dgvWorkRecordList.DataSource = service.SearchWORKORDER(cboDATEtype.Text, fromDATE, fromTO, cboSTATE.Text);
+            try
+            {
+                string fromDATE;
+                string fromTO;
+                WorkOrderService service = new WorkOrderService();
+                dgvWorkRecordList.DataSource = null;
+                if (dtpFROM.Checked)
+                    fromDATE = dtpFROM.Value.ToString("yyyy-MM-dd");
+                else
+                    fromDATE = string.Empty;
+                if (dtpTO.Checked)
+                    fromTO = dtpTO.Value.ToString("yyyy-MM-dd");
+                else
+                    fromTO = string.Empty;
+                dgvWorkRecordList.DataSource = service.SearchWORKORDER(cboDATEtype.Text, fromDATE, fromTO, cboSTATE.Text);
+            }
+            catch(Exception err)
+            {
+                _logging = new LoggingUtility(this.Name, Level.Info, 30);
+            }
         }
 
         public void Reset(object sender, EventArgs e)
@@ -234,7 +249,7 @@ namespace TEAM3FINAL
         //날짜제외 선택시 자동 null값 입력
         private void cboDATE_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cboDATEtype.SelectedIndex == 0)
+            if (cboDATEtype.SelectedIndex == 0)
             {
                 dtpFROM.Checked = false;
                 dtpFROM_ValueChanged(null, null);
@@ -294,166 +309,181 @@ namespace TEAM3FINAL
 
         private void btnWorkCancel_Click(object sender, EventArgs e)
         {
-            dgvWorkRecordList.EndEdit();
-            string state = dgvWorkRecordList.CurrentRow.Cells[8].Value.ToString();
-            if (state == "작업완료" || state == "")
+            try
             {
-                MessageBox.Show("이미 완료 상태입니다.");
-                return;
-            }
-            else
-            {
-                StringBuilder sb = new StringBuilder();
-                int cnt = 0;
-                //품목 선택후 List를 전달
-                foreach (DataGridViewRow item in dgvWorkRecordList.Rows)
+                dgvWorkRecordList.EndEdit();
+                string state = dgvWorkRecordList.CurrentRow.Cells[8].Value.ToString();
+                if (state == "작업완료" || state == "")
                 {
-                    if (Convert.ToBoolean(item.Cells[0].Value))
-                    {
-                        sb.Append(item.Cells[23].Value.ToString() + "@");
-                        cnt++;
-                    }
-                }
-                if (sb.Length < 1)
-                {
-                    MessageBox.Show("작업 취소할 항목을 선택하여 주십시오.");
+                    MessageBox.Show("이미 완료 상태입니다.");
                     return;
                 }
-                sb.Remove(sb.Length - 1, 1);
-                if (MessageBox.Show($"총 {cnt}개의 항목을 작업취소 하시겠습니까?", "작업취소", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                else
                 {
-                    WorkOrderService service = new WorkOrderService();
-                    Message msg = service.WorkCancel(sb.ToString());
-                    if (msg.IsSuccess)
+                    StringBuilder sb = new StringBuilder();
+                    int cnt = 0;
+                    //품목 선택후 List를 전달
+                    foreach (DataGridViewRow item in dgvWorkRecordList.Rows)
                     {
-                        MessageBox.Show(msg.ResultMessage);
-                        GetWorkOrderInfo();
+                        if (Convert.ToBoolean(item.Cells[0].Value))
+                        {
+                            sb.Append(item.Cells[23].Value.ToString() + "@");
+                            cnt++;
+                        }
                     }
-                    else
+                    if (sb.Length < 1)
                     {
-                        MessageBox.Show(msg.ResultMessage);
+                        MessageBox.Show("작업 취소할 항목을 선택하여 주십시오.");
                         return;
                     }
+                    sb.Remove(sb.Length - 1, 1);
+                    if (MessageBox.Show($"총 {cnt}개의 항목을 작업취소 하시겠습니까?", "작업취소", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        WorkOrderService service = new WorkOrderService();
+                        Message msg = service.WorkCancel(sb.ToString());
+                        if (msg.IsSuccess)
+                        {
+                            MessageBox.Show(msg.ResultMessage);
+                            GetWorkOrderInfo();
+                        }
+                        else
+                        {
+                            MessageBox.Show(msg.ResultMessage);
+                            return;
+                        }
+                    }
                 }
+            }
+            catch(Exception err)
+            {
+                _logging = new LoggingUtility(this.Name, Level.Info, 30);
             }
         }
 
         private void btnMOVE_Click(object sender, EventArgs e)
         {
-            dgvMOVEList.EndEdit();
-            string state = dgvWorkRecordList.CurrentRow.Cells[8].Value.ToString();
-            if (state == "작업완료")
+            try
             {
-                StringBuilder sb = new StringBuilder();
-                int cnt = 0;
-                //품목 선택후 List를 전달
-                foreach (DataGridViewRow item in dgvWorkRecordList.Rows)
+                dgvMOVEList.EndEdit();
+                string state = dgvWorkRecordList.CurrentRow.Cells[8].Value.ToString();
+                if (state == "작업완료")
                 {
-                    if (Convert.ToBoolean(item.Cells[0].Value))
+                    StringBuilder sb = new StringBuilder();
+                    int cnt = 0;
+                    //품목 선택후 List를 전달
+                    foreach (DataGridViewRow item in dgvWorkRecordList.Rows)
                     {
-                        sb.Append(item.Cells[23].Value.ToString() + "@");
-                        cnt++;
+                        if (Convert.ToBoolean(item.Cells[0].Value))
+                        {
+                            sb.Append(item.Cells[23].Value.ToString() + "@");
+                            cnt++;
+                        }
                     }
-                }
-                if (sb.Length < 1)
-                {
-                    MessageBox.Show("실적등록할 항목을 선택하여 주십시오.");
-                    return;
-                }
-                sb.Remove(sb.Length - 1, 1);
-                if (MessageBox.Show($"총 {cnt}개의 항목을 실적등록 하시겠습니까?", "실적등록", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    WorkOrderService service = new WorkOrderService();
-                    Message msg = service.WorkMOVE(sb.ToString());
-                    if (msg.IsSuccess)
+                    if (sb.Length < 1)
                     {
-                        MessageBox.Show(msg.ResultMessage);
-                        GetWorkOrderInfo();
-                        GetWorkMOVEInfo();
-                    }
-                    else
-                    {
-                        MessageBox.Show(msg.ResultMessage);
+                        MessageBox.Show("실적등록할 항목을 선택하여 주십시오.");
                         return;
                     }
+                    sb.Remove(sb.Length - 1, 1);
+                    if (MessageBox.Show($"총 {cnt}개의 항목을 실적등록 하시겠습니까?", "실적등록", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        WorkOrderService service = new WorkOrderService();
+                        Message msg = service.WorkMOVE(sb.ToString());
+                        if (msg.IsSuccess)
+                        {
+                            MessageBox.Show(msg.ResultMessage);
+                            GetWorkOrderInfo();
+                            GetWorkMOVEInfo();
+                        }
+                        else
+                        {
+                            MessageBox.Show(msg.ResultMessage);
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("작업완료 상태만 실적등록이 가능합니다.");
+                    return;
                 }
             }
-            else
+            catch(Exception err)
             {
-                MessageBox.Show("작업완료 상태만 실적등록이 가능합니다.");
-                return;
+                _logging = new LoggingUtility(this.Name, Level.Info, 30);
             }
         }
 
         private void btnFinalWork_Click(object sender, EventArgs e)
         {
-             //수정 시 여러개의 체크박스를 선택하는것을 막음
-            dgvMOVEList.EndEdit();
-            //string sb = string.Empty;
-            int cnt = 0;
-            //체크가 되었는지 확인
-            foreach (DataGridViewRow item in dgvMOVEList.Rows)
+            try
             {
-                if (Convert.ToBoolean(item.Cells[0].Value))
+                //수정 시 여러개의 체크박스를 선택하는것을 막음
+                dgvMOVEList.EndEdit();
+                //string sb = string.Empty;
+                int cnt = 0;
+                //체크가 되었는지 확인
+                foreach (DataGridViewRow item in dgvMOVEList.Rows)
                 {
-                    cnt++;
+                    if (Convert.ToBoolean(item.Cells[0].Value))
+                    {
+                        cnt++;
+                    }
+                }
+                if (cnt == 1) //하나일 경우 PopUp창 띄움
+                {
+                    INSTACK_VO vo = new INSTACK_VO();
+                    vo.SALES_WORK_ORDER_ID = dgvMOVEList.CurrentRow.Cells[8].Value.ToString();
+                    vo.INS_QTY = Convert.ToInt32(dgvMOVEList.CurrentRow.Cells[6].Value);
+                    vo.ITEM_CODE = dgvMOVEList.CurrentRow.Cells[1].Value.ToString();
+
+                    if (MessageBox.Show("공정이동 하시겠습니까?", "공정이동", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+
+                        if (dgvMOVEList.CurrentRow.Cells[4].Value.ToString() == "OS")
+                        {
+                            vo.INS_WRHS = "OS";
+                            WorkOrderService service = new WorkOrderService();
+                            Message msg = service.InsertMoveUpdate(vo);
+                            if (msg.IsSuccess)
+                            {
+                                MessageBox.Show(msg.ResultMessage);
+                                GetWorkMOVEInfo();
+                            }
+                            else
+                            {
+                                MessageBox.Show(msg.ResultMessage);
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            vo.INS_WRHS = "H_01";
+                            WorkOrderService service = new WorkOrderService();
+                            Message msg = service.InsertMoveUpdate(vo);
+                            if (msg.IsSuccess)
+                            {
+                                MessageBox.Show(msg.ResultMessage);
+                                GetWorkMOVEInfo();
+                            }
+                            else
+                            {
+                                MessageBox.Show(msg.ResultMessage);
+                                return;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("하나의 항목씩만 공정이동 가능");
+                    return;
                 }
             }
-            if (cnt == 1) //하나일 경우 PopUp창 띄움
+            catch(Exception err)
             {
-                INSTACK_VO vo = new INSTACK_VO();
-                vo.SALES_WORK_ORDER_ID = dgvMOVEList.CurrentRow.Cells[8].Value.ToString();
-                vo.INS_QTY = Convert.ToInt32(dgvMOVEList.CurrentRow.Cells[6].Value);
-                vo.ITEM_CODE = dgvMOVEList.CurrentRow.Cells[1].Value.ToString();                
-
-                if (MessageBox.Show("공정이동 하시겠습니까?", "공정이동", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {                 
-
-                    if (dgvMOVEList.CurrentRow.Cells[4].Value.ToString() == "OS")
-                    {
-                        vo.INS_WRHS = "OS";
-                        WorkOrderService service = new WorkOrderService();
-                        Message msg = service.InsertMoveUpdate(vo);
-                        if (msg.IsSuccess)
-                        {
-                            MessageBox.Show(msg.ResultMessage);
-                            GetWorkMOVEInfo();
-                        }
-                        else
-                        {
-                            MessageBox.Show(msg.ResultMessage);
-                            return;
-                        }
-                    }
-                    else
-                    {
-                        vo.INS_WRHS = "H_01";
-                        WorkOrderService service = new WorkOrderService();
-                        Message msg = service.InsertMoveUpdate(vo);
-                        if (msg.IsSuccess)
-                        {
-                            MessageBox.Show(msg.ResultMessage);
-                            GetWorkMOVEInfo();
-                        }
-                        else
-                        {
-                            MessageBox.Show(msg.ResultMessage);
-                            return;
-                        }
-                    }
-                }                
+                _logging = new LoggingUtility(this.Name, Level.Info, 30);
             }
-            else
-            {
-                MessageBox.Show("하나의 항목씩만 공정이동 가능");
-                return;
-            }
-
-        }
-
-        private void dgvMOVEList_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

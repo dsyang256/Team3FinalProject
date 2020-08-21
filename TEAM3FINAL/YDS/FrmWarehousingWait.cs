@@ -329,6 +329,12 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
+                sday.Value = DateTime.Now;
+                eday.Value = DateTime.Now;
+                COM_CODE_OUT.Text = "";
+                textBox1.Text = "";
+                REORDER_CODE.Text = "";
+                COM_CODE_IN.Text = "";
                 DataGridViewBinding2();
                 DataGridViewBinding1();
             }
@@ -338,6 +344,7 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
+                MessageBox.Show("사용안해요");
             }
         }
 
@@ -345,6 +352,7 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
+                MessageBox.Show("사용안해요");
             }
         }
 
@@ -428,6 +436,21 @@ namespace TEAM3FINAL
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+        private void BtnUnSet()
+        {
+            FrmMAIN frm = (FrmMAIN)this.MdiParent;
+            frm.eSearch -= Search;
+            frm.eInsert -= Insert;
+            frm.eUpdate -= Update;
+            frm.eDelete -= Delete;
+            frm.ePrint -= Print;
+            frm.eReset -= Reset;
+           
+        }
+        private void FrmWarehousingWait_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            BtnUnSet();
         }
     }
 }

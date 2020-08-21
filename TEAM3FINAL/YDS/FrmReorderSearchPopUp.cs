@@ -10,7 +10,7 @@ namespace TEAM3FINAL
 {
     public partial class FrmReorderSearchPopUp : TEAM3FINAL.baseFormPopUP
     {
-        public string day {get; set; }
+        public DateTime day {get; set; }
 
         public FrmReorderSearchPopUp()
         {
@@ -24,7 +24,7 @@ namespace TEAM3FINAL
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            day= dateTimePicker1.Value.ToShortDateString();
+            day= dateTimePicker1.Value;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

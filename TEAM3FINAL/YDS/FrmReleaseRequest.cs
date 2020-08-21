@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DevExpress.Data.Mask;
+using log4net.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,20 +15,33 @@ namespace TEAM3FINAL
 {
     public partial class FrmReleaseRequest : baseForm2, CommonBtn
     {
+        LoggingUtility _logging;
+        public LoggingUtility Log
+        {
+            get { return _logging; }
+        }
         public CheckBox headerChk;
 
         public FrmReleaseRequest()
         {
             InitializeComponent();
+            _logging = new LoggingUtility(this.Name, Level.Info, 30);
         }
 
         private void FrmReleaseRequest_Load(object sender, EventArgs e)
         {
-            ComboBinding();
-            DataGridViewColumnSet1();
-            DataGridViewColumnSet2();
-            DataGridViewBinding1();
-            BtnSet();
+            try
+            {
+                ComboBinding();
+                DataGridViewColumnSet1();
+                DataGridViewColumnSet2();
+                DataGridViewBinding1();
+                BtnSet();
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
         }
 
         #region 콤보박스 바인딩
@@ -37,15 +52,22 @@ namespace TEAM3FINAL
         /// <param name="e"></param>
         private void ComboBinding()
         {
-            CommonService service = new CommonService();
-            List<ComboItemVO> Commonlist = service.GetITEMCmCode();
+            try
+            {
+                CommonService service = new CommonService();
+                List<ComboItemVO> Commonlist = service.GetITEMCmCode();
 
-            //설비
-            var listFACILITY = (from item in Commonlist where item.COMMON_PARENT == "설비" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(FACILITY, listFACILITY, "COMMON_CODE", "COMMON_NAME", "");
-            //작업지시id
-            var listid = (from item in Commonlist where item.COMMON_PARENT == "작업지시" select item).ToList();
-            CommonUtil.ComboBinding<ComboItemVO>(WORKORDER, listid, "COMMON_CODE", "COMMON_NAME", "");
+                //설비
+                var listFACILITY = (from item in Commonlist where item.COMMON_PARENT == "설비" select item).ToList();
+                CommonUtil.ComboBinding<ComboItemVO>(FACILITY, listFACILITY, "COMMON_CODE", "COMMON_NAME", "");
+                //작업지시id
+                var listid = (from item in Commonlist where item.COMMON_PARENT == "작업지시" select item).ToList();
+                CommonUtil.ComboBinding<ComboItemVO>(WORKORDER, listid, "COMMON_CODE", "COMMON_NAME", "");
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
 
         }
         #endregion
@@ -56,42 +78,56 @@ namespace TEAM3FINAL
         /// </summary>
         private void DataGridViewColumnSet1()
         {
-            DataGridViewUtil.InitSettingGridView(dgv1);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "no", "idx", true, 30);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "계획시작일자", "WO_PLAN_DATE", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "작업지시ID", "WO_Code", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "설비명", "FCLTS_NAME", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "소진창고", "FAC_NAME", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목", "ITEM_CODE", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품명", "ITEM_NAME", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "지시수량", "WO_PLAN_QTY", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "단위", "ITEM_UNIT", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "상태명", "WO_WORK_STATE", true, 200);
+            try
+            {
+                DataGridViewUtil.InitSettingGridView(dgv1);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "no", "idx", true, 30);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "계획시작일자", "WO_PLAN_DATE", true, 200);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "작업지시ID", "WO_Code", true, 200);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "설비명", "FCLTS_NAME", true, 200);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "소진창고", "FAC_NAME", true, 200);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품목", "ITEM_CODE", true, 200);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "품명", "ITEM_NAME", true, 200);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "지시수량", "WO_PLAN_QTY", true, 200);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "단위", "ITEM_UNIT", true, 200);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv1, "상태명", "WO_WORK_STATE", true, 200);
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
 
 
-           
+
 
         }
         private void DataGridViewColumnSet2()
         {
-            DataGridViewUtil.InitSettingGridView(dgv2);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "no", "idx", true, 30);
-            DataGridViewUtil.DataGridViewCheckBoxSet(dgv2, "all");
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품목", "ITEM_CODE", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품명", "ITEM_NAME", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "규격", "ITEM_STND", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "요청창고", "FAC_NAME", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "요청일", "Date", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "재고량", "현재고", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "표준불출수량", "표준불출수량", true, 150);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "계획요청수량", "WO_PLAN_QTY", true, 150);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "요청수량", "", true, 100, readOnly:false) ;
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "출고수량", "출고", true, 140);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "잔량", "잔량", true, 140);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "입고창고", "FCLTS_WRHS_EXHST", false, 125);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "작업번호", "SALES_WORK_ORDER_ID", false, 125);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "출고창고", "ITEM_WRHS_IN", true, 125);
-            DataGridViewCheckBoxAllCheck();
+            try
+            {
+                DataGridViewUtil.InitSettingGridView(dgv2);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "no", "idx", true, 30);
+                DataGridViewUtil.DataGridViewCheckBoxSet(dgv2, "all");
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품목", "ITEM_CODE", true, 200);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "품명", "ITEM_NAME", true, 200);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "규격", "ITEM_STND", true, 200);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "요청창고", "FAC_NAME", true, 200);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "요청일", "Date", true, 200);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "재고량", "현재고", true, 100);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "표준불출수량", "표준불출수량", true, 150);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "계획요청수량", "WO_PLAN_QTY", true, 150);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "요청수량", "", true, 100, readOnly: false);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "출고수량", "출고", true, 140);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "잔량", "잔량", true, 140);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "입고창고", "FCLTS_WRHS_EXHST", false, 125);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "작업번호", "SALES_WORK_ORDER_ID", false, 125);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "출고창고", "ITEM_WRHS_IN", true, 125);
+                DataGridViewCheckBoxAllCheck();
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
 
         }
         #endregion
@@ -102,42 +138,70 @@ namespace TEAM3FINAL
         /// </summary>
         private void DataGridViewBinding1()
         {
-            dgv1.DataSource = null;
-            WorkOrderDSService service = new WorkOrderDSService();
-            dgv1.DataSource = service.GetWorkOrder();
+            try
+            {
+                dgv1.DataSource = null;
+                WorkOrderDSService service = new WorkOrderDSService();
+                dgv1.DataSource = service.GetWorkOrder();
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
         }
 
         #endregion
         private void DataGridViewCheckBoxAllCheck()
         {
-            headerChk = new CheckBox();
-            Point headerCell = dgv2.GetCellDisplayRectangle(1, -1, true).Location;
-            headerChk.Location = new Point(headerCell.X + 4, headerCell.Y + 15);
-            headerChk.Size = new Size(18, 18);
-            headerChk.BackColor = Color.FromArgb(245, 245, 246);
-            headerChk.Click += HeaderChk_Clicked;
-            dgv2.Controls.Add(headerChk);
+            try
+            {
+                headerChk = new CheckBox();
+                Point headerCell = dgv2.GetCellDisplayRectangle(1, -1, true).Location;
+                headerChk.Location = new Point(headerCell.X + 4, headerCell.Y + 15);
+                headerChk.Size = new Size(18, 18);
+                headerChk.BackColor = Color.FromArgb(245, 245, 246);
+                headerChk.Click += HeaderChk_Clicked;
+                dgv2.Controls.Add(headerChk);
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
         }
         private void HeaderChk_Clicked(object sender, EventArgs e)
         {
-            dgv2.EndEdit();
-
-            //데이터그리드뷰의 전체 행의 체크를 체크 or 언체크
-            foreach (DataGridViewRow row in dgv2.Rows)
+            try
             {
-                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells["all"];
-                chk.Value = headerChk.Checked;
+                dgv2.EndEdit();
+
+                //데이터그리드뷰의 전체 행의 체크를 체크 or 언체크
+                foreach (DataGridViewRow row in dgv2.Rows)
+                {
+                    DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells["all"];
+                    chk.Value = headerChk.Checked;
+                }
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
             }
         }
 
         private void dgv1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
-            string code = dgv1.Rows[e.RowIndex].Cells[5].Value.ToString();
-            string id = dgv1.Rows[e.RowIndex].Cells[2].Value.ToString();
-            dgv2.DataSource = null;
-            WorkOrderDSService service = new WorkOrderDSService();
-            dgv2.DataSource = service.GetWorkOrder2(code,id);
+            try
+            {
+                if (e.RowIndex < 0) return;
+                string code = dgv1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                string id = dgv1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                dgv2.DataSource = null;
+                WorkOrderDSService service = new WorkOrderDSService();
+                dgv2.DataSource = service.GetWorkOrder2(code, id);
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
         }
 
         private void dgv2_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -156,124 +220,192 @@ namespace TEAM3FINAL
             }
             catch (Exception err)
             {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
                 return;
             }
         }
         private void Control_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
+            try
             {
-                e.Handled = true;
+                if (!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
+                {
+                    e.Handled = true;
+                }
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
             }
         }
 
         private void dgv2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 10)
+            try
             {
-                dgv2.EndEdit();
-                int a = Convert.ToInt32(dgv2.Rows[e.RowIndex].Cells[7].Value);
-                int b = Convert.ToInt32(dgv2.Rows[e.RowIndex].Cells[12].Value);
-                int c = Convert.ToInt32(dgv2.Rows[e.RowIndex].Cells[10].Value);
-                if (c > a)
+                if (e.ColumnIndex == 10)
                 {
-                    MessageBox.Show("요청량이 재고보다 많습니다.");
-                    dgv2.Rows[e.RowIndex].Cells[10].Value = null;
-                    return;
+                    dgv2.EndEdit();
+                    int a = Convert.ToInt32(dgv2.Rows[e.RowIndex].Cells[7].Value);
+                    int b = Convert.ToInt32(dgv2.Rows[e.RowIndex].Cells[12].Value);
+                    int c = Convert.ToInt32(dgv2.Rows[e.RowIndex].Cells[10].Value);
+                    if (c > a)
+                    {
+                        MessageBox.Show("요청량이 재고보다 많습니다.");
+                        dgv2.Rows[e.RowIndex].Cells[10].Value = null;
+                        return;
+                    }
+                    if (c > b)
+                    {
+                        MessageBox.Show("요청량이 잔량보다 많습니다.");
+                        dgv2.Rows[e.RowIndex].Cells[10].Value = null;
+                        return;
+                    }
                 }
-                if (c >b)
-                {
-                    MessageBox.Show("요청량이 잔량보다 많습니다.");
-                    dgv2.Rows[e.RowIndex].Cells[10].Value = null;
-                    return;
-                }
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            dgv2.EndEdit();
-            INSTACKService service = new INSTACKService();
-            foreach (DataGridViewRow item in dgv2.Rows)
+            try
             {
-                if (Convert.ToBoolean(item.Cells[1].Value) && item.Cells[10].Value != null)
+                dgv2.EndEdit();
+                INSTACKService service = new INSTACKService();
+                foreach (DataGridViewRow item in dgv2.Rows)
                 {
-                    int qty = Convert.ToInt32(item.Cells[10].Value);
-                    string code = item.Cells[2].Value.ToString();
-                    string wrhsin = item.Cells[13].Value.ToString();
-                    string id = item.Cells[14].Value.ToString();
-                    string wrhsout = item.Cells[15].Value.ToString();
-                    service.INSERT_instack(qty, wrhsin, wrhsout, code, id);
-                    MessageBox.Show("자재가 불출되었습니다.");
+                    if (Convert.ToBoolean(item.Cells[1].Value) && item.Cells[10].Value != null)
+                    {
+                        int qty = Convert.ToInt32(item.Cells[10].Value);
+                        string code = item.Cells[2].Value.ToString();
+                        string wrhsin = item.Cells[13].Value.ToString();
+                        string id = item.Cells[14].Value.ToString();
+                        string wrhsout = item.Cells[15].Value.ToString();
+                        service.INSERT_instack(qty, wrhsin, wrhsout, code, id);
+                        MessageBox.Show("자재가 불출되었습니다.");
+                    }
                 }
+                dgv2.DataSource = null;
             }
-            dgv2.DataSource = null;
-            
-            
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
+
+
         }
         private void BtnSet()
         {
-            FrmMAIN frm = (FrmMAIN)this.MdiParent;
-            frm.eSearch += Search;
-            frm.eInsert += Insert;
-            frm.eUpdate += Update;
-            frm.eDelete += Delete;
-            frm.ePrint += Print;
-            frm.eReset += Reset;
-           
+            try
+            {
+                FrmMAIN frm = (FrmMAIN)this.MdiParent;
+                frm.eSearch += Search;
+                frm.eInsert += Insert;
+                frm.eUpdate += Update;
+                frm.eDelete += Delete;
+                frm.ePrint += Print;
+                frm.eReset += Reset;
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
+
         }
 
         public void Insert(object sender, EventArgs e)
         {
-            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            try
             {
+                if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+                {
+                    MessageBox.Show("사용안해요");
+                }
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
             }
         }
 
         public void Search(object sender, EventArgs e)
         {
-            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            try
             {
-                string day1 = sday.Value.ToShortDateString();
-                string day2 = eday.Value.ToShortDateString();
-                string item = ITEMNAME.Text;
-                string id = WORKORDER.Text;
-                string name = FACILITY.Text;
-                WorkOrderDSService service = new WorkOrderDSService();
-                dgv1.DataSource = service.SP_GetWorkOrder(day1, day2, id, item, name);
+                if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+                {
+                    string day1 = sday.Value.ToShortDateString();
+                    string day2 = eday.Value.ToShortDateString();
+                    string item = ITEMNAME.Text;
+                    string id = WORKORDER.Text;
+                    string name = FACILITY.Text;
+                    WorkOrderDSService service = new WorkOrderDSService();
+                    dgv1.DataSource = service.SP_GetWorkOrder(day1, day2, id, item, name);
+                }
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
             }
         }
 
         public void Reset(object sender, EventArgs e)
         {
-            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            try
             {
-                DataGridViewBinding1();
-                dgv2.DataSource = null;
-                sday.Value = DateTime.Now;
-                eday.Value = DateTime.Now;
-                ITEMNAME.Text = "";
-                WORKORDER.Text = "";
-                FACILITY.Text = "";
+                if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+                {
+                    DataGridViewBinding1();
+                    dgv2.DataSource = null;
+                    sday.Value = DateTime.Now;
+                    eday.Value = DateTime.Now;
+                    ITEMNAME.Text = "";
+                    WORKORDER.Text = "";
+                    FACILITY.Text = "";
+                }
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
             }
         }
 
         public void Update(object sender, EventArgs e)
         {
-            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            try
             {
+                if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+                {
+                    MessageBox.Show("사용안해요");
+                }
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
             }
         }
 
         public void Delete(object sender, EventArgs e)
         {
-            if(((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            try
             {
+                if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+                {
+                    MessageBox.Show("사용안해요");
+                }
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
             }
         }
 
         public void Print(object sender, EventArgs e)
         {
+
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
                 if (dgv1.Rows.Count > 0)
@@ -317,6 +449,7 @@ namespace TEAM3FINAL
                     catch (Exception err)
                     {
                         MessageBox.Show("출력에 실패하였습니다.", "출력 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
                     }
                     finally
                     {
@@ -338,10 +471,11 @@ namespace TEAM3FINAL
                 System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
                 obj = null;
             }
-            catch (Exception ex)
+            catch (Exception err)
             {
                 obj = null;
-                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+                MessageBox.Show("Exception Occured while releasing object " + err.ToString());
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
             }
             finally
             {
@@ -350,22 +484,26 @@ namespace TEAM3FINAL
         }
         private void BtnUnSet()
         {
-            FrmMAIN frm = (FrmMAIN)this.MdiParent;
-            frm.eSearch -= Search;
-            frm.eInsert -= Insert;
-            frm.eUpdate -= Update;
-            frm.eDelete -= Delete;
-            frm.ePrint -= Print;
-            frm.eReset -= Reset;
+            try
+            {
+                FrmMAIN frm = (FrmMAIN)this.MdiParent;
+                frm.eSearch -= Search;
+                frm.eInsert -= Insert;
+                frm.eUpdate -= Update;
+                frm.eDelete -= Delete;
+                frm.ePrint -= Print;
+                frm.eReset -= Reset;
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
         }
         private void FrmReleaseRequest_FormClosing(object sender, FormClosingEventArgs e)
         {
             BtnUnSet();
         }
 
-        private void dgv1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+      
     }
 }

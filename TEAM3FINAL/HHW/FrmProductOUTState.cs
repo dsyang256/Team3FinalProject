@@ -10,16 +10,22 @@ using TEAM3FINALVO;
 using System.Linq;
 using Message = TEAM3FINALVO.Message;
 using TEAM3FINAL.HHW;
+using log4net.Core;
 
 namespace TEAM3FINAL
 {
     public partial class FrmProductOUTState : TEAM3FINAL.baseForm, CommonBtn
     {
         CheckBox headerChk;
-
+        LoggingUtility _logging;
+        public LoggingUtility Log
+        {
+            get { return _logging; }
+        }
         public FrmProductOUTState()
         {
             InitializeComponent();
+            _logging = new LoggingUtility(this.Name, Level.Info, 30);
         }
 
         #region 체크박스 포함한 그리드뷰 컬럼 생성
@@ -32,15 +38,15 @@ namespace TEAM3FINAL
             DataGridViewColumn dc = dgvProductOUTState.Columns[0];
             dc.Frozen = true;
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "고객주문번호", "SALES_WORK_ORDER_ID", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "납기일", "SALES_DUEDATE", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "고객사코드", "COM_CODE", true, 110);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "고객사", "COM_NAME", true, 110);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "도착지코드", "SALES_COM_CODE", true, 110);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "품목", "ITEM_CODE", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "품명", "ITEM_NAME", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "주문수량", "WO_PLAN_QTY", true, 100, DataGridViewContentAlignment.MiddleRight);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "출고된수량", "OUTed_QTY", true, 110, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "고객주문번호", "SALES_WORK_ORDER_ID", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "납기일", "SALES_DUEDATE", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "고객사코드", "COM_CODE", true, 250);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "고객사", "COM_NAME", true, 250);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "도착지코드", "SALES_COM_CODE", true, 250);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "품목", "ITEM_CODE", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "품명", "ITEM_NAME", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "주문수량", "WO_PLAN_QTY", true, 150, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvProductOUTState, "출고된수량", "OUTed_QTY", true, 150, DataGridViewContentAlignment.MiddleRight);
             dgvProductOUTState.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvProductOUTState.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvProductOUTState);
@@ -107,13 +113,20 @@ namespace TEAM3FINAL
 
         public void Search(object sender, EventArgs e)
         {
-            string id = txtID.Text;
-            string item = txtITEM.Text;
-            string company = txtCompany.Text;
+            try
+            {
+                string id = txtID.Text;
+                string item = txtITEM.Text;
+                string company = txtCompany.Text;
 
-            ProductOUTService service = new ProductOUTService();
-            dgvProductOUTState.DataSource = null;
-            dgvProductOUTState.DataSource = service.SearchProductOUTState(id, item, company);
+                ProductOUTService service = new ProductOUTService();
+                dgvProductOUTState.DataSource = null;
+                dgvProductOUTState.DataSource = service.SearchProductOUTState(id, item, company);
+            }
+            catch(Exception err)
+            {
+                _logging = new LoggingUtility(this.Name, Level.Info, 30);
+            }
         }
 
         public void Reset(object sender, EventArgs e)

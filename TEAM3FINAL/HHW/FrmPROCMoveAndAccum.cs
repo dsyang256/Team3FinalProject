@@ -9,16 +9,23 @@ using TEAM3FINAL.Services;
 using TEAM3FINALVO;
 using System.Linq;
 using Message = TEAM3FINALVO.Message;
+using log4net.Core;
 
 namespace TEAM3FINAL
 {
     public partial class FrmPROCMoveAndAccum : TEAM3FINAL.baseForm, CommonBtn
     {
         CheckBox headerChk;
+        LoggingUtility _logging;
+        public LoggingUtility Log
+        {
+            get { return _logging; }
+        }
 
         public FrmPROCMoveAndAccum()
         {
             InitializeComponent();
+            _logging = new LoggingUtility(this.Name, Level.Info, 30);
         }
 
         #region 체크박스 포함한 그리드뷰 컬럼 생성
@@ -31,14 +38,15 @@ namespace TEAM3FINAL
             DataGridViewColumn dc = dgvList.Columns[0];
             dc.Frozen = true;
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "창고코드", "INS_WRHS", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "창고", "FAC_NAME", true, 90);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "품목", "ITEM_CODE", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "품명", "ITEM_NAME", true, 120);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "품목타입", "ITEM_TYP", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "규격", "ITEM_STND", true, 90);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "재고량", "INS_QTY", true, 90, DataGridViewContentAlignment.MiddleRight);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "단위", "ITEM_UNIT", true, 80);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "창고코드", "INS_WRHS", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "창고", "FAC_NAME", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "품목", "ITEM_CODE", true, 300);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "품명", "ITEM_NAME", true, 300);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "품목타입", "ITEM_TYP", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "규격", "ITEM_STND", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "재고량", "INS_QTY", true, 120, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "단위", "ITEM_UNIT", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvList, "비고", "", true, 370);
             dgvList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvList.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvList);
@@ -128,9 +136,16 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                WorkOrderService service = new WorkOrderService();
-                dgvList.DataSource = null;
-                dgvList.DataSource = service.SearchMOVELIST((cboWHouse.SelectedValue == null) ? "" : cboWHouse.SelectedValue.ToString(), cboType.Text, txtITEM_CODE.Text);
+                try
+                {
+                    WorkOrderService service = new WorkOrderService();
+                    dgvList.DataSource = null;
+                    dgvList.DataSource = service.SearchMOVELIST((cboWHouse.SelectedValue == null) ? "" : cboWHouse.SelectedValue.ToString(), cboType.Text, txtITEM_CODE.Text);
+                }
+                catch(Exception err)
+                {
+                    _logging = new LoggingUtility(this.Name, Level.Info, 30);
+                }
             }
         }
 

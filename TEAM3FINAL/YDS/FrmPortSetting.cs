@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,11 @@ namespace TEAM3FINAL
     {
         SerialPort _port;
 
+        LoggingUtility _logging;
+        public LoggingUtility Log
+        {
+            get { return _logging; }
+        }
         private SerialPort Port
         {
             get
@@ -72,19 +78,29 @@ namespace TEAM3FINAL
         public FrmPortSetting()
         {
             InitializeComponent();
+            _logging = new LoggingUtility(this.Name, Level.Info, 30);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //시리얼포트 목록 조회
-            cbComPort.DataSource = SerialPort.GetPortNames();
+            try
+            {
 
-            //컨피그에서 설정값이 있는 경우, 그 값을 조회해서 바인딩.
-            cbComPort.SelectedIndex = cbComPort.Items.IndexOf(Properties.Settings.Default.PortName);
-            cbBaudRate.SelectedIndex = cbBaudRate.Items.IndexOf(Properties.Settings.Default.BaudRate);
-            cbDataSize.SelectedIndex = cbDataSize.Items.IndexOf(Properties.Settings.Default.DataSize);
-            cbParity.SelectedIndex = cbParity.Items.IndexOf(Properties.Settings.Default.Parity);
-            cbHandShake.SelectedIndex = cbHandShake.Items.IndexOf(Properties.Settings.Default.Handshake);
+
+                //시리얼포트 목록 조회
+                cbComPort.DataSource = SerialPort.GetPortNames();
+
+                //컨피그에서 설정값이 있는 경우, 그 값을 조회해서 바인딩.
+                cbComPort.SelectedIndex = cbComPort.Items.IndexOf(Properties.Settings.Default.PortName);
+                cbBaudRate.SelectedIndex = cbBaudRate.Items.IndexOf(Properties.Settings.Default.BaudRate);
+                cbDataSize.SelectedIndex = cbDataSize.Items.IndexOf(Properties.Settings.Default.DataSize);
+                cbParity.SelectedIndex = cbParity.Items.IndexOf(Properties.Settings.Default.Parity);
+                cbHandShake.SelectedIndex = cbHandShake.Items.IndexOf(Properties.Settings.Default.Handshake);
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -105,6 +121,7 @@ namespace TEAM3FINAL
                 catch (Exception err)
                 {
                     MessageBox.Show(err.Message);
+                    this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
                 }
             }
             else  //연결끊기
@@ -115,33 +132,61 @@ namespace TEAM3FINAL
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (cbComPort.Text.Length > 1 && cbBaudRate.Text.Length > 1)
+            try
             {
-                Properties.Settings.Default.PortName = cbComPort.Text;
-                Properties.Settings.Default.BaudRate = cbBaudRate.Text;
-                Properties.Settings.Default.DataSize = cbDataSize.Text;
-                Properties.Settings.Default.Parity = cbParity.Text;
-                Properties.Settings.Default.Handshake = cbHandShake.Text;
+                if (cbComPort.Text.Length > 1 && cbBaudRate.Text.Length > 1)
+                {
+                    Properties.Settings.Default.PortName = cbComPort.Text;
+                    Properties.Settings.Default.BaudRate = cbBaudRate.Text;
+                    Properties.Settings.Default.DataSize = cbDataSize.Text;
+                    Properties.Settings.Default.Parity = cbParity.Text;
+                    Properties.Settings.Default.Handshake = cbHandShake.Text;
 
-                Properties.Settings.Default.Save();
+                    Properties.Settings.Default.Save();
 
-                MessageBox.Show("시리얼포트 설정이 저장되었습니다.");
+                    MessageBox.Show("시리얼포트 설정이 저장되었습니다.");
+                }
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
             }
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            this.Close();
+            try
+            {
+                this.Close();
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
         }
         private void PortSetting_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Port.IsOpen)
-                Port.Close();
+            try
+            {
+                if (Port.IsOpen)
+                    Port.Close();
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Close();
+            try
+            {
+                this.Close();
+            }
+            catch (Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
         }
     }
 }

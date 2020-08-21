@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +15,16 @@ namespace TEAM3FINAL
     public partial class FrmCompanyEndByMonth : TEAM3FINAL.baseForm2, CommonBtn
     {
         CheckBox headerChk;
+        LoggingUtility _logging;
+        public LoggingUtility Log
+        {
+            get { return _logging; }
+        }
 
         public FrmCompanyEndByMonth()
         {
             InitializeComponent();
+            _logging = new LoggingUtility(this.Name, Level.Info, 30);
         }
 
         #region 체크박스 포함한 그리드뷰 컬럼 생성
@@ -29,10 +36,10 @@ namespace TEAM3FINAL
             //데이터그리드뷰 체크박스 컬럼 추가
             DataGridViewUtil.DataGridViewCheckBoxSet(dgvCom, "");
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "업체코드", "SALES_COM_CODE", true, 90);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "업체명", "COM_NAME", true, 90);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "사업자등록번호", "COM_REG_NUM", true, 140);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "매출액", "SALES_TTL", true, 80, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "업체코드", "SALES_COM_CODE", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "업체명", "COM_NAME", true, 110);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "사업자등록번호", "COM_REG_NUM", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCom, "매출액", "SALES_TTL", true, 100, DataGridViewContentAlignment.MiddleRight);
             dgvCom.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvCom.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvCom);
@@ -44,12 +51,12 @@ namespace TEAM3FINAL
             DataGridViewUtil.InitSettingGridView(dgvComDetail);
             //데이터그리드뷰 체크박스 컬럼 추가
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "업체코드", "SALES_COM_CODE", true, 90);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "업체명", "COM_NAME", true, 90);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "마감일", "SALES_ENDDATE", true, 200);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "판매수량", "SALES_QTY", true, 90, DataGridViewContentAlignment.MiddleRight);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "단가", "unitprice", true, 80, DataGridViewContentAlignment.MiddleRight);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "총판매액", "SALES_TTL", true, 100, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "업체코드", "SALES_COM_CODE", true, 240);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "업체명", "COM_NAME", true, 240);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "마감일", "SALES_ENDDATE", true, 250);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "판매수량", "SALES_QTY", true, 200, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "단가", "unitprice", true, 200, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvComDetail, "총판매액", "SALES_TTL", true, 200, DataGridViewContentAlignment.MiddleRight);
             dgvComDetail.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvComDetail.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvComDetail);
@@ -155,13 +162,20 @@ namespace TEAM3FINAL
 
         public void Search(object sender, EventArgs e)
         {
-            string date = cboDate.Text + "-01";
-            string company = (cboCOM.SelectedValue == null) ? "" : cboCOM.SelectedValue.ToString();
-            SalesComService service = new SalesComService();
-            dgvCom.DataSource = null;
-            dgvComDetail.DataSource = null;
-            dgvCom.DataSource = service.SearchSalesCom(date, company);
-            dgvComDetail.DataSource = service.SearchSalesComDetail(date, company);
+            try
+            {
+                string date = cboDate.Text + "-01";
+                string company = (cboCOM.SelectedValue == null) ? "" : cboCOM.SelectedValue.ToString();
+                SalesComService service = new SalesComService();
+                dgvCom.DataSource = null;
+                dgvComDetail.DataSource = null;
+                dgvCom.DataSource = service.SearchSalesCom(date, company);
+                dgvComDetail.DataSource = service.SearchSalesComDetail(date, company);
+            }
+            catch(Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
         }
 
         public void Reset(object sender, EventArgs e)

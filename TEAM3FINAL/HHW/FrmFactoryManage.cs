@@ -9,16 +9,22 @@ using TEAM3FINAL.Services;
 using TEAM3FINALVO;
 using System.Linq;
 using Message = TEAM3FINALVO.Message;
+using log4net.Core;
 
 namespace TEAM3FINAL
 {
     public partial class FrmFactoryManage : TEAM3FINAL.baseForm, CommonBtn
     {
         CheckBox headerChk;
-
+        LoggingUtility _logging;
+        public LoggingUtility Log
+        {
+            get { return _logging; }
+        }
         public FrmFactoryManage()
         {
             InitializeComponent();
+            _logging = new LoggingUtility(this.Name, Level.Info, 30);
         }
 
         #region 체크박스 포함한 그리드뷰 컬럼 생성
@@ -32,9 +38,9 @@ namespace TEAM3FINAL
             dc.Frozen = true;
             //일반컬럼 추가
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "시설군", "FAC_FCLTY", true, 90);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "시설구분", "FAC_TYP", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "시설코드", "FAC_CODE", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "시설명", "FAC_NAME", true, 90);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "시설구분", "FAC_TYP", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "시설코드", "FAC_CODE", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "시설명", "FAC_NAME", true, 150);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "상위시설", "FAC_FCLTY_PARENT", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "시설설명", "FAC_DESC", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "유무상구분", "FAC_FREE_YN", true, 110);
@@ -45,7 +51,7 @@ namespace TEAM3FINAL
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "업체코드", "COM_NAME", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "사용유무", "FAC_USE_YN", true, 100);
             DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "최종수정자", "FAC_LAST_MDFR", true, 110);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "최종수정시간", "FAC_LAST_MDFY", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvFactoryList, "최종수정시간", "FAC_LAST_MDFY", true, 200);
             dgvFactoryList.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvFactoryList.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvFactoryList);
@@ -119,13 +125,20 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                FrmFactoryPopUp frm = new FrmFactoryPopUp();
-                frm.FAC_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
-                frm.FAC_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                frm.ShowDialog();
-                if (frm.DialogResult == DialogResult.OK)
+                try
                 {
-                    GetFactoryInfo();
+                    FrmFactoryPopUp frm = new FrmFactoryPopUp();
+                    frm.FAC_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
+                    frm.FAC_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                    frm.ShowDialog();
+                    if (frm.DialogResult == DialogResult.OK)
+                    {
+                        GetFactoryInfo();
+                    }
+                }
+                catch(Exception err)
+                {
+                    _logging = new LoggingUtility(this.Name, Level.Info, 30);
                 }
             }
         }
@@ -134,9 +147,16 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                FactoryService service = new FactoryService();
-                dgvFactoryList.DataSource = null;
-                dgvFactoryList.DataSource = service.GetSearchFactoryInfo(txtFactoryCode.Text, cboCategory.Text);
+                try
+                {
+                    FactoryService service = new FactoryService();
+                    dgvFactoryList.DataSource = null;
+                    dgvFactoryList.DataSource = service.GetSearchFactoryInfo(txtFactoryCode.Text, cboCategory.Text);
+                }
+                catch(Exception err)
+                {
+                    _logging = new LoggingUtility(this.Name, Level.Info, 30);
+                }
             }
         }
 
@@ -151,51 +171,58 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                //수정 시 여러개의 체크박스를 선택하는것을 막음
-                dgvFactoryList.EndEdit();
-                string sb = string.Empty;
-                int cnt = 0;
-                //체크가 되었는지 확인
-                foreach (DataGridViewRow item in dgvFactoryList.Rows)
+                try
                 {
-                    if (Convert.ToBoolean(item.Cells[0].Value))
+                    //수정 시 여러개의 체크박스를 선택하는것을 막음
+                    dgvFactoryList.EndEdit();
+                    string sb = string.Empty;
+                    int cnt = 0;
+                    //체크가 되었는지 확인
+                    foreach (DataGridViewRow item in dgvFactoryList.Rows)
                     {
-                        sb = item.Cells[3].Value.ToString();
-                        cnt++;
+                        if (Convert.ToBoolean(item.Cells[0].Value))
+                        {
+                            sb = item.Cells[3].Value.ToString();
+                            cnt++;
+                        }
                     }
-                }
-                if (cnt == 1) //하나일 경우 PopUp창 띄움
-                {
-                    FrmFactoryPopUp frm = new FrmFactoryPopUp();
-                    frm.Update = true;
-                    frm.FAC_CODE = dgvFactoryList.CurrentRow.Cells[3].Value.ToString();
-                    frm.FAC_FCLTY = dgvFactoryList.CurrentRow.Cells[1].Value.ToString();
-                    frm.FAC_FCLTY_PARENT = dgvFactoryList.CurrentRow.Cells[5].Value.ToString();
-                    frm.FAC_NAME = dgvFactoryList.CurrentRow.Cells[4].Value.ToString();
-                    frm.FAC_TYP = dgvFactoryList.CurrentRow.Cells[2].Value.ToString();
-                    frm.FAC_FREE_YN = dgvFactoryList.CurrentRow.Cells[7].Value.ToString(); ;
-                    if (dgvFactoryList.CurrentRow.Cells[8].Value == null)
-                        frm.FAC_TYP_SORT = null;
+                    if (cnt == 1) //하나일 경우 PopUp창 띄움
+                    {
+                        FrmFactoryPopUp frm = new FrmFactoryPopUp();
+                        frm.Update = true;
+                        frm.FAC_CODE = dgvFactoryList.CurrentRow.Cells[3].Value.ToString();
+                        frm.FAC_FCLTY = dgvFactoryList.CurrentRow.Cells[1].Value.ToString();
+                        frm.FAC_FCLTY_PARENT = dgvFactoryList.CurrentRow.Cells[5].Value.ToString();
+                        frm.FAC_NAME = dgvFactoryList.CurrentRow.Cells[4].Value.ToString();
+                        frm.FAC_TYP = dgvFactoryList.CurrentRow.Cells[2].Value.ToString();
+                        frm.FAC_FREE_YN = dgvFactoryList.CurrentRow.Cells[7].Value.ToString(); ;
+                        if (dgvFactoryList.CurrentRow.Cells[8].Value == null)
+                            frm.FAC_TYP_SORT = null;
+                        else
+                            frm.FAC_TYP_SORT = Convert.ToInt32(dgvFactoryList.CurrentRow.Cells[8].Value);
+                        frm.FAC_DEMAND_YN = dgvFactoryList.CurrentRow.Cells[9].Value.ToString();
+                        frm.FAC_PROCS_YN = dgvFactoryList.CurrentRow.Cells[10].Value.ToString();
+                        frm.FAC_MTRL_YN = dgvFactoryList.CurrentRow.Cells[11].Value.ToString();
+                        frm.FAC_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
+                        frm.FAC_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+                        frm.FAC_USE_YN = dgvFactoryList.CurrentRow.Cells[13].Value.ToString();
+                        frm.FAC_DESC = dgvFactoryList.CurrentRow.Cells[6].Value.ToString();
+                        frm.COM_CODE = (dgvFactoryList.CurrentRow.Cells[12].Value == null) ? "" : dgvFactoryList.CurrentRow.Cells[12].Value.ToString();
+                        frm.ShowDialog();
+                        if (frm.DialogResult == DialogResult.OK)
+                        {
+                            GetFactoryInfo();
+                        }
+                    }
                     else
-                        frm.FAC_TYP_SORT = Convert.ToInt32(dgvFactoryList.CurrentRow.Cells[8].Value);
-                    frm.FAC_DEMAND_YN = dgvFactoryList.CurrentRow.Cells[9].Value.ToString();
-                    frm.FAC_PROCS_YN = dgvFactoryList.CurrentRow.Cells[10].Value.ToString();
-                    frm.FAC_MTRL_YN = dgvFactoryList.CurrentRow.Cells[11].Value.ToString();
-                    frm.FAC_LAST_MDFR = LoginInfo.UserInfo.LI_ID;
-                    frm.FAC_LAST_MDFY = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                    frm.FAC_USE_YN = dgvFactoryList.CurrentRow.Cells[13].Value.ToString();
-                    frm.FAC_DESC = dgvFactoryList.CurrentRow.Cells[6].Value.ToString();
-                    frm.COM_CODE = (dgvFactoryList.CurrentRow.Cells[12].Value == null) ? "": dgvFactoryList.CurrentRow.Cells[12].Value.ToString();
-                    frm.ShowDialog();
-                    if (frm.DialogResult == DialogResult.OK)
                     {
-                        GetFactoryInfo();
+                        MessageBox.Show("하나의 항목씩만 수정 가능");
+                        return;
                     }
                 }
-                else
+                catch(Exception err)
                 {
-                    MessageBox.Show("하나의 항목씩만 수정 가능");
-                    return;
+                    _logging = new LoggingUtility(this.Name, Level.Info, 30);
                 }
             }
         }
@@ -204,39 +231,46 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                dgvFactoryList.EndEdit();
-                StringBuilder sb = new StringBuilder();
-                int cnt = 0;
-                //품목 선택후 List를 전달
-                foreach (DataGridViewRow item in dgvFactoryList.Rows)
+                try
                 {
-                    if (Convert.ToBoolean(item.Cells[0].Value))
+                    dgvFactoryList.EndEdit();
+                    StringBuilder sb = new StringBuilder();
+                    int cnt = 0;
+                    //품목 선택후 List를 전달
+                    foreach (DataGridViewRow item in dgvFactoryList.Rows)
                     {
-                        sb.Append(item.Cells[3].Value.ToString() + "@");
-                        cnt++;
+                        if (Convert.ToBoolean(item.Cells[0].Value))
+                        {
+                            sb.Append(item.Cells[3].Value.ToString() + "@");
+                            cnt++;
+                        }
                     }
-                }
-                if (sb.Length < 1)
-                {
-                    MessageBox.Show("삭제할 항목을 선택하여 주십시오.");
-                    return;
-                }
-                sb.Remove(sb.Length - 1, 1);
-                if (MessageBox.Show($"총 {cnt}개의 항목을 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    FactoryService service = new FactoryService();
-
-                    Message msg = service.DeleteFactory("FACTORY", "FAC_CODE", sb);
-                    if (msg.IsSuccess)
+                    if (sb.Length < 1)
                     {
-                        MessageBox.Show(msg.ResultMessage);
-                        GetFactoryInfo();
-                    }
-                    else
-                    {
-                        MessageBox.Show(msg.ResultMessage);
+                        MessageBox.Show("삭제할 항목을 선택하여 주십시오.");
                         return;
                     }
+                    sb.Remove(sb.Length - 1, 1);
+                    if (MessageBox.Show($"총 {cnt}개의 항목을 삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        FactoryService service = new FactoryService();
+
+                        Message msg = service.DeleteFactory("FACTORY", "FAC_CODE", sb);
+                        if (msg.IsSuccess)
+                        {
+                            MessageBox.Show(msg.ResultMessage);
+                            GetFactoryInfo();
+                        }
+                        else
+                        {
+                            MessageBox.Show(msg.ResultMessage);
+                            return;
+                        }
+                    }
+                }
+                catch(Exception err)
+                {
+                    _logging = new LoggingUtility(this.Name, Level.Info, 30);
                 }
             }
         }

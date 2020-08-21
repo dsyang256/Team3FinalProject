@@ -412,7 +412,6 @@
             this.dgvitem.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvitem.Size = new System.Drawing.Size(1126, 318);
             this.dgvitem.TabIndex = 0;
-            this.dgvitem.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvitem_CellContentClick);
             // 
             // menuPanel1
             // 

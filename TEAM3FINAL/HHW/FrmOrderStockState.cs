@@ -9,16 +9,22 @@ using TEAM3FINAL.Services;
 using TEAM3FINALVO;
 using System.Linq;
 using Message = TEAM3FINALVO.Message;
+using log4net.Core;
 
 namespace TEAM3FINAL
 {
     public partial class FrmOrderStockState : TEAM3FINAL.baseForm, CommonBtn
     {
         CheckBox headerChk;
-
+        LoggingUtility _logging;
+        public LoggingUtility Log
+        {
+            get { return _logging; }
+        }
         public FrmOrderStockState()
         {
             InitializeComponent();
+            _logging = new LoggingUtility(this.Name, Level.Info, 30);
         }
 
         #region 체크박스 포함한 그리드뷰 컬럼 생성
@@ -29,16 +35,16 @@ namespace TEAM3FINAL
             //데이터그리드뷰 체크박스 컬럼 추가
             DataGridViewUtil.DataGridViewCheckBoxSet(dgvCustomerOrder, "");
             //일반컬럼 추가
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "품목", "ITEM_CODE", true, 90);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "품명", "ITEM_NAME", true, 90);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "규격", "ITEM_STND", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "창고", "FAC_CODE", false, 90);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "창고", "FAC_NAME", true, 90);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "이동량", "WO_QTY_OUT", true, 80, DataGridViewContentAlignment.MiddleRight);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "비고", "WO_REMARK", true, 80);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "작업지시ID", "SALES_WORK_ORDER_ID", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "제품타입", "ITEM_TYP", true, 100);
-            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "이동창고", "ToWHouse", true, 100);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "품목", "ITEM_CODE", true, 190);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "품명", "ITEM_NAME", true, 190);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "규격", "ITEM_STND", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "창고", "FAC_CODE", false, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "창고", "FAC_NAME", true, 200);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "이동량", "WO_QTY_OUT", true, 150, DataGridViewContentAlignment.MiddleRight);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "비고", "WO_REMARK", true, 400);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "작업지시ID", "SALES_WORK_ORDER_ID", true, 150);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "제품타입", "ITEM_TYP", true, 120);
+            DataGridViewUtil.AddNewColumnToDataGridView(dgvCustomerOrder, "이동창고", "ToWHouse", true, 200);
             dgvCustomerOrder.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvCustomerOrder.ColumnHeadersDefaultCellStyle.Font = new Font("맑은 고딕", 9.75F, FontStyle.Bold);
             DataGridViewUtil.DataGridViewRowNumSet(dgvCustomerOrder);
@@ -127,18 +133,24 @@ namespace TEAM3FINAL
 
         public void Search(object sender, EventArgs e)
         {
-            if(dtpFrom.Value > dtpTo.Value)
+            try
             {
-                MessageBox.Show("시작일이 종료일 보다 클 수 없습니다.");
-                return;
+                if (dtpFrom.Value > dtpTo.Value)
+                {
+                    MessageBox.Show("시작일이 종료일 보다 클 수 없습니다.");
+                    return;
+                }
+                string fromDATE = dtpFrom.Value.ToString("yyyy-MM-dd");
+                string fromTO = dtpTo.Value.ToString("yyyy-MM-dd");
+
+                WorkOrderService service = new WorkOrderService();
+                dgvCustomerOrder.DataSource = null;
+                dgvCustomerOrder.DataSource = service.SearchOrderState(fromDATE, fromTO, txtITEM_CODE.Text);
             }
-            string fromDATE = dtpFrom.Value.ToString("yyyy-MM-dd");
-            string fromTO = dtpTo.Value.ToString("yyyy-MM-dd");
-
-            WorkOrderService service = new WorkOrderService();
-            dgvCustomerOrder.DataSource = null;
-            dgvCustomerOrder.DataSource = service.SearchOrderState(fromDATE, fromTO, txtITEM_CODE.Text);
-
+            catch(Exception err)
+            {
+                _logging = new LoggingUtility(this.Name, Level.Info, 30);
+            }
         }
 
         public void Reset(object sender, EventArgs e)
