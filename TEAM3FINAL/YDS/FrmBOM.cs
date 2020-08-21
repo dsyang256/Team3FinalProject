@@ -101,7 +101,7 @@ namespace TEAM3FINAL
                         SaveFileDialog saveFileDialog1 = new SaveFileDialog();
                         saveFileDialog1.Filter = "Excel Files (*.xls)|*.xls";
                         saveFileDialog1.InitialDirectory = "C:";
-                        saveFileDialog1.Title = "SaveDemandPlan";
+                        saveFileDialog1.Title = "SaveBOM";
                         if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                         {
                             xlApp = new Microsoft.Office.Interop.Excel.Application();

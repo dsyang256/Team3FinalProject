@@ -226,16 +226,19 @@ namespace TEAM3FINAL
         /// <param name="e"></param>
         public void Reset(object sender, EventArgs e)
         {
-            ITEM_NAME.Text = "";
-            ITEM_STND.Text = "";
-            ITEM_COM_REORDER.SelectedIndex = -1;
-            ITEM_COM_DLVR.SelectedIndex = -1;
-            ITEM_WRHS_IN.SelectedIndex = -1;
-            ITEM_WRHS_OUT.SelectedIndex = -1;
-            ITEM_MANAGER.SelectedIndex = -1;
-            ITEM_TYP.SelectedIndex = -1;
-            ITEM_USE_YN.SelectedIndex = -1;
-            DataGridViewBinding();
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
+            {
+                ITEM_NAME.Text = "";
+                ITEM_STND.Text = "";
+                ITEM_COM_REORDER.SelectedIndex = -1;
+                ITEM_COM_DLVR.SelectedIndex = -1;
+                ITEM_WRHS_IN.SelectedIndex = -1;
+                ITEM_WRHS_OUT.SelectedIndex = -1;
+                ITEM_MANAGER.SelectedIndex = -1;
+                ITEM_TYP.SelectedIndex = -1;
+                ITEM_USE_YN.SelectedIndex = -1;
+                DataGridViewBinding();
+            }
         }
         /// <summary>
         /// 업데이트 버튼 이벤드
@@ -325,19 +328,79 @@ namespace TEAM3FINAL
         {
             if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                string name = "";
-                foreach (DataGridViewRow item in dgvitem.Rows)
+                if (dgvitem.Rows.Count > 0)
                 {
-                    if (item.Cells[3].Value.ToString() == "CHAIR_01")
+                    Microsoft.Office.Interop.Excel.Application xlApp = null;
+                    Microsoft.Office.Interop.Excel.Workbook xlWorkBook = null;
+                    Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet = null;
+                    try
                     {
-                        item.Cells[1].Value = true;
-                        name = item.Cells[4].Value.ToString();
+                        int i, j;
+                        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                        saveFileDialog1.Filter = "Excel Files (*.xls)|*.xls";
+                        saveFileDialog1.InitialDirectory = "C:";
+                        saveFileDialog1.Title = "SaveITEM";
+                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                        {
+                            xlApp = new Microsoft.Office.Interop.Excel.Application();
+                            xlWorkBook = xlApp.Workbooks.Add();
+                            xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+
+                            for (int k = 1; k < dgvitem.ColumnCount; k++)
+                            {
+                                xlWorkSheet.Cells[1, k] = dgvitem.Columns[k].HeaderText.ToString();
+                            }
+
+                            for (i = 0; i < dgvitem.RowCount; i++)
+                            {
+                                for (j = 0; j < dgvitem.ColumnCount - 1; j++)
+                                {
+                                    if (dgvitem[j, i].Value != null)
+                                        xlWorkSheet.Cells[i + 2, j + 1] = dgvitem[j, i].Value.ToString();
+                                }
+                            }
+
+                            xlWorkBook.SaveAs(saveFileDialog1.FileName, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal);
+                            xlWorkBook.Close(true);
+                            xlApp.Quit();
+                            MessageBox.Show("출력되었습니다.", "출력 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show("출력에 실패하였습니다.", "출력 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        if (xlApp != null)
+                        {
+                            releaseObject(xlWorkSheet);
+                            releaseObject(xlWorkBook);
+                            releaseObject(xlApp);
+                        }
                     }
                 }
-                if (MessageBox.Show($"{name} - 품목을 수정하시겠습니까?", "수정확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    Update(null, null);
+
             }
         }
+        private void releaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+                MessageBox.Show("Exception Occured while releasing object " + ex.ToString());
+            }
+            finally
+            {
+                GC.Collect();
+            }
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {

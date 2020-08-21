@@ -68,6 +68,32 @@ namespace TEAM3FINALDAC
             }
         }
 
+        public bool CodeDelete1(string code)
+        {
+            bool Result = false;
+            try
+            {
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = new SqlConnection(this.ConnectionString);
+                    cmd.CommandText = $@"delete 
+                                           from COMMON
+                                          where COMMON_CODE = @COMMON_CODE";
+                    cmd.Parameters.AddWithValue("@COMMON_CODE", code);
+
+                    cmd.Connection.Open();
+                    int iResult = cmd.ExecuteNonQuery();
+                    cmd.Connection.Close();
+                    return (iResult > 0) ? true : false;
+                }
+            }
+            catch (Exception err)
+            {
+                string msg = err.Message;
+                return Result;
+            }
+        }
+
         public bool CheckCodeName(string name)
         {
             bool Result = false;
