@@ -14,10 +14,16 @@ namespace TEAM3FINAL
     public partial class FrmCompanyEndByMonth : TEAM3FINAL.baseForm2, CommonBtn
     {
         CheckBox headerChk;
+        LoggingUtility _logging;
+        public LoggingUtility Log
+        {
+            get { return _logging; }
+        }
 
         public FrmCompanyEndByMonth()
         {
             InitializeComponent();
+            _logging = new LoggingUtility(this.Name, Level.Info, 30);
         }
 
         #region 체크박스 포함한 그리드뷰 컬럼 생성
@@ -155,13 +161,20 @@ namespace TEAM3FINAL
 
         public void Search(object sender, EventArgs e)
         {
-            string date = cboDate.Text + "-01";
-            string company = (cboCOM.SelectedValue == null) ? "" : cboCOM.SelectedValue.ToString();
-            SalesComService service = new SalesComService();
-            dgvCom.DataSource = null;
-            dgvComDetail.DataSource = null;
-            dgvCom.DataSource = service.SearchSalesCom(date, company);
-            dgvComDetail.DataSource = service.SearchSalesComDetail(date, company);
+            try
+            {
+                string date = cboDate.Text + "-01";
+                string company = (cboCOM.SelectedValue == null) ? "" : cboCOM.SelectedValue.ToString();
+                SalesComService service = new SalesComService();
+                dgvCom.DataSource = null;
+                dgvComDetail.DataSource = null;
+                dgvCom.DataSource = service.SearchSalesCom(date, company);
+                dgvComDetail.DataSource = service.SearchSalesComDetail(date, company);
+            }
+            catch(Exception err)
+            {
+                this.Log.WriteError($"[[RECV {this.Name}]]:{err.Message}");
+            }
         }
 
         public void Reset(object sender, EventArgs e)
