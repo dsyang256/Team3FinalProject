@@ -39,6 +39,25 @@ namespace TEAM3POP
                 panel1.Controls.Add(taskcontrol);
                 iCnt++;
             }
+            FrmPOPMDI frm = (FrmPOPMDI)this.MdiParent;
+            frm.Readed += Readed_BarCode;
+        }
+        private void Readed_BarCode(object sender, ReadEventArgs e)
+        {
+            if (((FrmPOPMDI)this.MdiParent).ActiveMdiChild == this)
+            {
+                string msg = e.ReadMsg.Replace("%O", "_").Trim();
+                if (MessageBox.Show($"{msg} 입력하신 작업지시 번호가 맞습니까??", "작업확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    ((FrmPOPMDI)this.MdiParent).ClearStrings();
+                    foreach (var Control in panel1.Controls)
+                    {
+                        UserControl1 user = Control as UserControl1;
+                        user.comboBox1.Text = msg;
+                    }
+                }
+
+            }
         }
     }
 }
