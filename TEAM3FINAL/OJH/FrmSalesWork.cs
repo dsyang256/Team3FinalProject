@@ -402,41 +402,45 @@ namespace TEAM3FINAL
         }
         private string CheckedWorkDeleteList()
         {
-            int iCnt = 0;
-            //작업지시만 업데이트
-            dgvWork.CommitEdit(DataGridViewDataErrorContexts.Commit);
-            dgvWork.EndEdit();
-            StringBuilder sb = new StringBuilder();
-            //품목 선택후 List를 전달
-            foreach (var item in dgvWork.Rows)
+            if (dgvWork.Rows.Count > 0)
             {
-                if (item is DataGridViewRow)
+                int iCnt = 0;
+                //작업지시만 업데이트
+                dgvWork.CommitEdit(DataGridViewDataErrorContexts.Commit);
+                dgvWork.EndEdit();
+                StringBuilder sb = new StringBuilder();
+                //품목 선택후 List를 전달
+                foreach (var item in dgvWork.Rows)
                 {
-                    DataGridViewRow row = item as DataGridViewRow;
-                    if (row.Cells[4].Value.ToString() == "작업생성")
+                    if (item is DataGridViewRow)
                     {
-                        if (Convert.ToBoolean(row.Cells[0].Value))
+                        DataGridViewRow row = item as DataGridViewRow;
+                        if (row.Cells[4].Value.ToString() == "작업생성")
                         {
-                            sb.Append(row.Cells[12].Value.ToString() + "@");
+                            if (Convert.ToBoolean(row.Cells[0].Value))
+                            {
+                                sb.Append(row.Cells[12].Value.ToString() + "@");
+                            }
+                        }
+                        else
+                        {
+                            iCnt++;
                         }
                     }
-                    else
-                    {
-                        iCnt++;
-                    }
                 }
-            }
 
-            if (sb.Length < 1 && iCnt > 0)
-            {
-                MessageBox.Show("작업생성상태의 작업지시만 취소할 수 있습니다.", "작업지시 선택", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return "";
-            }
+                if (sb.Length < 1 && iCnt > 0)
+                {
+                    MessageBox.Show("작업생성상태의 작업지시만 취소할 수 있습니다.", "작업지시 선택", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return "";
+                }
 
-            sb.Remove(sb.Length - 1, 1);
-            iCnt = 0;
-            //체크 목록을 string으로 만듬
-            return sb.ToString();
+                sb.Remove(sb.Length - 1, 1);
+                iCnt = 0;
+                //체크 목록을 string으로 만듬
+                return sb.ToString();
+            }
+            else return "";
         }
 
         private void dtpFrom_ValueChanged(object sender, EventArgs e)

@@ -171,57 +171,60 @@ namespace TEAM3FINAL
 
         public void Search(object sender, EventArgs e)
         {
-            List<SALESWorkList_VO> list = null;
-            //납기일조회
-            if (AllList.Count > 0)
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                list = (from item in AllList select item).Where
-                    (p => (Convert.ToDateTime(p.SALES_DUEDATE) < dtpTo.Value) && Convert.ToDateTime(p.SALES_DUEDATE) > dtpFrom.Value).ToList();
-
-                //품목명
-                if (txtItem.Text.Trim().Length > 0)
+                List<SALESWorkList_VO> list = null;
+                //납기일조회
+                if (AllList.Count > 0)
                 {
-                    list = (from item in list select item).Where
-                    (p => p.ITEM_NAME.Contains(txtItem.Text.Trim())).ToList();
-                }
+                    list = (from item in AllList select item).Where
+                        (p => (Convert.ToDateTime(p.SALES_DUEDATE) < dtpTo.Value) && Convert.ToDateTime(p.SALES_DUEDATE) > dtpFrom.Value).ToList();
 
-                //고객주문번호
-                if (txtPO.Text.Trim().Length > 0)
-                {
-                    list = (from item in list select item).Where
-                    (p => p.SO_PurchaseOrder.Contains(txtPO.Text.Trim())).ToList();
-                }
+                    //품목명
+                    if (txtItem.Text.Trim().Length > 0)
+                    {
+                        list = (from item in list select item).Where
+                        (p => p.ITEM_NAME.Contains(txtItem.Text.Trim())).ToList();
+                    }
 
-                //상태
-                if (cboState.Text.Length > 0)
-                {
-                    list = (from item in list select item).Where
-                    (p => p.SO_PurchaseOrder.Contains(cboState.Text)).ToList();
-                }
+                    //고객주문번호
+                    if (txtPO.Text.Trim().Length > 0)
+                    {
+                        list = (from item in list select item).Where
+                        (p => p.SO_PurchaseOrder.Contains(txtPO.Text.Trim())).ToList();
+                    }
 
-                //고객사
-                if (cboCom.Text.Length > 0)
-                {
-                    list = (from item in list select item).Where
-                    (p => p.COM_NAME.Contains(cboCom.Text)).ToList();
-                }
+                    //상태
+                    if (cboState.Text.Length > 0)
+                    {
+                        list = (from item in list select item).Where
+                        (p => p.SO_PurchaseOrder.Contains(cboState.Text)).ToList();
+                    }
 
-                //도착지
-                if (cboCom2.Text.Length > 0)
-                {
-                    list = (from item in list select item).Where
-                    (p => p.SALES_COM_NAME.Contains(cboCom2.Text)).ToList();
-                }
+                    //고객사
+                    if (cboCom.Text.Length > 0)
+                    {
+                        list = (from item in list select item).Where
+                        (p => p.COM_NAME.Contains(cboCom.Text)).ToList();
+                    }
 
-                //발주구분
-                if (cboOrderGubun.Text.Length > 0)
-                {
-                    list = (from item in list select item).Where
-                    (p => p.SALES_Order_TYPE.Contains(cboOrderGubun.Text)).ToList();
-                }
+                    //도착지
+                    if (cboCom2.Text.Length > 0)
+                    {
+                        list = (from item in list select item).Where
+                        (p => p.SALES_COM_NAME.Contains(cboCom2.Text)).ToList();
+                    }
 
-                dgvSales.DataSource = null;
-                dgvSales.DataSource = list;
+                    //발주구분
+                    if (cboOrderGubun.Text.Length > 0)
+                    {
+                        list = (from item in list select item).Where
+                        (p => p.SALES_Order_TYPE.Contains(cboOrderGubun.Text)).ToList();
+                    }
+
+                    dgvSales.DataSource = null;
+                    dgvSales.DataSource = list;
+                }
             }
         }
 
@@ -259,24 +262,27 @@ namespace TEAM3FINAL
 
         public void Delete(object sender, EventArgs e)
         {
-            string lists = CheckedList();
-            if (lists.Length > 0)
+            if (((FrmMAIN)this.MdiParent).ActiveMdiChild == this)
             {
-                if (MessageBox.Show("정말로 삭제하시겠습니까?", "삭제확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                string lists = CheckedList();
+                if (lists.Length > 0)
                 {
-                    //서비스 호출
-                    SalesService service = new SalesService();
-                    if (service.DeleteSalesWorkList(lists, "@"))
+                    if (MessageBox.Show("정말로 삭제하시겠습니까?", "삭제확인", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        MessageBox.Show("삭제되었습니다.", "삭제 성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("삭제 중 오류가 발생하였습니다. 다시 시도하여 주십시오.", "삭제 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //서비스 호출
+                        SalesService service = new SalesService();
+                        if (service.DeleteSalesWorkList(lists, "@"))
+                        {
+                            MessageBox.Show("삭제되었습니다.", "삭제 성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("삭제 중 오류가 발생하였습니다. 다시 시도하여 주십시오.", "삭제 실패", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
+                Reset(null, null);
             }
-            Reset(null, null);
         }
 
         public void Print(object sender, EventArgs e)

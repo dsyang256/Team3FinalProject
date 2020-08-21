@@ -28,7 +28,9 @@ namespace TEAM3FINALWEB.DAC
             {
                 string sql = $@"
                         -- 제품별 월별 매출액
-                        select 
+with A AS
+(
+ select 
                         isnull( case Month(convert(nvarchar(10),SALES_ENDDATE,23)) when 1 THEN SUM(SALES_QTY*SALES_TTL) END,0) AS M01
 		                        ,isnull( case Month(convert(nvarchar(10),SALES_ENDDATE,23)) when 2 THEN SUM(SALES_QTY*SALES_TTL) END,0) AS M02				
 		                        ,isnull( case Month(convert(nvarchar(10),SALES_ENDDATE,23)) when 3 THEN SUM(SALES_QTY*SALES_TTL) END,0) AS M03					
@@ -46,7 +48,11 @@ namespace TEAM3FINALWEB.DAC
                         where 1=1
                         AND YEAR(CONVERT(nvarchar(10),SALES_ENDDATE,23)) = YEAR(getdate())
                         group by Month(convert(nvarchar(10),SALES_ENDDATE,23)),ITEM_NAME
-                        order by Month(convert(nvarchar(10),SALES_ENDDATE,23)),ITEM_NAME
+)
+
+select sum(A.M01) M01, sum(A.M02) M02, sum(A.M03) M03, sum(A.M04) M04, sum(A.M05) M05, sum(A.M06) M06, sum(A.M07) M07, sum(A.M08) M08, sum(A.M09) M09, sum(A.M10) M10, sum(A.M11) M11, sum(A.M12) M12, A.ITEM_NAME ITEM_NAME
+from A
+group by A.ITEM_NAME
                         ";
 
                 SqlDataAdapter da = new SqlDataAdapter(sql, conn);

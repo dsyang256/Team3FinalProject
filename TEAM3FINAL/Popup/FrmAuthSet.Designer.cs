@@ -352,7 +352,7 @@
             this.dgvGroup.RowHeadersWidth = 30;
             this.dgvGroup.RowTemplate.Height = 23;
             this.dgvGroup.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvGroup.Size = new System.Drawing.Size(846, 500);
+            this.dgvGroup.Size = new System.Drawing.Size(846, 502);
             this.dgvGroup.TabIndex = 0;
             // 
             // btnSave
@@ -362,7 +362,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnSave.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.btnSave.Image = global::TEAM3FINAL.Properties.Resources.Save_16x16;
+            this.btnSave.Image = global::TEAM3FINAL.Properties.Resources.delete_16px;
             this.btnSave.Location = new System.Drawing.Point(1225, 13);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
