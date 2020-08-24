@@ -82,7 +82,7 @@ namespace TEAM3FINAL
 
                     object[,] data = range.Value;
 
-                    for (int i = 1; i <= range.Columns.Count; i++)
+                    for (int i = 1; i < range.Columns.Count; i++)
                     {
                         dt.Columns.Add(data[1, i].ToString(), typeof(string));
                     }
@@ -90,7 +90,7 @@ namespace TEAM3FINAL
                     for (int r = 2; r <= range.Rows.Count; r++)
                     {
                         DataRow dr = dt.Rows.Add();
-                        for (int c = 1; c <= range.Columns.Count; c++)
+                        for (int c = 1; c < range.Columns.Count; c++)
                         {
                             if (c == 1)
                                 dr[c - 1] = r - 1;
