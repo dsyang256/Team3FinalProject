@@ -451,6 +451,13 @@ namespace TEAM3FINAL
                 SerialPortConnecting();
             }
         }
+
+        private void FrmMAIN_Resize(object sender, EventArgs e)
+        {
+            Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.White;
+            this.BackgroundImage = Properties.Resources.logo1;
+            this.BackgroundImageLayout = ImageLayout.Center;
+        }
     }
     public class ReadEventArgs : EventArgs
     {
