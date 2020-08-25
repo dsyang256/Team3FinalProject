@@ -13,6 +13,13 @@ using System.Windows.Forms;
 
 namespace WInServerTask
 {
+
+    //WinServerTaskF_ASSY_01.exe
+    //WinServerTaskH_ASSY_01.exe
+    //WinServerTaskMF01.exe
+    //WinServerTaskMF02.exe
+    //WinServerTaskOS.exe
+    // 사용되는 exe 이름들 복사 변경해야됨니다.
     public partial class frmServerTask : Form
     {
         string PGM_ID;

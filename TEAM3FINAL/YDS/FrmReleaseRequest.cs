@@ -121,7 +121,7 @@ namespace TEAM3FINAL
                 DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "잔량", "잔량", true, 140);
                 DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "입고창고", "FCLTS_WRHS_EXHST", false, 125);
                 DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "작업번호", "SALES_WORK_ORDER_ID", false, 125);
-                DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "출고창고", "ITEM_WRHS_IN", true, 125);
+                DataGridViewUtil.AddNewColumnToDataGridView(dgv2, "출고창고", "ITEM_WRHS_IN", false, 125);
                 DataGridViewCheckBoxAllCheck();
             }
             catch (Exception err)
